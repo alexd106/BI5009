@@ -26,6 +26,10 @@ To download the solutions for each of the exercises as individual R scripts clic
 
 \  
 
+#### Section 1 Exercises
+
+\  
+
 ```{r sol12, results='asis', , eval = isTRUE(show_text12)}
 dir <- "exercise_solutions/"
 file_name <- list.files(dir) %>%
@@ -73,4 +77,14 @@ link_name <- file_name %>%
 
 paste0("- [", link_name, "](", "exercise_solutions/", file_name, ")") %>%
 cat(sep="\n\n")
+```
+
+\  
+
+#### Section 2 Exercises
+
+\  
+
+```{r sol-GDE, results='asis', , eval = isTRUE(show_text_GDE)}
+paste0("- [Graphical data exploration exercise solutions](exercise_solutions/graphical_data_exploration_exercise_solutions.R)")
 ```

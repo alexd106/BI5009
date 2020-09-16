@@ -58,7 +58,7 @@ paste0("- [", link_name, "](", file_name, "){target='_blank'}") %>%
 cat(sep="\n\n")
 ```
 
-```{r sol56, results='asis', eval = isTRUE(show_text5)}
+```{r sol5, results='asis', eval = isTRUE(show_text5)}
 file_name <- list.files('.') %>%
   sort %>% 
   grep("(exercise_[5]_solution.html)", . , value=TRUE)
@@ -78,9 +78,10 @@ cat(sep="\n\n")
 #### Section 2 Exercise solutions
 
 \  
-
-- [Graphical data exploration Exercise](graphical_data_exploration_exercise_solutions.html)
-
+```{r sol_GDE, results='asis', eval = isTRUE(show_text_GDE)}
+paste0("- [Graphical data exploration Exercise](graphical_data_exploration_exercise_solutions.html)")
+cat(sep="\n\n")
+```
 \  
 
 [Offline R scripts](course_code.html)
