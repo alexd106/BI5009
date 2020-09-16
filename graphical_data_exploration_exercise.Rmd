@@ -65,3 +65,7 @@ library(kableExtra)
 ^2^ Quinn, G. P., and Michael J. Keough. 2002. Experimental design and data analysis for biologists. Cambridge, UK: Cambridge University Press. 
 
 ^3^ Zuur, A.F., Ieno, E.N. and Elphick, C.S. (2010), A protocol for data exploration to avoid common statistical problems. Methods in Ecology and Evolution, 1: 3-14. doi:10.1111/j.2041-210X.2009.00001.x
+
+\  
+
+End of Graphical data exploration using R Exercise
