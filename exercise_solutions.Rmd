@@ -56,7 +56,7 @@ paste0("- [", link_name, "](", file_name, "){target='_blank'}") %>%
 cat(sep="\n\n")
 ```
 
-```{r sol56, results='asis', eval = isTRUE(show_text56)}
+```{r sol56, results='asis', eval = isTRUE(show_text5)}
 file_name <- list.files('.') %>%
   sort %>% 
   grep("(exercise_[5]_solution.html)", . , value=TRUE)
