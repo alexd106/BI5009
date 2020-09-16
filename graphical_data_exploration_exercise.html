@@ -11,7 +11,7 @@
 
 
 
-<title>Data</title>
+<title>Exercises</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -380,61 +380,58 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Data</h1>
+<h1 class="title toc-ignore">Exercises</h1>
 
 </div>
 
 
+<div id="exercise-graphical-data-exploration-using-r" class="section level2">
+<h2>Exercise: Graphical data exploration using R</h2>
 <p> </p>
-<p><strong>Option 1: Download all the data at once.</strong></p>
-<p>Download and extract <strong><a href="data/all_data.zip">this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong> (0.1 Mb) with all the data for the entire course. This may include additional datasets that we won’t use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool).</p>
+<ol style="list-style-type: decimal">
+<li>As in previous exercises, either create a new R script or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+</ol>
 <p> </p>
-<p><strong>Option 2: Download individual datasets as needed.</strong></p>
-<ul>
-<li><p>Create a new folder called <code>data</code> in your RStudio project.</p></li>
-<li><p>Download individual data files as needed, saving them to the new <code>./data</code> folder you just made. Click to download. If data displays in your browser, right-click and select <em>Save link as…</em> (or similar) to save to the desired location.</p>
-<ul>
-<li><a href="data/anscombe.txt">anscombe.txt</a></li>
-<li><a href="data/atmosphere.txt">atmosphere.txt</a></li>
-<li><a href="data/Boar.txt">Boar.txt</a></li>
-<li><a href="data/boar.xls">boar.xls</a></li>
-<li><a href="data/cars.txt">cars.txt</a></li>
-<li><a href="data/children.txt">children.txt</a></li>
-<li><a href="data/DrugsMites.txt">DrugsMites.txt</a></li>
-<li><a href="data/DrugsMites.xls">DrugsMites.xls</a></li>
-<li><a href="data/flower.xls">flower.xls</a></li>
-<li><a href="data/Galton_cm.csv">Galton_cm.csv</a></li>
-<li><a href="data/Gigartina.CSV">Gigartina.CSV</a></li>
-<li><a href="data/IslandBirds.txt">IslandBirds.txt</a></li>
-<li><a href="data/isthereasanta.txt">isthereasanta.txt</a></li>
-<li><a href="data/leprosy.txt">leprosy.txt</a></li>
-<li><a href="data/limpets.txt">limpets.txt</a></li>
-<li><a href="data/limpets.xls">limpets.xls</a></li>
-<li><a href="data/loyn.txt">loyn.txt</a></li>
-<li><a href="data/loyn.xlsx">loyn.xlsx</a></li>
-<li><a href="data/pollution.txt">pollution.txt</a></li>
-<li><a href="data/prawnGR.CSV">prawnGR.CSV</a></li>
-<li><a href="data/RIKZRichness.txt">RIKZRichness.txt</a></li>
-<li><a href="data/RIKZRichness.xls">RIKZRichness.xls</a></li>
-<li><a href="data/Roadkills.txt">Roadkills.txt</a></li>
-<li><a href="data/Roadkills.xls">Roadkills.xls</a></li>
-<li><a href="data/seeds.xls">seeds.xls</a></li>
-<li><a href="data/smoking.txt">smoking.txt</a></li>
-<li><a href="data/species.txt">species.txt</a></li>
-<li><a href="data/squid1.txt">squid1.txt</a></li>
-<li><a href="data/squid1.xlsx">squid1.xlsx</a></li>
-<li><a href="data/squid2.txt">squid2.txt</a></li>
-<li><a href="data/squidIMASM.xls">squidIMASM.xls</a></li>
-<li><a href="data/TemoraBR.CSV">TemoraBR.CSV</a></li>
-<li><a href="data/wedgeclamII.txt">wedgeclamII.txt</a></li>
-<li><a href="data/wedgeclamII.xls">wedgeclamII.xls</a></li>
-<li><a href="data/wedgeclamII.xlsx">wedgeclamII.xlsx</a></li>
-<li><a href="data/whaledata.xlsx">whaledata.xlsx</a></li>
-<li><a href="data/whaledata0.txt">whaledata0.txt</a></li>
-<li><a href="data/whaledata0.xls">whaledata0.xls</a></li>
-<li><a href="data/yields2.txt">yields2.txt</a></li>
-</ul></li>
-</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>If you haven’t already download the data file <em>‘loyn.xlsx’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory you created during exercise 1. Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type. Name the file <em>‘loyn.txt’</em> and save it to the <code>data</code> directory.</li>
+</ol>
+<p> </p>
+<ol start="3" style="list-style-type: decimal">
+<li>These data are from a study originally conducted by Loyn (1987) and subsequently re-analysed by Quinn and Keough (2002) and Zuur et al (2009). The aim of the study was to relate bird density in 56 forest patches to a number of different environmental variables and management practices.</li>
+</ol>
+<p> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>Import your <em>‘loyn.txt’</em> file into R using the <code>read.table()</code> function and assign it to a variable called <code>loyn</code>. Use the <code>str()</code> function to display the structure of the dataset and the <code>summary()</code> function to summarise the dataset. How many observations are in this dataset? How many variables? How is the variable <code>GRAZE</code> coded? (as a number or a string?). If you think this will cause a problem (hint: it will!), create a new variable called <code>FGRAZE</code> <strong>in</strong> the dataframe with <code>GRAZE</code> recoded as a factor.</li>
+</ol>
+<p> </p>
+<ol start="5" style="list-style-type: decimal">
+<li>Use the function <code>table()</code> (or <code>xtabs()</code>) to determine how many observations are in each <code>FGRAZE</code> level. See <a href="https://intro2r.com/summarising-data-frames.html">section 3.5</a> of the Introduction to R book to remind yourself how to do this.</li>
+</ol>
+<p> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>Using the <code>tapply()</code> function what is the mean bird abundance (<code>ABUND</code>) for each levels of <code>FGRAZE</code>? Can you determine the variance, the minimum and maximum for each <code>FGRAZE</code> level? Again see <a href="https://intro2r.com/summarising-data-frames.html">section 3.5</a> of the Introduction to R book to remind yourself how to do this.</li>
+</ol>
+<p> </p>
+<ol start="7" style="list-style-type: decimal">
+<li>Now onto some plotting action. Use a Cleveland dotchart of each variable separately to assess whether there are any outliers in the response variable (<code>ABUND</code>) or any of the explanatory variables (see table above)? Produce a Cleveland dotchart of each variable separately to assess this (hint: use the <code>dotplot()</code> function). If you feel in the mood, then output these plots to an external PDF file.</li>
+</ol>
+<p> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>If you do spot any unusual observations have a think about what you want to do with them (NOTE: do <strong>not</strong> just remove them without justification!). If you’re unsure, be sure to speak to an instructor to discuss your options during our synchronous practical sessions. Perhaps you should you apply a data transformation to see if this reduces the magnitude of any outlier. The best thing to do here is to play around with different transformations (i.e. <code>log</code>, <code>sqrt</code>) to see which one does what you want it to do. After you have applied these data transformations make sure you re-plot your dotcharts with any transformed variable to double check what the transformation is doing.</li>
+</ol>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li>Is there any potential collinearity between any of the explanatory variables? Plot these variables using the <code>pairs()</code> function. Remember, you only need to check for collinearity between your explanatory variables so you will need to extract these variables from the <code>loyn</code> dataframe either before you use the <code>pairs()</code> function or whilst using it. Optionally, include the correlation coefficient between variables in the upper panel of the pairs plot (see <a href="https://intro2r.com/simple-base-r-plots.html#pairs-plots">section 4.2.5</a> of the introduction to R book for details).</li>
+</ol>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
+<li>Are there any clear relationships between the response variable (<code>ABUND</code>) and individual explanatory variables? Use the appropriate plotting functions (<code>plot()</code>, <code>boxplot()</code>) to visualise these relationships.</li>
+</ol>
+<p> </p>
+<ol start="11" style="list-style-type: decimal">
+<li>One of the main aims of this study was to determine whether management practices such as grazing intensity (<code>GRAZE</code>) and size of the forest (<code>AREA</code>) affected the abundance of birds (<code>ABUND</code>). One hypothesis was that the size of the forest impacted birds, but this was dependent of the intensity of the grazing regime (in other words, there is an interaction between <code>AREA</code> and <code>GRAZE</code>). Use an appropriate plotting function to explore these data for such an interaction (perhaps a <code>coplot()</code> or <code>xyplot()</code> might be helpful?).</li>
+</ol>
+</div>
 
 
 
