@@ -20,6 +20,8 @@ Follow the links below for solutions to each of the exercises you have completed
 
 \  
 
+#### Section 1 Exercise solutions
+
 ```{r, reveal, echo=FALSE, eval = isFALSE(show_text12)}
 cat("solutions will be released as the course progresses")
 ```
@@ -72,6 +74,12 @@ cat(sep="\n\n")
 ```
 
 \  
+
+#### Section 2 Exercise solutions
+
+\  
+
+- [Graphical data exploration Exercise](graphical_data_exploration_exercise_solutions.html)
 
 [Offline R scripts](course_code.html)
 

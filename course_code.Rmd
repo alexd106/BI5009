@@ -59,7 +59,7 @@ paste0("- [", link_name, "](", "exercise_solutions/", file_name, ")") %>%
 cat(sep="\n\n")
 ```
 
-```{r sol56, results='asis', , eval = isTRUE(show_text56)}
+```{r sol56, results='asis', , eval = isTRUE(show_text5)}
 dir <- "exercise_solutions/"
 file_name <- list.files(dir) %>%
              sort %>% 

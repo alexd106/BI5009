@@ -385,19 +385,20 @@ $(document).ready(function () {
 </div>
 
 
+<p> </p>
 <div id="exercise-graphical-data-exploration-using-r" class="section level2">
 <h2>Exercise: Graphical data exploration using R</h2>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>As in previous exercises, either create a new R script or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+<li>As in previous exercises, either create a new R script (perhaps call it graphical_data_exploration) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>If you haven’t already download the data file <em>‘loyn.xlsx’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory you created during exercise 1. Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type. Name the file <em>‘loyn.txt’</em> and save it to the <code>data</code> directory.</li>
+<li>If you haven’t already, download the data file <em>‘loyn.xlsx’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory you created during exercise 1. Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type. Name the file <em>‘loyn.txt’</em> and also save it to the <code>data</code> directory.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li>These data are from a study originally conducted by Loyn (1987) and subsequently re-analysed by Quinn and Keough (2002) and Zuur et al (2009). The aim of the study was to relate bird density in 56 forest patches to a number of different environmental variables and management practices.</li>
+<li>These data are from a study originally conducted by Loyn (1987)<sup>1</sup> and subsequently re-analysed by Quinn and Keough (2002)<sup>2</sup> and Zuur et al (2009)<sup>3</sup>. The aim of the study was to relate bird density in 56 forest patches to a number of different environmental variables and management practices. A summary of the variables is given: <strong>ABUND</strong>: Density of birds, Continuous response; <strong>AREA</strong>: Size of forest patch, Continuous explanatory; <strong>DIST</strong>: Distance to nearest patch, Continuous explanatory; <strong>LDIST</strong>: Distance to nearest larger patch, Continuous explanatory; <strong>ALTITUDE</strong>: Mean altitude of patch, Continuous explanatory; <strong>YEAR.ISOL</strong>: Year of isolation of clearance, Continuous explanatory; <strong>GRAZE</strong>: Index of livestock grazing intensity,5 level Categorical explanatory 1= low graze, 5 = high graze</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
@@ -431,6 +432,10 @@ $(document).ready(function () {
 <ol start="11" style="list-style-type: decimal">
 <li>One of the main aims of this study was to determine whether management practices such as grazing intensity (<code>GRAZE</code>) and size of the forest (<code>AREA</code>) affected the abundance of birds (<code>ABUND</code>). One hypothesis was that the size of the forest impacted birds, but this was dependent of the intensity of the grazing regime (in other words, there is an interaction between <code>AREA</code> and <code>GRAZE</code>). Use an appropriate plotting function to explore these data for such an interaction (perhaps a <code>coplot()</code> or <code>xyplot()</code> might be helpful?).</li>
 </ol>
+<p> </p>
+<p><sup>1</sup> Loyn, R. (1987). Effects of patch area and habitat on bird abundances, species numbers and tree health in fragmented Victoria forests.. Nature conservation: the role of remnants of native vegetation. 65-77.</p>
+<p><sup>2</sup> Quinn, G. P., and Michael J. Keough. 2002. Experimental design and data analysis for biologists. Cambridge, UK: Cambridge University Press.</p>
+<p><sup>3</sup> Zuur, A.F., Ieno, E.N. and Elphick, C.S. (2010), A protocol for data exploration to avoid common statistical problems. Methods in Ecology and Evolution, 1: 3-14. <a href="doi:10.1111/j.2041-210X.2009.00001.x" class="uri">doi:10.1111/j.2041-210X.2009.00001.x</a></p>
 </div>
 
 

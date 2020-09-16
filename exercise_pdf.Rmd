@@ -47,3 +47,11 @@ link_name <- file_name %>%
 cat(sep="\n\n")
               
 ```
+
+\  
+
+#### Section 2 Exercises
+
+\  
+
+ - [Graphical data Exploration Exercise](./exercises/graphical_data_exploration_exercise.pdf)
