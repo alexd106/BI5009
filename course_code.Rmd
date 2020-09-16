@@ -85,6 +85,11 @@ cat(sep="\n\n")
 
 \  
 
-```{r sol-GDE, results='asis', , eval = isTRUE(show_text_GDE)}
-paste0("- [Graphical data exploration exercise solutions](exercise_solutions/graphical_data_exploration_exercise_solutions.R)")
+```{r sol_GDE, results='asis', eval = isTRUE(show_text_GDE)}
+link_name <- "Graphical data exploration exercise"
+file_name <- "exercise_solutions/graphical_data_exploration_exercise_solutions.R"
+paste0("- [", link_name, "](", file_name, ")") %>%
+cat(sep="\n\n")
 ```
+
+
