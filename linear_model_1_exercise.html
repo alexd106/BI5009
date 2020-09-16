@@ -11,7 +11,7 @@
 
 
 
-<title>PDF version of exercises</title>
+<title>Exercises</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -380,32 +380,68 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">PDF version of exercises</h1>
+<h1 class="title toc-ignore">Exercises</h1>
 
 </div>
 
 
 <p> </p>
-<p>Click on the links below to download pdf versions of the exercises.</p>
+<div id="exercise-linear-model-with-single-continuous-explanatory-variable" class="section level2">
+<h2>Exercise: Linear model with single continuous explanatory variable</h2>
 <p> </p>
+<ol style="list-style-type: decimal">
+<li>As in previous exercises, either create a new R script (perhaps call it linear_model_1) or continue with your previous data exploration R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+</ol>
 <p> </p>
-<ul>
-<li><p><a href="exercises/exercise_1.pdf" target="_blank">Exercise 1: Getting to know R and RStudio</a></p></li>
-<li><p><a href="exercises/exercise_2.pdf" target="_blank">Exercise 2: Basic R operations</a></p></li>
-<li><p><a href="exercises/exercise_3.pdf" target="_blank">Exercise 3: Importing and manipulating dataframes</a></p></li>
-<li><p><a href="exercises/exercise_4.pdf" target="_blank">Exercise 4: Visualising data using base R and lattice graphics</a></p></li>
-<li><p><a href="exercises/exercise_5.pdf" target="_blank">Exercise 5: Basic statistics in R</a></p></li>
-<li><p><a href="exercises/graphical_data_exploration_exercise.pdf" target="_blank">Graphical data exploration exercise: Basic programming in R</a></p></li>
-<li><p><a href="exercises/linear_model_1_exercise.pdf" target="_blank">Linear model 1 exercise: Getting to know R and RStudio</a></p></li>
-</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Import the data file ‘loyn.txt’ into R and take a look at the summary of the graphical data exploration you performed during the previous exercise. The aim of this exercise is to get familiar with a simple linear model with a continuous response variable, bird abundance (<code>ABUND</code>) and a single continuous explanatory variable forest area (<code>AREA</code>). Ignore the other explanatory variables for now.</li>
+</ol>
 <p> </p>
-<div id="section-2-exercises" class="section level4">
-<h4>Section 2 Exercises</h4>
+<ol start="3" style="list-style-type: decimal">
+<li>Fit an appropriate linear model in R (remember you may have to transform AREA, return to your data exploration if in doubt) using the <code>lm()</code> function. Try to remember which is your response variable and which is your explanatory variable. Also remember to use the <code>data =</code> argument. Assign this linear model to an appropriately names object (<code>loyn.lm</code> if you imagination fails you!).</li>
+</ol>
 <p> </p>
-<ul>
-<li><p><a href="./exercises/graphical_data_exploration_exercise.pdf">Graphical data Exploration exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_1_exercise.pdf">Linear model with single continuous explanatory variable exercise</a></p></li>
-</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Obtain the ANOVA table by using the <code>anova()</code> function on your model object. What is the null hypothesis you are testing here? Do you reject or fail to reject this null hypothesis? Explore the ANOVA table and make sure you understand the different components. Refer back to the lectures if you need to remind yourself or ask an instructor to take you through it.</li>
+</ol>
+<p> </p>
+<ol start="5" style="list-style-type: decimal">
+<li>Now display the table of parameter estimates using the <code>summary()</code> function on your model object. Again, make sure you understand the different components of this output and be sure to ask if in doubt. What is the estimate of the intercept and slope? Write down the word equation of this linear model including your parameter estimates (hint: think y = a + bx).</li>
+</ol>
+<p> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>What is the null hypothesis associated with the intercept? What is the null hypothesis associated with the slope? Do you reject or fail to reject these hypotheses?</li>
+</ol>
+<p> </p>
+<ol start="7" style="list-style-type: decimal">
+<li>Looking again at the output from the <code>summary()</code> function how much variation in bird abundance is explained by your log AREA variable?</li>
+</ol>
+<p> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>Check the assumptions of your linera model by plotting the residuals (hint: use the <code>plot()</code> function on your model object); check all assumptions. Are there patterns in the residuals? Do you have normality and homogeneity of residuals?</li>
+</ol>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li>Using your word equation from Question 5, how many birds do you predict if AREA is 100?</li>
+</ol>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
+<li>Calculate the fitted values from your model using the <code>predict()</code> function. Refer back to the model interpretation video if you need a quick reminder of how to do this. Ask an instructor to take you through it if you’re in any doubt (they’d be happy to take you through it).</li>
+</ol>
+<p> </p>
+<ol start="11" style="list-style-type: decimal">
+<li>Use the <code>plot()</code> function to plot the relationship between bird abundance (<code>ABUND</code>) and your log transformed <code>AREA</code> variable. Once you have created the plot then add the fitted values calculated in Question 10 as a line on the plot.</li>
+</ol>
+<p> </p>
+<ol start="12" style="list-style-type: decimal">
+<li>OK, this is an optional question. Add the 95 % confidence intervals arounds the fitted line to your plot. Remember you will need to use the <code>predict()</code> function again but this time include the<code>se.fit=TRUE</code> argument.</li>
+</ol>
+<p> </p>
+<ol start="13" style="list-style-type: decimal">
+<li>Ok, and another optional question. This time plot the relationship between bird abundance (<code>ABUND</code>) and the original untransformed <code>AREA</code> variable. Now back-transform your fitted values (remember you got these with the <code>predict()</code> function) to the original scale and add these to the plot. Comment on the differences between the transformed and back-transformed fitted values.</li>
+</ol>
+<p> </p>
+<p>End of the linear model with single continuous explanatory variable exercise</p>
 </div>
 
 

@@ -72,13 +72,16 @@ rmarkdown::render("exercise_3.Rmd", output_format = "pdf_document", output_file 
 rmarkdown::render("exercise_4.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_4.pdf", quiet = TRUE)
 rmarkdown::render("exercise_5.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_5.pdf", quiet = TRUE)
 rmarkdown::render("graphical_data_exploration_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/graphical_data_exploration_exercise.pdf", quiet = TRUE)
+rmarkdown::render("linear_model_1_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_1_exercise.pdf", quiet = TRUE)
 ```
 
 #### Section 2 Exercises
 
 \  
 
- - [Graphical data Exploration Exercise](graphical_data_exploration_exercise.html)
+ - [Graphical data Exploration exercise](graphical_data_exploration_exercise.html)
+
+ - [Linear model with single continuous explanatory variable exercise](linear_model_1_exercise.html)
 
 
 \  
