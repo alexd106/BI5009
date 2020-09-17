@@ -4,6 +4,7 @@ show_text34 <- TRUE    # ex 3 and 4
 show_text5 <- TRUE    # ex 5
 show_text_GDE <- TRUE    # ex GDE
 show_text_lm1 <- TRUE    # ex LM1
+show_text_lm2 <- TRUE    # ex LM2
 
 
 # Change to TRUE to show lectures
