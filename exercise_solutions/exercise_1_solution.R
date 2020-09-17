@@ -41,6 +41,6 @@ getwd()    # displays the current working directory
 
 ## ----Q14-----------------------------------------------------------------------------------------------------------------------------
 dir.create(path = 'data')
-dir.create(path = 'data')
+dir.create(path = 'output')
 list.files(include.dirs = TRUE)
 

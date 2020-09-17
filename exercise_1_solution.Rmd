@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-3. Explore RStudio making sure you understand the functionality of each of the four windows. Take your time and check out each of the tabs in the windows. The function of some of these tabs will be obvious whereas others won't be useful right now. In general, you will write your R code in the script editor window (usually top left window) and then source your code into the R console (usually bottom left) by clicking anywhere in the relevant line of code with your mouse and then clicking on the 'Run' button at the top of the script editor window. If you don't like clicking buttons (I don't!) then you can use the keyboard shortcut 'ctrl + enter' (on Windows) or 'command + enter' (on Mac OSX). 
+3. Explore RStudio making sure you understand the functionality of each of the four windows (refer back to the Introduction to R book for details, or watch the video in the howto section). Take your time and check out each of the tabs in the windows. The function of some of these tabs will be obvious whereas others won't be useful right now. In general, you will write your R code in the script editor window (usually top left window) and then source your code into the R console (usually bottom left) by clicking anywhere in the relevant line of code with your mouse and then clicking on the 'Run' button at the top of the script editor window. If you don't like clicking buttons (I don't!) then you can use the keyboard shortcut 'ctrl + enter' (on Windows) or 'command + enter' (on Mac OSX). 
 
 \  
 
@@ -96,18 +96,18 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
     ```
 \  
 
-13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.
+13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's a job for the next exercise) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.
 
     ```{r Q13}
     getwd()    # displays the current working directory 
     ```
 \  
 
-14.	Let's finish up by creating some useful directories in your Project directory. First use the `dir.create()` function to create a directory called 'data'. This is where you will save all the data files used throughout this course. Now create another directory called 'output' where you will save data files and plots you generate later on during the course. Use the `list.files()` function to list the files in your directory. Can you figure out how to list the directories as well? (hint: see `?listfiles` or Chapter 1.8 of the course book).
+14.	Let's finish up by creating some useful directories in your Project directory. First use the `dir.create()` function to create a directory called 'data'. This is where you will save all the data files used throughout this course. Now create another directory called 'output' where you will save data files and plots you generate later on during the course. Use the `list.files()` function to list the files in your directory. Can you figure out how to list the directories as well? (hint: see `?list.files` or Chapter 1.8 of the Introduction to R book).
 
     ```{r Q14}
     dir.create(path = 'data')
-    dir.create(path = 'data')
+    dir.create(path = 'output')
     list.files(include.dirs = TRUE)
     ```
 
