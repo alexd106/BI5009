@@ -57,3 +57,5 @@ cat(sep="\n\n")
  - [Graphical data Exploration exercise](./exercises/graphical_data_exploration_exercise.pdf)
 
  - [Linear model with single continuous explanatory variable exercise](./exercises/linear_model_1_exercise.pdf)
+ 
+ - [Linear model with single categorical explanatory variable exercise](./exercises/linear_model_2_exercise.pdf)

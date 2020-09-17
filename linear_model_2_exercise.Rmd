@@ -1,0 +1,26 @@
+---
+title: "Exercises"
+output: 
+  html_document:
+   toc: false
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+```
+
+\  
+
+## Exercise: Linear model with single categorical explanatory variable
+
+\  
+
+1. As in previous exercises, either create a new R script (perhaps call it linear_model_2) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and  don't forget to comment out your metadata with a `#` at the beginning of the line. 
+
+\  
+
+2. Import the data file 'loyn.txt' into R and take a look at the structure of this dataframe using the `str()` function. In this exercise you will investigate whether the abundance of birds (`ABUND`) is different in areas with different grazing intensities (`GRAZE`). 
+
+\  
+
+3. 

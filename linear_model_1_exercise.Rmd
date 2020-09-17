@@ -19,11 +19,11 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-2. Import the data file 'loyn.txt' into R and take a look at the summary of the graphical data exploration you performed during the previous exercise. The aim of this exercise is to get familiar with a simple linear model with a continuous response variable, bird abundance (`ABUND`) and a single continuous explanatory variable forest area (`AREA`). Ignore the other explanatory variables for now. 
+2. Import the data file 'loyn.txt' into R and take a look at the summary of the graphical data exploration you performed during the previous exercise. The aim of this exercise is to get familiar with fitting a simple linear model with a continuous response variable, bird abundance (`ABUND`) and a single continuous explanatory variable forest area (`AREA`) in R. Ignore the other explanatory variables for now. 
 
 \  
 
-3. Fit an appropriate linear model in R (remember you may have to transform AREA, return to your data exploration if in doubt) using the `lm()` function. Try to remember which is your response variable and which is your explanatory variable. Also remember to use the `data =` argument. Assign this linear model to an appropriately names object (`loyn.lm` if you imagination fails you!).
+3. Fit an appropriate linear model in R (remember you may have to transform the `AREA` variable, return to your data exploration if in doubt) using the `lm()` function. Try to remember which is your response variable and which is your explanatory variable. Also remember to use the `data =` argument. Assign this linear model to an appropriately named object (`loyn.lm` if you imagination fails you!).
 
 \  
 
@@ -39,31 +39,31 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-7. Looking again at the output from the `summary()` function how much variation in bird abundance is explained by your log AREA variable?
+7. Looking again at the output from the `summary()` function how much variation in bird abundance is explained by your log transformed `AREA` variable?
 
 \  
 
-8. Check the assumptions of your linera model by plotting the residuals (hint: use the `plot()` function on your model object); check all assumptions. Are there patterns in the residuals? Do you have normality and homogeneity of residuals?
+8. Now onto a really important part of the model fitting process. Let's check the assumptions of your linear model by creating plots of the residuals form the model. Remember, you can easily create these plots by using the `plot()` function on your model object. Also remember that if you want to see all plots at once then you should split your plotting device into 2 rows and 2 columns using the `par()` function before you create the plots. Can you remember which plot is used to check the assumption of normality of the residuals? What is you assessment of this assumption? Next, check the homogeneity of variance of residuals assumption. Can you see any patterns in the residuals versus fitted value plots? Is there more or less equal spread of the residuals? Finally, take a look at the leverage and Cooks distance plot to assess whether you have any unusually large or small residuals or any influential residuals. What is your assessment? Write a couple of sentences to summarise your assessment of the modelling assumptions. 
 
 \  
 
-9. Using your word equation from Question 5, how many birds do you predict if AREA is 100?
+9. Using your word equation from Question 5, how many birds do you predict if `AREA` is 100 from your model?
 
 \  
 
-10. Calculate the fitted values from your model using the `predict()` function. Refer back to the model interpretation video if you need a quick reminder of how to do this. Ask an instructor to take you through it if you're in any doubt (they'd be happy to take you through it).
+10. Calculate the fitted values from your model using the `predict()` function and store these predicted values in an object called `pred.vals`. Remember, you will first need to create a dataframe object containing the values of log transformed `AREA` you want ot make predictions from. Refer back to the model interpretation video if you need a quick reminder of how to do this. Ask an instructor to take you through it if you're in any doubt (they'd be happy to take you through it).
 
 \  
 
-11. Use the `plot()` function to plot the relationship between bird abundance (`ABUND`) and your log transformed `AREA` variable. Once you have created the plot then add the fitted values calculated in Question 10 as a line on the plot. 
+11. Now, use the `plot()` function to plot the relationship between bird abundance (`ABUND`) and your log transformed `AREA` variable. Also add some axes labels to aid interpretation of the plot. Once you've created the plot then add the fitted values calculated in Question 10 as a line on the plot (you will need to use the `lines()` function to do this but only after you have created the plot). 
 
 \  
 
-12. OK, this is an optional question. Add the 95 % confidence intervals arounds the fitted line to your plot. Remember you will need to use the `predict()` function again but this time include the`se.fit=TRUE` argument.
+12. OK, this is an optional question so feel free to skip if you've had enough! (you can find the R code for this question in the exercise solutions if you want to refer to it at a later date). Let's recreate the plot you made in Question 11, but this time we'll add the 95% confidence intervals in addition to the fitted values. Remember, you will need to use the `predict()` function again but this time include the`se.fit=TRUE` argument (stores these new values in a new object called `pred.vals.se`). When you use the `se.fit = TRUE` argument with the `predict()` function the returned object will have a slightly different structure compared to when you used it before. Use the `str()` function on the `pred.vals.se` to take a look at the structure. See if you can figure out how to access the fitted values and the standard errors. Once you've got your head around this you can now use the `lines()` function three times to add the fitted values (as before) and also the upper and lower 95% confidence intervals. Don't forget, if you want the 95% confidence intervals then you will need to multiple your standard error values by the critical value of 1.96. Take a look at the video on confidence intervals if you are unclear why you need to do this.  
 
 \  
 
-13. Ok, and another optional question. This time plot the relationship between bird abundance (`ABUND`) and the original untransformed `AREA` variable. Now back-transform your fitted values (remember you got these with the `predict()` function) to the original scale and add these to the plot. Comment on the differences between the transformed and back-transformed fitted values.
+13. And and another optional question. This time plot the relationship between bird abundance (`ABUND`) and the original untransformed `AREA` variable. Now back-transform your fitted values (remember you got these with the `predict()` function) to the original scale and add these to the plot ad a line. Hint 1: you don't need to reuse the `predict()` function, you just need to back-transform your fitted values. Hint 2: remember if you used a log to the base 10 transformation (`log10()`) then you can back-transform using `10^fitted.values` and if you used a natural log transformation then use `exp(fitted.values)` to back-transform. Comment on the differences between the plot on the transformed (log) scale and the plot on the back-transformed scale.
 
 \  
 
