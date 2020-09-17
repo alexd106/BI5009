@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-# Exercise: Linear model with single continuous explanatory variable
+# Exercise: Linear model with single categorical explanatory variable
 
 \  
 
