@@ -92,4 +92,11 @@ paste0("- [", link_name, "](", file_name, ")") %>%
 cat(sep="\n\n")
 ```
 
+```{r sol_lm1, results='asis', eval = isTRUE(show_text_lm1)}
+link_name <- "Linear model with single continuous explanatory variable exercise"
+file_name <- "exercise_solutions/linear_model_1_exercise.R"
+paste0("- [", link_name, "](", file_name, ")") %>%
+cat(sep="\n\n")
+```
+
 

@@ -668,7 +668,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co"># Going back to the Residuals vs Leverage plot (bottom right) you can see </span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co"># three residuals that re somewhat unusual in terms of their leverage as </span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># they stick out a bit to the right comapred to the rest of the residuals. </span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># they stick out a bit to the right compared to the rest of the residuals. </span></span>
 <span id="cb9-5"><a href="#cb9-5"></a><span class="co"># Two of these residuals are our two large forest patch AREAs again. However,</span></span>
 <span id="cb9-6"><a href="#cb9-6"></a><span class="co"># leverage still seems to be on the low side, so at least on the scale of the</span></span>
 <span id="cb9-7"><a href="#cb9-7"></a><span class="co"># log transformation things look ok.</span></span></code></pre></div>
@@ -697,7 +697,7 @@ $(document).ready(function () {
 <span id="cb11-5"><a href="#cb11-5"></a>                                  <span class="dt">length =</span> <span class="dv">50</span>))</span>
 <span id="cb11-6"><a href="#cb11-6"></a></span>
 <span id="cb11-7"><a href="#cb11-7"></a><span class="co"># use predict function to calculate predicted values of abundance based on the </span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co"># new LOGAREA values in the data frame MyData (use the newdata argument)</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co"># new LOGAREA values in the data frame my.data (use the newdata argument)</span></span>
 <span id="cb11-9"><a href="#cb11-9"></a>pred.vals &lt;-<span class="st"> </span><span class="kw">predict</span>(loyn.lm, <span class="dt">newdata =</span> my.data)</span></code></pre></div>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
@@ -705,7 +705,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># plot the lines on the plot. The x values are the new LOGAREA values from the my.data</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># dataframe, the precited values are from pred.vals </span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># dataframe, the predicted values are from pred.vals </span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="kw">plot</span>(loyn<span class="op">$</span>LOGAREA, loyn<span class="op">$</span>ABUND, <span class="dt">xlab =</span> <span class="st">&quot;Log10 Patch Area&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Bird Abundance&quot;</span>)</span>
 <span id="cb12-4"><a href="#cb12-4"></a></span>
 <span id="cb12-5"><a href="#cb12-5"></a><span class="kw">lines</span>(my.data<span class="op">$</span>LOGAREA, pred.vals, <span class="dt">lty =</span> <span class="dv">1</span>,<span class="dt">col =</span> <span class="dv">2</span>)</span></code></pre></div>
@@ -771,11 +771,11 @@ $(document).ready(function () {
 <span id="cb14-14"><a href="#cb14-14"></a><span class="kw">lines</span>(<span class="dv">10</span><span class="op">^</span>(my.data<span class="op">$</span>LOGAREA), pred.vals.se<span class="op">$</span>fit <span class="op">-</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>pred.vals.se<span class="op">$</span>se.fit), <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q13-1.png" width="672" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># the model doesn&#39;t look too great now! Technically, if we tranform variables in our model</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># the model doesn&#39;t look too great now! Technically, if we transform variables in our model</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="co"># then we should only really interpret the model on the scale of the transformation.</span></span>
 <span id="cb15-4"><a href="#cb15-4"></a></span>
 <span id="cb15-5"><a href="#cb15-5"></a><span class="co"># If we interpret on the back transformed scale, you can see the model doesn&#39;t really fit the </span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co"># data very well, especially for the two large forest patch AREAs and also thos patches with</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co"># data very well, especially for the two large forest patch AREAs and also those patches with</span></span>
 <span id="cb15-7"><a href="#cb15-7"></a><span class="co"># high bird abundance.</span></span></code></pre></div>
 <p> </p>
 <p>End of the linear model with single continuous explanatory variable exercise</p>

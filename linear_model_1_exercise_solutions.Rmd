@@ -153,7 +153,7 @@ plot(loyn.lm, which = 4)
 
 # Going back to the Residuals vs Leverage plot (bottom right) you can see 
 # three residuals that re somewhat unusual in terms of their leverage as 
-# they stick out a bit to the right comapred to the rest of the residuals. 
+# they stick out a bit to the right compared to the rest of the residuals. 
 # Two of these residuals are our two large forest patch AREAs again. However,
 # leverage still seems to be on the low side, so at least on the scale of the
 # log transformation things look ok.
@@ -189,7 +189,7 @@ my.data <- data.frame(LOGAREA = seq(from = min(loyn$LOGAREA),
                                   length = 50))
 
 # use predict function to calculate predicted values of abundance based on the 
-# new LOGAREA values in the data frame MyData (use the newdata argument)
+# new LOGAREA values in the data frame my.data (use the newdata argument)
 pred.vals <- predict(loyn.lm, newdata = my.data)
 ```
 
@@ -201,7 +201,7 @@ pred.vals <- predict(loyn.lm, newdata = my.data)
 
 ```{r Q11, eval=TRUE, echo=TRUE, collapse=TRUE}
 # plot the lines on the plot. The x values are the new LOGAREA values from the my.data
-# dataframe, the precited values are from pred.vals 
+# dataframe, the predicted values are from pred.vals 
 plot(loyn$LOGAREA, loyn$ABUND, xlab = "Log10 Patch Area", ylab = "Bird Abundance")
 
 lines(my.data$LOGAREA, pred.vals, lty = 1,col = 2)
@@ -265,11 +265,11 @@ lines(10^(my.data$LOGAREA), pred.vals.se$fit, lty = 1,col = 1)
 lines(10^(my.data$LOGAREA), pred.vals.se$fit + (1.96 * pred.vals.se$se.fit), lty = 2, col = "red")
 lines(10^(my.data$LOGAREA), pred.vals.se$fit - (1.96 * pred.vals.se$se.fit), lty = 2, col = "red")
 
-# the model doesn't look too great now! Technically, if we tranform variables in our model
+# the model doesn't look too great now! Technically, if we transform variables in our model
 # then we should only really interpret the model on the scale of the transformation.
 
 # If we interpret on the back transformed scale, you can see the model doesn't really fit the 
-# data very well, especially for the two large forest patch AREAs and also thos patches with
+# data very well, especially for the two large forest patch AREAs and also those patches with
 # high bird abundance.
 ```
 

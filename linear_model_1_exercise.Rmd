@@ -51,7 +51,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-10. Calculate the fitted values from your model using the `predict()` function and store these predicted values in an object called `pred.vals`. Remember, you will first need to create a dataframe object containing the values of log transformed `AREA` you want ot make predictions from. Refer back to the model interpretation video if you need a quick reminder of how to do this. Ask an instructor to take you through it if you're in any doubt (they'd be happy to take you through it).
+10. Calculate the fitted values from your model using the `predict()` function and store these predicted values in an object called `pred.vals`. Remember, you will first need to create a dataframe object containing the values of log transformed `AREA` you want to make predictions from. Refer back to the model interpretation video if you need a quick reminder of how to do this. Ask an instructor to take you through it if you're in any doubt (they'd be happy to take you through it).
 
 \  
 
