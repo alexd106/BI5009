@@ -532,7 +532,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>You can now do stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weights</code> vector. Next, extract the weights for the first five children and store these weights in a new variable called <code>first_five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka indexing, subsetting) elements from a variable.</p>
+<li><p>You can now do stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weight</code> vector. Next, extract the weights for the first five children and store these weights in a new variable called <code>first_five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka indexing, subsetting) elements from a variable.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">mean</span>(weight)                                <span class="co"># calculate mean </span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="kw">var</span>(weight)                                 <span class="co"># calculate variance</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="kw">sd</span>(weight)                                  <span class="co"># calculate standard deviation</span></span>
@@ -602,7 +602,7 @@ $(document).ready(function () {
 <ol start="14" style="list-style-type: decimal">
 <li><p>A really useful (and common) task is to sort the values of one variable by the order of another variable. To do this you will need to use the <code>order()</code> function in combination with the square bracket notation <code>[ ]</code>. Create a new variable called <code>names_sort</code> to store the names of the children sorted by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you’re not sure how to do this, please ask one of the instructors.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>height_ord &lt;-<span class="st"> </span><span class="kw">order</span>(height)   <span class="co"># get the indexes of the heights, smallest to tallest</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>names_sort &lt;-<span class="st"> </span>child.names[height_ord]     <span class="co"># Louise is shortest, Ronald is tallest</span></span></code></pre></div></li>
+<span id="cb13-2"><a href="#cb13-2"></a>names_sort &lt;-<span class="st"> </span>child_names[height_ord]     <span class="co"># Louise is shortest, Ronald is tallest</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">

@@ -74,7 +74,7 @@ child_names <- c("Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise",
 
 ## ----Q14----------------------------------------------------------------------------------------------------------------------------------------
 height_ord <- order(height)   # get the indexes of the heights, smallest to tallest
-names_sort <- child.names[height_ord]     # Louise is shortest, Ronald is tallest
+names_sort <- child_names[height_ord]     # Louise is shortest, Ronald is tallest
 
 
 ## ----Q15----------------------------------------------------------------------------------------------------------------------------------------

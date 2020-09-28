@@ -30,7 +30,7 @@ help('plot.design')
 
 ## ----Q12----------------------------------------------------------------------------------------------------------------------------------------
 help.search("plot")
-??plot     # shortcut for help.search dunction
+??plot     # shortcut for help.search function
 
 help.search("plot", package = "nlme")
 
