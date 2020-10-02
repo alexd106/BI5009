@@ -137,7 +137,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     height_sorted <- sort(height)
     
     height_rev <- rev(sort(height))
-    
+
     ```
 
 \  
