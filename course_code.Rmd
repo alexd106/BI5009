@@ -50,8 +50,10 @@ cat(sep="\n\n")
 dir <- "exercise_solutions/"
 file_name <- list.files(dir) %>%
              sort %>% 
-             grep("(exercise_[34]_solution.R|exercise_[34]_ggplot_solution.R)", . , value=TRUE) %>% 
-             .[c(1,3,2)]
+             # grep("(exercise_[34]_solution.R|exercise_[34]_ggplot_solution.R)", . , value=TRUE) %>% 
+             grep("(exercise_[34]_solution.R)", . , value=TRUE) %>%
+             # .[c(1,3,2)]
+             .[c(1,2)]
 
 link_name <- file_name %>%
             gsub("\\.R", "", .) %>%
