@@ -511,7 +511,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li>These data are from a study originally conducted by Loyn (1987)<sup>1</sup> and subsequently re-analysed by Quinn and Keough (2002)<sup>2</sup> and Zuur et al (2009)<sup>3</sup>. The aim of the study was to relate bird density in 56 forest patches to a number of different environmental variables and management practices. A summary of the variables is given: <strong>ABUND</strong>: Density of birds, Continuous response; <strong>AREA</strong>: Size of forest patch, Continuous explanatory; <strong>DIST</strong>: Distance to nearest patch, Continuous explanatory; <strong>LDIST</strong>: Distance to nearest larger patch, Continuous explanatory; <strong>ALTITUDE</strong>: Mean altitude of patch, Continuous explanatory; <strong>YEAR.ISOL</strong>: Year of isolation of clearance, Continuous explanatory; <strong>GRAZE</strong>: Index of livestock grazing intensity,5 level Categorical explanatory 1= low graze, 5 = high graze</li>
+<li>These data are from a study originally conducted by Loyn (1987)<sup>1</sup> and subsequently re-analysed by Quinn and Keough (2002)<sup>2</sup> and Zuur et al (2009)<sup>3</sup>. The aim of the study was to relate bird density in 56 forest patches to a number of different environmental variables and management practices. A summary of the variables is: <strong>ABUND</strong>: Density of birds, Continuous response; <strong>AREA</strong>: Size of forest patch, Continuous explanatory; <strong>DIST</strong>: Distance to nearest patch, Continuous explanatory; <strong>LDIST</strong>: Distance to nearest larger patch, Continuous explanatory; <strong>ALTITUDE</strong>: Mean altitude of patch, Continuous explanatory; <strong>YEAR.ISOL</strong>: Year of isolation of clearance, Continuous explanatory; <strong>GRAZE</strong>: Index of livestock grazing intensity, 5 level Categorical explanatory 1= low graze, 5 = high graze</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
@@ -533,25 +533,18 @@ $(document).ready(function () {
 <span id="cb1-13"><a href="#cb1-13"></a><span class="co"># 56 observations and 8 variables (from str())</span></span>
 <span id="cb1-14"><a href="#cb1-14"></a></span>
 <span id="cb1-15"><a href="#cb1-15"></a><span class="kw">summary</span>(loyn)</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">##       Site           ABUND            AREA              DIST            LDIST           YR.ISOL         GRAZE      </span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">##  Min.   : 1.00   Min.   : 1.50   Min.   :   0.10   Min.   :  26.0   Min.   :  26.0   Min.   :1890   Min.   :1.000  </span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">##  1st Qu.:14.75   1st Qu.:12.40   1st Qu.:   2.00   1st Qu.:  93.0   1st Qu.: 158.2   1st Qu.:1928   1st Qu.:2.000  </span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">##  Median :28.50   Median :21.05   Median :   7.50   Median : 234.0   Median : 338.5   Median :1962   Median :3.000  </span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">##  Mean   :28.50   Mean   :19.51   Mean   :  69.27   Mean   : 240.4   Mean   : 733.3   Mean   :1950   Mean   :2.982  </span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">##  3rd Qu.:42.25   3rd Qu.:28.30   3rd Qu.:  29.75   3rd Qu.: 333.2   3rd Qu.: 913.8   3rd Qu.:1966   3rd Qu.:4.000  </span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="co">##  Max.   :56.00   Max.   :39.60   Max.   :1771.00   Max.   :1427.0   Max.   :4426.0   Max.   :1976   Max.   :5.000  </span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co">##       ALT       </span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co">##  Min.   : 60.0  </span></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co">##  1st Qu.:120.0  </span></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co">##  Median :140.0  </span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co">##  Mean   :146.2  </span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co">##  3rd Qu.:182.5  </span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">##  Max.   :260.0</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># GRAZE is coded as numeric (i.e. 1,2,3,5)</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># create a new factor variable variable FGRAZE which is a factor of GRAZE</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>loyn<span class="op">$</span>FGRAZE &lt;-<span class="st"> </span><span class="kw">factor</span>(loyn<span class="op">$</span>GRAZE)</span></code></pre></div>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">##       Site           ABUND            AREA              DIST            LDIST           YR.ISOL         GRAZE            ALT       </span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">##  Min.   : 1.00   Min.   : 1.50   Min.   :   0.10   Min.   :  26.0   Min.   :  26.0   Min.   :1890   Min.   :1.000   Min.   : 60.0  </span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">##  1st Qu.:14.75   1st Qu.:12.40   1st Qu.:   2.00   1st Qu.:  93.0   1st Qu.: 158.2   1st Qu.:1928   1st Qu.:2.000   1st Qu.:120.0  </span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">##  Median :28.50   Median :21.05   Median :   7.50   Median : 234.0   Median : 338.5   Median :1962   Median :3.000   Median :140.0  </span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">##  Mean   :28.50   Mean   :19.51   Mean   :  69.27   Mean   : 240.4   Mean   : 733.3   Mean   :1950   Mean   :2.982   Mean   :146.2  </span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">##  3rd Qu.:42.25   3rd Qu.:28.30   3rd Qu.:  29.75   3rd Qu.: 333.2   3rd Qu.: 913.8   3rd Qu.:1966   3rd Qu.:4.000   3rd Qu.:182.5  </span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">##  Max.   :56.00   Max.   :39.60   Max.   :1771.00   Max.   :1427.0   Max.   :4426.0   Max.   :1976   Max.   :5.000   Max.   :260.0</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># GRAZE is coded as numeric (i.e. 1,2,3,5)</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># create a new factor variable variable FGRAZE which is a factor of GRAZE</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>loyn<span class="op">$</span>FGRAZE &lt;-<span class="st"> </span><span class="kw">factor</span>(loyn<span class="op">$</span>GRAZE)</span></code></pre></div>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
 <li>Use the function <code>table()</code> (or <code>xtabs()</code>) to determine how many observations are in each <code>FGRAZE</code> level. See <a href="https://intro2r.com/summarising-data-frames.html">section 3.5</a> of the Introduction to R book to remind yourself how to do this.</li>
