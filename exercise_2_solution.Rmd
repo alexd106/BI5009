@@ -36,7 +36,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 3. Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called `area_circle`. Google is your friend if you can't remember the formula! Also, remember that R already knows about `pi`.
 
-    ```{r Q3, , results = 'asis'}
+    ```{r Q3, results = 'asis'}
     area_circle <- pi * (20/2)^2
     ```
 

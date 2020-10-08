@@ -5,7 +5,7 @@ output:
     toc: false
 ---
 
-```{r, include=FALSE}
+```{r setup-ex, include=FALSE}
 library(knitr)
 library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
@@ -41,7 +41,7 @@ cat("Exercises will be released as the course progresses")
 
 \  
 
-```{r, results='asis', eval = isTRUE(show_exercise)}
+```{r ex15, results='asis', eval = isTRUE(show_exercise)}
 ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
              ": Importing and manipulating dataframes", 
              ": Visualising data using base R and lattice graphics",
@@ -62,7 +62,7 @@ cat(sep="\n\n")
 
 \  
 
-```{r, include = FALSE}
+```{r pdf-out, include = FALSE}
 # TODO: generate list automagically
 rmarkdown::render("exercise_1.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_1.pdf", quiet = TRUE)
 rmarkdown::render("exercise_2.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_2.pdf", quiet = TRUE)
@@ -72,6 +72,7 @@ rmarkdown::render("exercise_5.Rmd", output_format = "pdf_document", output_file 
 rmarkdown::render("graphical_data_exploration_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/graphical_data_exploration_exercise.pdf", quiet = TRUE)
 rmarkdown::render("linear_model_1_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_1_exercise.pdf", quiet = TRUE)
 rmarkdown::render("linear_model_2_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_2_exercise.pdf", quiet = TRUE)
+rmarkdown::render("LM_3_multiple_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_3_exercise.pdf", quiet = TRUE)
 ```
 
 #### Section 2 Exercises
@@ -83,6 +84,8 @@ rmarkdown::render("linear_model_2_exercise.Rmd", output_format = "pdf_document",
  - [Linear model with single continuous explanatory variable exercise](linear_model_1_exercise.html)
  
  - [Linear model with single categorical explanatory variable exercise](linear_model_2_exercise.html)
+ 
+ - [Linear model with multiple explanatory variables exercise](LM_3_multiple_exercise.html)
 
 
 \  
