@@ -73,6 +73,7 @@ rmarkdown::render("graphical_data_exploration_exercise.Rmd", output_format = "pd
 rmarkdown::render("linear_model_1_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_1_exercise.pdf", quiet = TRUE)
 rmarkdown::render("linear_model_2_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_2_exercise.pdf", quiet = TRUE)
 rmarkdown::render("LM_3_multiple_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_3_exercise.pdf", quiet = TRUE)
+rmarkdown::render("LM_4_Selection_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_4_exercise.pdf", quiet = TRUE)
 ```
 
 #### Section 2 Exercises
@@ -86,6 +87,8 @@ rmarkdown::render("LM_3_multiple_exercise.Rmd", output_format = "pdf_document", 
  - [Linear model with single categorical explanatory variable exercise](linear_model_2_exercise.html)
  
  - [Linear model with multiple explanatory variables exercise](LM_3_multiple_exercise.html)
+ 
+ - [Linear model - model selection exercise](LM_4_Selection_exercise.html)
 
 
 \  

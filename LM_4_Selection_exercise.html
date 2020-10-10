@@ -11,7 +11,7 @@
 
 
 
-<title>PDF version of exercises</title>
+<title>Exercise</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -231,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -378,40 +382,113 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">PDF version of exercises</h1>
+
+<h1 class="title toc-ignore">Exercise</h1>
 
 </div>
 
 
 <p> </p>
-<p>Click on the links below to download pdf versions of the exercises.</p>
+<div id="exercise-model-selection-with-the-loyn-data" class="section level1">
+<h1>Exercise: Model selection with the Loyn data</h1>
 <p> </p>
+<p>This exercise revisits the Loyn data, asking if a better model for the data could be achieved by including additional predictors, and applying a systematic model selection procedure.</p>
 <p> </p>
+<ol style="list-style-type: decimal">
+<li>As in previous exercises, either create a new R script (perhaps call it linear_model_4) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+</ol>
+<p> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>Import the data file ‘loyn.txt’ into R and take a look at the structure of this dataframe using the <code>str()</code> function. It seems so far that the abundance of birds <code>ABUND</code> is explained by both the area of the patch <code>LOGAREA</code>, and the grazing intensity <code>FGRAZE</code>, but some observations are still poorly fitted by the model. Here we will be using all the explanatory variables to explain variation in bird density. If needed, remind yourself of your data exploration you conducted in Section 1. Do any of the variables need transforming? If so, what transformation did you apply? Add the required variables to the data set.</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>We assume that all the predictors have been collected by the authors <em>because</em> they are believed to be biologically relevant for explaining bird abundance. However, it is a good idea to pause and think what might be relevant or not-so relevant or partly redundant and why, before even exploring the relationships with bird abundance (even graphically). You could do this in a table format, and include a hypothetical ranking of importance. Is there anything that limits your ability to fill that table?</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Start with a graphical exploration of the relationships between predictors and between predictors and response. A pair-plot with <code>pairs()</code> is a very effective way of doing this when the number of variables is not too large. Hints:</li>
+</ol>
 <ul>
-<li><p><a href="exercises/exercise_1.pdf" target="_blank">Exercise 1: Getting to know R and RStudio</a></p></li>
-<li><p><a href="exercises/exercise_2.pdf" target="_blank">Exercise 2: Basic R operations</a></p></li>
-<li><p><a href="exercises/exercise_3.pdf" target="_blank">Exercise 3: Importing and manipulating dataframes</a></p></li>
-<li><p><a href="exercises/exercise_4.pdf" target="_blank">Exercise 4: Visualising data using base R and lattice graphics</a></p></li>
-<li><p><a href="exercises/exercise_5.pdf" target="_blank">Exercise 5: Basic statistics in R</a></p></li>
-<li><p><a href="exercises/graphical_data_exploration_exercise.pdf" target="_blank">Graphical data exploration exercise: Basic programming in R</a></p></li>
-<li><p><a href="exercises/linear_model_1_exercise.pdf" target="_blank">Linear model 1 exercise: Getting to know R and RStudio</a></p></li>
-<li><p><a href="exercises/linear_model_2_exercise.pdf" target="_blank">Linear model 2 exercise: Basic R operations</a></p></li>
-<li><p><a href="exercises/linear_model_3_exercise.pdf" target="_blank">Linear model 3 exercise: Importing and manipulating dataframes</a></p></li>
-<li><p><a href="exercises/linear_model_4_exercise.pdf" target="_blank">Linear model 4 exercise: Visualising data using base R and lattice graphics</a></p></li>
+<li>restrict the plot to the variables you actually need</li>
+<li>an effective way of doing this is to store the names of the variables of interest in a vector <code>VOI&lt;- c("Var1", "Var2", ...)</code></li>
+<li>and then use the naming method for subsetting the data set <code>Mydata[, VOI]</code></li>
 </ul>
 <p> </p>
-<div id="section-2-exercises" class="section level4">
-<h4>Section 2 Exercises</h4>
+<p><img src="LM_4_Selection_exercise_files/figure-html/Q4-1.png" width="672" /></p>
+<p><br />
+</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Start with a model of ABUND containing all predictors. Don’t include any interactions at this point, we will simplify the exercise by including only the main effects (unless you have identified some interactions that you expect to be important?).</li>
+</ol>
 <p> </p>
-<ul>
-<li><p><a href="./exercises/graphical_data_exploration_exercise.pdf">Graphical data Exploration exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_1_exercise.pdf">Linear model with single continuous explanatory variable exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_2_exercise.pdf">Linear model with single categorical explanatory variable exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_3_exercise.pdf">Linear model with multiple explanatory variables exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_4_exercise.pdf">Linear model - model selection exercise</a></p></li>
-</ul>
+<p><br />
+</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Obtain summaries of the model output using the <code>anova()</code> and <code>summary()</code> functions. Make sure you understand the difference between these two summaries, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and use the model formula to make predictions? In doubt, try it and seek assistance!).</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Check for collinearity using the <code>vif()</code> function in the <code>car</code> package.</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="8" style="list-style-type: decimal">
+<li>Is everything significant? Which of the summaries do you prefer to use, and why?</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="9" style="list-style-type: decimal">
+<li>If not, perform a model selection step using <code>drop1()</code> for choosing which single term is the best candidate for deletion (remember to use the test = ”F” argument to perform F tests). What is that term?</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="10" style="list-style-type: decimal">
+<li>Update the model and repeat single term deletions with <code>drop1()</code>, until there are no longer any non-significant terms.</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="11" style="list-style-type: decimal">
+<li>At this stage, you should validate this model, if it is our final model. Hint: you probably have done it for this model already, in previous exercises.</li>
+</ol>
+<p> </p>
+<p><img src="LM_4_Selection_exercise_files/figure-html/Q11-1.png" width="672" /></p>
+<p><br />
+</p>
+<ol start="12" style="list-style-type: decimal">
+<li>Let’s now get back to a previous model <code>birds.inter.1 &lt;- lm(ABUND ~ FGRAZE * LOGAREA)</code>, which we left with non-significant terms. Do you need to use <code>drop1()</code> to simplify that model?</li>
+</ol>
+<p> </p>
+<p><br />
+</p>
+<ol start="13" style="list-style-type: decimal">
+<li>What is the final model then? What are the final conclusions or lessons you take away from this analysis of the Loyn data?</li>
+</ol>
+<p><br />
+</p>
+<p> </p>
+<p>End of the Linear model with interactive continuous and categorical predictors exercise</p>
+<p><br />
+</p>
 </div>
 
 
@@ -447,6 +524,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

@@ -59,3 +59,7 @@ cat(sep="\n\n")
  - [Linear model with single continuous explanatory variable exercise](./exercises/linear_model_1_exercise.pdf)
  
  - [Linear model with single categorical explanatory variable exercise](./exercises/linear_model_2_exercise.pdf)
+ 
+ - [Linear model with multiple explanatory variables exercise](./exercises/linear_model_3_exercise.pdf)
+ 
+ - [Linear model - model selection exercise](./exercises/linear_model_4_exercise.pdf)
