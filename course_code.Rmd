@@ -122,12 +122,14 @@ paste0("- [", link_name, "](", file_name, ")") %>%
 cat(sep="\n\n")
 ```
 
+<!--
 ```{r sol_glm1, results='asis', eval = isTRUE(show_text_glm1)}
 link_name <- "Generalised linear models 1 - Poisson GLM exercise"
 file_name <- "exercise_solutions/GLM_1_Poisson_exercise_solutions.R"
 paste0("- [", link_name, "](", file_name, ")") %>%
 cat(sep="\n\n")
 ```
+-->
 
 <!--
 ```{r sol_glm2, results='asis', eval = isTRUE(show_text_glm2)}
