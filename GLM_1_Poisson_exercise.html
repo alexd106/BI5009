@@ -11,7 +11,7 @@
 
 
 
-<title>Offline exercise solutions</title>
+<title>Exercise</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -231,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -378,40 +382,123 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Offline exercise solutions</h1>
+
+<h1 class="title toc-ignore">Exercise</h1>
 
 </div>
 
 
 <p> </p>
+<div id="exercise-poisson-glm---predicting-species-richness" class="section level1">
+<h1>Exercise: Poisson GLM - predicting species richness</h1>
 <p> </p>
-<p>To download the solutions for each of the exercises as individual R scripts click the relevant links below. If the code opens in a browser window then right click on the link and select ‘save link as’ (or similar).</p>
+<p>The data for this exercise were collected during an experiment which investigated the relationship between the number of plant species and plant biomass grown in plots with 3 controlled pH treatments: low, medium and high pH. The research seeks to find out if increasing biomass has an effect on species richness, and if this effect could be modulated by pH. Therefore, <code>Species</code> is the response variable and <code>pH</code> and <code>Biomass</code> are explanatory variables. Because the number of species is a count (positive and integer), we will attempt to fit a Poisson distribution to these data.</p>
 <p> </p>
-<div id="section-1-exercises" class="section level4">
-<h4>Section 1 Exercises</h4>
+<ol style="list-style-type: decimal">
+<li>As in previous exercises, either create a new R script (perhaps call it GLM_Poisson) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+</ol>
 <p> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>Import the data file ‘species.txt’ into R and take a look at the structure of this dataframe. Start with an initial data exploration (using <code>pairs()</code> and <code>coplot()</code>?). Do you see any imbalance of concern between the predictors? Do you foresee any problem for the model to answer the initial question? Hints:</li>
+</ol>
 <ul>
-<li><p><a href="exercise_solutions/exercise_1_solution.R">Exercise 1 solutions</a></p></li>
-<li><p><a href="exercise_solutions/exercise_2_solution.R">Exercise 2 solutions</a></p></li>
-<li><p><a href="exercise_solutions/exercise_3_solution.R">Exercise 3 solutions</a></p></li>
-<li><p><a href="exercise_solutions/exercise_4_solution.R">Exercise 4 solutions</a></p></li>
-<li><p><a href="exercise_solutions/exercise_5_solution.R">Exercise 5 solutions</a></p></li>
+<li>the Poisson model uses a log-link, therefore the equation of the model (the linear predictor) will predict the expected number of plant species on the log scale.</li>
+<li>for a corresponding data exploration it would make sense to use the log of the response.</li>
+<li>check that the format of pH is appropriate and that the reference level is what you want.</li>
+<li>restrict the plot to the variables you actually need</li>
+<li>an effective way of doing this is to store the names of the variables of interest in a vector <code>VOI&lt;- c("Var1", "Var2", ...)</code></li>
+<li>and then use the naming method for subsetting the data set <code>Mydata[, VOI]</code></li>
 </ul>
 <p> </p>
-</div>
-<div id="section-2-exercises" class="section level4">
-<h4>Section 2 Exercises</h4>
+<p><img src="GLM_1_Poisson_exercise_files/figure-html/Q2-1.png" width="672" /><img src="GLM_1_Poisson_exercise_files/figure-html/Q2-2.png" width="672" /></p>
 <p> </p>
+<ol start="3" style="list-style-type: decimal">
+<li>To warm up, let’s start with a simple Poisson GLM (using <code>glm</code>) including only <code>Biomass</code> as a predictor. Hints:</li>
+</ol>
 <ul>
-<li><p><a href="exercise_solutions/graphical_data_exploration_exercise_solutions.R">Graphical data exploration exercise</a></p></li>
-<li><p><a href="exercise_solutions/linear_model_1_exercise_solutions.R">Linear model with single continuous explanatory variable exercise</a></p></li>
-<li><p><a href="exercise_solutions/linear_model_2_exercise_solutions.R">Linear model with single categorical explanatory variable exercise</a></p></li>
+<li>take some time to think what the appropriate response variable is!</li>
+<li>if in doubt, make sure to ask someone to help clear this with you.</li>
+<li>remember to specify the assumed distribution of the data in <code>glm()</code></li>
 </ul>
-<!--
-
--->
+<p> </p>
+<p> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>Obtain summaries of the model output using the <code>summary()</code> function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper.</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="5" style="list-style-type: decimal">
+<li>According to this model, what would be the predicted value (by hand) on the link scale log(mu) when Biomass= 5? What would this become on the response scale, i.e. the number of species?</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>Now, specify the “real” Poisson GLM (using <code>glm</code>) to match the stated research questions.</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="7" style="list-style-type: decimal">
+<li>Obtain summaries of the model output using the <code>summary()</code> and the ANOVA of the model. Which of the <code>drop1()</code> or <code>anova()</code> functions would you choose to use if you wanted (A) to look at deviance components or (B) to do model simplification? Is the effect of the interaction significant?</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion (Hint: check residual deviance and degrees of freedom)</li>
+</ol>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li>Is everything significant? Which of the summaries above do you prefer to use, if you would like to explain the predictions, or test hypotheses, or perform model selection?</li>
+</ol>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
+<li>Check for collinearity using the <code>vif()</code> function in the <code>car</code> package. What do you think?</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="11" style="list-style-type: decimal">
+<li>Validate the model using the standard residuals diagnostic plots</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="12" style="list-style-type: decimal">
+<li>Use <code>predict()</code> with the argument <code>type= "response"</code> to obtain the fitted values on the original (response) scale. Plot a fitted line for the relationship between number of species and biomass for each level of pH. Why are the lines not straight?</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="13" style="list-style-type: decimal">
+<li>(Optional) Use <code>predict</code> again, but this time obtain the fitted values on the scale of the linear predictor <code>type= "link"</code>. Plot again and compare with the previous graph: what is happening? How would you back-transform these values predicted on the link scale to plot them on the response scale again?</li>
+</ol>
+<p> </p>
+<p> </p>
+<ol start="14" style="list-style-type: decimal">
+<li>(Optional but recommended) Use <code>predict</code> again, but this time obtain the fitted values and their standard errors on the scale of the linear predictor. From these, calculate confidence intervals for the fitted values, and plot them together with the data, after back-transforming the fitted values and intervals on the response scale. Suggested approach:</li>
+</ol>
+<ul>
+<li>plot the raw data (one colour per pH)</li>
+<li>create a <code>data.frame</code> called <code>X</code> containing the data to predict for: as sequence of increasing Biomass and the pH of your choice</li>
+<li>use <code>predict()</code> with the appropriate options <code>type= "link", se.fit= TRUE</code> to obtain the fitted values on the link scale and for being able to calculate the confidence intervals later. Store in object <code>Z</code>.</li>
+<li>plot fitted values, extracted using <code>Z$fit</code>, against the Biomass sequence. Do not forget to back-transform on the response scale.</li>
+<li>plot the upper bound of the 95% CI (fitted values + 1.96*se), extracted using <code>Z$fit</code> and <code>Z$se.fit</code>, against the Biomass sequence. Do not forget to back-transform on the response scale.</li>
+<li>plot the lower bound of the 95% CI (fitted values - 1.96*se), extracted using <code>Z$fit</code> and <code>Z$se.fit</code>, against the Biomass sequence. Do not forget to back-transform on the response scale.</li>
+<li>repeat for other pH values.</li>
+</ul>
+<p> </p>
+<p> </p>
+<ol start="15" style="list-style-type: decimal">
+<li>Looking at the data and model fits, any idea why expected species richness for the largest values of biomass tends to be biased high? How satisfied are you with the model? Have we learned anything from it, about species diversity in relation to pH and biomass?</li>
+</ol>
+<p> </p>
+<p> </p>
+<p>End of the Poisson GLM - predicting species richness exercise</p>
 </div>
 
 
@@ -447,6 +534,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
