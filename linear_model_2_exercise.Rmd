@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-5. Fit an appropriate linear model in R to explain the variation in the response variable, `ABUND` with the explanatory variable `FGRAZE`. Remember to use the `data =` argument. Assign this linear model to an appropriately named object (`birds.lm` if you imagination fails you!).
+5. Fit an appropriate linear model in R to explain the variation in the response variable, `ABUND` with the explanatory variable `FGRAZE`. Remember to use the `data =` argument. Assign this linear model to an appropriately named object (`birds.lm` if your imagination fails you!).
 
 \  
 
