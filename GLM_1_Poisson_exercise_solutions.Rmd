@@ -5,6 +5,8 @@ output:
   html_document:
     toc: false
     code_folding: hide
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -281,7 +283,6 @@ legend("topright",
  lwd= c(1, 1, 1))
 ```
 
-
 \  
 
 14. (Optional but recommended) Use `predict` again, but this time obtain the fitted values and their standard errors on the scale of the linear predictor. From these, calculate confidence intervals for the fitted values, and plot them together with the data, after back-transforming the fitted values and intervals on the response scale.
@@ -362,4 +363,3 @@ legend("topright",
 
 End of the Poisson GLM - predicting species richness exercise
 
-\

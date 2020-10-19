@@ -499,6 +499,9 @@ $(document).ready(function () {
 
 
 <p> </p>
+<p>This practical has two exercises, the second one is optional extra.</p>
+<p> </p>
+<p> </p>
 <div id="exercise-1-linear-model-with-additive-continuous-and-categorical-predictors-explanatory-variables" class="section level1">
 <h1>Exercise 1: Linear model with additive continuous and categorical predictors (= explanatory variables)</h1>
 <p> </p>
@@ -874,26 +877,28 @@ $(document).ready(function () {
 <span id="cb15-56"><a href="#cb15-56"></a> <span class="dt">lty=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
 <span id="cb15-57"><a href="#cb15-57"></a> <span class="dt">lwd=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="LM_3_multiple_exercise_solutions_files/figure-html/Q12a-1.png" width="672" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># [OPTIONAL]</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># Okay, that was a long-winded way of doing this.</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># If, like me, you prefer more compact code and less risks of errors,</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># you can use a loop, to save repeating the sequence 5 times:</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">plot</span>(ABUND <span class="op">~</span><span class="st"> </span>LOGAREA, <span class="dt">data=</span> loyn, <span class="dt">col=</span> GRAZE, <span class="dt">pch=</span> <span class="dv">16</span>)</span>
-<span id="cb16-7"><a href="#cb16-7"></a></span>
-<span id="cb16-8"><a href="#cb16-8"></a><span class="cf">for</span>(g <span class="cf">in</span> <span class="kw">levels</span>(loyn<span class="op">$</span>FGRAZE)){<span class="co"># `g` will take the values &quot;1&quot;, &quot;2&quot;,..., &quot;5&quot; in turn</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>    LOGAREA.seq&lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span> <span class="kw">min</span>(loyn<span class="op">$</span>LOGAREA[loyn<span class="op">$</span>FGRAZE <span class="op">==</span><span class="st"> </span>g]),</span>
-<span id="cb16-10"><a href="#cb16-10"></a>                                        <span class="dt">to=</span> <span class="kw">max</span>(loyn<span class="op">$</span>LOGAREA[loyn<span class="op">$</span>FGRAZE <span class="op">==</span><span class="st"> </span>g]),</span>
-<span id="cb16-11"><a href="#cb16-11"></a>                                                        <span class="dt">length=</span> <span class="dv">20</span>)</span>
-<span id="cb16-12"><a href="#cb16-12"></a>    dat4pred&lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FGRAZE=</span> g, <span class="dt">LOGAREA=</span> LOGAREA.seq)</span>
-<span id="cb16-13"><a href="#cb16-13"></a>    dat4pred<span class="op">$</span>predicted&lt;-<span class="st"> </span><span class="kw">predict</span>(birds.add<span class="fl">.1</span>, <span class="dt">newdata=</span> dat4pred)</span>
-<span id="cb16-14"><a href="#cb16-14"></a>    <span class="kw">lines</span>(predicted <span class="op">~</span><span class="st"> </span>LOGAREA, <span class="dt">data=</span> dat4pred, <span class="dt">col=</span> <span class="kw">as.numeric</span>(g), <span class="dt">lwd=</span> <span class="dv">2</span>)</span>
-<span id="cb16-15"><a href="#cb16-15"></a>}</span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </span>
-<span id="cb16-17"><a href="#cb16-17"></a> <span class="dt">legend=</span> <span class="kw">paste</span>(<span class="st">&quot;Graze = &quot;</span>, <span class="dv">5</span><span class="op">:</span><span class="dv">1</span>), </span>
-<span id="cb16-18"><a href="#cb16-18"></a> <span class="dt">col=</span> <span class="kw">c</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>), <span class="dt">bty=</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb16-19"><a href="#cb16-19"></a> <span class="dt">lty=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
-<span id="cb16-20"><a href="#cb16-20"></a> <span class="dt">lwd=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p> </p>
+<p>[Optional] Alternative method:</p>
+<p> </p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Okay, that was a long-winded way of doing this.</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># If, like me, you prefer more compact code and less risks of errors,</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># you can use a loop, to save repeating the sequence 5 times:</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">plot</span>(ABUND <span class="op">~</span><span class="st"> </span>LOGAREA, <span class="dt">data=</span> loyn, <span class="dt">col=</span> GRAZE, <span class="dt">pch=</span> <span class="dv">16</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="cf">for</span>(g <span class="cf">in</span> <span class="kw">levels</span>(loyn<span class="op">$</span>FGRAZE)){<span class="co"># `g` will take the values &quot;1&quot;, &quot;2&quot;,..., &quot;5&quot; in turn</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>    LOGAREA.seq&lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span> <span class="kw">min</span>(loyn<span class="op">$</span>LOGAREA[loyn<span class="op">$</span>FGRAZE <span class="op">==</span><span class="st"> </span>g]),</span>
+<span id="cb16-9"><a href="#cb16-9"></a>                                        <span class="dt">to=</span> <span class="kw">max</span>(loyn<span class="op">$</span>LOGAREA[loyn<span class="op">$</span>FGRAZE <span class="op">==</span><span class="st"> </span>g]),</span>
+<span id="cb16-10"><a href="#cb16-10"></a>                                                        <span class="dt">length=</span> <span class="dv">20</span>)</span>
+<span id="cb16-11"><a href="#cb16-11"></a>    dat4pred&lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FGRAZE=</span> g, <span class="dt">LOGAREA=</span> LOGAREA.seq)</span>
+<span id="cb16-12"><a href="#cb16-12"></a>    dat4pred<span class="op">$</span>predicted&lt;-<span class="st"> </span><span class="kw">predict</span>(birds.add<span class="fl">.1</span>, <span class="dt">newdata=</span> dat4pred)</span>
+<span id="cb16-13"><a href="#cb16-13"></a>    <span class="kw">lines</span>(predicted <span class="op">~</span><span class="st"> </span>LOGAREA, <span class="dt">data=</span> dat4pred, <span class="dt">col=</span> <span class="kw">as.numeric</span>(g), <span class="dt">lwd=</span> <span class="dv">2</span>)</span>
+<span id="cb16-14"><a href="#cb16-14"></a>}</span>
+<span id="cb16-15"><a href="#cb16-15"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </span>
+<span id="cb16-16"><a href="#cb16-16"></a> <span class="dt">legend=</span> <span class="kw">paste</span>(<span class="st">&quot;Graze = &quot;</span>, <span class="dv">5</span><span class="op">:</span><span class="dv">1</span>), </span>
+<span id="cb16-17"><a href="#cb16-17"></a> <span class="dt">col=</span> <span class="kw">c</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">1</span>), <span class="dt">bty=</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb16-18"><a href="#cb16-18"></a> <span class="dt">lty=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb16-19"><a href="#cb16-19"></a> <span class="dt">lwd=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="LM_3_multiple_exercise_solutions_files/figure-html/Q12b-1.png" width="672" /></p>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
@@ -917,8 +922,11 @@ $(document).ready(function () {
 <br />
  </p>
 </div>
-<div id="exercise-2-linear-model-with-interactive-continuous-and-categorical-predictors" class="section level1">
-<h1>Exercise 2: Linear model with interactive continuous and categorical predictors</h1>
+<div id="exercise-2-optional-extra-linear-model-with-interactive-continuous-and-categorical-predictors" class="section level1">
+<h1>Exercise 2 (optional extra): Linear model with interactive continuous and categorical predictors</h1>
+<p> </p>
+<p>This exercise is optional. You will get further opportunities to work with interactions in other practicals. You will probably not have enough time during the timetabled session, but if you wish to do it at a later time and have questions pertaining to this exercise, you are welcome to discuss them with a demonstrator in one of the regular or one of the catch-up sessions.</p>
+<p> </p>
 <p> </p>
 <p>Let’s now explore this question left unanswered: “is it okay to assume the effect of <code>LOGAREA</code> to be the same for all grazing levels?” This is effectively asking if we should let the slope of <code>LOGAREA</code> vary across <code>FGRAZE</code> levels, which is the definition of an interactive effect.</p>
 <p> </p>
@@ -1031,10 +1039,10 @@ $(document).ready(function () {
 <span id="cb21-11"><a href="#cb21-11"></a><span class="co"># much lower risk of error by extracting the model coefficients like this:</span></span>
 <span id="cb21-12"><a href="#cb21-12"></a>birds.inter.<span class="fl">1.</span>coef&lt;-<span class="st"> </span><span class="kw">coef</span>(birds.inter<span class="fl">.1</span>)</span>
 <span id="cb21-13"><a href="#cb21-13"></a>birds.inter.<span class="fl">1.</span>coef <span class="co"># check coefficients and their order</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="co">##     (Intercept)         FGRAZE2         FGRAZE3         FGRAZE4         FGRAZE5         LOGAREA </span></span>
-<span id="cb21-15"><a href="#cb21-15"></a><span class="co">##       21.243012       -6.165390       -7.214949      -17.909983      -17.042997        4.143979 </span></span>
-<span id="cb21-16"><a href="#cb21-16"></a><span class="co">## FGRAZE2:LOGAREA FGRAZE3:LOGAREA FGRAZE4:LOGAREA FGRAZE5:LOGAREA </span></span>
-<span id="cb21-17"><a href="#cb21-17"></a><span class="co">##        4.368422        4.989490       15.235284        1.995647</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="co">##     (Intercept)         FGRAZE2         FGRAZE3         FGRAZE4         FGRAZE5         LOGAREA FGRAZE2:LOGAREA FGRAZE3:LOGAREA </span></span>
+<span id="cb21-15"><a href="#cb21-15"></a><span class="co">##       21.243012       -6.165390       -7.214949      -17.909983      -17.042997        4.143979        4.368422        4.989490 </span></span>
+<span id="cb21-16"><a href="#cb21-16"></a><span class="co">## FGRAZE4:LOGAREA FGRAZE5:LOGAREA </span></span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="co">##       15.235284        1.995647</span></span>
 <span id="cb21-18"><a href="#cb21-18"></a><span class="co"># and multiply by the predictor values to obtain the equivalent prediction</span></span>
 <span id="cb21-19"><a href="#cb21-19"></a><span class="kw">sum</span>(birds.inter.<span class="fl">1.</span>coef <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">2.5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="co"># 31.60296 </span></span>
 <span id="cb21-20"><a href="#cb21-20"></a><span class="co">## [1] 31.60296</span></span>

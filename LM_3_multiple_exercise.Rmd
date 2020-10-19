@@ -1,10 +1,13 @@
 ---
-title: 'Exercise'
-output: 
+title: "Exercise"
+# author: "TCornulier"
+output:
   html_document:
-    toc: false
+    toc: no
     code_folding: hide
-editor_options: 
+  pdf_document:
+    toc: no
+editor_options:
   chunk_output_type: console
 ---
 
@@ -14,6 +17,12 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 SOLUTIONS<- FALSE
 ```
+
+\  
+
+This practical has two exercises, the second one is optional extra.
+
+\  
 
 \  
 
@@ -369,8 +378,13 @@ legend("topleft",
  lwd= c(1, 1, 1))
 ```
 
+\  
+
+[Optional] Alternative method:
+
+\  
+
 ```{r Q12b, eval=TRUE, echo=TRUE, collapse=FALSE}
-# [OPTIONAL]
 # Okay, that was a long-winded way of doing this.
 # If, like me, you prefer more compact code and less risks of errors,
 # you can use a loop, to save repeating the sequence 5 times:
@@ -391,7 +405,6 @@ legend("topleft",
  lty= c(1, 1, 1), 
  lwd= c(1, 1, 1))
 ```
-
 
 \  
 
@@ -421,7 +434,13 @@ End of the Linear model with additive continuous and categorical predictors exer
 \
 \  
 
-# Exercise 2: Linear model with interactive continuous and categorical predictors
+# Exercise 2 (optional extra): Linear model with interactive continuous and categorical predictors
+
+\  
+
+This exercise is optional. You will get further opportunities to work with interactions in other practicals. You will probably not have enough time during the timetabled session, but if you wish to do it at a later time and have questions pertaining to this exercise, you are welcome to discuss them with a demonstrator in one of the regular or one of the catch-up sessions.
+
+\  
 
 \  
 
@@ -580,7 +599,7 @@ legend("topleft",
 
 \  
 
-```{r Q20, eval=TRUE, echo=TRUE, collapse=TRUE}
+```{r Q20, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 # The slopes of the LOGAREA effect across grazing levels are all over the
 # place, without any coherent pattern (for instance, they could have been
 # increasing or decreasing gradually from low to high grazing intensity)

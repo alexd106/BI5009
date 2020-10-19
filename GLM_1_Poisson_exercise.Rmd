@@ -5,6 +5,8 @@ output:
   html_document:
     toc: false
     code_folding: hide
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -148,7 +150,7 @@ drop1(sp.glm2, test= "Chisq")
 
 9. Is everything significant? Which of the summaries above do you prefer to use, if you would like to explain the predictions, or test hypotheses, or perform model selection?
 
-\ 
+\  
 
 10. Check for collinearity using the `vif()` function in the `car` package. What do you think?
 
@@ -280,7 +282,6 @@ legend("topright",
  lty= c(1, 1, 1), 
  lwd= c(1, 1, 1))
 ```
-
 
 \  
 
