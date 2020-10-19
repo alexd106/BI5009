@@ -66,7 +66,7 @@ tapply(loyn$ABUND, loyn$FGRAZE, mean, na.rm = TRUE)
 
 \  
 
-5. Fit an appropriate linear model in R to explain the variation in the response variable, `ABUND` with the explanatory variable `FGRAZE`. Remember to use the `data =` argument. Assign this linear model to an appropriately named object (`birds.lm` if you imagination fails you!).
+5. Fit an appropriate linear model in R to explain the variation in the response variable, `ABUND` with the explanatory variable `FGRAZE`. Remember to use the `data =` argument. Assign this linear model to an appropriately named object (`birds.lm` if your imagination fails you!).
 
 \  
 
@@ -89,7 +89,7 @@ anova(birds.lm)
 # there is a difference in the mean bird abundance between grazing intensity levels.
 
 # for a report you might write something like:
-# here was a significant difference in the mean abundance of birds between the five levels
+# there was a significant difference in the mean abundance of birds between the five levels
 # of grazing intensity (F_4,51 = 15.27, p < 0.0001)
 ```
 
