@@ -245,6 +245,7 @@ plot(loyn.effects,"FGRAZE")
 
 ```{r Q11c, eval=TRUE, echo=TRUE, collapse=FALSE}
 # and finally using old faithful the predict function and base R graphics
+# with the segments function
 
 my.data <- data.frame(FGRAZE = c("1", "2", "3", "4", "5"))
 pred.vals <- predict(birds.lm, newdata = my.data, se.fit = TRUE)
@@ -256,9 +257,25 @@ points(1:5, pred.vals$fit)
 segments(1:5, pred.vals$fit, 1:5, pred.vals$fit - 1.96 * pred.vals$se.fit)
 segments(1:5, pred.vals$fit, 1:5, pred.vals$fit + 1.96 * pred.vals$se.fit)
 segments(1:5, pred.vals$fit, 1:5, pred.vals$fit + 1.96 * pred.vals$se.fit)
+```
 
+\  
 
+```{r Q11d, eval=TRUE, echo=TRUE, collapse=FALSE}
+# using old faithful the predict function and base R graphics 
+# with the arrows function 
 
+my.data <- data.frame(FGRAZE = c("1", "2", "3", "4", "5"))
+pred.vals <- predict(birds.lm, newdata = my.data, se.fit = TRUE)
+
+# now plot these values
+
+plot(1:5, seq(0, 50, length=5), type = "n", xlab = "Graze intensity level", ylab = "Bird Abundance")
+arrows(1:5, pred.vals$fit, 1:5, pred.vals$fit - 1.96 * pred.vals$se.fit,
+    angle = 90, code = 2, length = 0.05, col = "blue")
+arrows(1:5, pred.vals$fit, 1:5, pred.vals$fit + 1.96 * pred.vals$se.fit,
+       angle = 90, code = 2, length = 0.05, col = "blue")
+points(1:5, pred.vals$fit, pch = 16)
 ```
 
 \  
