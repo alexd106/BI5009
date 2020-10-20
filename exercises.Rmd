@@ -92,9 +92,9 @@ rmarkdown::render("GLM_2_Binomial_exercise.Rmd", output_format = "pdf_document",
  
  - [Linear model - model selection exercise](LM_4_Selection_exercise.html)
 
- - [Generalised linear models 1 - Poisson GLM exercise](GLM_1_Poisson_exercise_solutions.html)
+ - [Generalised linear models 1 - Poisson GLM exercise](GLM_1_Poisson_exercise.html)
 
- - [Generalised linear models 2 - Binomial GLM exercise](GLM_2_Binomial_exercise_solutions.html)
+ - [Generalised linear models 2 - Binomial GLM exercise](GLM_2_Binomial_exercise.html)
 
 
 \  
