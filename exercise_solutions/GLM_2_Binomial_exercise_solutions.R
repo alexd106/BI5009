@@ -1,7 +1,6 @@
-## ----Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE-------------------------------------------------------------
-setwd("C:/Users/nhy577/Documents/_toma/TEACHING/BI5009/DolphinExercise")
+## ----Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE------------------------------------------------------
 
-dat<- read.csv("dolphin.csv", stringsAsFactors= T)
+dat<- read.csv("./data/dolphin.csv", stringsAsFactors= T)
 
 # re-ordering factor levels for convenience:
 dat$Per2<- factor(dat$Per2, levels= c("RestOfYear", "MayJun"))
@@ -9,23 +8,16 @@ dat$Per2<- factor(dat$Per2, levels= c("RestOfYear", "MayJun"))
 dat$Per4<- factor(dat$Per4, levels= c("RestOfYear", "MayJun1", "MayJun2", "MayJun3"))
 dat$Time6<- factor(dat$Time6, levels= c("MNight", "AM1", "AM2", "MDay", "PM1", "PM2")) # reordering chronologically
 
-
-# unless you desperately want to test the performance of your computer, 
-# play safe and reduce the size of the data set from 50000 to 5000:
-set.seed(74) # makes the random sampling reproducible
-# This means you will get the same random sample as the solutions to
-# the exercises and the same results.
-dat<- dat[sample(1:nrow(dat), size= 5000), ] # random subset or rows
 str(dat)
 
 
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 PA1<- glm(presence ~ tideangle_deg * mh * julianday, family= binomial, data= dat)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 summary(PA1)
 
 # Model description:
@@ -49,7 +41,7 @@ summary(PA1)
 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 drop1(PA1, test= "Chisq")
 # drop the triple interaction
 
@@ -74,7 +66,7 @@ summary(PA4)
 
 
 
-## ----Q8, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
+## ----Q8, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 # there are several ways the non-linearity could be addressed. 
 # one of the most straightforward with glm() is to discretize
 # continuous predictors into bins and to treat them as factors.
@@ -86,7 +78,7 @@ summary(PA4)
 
 
 
-## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------
+## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 # convert numerically coded categorical variables into factors:
 dat$fTide4<- factor(dat$Tide4)
 
@@ -120,13 +112,13 @@ anova(PA13, test= "Chisq")
 
 
 
-## ----Q11a, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------
+## ----Q11a, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 PA13.dat4pred<- expand.grid(Time6= levels(dat$Time6),
                                 Per2= levels(dat$Per2),
 								fTide4= "1")
 
 
-## ----Q11b, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------
+## ----Q11b, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 PA13.pred<- predict(PA13, PA13.dat4pred, type= "link", se.fit= T)
 
 PA13.dat4pred$fit.resp<- exp(PA13.pred$fit)/(1+exp(PA13.pred$fit)) 
@@ -144,8 +136,8 @@ PA13.dat4pred$UCI<- plogis(PA13.pred$fit + 1.96*PA13.pred$se.fit)
 
 
 
-## ----Appendix, eval=FALSE, echo=TRUE, results=FALSE, collapse=FALSE-----------------------------------------------------
-## fulldat<- read.delim("FineScale_Dataset_GAMM_OFB2019.txt")
+## ----Appendix, eval=FALSE, echo=TRUE, results=FALSE, collapse=FALSE----------------------------------------------
+## fulldat<- read.delim("./data/FineScale_Dataset_GAMM_OFB2019.txt")
 ## 
 ## str(fulldat)
 ## 
@@ -193,6 +185,13 @@ PA13.dat4pred$UCI<- plogis(PA13.pred$fit + 1.96*PA13.pred$se.fit)
 ## 
 ## # check this is working as intended:
 ## plot(as.numeric(dat$Tide4) ~ dat$tideangle_deg)
+## 
+## # unless you desperately want to test the performance of your computer,
+## # play safe and reduce the size of the data set from 50000 to 5000:
+## set.seed(74) # makes the random sampling reproducible
+## # This means you will get the same random sample as the solutions to
+## # the exercises and the same results.
+## dat<- dat[sample(1:nrow(dat), size= 5000), ] # random subset or rows
 ## 
 ## write.csv(dat, "dolphin.csv")
 

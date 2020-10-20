@@ -64,10 +64,6 @@ cat(sep="\n\n")
  
  - [Linear model - model selection exercise](./exercises/linear_model_4_exercise.pdf)
 
-<!-- 
  - [Generalised linear models 1 - Poisson GLM exercise](./exercises/GLM_1_Poisson_exercise_solutions.pdf)
--->
 
-<!--
  - [Generalised linear models 2 - Binomial GLM exercise](./exercises/GLM_2_Binomial_exercise_solutions.pdf)
- -->

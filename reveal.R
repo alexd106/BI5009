@@ -7,8 +7,8 @@ show_text_lm1 <- TRUE    # ex LM1
 show_text_lm2 <- TRUE    # ex LM2
 show_text_lm3 <- TRUE   # ex LM3
 show_text_lm4 <- TRUE    # ex LM4
-show_text_glm1 <- FALSE    # ex GLM1
-show_text_glm2 <- FALSE    # ex GLM2
+show_text_glm1 <- TRUE    # ex GLM1
+show_text_glm2 <- TRUE    # ex GLM2
 show_text_glm3 <- FALSE    # ex GLM3
 show_text_glm4 <- FALSE    # ex GLM4
 
