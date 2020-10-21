@@ -40,7 +40,7 @@ Variables:
 
 It has been suggested that the patterns of use of coastal foraging sites by this dolphin population is quite variable over time. For example, **sightings at Sutors are thought to be more frequent around May-June, although the odds of detecting dolphins may depend on various factors, including tidal state and time of day**. The goal of this exercise is to describe variation in dolphin probability of presence in relation to factors like tidal state, time of day and season (particularly May/June vs. rest of the year), with possible interactions between them.
 
-\
+\  
 
 The data have been aggregated as presence/absence at a 1h resolution. You will focus on one of the sites, "Sutors", a subset which will leave you with just under 50000 presence/absence records to play with. Note that "absence" refers to the absence of a detection, not to the absence of dolphins. We can ignore this in the analysis, but we should keep it in mind when interpreting the results.
 
@@ -54,9 +54,9 @@ As in previous exercises, either create a new R script (perhaps call it GLM_Pres
 
 \  
 
-2. Import the full data file 'dolphin.csv' into R (50000 records) by running the following chunk of code (please unfold and copy/paste). The code will take a reproducible random subset of 5000 observations which is well enough to give similar results as the full one, without working your computer too hard (graphs are what it could struggle with mostly). 
+2. Import the data file 'dolphin.csv' into R (a "small" 5000 records-long subset of the original data set) by running the following chunk of code (please unfold and copy/paste). The code for converting the original publicly available data into the 'dolphin.csv' file is given as an appendix code chunk at the end of the practical, for your info. It includes converting the original numeric variables into categories that you can specify (binning). Binning is done easily using the `cut()` function (examples in the code chunk at the end, if you want to create your own categories).
 
-\
+\  
 
 ```{r Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE}
 
@@ -70,16 +70,12 @@ dat$Time6<- factor(dat$Time6, levels= c("MNight", "AM1", "AM2", "MDay", "PM1", "
 
 str(dat)
 ```
-
-\
-
-The code for converting the original publicly available data into the 'dolphin.csv' file is given at the end of the practical. It includes converting the original numeric variables into categories that you can specify (binning). Binning is done easily using the `cut()` function (examples in the code chunk at the end, if you want to create your own categories). 
-
+ 
 \  
 
 3. Take a look at the structure of this dataframe. Start with an initial data exploration to look at any imbalance between the predictors, and factors affecting presence of dolphins. Which ones are continuous or categorical? Which ones would your intuition guide you to use for data exploration? For modelling?
 Hints:
-  + Presence/absence data (Bernoulli) are more difficult to explore.
+  + Presence/absence data (Bernoulli) are more difficult than most to explore.
   + One approach is to count observations per categories of interest.
   + `table()` is a useful way to count the number of observations per category or combinations of categories, e.g. `ObsPerMonthYear<- table(dat$year, dat$mon)`
   + `plot(ObsPerMonthYear)` returns a "mosaic plot" where the area of each rectangle is proportional to the count.
@@ -148,8 +144,8 @@ PA1<- glm(presence ~ tideangle_deg * mh * julianday, family= binomial, data= dat
 summary(PA1)
 
 # Model description:
-# presence_i ~ Bernoulli(p_i)  or presence_i ~ Binomial(N= 1, p_i)
-# log(p_i / (1-p_i)) = 
+# presence ~ Bernoulli(p)  or presence ~ Binomial(N= 1, p)
+# log(p / (1-p)) = 
 #       -1.36*(Intercept) + 0.000108*tideangle_deg - 0.0012*mh 
 #       + 0.0031*julianday - 4.95e-05*tideangle_deg*mh 
 #       - 8.90e-06*tideangle_deg*julianday - 7.96e-05*mh*julianday 
@@ -489,7 +485,7 @@ for(month in 1:12){
 
 End of the Binomial (Bernoulli) GLM - dolphin behavioural plasticity exercise
 
-\
+\  
 
 Appendix. Code for converting the original publicly available data (10 Mb) [https://datadryad.org/stash/dataset/doi:10.5061/dryad.k378542] into the 'dolphin.csv' file. Includes converting numeric variables into categories that you can define to suit your needs (binning), including making more bins if you wish. Binning is done easily using the `cut()` function. For example, creating 5 regular bins is done using `cut(MyVector, breaks= 5)`. Note here that `cut` is used in a non-standard way to make the beginning and end of a cyclic variable belong to the same bin, which may be more biologically meaningful (you can decide, you are the expert!).
 

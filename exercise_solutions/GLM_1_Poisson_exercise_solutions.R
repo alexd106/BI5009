@@ -1,4 +1,4 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 sp<- read.table(file= "./data/species.txt", header= TRUE)
 str(sp)
 
@@ -18,11 +18,11 @@ coplot(logSp ~ Biomass | pH, data= sp)
 # looking promising.
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 sp.glm1<- glm(Species ~ Biomass, family= poisson, data= sp)
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 summary(sp.glm1)
 
 # Model description:
@@ -31,18 +31,18 @@ summary(sp.glm1)
 
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 # On the link scale:
 3.18 - 0.064*5 # 2.86
 # On the response scale (species count):
 exp(3.18 - 0.064*5) # 17.46
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 sp.glm2<- glm(Species ~ Biomass * pH, family= poisson, data= sp)
 
 
-## ----Q7-9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------
+## ----Q7-9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------
 summary(sp.glm2)
 anova(sp.glm2, test= "Chisq")
 
@@ -64,7 +64,7 @@ drop1(sp.glm2, test= "Chisq")
 
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 library(car)
 vif(sp.glm2)
 
@@ -76,7 +76,7 @@ vif(sp.glm2)
 
 
 
-## ----Q11, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q11, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## par(mfrow= c(2, 2))
 ## plot(sp.glm2)
 ## 
@@ -113,7 +113,7 @@ vif(sp.glm2)
 ## 
 
 
-## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8-------------------------
+## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8----------------------------------
 ## par(mfrow= c(1, 1))
 ## # create a sequence of increasing Biomass
 ## Biomass.seq<- seq(from= min(sp$Biomass), to= max(sp$Biomass), l= 25)
@@ -146,7 +146,7 @@ vif(sp.glm2)
 ##  lwd= c(1, 1, 1))
 
 
-## ----Q13, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8-------------------------
+## ----Q13, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8----------------------------------
 ## P.low<- predict(sp.glm2, newdata= MyData1, type= "link")
 ## P.mid<- predict(sp.glm2, newdata= MyData2, type= "link")
 ## P.high<- predict(sp.glm2, newdata= MyData3, type= "link")
@@ -173,7 +173,7 @@ vif(sp.glm2)
 ##  lwd= c(1, 1, 1))
 
 
-## ----Q14, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8-------------------------
+## ----Q14, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8----------------------------------
 ## P.low<- predict(sp.glm2, newdata= MyData1, type= "link", se.fit= T)
 ## P.mid<- predict(sp.glm2, newdata= MyData2, type= "link", se.fit= T)
 ## P.high<- predict(sp.glm2, newdata= MyData3, type= "link", se.fit= T)
@@ -203,7 +203,7 @@ vif(sp.glm2)
 ##  lwd= c(1, 1, 1))
 
 
-## ----Q15, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q15, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## # The data show a very steep decline in species richness towards zero,
 ## # as biomass increases.
 ## 

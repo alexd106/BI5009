@@ -54,7 +54,7 @@ As in previous exercises, either create a new R script (perhaps call it GLM_Pres
 
 \  
 
-2. Import the full data file 'dolphin.csv' into R (50000 records) by running the following chunk of code (please unfold and copy/paste). The code will take a reproducible random subset of 5000 observations which is well enough to give similar results as the full one, without working your computer too hard (graphs are what it could struggle with mostly). 
+2. Import the data file 'dolphin.csv' into R (a "small" 5000 records-long subset of the original data set) by running the following chunk of code (please unfold and copy/paste). The code for converting the original publicly available data into the 'dolphin.csv' file is given as an appendix code chunk at the end of the practical, for your info. It includes converting the original numeric variables into categories that you can specify (binning). Binning is done easily using the `cut()` function (examples in the code chunk at the end, if you want to create your own categories).
 
 \  
 
@@ -70,16 +70,12 @@ dat$Time6<- factor(dat$Time6, levels= c("MNight", "AM1", "AM2", "MDay", "PM1", "
 
 str(dat)
 ```
-
-\  
-
-The code for converting the original publicly available data into the 'dolphin.csv' file is given at the end of the practical. It includes converting the original numeric variables into categories that you can specify (binning). Binning is done easily using the `cut()` function (examples in the code chunk at the end, if you want to create your own categories). 
-
+ 
 \  
 
 3. Take a look at the structure of this dataframe. Start with an initial data exploration to look at any imbalance between the predictors, and factors affecting presence of dolphins. Which ones are continuous or categorical? Which ones would your intuition guide you to use for data exploration? For modelling?
 Hints:
-  + Presence/absence data (Bernoulli) are more difficult to explore.
+  + Presence/absence data (Bernoulli) are more difficult than most to explore.
   + One approach is to count observations per categories of interest.
   + `table()` is a useful way to count the number of observations per category or combinations of categories, e.g. `ObsPerMonthYear<- table(dat$year, dat$mon)`
   + `plot(ObsPerMonthYear)` returns a "mosaic plot" where the area of each rectangle is proportional to the count.
@@ -148,8 +144,8 @@ PA1<- glm(presence ~ tideangle_deg * mh * julianday, family= binomial, data= dat
 summary(PA1)
 
 # Model description:
-# presence_i ~ Bernoulli(p_i)  or presence_i ~ Binomial(N= 1, p_i)
-# log(p_i / (1-p_i)) = 
+# presence ~ Bernoulli(p)  or presence ~ Binomial(N= 1, p)
+# log(p / (1-p)) = 
 #       -1.36*(Intercept) + 0.000108*tideangle_deg - 0.0012*mh 
 #       + 0.0031*julianday - 4.95e-05*tideangle_deg*mh 
 #       - 8.90e-06*tideangle_deg*julianday - 7.96e-05*mh*julianday 

@@ -1,4 +1,4 @@
-## ----Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE------------------------------------------------------
+## ----Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE---------------------------------------------------------------
 
 dat<- read.csv("./data/dolphin.csv", stringsAsFactors= T)
 
@@ -11,7 +11,7 @@ dat$Time6<- factor(dat$Time6, levels= c("MNight", "AM1", "AM2", "MDay", "PM1", "
 str(dat)
 
 
-## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
+## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 ## # count observations per year/month combination and represent as mosaicplot
 ## plot(table(dat$year, dat$mon))
 ## # CPOD failure in Feb-April 2012 and Dec 2012-March 2013
@@ -50,16 +50,16 @@ str(dat)
 ## 
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 PA1<- glm(presence ~ tideangle_deg * mh * julianday, family= binomial, data= dat)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 summary(PA1)
 
 # Model description:
-# presence_i ~ Bernoulli(p_i)  or presence_i ~ Binomial(N= 1, p_i)
-# log(p_i / (1-p_i)) = 
+# presence ~ Bernoulli(p)  or presence ~ Binomial(N= 1, p)
+# log(p / (1-p)) = 
 #       -1.36*(Intercept) + 0.000108*tideangle_deg - 0.0012*mh 
 #       + 0.0031*julianday - 4.95e-05*tideangle_deg*mh 
 #       - 8.90e-06*tideangle_deg*julianday - 7.96e-05*mh*julianday 
@@ -78,7 +78,7 @@ summary(PA1)
 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 drop1(PA1, test= "Chisq")
 # drop the triple interaction
 
@@ -97,7 +97,7 @@ drop1(PA4, test= "Chisq")
 summary(PA4)
 
 
-## ----Q7a, eval=SOLUTIONS, echo=TRUE, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q7a, eval=SOLUTIONS, echo=TRUE, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 ## library(car)
 ## vif(PA4)
 ## # High for terms involved in the interaction, as expected. No concern.
@@ -126,14 +126,14 @@ summary(PA4)
 ## binnedplot(x= dat$julianday, y= res4.p, xlab= "Day of the year", nclass= 100)
 
 
-## ----Q7b, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q7b, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## # clearly some unwanted patterns, especially in mh and julianday
 ## # but possibly in tide angle, too
 ## # all pointing at non-linear effects of the predictors on the response
 ## 
 
 
-## ----Q7c, eval=SOLUTIONS, echo=TRUE, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q7c, eval=SOLUTIONS, echo=TRUE, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 ## par(mfrow= c(2, 2))
 ## plot(res4.p ~ dat$tideangle_deg, col= dat$presence + 1)
 ## tide.means<- tapply(res4.p, list(dat$tideangle_deg), mean)
@@ -154,7 +154,7 @@ summary(PA4)
 ## # Same story.
 
 
-## ----Q8, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
+## ----Q8, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------
 # there are several ways the non-linearity could be addressed. 
 # one of the most straightforward with glm() is to discretize
 # continuous predictors into bins and to treat them as factors.
@@ -166,7 +166,7 @@ summary(PA4)
 
 
 
-## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 # convert numerically coded categorical variables into factors:
 dat$fTide4<- factor(dat$Tide4)
 
@@ -198,7 +198,7 @@ anova(PA13, test= "Chisq")
 (PA13$null.deviance - PA13$deviance) / PA13$null.deviance # 3%
 
 
-## ----Q10, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q10, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## # plot against predictors:
 ##  res13.p<- resid(PA13, type= "pearson")
 ## 
@@ -224,13 +224,13 @@ anova(PA13, test= "Chisq")
 ## 
 
 
-## ----Q11a, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------------
+## ----Q11a, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 PA13.dat4pred<- expand.grid(Time6= levels(dat$Time6),
                                 Per2= levels(dat$Per2),
 								fTide4= "1")
 
 
-## ----Q11b, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------------
+## ----Q11b, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 PA13.pred<- predict(PA13, PA13.dat4pred, type= "link", se.fit= T)
 
 PA13.dat4pred$fit.resp<- exp(PA13.pred$fit)/(1+exp(PA13.pred$fit)) 
@@ -242,7 +242,7 @@ PA13.dat4pred$LCI<- plogis(PA13.pred$fit - 1.96*PA13.pred$se.fit)
 PA13.dat4pred$UCI<- plogis(PA13.pred$fit + 1.96*PA13.pred$se.fit)
 
 
-## ----Q11c, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=5------------------------
+## ----Q11c, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=5---------------------------------
 ## par(mfrow= c(1, 1))
 ## plot(as.numeric(PA13.dat4pred$Time6), PA13.dat4pred$fit.resp, pch= 16, cex= 1.4,
 ##           col= PA13.dat4pred$Per2, xlab= "Section of day",
@@ -253,7 +253,7 @@ PA13.dat4pred$UCI<- plogis(PA13.pred$fit + 1.96*PA13.pred$se.fit)
 ## 		  col= PA13.dat4pred$Per2, length= 0.02, angle= 90, code= 3)
 
 
-## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## PA10.MAM.stepAIC<- step(PA10)
 ## 
 ## anova(PA10.MAM.stepAIC, test= "Chisq")
@@ -288,7 +288,7 @@ PA13.dat4pred$UCI<- plogis(PA13.pred$fit + 1.96*PA13.pred$se.fit)
 ## 
 
 
-## ----Q13, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8, , fig.width=8----------
+## ----Q13, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8, , fig.width=8-------------------
 ## # dolphins have a weak but apparently stable preference for certain tidal states in Sutors.
 ## 
 ## # According to model PA13, they are more likely to be seen during the day in
@@ -326,7 +326,7 @@ PA13.dat4pred$UCI<- plogis(PA13.pred$fit + 1.96*PA13.pred$se.fit)
 ## 
 
 
-## ----Appendix, eval=FALSE, echo=TRUE, results=FALSE, collapse=FALSE----------------------------------------------
+## ----Appendix, eval=FALSE, echo=TRUE, results=FALSE, collapse=FALSE-------------------------------------------------------
 ## fulldat<- read.delim("./data/FineScale_Dataset_GAMM_OFB2019.txt")
 ## 
 ## str(fulldat)

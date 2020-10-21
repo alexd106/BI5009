@@ -1,15 +1,15 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 loyn <- read.table("./data/loyn.txt", header = TRUE)
 str(loyn)
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 loyn$LOGAREA <- log10(loyn$AREA)
 # create factor GRAZE as it was originally coded as an integer
 loyn$FGRAZE <- factor(loyn$GRAZE)
 
 
-## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
+## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 ## plot(LOGAREA ~ GRAZE, xlab = "Grazing level", ylab = "Patch area", data = loyn)
 ## 
 ## # There is a good spread of patch areas within each grazing level overall,
@@ -28,7 +28,7 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 ## # But let's find out if that's the case!
 
 
-## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
+## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 ## coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
 ## 
 ## # There is a lot of variation in there, but:
@@ -39,11 +39,11 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 ## # different between grazing levels
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 birds.add.1 <- lm(ABUND ~ LOGAREA + FGRAZE, data = loyn)
 
 
-## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 anova(birds.add.1)
 
 # null hypothesis 1: There is no effect of LOGAREA on ABUND
@@ -71,7 +71,7 @@ birds.add.1.SST<- sum(anova(birds.add.1)$'Sum Sq') # compute SST
 
 
 
-## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 birds.add.2 <- lm(ABUND ~ FGRAZE + LOGAREA, data = loyn)
 anova(birds.add.2)
 
@@ -99,7 +99,7 @@ birds.add.2.SST<- sum(anova(birds.add.2)$'Sum Sq') # compute SST
 
 
 
-## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------
 summary(birds.add.1)
 
 # Here the intercept (baseline) is *NOT* the mean abundance of birds for
@@ -131,7 +131,7 @@ summary(birds.add.1)
 
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 # ABUND = 15.72*(Intercept) + 7.25*LOGAREA + 0.38*FGRAZE2 - 0.19*FGRAZE3
 # - 1.59*FGRAZE4 - 11.89*FGRAZE5
 # Note that (Intercept) = 1 always
@@ -164,7 +164,7 @@ sum(birds.add.1.coef * c(1, 0.5, 0, 1, 0, 0)) # 19.15072
 
 
 
-## ----Q11, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q11, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## # first split the plotting device into 2 rows and 2 columns
 ## par(mfrow = c(2,2))
 ## 
@@ -206,7 +206,7 @@ sum(birds.add.1.coef * c(1, 0.5, 0, 1, 0, 0)) # 19.15072
 ## 
 
 
-## ----Q12a, eval=TRUE, echo=TRUE, collapse=FALSE------------------------------------------------------------------
+## ----Q12a, eval=TRUE, echo=TRUE, collapse=FALSE---------------------------------------------------------------------------
 par(mfrow= c(1, 1))
 plot(ABUND ~ LOGAREA, data= loyn, col= GRAZE, pch= 16)
 # Note: # color 1 means black in R
@@ -266,7 +266,7 @@ legend("topleft",
  lwd= c(1, 1, 1))
 
 
-## ----Q12b, eval=TRUE, echo=TRUE, collapse=FALSE------------------------------------------------------------------
+## ----Q12b, eval=TRUE, echo=TRUE, collapse=FALSE---------------------------------------------------------------------------
 # Okay, that was a long-winded way of doing this.
 # If, like me, you prefer more compact code and less risks of errors,
 # you can use a loop, to save repeating the sequence 5 times:
@@ -288,7 +288,7 @@ legend("topleft",
  lwd= c(1, 1, 1))
 
 
-## ----Q13, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q13, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## # There is a significant effect of grazing levels, especially the highest
 ## # level with a negative effect on bird abundance
 ## 
@@ -302,11 +302,11 @@ legend("topleft",
 ## # of predictors.
 
 
-## ----Q14, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q14, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 birds.inter.1 <- lm(ABUND ~ FGRAZE * LOGAREA , data = loyn)
 
 
-## ----Q15, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q15, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 anova(birds.inter.1)
 
 # null hypothesis 1: There is no effect of LOGAREA on ABUND
@@ -327,7 +327,7 @@ anova(birds.inter.1)
 # null hypothesis: there is no evidence supporting this interaction.
 
 
-## ----Q16, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q16, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 summary(birds.inter.1)
 
 # Here the intercept (baseline) is the predicted `ABUND` for LOGAREA = 0,
@@ -353,7 +353,7 @@ summary(birds.inter.1)
 
 
 
-## ----Q17, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q17, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 # ABUND = 21.243*(Intercept) - 6.165*FGRAZE2 - 7.215*FGRAZE3 - 17.910*FGRAZE4
 # - 17.043*FGRAZE5 + 4.144*LOGAREA + 4.368*FGRAZE2:LOGAREA
 # + 4.989*FGRAZE3:LOGAREA + 15.235*FGRAZE4:LOGAREA + 1.996*FGRAZE5:LOGAREA
@@ -378,7 +378,7 @@ sum(birds.inter.1.coef * c(1, 0, 0, 0, 1, -0.5, 0, 0, 0, -0.5)) # 1.130203
 # Well done if you got there!
 
 
-## ----Q18, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
+## ----Q18, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 ## # first split the plotting device into 2 rows and 2 columns
 ## par(mfrow = c(2,2))
 ## 
@@ -390,7 +390,7 @@ sum(birds.inter.1.coef * c(1, 0, 0, 0, 1, -0.5, 0, 0, 0, -0.5)) # 1.130203
 ## # parameters at the data).
 
 
-## ----Q19, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=FALSE--------------------------------------
+## ----Q19, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=FALSE-----------------------------------------------
 ## # NOTE: I'm using the loop version of the plot, here.
 ## # If you don't like it, refer to the long-hand code version at Question 12
 ## 
@@ -412,7 +412,7 @@ sum(birds.inter.1.coef * c(1, 0, 0, 0, 1, -0.5, 0, 0, 0, -0.5)) # 1.130203
 ##  lwd= c(1, 1, 1))
 
 
-## ----Q20, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE----------------------------------------------------------
+## ----Q20, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------
 ## # The slopes of the LOGAREA effect across grazing levels are all over the
 ## # place, without any coherent pattern (for instance, they could have been
 ## # increasing or decreasing gradually from low to high grazing intensity)
