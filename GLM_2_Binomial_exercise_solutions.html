@@ -521,7 +521,7 @@ $(document).ready(function () {
 <p> </p>
 <p>It has been suggested that the patterns of use of coastal foraging sites by this dolphin population is quite variable over time. For example, <strong>sightings at Sutors are thought to be more frequent around May-June, although the odds of detecting dolphins may depend on various factors, including tidal state and time of day</strong>. The goal of this exercise is to describe variation in dolphin probability of presence in relation to factors like tidal state, time of day and season (particularly May/June vs. rest of the year), with possible interactions between them.</p>
 <p> </p>
-<p>The data have been aggregated as presence/absence at a 1h resolution. You will focus on one of the sites, “Sutors”, a subset which will leave you with just under 50000 presence/absence records to play with. Note that “absence” refers to the absence of a detection, not to the absence of dolphins. We can ignore this in the analysis, but we should keep it in mind when interpreting the results.</p>
+<p>The data have been aggregated as presence/absence at a 1h resolution. You will focus on one of the sites, “Sutors”, a subset which will leave you with just under 5000 presence/absence records to play with. Note that “absence” refers to the absence of a detection, not to the absence of dolphins. We can ignore this in the analysis, but we should keep it in mind when interpreting the results.</p>
 <p> </p>
 <p>Background on the data and the study can be found <a href="https://abdn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=619e9ee8-241a-4924-8550-ac5401283e2a">here</a>, courtesy of Paul Thompson. The exercise can be done entirely without consulting this. I recommend you watch this or any companion material (the referenced paper) outside the synchronous session, to make the most of the time you have with demonstrators to progress on the exercises.</p>
 <p> </p>
@@ -537,9 +537,10 @@ $(document).ready(function () {
 <span id="cb1-4"><a href="#cb1-4"></a>dat<span class="op">$</span>Per2&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Per2, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;RestOfYear&quot;</span>, <span class="st">&quot;MayJun&quot;</span>))</span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># (making &quot;RestOfYear&quot; the reference level)</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>dat<span class="op">$</span>Per4&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Per4, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;RestOfYear&quot;</span>, <span class="st">&quot;MayJun1&quot;</span>, <span class="st">&quot;MayJun2&quot;</span>, <span class="st">&quot;MayJun3&quot;</span>))</span>
-<span id="cb1-7"><a href="#cb1-7"></a>dat<span class="op">$</span>Time6&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Time6, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;MNight&quot;</span>, <span class="st">&quot;AM1&quot;</span>, <span class="st">&quot;AM2&quot;</span>, <span class="st">&quot;MDay&quot;</span>, <span class="st">&quot;PM1&quot;</span>, <span class="st">&quot;PM2&quot;</span>)) <span class="co"># reordering chronologically</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">str</span>(dat)</span></code></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a>dat<span class="op">$</span>Time6&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Time6, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;MNight&quot;</span>, <span class="st">&quot;AM1&quot;</span>, <span class="st">&quot;AM2&quot;</span>, <span class="st">&quot;MDay&quot;</span>, <span class="st">&quot;PM1&quot;</span>, <span class="st">&quot;PM2&quot;</span>))</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># reordering chronologically</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">str</span>(dat)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    5000 obs. of  11 variables:
 ##  $ X            : int  31458 14027 40551 40456 15894 13109 23797 6053 23445 34584 ...
 ##  $ presence     : int  0 1 0 0 1 0 0 0 0 0 ...
@@ -582,41 +583,54 @@ $(document).ready(function () {
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co"># time of day and tidal phase not independent (but not a linear correlation)</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="co"># presence in relation to time of day</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">plot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mh), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;time of day&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>)</span></code></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">plot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mh), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb6-6"><a href="#cb6-6"></a>         <span class="dt">xlab=</span> <span class="st">&quot;time of day&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-4.png" width="672" /></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co"># are seasonal patterns similar between years?</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>year), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>)</span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>year), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>                <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-5.png" width="672" /></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># Presence in relation to tide</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">plot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>Tide4), mean), <span class="dt">type=</span> <span class="st">&quot;b&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;tidal phase&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>)</span></code></pre></div>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">plot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>Tide4), mean), <span class="dt">type=</span> <span class="st">&quot;b&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb8-4"><a href="#cb8-4"></a>     <span class="dt">xlab=</span> <span class="st">&quot;tidal phase&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>         <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-6.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Tide4), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Tide4), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>       <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb9-4"><a href="#cb9-4"></a>             <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-7.png" width="672" /></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># no change in pattern of tide use across seasons</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Seasonal variation in diel pattern</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Time6), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Time6), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb10-5"><a href="#cb10-5"></a>        <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb10-6"><a href="#cb10-6"></a>                <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-8.png" width="672" /></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># stronger diel pattern in later part of the year</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co"># Variation in diel pattern between May-June (red) and the rest of the year</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mh, dat<span class="op">$</span>Per2), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;time of day&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mh, dat<span class="op">$</span>Per2), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5"></a>        <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb11-6"><a href="#cb11-6"></a>                <span class="dt">xlab=</span> <span class="st">&quot;time of day&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-9.png" width="672" /></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># less nocturnal in spring?</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="co"># with more categories in spring</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mh, dat<span class="op">$</span>Per4), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">xlab=</span> <span class="st">&quot;time of day&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(dat<span class="op">$</span>presence, <span class="kw">list</span>(dat<span class="op">$</span>mh, dat<span class="op">$</span>Per4), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb12-5"><a href="#cb12-5"></a>        <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb12-6"><a href="#cb12-6"></a>                <span class="dt">xlab=</span> <span class="st">&quot;time of day&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q3-10.png" width="672" /></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># no obvious systematic difference between the 3 portions of May-June</span></span></code></pre></div>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>Let’s start with a Binomial (Bernoulli) GLM (using <code>glm()</code> and the appropriate <code>family</code> argument) with all interactions between numerical time of day, tide angle and day of the year as predictors: <code>tideangle_deg * mh * julianday</code>. Which individual interactions are implied in this formula? (Hint: if unsure, the summary of the model at the next question will list them).</li>
+<li>Let’s start with a Binomial (Bernoulli) GLM (using <code>glm()</code> and the appropriate <code>family</code> argument) with all interactions between numerical time of day, tide angle and day of the year as predictors: <code>tideangle_deg + mh + julianday + tideangle_deg:mh + mh:julianday + tideangle_deg:julianday</code>. Which individual interactions are implied in this formula? (Hint: if unsure, the summary of the model at the next question will list them).</li>
 </ol>
 <p> </p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>PA1&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>tideangle_deg <span class="op">*</span><span class="st"> </span>mh <span class="op">*</span><span class="st"> </span>julianday, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>PA1&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>tideangle_deg <span class="op">+</span><span class="st"> </span>mh <span class="op">+</span><span class="st"> </span>julianday <span class="op">+</span><span class="st"> </span>tideangle_deg<span class="op">:</span>mh <span class="op">+</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="st">                    </span>mh<span class="op">:</span>julianday <span class="op">+</span><span class="st"> </span>tideangle_deg<span class="op">:</span>julianday, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span></code></pre></div>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
 <li>Obtain summaries of the model output using the <code>summary()</code> function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper (with distribution and link function). What biological hypothesis does each term imply, qualitatively?</li>
@@ -625,52 +639,48 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">summary</span>(PA1)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co">## </span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="co">## Call:</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co">## glm(formula = presence ~ tideangle_deg * mh * julianday, family = binomial, </span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co">##     data = dat)</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co">## </span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="co">## Deviance Residuals: </span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="co">## -1.0818  -0.8088  -0.7184   1.4214   1.9582  </span></span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="co">## </span></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="co">## Coefficients:</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="co">##                              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="co">## (Intercept)                -1.361e+00  2.812e-01  -4.838 1.31e-06 ***</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="co">## tideangle_deg               1.079e-04  1.413e-03   0.076   0.9392    </span></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="co">## mh                         -1.229e-03  2.063e-02  -0.060   0.9525    </span></span>
-<span id="cb15-16"><a href="#cb15-16"></a><span class="co">## julianday                   3.050e-03  1.251e-03   2.439   0.0147 *  </span></span>
-<span id="cb15-17"><a href="#cb15-17"></a><span class="co">## tideangle_deg:mh           -4.948e-05  1.008e-04  -0.491   0.6234    </span></span>
-<span id="cb15-18"><a href="#cb15-18"></a><span class="co">## tideangle_deg:julianday    -8.902e-06  6.278e-06  -1.418   0.1562    </span></span>
-<span id="cb15-19"><a href="#cb15-19"></a><span class="co">## mh:julianday               -7.965e-05  9.179e-05  -0.868   0.3855    </span></span>
-<span id="cb15-20"><a href="#cb15-20"></a><span class="co">## tideangle_deg:mh:julianday  7.641e-07  4.499e-07   1.698   0.0895 .  </span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">## glm(formula = presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh + </span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">##     mh:julianday + tideangle_deg:julianday, family = binomial, </span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">##     data = dat)</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">## </span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">## Deviance Residuals: </span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">## -0.9943  -0.8137  -0.7222   1.4591   1.9201  </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">## </span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">## Coefficients:</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">##                           Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">## (Intercept)             -1.043e+00  2.069e-01  -5.041 4.62e-07 ***</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co">## tideangle_deg           -1.748e-03  9.006e-04  -1.941   0.0523 .  </span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="co">## mh                      -2.807e-02  1.332e-02  -2.107   0.0351 *  </span></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="co">## julianday                1.461e-03  8.238e-04   1.774   0.0761 .  </span></span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="co">## tideangle_deg:mh         1.029e-04  4.598e-05   2.239   0.0252 *  </span></span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="co">## mh:julianday             5.484e-05  4.660e-05   1.177   0.2393    </span></span>
+<span id="cb15-20"><a href="#cb15-20"></a><span class="co">## tideangle_deg:julianday  3.627e-07  3.111e-06   0.117   0.9072    </span></span>
 <span id="cb15-21"><a href="#cb15-21"></a><span class="co">## ---</span></span>
 <span id="cb15-22"><a href="#cb15-22"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
 <span id="cb15-23"><a href="#cb15-23"></a><span class="co">## </span></span>
 <span id="cb15-24"><a href="#cb15-24"></a><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></span>
 <span id="cb15-25"><a href="#cb15-25"></a><span class="co">## </span></span>
 <span id="cb15-26"><a href="#cb15-26"></a><span class="co">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
-<span id="cb15-27"><a href="#cb15-27"></a><span class="co">## Residual deviance: 5679.1  on 4992  degrees of freedom</span></span>
-<span id="cb15-28"><a href="#cb15-28"></a><span class="co">## AIC: 5695.1</span></span>
+<span id="cb15-27"><a href="#cb15-27"></a><span class="co">## Residual deviance: 5682.0  on 4993  degrees of freedom</span></span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="co">## AIC: 5696</span></span>
 <span id="cb15-29"><a href="#cb15-29"></a><span class="co">## </span></span>
 <span id="cb15-30"><a href="#cb15-30"></a><span class="co">## Number of Fisher Scoring iterations: 4</span></span>
 <span id="cb15-31"><a href="#cb15-31"></a></span>
 <span id="cb15-32"><a href="#cb15-32"></a><span class="co"># Model description:</span></span>
 <span id="cb15-33"><a href="#cb15-33"></a><span class="co"># presence ~ Bernoulli(p)  or presence ~ Binomial(N= 1, p)</span></span>
 <span id="cb15-34"><a href="#cb15-34"></a><span class="co"># log(p / (1-p)) = </span></span>
-<span id="cb15-35"><a href="#cb15-35"></a><span class="co">#       -1.36*(Intercept) + 0.000108*tideangle_deg - 0.0012*mh </span></span>
-<span id="cb15-36"><a href="#cb15-36"></a><span class="co">#       + 0.0031*julianday - 4.95e-05*tideangle_deg*mh </span></span>
-<span id="cb15-37"><a href="#cb15-37"></a><span class="co">#       - 8.90e-06*tideangle_deg*julianday - 7.96e-05*mh*julianday </span></span>
-<span id="cb15-38"><a href="#cb15-38"></a><span class="co">#       + 7.64e-07*tideangle_deg*mh*julianday</span></span>
-<span id="cb15-39"><a href="#cb15-39"></a></span>
-<span id="cb15-40"><a href="#cb15-40"></a><span class="co"># &quot;(Intercept)&quot; general intercept</span></span>
-<span id="cb15-41"><a href="#cb15-41"></a><span class="co"># &quot;tideangle_deg&quot; main effect of tide angle</span></span>
-<span id="cb15-42"><a href="#cb15-42"></a><span class="co"># &quot;mh&quot; main effect of time of day</span></span>
-<span id="cb15-43"><a href="#cb15-43"></a><span class="co"># &quot;julianday&quot; main effect of day of year</span></span>
-<span id="cb15-44"><a href="#cb15-44"></a><span class="co"># &quot;tideangle_deg:mh&quot; does effect of tide angle change with time of day?</span></span>
-<span id="cb15-45"><a href="#cb15-45"></a><span class="co"># &quot;tideangle_deg:julianday&quot; does effect of tide angle change with day of year?</span></span>
-<span id="cb15-46"><a href="#cb15-46"></a><span class="co"># &quot;mh:julianday&quot; does effect of time of day change with day of year?</span></span>
-<span id="cb15-47"><a href="#cb15-47"></a><span class="co"># &quot;tideangle_deg:mh:julianday&quot; does the change in the effect of (eg) tide angle</span></span>
-<span id="cb15-48"><a href="#cb15-48"></a><span class="co">#       with time of day change across seasons? </span></span>
-<span id="cb15-49"><a href="#cb15-49"></a><span class="co">#       (you can permute all the 3 terms as you please in the sentence)</span></span></code></pre></div>
+<span id="cb15-35"><a href="#cb15-35"></a><span class="co">#       -1.04*(Intercept) + -0.0018*tideangle_deg - 0.0028*mh </span></span>
+<span id="cb15-36"><a href="#cb15-36"></a><span class="co">#       + 0.0015*julianday - 0.00010*tideangle_deg*mh </span></span>
+<span id="cb15-37"><a href="#cb15-37"></a><span class="co">#       + 3.63e-07*tideangle_deg*julianday + 5.48e-05*mh*julianday </span></span>
+<span id="cb15-38"><a href="#cb15-38"></a></span>
+<span id="cb15-39"><a href="#cb15-39"></a><span class="co"># &quot;(Intercept)&quot; general intercept</span></span>
+<span id="cb15-40"><a href="#cb15-40"></a><span class="co"># &quot;tideangle_deg&quot; main effect of tide angle</span></span>
+<span id="cb15-41"><a href="#cb15-41"></a><span class="co"># &quot;mh&quot; main effect of time of day</span></span>
+<span id="cb15-42"><a href="#cb15-42"></a><span class="co"># &quot;julianday&quot; main effect of day of year</span></span>
+<span id="cb15-43"><a href="#cb15-43"></a><span class="co"># &quot;tideangle_deg:mh&quot; does effect of tide angle change with time of day?</span></span>
+<span id="cb15-44"><a href="#cb15-44"></a><span class="co"># &quot;tideangle_deg:julianday&quot; does effect of tide angle change with day of year?</span></span>
+<span id="cb15-45"><a href="#cb15-45"></a><span class="co"># &quot;mh:julianday&quot; does effect of time of day change with day of year?</span></span></code></pre></div>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
 <li>Are all the terms significant? if not, simplify the model. Remember to choose the correct ANOVA method (sequential or not), and the appropriate test.</li>
@@ -680,89 +690,80 @@ $(document).ready(function () {
 <span id="cb16-2"><a href="#cb16-2"></a><span class="co">## Single term deletions</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="co">## </span></span>
 <span id="cb16-4"><a href="#cb16-4"></a><span class="co">## Model:</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="co">## presence ~ tideangle_deg * mh * julianday</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="co">##                            Df Deviance    AIC    LRT Pr(&gt;Chi)  </span></span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="co">## &lt;none&gt;                          5679.1 5695.1                  </span></span>
-<span id="cb16-8"><a href="#cb16-8"></a><span class="co">## tideangle_deg:mh:julianday  1   5682.0 5696.0 2.8861  0.08935 .</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="co">## ---</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a><span class="co"># drop the triple interaction</span></span>
-<span id="cb16-12"><a href="#cb16-12"></a></span>
-<span id="cb16-13"><a href="#cb16-13"></a>PA2&lt;-<span class="st"> </span><span class="kw">update</span>(PA1, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>tideangle_deg<span class="op">:</span>mh<span class="op">:</span>julianday)</span>
-<span id="cb16-14"><a href="#cb16-14"></a><span class="kw">drop1</span>(PA2, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb16-15"><a href="#cb16-15"></a><span class="co">## Single term deletions</span></span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="co">## </span></span>
-<span id="cb16-17"><a href="#cb16-17"></a><span class="co">## Model:</span></span>
-<span id="cb16-18"><a href="#cb16-18"></a><span class="co">## presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh + </span></span>
-<span id="cb16-19"><a href="#cb16-19"></a><span class="co">##     tideangle_deg:julianday + mh:julianday</span></span>
-<span id="cb16-20"><a href="#cb16-20"></a><span class="co">##                         Df Deviance    AIC    LRT Pr(&gt;Chi)  </span></span>
-<span id="cb16-21"><a href="#cb16-21"></a><span class="co">## &lt;none&gt;                       5682.0 5696.0                  </span></span>
-<span id="cb16-22"><a href="#cb16-22"></a><span class="co">## tideangle_deg:mh         1   5687.0 5699.0 5.0173  0.02509 *</span></span>
-<span id="cb16-23"><a href="#cb16-23"></a><span class="co">## tideangle_deg:julianday  1   5682.0 5694.0 0.0136  0.90719  </span></span>
-<span id="cb16-24"><a href="#cb16-24"></a><span class="co">## mh:julianday             1   5683.3 5695.3 1.3857  0.23913  </span></span>
-<span id="cb16-25"><a href="#cb16-25"></a><span class="co">## ---</span></span>
-<span id="cb16-26"><a href="#cb16-26"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-27"><a href="#cb16-27"></a><span class="co"># drop tideangle_deg:julianday</span></span>
-<span id="cb16-28"><a href="#cb16-28"></a></span>
-<span id="cb16-29"><a href="#cb16-29"></a>PA3&lt;-<span class="st"> </span><span class="kw">update</span>(PA2, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>tideangle_deg<span class="op">:</span>julianday)</span>
-<span id="cb16-30"><a href="#cb16-30"></a><span class="kw">drop1</span>(PA3, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb16-31"><a href="#cb16-31"></a><span class="co">## Single term deletions</span></span>
-<span id="cb16-32"><a href="#cb16-32"></a><span class="co">## </span></span>
-<span id="cb16-33"><a href="#cb16-33"></a><span class="co">## Model:</span></span>
-<span id="cb16-34"><a href="#cb16-34"></a><span class="co">## presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh + </span></span>
-<span id="cb16-35"><a href="#cb16-35"></a><span class="co">##     mh:julianday</span></span>
-<span id="cb16-36"><a href="#cb16-36"></a><span class="co">##                  Df Deviance    AIC    LRT Pr(&gt;Chi)  </span></span>
-<span id="cb16-37"><a href="#cb16-37"></a><span class="co">## &lt;none&gt;                5682.0 5694.0                  </span></span>
-<span id="cb16-38"><a href="#cb16-38"></a><span class="co">## tideangle_deg:mh  1   5687.0 5697.0 5.0106  0.02519 *</span></span>
-<span id="cb16-39"><a href="#cb16-39"></a><span class="co">## mh:julianday      1   5683.4 5693.4 1.4203  0.23335  </span></span>
-<span id="cb16-40"><a href="#cb16-40"></a><span class="co">## ---</span></span>
-<span id="cb16-41"><a href="#cb16-41"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-42"><a href="#cb16-42"></a><span class="co"># drop mh:julianday</span></span>
-<span id="cb16-43"><a href="#cb16-43"></a></span>
-<span id="cb16-44"><a href="#cb16-44"></a>PA4&lt;-<span class="st"> </span><span class="kw">update</span>(PA3, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>mh<span class="op">:</span>julianday)</span>
-<span id="cb16-45"><a href="#cb16-45"></a><span class="kw">drop1</span>(PA4, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb16-46"><a href="#cb16-46"></a><span class="co">## Single term deletions</span></span>
-<span id="cb16-47"><a href="#cb16-47"></a><span class="co">## </span></span>
-<span id="cb16-48"><a href="#cb16-48"></a><span class="co">## Model:</span></span>
-<span id="cb16-49"><a href="#cb16-49"></a><span class="co">## presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh</span></span>
-<span id="cb16-50"><a href="#cb16-50"></a><span class="co">##                  Df Deviance    AIC    LRT Pr(&gt;Chi)    </span></span>
-<span id="cb16-51"><a href="#cb16-51"></a><span class="co">## &lt;none&gt;                5683.4 5693.4                    </span></span>
-<span id="cb16-52"><a href="#cb16-52"></a><span class="co">## julianday         1   5732.4 5740.4 49.007 2.55e-12 ***</span></span>
-<span id="cb16-53"><a href="#cb16-53"></a><span class="co">## tideangle_deg:mh  1   5688.4 5696.4  4.996  0.02541 *  </span></span>
-<span id="cb16-54"><a href="#cb16-54"></a><span class="co">## ---</span></span>
-<span id="cb16-55"><a href="#cb16-55"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-56"><a href="#cb16-56"></a><span class="co"># nothing left to drop.</span></span>
-<span id="cb16-57"><a href="#cb16-57"></a></span>
-<span id="cb16-58"><a href="#cb16-58"></a><span class="kw">summary</span>(PA4)</span>
-<span id="cb16-59"><a href="#cb16-59"></a><span class="co">## </span></span>
-<span id="cb16-60"><a href="#cb16-60"></a><span class="co">## Call:</span></span>
-<span id="cb16-61"><a href="#cb16-61"></a><span class="co">## glm(formula = presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh, </span></span>
-<span id="cb16-62"><a href="#cb16-62"></a><span class="co">##     family = binomial, data = dat)</span></span>
-<span id="cb16-63"><a href="#cb16-63"></a><span class="co">## </span></span>
-<span id="cb16-64"><a href="#cb16-64"></a><span class="co">## Deviance Residuals: </span></span>
-<span id="cb16-65"><a href="#cb16-65"></a><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb16-66"><a href="#cb16-66"></a><span class="co">## -0.9800  -0.8147  -0.7204   1.4647   1.9019  </span></span>
-<span id="cb16-67"><a href="#cb16-67"></a><span class="co">## </span></span>
-<span id="cb16-68"><a href="#cb16-68"></a><span class="co">## Coefficients:</span></span>
-<span id="cb16-69"><a href="#cb16-69"></a><span class="co">##                    Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb16-70"><a href="#cb16-70"></a><span class="co">## (Intercept)      -1.191e+00  1.416e-01  -8.413  &lt; 2e-16 ***</span></span>
-<span id="cb16-71"><a href="#cb16-71"></a><span class="co">## tideangle_deg    -1.684e-03  6.412e-04  -2.626  0.00864 ** </span></span>
-<span id="cb16-72"><a href="#cb16-72"></a><span class="co">## mh               -1.696e-02  9.406e-03  -1.803  0.07136 .  </span></span>
-<span id="cb16-73"><a href="#cb16-73"></a><span class="co">## julianday         2.206e-03  3.177e-04   6.944 3.81e-12 ***</span></span>
-<span id="cb16-74"><a href="#cb16-74"></a><span class="co">## tideangle_deg:mh  1.026e-04  4.594e-05   2.234  0.02548 *  </span></span>
-<span id="cb16-75"><a href="#cb16-75"></a><span class="co">## ---</span></span>
-<span id="cb16-76"><a href="#cb16-76"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-77"><a href="#cb16-77"></a><span class="co">## </span></span>
-<span id="cb16-78"><a href="#cb16-78"></a><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb16-79"><a href="#cb16-79"></a><span class="co">## </span></span>
-<span id="cb16-80"><a href="#cb16-80"></a><span class="co">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
-<span id="cb16-81"><a href="#cb16-81"></a><span class="co">## Residual deviance: 5683.4  on 4995  degrees of freedom</span></span>
-<span id="cb16-82"><a href="#cb16-82"></a><span class="co">## AIC: 5693.4</span></span>
-<span id="cb16-83"><a href="#cb16-83"></a><span class="co">## </span></span>
-<span id="cb16-84"><a href="#cb16-84"></a><span class="co">## Number of Fisher Scoring iterations: 4</span></span></code></pre></div>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co">## presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh + </span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co">##     mh:julianday + tideangle_deg:julianday</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co">##                         Df Deviance    AIC    LRT Pr(&gt;Chi)  </span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co">## &lt;none&gt;                       5682.0 5696.0                  </span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="co">## tideangle_deg:mh         1   5687.0 5699.0 5.0173  0.02509 *</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co">## mh:julianday             1   5683.3 5695.3 1.3857  0.23913  </span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="co">## tideangle_deg:julianday  1   5682.0 5694.0 0.0136  0.90719  </span></span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="co">## ---</span></span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="co"># drop tideangle_deg:julianday</span></span>
+<span id="cb16-15"><a href="#cb16-15"></a></span>
+<span id="cb16-16"><a href="#cb16-16"></a>PA2&lt;-<span class="st"> </span><span class="kw">update</span>(PA1, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>tideangle_deg<span class="op">:</span>julianday)</span>
+<span id="cb16-17"><a href="#cb16-17"></a><span class="kw">drop1</span>(PA2, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb16-18"><a href="#cb16-18"></a><span class="co">## Single term deletions</span></span>
+<span id="cb16-19"><a href="#cb16-19"></a><span class="co">## </span></span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="co">## Model:</span></span>
+<span id="cb16-21"><a href="#cb16-21"></a><span class="co">## presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh + </span></span>
+<span id="cb16-22"><a href="#cb16-22"></a><span class="co">##     mh:julianday</span></span>
+<span id="cb16-23"><a href="#cb16-23"></a><span class="co">##                  Df Deviance    AIC    LRT Pr(&gt;Chi)  </span></span>
+<span id="cb16-24"><a href="#cb16-24"></a><span class="co">## &lt;none&gt;                5682.0 5694.0                  </span></span>
+<span id="cb16-25"><a href="#cb16-25"></a><span class="co">## tideangle_deg:mh  1   5687.0 5697.0 5.0106  0.02519 *</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a><span class="co">## mh:julianday      1   5683.4 5693.4 1.4203  0.23335  </span></span>
+<span id="cb16-27"><a href="#cb16-27"></a><span class="co">## ---</span></span>
+<span id="cb16-28"><a href="#cb16-28"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb16-29"><a href="#cb16-29"></a><span class="co"># drop mh:julianday</span></span>
+<span id="cb16-30"><a href="#cb16-30"></a></span>
+<span id="cb16-31"><a href="#cb16-31"></a>PA3&lt;-<span class="st"> </span><span class="kw">update</span>(PA2, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>mh<span class="op">:</span>julianday)</span>
+<span id="cb16-32"><a href="#cb16-32"></a><span class="kw">drop1</span>(PA3, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb16-33"><a href="#cb16-33"></a><span class="co">## Single term deletions</span></span>
+<span id="cb16-34"><a href="#cb16-34"></a><span class="co">## </span></span>
+<span id="cb16-35"><a href="#cb16-35"></a><span class="co">## Model:</span></span>
+<span id="cb16-36"><a href="#cb16-36"></a><span class="co">## presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh</span></span>
+<span id="cb16-37"><a href="#cb16-37"></a><span class="co">##                  Df Deviance    AIC    LRT Pr(&gt;Chi)    </span></span>
+<span id="cb16-38"><a href="#cb16-38"></a><span class="co">## &lt;none&gt;                5683.4 5693.4                    </span></span>
+<span id="cb16-39"><a href="#cb16-39"></a><span class="co">## julianday         1   5732.4 5740.4 49.007 2.55e-12 ***</span></span>
+<span id="cb16-40"><a href="#cb16-40"></a><span class="co">## tideangle_deg:mh  1   5688.4 5696.4  4.996  0.02541 *  </span></span>
+<span id="cb16-41"><a href="#cb16-41"></a><span class="co">## ---</span></span>
+<span id="cb16-42"><a href="#cb16-42"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb16-43"><a href="#cb16-43"></a><span class="co"># nothing left to drop.</span></span>
+<span id="cb16-44"><a href="#cb16-44"></a></span>
+<span id="cb16-45"><a href="#cb16-45"></a><span class="co"># writing final model in full for clarity:</span></span>
+<span id="cb16-46"><a href="#cb16-46"></a>PA4&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>tideangle_deg <span class="op">+</span><span class="st"> </span>mh <span class="op">+</span><span class="st"> </span>julianday <span class="op">+</span><span class="st"> </span>tideangle_deg<span class="op">:</span>mh, </span>
+<span id="cb16-47"><a href="#cb16-47"></a>          <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
+<span id="cb16-48"><a href="#cb16-48"></a></span>
+<span id="cb16-49"><a href="#cb16-49"></a><span class="kw">summary</span>(PA4)</span>
+<span id="cb16-50"><a href="#cb16-50"></a><span class="co">## </span></span>
+<span id="cb16-51"><a href="#cb16-51"></a><span class="co">## Call:</span></span>
+<span id="cb16-52"><a href="#cb16-52"></a><span class="co">## glm(formula = presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh, </span></span>
+<span id="cb16-53"><a href="#cb16-53"></a><span class="co">##     family = binomial, data = dat)</span></span>
+<span id="cb16-54"><a href="#cb16-54"></a><span class="co">## </span></span>
+<span id="cb16-55"><a href="#cb16-55"></a><span class="co">## Deviance Residuals: </span></span>
+<span id="cb16-56"><a href="#cb16-56"></a><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb16-57"><a href="#cb16-57"></a><span class="co">## -0.9800  -0.8147  -0.7204   1.4647   1.9019  </span></span>
+<span id="cb16-58"><a href="#cb16-58"></a><span class="co">## </span></span>
+<span id="cb16-59"><a href="#cb16-59"></a><span class="co">## Coefficients:</span></span>
+<span id="cb16-60"><a href="#cb16-60"></a><span class="co">##                    Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb16-61"><a href="#cb16-61"></a><span class="co">## (Intercept)      -1.191e+00  1.416e-01  -8.413  &lt; 2e-16 ***</span></span>
+<span id="cb16-62"><a href="#cb16-62"></a><span class="co">## tideangle_deg    -1.684e-03  6.412e-04  -2.626  0.00864 ** </span></span>
+<span id="cb16-63"><a href="#cb16-63"></a><span class="co">## mh               -1.696e-02  9.406e-03  -1.803  0.07136 .  </span></span>
+<span id="cb16-64"><a href="#cb16-64"></a><span class="co">## julianday         2.206e-03  3.177e-04   6.944 3.81e-12 ***</span></span>
+<span id="cb16-65"><a href="#cb16-65"></a><span class="co">## tideangle_deg:mh  1.026e-04  4.594e-05   2.234  0.02548 *  </span></span>
+<span id="cb16-66"><a href="#cb16-66"></a><span class="co">## ---</span></span>
+<span id="cb16-67"><a href="#cb16-67"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb16-68"><a href="#cb16-68"></a><span class="co">## </span></span>
+<span id="cb16-69"><a href="#cb16-69"></a><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb16-70"><a href="#cb16-70"></a><span class="co">## </span></span>
+<span id="cb16-71"><a href="#cb16-71"></a><span class="co">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
+<span id="cb16-72"><a href="#cb16-72"></a><span class="co">## Residual deviance: 5683.4  on 4995  degrees of freedom</span></span>
+<span id="cb16-73"><a href="#cb16-73"></a><span class="co">## AIC: 5693.4</span></span>
+<span id="cb16-74"><a href="#cb16-74"></a><span class="co">## </span></span>
+<span id="cb16-75"><a href="#cb16-75"></a><span class="co">## Number of Fisher Scoring iterations: 4</span></span></code></pre></div>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li>Let’s now validate the model, using deviance residuals. The easiest tool is the <code>binnedplot()</code> in the <code>arm</code> package, if you can. If not, use the DIY code chunk below.</li>
+<li>Let’s now validate the model, using deviance residuals. The easiest tool is the <code>binnedplot()</code> in the <code>arm</code> package, if you can. If you can install the arm package and access its binnedplot, use the “DIY” alternative code chunk further down.</li>
 </ol>
 <p> </p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">library</span>(car)</span>
@@ -833,7 +834,7 @@ $(document).ready(function () {
 <span id="cb22-4"><a href="#cb22-4"></a></span>
 <span id="cb22-5"><a href="#cb22-5"></a><span class="co"># Each of the predictors we started with already has one or more </span></span>
 <span id="cb22-6"><a href="#cb22-6"></a><span class="co"># categorical counterpart in the data set.</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="co"># I suggest you try Tide4 * Per2 * Time6</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="co"># I suggest you try fTide4 + Per2 + Time6 + fTide4:Per2 + fTide4:Time6 + Per2:Time6, with fTide4 being the factor version of Tide4.</span></span>
 <span id="cb22-8"><a href="#cb22-8"></a><span class="co"># You can choose something else or cut your own predictors, too.</span></span></code></pre></div>
 <p> </p>
 <ol start="9" style="list-style-type: decimal">
@@ -843,144 +844,136 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># convert numerically coded categorical variables into factors:</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>dat<span class="op">$</span>fTide4&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Tide4)</span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a>PA10&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">*</span><span class="st"> </span>Per2 <span class="op">*</span><span class="st"> </span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
-<span id="cb23-5"><a href="#cb23-5"></a></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="kw">drop1</span>(PA10, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="co">## Single term deletions</span></span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="co">## </span></span>
-<span id="cb23-9"><a href="#cb23-9"></a><span class="co">## Model:</span></span>
-<span id="cb23-10"><a href="#cb23-10"></a><span class="co">## presence ~ fTide4 * Per2 * Time6</span></span>
-<span id="cb23-11"><a href="#cb23-11"></a><span class="co">##                   Df Deviance    AIC    LRT Pr(&gt;Chi)</span></span>
-<span id="cb23-12"><a href="#cb23-12"></a><span class="co">## &lt;none&gt;                 5519.3 5615.3                </span></span>
-<span id="cb23-13"><a href="#cb23-13"></a><span class="co">## fTide4:Per2:Time6 15   5540.9 5606.9 21.561   0.1198</span></span>
-<span id="cb23-14"><a href="#cb23-14"></a><span class="co"># drop the triple interaction Tide4:Per2:Time6</span></span>
-<span id="cb23-15"><a href="#cb23-15"></a></span>
-<span id="cb23-16"><a href="#cb23-16"></a>PA11&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">*</span><span class="st"> </span>Per2 <span class="op">+</span><span class="st"> </span>Per2 <span class="op">*</span><span class="st"> </span>Time6 <span class="op">+</span><span class="st"> </span>fTide4<span class="op">:</span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
-<span id="cb23-17"><a href="#cb23-17"></a></span>
-<span id="cb23-18"><a href="#cb23-18"></a><span class="kw">drop1</span>(PA11, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb23-19"><a href="#cb23-19"></a><span class="co">## Single term deletions</span></span>
-<span id="cb23-20"><a href="#cb23-20"></a><span class="co">## </span></span>
-<span id="cb23-21"><a href="#cb23-21"></a><span class="co">## Model:</span></span>
-<span id="cb23-22"><a href="#cb23-22"></a><span class="co">## presence ~ fTide4 * Per2 + Per2 * Time6 + fTide4:Time6</span></span>
-<span id="cb23-23"><a href="#cb23-23"></a><span class="co">##              Df Deviance    AIC     LRT  Pr(&gt;Chi)    </span></span>
-<span id="cb23-24"><a href="#cb23-24"></a><span class="co">## &lt;none&gt;            5540.9 5606.9                      </span></span>
-<span id="cb23-25"><a href="#cb23-25"></a><span class="co">## fTide4:Per2   3   5543.5 5603.5  2.5905    0.4592    </span></span>
-<span id="cb23-26"><a href="#cb23-26"></a><span class="co">## Per2:Time6    5   5568.5 5624.5 27.6558 4.249e-05 ***</span></span>
-<span id="cb23-27"><a href="#cb23-27"></a><span class="co">## fTide4:Time6 15   5551.9 5587.9 11.0235    0.7509    </span></span>
-<span id="cb23-28"><a href="#cb23-28"></a><span class="co">## ---</span></span>
-<span id="cb23-29"><a href="#cb23-29"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb23-30"><a href="#cb23-30"></a><span class="co"># drop fTide4:Time6</span></span>
-<span id="cb23-31"><a href="#cb23-31"></a></span>
-<span id="cb23-32"><a href="#cb23-32"></a>PA12&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">*</span><span class="st"> </span>Per2 <span class="op">+</span><span class="st"> </span>Per2 <span class="op">*</span><span class="st"> </span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
-<span id="cb23-33"><a href="#cb23-33"></a></span>
-<span id="cb23-34"><a href="#cb23-34"></a><span class="kw">drop1</span>(PA12, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb23-35"><a href="#cb23-35"></a><span class="co">## Single term deletions</span></span>
-<span id="cb23-36"><a href="#cb23-36"></a><span class="co">## </span></span>
-<span id="cb23-37"><a href="#cb23-37"></a><span class="co">## Model:</span></span>
-<span id="cb23-38"><a href="#cb23-38"></a><span class="co">## presence ~ fTide4 * Per2 + Per2 * Time6</span></span>
-<span id="cb23-39"><a href="#cb23-39"></a><span class="co">##             Df Deviance    AIC     LRT  Pr(&gt;Chi)    </span></span>
-<span id="cb23-40"><a href="#cb23-40"></a><span class="co">## &lt;none&gt;           5551.9 5587.9                      </span></span>
-<span id="cb23-41"><a href="#cb23-41"></a><span class="co">## fTide4:Per2  3   5554.8 5584.8  2.9408    0.4008    </span></span>
-<span id="cb23-42"><a href="#cb23-42"></a><span class="co">## Per2:Time6   5   5581.0 5607.0 29.0986 2.218e-05 ***</span></span>
-<span id="cb23-43"><a href="#cb23-43"></a><span class="co">## ---</span></span>
-<span id="cb23-44"><a href="#cb23-44"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb23-45"><a href="#cb23-45"></a><span class="co"># drop fTide4:Per2</span></span>
-<span id="cb23-46"><a href="#cb23-46"></a></span>
-<span id="cb23-47"><a href="#cb23-47"></a>PA13&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">+</span><span class="st"> </span>Per2 <span class="op">*</span><span class="st"> </span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
-<span id="cb23-48"><a href="#cb23-48"></a></span>
-<span id="cb23-49"><a href="#cb23-49"></a><span class="kw">drop1</span>(PA13, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb23-50"><a href="#cb23-50"></a><span class="co">## Single term deletions</span></span>
-<span id="cb23-51"><a href="#cb23-51"></a><span class="co">## </span></span>
-<span id="cb23-52"><a href="#cb23-52"></a><span class="co">## Model:</span></span>
-<span id="cb23-53"><a href="#cb23-53"></a><span class="co">## presence ~ fTide4 + Per2 * Time6</span></span>
-<span id="cb23-54"><a href="#cb23-54"></a><span class="co">##            Df Deviance    AIC    LRT  Pr(&gt;Chi)    </span></span>
-<span id="cb23-55"><a href="#cb23-55"></a><span class="co">## &lt;none&gt;          5554.8 5584.8                     </span></span>
-<span id="cb23-56"><a href="#cb23-56"></a><span class="co">## fTide4      3   5565.3 5589.3 10.511   0.01469 *  </span></span>
-<span id="cb23-57"><a href="#cb23-57"></a><span class="co">## Per2:Time6  5   5585.4 5605.4 30.561 1.144e-05 ***</span></span>
-<span id="cb23-58"><a href="#cb23-58"></a><span class="co">## ---</span></span>
-<span id="cb23-59"><a href="#cb23-59"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb23-60"><a href="#cb23-60"></a><span class="co"># nothing else to drop</span></span>
-<span id="cb23-61"><a href="#cb23-61"></a></span>
-<span id="cb23-62"><a href="#cb23-62"></a><span class="kw">summary</span>(PA13)</span>
+<span id="cb23-4"><a href="#cb23-4"></a>PA10&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">+</span><span class="st"> </span>Per2 <span class="op">+</span><span class="st"> </span>Time6 <span class="op">+</span><span class="st"> </span>fTide4<span class="op">:</span>Per2 <span class="op">+</span><span class="st"> </span>fTide4<span class="op">:</span>Time6 <span class="op">+</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="st">                        </span>Per2<span class="op">:</span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
+<span id="cb23-6"><a href="#cb23-6"></a></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="kw">drop1</span>(PA10, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="co">## Single term deletions</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a><span class="co">## </span></span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="co">## Model:</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + fTide4:Per2 + fTide4:Time6 + </span></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="co">##     Per2:Time6</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="co">##              Df Deviance    AIC     LRT  Pr(&gt;Chi)    </span></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="co">## &lt;none&gt;            5540.9 5606.9                      </span></span>
+<span id="cb23-15"><a href="#cb23-15"></a><span class="co">## fTide4:Per2   3   5543.5 5603.5  2.5905    0.4592    </span></span>
+<span id="cb23-16"><a href="#cb23-16"></a><span class="co">## fTide4:Time6 15   5551.9 5587.9 11.0235    0.7509    </span></span>
+<span id="cb23-17"><a href="#cb23-17"></a><span class="co">## Per2:Time6    5   5568.5 5624.5 27.6558 4.249e-05 ***</span></span>
+<span id="cb23-18"><a href="#cb23-18"></a><span class="co">## ---</span></span>
+<span id="cb23-19"><a href="#cb23-19"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb23-20"><a href="#cb23-20"></a><span class="co"># drop fTide4:Time6</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a></span>
+<span id="cb23-22"><a href="#cb23-22"></a>PA11&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">+</span><span class="st"> </span>Per2 <span class="op">+</span><span class="st"> </span>Time6 <span class="op">+</span><span class="st"> </span>fTide4<span class="op">:</span>Per2 <span class="op">+</span><span class="st"> </span>Per2<span class="op">:</span>Time6,</span>
+<span id="cb23-23"><a href="#cb23-23"></a>                     <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
+<span id="cb23-24"><a href="#cb23-24"></a></span>
+<span id="cb23-25"><a href="#cb23-25"></a><span class="kw">drop1</span>(PA11, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb23-26"><a href="#cb23-26"></a><span class="co">## Single term deletions</span></span>
+<span id="cb23-27"><a href="#cb23-27"></a><span class="co">## </span></span>
+<span id="cb23-28"><a href="#cb23-28"></a><span class="co">## Model:</span></span>
+<span id="cb23-29"><a href="#cb23-29"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + fTide4:Per2 + Per2:Time6</span></span>
+<span id="cb23-30"><a href="#cb23-30"></a><span class="co">##             Df Deviance    AIC     LRT  Pr(&gt;Chi)    </span></span>
+<span id="cb23-31"><a href="#cb23-31"></a><span class="co">## &lt;none&gt;           5551.9 5587.9                      </span></span>
+<span id="cb23-32"><a href="#cb23-32"></a><span class="co">## fTide4:Per2  3   5554.8 5584.8  2.9408    0.4008    </span></span>
+<span id="cb23-33"><a href="#cb23-33"></a><span class="co">## Per2:Time6   5   5581.0 5607.0 29.0986 2.218e-05 ***</span></span>
+<span id="cb23-34"><a href="#cb23-34"></a><span class="co">## ---</span></span>
+<span id="cb23-35"><a href="#cb23-35"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb23-36"><a href="#cb23-36"></a><span class="co"># drop fTide4:Per2</span></span>
+<span id="cb23-37"><a href="#cb23-37"></a></span>
+<span id="cb23-38"><a href="#cb23-38"></a>PA12&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">+</span><span class="st"> </span>Per2 <span class="op">+</span><span class="st"> </span>Time6 <span class="op">+</span><span class="st"> </span>Per2<span class="op">:</span>Time6,</span>
+<span id="cb23-39"><a href="#cb23-39"></a>                     <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
+<span id="cb23-40"><a href="#cb23-40"></a></span>
+<span id="cb23-41"><a href="#cb23-41"></a><span class="kw">drop1</span>(PA12, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb23-42"><a href="#cb23-42"></a><span class="co">## Single term deletions</span></span>
+<span id="cb23-43"><a href="#cb23-43"></a><span class="co">## </span></span>
+<span id="cb23-44"><a href="#cb23-44"></a><span class="co">## Model:</span></span>
+<span id="cb23-45"><a href="#cb23-45"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + Per2:Time6</span></span>
+<span id="cb23-46"><a href="#cb23-46"></a><span class="co">##            Df Deviance    AIC    LRT  Pr(&gt;Chi)    </span></span>
+<span id="cb23-47"><a href="#cb23-47"></a><span class="co">## &lt;none&gt;          5554.8 5584.8                     </span></span>
+<span id="cb23-48"><a href="#cb23-48"></a><span class="co">## fTide4      3   5565.3 5589.3 10.511   0.01469 *  </span></span>
+<span id="cb23-49"><a href="#cb23-49"></a><span class="co">## Per2:Time6  5   5585.4 5605.4 30.561 1.144e-05 ***</span></span>
+<span id="cb23-50"><a href="#cb23-50"></a><span class="co">## ---</span></span>
+<span id="cb23-51"><a href="#cb23-51"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb23-52"><a href="#cb23-52"></a><span class="co"># nothing else to drop</span></span>
+<span id="cb23-53"><a href="#cb23-53"></a></span>
+<span id="cb23-54"><a href="#cb23-54"></a><span class="kw">summary</span>(PA12)</span>
+<span id="cb23-55"><a href="#cb23-55"></a><span class="co">## </span></span>
+<span id="cb23-56"><a href="#cb23-56"></a><span class="co">## Call:</span></span>
+<span id="cb23-57"><a href="#cb23-57"></a><span class="co">## glm(formula = presence ~ fTide4 + Per2 + Time6 + Per2:Time6, </span></span>
+<span id="cb23-58"><a href="#cb23-58"></a><span class="co">##     family = binomial, data = dat)</span></span>
+<span id="cb23-59"><a href="#cb23-59"></a><span class="co">## </span></span>
+<span id="cb23-60"><a href="#cb23-60"></a><span class="co">## Deviance Residuals: </span></span>
+<span id="cb23-61"><a href="#cb23-61"></a><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb23-62"><a href="#cb23-62"></a><span class="co">## -1.1214  -0.8341  -0.6417   1.3101   1.9492  </span></span>
 <span id="cb23-63"><a href="#cb23-63"></a><span class="co">## </span></span>
-<span id="cb23-64"><a href="#cb23-64"></a><span class="co">## Call:</span></span>
-<span id="cb23-65"><a href="#cb23-65"></a><span class="co">## glm(formula = presence ~ fTide4 + Per2 * Time6, family = binomial, </span></span>
-<span id="cb23-66"><a href="#cb23-66"></a><span class="co">##     data = dat)</span></span>
-<span id="cb23-67"><a href="#cb23-67"></a><span class="co">## </span></span>
-<span id="cb23-68"><a href="#cb23-68"></a><span class="co">## Deviance Residuals: </span></span>
-<span id="cb23-69"><a href="#cb23-69"></a><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb23-70"><a href="#cb23-70"></a><span class="co">## -1.1214  -0.8341  -0.6417   1.3101   1.9492  </span></span>
-<span id="cb23-71"><a href="#cb23-71"></a><span class="co">## </span></span>
-<span id="cb23-72"><a href="#cb23-72"></a><span class="co">## Coefficients:</span></span>
-<span id="cb23-73"><a href="#cb23-73"></a><span class="co">##                      Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb23-74"><a href="#cb23-74"></a><span class="co">## (Intercept)          -0.53630    0.09887  -5.424 5.82e-08 ***</span></span>
-<span id="cb23-75"><a href="#cb23-75"></a><span class="co">## fTide42              -0.09815    0.09235  -1.063 0.287880    </span></span>
-<span id="cb23-76"><a href="#cb23-76"></a><span class="co">## fTide43              -0.28709    0.09476  -3.030 0.002448 ** </span></span>
-<span id="cb23-77"><a href="#cb23-77"></a><span class="co">## fTide44              -0.20352    0.09372  -2.172 0.029890 *  </span></span>
-<span id="cb23-78"><a href="#cb23-78"></a><span class="co">## Per2MayJun           -0.13670    0.21003  -0.651 0.515139    </span></span>
-<span id="cb23-79"><a href="#cb23-79"></a><span class="co">## Time6AM1             -0.34058    0.11909  -2.860 0.004239 ** </span></span>
-<span id="cb23-80"><a href="#cb23-80"></a><span class="co">## Time6AM2             -0.84117    0.12957  -6.492 8.47e-11 ***</span></span>
-<span id="cb23-81"><a href="#cb23-81"></a><span class="co">## Time6MDay            -0.91427    0.13217  -6.917 4.61e-12 ***</span></span>
-<span id="cb23-82"><a href="#cb23-82"></a><span class="co">## Time6PM1             -0.86865    0.13039  -6.662 2.70e-11 ***</span></span>
-<span id="cb23-83"><a href="#cb23-83"></a><span class="co">## Time6PM2             -0.17860    0.11860  -1.506 0.132082    </span></span>
-<span id="cb23-84"><a href="#cb23-84"></a><span class="co">## Per2MayJun:Time6AM1   0.80507    0.27719   2.904 0.003680 ** </span></span>
-<span id="cb23-85"><a href="#cb23-85"></a><span class="co">## Per2MayJun:Time6AM2   1.38095    0.28335   4.874 1.10e-06 ***</span></span>
-<span id="cb23-86"><a href="#cb23-86"></a><span class="co">## Per2MayJun:Time6MDay  1.19832    0.28939   4.141 3.46e-05 ***</span></span>
-<span id="cb23-87"><a href="#cb23-87"></a><span class="co">## Per2MayJun:Time6PM1   1.00271    0.29379   3.413 0.000642 ***</span></span>
-<span id="cb23-88"><a href="#cb23-88"></a><span class="co">## Per2MayJun:Time6PM2   0.59002    0.28160   2.095 0.036150 *  </span></span>
-<span id="cb23-89"><a href="#cb23-89"></a><span class="co">## ---</span></span>
-<span id="cb23-90"><a href="#cb23-90"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb23-91"><a href="#cb23-91"></a><span class="co">## </span></span>
-<span id="cb23-92"><a href="#cb23-92"></a><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb23-64"><a href="#cb23-64"></a><span class="co">## Coefficients:</span></span>
+<span id="cb23-65"><a href="#cb23-65"></a><span class="co">##                      Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb23-66"><a href="#cb23-66"></a><span class="co">## (Intercept)          -0.53630    0.09887  -5.424 5.82e-08 ***</span></span>
+<span id="cb23-67"><a href="#cb23-67"></a><span class="co">## fTide42              -0.09815    0.09235  -1.063 0.287880    </span></span>
+<span id="cb23-68"><a href="#cb23-68"></a><span class="co">## fTide43              -0.28709    0.09476  -3.030 0.002448 ** </span></span>
+<span id="cb23-69"><a href="#cb23-69"></a><span class="co">## fTide44              -0.20352    0.09372  -2.172 0.029890 *  </span></span>
+<span id="cb23-70"><a href="#cb23-70"></a><span class="co">## Per2MayJun           -0.13670    0.21003  -0.651 0.515139    </span></span>
+<span id="cb23-71"><a href="#cb23-71"></a><span class="co">## Time6AM1             -0.34058    0.11909  -2.860 0.004239 ** </span></span>
+<span id="cb23-72"><a href="#cb23-72"></a><span class="co">## Time6AM2             -0.84117    0.12957  -6.492 8.47e-11 ***</span></span>
+<span id="cb23-73"><a href="#cb23-73"></a><span class="co">## Time6MDay            -0.91427    0.13217  -6.917 4.61e-12 ***</span></span>
+<span id="cb23-74"><a href="#cb23-74"></a><span class="co">## Time6PM1             -0.86865    0.13039  -6.662 2.70e-11 ***</span></span>
+<span id="cb23-75"><a href="#cb23-75"></a><span class="co">## Time6PM2             -0.17860    0.11860  -1.506 0.132082    </span></span>
+<span id="cb23-76"><a href="#cb23-76"></a><span class="co">## Per2MayJun:Time6AM1   0.80507    0.27719   2.904 0.003680 ** </span></span>
+<span id="cb23-77"><a href="#cb23-77"></a><span class="co">## Per2MayJun:Time6AM2   1.38095    0.28335   4.874 1.10e-06 ***</span></span>
+<span id="cb23-78"><a href="#cb23-78"></a><span class="co">## Per2MayJun:Time6MDay  1.19832    0.28939   4.141 3.46e-05 ***</span></span>
+<span id="cb23-79"><a href="#cb23-79"></a><span class="co">## Per2MayJun:Time6PM1   1.00271    0.29379   3.413 0.000642 ***</span></span>
+<span id="cb23-80"><a href="#cb23-80"></a><span class="co">## Per2MayJun:Time6PM2   0.59002    0.28160   2.095 0.036150 *  </span></span>
+<span id="cb23-81"><a href="#cb23-81"></a><span class="co">## ---</span></span>
+<span id="cb23-82"><a href="#cb23-82"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb23-83"><a href="#cb23-83"></a><span class="co">## </span></span>
+<span id="cb23-84"><a href="#cb23-84"></a><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb23-85"><a href="#cb23-85"></a><span class="co">## </span></span>
+<span id="cb23-86"><a href="#cb23-86"></a><span class="co">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
+<span id="cb23-87"><a href="#cb23-87"></a><span class="co">## Residual deviance: 5554.8  on 4985  degrees of freedom</span></span>
+<span id="cb23-88"><a href="#cb23-88"></a><span class="co">## AIC: 5584.8</span></span>
+<span id="cb23-89"><a href="#cb23-89"></a><span class="co">## </span></span>
+<span id="cb23-90"><a href="#cb23-90"></a><span class="co">## Number of Fisher Scoring iterations: 4</span></span>
+<span id="cb23-91"><a href="#cb23-91"></a><span class="kw">anova</span>(PA12, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb23-92"><a href="#cb23-92"></a><span class="co">## Analysis of Deviance Table</span></span>
 <span id="cb23-93"><a href="#cb23-93"></a><span class="co">## </span></span>
-<span id="cb23-94"><a href="#cb23-94"></a><span class="co">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
-<span id="cb23-95"><a href="#cb23-95"></a><span class="co">## Residual deviance: 5554.8  on 4985  degrees of freedom</span></span>
-<span id="cb23-96"><a href="#cb23-96"></a><span class="co">## AIC: 5584.8</span></span>
+<span id="cb23-94"><a href="#cb23-94"></a><span class="co">## Model: binomial, link: logit</span></span>
+<span id="cb23-95"><a href="#cb23-95"></a><span class="co">## </span></span>
+<span id="cb23-96"><a href="#cb23-96"></a><span class="co">## Response: presence</span></span>
 <span id="cb23-97"><a href="#cb23-97"></a><span class="co">## </span></span>
-<span id="cb23-98"><a href="#cb23-98"></a><span class="co">## Number of Fisher Scoring iterations: 4</span></span>
-<span id="cb23-99"><a href="#cb23-99"></a><span class="kw">anova</span>(PA13, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb23-100"><a href="#cb23-100"></a><span class="co">## Analysis of Deviance Table</span></span>
-<span id="cb23-101"><a href="#cb23-101"></a><span class="co">## </span></span>
-<span id="cb23-102"><a href="#cb23-102"></a><span class="co">## Model: binomial, link: logit</span></span>
-<span id="cb23-103"><a href="#cb23-103"></a><span class="co">## </span></span>
-<span id="cb23-104"><a href="#cb23-104"></a><span class="co">## Response: presence</span></span>
-<span id="cb23-105"><a href="#cb23-105"></a><span class="co">## </span></span>
-<span id="cb23-106"><a href="#cb23-106"></a><span class="co">## Terms added sequentially (first to last)</span></span>
-<span id="cb23-107"><a href="#cb23-107"></a><span class="co">## </span></span>
-<span id="cb23-108"><a href="#cb23-108"></a><span class="co">## </span></span>
-<span id="cb23-109"><a href="#cb23-109"></a><span class="co">##            Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
-<span id="cb23-110"><a href="#cb23-110"></a><span class="co">## NULL                        4999     5738.9              </span></span>
-<span id="cb23-111"><a href="#cb23-111"></a><span class="co">## fTide4      3    8.645      4996     5730.3    0.0344 *  </span></span>
-<span id="cb23-112"><a href="#cb23-112"></a><span class="co">## Per2        1   71.873      4995     5658.4 &lt; 2.2e-16 ***</span></span>
-<span id="cb23-113"><a href="#cb23-113"></a><span class="co">## Time6       5   73.013      4990     5585.4 2.416e-14 ***</span></span>
-<span id="cb23-114"><a href="#cb23-114"></a><span class="co">## Per2:Time6  5   30.561      4985     5554.8 1.144e-05 ***</span></span>
-<span id="cb23-115"><a href="#cb23-115"></a><span class="co">## ---</span></span>
-<span id="cb23-116"><a href="#cb23-116"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb23-117"><a href="#cb23-117"></a><span class="co"># fTide4 contributes minimally</span></span>
-<span id="cb23-118"><a href="#cb23-118"></a></span>
-<span id="cb23-119"><a href="#cb23-119"></a><span class="co"># Total proportion of deviance explained is </span></span>
-<span id="cb23-120"><a href="#cb23-120"></a>(PA13<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>PA13<span class="op">$</span>deviance) <span class="op">/</span><span class="st"> </span>PA13<span class="op">$</span>null.deviance <span class="co"># 3%</span></span>
-<span id="cb23-121"><a href="#cb23-121"></a><span class="co">## [1] 0.03207773</span></span></code></pre></div>
+<span id="cb23-98"><a href="#cb23-98"></a><span class="co">## Terms added sequentially (first to last)</span></span>
+<span id="cb23-99"><a href="#cb23-99"></a><span class="co">## </span></span>
+<span id="cb23-100"><a href="#cb23-100"></a><span class="co">## </span></span>
+<span id="cb23-101"><a href="#cb23-101"></a><span class="co">##            Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
+<span id="cb23-102"><a href="#cb23-102"></a><span class="co">## NULL                        4999     5738.9              </span></span>
+<span id="cb23-103"><a href="#cb23-103"></a><span class="co">## fTide4      3    8.645      4996     5730.3    0.0344 *  </span></span>
+<span id="cb23-104"><a href="#cb23-104"></a><span class="co">## Per2        1   71.873      4995     5658.4 &lt; 2.2e-16 ***</span></span>
+<span id="cb23-105"><a href="#cb23-105"></a><span class="co">## Time6       5   73.013      4990     5585.4 2.416e-14 ***</span></span>
+<span id="cb23-106"><a href="#cb23-106"></a><span class="co">## Per2:Time6  5   30.561      4985     5554.8 1.144e-05 ***</span></span>
+<span id="cb23-107"><a href="#cb23-107"></a><span class="co">## ---</span></span>
+<span id="cb23-108"><a href="#cb23-108"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb23-109"><a href="#cb23-109"></a><span class="co"># fTide4 contributes minimally</span></span>
+<span id="cb23-110"><a href="#cb23-110"></a></span>
+<span id="cb23-111"><a href="#cb23-111"></a><span class="co"># Total proportion of deviance explained is </span></span>
+<span id="cb23-112"><a href="#cb23-112"></a>(PA12<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>PA12<span class="op">$</span>deviance) <span class="op">/</span><span class="st"> </span>PA12<span class="op">$</span>null.deviance <span class="co"># 3%</span></span>
+<span id="cb23-113"><a href="#cb23-113"></a><span class="co">## [1] 0.03207773</span></span></code></pre></div>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
 <li>Do the model validation for the minimal adequate model. Is everything looking good?</li>
 </ol>
 <p> </p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># plot against predictors:</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a> res13.p&lt;-<span class="st"> </span><span class="kw">resid</span>(PA13, <span class="dt">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a> res12.p&lt;-<span class="st"> </span><span class="kw">resid</span>(PA12, <span class="dt">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
 <span id="cb24-3"><a href="#cb24-3"></a></span>
 <span id="cb24-4"><a href="#cb24-4"></a><span class="kw">library</span>(arm)</span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb24-6"><a href="#cb24-6"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>tideangle_deg, <span class="dt">y=</span>  res13.p, <span class="dt">xlab=</span> <span class="st">&quot;Tide angle&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>tideangle_deg, <span class="dt">y=</span>  res12.p, <span class="dt">xlab=</span> <span class="st">&quot;Tide angle&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
 <span id="cb24-7"><a href="#cb24-7"></a><span class="co"># okay</span></span>
-<span id="cb24-8"><a href="#cb24-8"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>mh, <span class="dt">y=</span>  res13.p, <span class="dt">xlab=</span> <span class="st">&quot;hour&quot;</span>)</span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>mh, <span class="dt">y=</span>  res12.p, <span class="dt">xlab=</span> <span class="st">&quot;hour&quot;</span>)</span>
 <span id="cb24-9"><a href="#cb24-9"></a><span class="co"># okay</span></span>
-<span id="cb24-10"><a href="#cb24-10"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>julianday, <span class="dt">y=</span>  res13.p, <span class="dt">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>julianday, <span class="dt">y=</span>  res12.p, <span class="dt">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
 <span id="cb24-11"><a href="#cb24-11"></a><span class="co"># less than good (model only allows for difference between May-June</span></span>
 <span id="cb24-12"><a href="#cb24-12"></a><span class="co"># and rest of the year)</span></span>
 <span id="cb24-13"><a href="#cb24-13"></a></span>
 <span id="cb24-14"><a href="#cb24-14"></a><span class="co"># Check seasonal variation in diel pattern again (&quot;time by season&quot; interaction):</span></span>
-<span id="cb24-15"><a href="#cb24-15"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(res13.p, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Time6), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>(res12.p, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Time6), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, </span>
 <span id="cb24-16"><a href="#cb24-16"></a>        <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q10-1.png" width="672" /></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># still residual variation in diel pattern in later part of the year</span></span>
@@ -1002,173 +995,164 @@ $(document).ready(function () {
 </ul>
 <p>The code is available below for you to unfold if you don’t want to try yourself.</p>
 <p> </p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>PA13.dat4pred&lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">Time6=</span> <span class="kw">levels</span>(dat<span class="op">$</span>Time6),</span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>PA12.dat4pred&lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">Time6=</span> <span class="kw">levels</span>(dat<span class="op">$</span>Time6),</span>
 <span id="cb26-2"><a href="#cb26-2"></a>                                <span class="dt">Per2=</span> <span class="kw">levels</span>(dat<span class="op">$</span>Per2),</span>
 <span id="cb26-3"><a href="#cb26-3"></a>                                <span class="dt">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span></code></pre></div>
 <p> </p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>PA13.pred&lt;-<span class="st"> </span><span class="kw">predict</span>(PA13, PA13.dat4pred, <span class="dt">type=</span> <span class="st">&quot;link&quot;</span>, <span class="dt">se.fit=</span> T)</span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>PA12.pred&lt;-<span class="st"> </span><span class="kw">predict</span>(PA12, PA12.dat4pred, <span class="dt">type=</span> <span class="st">&quot;link&quot;</span>, <span class="dt">se.fit=</span> T)</span>
 <span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a>PA13.dat4pred<span class="op">$</span>fit.resp&lt;-<span class="st"> </span><span class="kw">exp</span>(PA13.pred<span class="op">$</span>fit)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(PA13.pred<span class="op">$</span>fit)) </span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="co"># or plogis(PA13.pred$fit)</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>PA12.dat4pred<span class="op">$</span>fit.resp&lt;-<span class="st"> </span><span class="kw">exp</span>(PA12.pred<span class="op">$</span>fit)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(PA12.pred<span class="op">$</span>fit)) </span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="co"># or plogis(PA12.pred$fit)</span></span>
 <span id="cb27-5"><a href="#cb27-5"></a></span>
 <span id="cb27-6"><a href="#cb27-6"></a><span class="co"># lower 95% CI</span></span>
-<span id="cb27-7"><a href="#cb27-7"></a>PA13.dat4pred<span class="op">$</span>LCI&lt;-<span class="st"> </span><span class="kw">plogis</span>(PA13.pred<span class="op">$</span>fit <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span>PA13.pred<span class="op">$</span>se.fit)</span>
+<span id="cb27-7"><a href="#cb27-7"></a>PA12.dat4pred<span class="op">$</span>LCI&lt;-<span class="st"> </span><span class="kw">plogis</span>(PA12.pred<span class="op">$</span>fit <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span>PA12.pred<span class="op">$</span>se.fit)</span>
 <span id="cb27-8"><a href="#cb27-8"></a><span class="co"># upper 95% CI</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a>PA13.dat4pred<span class="op">$</span>UCI&lt;-<span class="st"> </span><span class="kw">plogis</span>(PA13.pred<span class="op">$</span>fit <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span>PA13.pred<span class="op">$</span>se.fit)</span></code></pre></div>
+<span id="cb27-9"><a href="#cb27-9"></a>PA12.dat4pred<span class="op">$</span>UCI&lt;-<span class="st"> </span><span class="kw">plogis</span>(PA12.pred<span class="op">$</span>fit <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span>PA12.pred<span class="op">$</span>se.fit)</span></code></pre></div>
 <p> </p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="kw">plot</span>(<span class="kw">as.numeric</span>(PA13.dat4pred<span class="op">$</span>Time6), PA13.dat4pred<span class="op">$</span>fit.resp, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">cex=</span> <span class="fl">1.4</span>,</span>
-<span id="cb28-3"><a href="#cb28-3"></a>          <span class="dt">col=</span> PA13.dat4pred<span class="op">$</span>Per2, <span class="dt">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="kw">plot</span>(<span class="kw">as.numeric</span>(PA12.dat4pred<span class="op">$</span>Time6), PA12.dat4pred<span class="op">$</span>fit.resp, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">cex=</span> <span class="fl">1.4</span>,</span>
+<span id="cb28-3"><a href="#cb28-3"></a>      <span class="dt">col=</span> PA12.dat4pred<span class="op">$</span>Per2, <span class="dt">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
 <span id="cb28-4"><a href="#cb28-4"></a>          <span class="dt">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="dt">ylim=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
 <span id="cb28-5"><a href="#cb28-5"></a></span>
-<span id="cb28-6"><a href="#cb28-6"></a><span class="kw">arrows</span>(<span class="dt">x0=</span> <span class="kw">as.numeric</span>(PA13.dat4pred<span class="op">$</span>Time6), <span class="dt">x1=</span> <span class="kw">as.numeric</span>(PA13.dat4pred<span class="op">$</span>Time6),</span>
-<span id="cb28-7"><a href="#cb28-7"></a>          <span class="dt">y0=</span> PA13.dat4pred<span class="op">$</span>LCI, <span class="dt">y1=</span> PA13.dat4pred<span class="op">$</span>UCI,</span>
-<span id="cb28-8"><a href="#cb28-8"></a>          <span class="dt">col=</span> PA13.dat4pred<span class="op">$</span>Per2, <span class="dt">length=</span> <span class="fl">0.02</span>, <span class="dt">angle=</span> <span class="dv">90</span>, <span class="dt">code=</span> <span class="dv">3</span>)</span></code></pre></div>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="kw">arrows</span>(<span class="dt">x0=</span> <span class="kw">as.numeric</span>(PA12.dat4pred<span class="op">$</span>Time6), <span class="dt">x1=</span> <span class="kw">as.numeric</span>(PA12.dat4pred<span class="op">$</span>Time6),</span>
+<span id="cb28-7"><a href="#cb28-7"></a>          <span class="dt">y0=</span> PA12.dat4pred<span class="op">$</span>LCI, <span class="dt">y1=</span> PA12.dat4pred<span class="op">$</span>UCI,</span>
+<span id="cb28-8"><a href="#cb28-8"></a>          <span class="dt">col=</span> PA12.dat4pred<span class="op">$</span>Per2, <span class="dt">length=</span> <span class="fl">0.02</span>, <span class="dt">angle=</span> <span class="dv">90</span>, <span class="dt">code=</span> <span class="dv">3</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="kw">legend</span>(<span class="dt">x=</span> <span class="st">&quot;topright&quot;</span>, <span class="dt">legend=</span> <span class="kw">c</span>(<span class="st">&quot;RestOfYear&quot;</span>, <span class="st">&quot;MayJun&quot;</span>), <span class="dt">col=</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">lty=</span> <span class="dv">1</span>, <span class="dt">pch=</span> <span class="dv">16</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q11c-1.png" width="672" /></p>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li>Repeat the model selection using AIC, with <code>step()</code>. Do you obtain the same minimal adequate model? Then replace <code>Per2</code> by month <code>mon</code> (as a factor) for a finer seasonal resolution, and apply a model selection with <code>step()</code> again. Is the same model structure preferred? Which of the <code>Per2</code> or <code>mon</code> models is favoured by AIC? Do the residuals look better?</li>
+<li>Repeat the model selection this time using AIC, with <code>step()</code>. Do you obtain the same minimal adequate model? Then replace <code>Per2</code> by month <code>mon</code> (as a factor) for a finer seasonal resolution, and apply a model selection with <code>step()</code> again. Is the same model structure preferred? Which of the <code>Per2</code> or <code>mon</code> models is favoured by AIC? Do the residuals look better?</li>
 </ol>
 <p> </p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>PA10.MAM.stepAIC&lt;-<span class="st"> </span><span class="kw">step</span>(PA10)</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="co">## Start:  AIC=5615.3</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="co">## presence ~ fTide4 * Per2 * Time6</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="co">## </span></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="co">##                     Df Deviance    AIC</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="co">## - fTide4:Per2:Time6 15   5540.9 5606.9</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a><span class="co">## &lt;none&gt;                   5519.3 5615.3</span></span>
-<span id="cb29-8"><a href="#cb29-8"></a><span class="co">## </span></span>
-<span id="cb29-9"><a href="#cb29-9"></a><span class="co">## Step:  AIC=5606.86</span></span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + fTide4:Per2 + fTide4:Time6 + </span></span>
-<span id="cb29-11"><a href="#cb29-11"></a><span class="co">##     Per2:Time6</span></span>
-<span id="cb29-12"><a href="#cb29-12"></a><span class="co">## </span></span>
-<span id="cb29-13"><a href="#cb29-13"></a><span class="co">##                Df Deviance    AIC</span></span>
-<span id="cb29-14"><a href="#cb29-14"></a><span class="co">## - fTide4:Time6 15   5551.9 5587.9</span></span>
-<span id="cb29-15"><a href="#cb29-15"></a><span class="co">## - fTide4:Per2   3   5543.5 5603.5</span></span>
-<span id="cb29-16"><a href="#cb29-16"></a><span class="co">## &lt;none&gt;              5540.9 5606.9</span></span>
-<span id="cb29-17"><a href="#cb29-17"></a><span class="co">## - Per2:Time6    5   5568.5 5624.5</span></span>
-<span id="cb29-18"><a href="#cb29-18"></a><span class="co">## </span></span>
-<span id="cb29-19"><a href="#cb29-19"></a><span class="co">## Step:  AIC=5587.89</span></span>
-<span id="cb29-20"><a href="#cb29-20"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + fTide4:Per2 + Per2:Time6</span></span>
-<span id="cb29-21"><a href="#cb29-21"></a><span class="co">## </span></span>
-<span id="cb29-22"><a href="#cb29-22"></a><span class="co">##               Df Deviance    AIC</span></span>
-<span id="cb29-23"><a href="#cb29-23"></a><span class="co">## - fTide4:Per2  3   5554.8 5584.8</span></span>
-<span id="cb29-24"><a href="#cb29-24"></a><span class="co">## &lt;none&gt;             5551.9 5587.9</span></span>
-<span id="cb29-25"><a href="#cb29-25"></a><span class="co">## - Per2:Time6   5   5581.0 5607.0</span></span>
-<span id="cb29-26"><a href="#cb29-26"></a><span class="co">## </span></span>
-<span id="cb29-27"><a href="#cb29-27"></a><span class="co">## Step:  AIC=5584.83</span></span>
-<span id="cb29-28"><a href="#cb29-28"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + Per2:Time6</span></span>
-<span id="cb29-29"><a href="#cb29-29"></a><span class="co">## </span></span>
-<span id="cb29-30"><a href="#cb29-30"></a><span class="co">##              Df Deviance    AIC</span></span>
-<span id="cb29-31"><a href="#cb29-31"></a><span class="co">## &lt;none&gt;            5554.8 5584.8</span></span>
-<span id="cb29-32"><a href="#cb29-32"></a><span class="co">## - fTide4      3   5565.3 5589.3</span></span>
-<span id="cb29-33"><a href="#cb29-33"></a><span class="co">## - Per2:Time6  5   5585.4 5605.4</span></span>
-<span id="cb29-34"><a href="#cb29-34"></a></span>
-<span id="cb29-35"><a href="#cb29-35"></a><span class="kw">anova</span>(PA10.MAM.stepAIC, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb29-36"><a href="#cb29-36"></a><span class="co">## Analysis of Deviance Table</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">## Start:  AIC=5606.86</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + fTide4:Per2 + fTide4:Time6 + </span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">##     Per2:Time6</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="co">## </span></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co">##                Df Deviance    AIC</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co">## - fTide4:Time6 15   5551.9 5587.9</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co">## - fTide4:Per2   3   5543.5 5603.5</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="co">## &lt;none&gt;              5540.9 5606.9</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co">## - Per2:Time6    5   5568.5 5624.5</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co">## </span></span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="co">## Step:  AIC=5587.89</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + fTide4:Per2 + Per2:Time6</span></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="co">## </span></span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="co">##               Df Deviance    AIC</span></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="co">## - fTide4:Per2  3   5554.8 5584.8</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a><span class="co">## &lt;none&gt;             5551.9 5587.9</span></span>
+<span id="cb29-18"><a href="#cb29-18"></a><span class="co">## - Per2:Time6   5   5581.0 5607.0</span></span>
+<span id="cb29-19"><a href="#cb29-19"></a><span class="co">## </span></span>
+<span id="cb29-20"><a href="#cb29-20"></a><span class="co">## Step:  AIC=5584.83</span></span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="co">## presence ~ fTide4 + Per2 + Time6 + Per2:Time6</span></span>
+<span id="cb29-22"><a href="#cb29-22"></a><span class="co">## </span></span>
+<span id="cb29-23"><a href="#cb29-23"></a><span class="co">##              Df Deviance    AIC</span></span>
+<span id="cb29-24"><a href="#cb29-24"></a><span class="co">## &lt;none&gt;            5554.8 5584.8</span></span>
+<span id="cb29-25"><a href="#cb29-25"></a><span class="co">## - fTide4      3   5565.3 5589.3</span></span>
+<span id="cb29-26"><a href="#cb29-26"></a><span class="co">## - Per2:Time6  5   5585.4 5605.4</span></span>
+<span id="cb29-27"><a href="#cb29-27"></a></span>
+<span id="cb29-28"><a href="#cb29-28"></a><span class="kw">anova</span>(PA10.MAM.stepAIC, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb29-29"><a href="#cb29-29"></a><span class="co">## Analysis of Deviance Table</span></span>
+<span id="cb29-30"><a href="#cb29-30"></a><span class="co">## </span></span>
+<span id="cb29-31"><a href="#cb29-31"></a><span class="co">## Model: binomial, link: logit</span></span>
+<span id="cb29-32"><a href="#cb29-32"></a><span class="co">## </span></span>
+<span id="cb29-33"><a href="#cb29-33"></a><span class="co">## Response: presence</span></span>
+<span id="cb29-34"><a href="#cb29-34"></a><span class="co">## </span></span>
+<span id="cb29-35"><a href="#cb29-35"></a><span class="co">## Terms added sequentially (first to last)</span></span>
+<span id="cb29-36"><a href="#cb29-36"></a><span class="co">## </span></span>
 <span id="cb29-37"><a href="#cb29-37"></a><span class="co">## </span></span>
-<span id="cb29-38"><a href="#cb29-38"></a><span class="co">## Model: binomial, link: logit</span></span>
-<span id="cb29-39"><a href="#cb29-39"></a><span class="co">## </span></span>
-<span id="cb29-40"><a href="#cb29-40"></a><span class="co">## Response: presence</span></span>
-<span id="cb29-41"><a href="#cb29-41"></a><span class="co">## </span></span>
-<span id="cb29-42"><a href="#cb29-42"></a><span class="co">## Terms added sequentially (first to last)</span></span>
-<span id="cb29-43"><a href="#cb29-43"></a><span class="co">## </span></span>
-<span id="cb29-44"><a href="#cb29-44"></a><span class="co">## </span></span>
-<span id="cb29-45"><a href="#cb29-45"></a><span class="co">##            Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
-<span id="cb29-46"><a href="#cb29-46"></a><span class="co">## NULL                        4999     5738.9              </span></span>
-<span id="cb29-47"><a href="#cb29-47"></a><span class="co">## fTide4      3    8.645      4996     5730.3    0.0344 *  </span></span>
-<span id="cb29-48"><a href="#cb29-48"></a><span class="co">## Per2        1   71.873      4995     5658.4 &lt; 2.2e-16 ***</span></span>
-<span id="cb29-49"><a href="#cb29-49"></a><span class="co">## Time6       5   73.013      4990     5585.4 2.416e-14 ***</span></span>
-<span id="cb29-50"><a href="#cb29-50"></a><span class="co">## Per2:Time6  5   30.561      4985     5554.8 1.144e-05 ***</span></span>
-<span id="cb29-51"><a href="#cb29-51"></a><span class="co">## ---</span></span>
-<span id="cb29-52"><a href="#cb29-52"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb29-53"><a href="#cb29-53"></a><span class="co"># same model as PA13</span></span>
-<span id="cb29-54"><a href="#cb29-54"></a></span>
-<span id="cb29-55"><a href="#cb29-55"></a><span class="co"># convert &#39;mon&#39; into factor</span></span>
-<span id="cb29-56"><a href="#cb29-56"></a>dat<span class="op">$</span>fMonth&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>mon)</span>
-<span id="cb29-57"><a href="#cb29-57"></a><span class="co"># fit new model</span></span>
-<span id="cb29-58"><a href="#cb29-58"></a>PA20&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">*</span><span class="st"> </span>fMonth <span class="op">*</span><span class="st"> </span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
-<span id="cb29-59"><a href="#cb29-59"></a></span>
-<span id="cb29-60"><a href="#cb29-60"></a>PA20.MAM.stepAIC&lt;-<span class="st"> </span><span class="kw">step</span>(PA20)</span>
-<span id="cb29-61"><a href="#cb29-61"></a><span class="co">## Start:  AIC=5489.17</span></span>
-<span id="cb29-62"><a href="#cb29-62"></a><span class="co">## presence ~ fTide4 * fMonth * Time6</span></span>
-<span id="cb29-63"><a href="#cb29-63"></a><span class="co">## </span></span>
-<span id="cb29-64"><a href="#cb29-64"></a><span class="co">##                        Df Deviance    AIC</span></span>
-<span id="cb29-65"><a href="#cb29-65"></a><span class="co">## - fTide4:fMonth:Time6 165   5097.1 5343.1</span></span>
-<span id="cb29-66"><a href="#cb29-66"></a><span class="co">## &lt;none&gt;                      4913.2 5489.2</span></span>
+<span id="cb29-38"><a href="#cb29-38"></a><span class="co">##            Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
+<span id="cb29-39"><a href="#cb29-39"></a><span class="co">## NULL                        4999     5738.9              </span></span>
+<span id="cb29-40"><a href="#cb29-40"></a><span class="co">## fTide4      3    8.645      4996     5730.3    0.0344 *  </span></span>
+<span id="cb29-41"><a href="#cb29-41"></a><span class="co">## Per2        1   71.873      4995     5658.4 &lt; 2.2e-16 ***</span></span>
+<span id="cb29-42"><a href="#cb29-42"></a><span class="co">## Time6       5   73.013      4990     5585.4 2.416e-14 ***</span></span>
+<span id="cb29-43"><a href="#cb29-43"></a><span class="co">## Per2:Time6  5   30.561      4985     5554.8 1.144e-05 ***</span></span>
+<span id="cb29-44"><a href="#cb29-44"></a><span class="co">## ---</span></span>
+<span id="cb29-45"><a href="#cb29-45"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb29-46"><a href="#cb29-46"></a><span class="co"># same model as PA13</span></span>
+<span id="cb29-47"><a href="#cb29-47"></a></span>
+<span id="cb29-48"><a href="#cb29-48"></a><span class="co"># convert &#39;mon&#39; into factor</span></span>
+<span id="cb29-49"><a href="#cb29-49"></a>dat<span class="op">$</span>fMonth&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>mon)</span>
+<span id="cb29-50"><a href="#cb29-50"></a><span class="co"># fit new model</span></span>
+<span id="cb29-51"><a href="#cb29-51"></a>PA20&lt;-<span class="st"> </span><span class="kw">glm</span>(presence <span class="op">~</span><span class="st"> </span>fTide4 <span class="op">+</span><span class="st"> </span>fMonth <span class="op">+</span><span class="st"> </span>Time6 <span class="op">+</span><span class="st"> </span>fTide4<span class="op">:</span>fMonth <span class="op">+</span><span class="st"> </span>fTide4<span class="op">:</span>Time6 <span class="op">+</span></span>
+<span id="cb29-52"><a href="#cb29-52"></a><span class="st">                        </span>fMonth<span class="op">:</span>Time6, <span class="dt">family=</span> binomial, <span class="dt">data=</span> dat)</span>
+<span id="cb29-53"><a href="#cb29-53"></a></span>
+<span id="cb29-54"><a href="#cb29-54"></a>PA20.MAM.stepAIC&lt;-<span class="st"> </span><span class="kw">step</span>(PA20)</span>
+<span id="cb29-55"><a href="#cb29-55"></a><span class="co">## Start:  AIC=5343.08</span></span>
+<span id="cb29-56"><a href="#cb29-56"></a><span class="co">## presence ~ fTide4 + fMonth + Time6 + fTide4:fMonth + fTide4:Time6 + </span></span>
+<span id="cb29-57"><a href="#cb29-57"></a><span class="co">##     fMonth:Time6</span></span>
+<span id="cb29-58"><a href="#cb29-58"></a><span class="co">## </span></span>
+<span id="cb29-59"><a href="#cb29-59"></a><span class="co">##                 Df Deviance    AIC</span></span>
+<span id="cb29-60"><a href="#cb29-60"></a><span class="co">## - fTide4:Time6  15   5110.6 5326.6</span></span>
+<span id="cb29-61"><a href="#cb29-61"></a><span class="co">## - fTide4:fMonth 33   5148.2 5328.2</span></span>
+<span id="cb29-62"><a href="#cb29-62"></a><span class="co">## &lt;none&gt;               5097.1 5343.1</span></span>
+<span id="cb29-63"><a href="#cb29-63"></a><span class="co">## - fMonth:Time6  55   5269.7 5405.7</span></span>
+<span id="cb29-64"><a href="#cb29-64"></a><span class="co">## </span></span>
+<span id="cb29-65"><a href="#cb29-65"></a><span class="co">## Step:  AIC=5326.56</span></span>
+<span id="cb29-66"><a href="#cb29-66"></a><span class="co">## presence ~ fTide4 + fMonth + Time6 + fTide4:fMonth + fMonth:Time6</span></span>
 <span id="cb29-67"><a href="#cb29-67"></a><span class="co">## </span></span>
-<span id="cb29-68"><a href="#cb29-68"></a><span class="co">## Step:  AIC=5343.08</span></span>
-<span id="cb29-69"><a href="#cb29-69"></a><span class="co">## presence ~ fTide4 + fMonth + Time6 + fTide4:fMonth + fTide4:Time6 + </span></span>
-<span id="cb29-70"><a href="#cb29-70"></a><span class="co">##     fMonth:Time6</span></span>
-<span id="cb29-71"><a href="#cb29-71"></a><span class="co">## </span></span>
-<span id="cb29-72"><a href="#cb29-72"></a><span class="co">##                 Df Deviance    AIC</span></span>
-<span id="cb29-73"><a href="#cb29-73"></a><span class="co">## - fTide4:Time6  15   5110.6 5326.6</span></span>
-<span id="cb29-74"><a href="#cb29-74"></a><span class="co">## - fTide4:fMonth 33   5148.2 5328.2</span></span>
-<span id="cb29-75"><a href="#cb29-75"></a><span class="co">## &lt;none&gt;               5097.1 5343.1</span></span>
-<span id="cb29-76"><a href="#cb29-76"></a><span class="co">## - fMonth:Time6  55   5269.7 5405.7</span></span>
-<span id="cb29-77"><a href="#cb29-77"></a><span class="co">## </span></span>
-<span id="cb29-78"><a href="#cb29-78"></a><span class="co">## Step:  AIC=5326.56</span></span>
-<span id="cb29-79"><a href="#cb29-79"></a><span class="co">## presence ~ fTide4 + fMonth + Time6 + fTide4:fMonth + fMonth:Time6</span></span>
-<span id="cb29-80"><a href="#cb29-80"></a><span class="co">## </span></span>
-<span id="cb29-81"><a href="#cb29-81"></a><span class="co">##                 Df Deviance    AIC</span></span>
-<span id="cb29-82"><a href="#cb29-82"></a><span class="co">## - fTide4:fMonth 33   5160.1 5310.1</span></span>
-<span id="cb29-83"><a href="#cb29-83"></a><span class="co">## &lt;none&gt;               5110.6 5326.6</span></span>
-<span id="cb29-84"><a href="#cb29-84"></a><span class="co">## - fMonth:Time6  55   5285.2 5391.2</span></span>
+<span id="cb29-68"><a href="#cb29-68"></a><span class="co">##                 Df Deviance    AIC</span></span>
+<span id="cb29-69"><a href="#cb29-69"></a><span class="co">## - fTide4:fMonth 33   5160.1 5310.1</span></span>
+<span id="cb29-70"><a href="#cb29-70"></a><span class="co">## &lt;none&gt;               5110.6 5326.6</span></span>
+<span id="cb29-71"><a href="#cb29-71"></a><span class="co">## - fMonth:Time6  55   5285.2 5391.2</span></span>
+<span id="cb29-72"><a href="#cb29-72"></a><span class="co">## </span></span>
+<span id="cb29-73"><a href="#cb29-73"></a><span class="co">## Step:  AIC=5310.09</span></span>
+<span id="cb29-74"><a href="#cb29-74"></a><span class="co">## presence ~ fTide4 + fMonth + Time6 + fMonth:Time6</span></span>
+<span id="cb29-75"><a href="#cb29-75"></a><span class="co">## </span></span>
+<span id="cb29-76"><a href="#cb29-76"></a><span class="co">##                Df Deviance    AIC</span></span>
+<span id="cb29-77"><a href="#cb29-77"></a><span class="co">## &lt;none&gt;              5160.1 5310.1</span></span>
+<span id="cb29-78"><a href="#cb29-78"></a><span class="co">## - fTide4        3   5171.4 5315.4</span></span>
+<span id="cb29-79"><a href="#cb29-79"></a><span class="co">## - fMonth:Time6 55   5331.9 5371.9</span></span>
+<span id="cb29-80"><a href="#cb29-80"></a></span>
+<span id="cb29-81"><a href="#cb29-81"></a><span class="kw">anova</span>(PA20.MAM.stepAIC, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb29-82"><a href="#cb29-82"></a><span class="co">## Analysis of Deviance Table</span></span>
+<span id="cb29-83"><a href="#cb29-83"></a><span class="co">## </span></span>
+<span id="cb29-84"><a href="#cb29-84"></a><span class="co">## Model: binomial, link: logit</span></span>
 <span id="cb29-85"><a href="#cb29-85"></a><span class="co">## </span></span>
-<span id="cb29-86"><a href="#cb29-86"></a><span class="co">## Step:  AIC=5310.09</span></span>
-<span id="cb29-87"><a href="#cb29-87"></a><span class="co">## presence ~ fTide4 + fMonth + Time6 + fMonth:Time6</span></span>
-<span id="cb29-88"><a href="#cb29-88"></a><span class="co">## </span></span>
-<span id="cb29-89"><a href="#cb29-89"></a><span class="co">##                Df Deviance    AIC</span></span>
-<span id="cb29-90"><a href="#cb29-90"></a><span class="co">## &lt;none&gt;              5160.1 5310.1</span></span>
-<span id="cb29-91"><a href="#cb29-91"></a><span class="co">## - fTide4        3   5171.4 5315.4</span></span>
-<span id="cb29-92"><a href="#cb29-92"></a><span class="co">## - fMonth:Time6 55   5331.9 5371.9</span></span>
-<span id="cb29-93"><a href="#cb29-93"></a></span>
-<span id="cb29-94"><a href="#cb29-94"></a><span class="kw">anova</span>(PA20.MAM.stepAIC, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb29-95"><a href="#cb29-95"></a><span class="co">## Analysis of Deviance Table</span></span>
-<span id="cb29-96"><a href="#cb29-96"></a><span class="co">## </span></span>
-<span id="cb29-97"><a href="#cb29-97"></a><span class="co">## Model: binomial, link: logit</span></span>
-<span id="cb29-98"><a href="#cb29-98"></a><span class="co">## </span></span>
-<span id="cb29-99"><a href="#cb29-99"></a><span class="co">## Response: presence</span></span>
-<span id="cb29-100"><a href="#cb29-100"></a><span class="co">## </span></span>
-<span id="cb29-101"><a href="#cb29-101"></a><span class="co">## Terms added sequentially (first to last)</span></span>
-<span id="cb29-102"><a href="#cb29-102"></a><span class="co">## </span></span>
-<span id="cb29-103"><a href="#cb29-103"></a><span class="co">## </span></span>
-<span id="cb29-104"><a href="#cb29-104"></a><span class="co">##              Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
-<span id="cb29-105"><a href="#cb29-105"></a><span class="co">## NULL                          4999     5738.9              </span></span>
-<span id="cb29-106"><a href="#cb29-106"></a><span class="co">## fTide4        3     8.65      4996     5730.3    0.0344 *  </span></span>
-<span id="cb29-107"><a href="#cb29-107"></a><span class="co">## fMonth       11   318.55      4985     5411.7 &lt; 2.2e-16 ***</span></span>
-<span id="cb29-108"><a href="#cb29-108"></a><span class="co">## Time6         5    79.83      4980     5331.9 9.113e-16 ***</span></span>
-<span id="cb29-109"><a href="#cb29-109"></a><span class="co">## fMonth:Time6 55   171.81      4925     5160.1 6.042e-14 ***</span></span>
-<span id="cb29-110"><a href="#cb29-110"></a><span class="co">## ---</span></span>
-<span id="cb29-111"><a href="#cb29-111"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb29-112"><a href="#cb29-112"></a><span class="co"># Same structure selected: tide, plus season by time of day</span></span>
-<span id="cb29-113"><a href="#cb29-113"></a><span class="kw">AIC</span>(PA10.MAM.stepAIC)</span>
-<span id="cb29-114"><a href="#cb29-114"></a><span class="co">## [1] 5584.829</span></span>
-<span id="cb29-115"><a href="#cb29-115"></a><span class="kw">AIC</span>(PA20.MAM.stepAIC)</span>
-<span id="cb29-116"><a href="#cb29-116"></a><span class="co">## [1] 5310.091</span></span>
-<span id="cb29-117"><a href="#cb29-117"></a><span class="co"># Monthly model vastly favoured despite the 60 extra parameters</span></span>
-<span id="cb29-118"><a href="#cb29-118"></a></span>
-<span id="cb29-119"><a href="#cb29-119"></a><span class="kw">anova</span>(PA10.MAM.stepAIC, PA20.MAM.stepAIC, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb29-120"><a href="#cb29-120"></a><span class="co">## Analysis of Deviance Table</span></span>
-<span id="cb29-121"><a href="#cb29-121"></a><span class="co">## </span></span>
-<span id="cb29-122"><a href="#cb29-122"></a><span class="co">## Model 1: presence ~ fTide4 + Per2 + Time6 + Per2:Time6</span></span>
-<span id="cb29-123"><a href="#cb29-123"></a><span class="co">## Model 2: presence ~ fTide4 + fMonth + Time6 + fMonth:Time6</span></span>
-<span id="cb29-124"><a href="#cb29-124"></a><span class="co">##   Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    </span></span>
-<span id="cb29-125"><a href="#cb29-125"></a><span class="co">## 1      4985     5554.8                          </span></span>
-<span id="cb29-126"><a href="#cb29-126"></a><span class="co">## 2      4925     5160.1 60   394.74 &lt; 2.2e-16 ***</span></span>
-<span id="cb29-127"><a href="#cb29-127"></a><span class="co">## ---</span></span>
-<span id="cb29-128"><a href="#cb29-128"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb29-129"><a href="#cb29-129"></a><span class="co"># also clearly favoured by likelihood ratio test</span></span>
-<span id="cb29-130"><a href="#cb29-130"></a></span>
-<span id="cb29-131"><a href="#cb29-131"></a><span class="co"># residual analysis:</span></span>
-<span id="cb29-132"><a href="#cb29-132"></a>res20.d&lt;-<span class="st"> </span><span class="kw">resid</span>(PA20.MAM.stepAIC, <span class="dt">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb29-133"><a href="#cb29-133"></a><span class="kw">library</span>(arm)</span>
-<span id="cb29-134"><a href="#cb29-134"></a><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb29-135"><a href="#cb29-135"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>tideangle_deg, <span class="dt">y=</span>   res20.d, <span class="dt">xlab=</span> <span class="st">&quot;Tide angle&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
-<span id="cb29-136"><a href="#cb29-136"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>mh, <span class="dt">y=</span>   res20.d, <span class="dt">xlab=</span> <span class="st">&quot;hour&quot;</span>)</span>
-<span id="cb29-137"><a href="#cb29-137"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>julianday, <span class="dt">y=</span>   res20.d, <span class="dt">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
-<span id="cb29-138"><a href="#cb29-138"></a><span class="co"># Check seasonal variation in diel pattern again (&quot;time by season&quot; interaction):</span></span>
-<span id="cb29-139"><a href="#cb29-139"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>( res20.d, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Time6), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb29-86"><a href="#cb29-86"></a><span class="co">## Response: presence</span></span>
+<span id="cb29-87"><a href="#cb29-87"></a><span class="co">## </span></span>
+<span id="cb29-88"><a href="#cb29-88"></a><span class="co">## Terms added sequentially (first to last)</span></span>
+<span id="cb29-89"><a href="#cb29-89"></a><span class="co">## </span></span>
+<span id="cb29-90"><a href="#cb29-90"></a><span class="co">## </span></span>
+<span id="cb29-91"><a href="#cb29-91"></a><span class="co">##              Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
+<span id="cb29-92"><a href="#cb29-92"></a><span class="co">## NULL                          4999     5738.9              </span></span>
+<span id="cb29-93"><a href="#cb29-93"></a><span class="co">## fTide4        3     8.65      4996     5730.3    0.0344 *  </span></span>
+<span id="cb29-94"><a href="#cb29-94"></a><span class="co">## fMonth       11   318.55      4985     5411.7 &lt; 2.2e-16 ***</span></span>
+<span id="cb29-95"><a href="#cb29-95"></a><span class="co">## Time6         5    79.83      4980     5331.9 9.113e-16 ***</span></span>
+<span id="cb29-96"><a href="#cb29-96"></a><span class="co">## fMonth:Time6 55   171.81      4925     5160.1 6.042e-14 ***</span></span>
+<span id="cb29-97"><a href="#cb29-97"></a><span class="co">## ---</span></span>
+<span id="cb29-98"><a href="#cb29-98"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb29-99"><a href="#cb29-99"></a><span class="co"># Same structure selected: tide, plus season (month) by time of day</span></span>
+<span id="cb29-100"><a href="#cb29-100"></a><span class="kw">AIC</span>(PA10.MAM.stepAIC)</span>
+<span id="cb29-101"><a href="#cb29-101"></a><span class="co">## [1] 5584.829</span></span>
+<span id="cb29-102"><a href="#cb29-102"></a><span class="kw">AIC</span>(PA20.MAM.stepAIC)</span>
+<span id="cb29-103"><a href="#cb29-103"></a><span class="co">## [1] 5310.091</span></span>
+<span id="cb29-104"><a href="#cb29-104"></a><span class="co"># Monthly model vastly favoured despite the 60 extra parameters</span></span>
+<span id="cb29-105"><a href="#cb29-105"></a></span>
+<span id="cb29-106"><a href="#cb29-106"></a><span class="kw">anova</span>(PA10.MAM.stepAIC, PA20.MAM.stepAIC, <span class="dt">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb29-107"><a href="#cb29-107"></a><span class="co">## Analysis of Deviance Table</span></span>
+<span id="cb29-108"><a href="#cb29-108"></a><span class="co">## </span></span>
+<span id="cb29-109"><a href="#cb29-109"></a><span class="co">## Model 1: presence ~ fTide4 + Per2 + Time6 + Per2:Time6</span></span>
+<span id="cb29-110"><a href="#cb29-110"></a><span class="co">## Model 2: presence ~ fTide4 + fMonth + Time6 + fMonth:Time6</span></span>
+<span id="cb29-111"><a href="#cb29-111"></a><span class="co">##   Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    </span></span>
+<span id="cb29-112"><a href="#cb29-112"></a><span class="co">## 1      4985     5554.8                          </span></span>
+<span id="cb29-113"><a href="#cb29-113"></a><span class="co">## 2      4925     5160.1 60   394.74 &lt; 2.2e-16 ***</span></span>
+<span id="cb29-114"><a href="#cb29-114"></a><span class="co">## ---</span></span>
+<span id="cb29-115"><a href="#cb29-115"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb29-116"><a href="#cb29-116"></a><span class="co"># also clearly favoured by likelihood ratio test</span></span>
+<span id="cb29-117"><a href="#cb29-117"></a></span>
+<span id="cb29-118"><a href="#cb29-118"></a><span class="co"># residual analysis:</span></span>
+<span id="cb29-119"><a href="#cb29-119"></a>res20.d&lt;-<span class="st"> </span><span class="kw">resid</span>(PA20.MAM.stepAIC, <span class="dt">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb29-120"><a href="#cb29-120"></a><span class="kw">library</span>(arm)</span>
+<span id="cb29-121"><a href="#cb29-121"></a><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb29-122"><a href="#cb29-122"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>tideangle_deg, <span class="dt">y=</span>   res20.d, <span class="dt">xlab=</span> <span class="st">&quot;Tide angle&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
+<span id="cb29-123"><a href="#cb29-123"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>mh, <span class="dt">y=</span>   res20.d, <span class="dt">xlab=</span> <span class="st">&quot;hour&quot;</span>)</span>
+<span id="cb29-124"><a href="#cb29-124"></a><span class="kw">binnedplot</span>(<span class="dt">x=</span> dat<span class="op">$</span>julianday, <span class="dt">y=</span>   res20.d, <span class="dt">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="dt">nclass=</span> <span class="dv">100</span>)</span>
+<span id="cb29-125"><a href="#cb29-125"></a><span class="co"># Check seasonal variation in diel pattern again (&quot;time by season&quot; interaction):</span></span>
+<span id="cb29-126"><a href="#cb29-126"></a><span class="kw">matplot</span>(<span class="kw">tapply</span>( res20.d, <span class="kw">list</span>(dat<span class="op">$</span>mon, dat<span class="op">$</span>Time6), mean), <span class="dt">type=</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb29-127"><a href="#cb29-127"></a>        <span class="dt">xlab=</span> <span class="st">&quot;month&quot;</span>, </span>
+<span id="cb29-128"><a href="#cb29-128"></a>                <span class="dt">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="dt">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q12-1.png" width="672" /></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># much improved</span></span></code></pre></div>
 <p> </p>
@@ -1202,16 +1186,30 @@ $(document).ready(function () {
 <span id="cb31-24"><a href="#cb31-24"></a>}</span></code></pre></div>
 <p><img src="GLM_2_Binomial_exercise_solutions_files/figure-html/Q13-1.png" width="768" /></p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># According to the better supported model, they tend to use the site more in May, June and July day and night, visit mostly by night from October to December, and seldom from Jan to March.</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># There are few assumptions for the Bernoulli distribution other than observations being zeros and ones.</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a><span class="co"># Some assumptions valid for all models still apply here, such as: model correctly specified; independent residuals. The latter is violated in this data set due to consecutive measurements in time. This issue is explored in the linked paper, using mixed models for non-independent data (covered in course BI5302). The paper also uses GAMs for avoiding the discretization of continuous variables, and accounting for the cyclicity of the preditors (estimates at each end should match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># According to the better supported model, they tend to use the site more</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co">#  in May, June and </span></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># July day and night, visit mostly by night from October to December,</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="co">#  and seldom from Jan to March.</span></span>
 <span id="cb32-6"><a href="#cb32-6"></a></span>
-<span id="cb32-7"><a href="#cb32-7"></a><span class="co"># Of note is the low proportion of deviance explained by the model,</span></span>
-<span id="cb32-8"><a href="#cb32-8"></a><span class="co"># despite its complexity (75 parameters):</span></span>
-<span id="cb32-9"><a href="#cb32-9"></a>(PA20.MAM.stepAIC<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>PA20.MAM.stepAIC<span class="op">$</span>deviance) <span class="op">/</span><span class="st"> </span>PA20.MAM.stepAIC<span class="op">$</span>null.deviance </span>
-<span id="cb32-10"><a href="#cb32-10"></a><span class="co">## [1] 0.1008604</span></span>
-<span id="cb32-11"><a href="#cb32-11"></a><span class="co"># 10%. This is quite normal with Bernoulli data.</span></span></code></pre></div>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="co"># There are few assumptions for the Bernoulli distribution other than </span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="co"># observations being zeros and ones.</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="co"># Some assumptions valid for all models still apply here, such as: model </span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="co"># correctly specified; independent</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="co"># residuals. The latter is violated in this data set due to consecutive </span></span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="co"># measurements in time. This issue</span></span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="co"># is explored in the linked paper, using mixed models for non-independent data </span></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="co"># (covered in course BI5302). </span></span>
+<span id="cb32-15"><a href="#cb32-15"></a><span class="co"># The paper also uses GAMs for avoiding the discretization of </span></span>
+<span id="cb32-16"><a href="#cb32-16"></a><span class="co"># continuous variables, and</span></span>
+<span id="cb32-17"><a href="#cb32-17"></a><span class="co"># accounting for the cyclicity of the preditors (estimates at each end should </span></span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="co"># match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)</span></span>
+<span id="cb32-19"><a href="#cb32-19"></a></span>
+<span id="cb32-20"><a href="#cb32-20"></a><span class="co"># Of note is the low proportion of deviance explained by the model,</span></span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="co"># despite its complexity (75 parameters):</span></span>
+<span id="cb32-22"><a href="#cb32-22"></a>(PA20.MAM.stepAIC<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>PA20.MAM.stepAIC<span class="op">$</span>deviance) <span class="op">/</span></span>
+<span id="cb32-23"><a href="#cb32-23"></a><span class="st">    </span>PA20.MAM.stepAIC<span class="op">$</span>null.deviance </span>
+<span id="cb32-24"><a href="#cb32-24"></a><span class="co">## [1] 0.1008604</span></span>
+<span id="cb32-25"><a href="#cb32-25"></a><span class="co"># 10%. This is quite normal with Bernoulli data.</span></span></code></pre></div>
 <p> </p>
 <p>End of the Binomial (Bernoulli) GLM - dolphin behavioural plasticity exercise</p>
 <p> </p>
@@ -1254,26 +1252,27 @@ $(document).ready(function () {
 <span id="cb33-35"><a href="#cb33-35"></a><span class="co"># Bin time of day into 6 4h periods (first centered on midnight)</span></span>
 <span id="cb33-36"><a href="#cb33-36"></a>dat<span class="op">$</span>Time6&lt;-<span class="st"> </span><span class="kw">cut</span>(dat<span class="op">$</span>mh, <span class="dt">breaks=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">22</span>, <span class="dt">by=</span> <span class="dv">4</span>), <span class="dv">24</span>), </span>
 <span id="cb33-37"><a href="#cb33-37"></a>            <span class="dt">labels=</span> <span class="kw">c</span>(<span class="st">&quot;MNight&quot;</span>, <span class="st">&quot;AM1&quot;</span>, <span class="st">&quot;AM2&quot;</span>, <span class="st">&quot;MDay&quot;</span>, <span class="st">&quot;PM1&quot;</span>, <span class="st">&quot;PM2&quot;</span>, <span class="st">&quot;MNight&quot;</span>))</span>
-<span id="cb33-38"><a href="#cb33-38"></a>dat<span class="op">$</span>Time6&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Time6, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;MNight&quot;</span>, <span class="st">&quot;AM1&quot;</span>, <span class="st">&quot;AM2&quot;</span>, <span class="st">&quot;MDay&quot;</span>, <span class="st">&quot;PM1&quot;</span>, <span class="st">&quot;PM2&quot;</span>)) <span class="co"># reordering chronologically</span></span>
-<span id="cb33-39"><a href="#cb33-39"></a></span>
-<span id="cb33-40"><a href="#cb33-40"></a><span class="co"># check this is working as intended:</span></span>
-<span id="cb33-41"><a href="#cb33-41"></a><span class="kw">table</span>(dat<span class="op">$</span>Time6, dat<span class="op">$</span>mh)</span>
-<span id="cb33-42"><a href="#cb33-42"></a></span>
-<span id="cb33-43"><a href="#cb33-43"></a><span class="co"># Bin tide angle into 4 quadrants with peaks in middle of respective bin</span></span>
-<span id="cb33-44"><a href="#cb33-44"></a>dat<span class="op">$</span>Tide4&lt;-<span class="st"> </span><span class="kw">cut</span>(dat<span class="op">$</span>tideangle_deg, <span class="dt">breaks=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">45</span>, <span class="dv">135</span>, <span class="dv">225</span>, <span class="dv">315</span>, <span class="dv">360</span>), </span>
-<span id="cb33-45"><a href="#cb33-45"></a>            <span class="dt">labels=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">1</span>))</span>
-<span id="cb33-46"><a href="#cb33-46"></a></span>
-<span id="cb33-47"><a href="#cb33-47"></a><span class="co"># check this is working as intended:</span></span>
-<span id="cb33-48"><a href="#cb33-48"></a><span class="kw">plot</span>(<span class="kw">as.numeric</span>(dat<span class="op">$</span>Tide4) <span class="op">~</span><span class="st"> </span>dat<span class="op">$</span>tideangle_deg)</span>
-<span id="cb33-49"><a href="#cb33-49"></a></span>
-<span id="cb33-50"><a href="#cb33-50"></a><span class="co"># unless you desperately want to test the performance of your computer, </span></span>
-<span id="cb33-51"><a href="#cb33-51"></a><span class="co"># play safe and reduce the size of the data set from 50000 to 5000:</span></span>
-<span id="cb33-52"><a href="#cb33-52"></a><span class="kw">set.seed</span>(<span class="dv">74</span>) <span class="co"># makes the random sampling reproducible</span></span>
-<span id="cb33-53"><a href="#cb33-53"></a><span class="co"># This means you will get the same random sample as the solutions to</span></span>
-<span id="cb33-54"><a href="#cb33-54"></a><span class="co"># the exercises and the same results.</span></span>
-<span id="cb33-55"><a href="#cb33-55"></a>dat&lt;-<span class="st"> </span>dat[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(dat), <span class="dt">size=</span> <span class="dv">5000</span>), ] <span class="co"># random subset or rows</span></span>
-<span id="cb33-56"><a href="#cb33-56"></a></span>
-<span id="cb33-57"><a href="#cb33-57"></a><span class="kw">write.csv</span>(dat, <span class="st">&quot;dolphin.csv&quot;</span>)</span></code></pre></div>
+<span id="cb33-38"><a href="#cb33-38"></a>dat<span class="op">$</span>Time6&lt;-<span class="st"> </span><span class="kw">factor</span>(dat<span class="op">$</span>Time6, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;MNight&quot;</span>, <span class="st">&quot;AM1&quot;</span>, <span class="st">&quot;AM2&quot;</span>, <span class="st">&quot;MDay&quot;</span>, <span class="st">&quot;PM1&quot;</span>, <span class="st">&quot;PM2&quot;</span>))</span>
+<span id="cb33-39"><a href="#cb33-39"></a><span class="co"># reordering chronologically</span></span>
+<span id="cb33-40"><a href="#cb33-40"></a></span>
+<span id="cb33-41"><a href="#cb33-41"></a><span class="co"># check this is working as intended:</span></span>
+<span id="cb33-42"><a href="#cb33-42"></a><span class="kw">table</span>(dat<span class="op">$</span>Time6, dat<span class="op">$</span>mh)</span>
+<span id="cb33-43"><a href="#cb33-43"></a></span>
+<span id="cb33-44"><a href="#cb33-44"></a><span class="co"># Bin tide angle into 4 quadrants with peaks in middle of respective bin</span></span>
+<span id="cb33-45"><a href="#cb33-45"></a>dat<span class="op">$</span>Tide4&lt;-<span class="st"> </span><span class="kw">cut</span>(dat<span class="op">$</span>tideangle_deg, <span class="dt">breaks=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">45</span>, <span class="dv">135</span>, <span class="dv">225</span>, <span class="dv">315</span>, <span class="dv">360</span>), </span>
+<span id="cb33-46"><a href="#cb33-46"></a>            <span class="dt">labels=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">1</span>))</span>
+<span id="cb33-47"><a href="#cb33-47"></a></span>
+<span id="cb33-48"><a href="#cb33-48"></a><span class="co"># check this is working as intended:</span></span>
+<span id="cb33-49"><a href="#cb33-49"></a><span class="kw">plot</span>(<span class="kw">as.numeric</span>(dat<span class="op">$</span>Tide4) <span class="op">~</span><span class="st"> </span>dat<span class="op">$</span>tideangle_deg)</span>
+<span id="cb33-50"><a href="#cb33-50"></a></span>
+<span id="cb33-51"><a href="#cb33-51"></a><span class="co"># unless you desperately want to test the performance of your computer, </span></span>
+<span id="cb33-52"><a href="#cb33-52"></a><span class="co"># play safe and reduce the size of the data set from 50000 to 5000:</span></span>
+<span id="cb33-53"><a href="#cb33-53"></a><span class="kw">set.seed</span>(<span class="dv">74</span>) <span class="co"># makes the random sampling reproducible</span></span>
+<span id="cb33-54"><a href="#cb33-54"></a><span class="co"># This means you will get the same random sample as the solutions to</span></span>
+<span id="cb33-55"><a href="#cb33-55"></a><span class="co"># the exercises and the same results.</span></span>
+<span id="cb33-56"><a href="#cb33-56"></a>dat&lt;-<span class="st"> </span>dat[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(dat), <span class="dt">size=</span> <span class="dv">5000</span>), ] <span class="co"># random subset or rows</span></span>
+<span id="cb33-57"><a href="#cb33-57"></a></span>
+<span id="cb33-58"><a href="#cb33-58"></a><span class="kw">write.csv</span>(dat, <span class="st">&quot;dolphin.csv&quot;</span>)</span></code></pre></div>
 </div>
 
 
