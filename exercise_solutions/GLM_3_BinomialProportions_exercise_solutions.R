@@ -1,5 +1,6 @@
 ## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------
-Mites<- read.delim("./data/DrugsMites.txt")
+Mites<- read.delim("./data/DrugsMites.txt", 
+                   stringsAsFactors = TRUE)
 str(Mites)
 
 Mites$fToxic<- factor(Mites$Toxic)

@@ -519,26 +519,27 @@ $(document).ready(function () {
 <li>Import the data file ‘Mites.txt’ into R. We want to model the variable Toxic as a categorical predictor with 4 levels, so create a new variable with Toxic as a factor.</li>
 </ol>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Mites&lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;./data/DrugsMites.txt&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">str</span>(Mites)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">## &#39;data.frame&#39;:    115 obs. of  6 variables:</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">##  $ ID           : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">##  $ Concentration: num  0 0 0 0 0 0.25 0.25 0.25 0.25 0.25 ...</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">##  $ Toxic        : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">##  $ Dead_mites   : int  0 0 1 0 0 2 1 3 2 1 ...</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">##  $ Total        : int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">##  $ Proportion   : num  0 0 0.25 0 0 0.5 0.25 0.75 0.5 0.25 ...</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>Mites<span class="op">$</span>fToxic&lt;-<span class="st"> </span><span class="kw">factor</span>(Mites<span class="op">$</span>Toxic)</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="kw">str</span>(Mites)</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">## &#39;data.frame&#39;:    115 obs. of  7 variables:</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">##  $ ID           : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">##  $ Concentration: num  0 0 0 0 0 0.25 0.25 0.25 0.25 0.25 ...</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">##  $ Toxic        : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">##  $ Dead_mites   : int  0 0 1 0 0 2 1 3 2 1 ...</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">##  $ Total        : int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">##  $ Proportion   : num  0 0 0.25 0 0 0.5 0.25 0.75 0.5 0.25 ...</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">##  $ fToxic       : Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Mites&lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;./data/DrugsMites.txt&quot;</span>, </span>
+<span id="cb1-2"><a href="#cb1-2"></a>                   <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">str</span>(Mites)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">## &#39;data.frame&#39;:    115 obs. of  6 variables:</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">##  $ ID           : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">##  $ Concentration: num  0 0 0 0 0 0.25 0.25 0.25 0.25 0.25 ...</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">##  $ Toxic        : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">##  $ Dead_mites   : int  0 0 1 0 0 2 1 3 2 1 ...</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">##  $ Total        : int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">##  $ Proportion   : num  0 0 0.25 0 0 0.5 0.25 0.75 0.5 0.25 ...</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>Mites<span class="op">$</span>fToxic&lt;-<span class="st"> </span><span class="kw">factor</span>(Mites<span class="op">$</span>Toxic)</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">str</span>(Mites)</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">## &#39;data.frame&#39;:    115 obs. of  7 variables:</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">##  $ ID           : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">##  $ Concentration: num  0 0 0 0 0 0.25 0.25 0.25 0.25 0.25 ...</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">##  $ Toxic        : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">##  $ Dead_mites   : int  0 0 1 0 0 2 1 3 2 1 ...</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">##  $ Total        : int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">##  $ Proportion   : num  0 0 0.25 0 0 0.5 0.25 0.75 0.5 0.25 ...</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">##  $ fToxic       : Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
 <li>Perform the usual graphical data exploration, looking for outliers, relationships between predictors, and between response and predictors etc. You can use the variable <code>Proportion</code> in the data frame for these plots.</li>

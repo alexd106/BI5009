@@ -39,7 +39,8 @@ As in previous exercises, either create a new R script (perhaps call it GLM_Bino
 \  
 
 ```{r Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-Mites<- read.delim("./data/DrugsMites.txt")
+Mites<- read.delim("./data/DrugsMites.txt", 
+                   stringsAsFactors = TRUE)
 str(Mites)
 
 Mites$fToxic<- factor(Mites$Toxic)

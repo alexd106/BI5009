@@ -26,6 +26,10 @@ cat("Exercises will be released as the course progresses")
 
 \  
 
+#### Section 1 Exercises
+
+\  
+
 ```{r, results='asis', eval = isTRUE(show_exercise)}
 ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
              ": Importing and manipulating dataframes", 
