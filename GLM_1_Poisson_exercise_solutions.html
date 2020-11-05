@@ -13,6 +13,7 @@
 
 <title>Exercise Solutions</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -22,25 +23,35 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -60,7 +71,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -520,18 +531,19 @@ $(document).ready(function () {
 <li>and then use the naming method for subsetting the data set <code>Mydata[, VOI]</code></li>
 </ul>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>sp&lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file=</span> <span class="st">&quot;./data/species.txt&quot;</span>, <span class="dt">header=</span> <span class="ot">TRUE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">str</span>(sp)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">## &#39;data.frame&#39;:    90 obs. of  3 variables:</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">##  $ pH     : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;mid&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">##  $ Biomass: num  0.469 1.731 2.09 3.926 4.367 ...</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">##  $ Species: int  30 39 44 35 25 29 23 18 19 12 ...</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>sp<span class="op">$</span>logSp&lt;-<span class="st"> </span><span class="kw">log</span>(sp<span class="op">$</span>Species)</span>
-<span id="cb1-9"><a href="#cb1-9"></a>sp<span class="op">$</span>pH&lt;-<span class="st"> </span><span class="kw">factor</span>(sp<span class="op">$</span>pH, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;mid&quot;</span>, <span class="st">&quot;high&quot;</span>))</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>VOI&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;logSp&quot;</span>, <span class="st">&quot;Biomass&quot;</span>, <span class="st">&quot;pH&quot;</span>)</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="kw">pairs</span>(sp[, VOI])</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>sp&lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file=</span> <span class="st">&quot;./data/species.txt&quot;</span>, <span class="dt">header=</span> <span class="ot">TRUE</span>, </span>
+<span id="cb1-2"><a href="#cb1-2"></a>                <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">str</span>(sp)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">## &#39;data.frame&#39;:    90 obs. of  3 variables:</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">##  $ pH     : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;mid&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">##  $ Biomass: num  0.469 1.731 2.09 3.926 4.367 ...</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">##  $ Species: int  30 39 44 35 25 29 23 18 19 12 ...</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>sp<span class="op">$</span>logSp&lt;-<span class="st"> </span><span class="kw">log</span>(sp<span class="op">$</span>Species)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>sp<span class="op">$</span>pH&lt;-<span class="st"> </span><span class="kw">factor</span>(sp<span class="op">$</span>pH, <span class="dt">levels=</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;mid&quot;</span>, <span class="st">&quot;high&quot;</span>))</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>VOI&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;logSp&quot;</span>, <span class="st">&quot;Biomass&quot;</span>, <span class="st">&quot;pH&quot;</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">pairs</span>(sp[, VOI])</span></code></pre></div>
 <p><img src="GLM_1_Poisson_exercise_solutions_files/figure-html/Q2-1.png" width="672" /></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Biomass tends to increase with pH, which could generate</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># some collinearity between these explanatory variables in a model.</span></span>
@@ -890,7 +902,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

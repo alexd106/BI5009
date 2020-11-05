@@ -26,7 +26,8 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 \  
 
 ```{r Q2, eval=TRUE, echo=TRUE, collapse=TRUE}
-loyn <- read.table("./data/loyn.txt", header = TRUE)
+loyn <- read.table("./data/loyn.txt", header = TRUE, 
+                   stringsAsFactors = TRUE)
 str(loyn)
 
 # 56 observations and 8 variables (from str())

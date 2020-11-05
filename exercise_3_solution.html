@@ -13,6 +13,7 @@
 
 <title>Exercise Solutions</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -22,25 +23,35 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -60,7 +71,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -520,7 +531,8 @@ $(document).ready(function () {
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Now let’s import the <em>‘whaledata.txt’</em> file into R. To do this you will use the workhorse function of data importing, <code>read.table()</code>. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don’t forget to include the appropriate arguments when using the <code>read.table()</code> function (remember that header?) and assign it a variable with an appropriate name (such as <code>whale</code>). Take a look at the course manual if you need any further information.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>whale &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>whale &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2"></a>                    <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
@@ -602,12 +614,14 @@ $(document).ready(function () {
 <span id="cb5-8"><a href="#cb5-8"></a></span>
 <span id="cb5-9"><a href="#cb5-9"></a>whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span><span class="dv">132</span>, ]</span>
 <span id="cb5-10"><a href="#cb5-10"></a></span>
-<span id="cb5-11"><a href="#cb5-11"></a>whale.lat.long &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>latitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">61</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">-6</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">-4</span>, ]</span>
-<span id="cb5-12"><a href="#cb5-12"></a></span>
-<span id="cb5-13"><a href="#cb5-13"></a>whale.nomed &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">!=</span><span class="st"> &quot;medium&quot;</span>, ]</span></code></pre></div>
+<span id="cb5-11"><a href="#cb5-11"></a>whale.lat.long &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>latitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">61</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">-6</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&lt;</span><span class="st"> </span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="st">    </span><span class="dv">-4</span>, ]</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a>whale.nomed &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">!=</span><span class="st"> &quot;medium&quot;</span>, ]</span></code></pre></div>
 <p> </p></li>
 <li><p>A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the <code>median()</code> function rather than hard coding the value 132.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(whale<span class="op">$</span>gradient), ]</span></code></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(whale<span class="op">$</span>gradient), </span>
+<span id="cb6-2"><a href="#cb6-2"></a>    ]</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
@@ -615,8 +629,9 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># results in a dataframe filled with NAs.</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales), ]</span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use the na.rm argument to ignore NAs</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), ]</span></code></pre></div></li>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use the</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># na.rm argument to ignore NAs</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), ]</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
@@ -694,7 +709,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

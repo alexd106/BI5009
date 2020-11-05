@@ -43,7 +43,8 @@ This exercise builds on the linear model with one continuous predictor, and the 
 \  
 
 ```{r Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-loyn <- read.table("./data/loyn.txt", header = TRUE)
+loyn <- read.table("./data/loyn.txt", header = TRUE, 
+                   stringsAsFactors = TRUE)
 str(loyn)
 ```
 

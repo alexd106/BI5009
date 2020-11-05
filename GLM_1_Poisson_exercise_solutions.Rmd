@@ -43,7 +43,8 @@ Hints:
 \  
 
 ```{r Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-sp<- read.table(file= "./data/species.txt", header= TRUE)
+sp<- read.table(file= "./data/species.txt", header= TRUE, 
+                stringsAsFactors = TRUE)
 str(sp)
 
 sp$logSp<- log(sp$Species)

@@ -36,7 +36,8 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 5. Now let's import the *‘whaledata.txt'* file into R. To do this you will use the workhorse function of data importing,  `read.table()`. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don't forget to include the appropriate arguments when using the `read.table()` function (remember that header?) and assign it a variable with an appropriate name (such as `whale`). Take a look at the course manual if you need any further information.
 
     ```{r Q5}
-    whale <- read.table('data/whaledata.txt', header = TRUE)
+    whale <- read.table('data/whaledata.txt', header = TRUE,
+                        stringsAsFactors = TRUE)
     ```
 
 \  

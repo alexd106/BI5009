@@ -34,7 +34,8 @@ This exercise revisits the Loyn data, asking if a better model for the data coul
 \  
 
 ```{r Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-loyn <- read.table("./data/loyn.txt", header = TRUE)
+loyn <- read.table("./data/loyn.txt", header = TRUE,
+                   stringsAsFactors = TRUE)
 str(loyn)
 loyn$FGRAZE <- factor(loyn$GRAZE)
 loyn$LOGAREA <- log10(loyn$AREA)

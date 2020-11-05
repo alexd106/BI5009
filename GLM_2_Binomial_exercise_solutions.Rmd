@@ -61,7 +61,7 @@ As in previous exercises, either create a new R script (perhaps call it GLM_Pres
 
 ```{r Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE}
 
-dat<- read.csv("./data/dolphin.csv", stringsAsFactors= T)
+dat<- read.csv("./data/dolphin.csv", stringsAsFactors= TRUE)
 
 # re-ordering factor levels for convenience:
 dat$Per2<- factor(dat$Per2, levels= c("RestOfYear", "MayJun"))
