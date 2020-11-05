@@ -36,7 +36,7 @@ ex_text <- c(": Getting to know R and RStudio", ": Basic R operations",
 dir <- "exercises"
 file_name <- list.files(dir) %>%
               sort %>% 
-              grep("[*.zip]", ., value=TRUE)
+              grep("^exercise*", ., value=TRUE)
 
 link_name <- file_name %>%
               gsub("\\.pdf", "", .) %>%
