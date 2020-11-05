@@ -10,7 +10,6 @@ show_text_lm4 <- TRUE    # ex LM4
 show_text_glm1 <- TRUE    # ex GLM1
 show_text_glm2 <- TRUE    # ex GLM2
 show_text_glm3 <- TRUE    # ex GLM3
-show_text_glm4 <- FALSE    # ex GLM4
 
 # Change to TRUE to show lectures
 show_lecture <- TRUE
