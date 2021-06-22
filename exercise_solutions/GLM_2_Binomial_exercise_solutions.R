@@ -1,4 +1,4 @@
-## ----Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE------------------------------------------------------
+## ----Q2, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE------------------------------------------------
 
 dat<- read.csv("./data/dolphin.csv", stringsAsFactors= TRUE)
 
@@ -14,12 +14,12 @@ str(dat)
 
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
 PA1<- glm(presence ~ tideangle_deg + mh + julianday + tideangle_deg:mh +
 					mh:julianday + tideangle_deg:julianday, family= binomial, data= dat)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
 summary(PA1)
 
 # Model description:
@@ -39,7 +39,7 @@ summary(PA1)
 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
 drop1(PA1, test= "Chisq")
 # drop tideangle_deg:julianday
 
@@ -64,7 +64,7 @@ summary(PA4)
 
 
 
-## ----Q8, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
+## ----Q8, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE--------------------------------------------
 # there are several ways the non-linearity could be addressed. 
 # one of the most straightforward with glm() is to discretize
 # continuous predictors into bins and to treat them as factors.
@@ -76,7 +76,7 @@ summary(PA4)
 
 
 
-## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
 # convert numerically coded categorical variables into factors:
 dat$fTide4<- factor(dat$Tide4)
 
@@ -108,13 +108,13 @@ anova(PA12, test= "Chisq")
 
 
 
-## ----Q11a, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------------
+## ----Q11a, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------
 PA12.dat4pred<- expand.grid(Time6= levels(dat$Time6),
                                 Per2= levels(dat$Per2),
 								fTide4= "1")
 
 
-## ----Q11b, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------------
+## ----Q11b, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE------------------------------------------
 PA12.pred<- predict(PA12, PA12.dat4pred, type= "link", se.fit= T)
 
 PA12.dat4pred$fit.resp<- exp(PA12.pred$fit)/(1+exp(PA12.pred$fit)) 
@@ -126,7 +126,7 @@ PA12.dat4pred$LCI<- plogis(PA12.pred$fit - 1.96*PA12.pred$se.fit)
 PA12.dat4pred$UCI<- plogis(PA12.pred$fit + 1.96*PA12.pred$se.fit)
 
 
-## ----Q11c, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=5-----------------------------
+## ----Q11c, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=5-----------------------
 par(mfrow= c(1, 1))
 plot(as.numeric(PA12.dat4pred$Time6), PA12.dat4pred$fit.resp, pch= 16, cex= 1.4,
       col= PA12.dat4pred$Per2, xlab= "Section of day",
@@ -143,7 +143,7 @@ legend(x= "topright", legend= c("RestOfYear", "MayJun"), col= c(1, 2), lty= 1, p
 
 
 
-## ----Appendix, eval=FALSE, echo=TRUE, results=FALSE, collapse=FALSE----------------------------------------------
+## ----Appendix, eval=FALSE, echo=TRUE, results=FALSE, collapse=FALSE----------------------------------------
 ## fulldat<- read.delim("./data/FineScale_Dataset_GAMM_OFB2019.txt")
 ## 
 ## str(fulldat)
