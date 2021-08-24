@@ -20,9 +20,9 @@ source('reveal.R')
 
 The following exercises are split into two main sections.
 
-**Section 1** of the exercises will introduce you to using R and comprises four exercises which corresponds to material covered in the first four Chapters of the [Introduction to R book](https://intro2r.com). We will be covering these exercises during the first two weeks of the course. It’s entirely up to you how you progress through these exercises, everyone learns at their own pace and in their own way. You can either work your way through each section of the book and then test your understanding of the material by completing the associated exercise. Alternatively, you can start with each exercise and refer back to the appropriate material in the book. Or find another way that works for you. Whichever approach you use, make sure that you write your R code in RStudio (or your favourite script editor), annotate it liberally and save it regularly. At the end of the course you will have many hundreds of lines of code that you can refer back to at a later date when you’ve forgotten most of it! There is also an additional optional exercise (Exercise 5) which covers the book Chapter 7 - Programming in R. This exercise is entirely optional and should only be completed after you have finshed the first four exercises. 
+**Section 1** of the exercises will introduce you to using R and comprises four exercises which corresponds to material covered in the first four Chapters of the [Introduction to R book](https://intro2r.com). We will be covering these exercises during the first two weeks of the course. It’s entirely up to you how you progress through these exercises, everyone learns R at their own pace and in their own way. You can either work your way through each section of the book and then test your understanding of the material by completing the associated exercise. Alternatively, you can start with each exercise and refer back to the appropriate material in the book. Or find another way that works for you. Whichever approach you use, make sure that you write your R code in RStudio (or your favourite script editor), annotate it liberally and save it regularly. At the end of the course you will have many hundreds of lines of code that you can refer back to at a later date when you’ve forgotten most of it! There is also an additional optional exercise (Exercise 5) which covers the book Chapter 7 - Programming in R. This exercise is entirely optional and should only be completed after you have finished the first four exercises. 
 
-**Section 2** exercises will cover material introduced during the third to fifth week of the course. These exercises will help you learn how to fit linear and generalised linear models using R, how to validate these models and how to interpret these models.   
+**Section 2** exercises will cover material introduced during the third to sixth week of the course. These exercises will help you learn how to fit linear and generalised linear models using R, how to validate these models and how to interpret these models.   
 
 I will release the [solutions to the exercises](exercise_solutions.html){target="_blank"} after each of our synchronous sessions. If you prefer to download these exercises in pdf format you can [find them here](exercise_pdf.html){target="_blank"}. 
 
@@ -98,7 +98,7 @@ rmarkdown::render("GLM_3_BinomialProportions_exercise.Rmd", output_format = "pdf
 
  - [Generalised linear models 2 - Binomial GLM exercise](GLM_2_Binomial_exercise.html)
  
-  - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](GLM_3_BinomialProportions_exercise.html)
+ - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](GLM_3_BinomialProportions_exercise.html)
 
 
 \  
