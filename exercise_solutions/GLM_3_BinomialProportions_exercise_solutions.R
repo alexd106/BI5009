@@ -1,4 +1,4 @@
-## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
+## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 Mites<- read.delim("./data/DrugsMites.txt", 
                    stringsAsFactors = TRUE)
 str(Mites)
@@ -9,15 +9,15 @@ str(Mites)
 
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 Mites$Living_mites<- Mites$Total - Mites$Dead_mites
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 M1<- glm(cbind(Living_mites, Dead_mites) ~ Concentration + fToxic + Concentration : fToxic, family= binomial, data= Mites)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 summary(M1)
 
 ## Mathematical model description:
@@ -53,7 +53,7 @@ summary(M1)
 # Concentration:fToxic4  difference between Conc. slopes for Toxic 2 and Toxic 1
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 # Yes, because this is a binomial variable with more than 1 trial per observation
 # Residual deviance: 117.67  on 107  degrees of freedom
 # -> negligible overdispersion
