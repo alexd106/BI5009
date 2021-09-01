@@ -18,42 +18,46 @@ SOLUTIONS<- TRUE
 
 \  
 
-# Exercise: Binomial (Proportions) GLM - mites survival
+# Binomial (Proportions) GLM - mites survival
 
 \  
 
 The data for this exercise were collected for an experiment to test the toxicity of different chemicals at various concentrations to a species of mite. The aim was to determine whether the proportion of mites surviving was related to the concentration of the chemical and whether this relationship depended on the type of chemical the mites were exposed to. We will be using a binomial GLM again for this example, but this time we will be using it to model proportion data, from counts of "successes" (= mite survival, unless you don't like mites), and "failures" (= mite death).
-Variables:
+
+* Variables:
   + `ID` index of the observations
   + `Concentration`: Concentration of the chemical
   + `Toxic`: Chemical type
   + `Dead_mites`: Number of dead mites in assay
   + `Total`: Initial number of mites in assay
   + `Proportion`= `Dead_mites / Total`
+
+\  
+
 As in previous exercises, either create a new R script (perhaps call it GLM_BinomProps) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and  don't forget to comment out your metadata with a `#` at the beginning of the line. 
 
 \  
 
-1. Import the data file 'Mites.txt' into R. We want to model the variable Toxic as a categorical predictor with 4 levels, so create a new variable with Toxic as a factor.
+1\. Import the data file 'DrugsMites.txt' into R. We want to model the variable Toxic as a categorical predictor with 4 levels, so create a new variable with Toxic as a factor.
 
 \  
 
 ```{r Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-Mites<- read.delim("./data/DrugsMites.txt", 
-                   stringsAsFactors = TRUE)
+Mites<- read.delim("./data/DrugsMites.txt")
 str(Mites)
 
 Mites$fToxic<- factor(Mites$Toxic)
+
 str(Mites)
 ```
 
 \  
 
-2. Perform the usual graphical data exploration, looking for outliers, relationships between predictors, and between response and predictors etc. You can use the variable `Proportion` in the data frame for these plots.
+2\. Perform the usual graphical data exploration, looking for outliers, relationships between predictors, and between response and predictors etc. You can use the variable `Proportion` in the data frame for these plots.
 
 \  
 
-```{r Q2, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+```{r Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
 # Outliers Y
 boxplot(Mites$Proportion) # not very useful for this data set
 dotchart(Mites$Proportion)
@@ -77,38 +81,46 @@ with(Mites, plot(x= jitter(Concentration), y= jitter(Proportion)))
 
 coplot(jitter(Proportion) ~ jitter(Concentration) | fToxic, data= Mites)
 
-# looks like researchers stopped increasing concentration of a chemical when they had reached ~ 100 % mortality in assays
+# looks like researchers stopped increasing concentration of a chemical when they had
+# reached ~ 100 % mortality in assays
 
 ```
 
 \  
 
-3. In order to model the proportion of mites surviving, create a new variable (called something creative like Living_mites for example) representing the number of surviving mites by differencing the two variables Dead_mites and Total.
+3\. In order to model the proportion of mites surviving, create a new variable (called something creative like Living_mites for example) representing the number of surviving mites by differencing the two variables Dead_mites and Total.
 
 \  
 
 ```{r Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 Mites$Living_mites<- Mites$Total - Mites$Dead_mites
+
+table(Mites$Total)
 ```
 
 \  
 
-4. We can now use this new variable when specifying a binomial GLM. Recall from the lecture that the response variable should be a data frame consisting  of two columns, cbind(Living_mites, Dead_mites). Ask if in doubt. If you hate mites you could also swap the order of the two columns: you would then be modelling the proportion that die.
+4\. We can now use this new variable when specifying a binomial GLM. Recall from the lecture that the response variable should be a data frame consisting  of two columns, cbind(Living_mites, Dead_mites). Ask if in doubt. If you hate mites you could also swap the order of the two columns: you would then be modelling the proportion that die.
 
 \  
 
 ```{r Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 M1<- glm(cbind(Living_mites, Dead_mites) ~ Concentration + fToxic + Concentration : fToxic, family= binomial, data= Mites)
+
+# equivalent to:
+M1<- glm(cbind(Living_mites, Dead_mites) ~ Concentration * fToxic, family= binomial, data= Mites)
 ```
 
 \  
 
-5. Obtain summaries of the model output using the `summary()` function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper (with distribution and link function). What biological hypothesis does each term imply, qualitatively?
+5\. Obtain summaries of the model output using the `summary()` function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper (with distribution and link function). What biological hypothesis does each term imply, qualitatively?
 
 \  
 
 ```{r Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 summary(M1)
+
+coef(M1)
 
 ## Mathematical model description:
 
@@ -145,7 +157,7 @@ summary(M1)
 
 \  
 
-6. Do you need to check for overdispersion? If so, how do you do it? 
+6\. Do you need to check for overdispersion? If so, how do you do it? 
 
 \  
 
@@ -158,11 +170,11 @@ summary(M1)
 
 \  
 
-7. Do you need to perform model selection? What is the final model?
+7\. Do you need to perform model selection? What is the final model?
 
 \  
 
-```{r Q7, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+```{r Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 # we don't need to perform model selection here: given that the assay is
 # to compare the effect of different chemicals, the interaction alone is the
 # focus of the experiment. If it is not significant, we would have our answer
@@ -177,12 +189,12 @@ drop1(M1, test= "Chi")
 
 \  
 
-8. Perform model validation: are you satisfied with the model?
+8\. Perform model validation: are you satisfied with the model?
 
 \  
 
 
-```{r Q8, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8}
+```{r Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.height=8, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
 library(car)
 vif(M1)
 
@@ -206,7 +218,7 @@ plot(M1)
 E1<- resid(M1, type= "pearson")
 F1<- fitted(M1)
 plot(x= F1, y= E1, 
-        xlab= "Predicted values (logit scale)", ylab= "Pearson residuals")
+        xlab= "Predicted values (probability scale)", ylab= "Pearson residuals")
 abline(h= 0, col= grey(0.5), lty= 2)
 
 # The Pearson residuals are quite different from the the raw or deviance residuals in this example,
@@ -230,11 +242,11 @@ abline(h= 0, col= grey(0.5), lty= 2)
 
 \  
 
-9. Obtain the fitted values from the model on the scale of the response, and plot to aid model interpretation. How do you interpret the results?
+9\. Obtain the fitted values from the model on the scale of the response, and plot to aid model interpretation. How do you interpret the results?
 
 \  
 
-```{r Q9, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+```{r Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
 MyData1<- data.frame(Concentration= seq(0, 2.16, length= 50), fToxic= "1")
 MyData2<- data.frame(Concentration= seq(0, 2.16, length= 50), fToxic= "2")
 MyData3<- data.frame(Concentration= seq(0, 2.16, length= 50), fToxic= "3")
@@ -258,31 +270,36 @@ legend("topright",
 			lty= 1, 
 			col= c(1, 2, 3, 4), bty= "n")
 
-# All chemicals have a significant negative effect on the proportion of mites surviving, as their concentration increases (to ascertain this you could relevel in hindsight the least powerful chemical as the reference level, which will test whether its slope is significantly different from zero).
-# The Chem with the highest toxicity at lower concentrations is fToxic 2, followed by fToxic 3, 1 and 4 is the least potent.
+# All chemicals have a significant negative effect on the proportion of mites surviving, as their
+# concentration increases (to ascertain this you could relevel in hindsight the least powerful chemical
+# as the reference level, which will test whether its slope is significantly different from zero).
+# The Chem with the highest toxicity at lower concentrations is fToxic 2, followed by fToxic 3, 1
+# and 4 is the least potent.
 
 Mites$fToxic_4AsRef<- relevel(Mites$fToxic, "4")
 M2<- glm(cbind(Living_mites, Dead_mites) ~ Concentration + fToxic_4AsRef + Concentration : fToxic_4AsRef, family= binomial, data= Mites)
 summary(M2)
 
 # Concentration                 -2.3183     0.4026  -5.758 8.52e-09 ***
-# shows that the negative dose-effect relationship (slope for concentration) is significant even for Toxic 4
+# shows that the negative dose-effect relationship (slope for concentration) is significant
+# even for Toxic 4
 
 # Concentration:fToxic_4AsRef1  -1.4828     0.9630  -1.540 0.123626    
 # Concentration:fToxic_4AsRef2  -7.6592     2.1524  -3.558 0.000373 ***
 # Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** 
-# these coefficients and their p-values show that only the dose-effect relationships of Toxics 2 and 3 are significantly different from the dose-effect relationship of Toxic 4
+# these coefficients and their p-values show that only the dose-effect relationships of Toxics 2 and 3
+# are significantly different from the dose-effect relationship of Toxic 4
 
 ```
 
 
 \  
 
-10. (Optional) Include the 95 % CI on the plot above. You will need to obtain the fitted values and SE on the scale of the link function, calculate the CI and then back-transform.
+10\. **Optional** Include the 95 % CI on the plot above. You will need to obtain the fitted values and SE on the scale of the link function, calculate the CI and then back-transform.
 
 \  
 
-```{r Q10, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+```{r Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
 # Sketch model fit with 95% confidence bands for Toxic 1
 MyData1<- data.frame(Concentration= seq(0, 2.16, length= 50), fToxic= "1")
 MyData2<- data.frame(Concentration= seq(0, 2.16, length= 50), fToxic= "2")

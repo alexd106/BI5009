@@ -18,7 +18,7 @@ SOLUTIONS<- FALSE
 
 \  
 
-# Exercise: Poisson GLM - predicting species richness
+# Poisson GLM - predicting species richness
 
 \  
 
@@ -26,12 +26,13 @@ The data for this exercise were collected during an experiment which investigate
 
 \  
 
-1. As in previous exercises, either create a new R script (perhaps call it GLM_Poisson) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and  don't forget to comment out your metadata with a `#` at the beginning of the line. 
+1\. As in previous exercises, either create a new R script (perhaps call it GLM_Poisson) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and  don't forget to comment out your metadata with a `#` at the beginning of the line. 
 
 \  
 
-2. Import the data file 'species.txt' into R and take a look at the structure of this dataframe. Start with an initial data exploration (using `pairs()` and `coplot()`?). Do you see any imbalance of concern between the predictors? Do you foresee any problem for the model to answer the initial question?
-Hints:
+2\. Import the data file 'species.txt' into R and take a look at the structure of this dataframe. Start with an initial data exploration (using `pairs()` and `coplot()`?). Do you see any imbalance of concern between the predictors? Do you foresee any problem for the model to answer the initial question?
+
+* Hints:
   + the Poisson model uses a log-link, therefore the equation of the model (the linear predictor) will predict the expected number of plant species on the log scale. 
   + for a corresponding data exploration it would make sense to use the log of the response.
   + check that the format of pH is appropriate and that the reference level is what you want.
@@ -49,6 +50,7 @@ str(sp)
 sp$logSp<- log(sp$Species)
 sp$pH<- factor(sp$pH, levels= c("low", "mid", "high"))
 
+# make a list of the variables of interest, for convenience:
 VOI<- c("logSp", "Biomass", "pH")
 pairs(sp[, VOI])
 # Biomass tends to increase with pH, which could generate
@@ -64,7 +66,7 @@ coplot(logSp ~ Biomass | pH, data= sp)
 
 \  
 
-3. To warm up, let's start with a simple Poisson GLM (using `glm`) including only `Biomass` as a predictor.
+3\. To warm up, let's start with a simple Poisson GLM (using `glm`) including only `Biomass` as a predictor.
 Hints:
   + take some time to think what the appropriate response variable is!
   + if in doubt, make sure to ask someone to help clear this with you.
@@ -78,7 +80,7 @@ sp.glm1<- glm(Species ~ Biomass, family= poisson, data= sp)
 
 \  
 
-4. Obtain summaries of the model output using the `summary()` function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper.
+4\. Obtain summaries of the model output using the `summary()` function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper.
 
 \  
 
@@ -93,7 +95,7 @@ summary(sp.glm1)
 
 \  
 
-5. According to this model, what would be the predicted value (by hand) on the link scale log(mu) when Biomass= 5? What would this become on the response scale, i.e. the number of species?
+5\. According to this model, what would be the predicted value (by hand) on the link scale log(mu) when Biomass= 5? What would this become on the response scale, i.e. the number of species?
 
 \  
 
@@ -106,7 +108,7 @@ exp(3.18 - 0.064*5) # 17.46
 
 \  
 
-6. Now, specify the "real" Poisson GLM (using `glm`) to match the stated research questions.
+6\. Now, specify a more useful Poisson GLM (using `glm`) to match the stated research questions.
 
 \  
 
@@ -116,7 +118,7 @@ sp.glm2<- glm(Species ~ Biomass * pH, family= poisson, data= sp)
 
 \  
 
-7. Obtain summaries of the model output using the `summary()` and the ANOVA of the model. Which of the `drop1()` or `anova()` functions would you choose to use if you wanted (A) to look at deviance components or (B) to do model simplification? Is the effect of the interaction significant? 
+7\. Obtain summaries of the model output using the `summary()` and the ANOVA of the model. Which of the `drop1()` or `anova()` functions would you choose to use if you wanted (A) to look at deviance components or (B) to do model simplification? Is the effect of the interaction significant? 
 
 \  
 
@@ -144,15 +146,15 @@ drop1(sp.glm2, test= "Chisq")
 
 \  
 
-8. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion (Hint: check residual deviance and degrees of freedom)
+8\. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion (Hint: check residual deviance and degrees of freedom)
 
 \  
 
-9. Is everything significant? Which of the summaries above do you prefer to use, if you would like to explain the predictions, or test hypotheses, or perform model selection?
+9\. Is everything significant? Which of the summaries above do you prefer to use, if you would like to explain the predictions, or test hypotheses, or perform model selection?
 
 \  
 
-10. Check for collinearity using the `vif()` function in the `car` package. What do you think?
+10\. Check for collinearity using the `vif()` function in the `car` package. What do you think?
 
 \  
 
@@ -170,7 +172,7 @@ vif(sp.glm2)
 
 \  
 
-11. Validate the model using the standard residuals diagnostic plots
+11\. Validate the model using the standard residuals diagnostic plots
 
 \  
 
@@ -213,7 +215,7 @@ abline(h= 0, col= 2, lty= 2)
 
 \  
 
-12. Use `predict()` with the argument `type= "response"` to obtain the fitted values on the original (response) scale. Plot a fitted line for the relationship between number of species and biomass for each level of pH. Why are the lines not straight?
+12\. Use `predict()` with the argument `type= "response"` to obtain the fitted values on the original (response) scale. Plot a fitted line for the relationship between number of species and biomass for each level of pH. Why are the lines not straight?
 
 \  
 
@@ -252,7 +254,7 @@ legend("topright",
 
 \  
 
-13. (Optional) Use `predict` again, but this time obtain the fitted values on the scale of the linear predictor `type= "link"`. Plot again and compare with the previous graph: what is happening? How would you back-transform these values predicted on the link scale to plot them on the response scale again?
+13\. (Optional) Use `predict` again, but this time obtain the fitted values on the scale of the linear predictor `type= "link"`. Plot again and compare with the previous graph: what is happening? How would you back-transform these values predicted on the link scale to plot them on the response scale again?
 
 \  
 
@@ -285,8 +287,9 @@ legend("topright",
 
 \  
 
-14. (Optional but recommended) Use `predict` again, but this time obtain the fitted values and their standard errors on the scale of the linear predictor. From these, calculate confidence intervals for the fitted values, and plot them together with the data, after back-transforming the fitted values and intervals on the response scale.
-Suggested approach:
+14\. (Optional but recommended) Use `predict` again, but this time obtain the fitted values and their standard errors on the scale of the linear predictor. From these, calculate confidence intervals for the fitted values, and plot them together with the data, after back-transforming the fitted values and intervals on the response scale.
+
+* Suggested approach:
   + plot the raw data (one colour per pH)
   + create a `data.frame` called `X` containing the data to predict for: as sequence of increasing Biomass and the pH of your choice
   + use `predict()` with the appropriate options `type= "link", se.fit= TRUE` to obtain the fitted values on the link scale and for being able to calculate the confidence intervals later. Store in object `Z`.
@@ -329,7 +332,7 @@ legend("topright",
 
 \  
 
-15. Looking at the data and model fits, any idea why expected species richness for the largest values of biomass tends to be biased high? How satisfied are you with the model? Have we learned anything from it, about species diversity in relation to pH and biomass? 
+15\. Looking at the data and model fits, any idea why expected species richness for the largest values of biomass tends to be biased high? How satisfied are you with the model? Have we learned anything from it, about species diversity in relation to pH and biomass? 
 
 \  
 
@@ -362,3 +365,4 @@ legend("topright",
 \  
 
 End of the Poisson GLM - predicting species richness exercise
+
