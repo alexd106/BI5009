@@ -13,7 +13,7 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -340,21 +340,21 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
     Home
   </a>
 </li>
 <li>
   <a href="setup.html">
-    <span class="fa fa-cog"></span>
+    <span class="fas fa-cog"></span>
      
     Setup
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-desktop"></span>
+    <span class="fas fa-desktop"></span>
      
     Learn
      
@@ -363,7 +363,7 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="howto.html">
-        <span class="fa fa-tv"></span>
+        <span class="fas fa-tv"></span>
          
         How-to
       </a>
@@ -372,7 +372,7 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
     R Book
      
@@ -381,7 +381,7 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="https://intro2r.com">
-        <span class="fa fa-firefox"></span>
+        <span class="fas fa-firefox"></span>
          
         Web book
       </a>
@@ -389,7 +389,7 @@ $(document).ready(function () {
     <li class="divider"></li>
     <li>
       <a href="https://github.com/alexd106/Rbook/raw/master/docs/Rbook.pdf">
-        <span class="fa fa-file-pdf"></span>
+        <span class="fas fa-file-pdf"></span>
          
         PDF book
       </a>
@@ -398,28 +398,28 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="exercises.html">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Exercises
   </a>
 </li>
 <li>
   <a href="exercise_solutions.html">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Exercise Solutions
   </a>
 </li>
 <li>
   <a href="data.html">
-    <span class="fa fa-download"></span>
+    <span class="fas fa-download"></span>
      
     Data
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-question-circle"></span>
+    <span class="fas fa-question-circle"></span>
      
     Info
      
@@ -428,21 +428,21 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="resources.html">
-        <span class="fa fa-book"></span>
+        <span class="fas fa-book"></span>
          
         Resources
       </a>
     </li>
     <li>
       <a href="https://github.com/alexd106/BI5009">
-        <span class="fa fa-github fa-lg"></span>
+        <span class="fas fa-github fa-lg"></span>
          
         Source code
       </a>
     </li>
     <li>
       <a href="https://twitter.com/Scedacity">
-        <span class="fa fa-twitter fa-lg"></span>
+        <span class="fas fa-twitter fa-lg"></span>
          
         Twitter
       </a>
@@ -502,18 +502,25 @@ $(document).ready(function () {
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 56 observations and 8 variables (from str())</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(loyn)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">##       Site           ABUND            AREA              DIST            LDIST           YR.ISOL         GRAZE            ALT       </span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   : 1.00   Min.   : 1.50   Min.   :   0.10   Min.   :  26.0   Min.   :  26.0   Min.   :1890   Min.   :1.000   Min.   : 60.0  </span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.:14.75   1st Qu.:12.40   1st Qu.:   2.00   1st Qu.:  93.0   1st Qu.: 158.2   1st Qu.:1928   1st Qu.:2.000   1st Qu.:120.0  </span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median :28.50   Median :21.05   Median :   7.50   Median : 234.0   Median : 338.5   Median :1962   Median :3.000   Median :140.0  </span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   :28.50   Mean   :19.51   Mean   :  69.27   Mean   : 240.4   Mean   : 733.3   Mean   :1950   Mean   :2.982   Mean   :146.2  </span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.:42.25   3rd Qu.:28.30   3rd Qu.:  29.75   3rd Qu.: 333.2   3rd Qu.: 913.8   3rd Qu.:1966   3rd Qu.:4.000   3rd Qu.:182.5  </span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :56.00   Max.   :39.60   Max.   :1771.00   Max.   :1427.0   Max.   :4426.0   Max.   :1976   Max.   :5.000   Max.   :260.0</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># GRAZE is coded as numeric (i.e. 1,2,3,5)</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new factor variable variable FGRAZE which is a factor of GRAZE</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">factor</span>(loyn<span class="sc">$</span>GRAZE)</span></code></pre></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">##       Site           ABUND            AREA              DIST       </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   : 1.00   Min.   : 1.50   Min.   :   0.10   Min.   :  26.0  </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.:14.75   1st Qu.:12.40   1st Qu.:   2.00   1st Qu.:  93.0  </span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median :28.50   Median :21.05   Median :   7.50   Median : 234.0  </span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   :28.50   Mean   :19.51   Mean   :  69.27   Mean   : 240.4  </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.:42.25   3rd Qu.:28.30   3rd Qu.:  29.75   3rd Qu.: 333.2  </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :56.00   Max.   :39.60   Max.   :1771.00   Max.   :1427.0  </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="do">##      LDIST           YR.ISOL         GRAZE            ALT       </span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   :  26.0   Min.   :1890   Min.   :1.000   Min.   : 60.0  </span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.: 158.2   1st Qu.:1928   1st Qu.:2.000   1st Qu.:120.0  </span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median : 338.5   Median :1962   Median :3.000   Median :140.0  </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   : 733.3   Mean   :1950   Mean   :2.982   Mean   :146.2  </span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.: 913.8   3rd Qu.:1966   3rd Qu.:4.000   3rd Qu.:182.5  </span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :4426.0   Max.   :1976   Max.   :5.000   Max.   :260.0</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># GRAZE is coded as numeric (i.e. 1,2,3,5)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new factor variable variable FGRAZE which is a factor of GRAZE</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">factor</span>(loyn<span class="sc">$</span>GRAZE)</span></code></pre></div>
 <p> </p>
 <p>5. Use the function <code>table()</code> (or <code>xtabs()</code>) to determine how many observations are in each <code>FGRAZE</code> level. See <a href="https://intro2r.com/summarising-data-frames.html">section 3.5</a> of the Introduction to R book to remind yourself how to do this.</p>
 <p> </p>
