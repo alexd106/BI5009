@@ -1,11 +1,11 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------
-sp<- read.table(file= "./data/species.txt", header= TRUE, 
-                stringsAsFactors = TRUE)
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------
+sp<- read.table(file= "./data/species.txt", header= TRUE)
 str(sp)
 
 sp$logSp<- log(sp$Species)
 sp$pH<- factor(sp$pH, levels= c("low", "mid", "high"))
 
+# make a list of the variables of interest, for convenience:
 VOI<- c("logSp", "Biomass", "pH")
 pairs(sp[, VOI])
 # Biomass tends to increase with pH, which could generate
@@ -19,11 +19,11 @@ coplot(logSp ~ Biomass | pH, data= sp)
 # looking promising.
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------
 sp.glm1<- glm(Species ~ Biomass, family= poisson, data= sp)
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------
 summary(sp.glm1)
 
 # Model description:
@@ -32,18 +32,18 @@ summary(sp.glm1)
 
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------
 # On the link scale:
 3.18 - 0.064*5 # 2.86
 # On the response scale (species count):
 exp(3.18 - 0.064*5) # 17.46
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------
 sp.glm2<- glm(Species ~ Biomass * pH, family= poisson, data= sp)
 
 
-## ----Q7-9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------
+## ----Q7-9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------
 summary(sp.glm2)
 anova(sp.glm2, test= "Chisq")
 
@@ -65,7 +65,7 @@ drop1(sp.glm2, test= "Chisq")
 
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------
 library(car)
 vif(sp.glm2)
 
