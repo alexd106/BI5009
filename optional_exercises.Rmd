@@ -1,0 +1,32 @@
+---
+title: 'Additional optional exercises'
+output: 
+  html_document:
+    toc: false
+---
+
+Here are some optional exercises for you to work through in your own time. You should only complete these exercises if you have finished and understood all of the in-class exercises. 
+
+
+\  
+
+[Binomial GLM (0/1 data) optional exercise](GLM_2_Optional_Binomial_Dolphins_exercise.html)
+
+[Binomial GLM (0/1 data) optional exercise solutions](GLM_2_Optional_Binomial_Dolphins_exercise_solutions.html)
+
+\  
+
+[More advanced Binomial GLM (0/1 data) optional exercise](GLM_2_Optional_Dolphins_extension.html)
+
+[More advanced Binomial GLM (0/1 data) optional exercise solutions](GLM_2_Optional_Dolphins_extension_solutions.html)
+
+\  
+
+[Binomial GLM (proportion data) optional exercise](GLM_3_BinomialProportions_exercise.html)
+
+[Binomial GLM (proportion data) optional exercise solutions](GLM_3_BinomialProportions_exercise_solutions.html)
+
+
+
+
+

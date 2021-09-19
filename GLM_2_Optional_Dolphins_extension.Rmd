@@ -1,0 +1,313 @@
+---
+title: "Exercise"
+# author: TCornulier
+output:
+  html_document: 
+    toc: no
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, echo=FALSE, purl = FALSE}
+knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+
+SOLUTIONS<- FALSE
+
+dat<- read.csv("./data/dolphin.csv", stringsAsFactors= T)
+
+dat$fTime6<- factor(dat$Time6, levels= c("MNight", "AM1", "AM2", "MDay", "PM1", "PM2"))
+# reordering chronologically
+
+dat$fTide4<- factor(dat$Tide4)
+
+dat$fMonth<- factor(dat$mon)
+```
+
+\  
+
+# Optional extension to Binomial (Bernoulli) GLM - dolphin behavioural plasticity
+
+\  
+
+This extension to the dolphin data analysis is for those who may be a bit ahead and would like to :
+
+* get some experience dealing with interactions between categorical predictors (valid with LMs or GLMs)
+* test your understanding of the binomial GLMs for the analysis of Bernoulli data, by repeating the approach of the previous exercise with a slightly more advanced model:
+  + model specification
+  + model validation
+  + interpreting a model graphically
+* get more experience with model selection in GLMs (using AIC)
+
+I recommend you continue with your previous R script for the GLM_2 exercise, in your RStudio Project. 
+
+\  
+
+13\. To address the limitations of the previous analysis, fit a new model with categorical predictors only, and interactions between them, two by two: `fTide4 + fMonth + fTime6 + fTide4:fMonth + fTide4:fTime6 + fMonth:fTime6`. What hypotheses do these interactions correspond to?
+
+\  
+
+```{r Q13, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+PA2<- glm(presence ~ fTide4 + fMonth + fTime6 + 
+            fTide4:fMonth + fTide4:fTime6 + 
+            fMonth:fTime6, family= binomial, data= dat)
+
+summary(PA2) # inspect the model coefficients
+
+# fTide4:fMonth assumes that the effect of tidal state on dolphin presence
+# (actually, probability of recording) changes according to time of year
+
+# fTide4:fTime6 assumes that the effect of tidal state on dolphin presence
+# changes according to time of day (or vice-versa)
+
+# fMonth:fTime6 assumes that the effect of time of day on dolphin presence
+# changes according to time of year
+
+```
+
+\  
+
+14\. Perform model selection "by hand" using the AIC, and construct an AIC table, using the example in the lecture. "By hand" means without using `drop1` or `step` functions. You can get the AIC value from the model summary `summary(YourModel)` or by typing `AIC(YourModel)`. There are 18 possible models in total, including the full model above. You can choose to evaluate all 18 models in a completely exploratory (the "ignorant and brave") approach, or only a selection of models based on more specific research questions or predictions of your own (the "clear thinker" approach).
+
+* Example: *"We know/expect that dolphins are affected by A, B and C, but I suspect that the effect of B varies depending on the value of A whereas my colleague thinks that the effect of B depends on the value of C"*, which would suggest comparing the following models to find out which hypothesis is best supported by the data:
+  + A + B + C + A:B
+  + A + B + C + B:C
+  + A + B + C
+
+\  
+
+```{r Q14a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+# Because I don't have specific predictions here, and I suspect the presence
+# of dolphins at Sutors may respond to all combinations of the 3 environmental
+# factors we have, I'll go for a quite systematic exploration here (you may
+# have a different logic, knowledge about dolphins, more specific predictions, 
+# and a more restricted list of models you consider plausible: that would be
+# entirely fine)
+
+# remove interactions one-at-a-time
+PA21<- glm(presence ~ fMonth + fTide4 + fTime6 + fMonth:fTide4 + fMonth:fTime6, family= binomial, data= dat)
+PA22<- glm(presence ~ fMonth + fTide4 + fTime6 + fMonth:fTime6 + fTide4:fTime6, family= binomial, data= dat)
+PA23<- glm(presence ~ fMonth + fTide4 + fTime6 + fMonth:fTide4 + fTide4:fTime6, family= binomial, data= dat)
+# remove interactions two-at-a-time
+PA24<- glm(presence ~ fMonth + fTide4 + fTime6 + fMonth:fTime6, family= binomial, data= dat)
+PA25<- glm(presence ~ fMonth + fTide4 + fTime6 + fTide4:fTime6, family= binomial, data= dat)
+PA26<- glm(presence ~ fMonth + fTide4 + fTime6 + fMonth:fTide4, family= binomial, data= dat)
+# remove all interactions
+PA27<- glm(presence ~ fMonth + fTide4 + fTime6, family= binomial, data= dat)
+
+AIC(PA2)
+AIC(PA21)
+AIC(PA22)
+AIC(PA23)
+AIC(PA24)
+AIC(PA25)
+AIC(PA26)
+AIC(PA27)
+
+# PA24 seems best so far
+
+# remove the main effect not involved in the interaction of PA24 (fTide4)
+PA28<- glm(presence ~ fMonth + fTime6 + fMonth:fTime6, family= binomial, data= dat)
+AIC(PA28)
+
+# we could simplify further, but it is unlikely that simpler models 
+# would be supported based on what we know, so I'll stop here
+
+# Constructing a table 
+# (you can do this with pen and paper, or in R, for example like this)
+ModelStructure<- c(
+  "fTide4 * fMonth + fTide4 * fTime6 + fMonth * fTime6",     
+  "fMonth + fTide4 + fTime6 + fMonth:fTide4 + fMonth:fTime6",
+  "fMonth + fTide4 + fTime6 + fMonth:fTime6 + fTide4:fTime6" ,
+  "fMonth + fTide4 + fTime6 + fMonth:fTide4 + fTide4:fTime6",
+  "fMonth + fTide4 + fTime6 + fMonth:fTime6",
+  "fMonth + fTide4 + fTime6 + fTide4:fTime6",
+  "fMonth + fTide4 + fTime6 + fMonth:fTide4",
+  "fMonth + fTide4 + fTime6",
+  "fMonth + fTime6 + fMonth:fTime6")
+
+AICval<- c(AIC(PA2),
+            AIC(PA21),
+            AIC(PA22),
+            AIC(PA23),
+            AIC(PA24),
+            AIC(PA25),
+            AIC(PA26),
+            AIC(PA27),
+            AIC(PA28))
+
+ModelName<- c("PA2",
+            "PA21",
+            "PA22",
+            "PA23",
+            "PA24",
+            "PA25",
+            "PA26",
+            "PA27",
+            "PA28")
+
+# combine models and AIC values in a table
+ModSelTab<- data.frame(model= ModelName, structure= ModelStructure, AIC= AICval)
+
+# sort the table by increasing AIC value
+ModSelTab<- ModSelTab[order(ModSelTab$AIC), ]
+
+# compute AIC differences with best model, and round to 2 decimals
+ModSelTab$delta<- round(ModSelTab$AIC - ModSelTab$AIC[1], 2)
+
+# compute AIC weight, and round to 2 decimals
+ModSelTab$weight<- round(exp(-ModSelTab$delta / 2) / sum(exp(-ModSelTab$delta / 2)), 2)
+```
+
+```{r Q14b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+require(knitr)
+kable(ModSelTab)
+
+# Model PA24 is far ahead, with an AIC more than 5 units lower than the next best model.
+# It attracts almost all the AIC weight, accordingly.
+
+# Depending on the set of models you decided to compare, 
+# your best model and AIC weights may vary from mine.
+
+```
+
+\  
+
+15\. Do the validation of your best model, using the approach taken in question 7.
+
+\  
+
+```{r Q15, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8}
+res24.p<- resid(PA24, type= "pearson")
+
+library(arm)
+par(mfrow= c(2, 2))
+binnedplot(x= as.numeric(dat$fTide4), y=  res24.p, xlab= "Tide angle", nclass= 100)
+# okay
+binnedplot(x= as.numeric(dat$fTime6), y=  res24.p, xlab= "hour")
+# okay
+binnedplot(x= dat$julianday, y=  res24.p, xlab= "Day of the year", nclass= 100)
+# okay
+# We could also check seasonal variation in diel pattern ("time by season" interaction):
+matplot(tapply(res24.p, list(dat$mon, dat$fTime6), mean), type= "l", 
+        xlab= "month", ylab= "proportion of hours present", lty= 1)
+# Residual variation is tiny (check y-axis and compare with Question 9); 
+# no consistent pattern of variation. Pretty good!
+
+# There are few assumptions for the Bernoulli distribution other than 
+# observations being zeros and ones.
+# Some assumptions valid for all models still apply here, such as: model 
+# correctly specified; independent
+# residuals. The latter is violated in this data set, due to consecutive 
+# measurements in time. This issue
+# is explored in the linked paper, using mixed models for non-independent data 
+# (covered in the course BI5302). 
+# The paper also uses GAMs (Generalised Additive Models, an extension of GLMs)
+# for avoiding the discretization of continuous variables, and
+# accounting for the cyclicity of the predictors (estimates at each end should 
+# match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)
+
+```
+
+\  
+
+16\. Interpret the model, using plots of the predictions (use the approach taken in question 9) .
+
+\  
+
+```{r Q16, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, , fig.width=8}
+
+# Model PA24 assumes that dolphin presence (actually, probability of recording) 
+# changes according to time of year, time of day and tidal stage, and that the
+# effect of time of day changes with the time of year (fMonth:fTime6).
+
+summary(PA24)
+# This is tricky to interpret due to the number of coefficients (75), 
+# and the presence of interactions. Best to use plots!
+
+# Let's illustrate the differences in predictions for two different months, 
+# for example June and December (this could be done for each of the 12 months)
+
+par(mfrow= c(1, 2))
+# June
+dat4pred<- expand.grid(fTime6= levels(dat$fTime6),
+                fMonth= "6",
+								fTide4= "1")
+PA24.pred<- predict(PA24, dat4pred, type= "link", se.fit= T)
+dat4pred$fit.resp<- plogis(PA24.pred$fit)
+dat4pred$LCI<- plogis(PA24.pred$fit - 1.96*PA24.pred$se.fit)
+dat4pred$UCI<- plogis(PA24.pred$fit + 1.96*PA24.pred$se.fit)
+plot(as.numeric(dat4pred$fTime6), dat4pred$fit.resp, pch= 16, 
+	  cex= 1.4, main= paste("Month =", 6),
+    col= 1, xlab= "Section of day",
+	  ylab= "Fitted probability (assuming Tide = 1)", ylim= c(0, 1))
+arrows(x0= as.numeric(dat4pred$fTime6), x1= as.numeric(dat4pred$fTime6),
+    y0= dat4pred$LCI, y1= dat4pred$UCI,
+	  col= grey(0.5), length= 0.02, angle= 90, code= 3)
+
+# December
+dat4pred<- expand.grid(fTime6= levels(dat$fTime6),
+                fMonth= "12",
+								fTide4= "1")
+PA24.pred<- predict(PA24, dat4pred, type= "link", se.fit= T)
+dat4pred$fit.resp<- plogis(PA24.pred$fit)
+dat4pred$LCI<- plogis(PA24.pred$fit - 1.96*PA24.pred$se.fit)
+dat4pred$UCI<- plogis(PA24.pred$fit + 1.96*PA24.pred$se.fit)
+plot(as.numeric(dat4pred$fTime6), dat4pred$fit.resp, pch= 16, 
+	  cex= 1.4, main= paste("Month =", 12),
+    col= 1, xlab= "Section of day",
+	  ylab= "Fitted probability (assuming Tide = 1)", ylim= c(0, 1))
+arrows(x0= as.numeric(dat4pred$fTime6), x1= as.numeric(dat4pred$fTime6),
+    y0= dat4pred$LCI, y1= dat4pred$UCI,
+	  col= grey(0.5), length= 0.02, angle= 90, code= 3)
+
+# In June, dolphins seem to have a similar probability of being recorded
+# at any time of the day and night, whereas in December they are mostly
+# using the site by night (ca. 40% chances of being present against 
+# only ca. 10% in the middle of the day)
+
+# (FOR THE R GEEKS OUT THERE)
+# For plots of predictions for all 12 months, it is possible to automate
+# the process using a loop:
+par(mfrow= c(3, 4))
+for(month in 1:12){ 
+  # at the first iteration, the variable `month` will take value 1, then
+  # at the second iteration, the variable `month` will take value 2, 
+  # etc... until iteraction 12
+	dat4pred<- expand.grid(fTime6= levels(dat$fTime6),
+                                fMonth= as.character(month),
+								fTide4= "1")
+	PA24.pred<- predict(PA24, dat4pred, type= "link", se.fit= T)
+	dat4pred$fit.resp<- plogis(PA24.pred$fit)
+	dat4pred$LCI<- plogis(PA24.pred$fit - 1.96*PA24.pred$se.fit)
+	dat4pred$UCI<- plogis(PA24.pred$fit + 1.96*PA24.pred$se.fit)
+	plot(as.numeric(dat4pred$fTime6), dat4pred$fit.resp, pch= 16, 
+		  cex= 1.4, main= paste("Month =", month),
+          col= 1, xlab= "Section of day",
+		  ylab= "Fitted probability (assuming Tide = 1)", ylim= c(0, 1))
+	arrows(x0= as.numeric(dat4pred$fTime6), x1= as.numeric(dat4pred$fTime6),
+          y0= dat4pred$LCI, y1= dat4pred$UCI,
+		  col= grey(0.5), length= 0.02, angle= 90, code= 3)
+} # end of one iteration, start of the next
+
+# According to the better supported model, they tend to use the site
+# more in May, June and 
+# July day and night, visit mostly by night from October to December,
+# and seldom from Jan to March.
+
+# Of note is the low proportion of deviance explained by the model,
+# despite its complexity (75 parameters):
+(PA24$null.deviance - PA24$deviance) /
+	PA24$null.deviance 
+# 10%. However, this is quite normal with Bernoulli data,
+# since they do not contain a great deal of information
+```
+
+\  
+
+**End of the optional extension to Binomial (Bernoulli) GLM exercise**
+
+\  
+
+**For info,** the publication here offers a different approach to analysing these data, using slightly fancier GLMs with smooth terms (called GAMs, for Generalized Additive Models), and a few additional refinements: [https://www.nature.com/articles/s41598-019-38900-4]. What assumptions differ between this and your approach?

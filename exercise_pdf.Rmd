@@ -70,6 +70,7 @@ cat(sep="\n\n")
 
  - [Generalised linear models 1 - Poisson GLM exercise](./exercises/GLM_1_Poisson_exercise.pdf)
 
- - [Generalised linear models 2 - Binomial GLM exercise (0/1 data)](./exercises/GLM_2_Binomial_exercise.pdf)
+ - [Generalised linear models 2 - Binomial GLM exercise (0/1 data)](./exercises/GLM_2_Binomial_RayBin_exercise.pdf)
  
- - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](./exercises/GLM_3_BinomialProportions_exercise.pdf)
+<!-- - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](./exercises/GLM_3_BinomialProportions_exercise.pdf)
+-->

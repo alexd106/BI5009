@@ -75,8 +75,9 @@ rmarkdown::render("linear_model_2_exercise.Rmd", output_format = "pdf_document",
 rmarkdown::render("LM_3_multiple_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_3_exercise.pdf", quiet = TRUE)
 rmarkdown::render("LM_4_Selection_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_4_exercise.pdf", quiet = TRUE)
 rmarkdown::render("GLM_1_Poisson_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_1_Poisson_exercise.pdf", quiet = TRUE)
-rmarkdown::render("GLM_2_Binomial_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_2_Binomial_exercise.pdf", quiet = TRUE)
-rmarkdown::render("GLM_3_BinomialProportions_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_3_BinomialProportions_exercise.pdf", quiet = TRUE)
+rmarkdown::render("GLM_2_Binomial_RayBin_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_2_Binomial_RayBin_exercise.pdf", quiet = TRUE)
+
+# rmarkdown::render("GLM_3_BinomialProportions_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_3_BinomialProportions_exercise.pdf", quiet = TRUE)
 
 ```
 
@@ -96,10 +97,14 @@ rmarkdown::render("GLM_3_BinomialProportions_exercise.Rmd", output_format = "pdf
 
  - [Generalised linear models 1 - Poisson GLM exercise](GLM_1_Poisson_exercise.html)
 
- - [Generalised linear models 2 - Binomial GLM exercise](GLM_2_Binomial_exercise.html)
+ - [Generalised linear models 2 - Binomial GLM exercise](GLM_2_Binomial_RayBin_exercise.html)
  
- - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](GLM_3_BinomialProportions_exercise.html)
+<!-- - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](GLM_3_BinomialProportions_exercise.html)
+-->
 
+\  
+
+[Additional optional exercises](optional_exercises.html)
 
 \  
 
