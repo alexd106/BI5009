@@ -1,12 +1,9 @@
 ---
 title: 'Exercise Solutions'
-# author: "TCornulier"
 output: 
   html_document:
     toc: false
     code_folding: hide
-editor_options: 
-  chunk_output_type: console
 ---
 
 
@@ -22,7 +19,7 @@ SOLUTIONS<- TRUE
 
 \  
 
-The exercise from the previous practical assumed a pre-conceived model with the area of the patch `LOGAREA`, and the grazing intensity `FGRAZE` as interactive effects. This is useful as a training exercise, and might be the way to approach the analysis of these data if the experiment had been designed to test these effects only. However, if other predictors are presumed to be important, not including them in the model could bias our results. Alternatively, if the goal of the analysis is just to explore what model form(s) explain the data in a parcimonious way (as opposed to formally testing hypotheses), we would also want to include these extra predictors. 
+The exercise from the previous practical assumed a pre-conceived model with the area of the patch `LOGAREA`, and the grazing intensity `FGRAZE` as interactive effects. This is useful as a training exercise, and might be the way to approach the analysis of these data if the experiment had been designed to test these effects only. However, if other predictors are presumed to be important, not including them in the model could bias our results. Alternatively, if the goal of the analysis is just to explore what model form(s) explain the data in a parsimonious way (as opposed to formally testing hypotheses), we would also want to include these extra predictors. 
 
 \  
 

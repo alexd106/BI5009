@@ -4,6 +4,7 @@ title: 'Exercise'
 output: 
   html_document:
     toc: false
+    code_folding: hide
 ---
 
 

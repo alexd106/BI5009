@@ -3,6 +3,7 @@ title: "Exercise"
 output:
   html_document: 
     toc: no
+    code_folding: hide
 ---
 
 
