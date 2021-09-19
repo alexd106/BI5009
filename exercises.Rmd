@@ -26,7 +26,7 @@ The following exercises are split into two main sections.
 
 I will release the [solutions to the exercises](exercise_solutions.html){target="_blank"} after each of our synchronous sessions. If you prefer to download these exercises in pdf format you can [find them here](exercise_pdf.html){target="_blank"}. 
 
-Finally, just a word about the content of some of the early R exercises. Initially, some of the material in the exercises might strike you as ‘pointless’, ‘trivial’ or ‘irrelevant’ and you may even ask yourself what possible use is generating sequences of numbers, concatenating elements in a vector or ordering lists of names (to name but a few).  However, please stick with it, you’ll be amazed how many times you will use the skills (and code) that you have learned throughout these exercises when it comes to dealing with and analysing your own data. 
+Finally, just a word about the content of some of the early R exercises in Section 1. Initially, some of the material in these exercises might strike you as ‘pointless’, ‘trivial’ or ‘irrelevant’ and you may even ask yourself what possible use is generating sequences of numbers, concatenating elements in a vector or ordering lists of names (to name but a few).  However, please stick with it, you’ll be amazed how many times you will use the skills (and code) that you have learned throughout these exercises when it comes to dealing with and analysing your own data. 
 
 Have fun!
 
