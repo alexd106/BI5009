@@ -5,6 +5,8 @@ output:
   html_document:
     toc: false
     code_folding: hide
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -59,7 +61,7 @@ pairs(sp[, VOI])
 coplot(logSp ~ Biomass | pH, data= sp)
 # the relationships look clean and well distinct between treatments, 
 # supporting the idea of an interaction.
-# looking promising.
+
 ```
 
 \  
@@ -144,7 +146,7 @@ drop1(sp.glm2, test= "Chisq")
 
 \  
 
-8\. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion (Hint: check residual deviance and degrees of freedom)
+8\. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion? (Hint: check residual deviance and degrees of freedom)
 
 \  
 
@@ -152,19 +154,50 @@ drop1(sp.glm2, test= "Chisq")
 
 \  
 
-10\. Check for collinearity using the `vif()` function in the `car` package. What do you think?
+10\. Obtain summaries of the model output using the `summary()` function. 
+
+* How do you interpret the model terms? 
+  + what does the `Intercept` represent, and which categories does it apply to?
+  + what does the `Biomass` effect represent, and which category does it apply to?
+  + what does the `pHmid` effect represent?
+  + what does the `Biomass:pHmid` effect represent?
 
 \  
 
 ```{r Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-library(car)
-vif(sp.glm2)
+# "(Intercept)" is the predicted value on the link (log) scale for
+# Biomass = 0, and pH= "low"
 
-# GVIF is high for all the terms.
-# This is expected though, because all terms are part of an interaction. 
-# Any change in one coefficient will have a strong impact on the others
-# This might be exacerbated by the pre-existing correlation between 
-# the predictors. But all components are very clearly needed here.
+# "Biomass" is the slope of Biomass for the low pH category.
+# It is negative, so assumes a linear decrease (on the log scale)
+
+# "pHmid" is the estimated difference (on the log scale) between
+# the "pHmid" and the reference level, "pHlow".
+# Positive means higher on average than pHlow.
+
+# "Biomass:pHmid" is the difference between the slope of Biomass for pHmid
+# compared to the slope of Biomass for the reference level, "pHlow".
+# Positive means that the decrease is slower in "pHmid" (although this is
+# for the linear relationships on the log scale, but it may not look
+# the same on the response scale - see the graphical interpretation below)
+
+# A mathematical description of the model
+# (more or less how I would present it in the methods section of a paper):
+# Species ~ Poisson(mu)
+# log(mu) = 2.95 - 0.26 * Biomass
+#    + 0.48 * pHmid
+#    + 0.82 * pHhigh
+#    + 0.12 * Biomass * pHmid
+#    + 0.16 * Biomass * pHhigh
+
+# The coefficients are on the log scale,
+# so cannot be interpreted directly as counts. 
+# They are interpreted as changes in log-counts:
+
+# For a biomass of zero, the log of the number of species at medium pH
+# is increased by 0.48 compared to the low pH.
+# This is equivalent to saying that the counts increase by exp(0.48),
+# hence that they are multiplied by 1.62.
 
 ```
 

@@ -478,7 +478,7 @@ $(document).ready(function () {
 <div id="exercise-binomial-bernoulli-glm---maturity-length-relationship-in-rays" class="section level1">
 <h1>Exercise: Binomial (Bernoulli) GLM - Maturity-length relationship in rays</h1>
 <p> </p>
-<p>1. The data for this exercise consist in records of Undulate Ray (<em>Raja undulata</em>) along the French Atlantic coast and the English Channel. The question of interest here is to estimate the size at which individuals become sexually mature. This is important in order to predict the dynamics of the population and possibly for setting fishing quotas. It has also been shown in other species that overfished stocks tend to mature earlier in response to the selection imposed by fishing mortality.</p>
+<p>1. The data for this exercise consist in records of Undulate Ray (<em>Raja undulata</em>) along the French Altlantic coast and the English Channel. The question of interest here is to estimate the size at which individuals become sexually mature. This is important in order to predict the dynamics of the population and possibly for setting fishing quotas. It has also been shown in other species that overfished stocks tend to mature earlier in response to the selection imposed by fishing mortality.</p>
 <ul>
 <li>Variables:
 <ul>
@@ -505,7 +505,7 @@ $(document).ready(function () {
 <p> </p>
 <p>2. Import the data file ‘RayMaturity.csv’ into R. As in previous exercises, either create a new R script (perhaps call it GLM_RayBin) or continue with your previous R script in your RStudio Project.</p>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/RayMaturity.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/RayMaturity.csv&quot;</span>, <span class="at">stringsAsFactors=</span> T)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    1148 obs. of  7 variables:</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ X     : int  127 128 129 130 131 132 133 134 135 136 ...</span></span>
@@ -516,7 +516,7 @@ $(document).ready(function () {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Year  : int  2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 ...</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Mature: int  0 0 0 0 0 1 0 1 1 1 ...</span></span></code></pre></div>
 <p> </p>
-<p>3. Let’s first take a look at the structure of this dataframe, and do an initial data exploration. 0/1 data are more difficult than most to explore. We will start by looking for any correlation/data imbalance (different sample sizes between portions of a predictor variable) for the all predictors (for example <code>Lg</code>, <code>Sex</code>, and <code>Area</code>)</p>
+<p>3. Let’s first take a look at the structure of this dataframe, and do an initial data exploration. 0/1 data (Bernoulli) are more difficult than most to explore. We will start by looking for any correlation/data imbalance (different sample sizes between portions of a predictor variable) for the all predictors (for example <code>Lg</code>, <code>Sex</code>, and <code>Area</code>)</p>
 <ul>
 <li>Notes:
 <ul>
@@ -579,7 +579,7 @@ $(document).ready(function () {
 <ul>
 <li>Notes:
 <ul>
-<li>These data are not probabilities of maturity, they are just 0 and 1’s. We can’t visualise probabilities of maturity unless we average the data for groups of observations</li>
+<li>The data are not probabilities of maturity, they are just 0 and 1’s. We can’t visualise probabilities of maturity unless we average the data for groups of observations</li>
 <li>For exploring the effect of discrete predictors on the probability of maturity (response), you may calculate mean maturity per category, which is the proportion of mature individuals: <code>bla&lt;- tapply(dat$Mature, list(dat$FactorOfInterest), mean)</code> and plot this using <code>barplot(bla, type= "b", ylim= c(0, 1), xlab= "FactorOfInterest", ylab= "maturity")</code></li>
 <li>For the effect of continuous predictors on the response, the best approach is to treat the continuous variable as discrete (using <code>as.factor</code> for example), for the data exploration.</li>
 </ul></li>
@@ -916,7 +916,7 @@ $(document).ready(function () {
 <span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co"># species in the English Channel. This is correlative.</span></span>
 <span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="co"># More research needed if we want to establish the cause!</span></span></code></pre></div>
 <p> </p>
-<p><strong>End of the Binomial (Bernoulli) GLM exercise - Maturity-length relationship in rays</strong></p>
+<p>End of the Binomial (Bernoulli) GLM exercise - Maturity-length relationship in rays</p>
 <p> </p>
 <p><strong>Note:</strong> If you cannot install the <code>arm</code> package and access its <code>binnedplot</code> function, you can use this “DIY” alternative instead, in the code chunk below. The green line shows the mean of the residuals for each value or bin of the X variable.</p>
 <p> </p>

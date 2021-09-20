@@ -517,8 +517,7 @@ $(document).ready(function () {
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coplot</span>(logSp <span class="sc">~</span> Biomass <span class="sc">|</span> pH, <span class="at">data=</span> sp)</span></code></pre></div>
 <p><img src="GLM_1_Poisson_exercise_solutions_files/figure-html/Q2-2.png" width="672" /></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the relationships look clean and well distinct between treatments, </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># supporting the idea of an interaction.</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># looking promising.</span></span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># supporting the idea of an interaction.</span></span></code></pre></div>
 <p> </p>
 <p>3. To warm up, let’s start with a simple Poisson GLM (using <code>glm</code>) including only <code>Biomass</code> as a predictor. Hints: + take some time to think what the appropriate response variable is! + if in doubt, make sure to ask someone to help clear this with you. + remember to specify the assumed distribution of the data in <code>glm()</code></p>
 <p> </p>
@@ -639,24 +638,54 @@ $(document).ready(function () {
 <span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="co"># is different (coefficient different from zero in the latter </span></span>
 <span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="co"># vs. significant proportion of variation explained in the former).</span></span></code></pre></div>
 <p> </p>
-<p>8. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion (Hint: check residual deviance and degrees of freedom)</p>
+<p>8. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion? (Hint: check residual deviance and degrees of freedom)</p>
 <p> </p>
 <p>9. Is everything significant? Which of the summaries above do you prefer to use, if you would like to explain the predictions, or test hypotheses, or perform model selection?</p>
 <p> </p>
-<p>10. Check for collinearity using the <code>vif()</code> function in the <code>car</code> package. What do you think?</p>
+<p>10. Obtain summaries of the model output using the <code>summary()</code> function.</p>
+<ul>
+<li>How do you interpret the model terms?
+<ul>
+<li>what does the <code>Intercept</code> represent, and which categories does it apply to?</li>
+<li>what does the <code>Biomass</code> effect represent, and which category does it apply to?</li>
+<li>what does the <code>pHmid</code> effect represent?</li>
+<li>what does the <code>Biomass:pHmid</code> effect represent?</li>
+</ul></li>
+</ul>
 <p> </p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(sp.glm2)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">##                 GVIF Df GVIF^(1/(2*Df))</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Biomass    16.250598  1        4.031203</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## pH          7.218052  2        1.639098</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Biomass:pH 57.090096  2        2.748781</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># GVIF is high for all the terms.</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># This is expected though, because all terms are part of an interaction. </span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Any change in one coefficient will have a strong impact on the others</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This might be exacerbated by the pre-existing correlation between </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the predictors. But all components are very clearly needed here.</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;(Intercept)&quot; is the predicted value on the link (log) scale for</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Biomass = 0, and pH= &quot;low&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Biomass&quot; is the slope of Biomass for the low pH category.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># It is negative, so assumes a linear decrease (on the log scale)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;pHmid&quot; is the estimated difference (on the log scale) between</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># the &quot;pHmid&quot; and the reference level, &quot;pHlow&quot;.</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Positive means higher on average than pHlow.</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Biomass:pHmid&quot; is the difference between the slope of Biomass for pHmid</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># compared to the slope of Biomass for the reference level, &quot;pHlow&quot;.</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Positive means that the decrease is slower in &quot;pHmid&quot; (although this is</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># for the linear relationships on the log scale, but it may not look</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># the same on the response scale - see the graphical interpretation below)</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># A mathematical description of the model</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># (more or less how I would present it in the methods section of a paper):</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Species ~ Poisson(mu)</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># log(mu) = 2.95 - 0.26 * Biomass</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#    + 0.48 * pHmid</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#    + 0.82 * pHhigh</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#    + 0.12 * Biomass * pHmid</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#    + 0.16 * Biomass * pHhigh</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># The coefficients are on the log scale,</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co"># so cannot be interpreted directly as counts. </span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># They are interpreted as changes in log-counts:</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co"># For a biomass of zero, the log of the number of species at medium pH</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co"># is increased by 0.48 compared to the low pH.</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co"># This is equivalent to saying that the counts increase by exp(0.48),</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co"># hence that they are multiplied by 1.62.</span></span></code></pre></div>
 <p> </p>
 <p>11. Validate the model using the standard residuals diagnostic plots</p>
 <p> </p>

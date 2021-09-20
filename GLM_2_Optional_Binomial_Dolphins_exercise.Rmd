@@ -1,9 +1,12 @@
 ---
 title: "Exercise"
+# author: TCornulier
 output:
   html_document: 
     toc: no
     code_folding: hide
+editor_options:
+  chunk_output_type: console
 ---
 
 
@@ -235,10 +238,6 @@ drop1(PA1, test= "Chisq")
 \  
 
 ```{r Q7, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8}
-library(car)
-vif(PA1)
-# No concern.
-
 par(mfrow= c(2, 2))
 plot(PA1) # not very useful
 

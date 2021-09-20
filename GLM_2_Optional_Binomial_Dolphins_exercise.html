@@ -550,40 +550,36 @@ $(document).ready(function () {
 <p> </p>
 <p>7. Let’s now produce plots to validate the model, using Pearson residuals. The usual tools are not very helpful with a GLM for Bernoulli data (you can try anyway), but we can get a bit further by using the <code>binnedplot()</code> function in the <code>arm</code> package. For numerical variables, <code>binnedplot()</code> splits the numerical variable into discrete bins, and plots the mean of the residuals for each bin. These means should be randomly distributed around zero (and ideally, close to zero when the sample size is large).</p>
 <p> </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(PA1)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># No concern.</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1) <span class="co"># not very useful</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># to make sense of what we are seeing, we can add colors: red</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for residuals of presence data, black for residuals of absence data</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Not very telling either</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s plot against predictors:</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>res1.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA1, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>fTide4) <span class="co"># boxplot (x axis is a factor)</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1) <span class="co"># not very useful</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to make sense of what we are seeing, we can add colors: red</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for residuals of presence data, black for residuals of absence data</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Not very telling either</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s plot against predictors:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>res1.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA1, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>fTide4) <span class="co"># boxplot (x axis is a factor)</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>fTime6) <span class="co"># boxplot</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>julianday, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>) <span class="co"># scatterplot</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>fTime6) <span class="co"># boxplot</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Can&#39;t see anything useful.</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>julianday, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>) <span class="co"># scatterplot</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Can&#39;t see anything useful.</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Use arm if you can:</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># computes the mean of residuals per bin of numerical </span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># variables (should be randomly distributed around zero).</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># You need to convert categorical variables into </span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical for the function to work</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTide4), <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Tidal state&quot;</span>)</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>Time6), <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Time of day&quot;</span>)</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> dat<span class="sc">$</span>julianday, <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span></code></pre></div>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Use arm if you can:</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># computes the mean of residuals per bin of numerical </span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># variables (should be randomly distributed around zero).</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># You need to convert categorical variables into </span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical for the function to work</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTide4), <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Tidal state&quot;</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>Time6), <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Time of day&quot;</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> dat<span class="sc">$</span>julianday, <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span></code></pre></div>
 <p> </p>
 <p>8. Are you happy with the diagnostic plots?</p>
 <p> </p>

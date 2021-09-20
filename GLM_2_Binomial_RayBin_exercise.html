@@ -30,7 +30,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -116,15 +115,6 @@ code span.va { color: #000000; } /* Variable */
 code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 
-.sourceCode .row {
-  width: 100%;
-}
-.sourceCode {
-  overflow-x: auto;
-}
-.code-folding-btn {
-  margin-right: -30px;
-}
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -309,9 +299,6 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
 
 
 
@@ -459,14 +446,6 @@ $(document).ready(function () {
 
 <div id="header">
 
-<div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
 
 
 <h1 class="title toc-ignore">Exercise</h1>
@@ -478,7 +457,7 @@ $(document).ready(function () {
 <div id="exercise-binomial-bernoulli-glm---maturity-length-relationship-in-rays" class="section level1">
 <h1>Exercise: Binomial (Bernoulli) GLM - Maturity-length relationship in rays</h1>
 <p> </p>
-<p>1. The data for this exercise consist in records of Undulate Ray (<em>Raja undulata</em>) along the French Atlantic coast and the English Channel. The question of interest here is to estimate the size at which individuals become sexually mature. This is important in order to predict the dynamics of the population and possibly for setting fishing quotas. It has also been shown in other species that overfished stocks tend to mature earlier in response to the selection imposed by fishing mortality.</p>
+<p>1. The data for this exercise consist in records of Undulate Ray (<em>Raja undulata</em>) along the French Altlantic coast and the English Channel. The question of interest here is to estimate the size at which individuals become sexually mature. This is important in order to predict the dynamics of the population and possibly for setting fishing quotas. It has also been shown in other species that overfished stocks tend to mature earlier in response to the selection imposed by fishing mortality.</p>
 <ul>
 <li>Variables:
 <ul>
@@ -506,7 +485,7 @@ $(document).ready(function () {
 <p>2. Import the data file ‘RayMaturity.csv’ into R. As in previous exercises, either create a new R script (perhaps call it GLM_RayBin) or continue with your previous R script in your RStudio Project.</p>
 <p> </p>
 <p> </p>
-<p>3. Let’s first take a look at the structure of this dataframe, and do an initial data exploration. 0/1 data are more difficult than most to explore. We will start by looking for any correlation/data imbalance (different sample sizes between portions of a predictor variable) for the all predictors (for example <code>Lg</code>, <code>Sex</code>, and <code>Area</code>)</p>
+<p>3. Let’s first take a look at the structure of this dataframe, and do an initial data exploration. 0/1 data (Bernoulli) are more difficult than most to explore. We will start by looking for any correlation/data imbalance (different sample sizes between portions of a predictor variable) for the all predictors (for example <code>Lg</code>, <code>Sex</code>, and <code>Area</code>)</p>
 <ul>
 <li>Notes:
 <ul>
@@ -553,7 +532,7 @@ $(document).ready(function () {
 <ul>
 <li>Notes:
 <ul>
-<li>These data are not probabilities of maturity, they are just 0 and 1’s. We can’t visualise probabilities of maturity unless we average the data for groups of observations</li>
+<li>The data are not probabilities of maturity, they are just 0 and 1’s. We can’t visualise probabilities of maturity unless we average the data for groups of observations</li>
 <li>For exploring the effect of discrete predictors on the probability of maturity (response), you may calculate mean maturity per category, which is the proportion of mature individuals: <code>bla&lt;- tapply(dat$Mature, list(dat$FactorOfInterest), mean)</code> and plot this using <code>barplot(bla, type= "b", ylim= c(0, 1), xlab= "FactorOfInterest", ylab= "maturity")</code></li>
 <li>For the effect of continuous predictors on the response, the best approach is to treat the continuous variable as discrete (using <code>as.factor</code> for example), for the data exploration.</li>
 </ul></li>
@@ -650,7 +629,7 @@ $(document).ready(function () {
 <p>12. How satisfied are you with the model, and with all the assumptions being met? What have you learned from it, with respect to the initial aims of the study?</p>
 <p> </p>
 <p> </p>
-<p><strong>End of the Binomial (Bernoulli) GLM exercise - Maturity-length relationship in rays</strong></p>
+<p>End of the Binomial (Bernoulli) GLM exercise - Maturity-length relationship in rays</p>
 <p> </p>
 <p><strong>Note:</strong> If you cannot install the <code>arm</code> package and access its <code>binnedplot</code> function, you can use this “DIY” alternative instead, in the code chunk below. The green line shows the mean of the residuals for each value or bin of the X variable.</p>
 <p> </p>
@@ -703,11 +682,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

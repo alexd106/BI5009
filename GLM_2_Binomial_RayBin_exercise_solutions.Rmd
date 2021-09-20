@@ -1,9 +1,12 @@
 ---
 title: "Exercise Solutions"
+# author: TCornulier
 output:
   html_document: 
     toc: no
     code_folding: hide
+editor_options:
+  chunk_output_type: console
 ---
 
 
@@ -19,7 +22,7 @@ SOLUTIONS<- TRUE
 
 \  
 
-1\. The data for this exercise consist in records of Undulate Ray (*Raja undulata*) along the French Atlantic coast and the English Channel. The question of interest here is to estimate the size at which individuals become sexually mature. This is important in order to predict the dynamics of the population and possibly for setting fishing quotas. It has also been shown in other species that overfished stocks tend to mature earlier in response to the selection imposed by fishing mortality.
+1\. The data for this exercise consist in records of Undulate Ray (*Raja undulata*) along the French Altlantic coast and the English Channel. The question of interest here is to estimate the size at which individuals become sexually mature. This is important in order to predict the dynamics of the population and possibly for setting fishing quotas. It has also been shown in other species that overfished stocks tend to mature earlier in response to the selection imposed by fishing mortality.
 
 * Variables:
   + `Lg` length (cm). Individuals less than 74 cm were excluded from the data
@@ -44,13 +47,13 @@ We will construct a model of the probability of being mature, to address the fol
 \  
 
 ```{r Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-dat <- read.csv("./data/RayMaturity.csv", stringsAsFactors = TRUE)
+dat<- read.csv("./data/RayMaturity.csv", stringsAsFactors= T)
 str(dat)
 ```
  
 \  
 
-3\. Let's first take a look at the structure of this dataframe, and do an initial data exploration. 0/1 data are more difficult than most to explore. We will start by looking for any correlation/data imbalance (different sample sizes between portions of a predictor variable) for the all predictors (for example `Lg`, `Sex`, and `Area`)
+3\. Let's first take a look at the structure of this dataframe, and do an initial data exploration. 0/1 data (Bernoulli) are more difficult than most to explore. We will start by looking for any correlation/data imbalance (different sample sizes between portions of a predictor variable) for the all predictors (for example `Lg`, `Sex`, and `Area`)
 
 * Notes:
   + One approach for data imbalance is to count the number of observations per categories of the predictors of interest.
@@ -83,6 +86,7 @@ plot(Obs.Per.Year.Month)
 # (for example, an issue might arise if all observations from Spring
 # came from one year and all Summer observations from a different
 # year, hence not comparable maybe)
+
 ```
 
 ```{r Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
@@ -100,12 +104,13 @@ plot(Obs.Per.Sex.Area)
 dat$fMonth<- factor(dat$Month)
 boxplot(Lg ~ fMonth, data= dat)
 # A little maybe, but not that clear. Shouldn't be a problem
+
 ```
 
 Next we look for factors affecting the probability of maturity. Which ones are continuous or categorical?
 
 * Notes:
-  + These data are not probabilities of maturity, they are just 0 and 1's. We can't visualise probabilities of maturity unless we average the data for groups of observations
+  + The data are not probabilities of maturity, they are just 0 and 1's. We can't visualise probabilities of maturity unless we average the data for groups of observations
   + For exploring the effect of discrete predictors on the probability of maturity (response), you may calculate mean maturity per category, which is the proportion of mature individuals: `bla<- tapply(dat$Mature, list(dat$FactorOfInterest), mean)` and plot this using `barplot(bla, type= "b", ylim= c(0, 1), xlab= "FactorOfInterest", ylab= "maturity")`
   + For the effect of continuous predictors on the response, the best approach is to treat the continuous variable as discrete (using `as.factor` for example), for the data exploration.
 
@@ -117,6 +122,7 @@ mean.per.Sex<- tapply(dat$Mature, list(dat$Sex), mean)
 barplot(mean.per.Sex, ylim= c(0, 1),
 		 xlab= "Sex", ylab= "proportion mature")
 # Probability maybe higher in males?
+
 ```
 
 ```{r Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
@@ -144,6 +150,7 @@ barplot(mean.per.Month, ylim= c(0, 1),
 		  xlab= "Length class", ylab= "proportion mature")
 # some trend here, not ideal given that most data are from April-May-June
 # Maybe Month should be included
+
 ```
 
 \  
@@ -203,6 +210,7 @@ summary(Mat1)
 # None of this is particularly intuitive, so we will mostly
 # rely on predictions on the probability (response) scale
 # for the interpretation of the model
+
 ```
 
 \  
@@ -258,6 +266,7 @@ library(arm)
 par(mfrow= c(1, 1))
 binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 # nclass= 6 because we have 6 months in the data
+
 ```
 
 > We want residuals to be close to zero, but how far is too far? `binnedplot` conveniently adds expected limits (grey lines), beyond which the the fit of the model is questionable. Here the residuals per month are close to the limit, and even outside for August: including `Month` would probably improve the model a bit.
@@ -269,6 +278,7 @@ binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 # nclass= 6 because we have 6 months in the data
 binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 # could use more or less than 20
+
 ```
 
 \  
@@ -323,6 +333,7 @@ lines(x= Seq.Length, y= dat.new.ECH$fit, lwd= 2, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
+
 ```
 
 > The predictions on the link scale are linear, as they should be. But they represent the log-odds of being mature: # For a body length of 75 cm for example, a ray in the English Channel has log-odds of being mature of about -1.6: not exactly the most intuitive thing to interpret!
@@ -363,6 +374,8 @@ lines(x= Seq.Length, y= dat.new.ECH$fit.resp, lwd= 2, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
+
+
 ```
 
 11\. **Optionally**, you may add the confidence intervals around the predictions (this would be highly recommended in a report).
@@ -418,6 +431,7 @@ lines(x= Seq.Length, y= dat.new.ECH$LCI, lty= 3, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
+
 ```
 
 \  
@@ -450,11 +464,12 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 # between the two areas is due to a higher fishing pressure on the
 # species in the English Channel. This is correlative.
 # More research needed if we want to establish the cause!
+
 ```
 
 \  
 
-**End of the Binomial (Bernoulli) GLM exercise - Maturity-length relationship in rays**
+End of the Binomial (Bernoulli) GLM exercise - Maturity-length relationship in rays
 
 \  
 

@@ -16,7 +16,7 @@ pairs(sp[, VOI])
 coplot(logSp ~ Biomass | pH, data= sp)
 # the relationships look clean and well distinct between treatments, 
 # supporting the idea of an interaction.
-# looking promising.
+
 
 
 ## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
@@ -66,14 +66,39 @@ drop1(sp.glm2, test= "Chisq")
 
 
 ## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
-library(car)
-vif(sp.glm2)
+# "(Intercept)" is the predicted value on the link (log) scale for
+# Biomass = 0, and pH= "low"
 
-# GVIF is high for all the terms.
-# This is expected though, because all terms are part of an interaction. 
-# Any change in one coefficient will have a strong impact on the others
-# This might be exacerbated by the pre-existing correlation between 
-# the predictors. But all components are very clearly needed here.
+# "Biomass" is the slope of Biomass for the low pH category.
+# It is negative, so assumes a linear decrease (on the log scale)
+
+# "pHmid" is the estimated difference (on the log scale) between
+# the "pHmid" and the reference level, "pHlow".
+# Positive means higher on average than pHlow.
+
+# "Biomass:pHmid" is the difference between the slope of Biomass for pHmid
+# compared to the slope of Biomass for the reference level, "pHlow".
+# Positive means that the decrease is slower in "pHmid" (although this is
+# for the linear relationships on the log scale, but it may not look
+# the same on the response scale - see the graphical interpretation below)
+
+# A mathematical description of the model
+# (more or less how I would present it in the methods section of a paper):
+# Species ~ Poisson(mu)
+# log(mu) = 2.95 - 0.26 * Biomass
+#    + 0.48 * pHmid
+#    + 0.82 * pHhigh
+#    + 0.12 * Biomass * pHmid
+#    + 0.16 * Biomass * pHhigh
+
+# The coefficients are on the log scale,
+# so cannot be interpreted directly as counts. 
+# They are interpreted as changes in log-counts:
+
+# For a biomass of zero, the log of the number of species at medium pH
+# is increased by 0.48 compared to the low pH.
+# This is equivalent to saying that the counts increase by exp(0.48),
+# hence that they are multiplied by 1.62.
 
 
 

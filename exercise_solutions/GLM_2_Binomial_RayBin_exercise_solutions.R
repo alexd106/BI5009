@@ -1,5 +1,5 @@
 ## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
-dat <- read.csv("./data/RayMaturity.csv", stringsAsFactors = TRUE)
+dat<- read.csv("./data/RayMaturity.csv", stringsAsFactors= T)
 str(dat)
 
 
@@ -27,6 +27,7 @@ plot(Obs.Per.Year.Month)
 # year, hence not comparable maybe)
 
 
+
 ## ----Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")-----
 Obs.Per.Sex.Area<- table(dat$Sex, dat$Area)
 plot(Obs.Per.Sex.Area)
@@ -44,12 +45,14 @@ boxplot(Lg ~ fMonth, data= dat)
 # A little maybe, but not that clear. Shouldn't be a problem
 
 
+
 ## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE-----------------------------------------------------------
 # Maturity in relation to Sex
 mean.per.Sex<- tapply(dat$Mature, list(dat$Sex), mean)
 barplot(mean.per.Sex, ylim= c(0, 1),
 		 xlab= "Sex", ylab= "proportion mature")
 # Probability maybe higher in males?
+
 
 
 ## ----Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")-----
@@ -77,6 +80,7 @@ barplot(mean.per.Month, ylim= c(0, 1),
 		  xlab= "Length class", ylab= "proportion mature")
 # some trend here, not ideal given that most data are from April-May-June
 # Maybe Month should be included
+
 
 
 ## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
@@ -120,6 +124,7 @@ summary(Mat1)
 # for the interpretation of the model
 
 
+
 ## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
 
 drop1(Mat1, test= "Chisq")
@@ -159,6 +164,7 @@ binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 # nclass= 6 because we have 6 months in the data
 
 
+
 ## ----Q8b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8----
 par(mfrow= c(2, 2))
 binnedplot(x= as.numeric(datM$Area), y= res2.p, xlab= "Area")
@@ -166,6 +172,7 @@ binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 # nclass= 6 because we have 6 months in the data
 binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 # could use more or less than 20
+
 
 
 ## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------
@@ -210,6 +217,7 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
           lwd= 2, col= c("navy", "cyan"), bty= "n")
 
 
+
 ## ----Q10b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5----
 # create a sequence of increasing lengths
 Seq.Length<- 74:100
@@ -242,6 +250,8 @@ lines(x= Seq.Length, y= dat.new.ECH$fit.resp, lwd= 2, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
+
+
 
 
 ## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5----
@@ -291,6 +301,7 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
           lwd= 2, col= c("navy", "cyan"), bty= "n")
 
 
+
 ## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 ## # The model seems to fit the data satisfortorily, base on the validation plots.
 ## 
@@ -315,6 +326,7 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 ## # between the two areas is due to a higher fishing pressure on the
 ## # species in the English Channel. This is correlative.
 ## # More research needed if we want to establish the cause!
+## 
 
 
 ## ----binnedplot_alternative, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----

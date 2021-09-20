@@ -52,21 +52,22 @@ M1 <- lm(ABUND ~ LOGDIST + LOGLDIST +
 
 
 ## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
-library(car)
-vif(M1)
+summary(M1)
 
-# Potential problem with FGRAZE (as seen from data exploration) with LOGAREA
-# or YR.ISOL
-# Ignore for the moment, but we will have to take this into account in our
-# interpretation of the results.
-# The high VIF for the terms involved in an
-# interaction is expected and can be ignored.
+# Yes, they are the coefficients with the larger p-values (by definition).
+
+# "LOGDIST", "LOGLDIST" have large SE relative to coefficient values,
+# as well as "YR.ISOL" and "Alt".
+# To a lesser extent, some coefs associated with "LOGAREA" and "FGRAZE".
+
+# All of these gave hints of correlations in the data exploration,
+# so the large standard errors may be due to this (or to the predictor
+# having an effect near zero, i.e. no substantial effect) 
+
 
 
 ## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
 # Wait: why did we not use 'summary' or 'anova' for this?
-summary(M1)
-anova(M1)
 
 # 'summary' tests if the coefficient for each predictor is significantly
 # different from zero.
@@ -275,7 +276,7 @@ summary(M6)
 # patches may have a less important effect)
 
 
-## ----Q12, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
+## ----Q12a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 # This time, we are not doing any specific hypothesis testing, so there's
 # no need to force the LOGAREA * FGRAZE into the model until the
 # end of the model selection.
@@ -327,9 +328,21 @@ summary.table<- summary.table[order(summary.table$AIC), ]
 # Adding AIC differences with respect to best model:
 summary.table$deltaAIC<- summary.table$AIC - summary.table$AIC[1]
 
+
+## ----Q12b, eval=FALSE, echo=SOLUTIONS, results=FALSE, collapse=TRUE----------------------------------------------------
+## # print the table on screen
+## summary.table
+
+
+## ----Q12c, eval=TRUE, echo=FALSE, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
 require(knitr)
 kable(summary.table)
 
+
+## ----Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
+# We don't need to re-validate or re-interpret the model, since 
+# the minimum adequate model is the one we came up with in the
+# previous exercise.
 
 # Note that this rather automatic way of doing model selection
 # misses a number of plausible combinations of the terms of 

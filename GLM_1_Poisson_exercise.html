@@ -409,11 +409,20 @@ $(document).ready(function () {
 <p>7. Obtain summaries of the model output using the <code>summary()</code> and the ANOVA of the model. Which of the <code>drop1()</code> or <code>anova()</code> functions would you choose to use if you wanted (A) to look at deviance components or (B) to do model simplification? Is the effect of the interaction significant?</p>
 <p> </p>
 <p> </p>
-<p>8. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion (Hint: check residual deviance and degrees of freedom)</p>
+<p>8. Make sure you understand the individual components of the two types of summaries, null hypotheses, and the mathematical and biological interpretation of the different coefficients (i.e. would you be able to reconstruct and to use the model formula to make predictions? In doubt, try it and seek assistance!). Any indication of overdispersion? (Hint: check residual deviance and degrees of freedom)</p>
 <p> </p>
 <p>9. Is everything significant? Which of the summaries above do you prefer to use, if you would like to explain the predictions, or test hypotheses, or perform model selection?</p>
 <p> </p>
-<p>10. Check for collinearity using the <code>vif()</code> function in the <code>car</code> package. What do you think?</p>
+<p>10. Obtain summaries of the model output using the <code>summary()</code> function.</p>
+<ul>
+<li>How do you interpret the model terms?
+<ul>
+<li>what does the <code>Intercept</code> represent, and which categories does it apply to?</li>
+<li>what does the <code>Biomass</code> effect represent, and which category does it apply to?</li>
+<li>what does the <code>pHmid</code> effect represent?</li>
+<li>what does the <code>Biomass:pHmid</code> effect represent?</li>
+</ul></li>
+</ul>
 <p> </p>
 <p> </p>
 <p>11. Validate the model using the standard residuals diagnostic plots</p>

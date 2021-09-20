@@ -728,16 +728,8 @@ $(document).ready(function () {
 <p> </p>
 <p>7. Let’s now produce plots to validate the model, using Pearson residuals. The usual tools are not very helpful with a GLM for Bernoulli data (you can try anyway), but we can get a bit further by using the <code>binnedplot()</code> function in the <code>arm</code> package. For numerical variables, <code>binnedplot()</code> splits the numerical variable into discrete bins, and plots the mean of the residuals for each bin. These means should be randomly distributed around zero (and ideally, close to zero when the sample size is large).</p>
 <p> </p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(PA1)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="do">##               GVIF Df GVIF^(1/(2*Df))</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="do">## julianday 1.001577  1        1.000788</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide4    1.037740  3        1.006193</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6    1.038543  5        1.003789</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># No concern.</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1) <span class="co"># not very useful</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1) <span class="co"># not very useful</span></span></code></pre></div>
 <p><img src="GLM_2_Optional_Binomial_Dolphins_exercise_solutions_files/figure-html/Q7-1.png" width="768" /></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to make sense of what we are seeing, we can add colors: red</span></span>

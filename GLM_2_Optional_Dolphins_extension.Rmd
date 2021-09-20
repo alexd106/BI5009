@@ -1,9 +1,12 @@
 ---
 title: "Exercise"
+# author: TCornulier
 output:
   html_document: 
     toc: no
     code_folding: hide
+editor_options:
+  chunk_output_type: console
 ---
 
 
