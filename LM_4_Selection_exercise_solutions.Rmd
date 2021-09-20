@@ -13,7 +13,7 @@ editor_options:
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
 
-SOLUTIONS<- TRUE
+SOLUTIONS <- TRUE
 ```
 
 \  
@@ -291,7 +291,7 @@ plot(M6log)
 
 \  
 
-10\. Obtain summaries of the model output using the `anova()` and `summary()` functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions 'A2' and 'A3' at the end). In doubt, try it and seek assistance!
+10\. Obtain summaries of the model output using the `anova()` and `summary()` functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions 'A2' and 'A3' at the end). If in doubt, try it and seek assistance!
 
 \  
 
@@ -436,14 +436,13 @@ summary.table<- summary.table[order(summary.table$AIC), ]
 summary.table$deltaAIC<- summary.table$AIC - summary.table$AIC[1]
 ```
 
-```{r Q12b, eval=FALSE, echo=SOLUTIONS, results=FALSE, collapse=TRUE}
+```{r Q12b, eval=TRUE, echo=SOLUTIONS, results=TRUE, collapse=TRUE}
 # print the table on screen
 summary.table
 ```
 
-```{r Q12c, eval=TRUE, echo=FALSE, results=SOLUTIONS, collapse=TRUE}
-require(knitr)
-kable(summary.table)
+```{r Q12c, eval=TRUE, echo=FALSE}
+knitr::kable(summary.table, "html", align = "lcr", row.names = FALSE)
 ```
 
 ```{r Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
@@ -466,7 +465,6 @@ kable(summary.table)
 # However, this is no replacement for a fully manual and 
 # thought-through model selection, informed by the understanding 
 # of theory in the research area, and of the research questions.
-
 ```
 
 \  
@@ -475,7 +473,7 @@ End of the model selection exercise
 
 \  
 
-## Optional additional questions, if you're fast or want to take it further
+## Optional additional questions, if you want to take it further
 
 \  
 

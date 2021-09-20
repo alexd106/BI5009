@@ -291,7 +291,7 @@ plot(M6log)
 
 \  
 
-10\. Obtain summaries of the model output using the `anova()` and `summary()` functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions 'A2' and 'A3' at the end). In doubt, try it and seek assistance!
+10\. Obtain summaries of the model output using the `anova()` and `summary()` functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions 'A2' and 'A3' at the end). If in doubt, try it and seek assistance!
 
 \  
 
@@ -442,8 +442,7 @@ summary.table
 ```
 
 ```{r Q12c, eval=TRUE, echo=FALSE, results=SOLUTIONS, collapse=TRUE}
-require(knitr)
-kable(summary.table)
+knitr::kable(summary.table)
 ```
 
 ```{r Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}

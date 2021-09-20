@@ -786,7 +786,7 @@ $(document).ready(function () {
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This could be due to missing important predictors from the model, either</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># unknown predictors, or interactions.</span></span></code></pre></div>
 <p> </p>
-<p>10. Obtain summaries of the model output using the <code>anova()</code> and <code>summary()</code> functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions ‘A2’ and ‘A3’ at the end). In doubt, try it and seek assistance!</p>
+<p>10. Obtain summaries of the model output using the <code>anova()</code> and <code>summary()</code> functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions ‘A2’ and ‘A3’ at the end). If in doubt, try it and seek assistance!</p>
 <p> </p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(M6)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
@@ -1032,7 +1032,85 @@ $(document).ready(function () {
 <span id="cb16-125"><a href="#cb16-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding AIC differences with respect to best model:</span></span>
 <span id="cb16-126"><a href="#cb16-126" aria-hidden="true" tabindex="-1"></a>summary.table<span class="sc">$</span>deltaAIC<span class="ot">&lt;-</span> summary.table<span class="sc">$</span>AIC <span class="sc">-</span> summary.table<span class="sc">$</span>AIC[<span class="dv">1</span>]</span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the table on screen</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>summary.table</span></code></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>summary.table</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="do">##                                         Model    AIC deltaAIC</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 4                            LOGAREA * FGRAZE 364.16     0.00</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 5                            LOGAREA + FGRAZE 365.04     0.88</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3                      ALT + LOGAREA * FGRAZE 365.64     1.48</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2            YR.ISOL + ALT + LOGAREA * FGRAZE 367.35     3.19</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE 369.22     5.06</span></span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:center;">
+AIC
+</th>
+<th style="text-align:right;">
+deltaAIC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LOGAREA * FGRAZE
+</td>
+<td style="text-align:center;">
+364.16
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LOGAREA + FGRAZE
+</td>
+<td style="text-align:center;">
+365.04
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALT + LOGAREA * FGRAZE
+</td>
+<td style="text-align:center;">
+365.64
+</td>
+<td style="text-align:right;">
+1.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+YR.ISOL + ALT + LOGAREA * FGRAZE
+</td>
+<td style="text-align:center;">
+367.35
+</td>
+<td style="text-align:right;">
+3.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE
+</td>
+<td style="text-align:center;">
+369.22
+</td>
+<td style="text-align:right;">
+5.06
+</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We don&#39;t need to re-validate or re-interpret the model, since </span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the minimum adequate model is the one we came up with in the</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># previous exercise.</span></span>
@@ -1055,8 +1133,8 @@ $(document).ready(function () {
 <p> </p>
 <p>End of the model selection exercise</p>
 <p> </p>
-<div id="optional-additional-questions-if-youre-fast-or-want-to-take-it-further" class="section level2">
-<h2>Optional additional questions, if you’re fast or want to take it further</h2>
+<div id="optional-additional-questions-if-you-want-to-take-it-further" class="section level2">
+<h2>Optional additional questions, if you want to take it further</h2>
 <p> </p>
 <p>A1. Taking the final additive model from this practical: Since the <code>anova</code> function does sequential tests of the effects, the results could be different if we put <code>FGRAZE</code> first. Run the corresponding model and its analysis of variance. What null hypotheses are being tested? Do you reject or fail to reject the null hypotheses? What percentage of variation does the model explain overall? Hint: (SST-SSE)/SST. How much variation do <code>LOGAREA</code> and <code>FGRAZE</code> explain respectively?</p>
 <p> </p>

@@ -329,14 +329,13 @@ summary.table<- summary.table[order(summary.table$AIC), ]
 summary.table$deltaAIC<- summary.table$AIC - summary.table$AIC[1]
 
 
-## ----Q12b, eval=FALSE, echo=SOLUTIONS, results=FALSE, collapse=TRUE----------------------------------------------------
-## # print the table on screen
-## summary.table
+## ----Q12b, eval=TRUE, echo=SOLUTIONS, results=TRUE, collapse=TRUE------------------------------------------------------
+# print the table on screen
+summary.table
 
 
-## ----Q12c, eval=TRUE, echo=FALSE, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------
-require(knitr)
-kable(summary.table)
+## ----Q12c, eval=TRUE, echo=FALSE---------------------------------------------------------------------------------------
+knitr::kable(summary.table, "html", align = "lcr", row.names = FALSE)
 
 
 ## ----Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
@@ -359,7 +358,6 @@ kable(summary.table)
 # However, this is no replacement for a fully manual and 
 # thought-through model selection, informed by the understanding 
 # of theory in the research area, and of the research questions.
-
 
 
 ## ----A1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------
