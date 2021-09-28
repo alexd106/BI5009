@@ -16,11 +16,11 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-1. Start RStudio on your computer. Create a new RStudio Project (select File --> New Project on the main menu). Create the Project in a new directory by selecting 'New Directory' and then select 'New Project'. Give the Project a suitable name in the 'Directory name:' box (maybe BI5009_statistics?) and choose where you would like to create this Project directory by clicking on the 'Browse' button. Finally create the project by clicking on the 'Create Project' button. This will be your main RStudio Project file and directory which you will use throughout this course.
+1. Start RStudio on your computer. Create a new RStudio Project (select File --> New Project on the main menu). Create the Project in a new directory by selecting 'New Directory' and then select 'New Project'. Give the Project a suitable name in the 'Directory name:' box (maybe 'BI5009_statistics'? - see [Section 1.9](https://intro2r.com/file_names.html) of the Introduction to R book for a discussion on naming files and directories). Choose where you would like to create this Project directory by clicking on the 'Browse' button. Finally create the project by clicking on the 'Create Project' button. This will be your main RStudio Project file and directory which you will use throughout this course. If you're confused see [Section 1.6](https://intro2r.com/rsprojs.html) of the introduction to R Book which covers RStudio Projects or watch the 'RStudio Projects' video [here](https://alexd106.github.io/BI5009/howto.html).
 
 \  
 
-2. Now create a new R script inside this Project by selecting File --> New File --> R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File --> Save from the main menu. Call this script 'exercise_1' or something similar. Click on the 'Files' tab in the bottom right RStudio pane to see whether your file has been saved in the correct location.  
+2. Now create a new R script inside this Project by selecting File --> New File --> R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File --> Save from the main menu. Call this script 'exercise_1' or something similar (remember, files names should not [contain spaces!](https://intro2r.com/file_names.html)). Click on the 'Files' tab in the bottom right RStudio pane to see whether your file has been saved in the correct location. Read [Section 1.10](https://intro2r.com/proj_doc.html) for more information about R scripts.
 
 \  
 
