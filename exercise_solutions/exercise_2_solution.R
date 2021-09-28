@@ -69,17 +69,17 @@ height_rev <- rev(sort(height))
 
 
 ## ----Q13-----------------------------------------------------------------------------------------------------------------
-child_names <- c("Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William")
+child_name <- c("Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William")
 
 
 ## ----Q14-----------------------------------------------------------------------------------------------------------------
 height_ord <- order(height)   # get the indexes of the heights, smallest to tallest
-names_sort <- child_names[height_ord]     # Louise is shortest, Ronald is tallest
+names_sort <- child_name[height_ord]     # Louise is shortest, Ronald is tallest
 
 
 ## ----Q15-----------------------------------------------------------------------------------------------------------------
 weight_ord <- rev(order(weight))
-weight_rev <- child_names[weight_ord]     # Alfred is heaviest, Louise is lightest
+weight_rev <- child_name[weight_ord]     # Alfred is heaviest, Louise is lightest
 
 
 ## ----Q16-----------------------------------------------------------------------------------------------------------------
