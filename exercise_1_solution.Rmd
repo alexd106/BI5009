@@ -52,6 +52,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
     first_num <- 42    # create variable first_num and assign the value 42
     first_char <- "my first character"
     ```
+
 \  
 
 7. Remove the variable `first_num` from your environment using the `rm()` function. Use the code `rm(first_num)` to do this. Check out the 'Environment' tab to ensure the variable has been removed. Alternatively, use the `ls()` function to list all objects in your environment. 
@@ -78,7 +79,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-11.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a 'design plot' but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function. See [Section 2.5](https://intro2r.com/help.html) for more details.
+11.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a 'design plot' but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function. See [Section 2.5](https://intro2r.com/help.html) of the R book for more details.
 
     ```{r Q11}
     apropos("plot")
@@ -96,7 +97,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
     ```
 \  
 
-13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's a job for future exercises) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory (try Google or read [Section 1.8](https://intro2r.com/dir_struct.html) of the R book.
+13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's a job for future exercises) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory (try Google or read [Section 1.8](https://intro2r.com/dir_struct.html) of the R book).
 
     ```{r Q13}
     getwd()    # displays the current working directory 
