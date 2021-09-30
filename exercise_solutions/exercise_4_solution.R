@@ -184,10 +184,10 @@ vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , c
 
 
 ## ----Q11-----------------------------------------------------------------------------------------------------------------
-coplot(DML ~ weight.sqrt | Fmaturity, data = squid)
+coplot(weight.sqrt ~ DML | Fmaturity, data = squid)
 
 # using xyplot from the lattice package
-xyplot(DML ~ weight.sqrt | Fmaturity, data = squid)
+xyplot(weight.sqrt ~ DML | Fmaturity, data = squid)
 
 
 
