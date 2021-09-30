@@ -242,12 +242,13 @@ vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , c
 
 \  
 
-11\. To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the `coplot()` function ([Section 4.2.6](https://intro2r.com/simple-base-r-plots.html#coplots)) to plot the relationship between DML and square root transformed weight (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the `xyplot()` function ([Section 4.2.7](https://intro2r.com/simple-base-r-plots.html#lattice-plots)) from the `lattice` package (don't forget to make the function available by using `library(lattice)` first). 
+11\. To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the `coplot()` function ([Section 4.2.6](https://intro2r.com/simple-base-r-plots.html#coplots)) to plot the relationship between DML on the x axis and square root transformed weight on the y axis (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the `xyplot()` function ([Section 4.2.7](https://intro2r.com/simple-base-r-plots.html#lattice-plots)) from the `lattice` package (don't forget to make the function available by using `library(lattice)` first). 
 
 ```{r Q11}
 coplot(weight.sqrt ~ DML | Fmaturity, data = squid)
 
 # using xyplot from the lattice package
+library(lattice)
 xyplot(weight.sqrt ~ DML | Fmaturity, data = squid)
 
 ```

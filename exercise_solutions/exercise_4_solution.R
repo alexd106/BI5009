@@ -187,6 +187,7 @@ vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , c
 coplot(weight.sqrt ~ DML | Fmaturity, data = squid)
 
 # using xyplot from the lattice package
+library(lattice)
 xyplot(weight.sqrt ~ DML | Fmaturity, data = squid)
 
 
