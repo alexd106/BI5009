@@ -487,7 +487,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li>Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type (see the course manual if you’re not sure how to do this). Name the file <em>‘whaledata.txt’</em> and save it to the <code>data</code> directory. If you’re a Windows user be careful with file extensions (things like <em>.txt</em>). By default, Windows doesn’t show you the file extension (maybe the boffins at Microsoft don’t think you need to know complicated things like this?) so if you enter <em>‘whaledata.txt’</em> as a filename you might end up with a filename <em>’whaledata.txt.txt</em>’!</li>
+<li>Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type (see <a href="https://intro2r.com/importing-data.html#saving-files-to-import">Section 3.3.1</a> of the Introduction to R book or watch this <a href="https://alexd106.github.io/BI5009/howto.html#import-vid">video</a> if you’re not sure how to do this). Name the file <em>‘whaledata.txt’</em> and save it to the <code>data</code> directory. If you’re a Windows user be careful with file extensions (things like <em>.txt</em>). By default, Windows doesn’t show you the file extension (maybe the boffins at Microsoft don’t think you need to know complicated things like this?) so if you enter <em>‘whaledata.txt’</em> as a filename you might end up with a filename <em>’whaledata.txt.txt</em>’!</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
@@ -495,7 +495,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Now let’s import the <em>‘whaledata.txt’</em> file into R. To do this you will use the workhorse function of data importing, <code>read.table()</code>. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don’t forget to include the appropriate arguments when using the <code>read.table()</code> function (remember that header?) and assign it a variable with an appropriate name (such as <code>whale</code>). Take a look at the course manual if you need any further information.</p>
+<li><p>Now let’s import the <em>‘whaledata.txt’</em> file into R. To do this you will use the workhorse function of data importing, <code>read.table()</code>. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don’t forget to include the appropriate arguments when using the <code>read.table()</code> function (remember that header?) and assign it a variable with an appropriate name (such as <code>whale</code>). Take a look at <a href="https://intro2r.com/importing-data.html#import_fnc">Section 3.2.2</a> of the Introduction to R book or watch this <a href="https://alexd106.github.io/BI5009/howto.html#import-vid">video</a> if you need any further information.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>whale <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code></pre></div></li>
 </ol>
@@ -540,26 +540,34 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
-<li><p>Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket <code>[ ]</code> notation which you used previously with vectors. The key thing to remember when using <code>[ ]</code> with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the <code>[ ]</code>. Let’s practice. Extract all the elements of the first 10 rows and the first 4 columns of the <code>whale</code> dataframe and assign to a new variable called <code>whale.sub</code>. Next, extract all observations (remember - rows) from the <code>whale</code> dataframe and the columns <code>month</code>, <code>water.noise</code> and <code>number.whales</code> and assign to a variable called <code>whale.num</code>. Now, extract the first 50 rows and all columns form the original dataframe and assign to a variable <code>whale.may</code> (there is a better way to do this with conditional statements - see below). Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name (remember the lecture?). Practice both ways. Do you have a preference? If so why?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first 10 rows and first 4 columns</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>whale.sub <span class="ot">&lt;-</span> whale[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]                                      </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows and columns 1, 3 and 6</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>whale.num <span class="ot">&lt;-</span> whale[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative way of indexing columns with named indexes</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>whale.num <span class="ot">&lt;-</span> whale[, <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;water.noise&quot;</span>, <span class="st">&quot;number.whales&quot;</span>)]    </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># first 50 rows and all columns</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>whale.may <span class="ot">&lt;-</span> whale[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, ]  </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding first 10 rows and last column using negative indexing</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="dv">8</span>]  </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># more general way if you have lots of columns</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="fu">c</span>(<span class="fu">ncol</span>(whale))] </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: this doesn&#39;t work for named columns</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="fu">c</span>(<span class="st">&quot;gradient&quot;</span>)]   </span></code></pre></div>
-<p> </p></li>
-<li><p>In addition to extracting rows and columns from your dataframe by position you can also use conditional statements to select particular rows based on some logical criteria. This is very useful but takes a bit of practice to get used to. Extract rows from your dataframe (all columns by default) based on the following criteria (note: you will need to assign the results of these statements to appropriately named variables, I’ll leave it up to you to use informative names!) :</p>
+<li>Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket <code>[ ]</code> notation which you used previously with vectors. The key thing to remember when using <code>[ ]</code> with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the <code>[ ]</code> (see <a href="https://intro2r.com/wrangling-data-frames.html#positional-indexes">Section 3.4.1</a> and this <a href="https://alexd106.github.io/BI5009/howto.html#dataw-vid">video</a> for some additional background information and a few examples). Let’s practice.</li>
+</ol>
+<p>Extract all the elements of the first 10 rows and the first 4 columns of the <code>whale</code> dataframe and assign to a new variable called <code>whale.sub</code>.</p>
+<p>Next, extract all observations (remember - rows) from the <code>whale</code> dataframe and the columns <code>month</code>, <code>water.noise</code> and <code>number.whales</code> and assign to a variable called <code>whale.num</code>.</p>
+<p>Now, extract the first 50 rows and all columns form the original dataframe and assign to a variable <code>whale.may</code> (there’s a better way to do this with conditional statements - see below).</p>
+<p>Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name. Practice both ways. Do you have a preference? If so why?</p>
+<pre><code>```r
+# first 10 rows and first 4 columns
+whale.sub &lt;- whale[1:10, 1:4]                                      
+
+# all rows and columns 1, 3 and 6
+whale.num &lt;- whale[, c(1, 3, 4)] 
+# alternative way of indexing columns with named indexes
+whale.num &lt;- whale[, c(&quot;month&quot;, &quot;water.noise&quot;, &quot;number.whales&quot;)]    
+
+# first 50 rows and all columns
+whale.may &lt;- whale[1:50, ]  
+
+# excluding first 10 rows and last column using negative indexing
+whale.last &lt;- whale[-c(1:10), -8]  
+# more general way if you have lots of columns
+whale.last &lt;- whale[-c(1:10), -c(ncol(whale))] 
+# NOTE: this doesn&#39;t work for named columns
+whale.last &lt;- whale[-c(1:10), -c(&quot;gradient&quot;)]   
+```</code></pre>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li><p>In addition to extracting rows and columns from your dataframe by position you can also use conditional statements to select particular rows based on some logical criteria. This is very useful but takes a bit of practice to get used to (see <a href="https://intro2r.com/wrangling-data-frames.html#logical-indexes">Section 3.4.2</a> for an introduction). Extract rows from your dataframe (all columns by default) based on the following criteria (note: you will need to assign the results of these statements to appropriately named variables, I’ll leave it up to you to use informative names!):</p>
 <ul>
 <li>at depths greater than 1200 m</li>
 <li>gradient steeper than 200 degrees</li>
@@ -581,8 +589,10 @@ $(document).ready(function () {
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>whale.lat.long <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>latitude <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>latitude <span class="sc">&lt;</span> <span class="dv">61</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>longitude <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">6</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>longitude <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">4</span>, ]</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>whale.nomed <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">!=</span> <span class="st">&quot;medium&quot;</span>, ]</span></code></pre></div>
-<p> </p></li>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>whale.nomed <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">!=</span> <span class="st">&quot;medium&quot;</span>, ]</span></code></pre></div></li>
+</ol>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
 <li><p>A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the <code>median()</code> function rather than hard coding the value 132.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>whale.subset <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="fu">median</span>(whale<span class="sc">$</span>gradient), ]</span></code></pre></div></li>
 </ol>
@@ -598,14 +608,14 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li><p>Although you have concentrated on using the square bracket <code>[ ]</code> notation to extract rows and columns from your dataframe, there are of course many other approaches. One such approach is to use the <code>subset()</code> function (see <code>?subset</code> or the manual for more details). Use the <code>subset()</code> function to extract all rows in ‘May’ with a time at station less than 1000 minutes and a depth greater than 1000 m. Also use <code>subset()</code> to extract data collected in ‘October’ from latitudes greater than 61 degrees but only include the columns <code>month</code>, <code>latitude</code>, <code>longitude</code> and <code>number.whales</code>.</p>
+<li><p>Although you have concentrated on using the square bracket <code>[ ]</code> notation to extract rows and columns from your dataframe, there are of course many other approaches. One such approach is to use the <code>subset()</code> function (see <code>?subset</code> or search the Introduction to R book for the term ‘subset’for more details). Use the <code>subset()</code> function to extract all rows in ’May’ with a time at station less than 1000 minutes and a depth greater than 1000 m. Also use <code>subset()</code> to extract data collected in ‘October’ from latitudes greater than 61 degrees but only include the columns <code>month</code>, <code>latitude</code>, <code>longitude</code> and <code>number.whales</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;May&quot;</span> <span class="sc">&amp;</span> time.at.station <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> depth <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> latitude <span class="sc">&gt;</span> <span class="dv">61</span>, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;number.whales&quot;</span>))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li><p>Another useful way to manipulated your dataframes is to sort the rows based on the value of a variable (or combinations of variables). Rather counter-intuitively you should use the <code>order()</code> function to sort your dataframes, not the <code>sort()</code> function. Ordering dataframes uses the same logic you practised in Q14 in Exercise 2. Let’s practice with a straight forward example. Use the <code>order()</code> function to sort all rows in the <code>whale</code> dataframe in ascending order of depth (shallowest to deepest). Store this sorted dataframe in a variable called <code>whale.depth.sort</code>.</p>
+<li><p>Another useful way to manipulated your dataframes is to sort the rows based on the value of a variable (or combinations of variables). Rather counter-intuitively you should use the <code>order()</code> function to sort your dataframes, not the <code>sort()</code> function (see <a href="https://intro2r.com/wrangling-data-frames.html#ordering-data-frames">Section 3.4.3</a> of the Introduction to R book for an explanation). Ordering dataframes uses the same logic you practised in Q14 in Exercise 2. Let’s practice with a straight forward example. Use the <code>order()</code> function to sort all rows in the <code>whale</code> dataframe in ascending order of depth (shallowest to deepest). Store this sorted dataframe in a variable called <code>whale.depth.sort</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>whale.depth.sort <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>depth), ]</span></code></pre></div></li>
 </ol>
 <p> </p>
@@ -621,7 +631,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(whale<span class="sc">$</span>time.at.station)     <span class="co"># mean time at station</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(whale<span class="sc">$</span>depth)             <span class="co"># median depth</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(whale<span class="sc">$</span>number.whales)     <span class="co"># number of observations</span></span></code></pre></div></li>
-<li><p>(cont) Perhaps more interestingly, you might want summarise one variable conditional on the level of another factor variable. For example, write some R code to calculate the mean number of whales sighted at each of the three levels of water noise. Next, calculate the median number of whales sighted at each level of water noise and for each month.</p>
+<li><p>(cont) Perhaps more interestingly, you might want summarise one variable conditional on the level of another factor variable. For example, write some R code to calculate the mean number of whales sighted at each of the three levels of water noise (see <a href="https://intro2r.com/summarising-data-frames.html#summarising-data-frames">Section 3.5</a> for a few hints). Next, calculate the median number of whales sighted at each level of water noise and for each month.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, whale<span class="sc">$</span>water.noise, mean)      <span class="co"># notice the NA?</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use the na.rm argument again</span></span>
@@ -656,7 +666,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="18" style="list-style-type: decimal">
-<li><p>Ok, we have spent quite a bit of time (and energy) learning how to import and manipulate dataframes. The last thing we need to cover is how to export dataframes from R to an external file. Let’s say you want to export the dataframe <code>whale.num</code> you created previously (see Q8) to a file called ‘whale_num.txt’ in your <code>output</code> directory which you created in Exercise 1. To do this you will need to use the <code>write.table()</code> function. You want to include the the variable names in the first row of the file, but you don’t want to include the row names. Also, make sure the file is a tab delimited file. Once you have create your file, try to open it in Microsoft Excel (or open source equivalent).</p>
+<li><p>Ok, we have spent quite a bit of time (and energy) learning how to import and manipulate dataframes. The last thing we need to cover is how to export dataframes from R to an external file (see <a href="https://intro2r.com/exporting-data.html#exporting-data">Section 3.6</a> of the book for more details). Let’s say you want to export the dataframe <code>whale.num</code> you created previously (see Q8) to a file called ‘whale_num.txt’ in your <code>output</code> directory which you created in Exercise 1. To do this you will need to use the <code>write.table()</code> function. You want to include the the variable names in the first row of the file, but you don’t want to include the row names. Also, make sure the file is a tab delimited file. Once you have create your file, try to open it in Microsoft Excel (or open source equivalent).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(whale.num, <span class="st">&quot;output/whale_num.txt&quot;</span>, <span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
