@@ -134,7 +134,7 @@ aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise), me
 aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), mean, na.rm = TRUE)
 
 # optional question. Need to specify a function 'on the fly' using function(x){}
-aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month),     function(x){round(mean(x, na.rm = TRUE), digits = 2)})
+aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(mean(x, na.rm = TRUE), digits = 2)})
 
 
 ## ----Q17, results = 'asis'-----------------------------------------------------------------------------------------------

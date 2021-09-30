@@ -43,7 +43,6 @@ str(squid)
 #  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
 #  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
 #  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
- 
 
 
 ## ----Q5------------------------------------------------------------------------------------------------------------------
@@ -82,8 +81,6 @@ ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
 #       3                 2  0  0  1  1  0  0  0  0  0  0  0
 #       4                16  8  6 13  6  1  1  0  0  0  0  0
 #       5                18 21 23 16 23  3  0  0  0  0  0  0
-      
-
 
 
 ## ----Q6------------------------------------------------------------------------------------------------------------------
@@ -237,7 +234,7 @@ with(squid, points(DML[Fmaturity == "2"], ovary.weight.sqrt[Fmaturity == "2"], c
 with(squid, points(DML[Fmaturity == "3"], ovary.weight.sqrt[Fmaturity == "3"], col = alpha("coral3", 0.7), pch = 16))
 with(squid, points(DML[Fmaturity == "4"], ovary.weight.sqrt[Fmaturity == "4"], col = alpha("lemonchiffon3", 0.7), pch = 16))
 with(squid, points(DML[Fmaturity == "5"], ovary.weight.sqrt[Fmaturity == "5"], col = alpha("darkorchid3", 0.7), pch = 16))
-
+    
 # include the legend
 labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
 cols <- c("deepskyblue3", "darkolivegreen3", "coral3", "lemonchiffon3", "darkorchid3")
