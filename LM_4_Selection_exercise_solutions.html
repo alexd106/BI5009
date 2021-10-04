@@ -952,10 +952,10 @@ $(document).ready(function () {
 <span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE, data = loyn)</span></span>
 <span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="do">##     (Intercept)          LOGAREA          FGRAZE2          FGRAZE3          FGRAZE4          FGRAZE5  </span></span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="do">##          21.243            4.144           -6.165           -7.215          -17.910          -17.043  </span></span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE2  LOGAREA:FGRAZE3  LOGAREA:FGRAZE4  LOGAREA:FGRAZE5  </span></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="do">##           4.368            4.989           15.235            1.996</span></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="do">##     (Intercept)          LOGAREA          FGRAZE2          FGRAZE3          FGRAZE4          FGRAZE5  LOGAREA:FGRAZE2  </span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="do">##          21.243            4.144           -6.165           -7.215          -17.910          -17.043            4.368  </span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE3  LOGAREA:FGRAZE4  LOGAREA:FGRAZE5  </span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="do">##           4.989           15.235            1.996</span></span>
 <span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
 <span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
@@ -1233,10 +1233,10 @@ LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># much lower risk of error by extracting the model coefficients like this:</span></span>
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>birds.inter.<span class="fl">1.</span>coef<span class="ot">&lt;-</span> <span class="fu">coef</span>(birds.inter<span class="fl">.1</span>)</span>
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>birds.inter.<span class="fl">1.</span>coef <span class="co"># check coefficients and their order</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     (Intercept)         FGRAZE2         FGRAZE3         FGRAZE4         FGRAZE5         LOGAREA </span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="do">##       21.243012       -6.165390       -7.214949      -17.909983      -17.042997        4.143979 </span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="do">## FGRAZE2:LOGAREA FGRAZE3:LOGAREA FGRAZE4:LOGAREA FGRAZE5:LOGAREA </span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="do">##        4.368422        4.989490       15.235284        1.995647</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     (Intercept)         FGRAZE2         FGRAZE3         FGRAZE4         FGRAZE5         LOGAREA FGRAZE2:LOGAREA </span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="do">##       21.243012       -6.165390       -7.214949      -17.909983      -17.042997        4.143979        4.368422 </span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="do">## FGRAZE3:LOGAREA FGRAZE4:LOGAREA FGRAZE5:LOGAREA </span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="do">##        4.989490       15.235284        1.995647</span></span>
 <span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># and multiply by the predictor values to obtain the equivalent prediction</span></span>
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(birds.inter.<span class="fl">1.</span>coef <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">2.5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="co"># 31.60296 </span></span>
 <span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 31.60296</span></span>

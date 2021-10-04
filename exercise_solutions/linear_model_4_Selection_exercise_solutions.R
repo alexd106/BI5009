@@ -1,4 +1,4 @@
-## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 loyn <- read.table("./data/loyn.txt", header = TRUE)
 str(loyn)
 
@@ -9,7 +9,7 @@ loyn$LOGDIST <- log10(loyn$DIST)
 loyn$LOGLDIST <- log10(loyn$LDIST)
 
 
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 # Example:
 
 # Rank	|	Predictor	|	Biological effect
@@ -27,7 +27,7 @@ loyn$LOGLDIST <- log10(loyn$LDIST)
 # study system and area, of course.
 
 
-## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
+## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------
 ## VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
 ## pairs(loyn[, VOI])
 ## 
@@ -45,13 +45,13 @@ loyn$LOGLDIST <- log10(loyn$LDIST)
 ## # YR.ISOl (positive), maybe ALT (positive) and FGRAZE (negative).
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 M1 <- lm(ABUND ~ LOGDIST + LOGLDIST +
                  YR.ISOL + ALT + LOGAREA * FGRAZE,
          data = loyn)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 summary(M1)
 
 # Yes, they are the coefficients with the larger p-values (by definition).
@@ -66,7 +66,7 @@ summary(M1)
 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 # Wait: why did we not use 'summary' or 'anova' for this?
 
 # 'summary' tests if the coefficient for each predictor is significantly
@@ -94,7 +94,7 @@ drop1(M1, test = "F")
 # multiple hypotheses at once)
 
 
-## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 M2 <- lm(ABUND ~ LOGLDIST + # removing LOGDIST here
                  YR.ISOL + ALT + LOGAREA * FGRAZE,
          data = loyn)
@@ -126,7 +126,7 @@ M5 <- lm(ABUND ~ LOGAREA * FGRAZE, data = loyn)
 # familiar version of the model!
 
 
-## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 # If the goal of the study is simply to test the FGRAZE * LOGAREA interaction, then all we need is the associated significance test.
 # If the model is intended to be used for further inference (like
 # prediction), then we will try to simplify it as much as is justifiable to do.
@@ -184,7 +184,7 @@ plot(M6)
 # Leverage plot.  
 
 
-## ----Q9extra, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------
+## ----Q9extra, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------
 ## # (Extra)
 ## # ABUND being bounded by zero, it wouldn't be too surprising if the variance increases with the mean abundance.
 ## # This is often improved by log-transforming the response
@@ -200,7 +200,7 @@ plot(M6)
 ## # unknown predictors, or interactions.
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------
 anova(M6)
 # null hypothesis 1: There is no effect of LOGAREA on ABUND
 # (the proportion of variation explained by LOGAREA is zero)
@@ -236,7 +236,7 @@ summary(M6)
 # Note that (Intercept) = 1 always
 
 
-## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------
+## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------
 # Biologically: confirming what we already found out in the previous LM exercises:
 # There is a significant effect of grazing levels, especially the highest
 # level with a negative effect on bird abundance
@@ -276,7 +276,7 @@ summary(M6)
 # patches may have a less important effect)
 
 
-## ----Q12a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------
+## ----Q12a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------
 # This time, we are not doing any specific hypothesis testing, so there's
 # no need to force the LOGAREA * FGRAZE into the model until the
 # end of the model selection.
@@ -329,16 +329,16 @@ summary.table<- summary.table[order(summary.table$AIC), ]
 summary.table$deltaAIC<- summary.table$AIC - summary.table$AIC[1]
 
 
-## ----Q12b, eval=TRUE, echo=SOLUTIONS, results=TRUE, collapse=TRUE-----------------------------------
+## ----Q12b, eval=TRUE, echo=SOLUTIONS, results=TRUE, collapse=TRUE-----------------------------------------
 # print the table on screen
 summary.table
 
 
-## ----Q12c, eval=TRUE, echo=FALSE--------------------------------------------------------------------
+## ----Q12c, eval=TRUE, echo=FALSE--------------------------------------------------------------------------
 knitr::kable(summary.table, "html", align = "lcr", row.names = FALSE)
 
 
-## ----Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------
+## ----Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------
 # We don't need to re-validate or re-interpret the model, since 
 # the minimum adequate model is the one we came up with in the
 # previous exercise.
@@ -360,7 +360,7 @@ knitr::kable(summary.table, "html", align = "lcr", row.names = FALSE)
 # of theory in the research area, and of the research questions.
 
 
-## ----A1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----A1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 birds.add.2 <- lm(ABUND ~ FGRAZE + LOGAREA, data = loyn)
 anova(birds.add.2)
 
@@ -390,7 +390,7 @@ birds.add.2.SST<- sum(anova(birds.add.2)$'Sum Sq') # compute SST
 # the design is unbalanced and FGRAZE and LOGAREA covary (they are correlated)
 
 
-## ----A2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----A2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 # ABUND = 15.72*(Intercept) + 7.25*LOGAREA + 0.38*FGRAZE2 - 0.19*FGRAZE3
 # - 1.59*FGRAZE4 - 11.89*FGRAZE5
 # Note that (Intercept) = 1 always
@@ -422,7 +422,7 @@ sum(M6.coef * c(1, 0.5, 0, 1, 0, 0)) # 19.15072
 # abundance for a 1-unit increase in the predictor.
 
 
-## ----A3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
+## ----A3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------
 birds.inter.1 <- lm(ABUND ~ FGRAZE * LOGAREA , data = loyn)
 # ABUND = 21.243*(Intercept) - 6.165*FGRAZE2 - 7.215*FGRAZE3 - 17.910*FGRAZE4
 # - 17.043*FGRAZE5 + 4.144*LOGAREA + 4.368*FGRAZE2:LOGAREA
@@ -448,7 +448,7 @@ sum(birds.inter.1.coef * c(1, 0, 0, 0, 1, -0.5, 0, 0, 0, -0.5)) # 1.130203
 # Well done if you got there!
 
 
-## ----A4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
+## ----A4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------
 ## # first split the plotting device into 2 rows and 2 columns
 ## par(mfrow = c(2,2))
 ## 
