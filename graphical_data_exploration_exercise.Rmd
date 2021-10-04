@@ -60,7 +60,7 @@ library(kableExtra)
 
 \  
 
-^1^ Loyn, R. (1987). Effects of patch area and habitat on bird abundances, species numbers and tree health in fragmented Victoria forests.. Nature conservation: the role of remnants of native vegetation. 65-77. 
+^1^ Loyn, R. (1987). Effects of patch area and habitat on bird abundances, species numbers and tree health in fragmented Victoria forests. Nature conservation: the role of remnants of native vegetation. 65-77. 
 
 ^2^ Quinn, G. P., and Michael J. Keough. 2002. Experimental design and data analysis for biologists. Cambridge, UK: Cambridge University Press. 
 

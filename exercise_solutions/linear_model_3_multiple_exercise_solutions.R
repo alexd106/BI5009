@@ -1,15 +1,15 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
 loyn <- read.table("./data/loyn.txt", header = TRUE)
 str(loyn)
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
 loyn$LOGAREA <- log10(loyn$AREA)
 # create factor GRAZE as it was originally coded as an integer
 loyn$FGRAZE <- factor(loyn$GRAZE)
 
 
-## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------
+## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
 ## coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
 ## 
 ## # or
@@ -24,11 +24,11 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 ## # different between grazing levels
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
 birds.inter.1 <- lm(ABUND ~ FGRAZE * LOGAREA , data = loyn)
 
 
-## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------
+## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
 ## # first split the plotting device into 2 rows and 2 columns
 ## par(mfrow = c(2,2))
 ## 
@@ -57,7 +57,7 @@ birds.inter.1 <- lm(ABUND ~ FGRAZE * LOGAREA , data = loyn)
 ## # Leverage plot.
 
 
-## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
 summary(birds.inter.1)
 
 # Here the intercept (baseline) is the predicted `ABUND` for LOGAREA = 0,
@@ -80,7 +80,7 @@ summary(birds.inter.1)
 # The Multiple R-square value is 0.76, so 76% of the variation in the data is explained by the model.
 
 
-## ----Q8a, eval=TRUE, echo=TRUE, collapse=FALSE-----------------------------------------------------------------------------------
+## ----Q8a, eval=TRUE, echo=TRUE, collapse=FALSE------------------------------------------------------
 par(mfrow= c(1, 1))
 plot(ABUND ~ LOGAREA, data= loyn, col= GRAZE, pch= 16)
 # Note: # color 1 means black in R
@@ -140,7 +140,7 @@ legend("topleft",
  lwd= c(1, 1, 1))
 
 
-## ----Q8b, eval=TRUE, echo=TRUE, collapse=FALSE-----------------------------------------------------------------------------------
+## ----Q8b, eval=TRUE, echo=TRUE, collapse=FALSE------------------------------------------------------
 # Okay, that was a long-winded way of doing this.
 # If, like me, you prefer more compact code and less risks of errors,
 # you can use a loop, to save repeating the sequence 5 times:
@@ -162,7 +162,7 @@ legend("topleft",
  lwd= c(1, 1, 1))
 
 
-## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------
+## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE----------------------------------------------
 ## # INTERACTIVE MODEL
 ## # The slopes of the LOGAREA effect across grazing levels are all over the
 ## # place, without any coherent pattern (for instance, they could have been
