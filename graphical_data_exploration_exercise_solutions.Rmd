@@ -155,13 +155,13 @@ str(loyn)
 ```{r Q9a, eval=TRUE, echo=TRUE, collapse=TRUE}
 # Vanilla pairs plot
 
-pairs(loyn[,c("LOGAREA","LOGDIST","DIST",
+pairs(loyn[,c("LOGAREA","LOGDIST","LDIST",
                "YR.ISOL","ALT","GRAZE")])
 
 # or first create a new dataframe and then use this 
 # data frame with the pairs function
 
-explan_vars <- loyn[,c("LOGAREA","LOGDIST","DIST",
+explan_vars <- loyn[,c("LOGAREA","LOGDIST","LDIST",
                "YR.ISOL","ALT","GRAZE")]
 pairs(explan_vars)
 ```
@@ -183,7 +183,7 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...){
 }
 
 # then use the panel.cor function when we use pairs
-pairs(loyn[,c("LOGAREA","LOGDIST","DIST",
+pairs(loyn[,c("LOGAREA","LOGDIST","LDIST",
                "YR.ISOL","ALT","GRAZE")],
       upper.panel = panel.cor)
 ```
@@ -195,7 +195,7 @@ pairs(loyn[,c("LOGAREA","LOGDIST","DIST",
 \  
 
 ```{r Q10a, eval=TRUE, echo=TRUE, collapse=TRUE}
-pairs(loyn[,c("ABUND","LOGAREA","LOGDIST","DIST",
+pairs(loyn[,c("ABUND","LOGAREA","LOGDIST","LDIST",
     	"YR.ISOL","ALT","GRAZE")],
       	lower.panel = panel.cor)
 ```
