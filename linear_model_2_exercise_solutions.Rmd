@@ -117,7 +117,7 @@ summary(birds.lm)
 # The difference between graze level 3 (FGRAZE3) and graze level 1 (intercept) is 
 # -7.34 (7.34 fewer birds in graze 3 compared to graze 1). This difference is significantly 
 # different from 0 (p = 0.013) and therefore the mean abundance of birds in graze level 1 is
-# significantly different from graze level 1.
+# significantly different from graze level 3.
 
 # The difference between graze level 4 (FGRAZE4) and graze level 1 (intercept) is 
 # -8.05 (8.05 fewer birds in graze 4 compared to graze 1). This difference is significantly 
