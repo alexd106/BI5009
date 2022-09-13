@@ -13,8 +13,8 @@
 
 <title>Additional optional exercises</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -50,6 +50,7 @@
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -70,6 +71,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -222,7 +226,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -246,7 +250,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -264,7 +268,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -311,7 +315,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -359,16 +363,25 @@ $(document).ready(function () {
 </div>
 
 
-<p>Here are some optional exercises for you to work through in your own time. You should only complete these exercises if you have finished and understood all of the in-class exercises.</p>
+<p>Here are some optional exercises for you to work through in your own
+time. You should only complete these exercises if you have finished and
+understood all of the in-class exercises.</p>
 <p> </p>
-<p><a href="GLM_2_Optional_Binomial_Dolphins_exercise.html">Binomial GLM (0/1 data) optional exercise</a></p>
-<p><a href="GLM_2_Optional_Binomial_Dolphins_exercise_solutions.html">Binomial GLM (0/1 data) optional exercise solutions</a></p>
+<p><a href="GLM_2_Optional_Binomial_Dolphins_exercise.html">Binomial GLM
+(0/1 data) optional exercise</a></p>
+<p><a
+href="GLM_2_Optional_Binomial_Dolphins_exercise_solutions.html">Binomial
+GLM (0/1 data) optional exercise solutions</a></p>
 <p> </p>
-<p><a href="GLM_2_Optional_Dolphins_extension.html">More advanced Binomial GLM (0/1 data) optional exercise</a></p>
-<p><a href="GLM_2_Optional_Dolphins_extension_solutions.html">More advanced Binomial GLM (0/1 data) optional exercise solutions</a></p>
+<p><a href="GLM_2_Optional_Dolphins_extension.html">More advanced
+Binomial GLM (0/1 data) optional exercise</a></p>
+<p><a href="GLM_2_Optional_Dolphins_extension_solutions.html">More
+advanced Binomial GLM (0/1 data) optional exercise solutions</a></p>
 <p> </p>
-<p><a href="GLM_3_BinomialProportions_exercise.html">Binomial GLM (proportion data) optional exercise</a></p>
-<p><a href="GLM_3_BinomialProportions_exercise_solutions.html">Binomial GLM (proportion data) optional exercise solutions</a></p>
+<p><a href="GLM_3_BinomialProportions_exercise.html">Binomial GLM
+(proportion data) optional exercise</a></p>
+<p><a href="GLM_3_BinomialProportions_exercise_solutions.html">Binomial
+GLM (proportion data) optional exercise solutions</a></p>
 
 
 

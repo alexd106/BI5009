@@ -13,8 +13,8 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -42,6 +42,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -174,6 +175,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -329,7 +333,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -353,7 +357,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -371,7 +375,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -418,7 +422,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -460,7 +464,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -475,10 +479,19 @@ $(document).ready(function () {
 
 
 <p> </p>
-<div id="binomial-proportions-glm---mites-survival" class="section level1">
+<div id="binomial-proportions-glm---mites-survival"
+class="section level1">
 <h1>Binomial (Proportions) GLM - mites survival</h1>
 <p> </p>
-<p>The data for this exercise were collected for an experiment to test the toxicity of different chemicals at various concentrations to a species of mite. The aim was to determine whether the proportion of mites surviving was related to the concentration of the chemical and whether this relationship depended on the type of chemical the mites were exposed to. We will be using a binomial GLM again for this example, but this time we will be using it to model proportion data, from counts of “successes” (= mite survival, unless you don’t like mites), and “failures” (= mite death).</p>
+<p>The data for this exercise were collected for an experiment to test
+the toxicity of different chemicals at various concentrations to a
+species of mite. The aim was to determine whether the proportion of
+mites surviving was related to the concentration of the chemical and
+whether this relationship depended on the type of chemical the mites
+were exposed to. We will be using a binomial GLM again for this example,
+but this time we will be using it to model proportion data, from counts
+of “successes” (= mite survival, unless you don’t like mites), and
+“failures” (= mite death).</p>
 <ul>
 <li>Variables:
 <ul>
@@ -491,9 +504,16 @@ $(document).ready(function () {
 </ul></li>
 </ul>
 <p> </p>
-<p>As in previous exercises, either create a new R script (perhaps call it GLM_BinomProps) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</p>
+<p>As in previous exercises, either create a new R script (perhaps call
+it GLM_BinomProps) or continue with your previous R script in your
+RStudio Project. Again, make sure you include any metadata you feel is
+appropriate (title, description of task, date of creation etc) and don’t
+forget to comment out your metadata with a <code>#</code> at the
+beginning of the line.</p>
 <p> </p>
-<p>1. Import the data file ‘DrugsMites.txt’ into R. We want to model the variable Toxic as a categorical predictor with 4 levels, so create a new variable with Toxic as a factor.</p>
+<p>1. Import the data file ‘DrugsMites.txt’ into R. We want to model the
+variable Toxic as a categorical predictor with 4 levels, so create a new
+variable with Toxic as a factor.</p>
 <p> </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Mites<span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;./data/DrugsMites.txt&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Mites)</span>
@@ -517,7 +537,10 @@ $(document).ready(function () {
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Proportion   : num  0 0 0.25 0 0 0.5 0.25 0.75 0.5 0.25 ...</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ fToxic       : Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
 <p> </p>
-<p>2. Perform the usual graphical data exploration, looking for outliers, relationships between predictors, and between response and predictors etc. You can use the variable <code>Proportion</code> in the data frame for these plots.</p>
+<p>2. Perform the usual graphical data exploration, looking for
+outliers, relationships between predictors, and between response and
+predictors etc. You can use the variable <code>Proportion</code> in the
+data frame for these plots.</p>
 <p> </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Outliers Y</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Mites<span class="sc">$</span>Proportion) <span class="co"># not very useful for this data set</span></span></code></pre></div>
@@ -553,7 +576,10 @@ $(document).ready(function () {
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># looks like researchers stopped increasing concentration of a chemical when they had</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># reached ~ 100 % mortality in assays</span></span></code></pre></div>
 <p> </p>
-<p>3. In order to model the proportion of mites surviving, create a new variable (called something creative like Living_mites for example) representing the number of surviving mites by differencing the two variables Dead_mites and Total.</p>
+<p>3. In order to model the proportion of mites surviving, create a new
+variable (called something creative like Living_mites for example)
+representing the number of surviving mites by differencing the two
+variables Dead_mites and Total.</p>
 <p> </p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Mites<span class="sc">$</span>Living_mites<span class="ot">&lt;-</span> Mites<span class="sc">$</span>Total <span class="sc">-</span> Mites<span class="sc">$</span>Dead_mites</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -562,14 +588,22 @@ $(document).ready(function () {
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  4  5 </span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 40 25 50</span></span></code></pre></div>
 <p> </p>
-<p>4. We can now use this new variable when specifying a binomial GLM. Recall from the lecture that the response variable should be a data frame consisting of two columns, cbind(Living_mites, Dead_mites). Ask if in doubt. If you hate mites you could also swap the order of the two columns: you would then be modelling the proportion that die.</p>
+<p>4. We can now use this new variable when specifying a binomial GLM.
+Recall from the lecture that the response variable should be a data
+frame consisting of two columns, cbind(Living_mites, Dead_mites). Ask if
+in doubt. If you hate mites you could also swap the order of the two
+columns: you would then be modelling the proportion that die.</p>
 <p> </p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(Living_mites, Dead_mites) <span class="sc">~</span> Concentration <span class="sc">+</span> fToxic <span class="sc">+</span> Concentration <span class="sc">:</span> fToxic, <span class="at">family=</span> binomial, <span class="at">data=</span> Mites)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to:</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(Living_mites, Dead_mites) <span class="sc">~</span> Concentration <span class="sc">*</span> fToxic, <span class="at">family=</span> binomial, <span class="at">data=</span> Mites)</span></code></pre></div>
 <p> </p>
-<p>5. Obtain summaries of the model output using the <code>summary()</code> function. Make sure you understand the mathematical and biological interpretation of the model, by writing down the complete model on paper (with distribution and link function). What biological hypothesis does each term imply, qualitatively?</p>
+<p>5. Obtain summaries of the model output using the
+<code>summary()</code> function. Make sure you understand the
+mathematical and biological interpretation of the model, by writing down
+the complete model on paper (with distribution and link function). What
+biological hypothesis does each term imply, qualitatively?</p>
 <p> </p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
@@ -603,10 +637,10 @@ $(document).ready(function () {
 <span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 6</span></span>
 <span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(M1)</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="do">##           (Intercept)         Concentration               fToxic2               fToxic3 </span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="do">##           1.434827258          -3.801011714           0.008599625           0.014191002 </span></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="do">##               fToxic4 Concentration:fToxic2 Concentration:fToxic3 Concentration:fToxic4 </span></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="do">##           0.273864642          -6.176473370          -1.899832702           1.482751939</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="do">##           (Intercept)         Concentration               fToxic2               fToxic3               fToxic4 </span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="do">##           1.434827258          -3.801011714           0.008599625           0.014191002           0.273864642 </span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Concentration:fToxic2 Concentration:fToxic3 Concentration:fToxic4 </span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="do">##          -6.176473370          -1.899832702           1.482751939</span></span>
 <span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Mathematical model description:</span></span>
 <span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
@@ -640,13 +674,15 @@ $(document).ready(function () {
 <span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Concentration:fToxic3  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span>
 <span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Concentration:fToxic4  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span></code></pre></div>
 <p> </p>
-<p>6. Do you need to check for overdispersion? If so, how do you do it?</p>
+<p>6. Do you need to check for overdispersion? If so, how do you do
+it?</p>
 <p> </p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Yes, because this is a binomial variable with more than 1 trial per observation</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual deviance: 117.67  on 107  degrees of freedom</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; negligible overdispersion</span></span></code></pre></div>
 <p> </p>
-<p>7. Do you need to perform model selection? What is the final model?</p>
+<p>7. Do you need to perform model selection? What is the final
+model?</p>
 <p> </p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we don&#39;t need to perform model selection here: given that the assay is</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to compare the effect of different chemicals, the interaction alone is the</span></span>
@@ -717,7 +753,9 @@ $(document).ready(function () {
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># good enough for its purpose of evidencing differences in the toxicity between</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># chemicals</span></span></code></pre></div>
 <p> </p>
-<p>9. Obtain the fitted values from the model on the scale of the response, and plot to aid model interpretation. How do you interpret the results?</p>
+<p>9. Obtain the fitted values from the model on the scale of the
+response, and plot to aid model interpretation. How do you interpret the
+results?</p>
 <p> </p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>MyData1<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>MyData2<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;2&quot;</span>)</span>
@@ -793,7 +831,9 @@ $(document).ready(function () {
 <span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="co"># these coefficients and their p-values show that only the dose-effect relationships of Toxics 2 and 3</span></span>
 <span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="co"># are significantly different from the dose-effect relationship of Toxic 4</span></span></code></pre></div>
 <p> </p>
-<p>10. <strong>Optional</strong> Include the 95 % CI on the plot above. You will need to obtain the fitted values and SE on the scale of the link function, calculate the CI and then back-transform.</p>
+<p>10. <strong>Optional</strong> Include the 95 % CI on the plot above.
+You will need to obtain the fitted values and SE on the scale of the
+link function, calculate the CI and then back-transform.</p>
 <p> </p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sketch model fit with 95% confidence bands for Toxic 1</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>MyData1<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;1&quot;</span>)</span>

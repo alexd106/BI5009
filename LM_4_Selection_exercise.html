@@ -13,8 +13,8 @@
 
 <title>Exercise</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -51,6 +51,7 @@
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -71,6 +72,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -226,7 +230,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -250,7 +254,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -268,7 +272,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -315,7 +319,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -357,7 +361,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -375,70 +379,183 @@ $(document).ready(function () {
 <div id="model-selection-with-the-loyn-data" class="section level2">
 <h2>Model selection with the Loyn data</h2>
 <p> </p>
-<p>The exercise from the previous practical assumed a pre-conceived model with the area of the patch <code>LOGAREA</code>, and the grazing intensity <code>FGRAZE</code> as interactive effects. This is useful as a training exercise, and might be the way to approach the analysis of these data if the experiment had been designed to test these effects only. However, if other predictors are presumed to be important, not including them in the model could bias our results. Alternatively, if the goal of the analysis is just to explore what model form(s) explain the data in a parcimonious way (as opposed to formally testing hypotheses), we would also want to include these extra predictors.</p>
+<p>The exercise from the previous practical assumed a pre-conceived
+model with the area of the patch <code>LOGAREA</code>, and the grazing
+intensity <code>FGRAZE</code> as interactive effects. This is useful as
+a training exercise, and might be the way to approach the analysis of
+these data if the experiment had been designed to test these effects
+only. However, if other predictors are presumed to be important, not
+including them in the model could bias our results. Alternatively, if
+the goal of the analysis is just to explore what model form(s) explain
+the data in a parcimonious way (as opposed to formally testing
+hypotheses), we would also want to include these extra predictors.</p>
 <p> </p>
-<p>Here we revisit the Loyn data analysis, asking if a better model for the data could be achieved by including additional predictors, and applying a model selection procedure. Because we would like to test the significance of the interaction between <code>LOGAREA</code>, and <code>FGRAZE</code>, while accounting for the potential confounding effects of other predictors, we will want to force <code>LOGAREA</code>, <code>FGRAZE</code> and their interaction to remain in the model until the very last step of the model selection exercise.</p>
+<p>Here we revisit the Loyn data analysis, asking if a better model for
+the data could be achieved by including additional predictors, and
+applying a model selection procedure. Because we would like to test the
+significance of the interaction between <code>LOGAREA</code>, and
+<code>FGRAZE</code>, while accounting for the potential confounding
+effects of other predictors, we will want to force <code>LOGAREA</code>,
+<code>FGRAZE</code> and their interaction to remain in the model until
+the very last step of the model selection exercise.</p>
 <p> </p>
-<p>1. Load the loyn data and repeat the data preparations done previously (FGRAZE, LOGAREA). Here we will be using all the explanatory variables to explain variation in bird density. If needed, remind yourself of your data exploration you conducted previously. Do any of the remaining variables need transforming? If so, what transformation did you apply? Add the required variables to the data set.</p>
+<p>1. Load the loyn data and repeat the data preparations done
+previously (FGRAZE, LOGAREA). Here we will be using all the explanatory
+variables to explain variation in bird density. If needed, remind
+yourself of your data exploration you conducted previously. Do any of
+the remaining variables need transforming? If so, what transformation
+did you apply? Add the required variables to the data set.</p>
 <p> </p>
 <p> </p>
-<p>2. We assume that all the predictors have been collected by the authors <em>because</em> they were believed to be biologically relevant for explaining bird abundance. However, it is a good idea to pause and think what might be relevant or not-so relevant or partly redundant and why, before even exploring the relationships with bird abundance (yes, even graphically). You could do this in a table format, and include a hypothetical ranking of importance. Is there anything that limits your ability to fill such a table?</p>
+<p>2. We assume that all the predictors have been collected by the
+authors <em>because</em> they were believed to be biologically relevant
+for explaining bird abundance. However, it is a good idea to pause and
+think what might be relevant or not-so relevant or partly redundant and
+why, before even exploring the relationships with bird abundance (yes,
+even graphically). You could do this in a table format, and include a
+hypothetical ranking of importance. Is there anything that limits your
+ability to fill such a table?</p>
 <p> </p>
 <p> </p>
-<p>3. It’s useful to start with a graphical exploration of the relationships between predictors and between predictors and response. A pair-plot with <code>pairs()</code> is a very effective way of doing this when the number of variables is not too large.</p>
+<p>3. It’s useful to start with a graphical exploration of the
+relationships between predictors and between predictors and response. A
+pair-plot with <code>pairs()</code> is a very effective way of doing
+this when the number of variables is not too large.</p>
 <ul>
 <li>Hints:
 <ul>
 <li>restrict the plot to the variables you actually need</li>
-<li>an effective way of doing this is to store the names of the variables of interest in a vector <code>VOI&lt;- c("Var1", "Var2", ...)</code></li>
-<li>and then use the naming method for subsetting the data set <code>Mydata[, VOI]</code></li>
+<li>an effective way of doing this is to store the names of the
+variables of interest in a vector
+<code>VOI&lt;- c("Var1", "Var2", ...)</code></li>
+<li>and then use the naming method for subsetting the data set
+<code>Mydata[, VOI]</code></li>
 </ul></li>
 </ul>
 <p> </p>
 <p> </p>
-<p>4. Start with a model of ABUND containing all predictors. Don’t include any interactions other than <code>LOGAREA * FGRAZE</code> at this point: I suggest you simplify this exercise by including only the main effects (unless you have identified some interactions that you expect to be biologically important and you really want to include them).</p>
+<p>4. Start with a model of ABUND containing all predictors. Don’t
+include any interactions other than <code>LOGAREA * FGRAZE</code> at
+this point: I suggest you simplify this exercise by including only the
+main effects (unless you have identified some interactions that you
+expect to be biologically important and you really want to include
+them).</p>
 <p> </p>
 <p> </p>
-<p>5. Have a look at the summary of the model, and compare the estimates of the coefficients with their standard errors. Are there any which have large SE relative to the coefficient estimate? Do any of these correspond with predictors that you had identified as being potentially collinear?</p>
+<p>5. Have a look at the summary of the model, and compare the estimates
+of the coefficients with their standard errors. Are there any which have
+large SE relative to the coefficient estimate? Do any of these
+correspond with predictors that you had identified as being potentially
+collinear?</p>
 <p> </p>
 <p> </p>
-<p>6. Is every term needed (everything significant?) in this model? To find out, perform a model selection step using <code>drop1()</code> for choosing which single term might be candidate for deletion (remember to use the test = ”F” argument to perform F tests). What is that term? What hypothesis is being tested when we do this model selection step?</p>
+<p>6. Is every term needed (everything significant?) in this model? To
+find out, perform a model selection step using <code>drop1()</code> for
+choosing which single term might be candidate for deletion (remember to
+use the test = ”F” argument to perform F tests). What is that term? What
+hypothesis is being tested when we do this model selection step?</p>
 <p> </p>
 <p> </p>
-<p>7. Update the model and repeat single term deletions with <code>drop1()</code>, until there are no longer any non-significant terms, ignoring <code>LOGAREA</code> or <code>FGRAZE</code> (we want to leave them in for now, irrespective of what <code>drop1</code> suggests).</p>
+<p>7. Update the model and repeat single term deletions with
+<code>drop1()</code>, until there are no longer any non-significant
+terms, ignoring <code>LOGAREA</code> or <code>FGRAZE</code> (we want to
+leave them in for now, irrespective of what <code>drop1</code>
+suggests).</p>
 <p> </p>
 <p> </p>
-<p>8. If all goes well, you should end up the previous question with the interactive model again <code>lm(ABUND ~ LOGAREA * FGRAZE)</code>. Do you need to simplify this model? Do you need to use <code>drop1()</code> for that?</p>
+<p>8. If all goes well, you should end up the previous question with the
+interactive model again <code>lm(ABUND ~ LOGAREA * FGRAZE)</code>. Do
+you need to simplify this model? Do you need to use <code>drop1()</code>
+for that?</p>
 <p> </p>
 <p> </p>
-<p>9. Let’s simplify the model anyway, considering the additive-only model <code>lm(ABUND ~ LOGAREA + FGRAZE)</code>. Although we could have validated models at each step the model selection procedure, this can become impractical. However, you really should validate your models at least in the final stages of model selection, by creating plots of the residuals for the candidate final model (I say “candidate” because should the model fail the validation, it may need revisiting irrespective of what the model selection procedure suggested). Remember that you can split your plotting device into 2 rows and 2 columns using the <code>par()</code> function before you create the plots. Check each of the assumptions of the model using these plots and report if these assumptions are acceptable.</p>
+<p>9. Let’s simplify the model anyway, considering the additive-only
+model <code>lm(ABUND ~ LOGAREA + FGRAZE)</code>. Although we could have
+validated models at each step the model selection procedure, this can
+become impractical. However, you really should validate your models at
+least in the final stages of model selection, by creating plots of the
+residuals for the candidate final model (I say “candidate” because
+should the model fail the validation, it may need revisiting
+irrespective of what the model selection procedure suggested). Remember
+that you can split your plotting device into 2 rows and 2 columns using
+the <code>par()</code> function before you create the plots. Check each
+of the assumptions of the model using these plots and report if these
+assumptions are acceptable.</p>
 <p> </p>
 <p> </p>
-<p>10. Obtain summaries of the model output using the <code>anova()</code> and <code>summary()</code> functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions ‘A2’ and ‘A3’ at the end). If in doubt, try it and seek assistance!</p>
+<p>10. Obtain summaries of the model output using the
+<code>anova()</code> and <code>summary()</code> functions. Make sure you
+understand the difference between these two summaries (e.g. what
+specific hypotheses are being tested for each of them), and the
+interpretation of the coefficients in the summary table: a good test of
+your understanding is to reconstruct the model formula in writing (on
+paper or in your script), to be able to make predictions by hand (see
+optional questions ‘A2’ and ‘A3’ at the end). If in doubt, try it and
+seek assistance!</p>
 <p> </p>
 <p> </p>
-<p>11. What inference can you make from this model? What are the biological interpretations, and the statistical lessons you take away from this analysis of the Loyn data?</p>
+<p>11. What inference can you make from this model? What are the
+biological interpretations, and the statistical lessons you take away
+from this analysis of the Loyn data?</p>
 <p> </p>
 <p> </p>
-<p>12. Had we not been aiming to test the effect of the <code>LOGAREA * FGRAZE</code> interaction statistically, we could also have used AIC to perform the model selection. Let’s try this (taking the AIC values returned by <code>drop1</code> or using the function <code>step</code>), and summarize the performance of the alternative models in a table.</p>
+<p>12. Had we not been aiming to test the effect of the
+<code>LOGAREA * FGRAZE</code> interaction statistically, we could also
+have used AIC to perform the model selection. Let’s try this (taking the
+AIC values returned by <code>drop1</code> or using the function
+<code>step</code>), and summarize the performance of the alternative
+models in a table.</p>
 <p> </p>
 <p> </p>
 <p>End of the model selection exercise</p>
 <p> </p>
 </div>
-<div id="optional-additional-questions-if-youre-fast-or-want-to-take-it-further" class="section level2">
-<h2>Optional additional questions, if you’re fast or want to take it further</h2>
+<div
+id="optional-additional-questions-if-youre-fast-or-want-to-take-it-further"
+class="section level2">
+<h2>Optional additional questions, if you’re fast or want to take it
+further</h2>
 <p> </p>
-<p>A1. Taking the final additive model from this practical: Since the <code>anova</code> function does sequential tests of the effects, the results could be different if we put <code>FGRAZE</code> first. Run the corresponding model and its analysis of variance. What null hypotheses are being tested? Do you reject or fail to reject the null hypotheses? What percentage of variation does the model explain overall? Hint: (SST-SSE)/SST. How much variation do <code>LOGAREA</code> and <code>FGRAZE</code> explain respectively?</p>
+<p>A1. Taking the final additive model from this practical: Since the
+<code>anova</code> function does sequential tests of the effects, the
+results could be different if we put <code>FGRAZE</code> first. Run the
+corresponding model and its analysis of variance. What null hypotheses
+are being tested? Do you reject or fail to reject the null hypotheses?
+What percentage of variation does the model explain overall? Hint:
+(SST-SSE)/SST. How much variation do <code>LOGAREA</code> and
+<code>FGRAZE</code> explain respectively?</p>
 <p> </p>
 <p> </p>
-<p>A2. Looking at the summary table of the additive model, interpret all the coefficients, in terms of what they measure and how they affect the predictions of the model. Let’s then check that it all fits together: write down the equation of the model with the appropriate parameter estimates from the summary. By hand, calculate the predicted bird abundance (A) for a patch with <code>LOGAREA</code>= -0.5 and <code>GRAZE</code>= 1, and (B) for a patch with <code>LOGAREA</code>= -0.5 and <code>GRAZE</code>= 3. Can you predict the difference in expected abundance between (A) and (B) before doing the calculation? Hint: what measures the difference between <code>GRAZE3</code> and <code>GRAZE1</code> for a given patch area? Now, predict (C) for <code>LOGAREA</code>= 0.5 and <code>GRAZE</code>= 3. What does the difference between (C) and (B) correspond to?</p>
+<p>A2. Looking at the summary table of the additive model, interpret all
+the coefficients, in terms of what they measure and how they affect the
+predictions of the model. Let’s then check that it all fits together:
+write down the equation of the model with the appropriate parameter
+estimates from the summary. By hand, calculate the predicted bird
+abundance (A) for a patch with <code>LOGAREA</code>= -0.5 and
+<code>GRAZE</code>= 1, and (B) for a patch with <code>LOGAREA</code>=
+-0.5 and <code>GRAZE</code>= 3. Can you predict the difference in
+expected abundance between (A) and (B) before doing the calculation?
+Hint: what measures the difference between <code>GRAZE3</code> and
+<code>GRAZE1</code> for a given patch area? Now, predict (C) for
+<code>LOGAREA</code>= 0.5 and <code>GRAZE</code>= 3. What does the
+difference between (C) and (B) correspond to?</p>
 <p> </p>
 <p> </p>
-<p>A3. Check if you can make sense of the interactive model structure (Model <code>birds.inter.1</code> in the previous practical), by writing down the equation of the model with the appropriate parameter estimates from the summary. Then, calculate again the predicted bird abundance (A) for a patch with LOGAREA= 2.5 and GRAZE= 1, and (B) for a patch with LOGAREA= -0.5 and GRAZE= 5.</p>
+<p>A3. Check if you can make sense of the interactive model structure
+(Model <code>birds.inter.1</code> in the previous practical), by writing
+down the equation of the model with the appropriate parameter estimates
+from the summary. Then, calculate again the predicted bird abundance (A)
+for a patch with LOGAREA= 2.5 and GRAZE= 1, and (B) for a patch with
+LOGAREA= -0.5 and GRAZE= 5.</p>
 <p> </p>
 <p> </p>
-<p>A4. Let’s compare the residuals diagnostics of the interactive model structure (Model <code>birds.inter.1</code> in the previous practical) with those of the additive model (final model from this practical). Remember, that you can split your plotting device into 2 rows and 2 columns using the <code>par()</code> function before you create the plots. Does the additional complexity of the interaction make a big difference?</p>
+<p>A4. Let’s compare the residuals diagnostics of the interactive model
+structure (Model <code>birds.inter.1</code> in the previous practical)
+with those of the additive model (final model from this practical).
+Remember, that you can split your plotting device into 2 rows and 2
+columns using the <code>par()</code> function before you create the
+plots. Does the additional complexity of the interaction make a big
+difference?</p>
 <p> </p>
 <p> </p>
 </div>

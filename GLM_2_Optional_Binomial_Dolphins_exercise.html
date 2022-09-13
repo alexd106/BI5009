@@ -13,8 +13,8 @@
 
 <title>Exercise</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -42,6 +42,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -174,6 +175,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -329,7 +333,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -353,7 +357,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -371,7 +375,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -418,7 +422,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -460,7 +464,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -475,26 +479,50 @@ $(document).ready(function () {
 
 
 <p> </p>
-<div id="binomial-bernoulli-glm---dolphin-behavioural-plasticity" class="section level1">
+<div id="binomial-bernoulli-glm---dolphin-behavioural-plasticity"
+class="section level1">
 <h1>Binomial (Bernoulli) GLM - dolphin behavioural plasticity</h1>
 <p> </p>
-<p>1. The data for this exercise were collected by the Cromarty Lighthouse team, using underwater sound recorders (CPOD) to continuously monitor the pattern of presence and foraging behaviour of bottlenose dolphins at Sutors, in the Moray Firth, between 2010 and 2016. Additional background for this study is provided at the end of the exercise, in case of interest.</p>
+<p>1. The data for this exercise were collected by the Cromarty
+Lighthouse team, using underwater sound recorders (CPOD) to continuously
+monitor the pattern of presence and foraging behaviour of bottlenose
+dolphins at Sutors, in the Moray Firth, between 2010 and 2016.
+Additional background for this study is provided at the end of the
+exercise, in case of interest.</p>
 <ul>
 <li><p>Variables:</p>
 <ul>
 <li><code>X</code> index of the observations</li>
-<li><code>presence</code>: 0 for absence, 1 for presence in 1h time slot. Note that “absence” refers to the absence of a detection, not to the absence of dolphins. We can ignore this in the analysis, but we should keep it in mind when interpreting the results.</li>
+<li><code>presence</code>: 0 for absence, 1 for presence in 1h time
+slot. Note that “absence” refers to the absence of a detection, not to
+the absence of dolphins. We can ignore this in the analysis, but we
+should keep it in mind when interpreting the results.</li>
 <li><code>year</code></li>
-<li><code>julianday</code>: day of the year, a proxy for seasonality</li>
+<li><code>julianday</code>: day of the year, a proxy for
+seasonality</li>
 <li><code>mon</code>: month (integer)</li>
-<li><code>Time6</code>: time of day binned into 4h periods: MNight (2200-0200); AM1 (0200-0600); AM2 (06:00-10:00); MDay (10:00-14:00); PM1 (14:00-18:00); PM2 (18:00-22:00)</li>
+<li><code>Time6</code>: time of day binned into 4h periods: MNight
+(2200-0200); AM1 (0200-0600); AM2 (06:00-10:00); MDay (10:00-14:00); PM1
+(14:00-18:00); PM2 (18:00-22:00)</li>
 <li><code>Tide4</code>: tidal state (high, descending, low, rising)</li>
 </ul></li>
-<li><p>It has been suggested that the patterns of use of coastal foraging sites by this dolphin population is quite variable over time. The goal of this exercise is to describe variation in dolphin probability of presence in relation to factors like tidal state, time of day and season (julianday).</p></li>
-<li><p>As in previous exercises, either create a new R script (perhaps call it GLM_PresAbs) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</p></li>
+<li><p>It has been suggested that the patterns of use of coastal
+foraging sites by this dolphin population is quite variable over time.
+The goal of this exercise is to describe variation in dolphin
+probability of presence in relation to factors like tidal state, time of
+day and season (julianday).</p></li>
+<li><p>As in previous exercises, either create a new R script (perhaps
+call it GLM_PresAbs) or continue with your previous R script in your
+RStudio Project. Again, make sure you include any metadata you feel is
+appropriate (title, description of task, date of creation etc) and don’t
+forget to comment out your metadata with a <code>#</code> at the
+beginning of the line.</p></li>
 </ul>
 <p> </p>
-<p>2. Import the data file ‘dolphin.csv’ into R (a “small” 5000 records-long subset of the original data set) by running the following chunk of code (please unfold and copy/paste - adjust the path as required).</p>
+<p>2. Import the data file ‘dolphin.csv’ into R (a “small” 5000
+records-long subset of the original data set) by running the following
+chunk of code (please unfold and copy/paste - adjust the path as
+required).</p>
 <p> </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/dolphin.csv&quot;</span>, <span class="at">stringsAsFactors=</span> T)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -520,35 +548,74 @@ $(document).ready(function () {
 ##  $ fTide4       : Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 4 1 3 4 2 2 1 2 3 2 ...
 ##  $ fMonth       : Factor w/ 12 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 2 8 3 3 11 7 4 9 11 7 ...</code></pre>
 <p> </p>
-<p>3. Take a look at the structure of this dataframe, and do an initial data exploration.</p>
+<p>3. Take a look at the structure of this dataframe, and do an initial
+data exploration.</p>
 <ul>
 <li>Some things you could focus on are:
 <ul>
-<li>look at any correlation/data imbalance (different sample sizes between portions of a predictor variable) for all predictors, or useful combinations of predictors (for example <code>year</code> and <code>fMonth</code>, <code>fTide4</code> and time of day <code>fTime6</code>)</li>
-<li>look for factors affecting the probability of presence of dolphins (proportion of time present). Which ones are continuous or categorical? Which ones would your intuition guide you to use for modelling?</li>
+<li>look at any correlation/data imbalance (different sample sizes
+between portions of a predictor variable) for all predictors, or useful
+combinations of predictors (for example <code>year</code> and
+<code>fMonth</code>, <code>fTide4</code> and time of day
+<code>fTime6</code>)</li>
+<li>look for factors affecting the probability of presence of dolphins
+(proportion of time present). Which ones are continuous or categorical?
+Which ones would your intuition guide you to use for modelling?</li>
 </ul></li>
 <li>Notes:
 <ul>
-<li>Presence/absence data (Bernoulli) are more difficult than most to explore.</li>
-<li>One approach for data imbalance is to count observations per categories of interest.</li>
-<li><code>table()</code> is a useful way to count the number of observations per category or combinations of categories, e.g. <code>ObsPerMonthYear&lt;- table(dat$year, dat$mon)</code></li>
-<li><code>plot(ObsPerMonthYear)</code> returns a “mosaic plot” where the area of each rectangle is proportional to the count.</li>
-<li>For factors affecting the proportion of time present, you could calculate mean presence per category, which is the proportion of time present: <code>bla&lt;- tapply(dat$presence, list(dat$GroupOfInterest), mean)</code> and plot this using <code>plot(bla, type= "b", ylim= c(0, 1), xlab= "GroupOfInterest", ylab= "presence")</code></li>
-<li>In more than one dimension, <code>tmp&lt;- tapply(dat$presence, list(dat$Group1, dat$Group2), mean)</code> calculates the proportion of time present for each combination of Group1 and Group2, and <code>matplot(tmp, type= "l", ylim= c(0, 1), xlab= "Group1", ylab= "presence", lty= 1)</code> plots the proportion of time present against Group1, with a separate line per Group2 categories.</li>
+<li>Presence/absence data (Bernoulli) are more difficult than most to
+explore.</li>
+<li>One approach for data imbalance is to count observations per
+categories of interest.</li>
+<li><code>table()</code> is a useful way to count the number of
+observations per category or combinations of categories,
+e.g. <code>ObsPerMonthYear&lt;- table(dat$year, dat$mon)</code></li>
+<li><code>plot(ObsPerMonthYear)</code> returns a “mosaic plot” where the
+area of each rectangle is proportional to the count.</li>
+<li>For factors affecting the proportion of time present, you could
+calculate mean presence per category, which is the proportion of time
+present:
+<code>bla&lt;- tapply(dat$presence, list(dat$GroupOfInterest), mean)</code>
+and plot this using
+<code>plot(bla, type= "b", ylim= c(0, 1), xlab= "GroupOfInterest", ylab= "presence")</code></li>
+<li>In more than one dimension,
+<code>tmp&lt;- tapply(dat$presence, list(dat$Group1, dat$Group2), mean)</code>
+calculates the proportion of time present for each combination of Group1
+and Group2, and
+<code>matplot(tmp, type= "l", ylim= c(0, 1), xlab= "Group1", ylab= "presence", lty= 1)</code>
+plots the proportion of time present against Group1, with a separate
+line per Group2 categories.</li>
 </ul></li>
 </ul>
 <p> </p>
 <p> </p>
-<p>4. Let’s fit a model for these data. You will need to specify a Binomial (Bernoulli) GLM (using <code>glm()</code> and the appropriate <code>family</code> argument). To start with, include the main effects of season (using the numerical day of the year), and tidal state and time of day as categorical predictors: <code>julianday + fTide4 + fTime6</code>.</p>
+<p>4. Let’s fit a model for these data. You will need to specify a
+Binomial (Bernoulli) GLM (using <code>glm()</code> and the appropriate
+<code>family</code> argument). To start with, include the main effects
+of season (using the numerical day of the year), and tidal state and
+time of day as categorical predictors:
+<code>julianday + fTide4 + fTime6</code>.</p>
 <p> </p>
 <p> </p>
-<p>5. Obtain summaries of the model output using the <code>summary()</code> function. How do you interpret each coefficient? Is this model biologically sensible?</p>
+<p>5. Obtain summaries of the model output using the
+<code>summary()</code> function. How do you interpret each coefficient?
+Is this model biologically sensible?</p>
 <p> </p>
 <p> </p>
-<p>6. Are all the terms significant? If not, simplify the model. Remember to choose the correct ANOVA method (sequential or not), and the appropriate test. What is the proportion of deviance explained?</p>
+<p>6. Are all the terms significant? If not, simplify the model.
+Remember to choose the correct ANOVA method (sequential or not), and the
+appropriate test. What is the proportion of deviance explained?</p>
 <p> </p>
 <p> </p>
-<p>7. Let’s now produce plots to validate the model, using Pearson residuals. The usual tools are not very helpful with a GLM for Bernoulli data (you can try anyway), but we can get a bit further by using the <code>binnedplot()</code> function in the <code>arm</code> package. For numerical variables, <code>binnedplot()</code> splits the numerical variable into discrete bins, and plots the mean of the residuals for each bin. These means should be randomly distributed around zero (and ideally, close to zero when the sample size is large).</p>
+<p>7. Let’s now produce plots to validate the model, using Pearson
+residuals. The usual tools are not very helpful with a GLM for Bernoulli
+data (you can try anyway), but we can get a bit further by using the
+<code>binnedplot()</code> function in the <code>arm</code> package. For
+numerical variables, <code>binnedplot()</code> splits the numerical
+variable into discrete bins, and plots the mean of the residuals for
+each bin. These means should be randomly distributed around zero (and
+ideally, close to zero when the sample size is large).</p>
 <p> </p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PA1) <span class="co"># not very useful</span></span>
@@ -585,27 +652,54 @@ $(document).ready(function () {
 <p> </p>
 <p> </p>
 <p> </p>
-<p>9. Assuming that the model is fine as it is, let’s plot the predictions for the probability of presence in relation to time of day <code>fTime6</code>. You will need to set the value of other predictors <code>fTide4</code>, <code>julianday</code> at a fixed level of your choice, e.g. tidal state “1” and day 180 (approx the middle of the year). Optionally, you can add the confidence intervals around the predictions (highly recommended in a report).</p>
+<p>9. Assuming that the model is fine as it is, let’s plot the
+predictions for the probability of presence in relation to time of day
+<code>fTime6</code>. You will need to set the value of other predictors
+<code>fTide4</code>, <code>julianday</code> at a fixed level of your
+choice, e.g. tidal state “1” and day 180 (approx the middle of the
+year). Optionally, you can add the confidence intervals around the
+predictions (highly recommended in a report).</p>
 <ul>
 <li>Calculation of confidence intervals:
 <ul>
-<li>As for the Poisson GLM, you will need to calculate the lower and upper bounds of the 95% CI on the link scale (same method)</li>
+<li>As for the Poisson GLM, you will need to calculate the lower and
+upper bounds of the 95% CI on the link scale (same method)</li>
 <li>Only then convert these to the response scale</li>
-<li>Don’t forget that the link function is different though, and so is the function for the back-transformation</li>
-<li>In R you can do the back-transformation yourself using the equation provided in the lecture, or using the pre-made <code>plogis</code> function.</li>
+<li>Don’t forget that the link function is different though, and so is
+the function for the back-transformation</li>
+<li>In R you can do the back-transformation yourself using the equation
+provided in the lecture, or using the pre-made <code>plogis</code>
+function.</li>
 </ul></li>
 <li>Suggested steps:
 <ul>
-<li>create a <code>data.frame</code> called <code>X</code> containing the data to predict for.</li>
-<li>use <code>predict</code> with the appropriate options to obtain the fitted values on the link scale and for being able to calculate the confidence intervals later. Store in object <code>Z</code>.</li>
-<li>I suggest you plot the predictions for each level of your categorical predictor as dots using <code>plot(Z$fit)</code>. (Some people prefer bars using <code>barplot(Z$fit)</code>, but this can make drawing confidence intervals slightly harder)</li>
-<li>in X, add columns for the fitted values and their confidence intervals, on the response scale (to be calculated).</li>
-<li>Because in the model the predictions are for categorical predictors, you will need to draw a vertical error bar for each predicted value</li>
-<li>This can be done using the <code>arrows</code> function, with arguments <code>x0</code> and <code>y0</code>, the X,Y coordinates of the starting point of the arrows, and <code>x1</code> and <code>y1</code>, the X,Y coordinates of the end point of the arrows. See <code>?arrows</code> for further formatting options.</li>
-<li>Note that for vertical bars like we want, <code>x0</code> and <code>x1</code> should the same, and <code>y0</code> and <code>y1</code> are the lower and upper bounds of the confidence intervals that you calculated.</li>
+<li>create a <code>data.frame</code> called <code>X</code> containing
+the data to predict for.</li>
+<li>use <code>predict</code> with the appropriate options to obtain the
+fitted values on the link scale and for being able to calculate the
+confidence intervals later. Store in object <code>Z</code>.</li>
+<li>I suggest you plot the predictions for each level of your
+categorical predictor as dots using <code>plot(Z$fit)</code>. (Some
+people prefer bars using <code>barplot(Z$fit)</code>, but this can make
+drawing confidence intervals slightly harder)</li>
+<li>in X, add columns for the fitted values and their confidence
+intervals, on the response scale (to be calculated).</li>
+<li>Because in the model the predictions are for categorical predictors,
+you will need to draw a vertical error bar for each predicted value</li>
+<li>This can be done using the <code>arrows</code> function, with
+arguments <code>x0</code> and <code>y0</code>, the X,Y coordinates of
+the starting point of the arrows, and <code>x1</code> and
+<code>y1</code>, the X,Y coordinates of the end point of the arrows. See
+<code>?arrows</code> for further formatting options.</li>
+<li>Note that for vertical bars like we want, <code>x0</code> and
+<code>x1</code> should the same, and <code>y0</code> and <code>y1</code>
+are the lower and upper bounds of the confidence intervals that you
+calculated.</li>
 </ul></li>
 </ul>
-<p>The code is available below for you to unfold, if you don’t want to try solving this puzzle yourself (you are always welcome to ask demonstrators for help).  </p>
+<p>The code is available below for you to unfold, if you don’t want to
+try solving this puzzle yourself (you are always welcome to ask
+demonstrators for help).  </p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PA1.dat4pred<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">julianday=</span> <span class="dv">180</span>, <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -631,7 +725,10 @@ $(document).ready(function () {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">y0=</span> PA1.dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> PA1.dat4pred<span class="sc">$</span>UCI,</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
 <p> </p>
-<p>10. <strong>Optional</strong>: Repeat question 9 for the predictions according to levels of <code>fTide4</code>, and then values of <code>julianday</code>, each time fixing other variables at a value of your choice.</p>
+<p>10. <strong>Optional</strong>: Repeat question 9 for the predictions
+according to levels of <code>fTide4</code>, and then values of
+<code>julianday</code>, each time fixing other variables at a value of
+your choice.</p>
 <p> </p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># we will need 3 plots</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -704,12 +801,19 @@ $(document).ready(function () {
 <span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>          <span class="at">y0=</span> PA1.dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> PA1.dat4pred<span class="sc">$</span>UCI,</span>
 <span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>          <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
 <p> </p>
-<p>12. How satisfied are you with the model, and with all the assumptions being met? What have you learned from it, with respect to the initial aims of the study? Are there areas of improvement?</p>
+<p>12. How satisfied are you with the model, and with all the
+assumptions being met? What have you learned from it, with respect to
+the initial aims of the study? Are there areas of improvement?</p>
 <p> </p>
 <p> </p>
-<p><strong>End of the Binomial (Bernoulli) GLM - dolphin behavioural plasticity exercise</strong></p>
+<p><strong>End of the Binomial (Bernoulli) GLM - dolphin behavioural
+plasticity exercise</strong></p>
 <p> </p>
-<p><strong>Note:</strong> If you cannot install the <code>arm</code> package and access its <code>binnedplot</code> function, you can use this “DIY” alternative instead, in the code chunk below. The green line shows the mean of the residuals for each value or bin of the X variable.</p>
+<p><strong>Note:</strong> If you cannot install the <code>arm</code>
+package and access its <code>binnedplot</code> function, you can use
+this “DIY” alternative instead, in the code chunk below. The green line
+shows the mean of the residuals for each value or bin of the X
+variable.</p>
 <p> </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the residuals against julianday</span></span>
@@ -721,9 +825,20 @@ $(document).ready(function () {
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(day.means <span class="sc">~</span> day.vals, <span class="at">col=</span> <span class="dv">3</span>)</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="dv">0</span>, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>))</span></code></pre></div>
 <p> </p>
-<p><strong>For info,</strong> background on the data and the study can be found in this <a href="https://abdn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=619e9ee8-241a-4924-8550-ac5401283e2a">short video</a>, courtesy of Paul Thompson. The exercise can be done entirely without consulting this. I recommend you watch this or any companion material (the referenced paper) outside the synchronous session, to make the most of the time you have with demonstrators to progress on the exercises.</p>
+<p><strong>For info,</strong> background on the data and the study can
+be found in this <a
+href="https://abdn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=619e9ee8-241a-4924-8550-ac5401283e2a">short
+video</a>, courtesy of Paul Thompson. The exercise can be done entirely
+without consulting this. I recommend you watch this or any companion
+material (the referenced paper) outside the synchronous session, to make
+the most of the time you have with demonstrators to progress on the
+exercises.</p>
 <p> </p>
-<p><strong>For info,</strong> the full original data (10 Mb) are publicly available here: [<a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.k378542" class="uri">https://datadryad.org/stash/dataset/doi:10.5061/dryad.k378542</a>], in case of interest.</p>
+<p><strong>For info,</strong> the full original data (10 Mb) are
+publicly available here: [<a
+href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.k378542"
+class="uri">https://datadryad.org/stash/dataset/doi:10.5061/dryad.k378542</a>],
+in case of interest.</p>
 </div>
 
 

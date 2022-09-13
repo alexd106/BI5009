@@ -13,8 +13,8 @@
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -50,6 +50,7 @@
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -70,6 +71,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -222,7 +226,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -246,7 +250,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -264,7 +268,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -311,7 +315,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -364,47 +368,123 @@ $(document).ready(function () {
 <h2>Exercise 2 : Basic R operations</h2>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+<li>Open up your RStudio Project from Exercise 1 and either create a new
+R script or continue with your previous R script. Make sure you include
+any metadata you feel is appropriate (title, description of task, date
+of creation etc). Don’t forget to comment out your metadata with a
+<code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>Let’s use R as a fancy calculator. Find the natural log, log10, log2, square root and the natural antilog of 12.43. Don’t forget to write your code in RStudio’s script editor and source the code into the console. See <a href="https://intro2r.com/getting-started.html">Section 2.1</a> of the R book to get you started.</li>
+<li>Let’s use R as a fancy calculator. Find the natural log, log10,
+log2, square root and the natural antilog of 12.43. Don’t forget to
+write your code in RStudio’s script editor and source the code into the
+console. See <a href="https://intro2r.com/getting-started.html">Section
+2.1</a> of the R book to get you started.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li>Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called <code>area_circle</code>. Google is your friend if you can’t remember the formula! Also, remember that R already knows about <code>pi</code>. Don’t worry if you’re stumped and feel free to ask one of the instructors for guidance.</li>
+<li>Next, use R to determine the area of a circle with a diameter of 20
+cm and assign the result to a variable called <code>area_circle</code>.
+Google is your friend if you can’t remember the formula! Also, remember
+that R already knows about <code>pi</code>. Don’t worry if you’re
+stumped and feel free to ask one of the instructors for guidance.</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>Now for something a little more tricky (but don’t stress!). Calculate the cube root of 14 x 0.51. You might need to think creatively for a solution (hint: think exponents), and remember that R follows the usual order of mathematical operators so you might need to use brackets in your code (remember BODMAS from School?). See <a href="https://en.wikipedia.org/wiki/Order_of_operations">this page</a> if you’ve never heard of this.</li>
+<li>Now for something a little more tricky (but don’t stress!).
+Calculate the cube root of 14 x 0.51. You might need to think creatively
+for a solution (hint: think exponents), and remember that R follows the
+usual order of mathematical operators so you might need to use brackets
+in your code (remember BODMAS from School?). See <a
+href="https://en.wikipedia.org/wiki/Order_of_operations">this page</a>
+if you’ve never heard of this.</li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
-<li>Ok, you’re now ready to explore one of R’s basic (but very useful) data structures - vectors. A vector is a sequence of elements (or components) that are all of the same data type. Although technically not correct it might be useful to think of a vector as something like a single column in a spreadsheet. See the start of <a href="https://intro2r.com/data-structures.html">Section 3.2</a> of the R book for a more detailed explanation of vectors. There are a multitude of ways to create vectors in R but we will use the concatenate function <code>c()</code> to create a vector called <code>weight</code> containing the weight (in kg) of 10 children: <code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code>. Take a look at <a href="https://intro2r.com/using-functions-in-r.html">Section 2.3</a> of the R book for more details.</li>
+<li>Ok, you’re now ready to explore one of R’s basic (but very useful)
+data structures - vectors. A vector is a sequence of elements (or
+components) that are all of the same data type. Although technically not
+correct it might be useful to think of a vector as something like a
+single column in a spreadsheet. See the start of <a
+href="https://intro2r.com/data-structures.html">Section 3.2</a> of the R
+book for a more detailed explanation of vectors. There are a multitude
+of ways to create vectors in R but we will use the concatenate function
+<code>c()</code> to create a vector called <code>weight</code>
+containing the weight (in kg) of 10 children:
+<code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code>. Take a look at <a
+href="https://intro2r.com/using-functions-in-r.html">Section 2.3</a> of
+the R book for more details.</li>
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li>Now you can do some useful stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weight</code> vector (see <a href="https://intro2r.com/using-functions-in-r.html">Section 2.3</a> for more details). Now read <a href="https://intro2r.com/vectors.html">Section 2.4</a> of the R book to learn how to work with vectors. After reading this section you should be able to extract the weights for the first five children using <a href="https://intro2r.com/vectors.html#positional-index">Positional indexes</a> and store these weights in a new variable called <code>first_five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka index, subset) elements from a variable.</li>
+<li>Now you can do some useful stuff to your <code>weight</code> vector.
+Get R to calculate the mean, variance, standard deviation, range of
+weights and the number of children of your <code>weight</code> vector
+(see <a href="https://intro2r.com/using-functions-in-r.html">Section
+2.3</a> for more details). Now read <a
+href="https://intro2r.com/vectors.html">Section 2.4</a> of the R book to
+learn how to work with vectors. After reading this section you should be
+able to extract the weights for the first five children using <a
+href="https://intro2r.com/vectors.html#positional-index">Positional
+indexes</a> and store these weights in a new variable called
+<code>first_five</code>. Remember, you will need to use the square
+brackets <code>[ ]</code> to extract (aka index, subset) elements from a
+variable.</li>
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li>We’re now going to use the the <code>c()</code> function again to create another vector called <code>height</code> containing the height (in cm) of the same 10 children: <code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the <code>summary()</code> function to summarise these data in the <code>height</code> object. Extract the height of the 2nd, 3rd, 9th and 10th child and assign these heights to a variable called <code>some_child</code> (take a look at the section <a href="https://intro2r.com/vectors.html#positional-index">Positional indexes</a> in the R book if you’re stuck). We can also extract elements using <a href="https://intro2r.com/vectors.html#logical-index">Logical indexes</a>. Let’s extract all the heights of children less than or equal to 99 cm and assign to a variable called <code>shorter_child</code>.</li>
+<li>We’re now going to use the the <code>c()</code> function again to
+create another vector called <code>height</code> containing the height
+(in cm) of the same 10 children:
+<code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the
+<code>summary()</code> function to summarise these data in the
+<code>height</code> object. Extract the height of the 2nd, 3rd, 9th and
+10th child and assign these heights to a variable called
+<code>some_child</code> (take a look at the section <a
+href="https://intro2r.com/vectors.html#positional-index">Positional
+indexes</a> in the R book if you’re stuck). We can also extract elements
+using <a href="https://intro2r.com/vectors.html#logical-index">Logical
+indexes</a>. Let’s extract all the heights of children less than or
+equal to 99 cm and assign to a variable called
+<code>shorter_child</code>.</li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
-<li>Now you can use the information in your <code>weight</code> and <code>height</code> variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (in meters). Store the results of this calculation in a variable called <code>bmi</code>. Note: you don’t need to do this calculation for each child individually, you can use the vectors in the equation – this is called <a href="https://intro2r.com/vectors.html#vectorisation">vectorisation</a>.</li>
+<li>Now you can use the information in your <code>weight</code> and
+<code>height</code> variables to calculate the body mass index (BMI) for
+each child. The BMI is calculated as weight (in kg) divided by the
+square of the height (in meters). Store the results of this calculation
+in a variable called <code>bmi</code>. Note: you don’t need to do this
+calculation for each child individually, you can use the vectors in the
+equation – this is called <a
+href="https://intro2r.com/vectors.html#vectorisation">vectorisation</a>.</li>
 </ol>
 <p> </p>
 <ol start="9" style="list-style-type: decimal">
-<li>Now let’s practice a very useful skill - creating sequences (honestly it is…). Take a look at <a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section 2.3</a> in the R book (the bit on creating sequences) to see the myriad ways you can create sequences in R. Let’s use the <code>seq()</code> function to create a sequence of numbers ranging from 0 to 1 in steps of 0.1 (this is also a vector by the way) and assign this sequence to a variable called <code>seq1</code>.</li>
+<li>Now let’s practice a very useful skill - creating sequences
+(honestly it is…). Take a look at <a
+href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+2.3</a> in the R book (the bit on creating sequences) to see the myriad
+ways you can create sequences in R. Let’s use the <code>seq()</code>
+function to create a sequence of numbers ranging from 0 to 1 in steps of
+0.1 (this is also a vector by the way) and assign this sequence to a
+variable called <code>seq1</code>.</li>
 </ol>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
-<li>Next, see if you can figure out how to create a sequence from 10 to 1 in steps of 0.5. Assign this sequence to a variable called <code>seq2</code> (Hint: you may find it useful to include the <code>rev()</code> function in your code).</li>
+<li>Next, see if you can figure out how to create a sequence from 10 to
+1 in steps of 0.5. Assign this sequence to a variable called
+<code>seq2</code> (Hint: you may find it useful to include the
+<code>rev()</code> function in your code).</li>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li><p>Let’s go mad! Generate the following sequences. You will need to experiment with the arguments to the <code>rep()</code> function to generate these sequences (see <a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section 2.3</a> again):</p>
+<li><p>Let’s go mad! Generate the following sequences. You will need to
+experiment with the arguments to the <code>rep()</code> function to
+generate these sequences (see <a
+href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+2.3</a> again):</p>
 <ul>
 <li>1 2 3 1 2 3 1 2 3</li>
 <li>“a” “a” “a” “c” “c” “c” “e” “e” “e” “g” “g” “g”</li>
@@ -416,27 +496,61 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li>Ok, back to the variable <code>height</code> you created in Q7. Let’s sort the values of <code>height</code> into ascending order (shortest to tallest) and assign the sorted vector to a new variable called <code>height_sorted</code>. Take a look at <a href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> in the R book to see how to do this. Now sort all heights into descending order and assign the new vector a name of your choice.</li>
+<li>Ok, back to the variable <code>height</code> you created in Q7.
+Let’s sort the values of <code>height</code> into ascending order
+(shortest to tallest) and assign the sorted vector to a new variable
+called <code>height_sorted</code>. Take a look at <a
+href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> in the
+R book to see how to do this. Now sort all heights into descending order
+and assign the new vector a name of your choice.</li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li>Let’s give the children some names. Create a new vector called <code>child_name</code> with the following names of the 10 children: <code>"Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William"</code>.</li>
+<li>Let’s give the children some names. Create a new vector called
+<code>child_name</code> with the following names of the 10 children:
+<code>"Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William"</code>.</li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
-<li>A really useful (and common) task is to order the values of one variable by the order of another variable. To do this you will need to use the <code>order()</code> function in combination with the square bracket notation <code>[ ]</code>. Have a peep at <a href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> for some details. Create a new variable called <code>names_sort</code> to store the names of the children ordered by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you’re not sure how to do this, please ask one of the instructors.</li>
+<li>A really useful (and common) task is to order the values of one
+variable by the order of another variable. To do this you will need to
+use the <code>order()</code> function in combination with the square
+bracket notation <code>[ ]</code>. Have a peep at <a
+href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> for
+some details. Create a new variable called <code>names_sort</code> to
+store the names of the children ordered by child height (from shortest
+to tallest). Who is the shortest? who is the tallest child? If you’re
+not sure how to do this, please ask one of the instructors.</li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">
-<li>Now order the names of the children by <strong>descending</strong> values of weight and assign the result to a variable called <code>weight_rev</code> (Hint: perhaps include the <code>rev()</code> funtion?). Who is the heaviest? Who is the lightest?</li>
+<li>Now order the names of the children by <strong>descending</strong>
+values of weight and assign the result to a variable called
+<code>weight_rev</code> (Hint: perhaps include the <code>rev()</code>
+function?). Who is the heaviest? Who is the lightest?</li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
-<li>Almost there! In R, missing values are usually represented with an <code>NA</code>. Missing data can be tricky to deal with in R (and in statistics more generally) and cause some surprising behaviour when using some functions. Take a look at <a href="https://intro2r.com/vectors.html#na_vals">Section 2.4.5</a> of the R book for more information about missing values. To explore this a little further let’s create a vector called <code>mydata</code> with the values <code>2, 4, 1, 6, 8, 5, NA, 4, 7</code>. Notice the value of the 7<sup>th</sup> element of <code>mydata</code> is missing. Now use the <code>mean()</code> function to calculate the mean of the values in <code>mydata</code>. What does R return? Confused? Next, take a look at the help page for the function <code>mean()</code>. Can you figure out how to alter your use of the <code>mean()</code> function to calculate the mean without this missing value?</li>
+<li>Almost there! In R, missing values are usually represented with an
+<code>NA</code>. Missing data can be tricky to deal with in R (and in
+statistics more generally) and cause some surprising behaviour when
+using some functions. Take a look at <a
+href="https://intro2r.com/vectors.html#na_vals">Section 2.4.5</a> of the
+R book for more information about missing values. To explore this a
+little further let’s create a vector called <code>mydata</code> with the
+values <code>2, 4, 1, 6, 8, 5, NA, 4, 7</code>. Notice the value of the
+7<sup>th</sup> element of <code>mydata</code> is missing. Now use the
+<code>mean()</code> function to calculate the mean of the values in
+<code>mydata</code>. What does R return? Confused? Next, take a look at
+the help page for the function <code>mean()</code>. Can you figure out
+how to alter your use of the <code>mean()</code> function to calculate
+the mean without this missing value?</li>
 </ol>
 <p> </p>
 <ol start="17" style="list-style-type: decimal">
-<li>Finally, list all variables in your workspace that you have created in this exercise. Remove the variable <code>seq1</code> from the workspace.</li>
+<li>Finally, list all variables in your workspace that you have created
+in this exercise. Remove the variable <code>seq1</code> from the
+workspace.</li>
 </ol>
 <p> </p>
 <p>End of Exercise 2</p>

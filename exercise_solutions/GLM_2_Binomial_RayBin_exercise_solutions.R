@@ -1,9 +1,9 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 dat<- read.csv("./data/RayMaturity.csv", stringsAsFactors= T)
 str(dat)
 
 
-## ----Q3a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE-------------------------------------------
+## ----Q3a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE------------------------------------------------
 # count the number of observations per month, and per year:
 table(dat$Month)
 # majority of the data are from April-May-June
@@ -46,7 +46,7 @@ boxplot(Lg ~ fMonth, data= dat)
 
 
 
-## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE-------------------------------------------
+## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE------------------------------------------------
 # Maturity in relation to Sex
 mean.per.Sex<- tapply(dat$Mature, list(dat$Sex), mean)
 barplot(mean.per.Sex, ylim= c(0, 1),
@@ -83,12 +83,12 @@ barplot(mean.per.Month, ylim= c(0, 1),
 
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 datM<- dat[dat$Sex == "M", ]
 Mat1<- glm(Mature ~ Lg + Area + Lg:Area, family= binomial, data= datM)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 summary(Mat1)
 
 # "(Intercept)" is the predicted value on the link (logit) scale for
@@ -125,7 +125,7 @@ summary(Mat1)
 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
 
 drop1(Mat1, test= "Chisq")
 # the interaction of length by area is significant: nothing to simplify.
@@ -157,7 +157,7 @@ plot(res2.p ~ datM$Lg, col= datM$Mature + 1) # scatterplot
 # Can't see anything useful.
 
 
-## ----Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5----------------
+## ----Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5---------------------
 library(arm)
 par(mfrow= c(1, 1))
 binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
@@ -175,9 +175,17 @@ binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 
 
 
+## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
+## # things look fine with Area, with residuals well within
+## # the expected limits (grey lines)
+## 
+## # Same with length, except for the extreme lengths,
+## # for which the residuals are slightly too low and too high, respectively.
+## # We'll see in the graphs of the predictions if this is a big concern.
+## 
 
 
-## ----Q10a, eval=TRUE, echo=TRUE, results=TRUE, collapse=TRUE, fig.height=5-----------------------------
+## ----Q10a, eval=TRUE, echo=TRUE, results=TRUE, collapse=TRUE, fig.height=5----------------------------------
 # create a sequence of increasing lengths
 Seq.Length<- 74:100
 
@@ -294,6 +302,31 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 
 
 
+## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------
+## # The model seems to fit the data satisfortorily, base on the validation plots.
+## 
+## # Ignoring the effect of Month may bias the results slightly,
+## # but hopefully not much (if you wish you could check this yourself)
+## 
+## # With respect to the large residuals at extreme body lengths,
+## # we can see on the graphs that the predicted probabilities are already
+## # very high and low, respectively (close to 0 or 1).
+## # Therefore, they wouldn't change very much even if we improved the model.
+## # So, no much concern here.
+## 
+## # We infer from the graph of the predictions that:
+## 
+## # a minority of males is mature at 75 cm
+## # almost all males are mature after 85 cm
+## # 50% of males have reached maturity at a length around
+## # 78-80 cm, however maturity is reached
+## # earlier in the Channel than on the Atlantic coastal area.
+## 
+## # We could speculate that the difference in the rate of maturation
+## # between the two areas is due to a higher fishing pressure on the
+## # species in the English Channel. This is correlative.
+## # More research needed if we want to establish the cause!
+## 
 
 
 ## ----binnedplot_alternative, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
@@ -381,4 +414,31 @@ lines(x= Seq.Length, y= dat.new.ECH.F$LCI, lty= 3, col= "green")
 
 legend(x= 87, y= 0.4, legend= c("Males Atlantic coast", "Males English Channel", "Females Atlantic coast", "Females English Channel"), 
           lwd= 2, col= c("navy", "cyan", "darkgreen", "green"), bty= "n")
+
+
+## ----Optional2, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------
+## # The model seems to be fitting the data satisfactorily.
+## 
+## # We infer from the graph of the predictions that:
+## 
+## # As previously,
+## # a minority of males is mature at 75 cm
+## # almost all males are mature at 85 cm
+## # 50% of males have reached maturity at a length around
+## # 78-80 cm, however maturity is reached
+## # earlier in the Channel than on the Atlantic coastal area.
+## 
+## # In addition,
+## # Females mature at a larger length than males:
+## # a minority of females is mature at 75 cm
+## # almost all females are mature at 90 cm
+## # 50% of females have reached maturity at a length around
+## # 83 cm, without a clear difference between the Channel
+## # and the Atlantic coastal area (but note that the confidence
+## # intervals are wider than males, due to the smaller sample size).
+## 
+## # We could speculate that the difference in the rate of maturation
+## # between the two areas is due to a higher fishing pressure on the
+## # species in the English Channel, although the pattern found in
+## # females does not support this so clearly. More data and research needed?
 

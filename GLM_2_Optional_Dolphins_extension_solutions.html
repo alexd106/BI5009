@@ -13,8 +13,8 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -42,6 +42,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -174,6 +175,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -329,7 +333,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -353,7 +357,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -371,7 +375,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -418,7 +422,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -460,7 +464,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -475,13 +479,20 @@ $(document).ready(function () {
 
 
 <p> </p>
-<div id="optional-extension-to-binomial-bernoulli-glm---dolphin-behavioural-plasticity" class="section level1">
-<h1>Optional extension to Binomial (Bernoulli) GLM - dolphin behavioural plasticity</h1>
+<div
+id="optional-extension-to-binomial-bernoulli-glm---dolphin-behavioural-plasticity"
+class="section level1">
+<h1>Optional extension to Binomial (Bernoulli) GLM - dolphin behavioural
+plasticity</h1>
 <p> </p>
-<p>This extension to the dolphin data analysis is for those who may be a bit ahead and would like to :</p>
+<p>This extension to the dolphin data analysis is for those who may be a
+bit ahead and would like to :</p>
 <ul>
-<li>get some experience dealing with interactions between categorical predictors (valid with LMs or GLMs)</li>
-<li>test your understanding of the binomial GLMs for the analysis of Bernoulli data, by repeating the approach of the previous exercise with a slightly more advanced model:
+<li>get some experience dealing with interactions between categorical
+predictors (valid with LMs or GLMs)</li>
+<li>test your understanding of the binomial GLMs for the analysis of
+Bernoulli data, by repeating the approach of the previous exercise with
+a slightly more advanced model:
 <ul>
 <li>model specification</li>
 <li>model validation</li>
@@ -489,9 +500,14 @@ $(document).ready(function () {
 </ul></li>
 <li>get more experience with model selection in GLMs (using AIC)</li>
 </ul>
-<p>I recommend you continue with your previous R script for the GLM_2 exercise, in your RStudio Project.</p>
+<p>I recommend you continue with your previous R script for the GLM_2
+exercise, in your RStudio Project.</p>
 <p> </p>
-<p>13. To address the limitations of the previous analysis, fit a new model with categorical predictors only, and interactions between them, two by two: <code>fTide4 + fMonth + fTime6 + fTide4:fMonth + fTide4:fTime6 + fMonth:fTime6</code>. What hypotheses do these interactions correspond to?</p>
+<p>13. To address the limitations of the previous analysis, fit a new
+model with categorical predictors only, and interactions between them,
+two by two:
+<code>fTide4 + fMonth + fTime6 + fTide4:fMonth + fTide4:fTime6 + fMonth:fTime6</code>.
+What hypotheses do these interactions correspond to?</p>
 <p> </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PA2<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fTide4 <span class="sc">+</span> fMonth <span class="sc">+</span> fTime6 <span class="sc">+</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            fTide4<span class="sc">:</span>fMonth <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6 <span class="sc">+</span> </span>
@@ -652,9 +668,21 @@ $(document).ready(function () {
 <span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="co"># fMonth:fTime6 assumes that the effect of time of day on dolphin presence</span></span>
 <span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="co"># changes according to time of year</span></span></code></pre></div>
 <p> </p>
-<p>14. Perform model selection “by hand” using the AIC, and construct an AIC table, using the example in the lecture. “By hand” means without using <code>drop1</code> or <code>step</code> functions. You can get the AIC value from the model summary <code>summary(YourModel)</code> or by typing <code>AIC(YourModel)</code>. There are 18 possible models in total, including the full model above. You can choose to evaluate all 18 models in a completely exploratory (the “ignorant and brave”) approach, or only a selection of models based on more specific research questions or predictions of your own (the “clear thinker” approach).</p>
+<p>14. Perform model selection “by hand” using the AIC, and construct an
+AIC table, using the example in the lecture. “By hand” means without
+using <code>drop1</code> or <code>step</code> functions. You can get the
+AIC value from the model summary <code>summary(YourModel)</code> or by
+typing <code>AIC(YourModel)</code>. There are 18 possible models in
+total, including the full model above. You can choose to evaluate all 18
+models in a completely exploratory (the “ignorant and brave”) approach,
+or only a selection of models based on more specific research questions
+or predictions of your own (the “clear thinker” approach).</p>
 <ul>
-<li>Example: <em>“We know/expect that dolphins are affected by A, B and C, but I suspect that the effect of B varies depending on the value of A whereas my colleague thinks that the effect of B depends on the value of C”</em>, which would suggest comparing the following models to find out which hypothesis is best supported by the data:
+<li>Example: <em>“We know/expect that dolphins are affected by A, B and
+C, but I suspect that the effect of B varies depending on the value of A
+whereas my colleague thinks that the effect of B depends on the value of
+C”</em>, which would suggest comparing the following models to find out
+which hypothesis is best supported by the data:
 <ul>
 <li>A + B + C + A:B</li>
 <li>A + B + C + B:C</li>
@@ -760,7 +788,8 @@ $(document).ready(function () {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Depending on the set of models you decided to compare, </span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># your best model and AIC weights may vary from mine.</span></span></code></pre></div>
 <p> </p>
-<p>15. Do the validation of your best model, using the approach taken in question 7.</p>
+<p>15. Do the validation of your best model, using the approach taken in
+question 7.</p>
 <p> </p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>res24.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA24, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -792,7 +821,8 @@ $(document).ready(function () {
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># accounting for the cyclicity of the predictors (estimates at each end should </span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)</span></span></code></pre></div>
 <p> </p>
-<p>16. Interpret the model, using plots of the predictions (use the approach taken in question 9) .</p>
+<p>16. Interpret the model, using plots of the predictions (use the
+approach taken in question 9) .</p>
 <p> </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Model PA24 assumes that dolphin presence (actually, probability of recording) </span></span>
@@ -979,9 +1009,16 @@ $(document).ready(function () {
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 10%. However, this is quite normal with Bernoulli data,</span></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># since they do not contain a great deal of information</span></span></code></pre></div>
 <p> </p>
-<p><strong>End of the optional extension to Binomial (Bernoulli) GLM exercise</strong></p>
+<p><strong>End of the optional extension to Binomial (Bernoulli) GLM
+exercise</strong></p>
 <p> </p>
-<p><strong>For info,</strong> the publication here offers a different approach to analysing these data, using slightly fancier GLMs with smooth terms (called GAMs, for Generalized Additive Models), and a few additional refinements: [<a href="https://www.nature.com/articles/s41598-019-38900-4" class="uri">https://www.nature.com/articles/s41598-019-38900-4</a>]. What assumptions differ between this and your approach?</p>
+<p><strong>For info,</strong> the publication here offers a different
+approach to analysing these data, using slightly fancier GLMs with
+smooth terms (called GAMs, for Generalized Additive Models), and a few
+additional refinements: [<a
+href="https://www.nature.com/articles/s41598-019-38900-4"
+class="uri">https://www.nature.com/articles/s41598-019-38900-4</a>].
+What assumptions differ between this and your approach?</p>
 </div>
 
 

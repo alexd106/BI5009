@@ -45,7 +45,7 @@ cat("Exercises will be released as the course progresses")
 ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
              ": Importing and manipulating dataframes", 
              ": Visualising data using base R and lattice graphics",
-             ": Basic programming in R")
+             ": Basic programming in R (optional)")
 
 file_name <- list.files('.') %>%
   sort %>% 

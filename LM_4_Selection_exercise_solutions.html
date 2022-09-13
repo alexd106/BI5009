@@ -13,8 +13,8 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -42,6 +42,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -174,6 +175,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -329,7 +333,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -353,7 +357,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -371,7 +375,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -418,7 +422,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -460,7 +464,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -478,11 +482,32 @@ $(document).ready(function () {
 <div id="model-selection-with-the-loyn-data" class="section level2">
 <h2>Model selection with the Loyn data</h2>
 <p> </p>
-<p>The exercise from the previous practical assumed a pre-conceived model with the area of the patch <code>LOGAREA</code>, and the grazing intensity <code>FGRAZE</code> as interactive effects. This is useful as a training exercise, and might be the way to approach the analysis of these data if the experiment had been designed to test these effects only. However, if other predictors are presumed to be important, not including them in the model could bias our results. Alternatively, if the goal of the analysis is just to explore what model form(s) explain the data in a parcimonious way (as opposed to formally testing hypotheses), we would also want to include these extra predictors.</p>
+<p>The exercise from the previous practical assumed a pre-conceived
+model with the area of the patch <code>LOGAREA</code>, and the grazing
+intensity <code>FGRAZE</code> as interactive effects. This is useful as
+a training exercise, and might be the way to approach the analysis of
+these data if the experiment had been designed to test these effects
+only. However, if other predictors are presumed to be important, not
+including them in the model could bias our results. Alternatively, if
+the goal of the analysis is just to explore what model form(s) explain
+the data in a parcimonious way (as opposed to formally testing
+hypotheses), we would also want to include these extra predictors.</p>
 <p> </p>
-<p>Here we revisit the Loyn data analysis, asking if a better model for the data could be achieved by including additional predictors, and applying a model selection procedure. Because we would like to test the significance of the interaction between <code>LOGAREA</code>, and <code>FGRAZE</code>, while accounting for the potential confounding effects of other predictors, we will want to force <code>LOGAREA</code>, <code>FGRAZE</code> and their interaction to remain in the model until the very last step of the model selection exercise.</p>
+<p>Here we revisit the Loyn data analysis, asking if a better model for
+the data could be achieved by including additional predictors, and
+applying a model selection procedure. Because we would like to test the
+significance of the interaction between <code>LOGAREA</code>, and
+<code>FGRAZE</code>, while accounting for the potential confounding
+effects of other predictors, we will want to force <code>LOGAREA</code>,
+<code>FGRAZE</code> and their interaction to remain in the model until
+the very last step of the model selection exercise.</p>
 <p> </p>
-<p>1. Load the loyn data and repeat the data preparations done previously (FGRAZE, LOGAREA). Here we will be using all the explanatory variables to explain variation in bird density. If needed, remind yourself of your data exploration you conducted previously. Do any of the remaining variables need transforming? If so, what transformation did you apply? Add the required variables to the data set.</p>
+<p>1. Load the loyn data and repeat the data preparations done
+previously (FGRAZE, LOGAREA). Here we will be using all the explanatory
+variables to explain variation in bird density. If needed, remind
+yourself of your data exploration you conducted previously. Do any of
+the remaining variables need transforming? If so, what transformation
+did you apply? Add the required variables to the data set.</p>
 <p> </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>loyn <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./data/loyn.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(loyn)</span>
@@ -502,7 +527,14 @@ $(document).ready(function () {
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>loyn<span class="sc">$</span>LOGDIST <span class="ot">&lt;-</span> <span class="fu">log10</span>(loyn<span class="sc">$</span>DIST)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>loyn<span class="sc">$</span>LOGLDIST <span class="ot">&lt;-</span> <span class="fu">log10</span>(loyn<span class="sc">$</span>LDIST)</span></code></pre></div>
 <p> </p>
-<p>2. We assume that all the predictors have been collected by the authors <em>because</em> they were believed to be biologically relevant for explaining bird abundance. However, it is a good idea to pause and think what might be relevant or not-so relevant or partly redundant and why, before even exploring the relationships with bird abundance (yes, even graphically). You could do this in a table format, and include a hypothetical ranking of importance. Is there anything that limits your ability to fill such a table?</p>
+<p>2. We assume that all the predictors have been collected by the
+authors <em>because</em> they were believed to be biologically relevant
+for explaining bird abundance. However, it is a good idea to pause and
+think what might be relevant or not-so relevant or partly redundant and
+why, before even exploring the relationships with bird abundance (yes,
+even graphically). You could do this in a table format, and include a
+hypothetical ranking of importance. Is there anything that limits your
+ability to fill such a table?</p>
 <p> </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -520,13 +552,19 @@ $(document).ready(function () {
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The main limitation is our lack of expert knowledge of the</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># study system and area, of course.</span></span></code></pre></div>
 <p> </p>
-<p>3. It’s useful to start with a graphical exploration of the relationships between predictors and between predictors and response. A pair-plot with <code>pairs()</code> is a very effective way of doing this when the number of variables is not too large.</p>
+<p>3. It’s useful to start with a graphical exploration of the
+relationships between predictors and between predictors and response. A
+pair-plot with <code>pairs()</code> is a very effective way of doing
+this when the number of variables is not too large.</p>
 <ul>
 <li>Hints:
 <ul>
 <li>restrict the plot to the variables you actually need</li>
-<li>an effective way of doing this is to store the names of the variables of interest in a vector <code>VOI&lt;- c("Var1", "Var2", ...)</code></li>
-<li>and then use the naming method for subsetting the data set <code>Mydata[, VOI]</code></li>
+<li>an effective way of doing this is to store the names of the
+variables of interest in a vector
+<code>VOI&lt;- c("Var1", "Var2", ...)</code></li>
+<li>and then use the naming method for subsetting the data set
+<code>Mydata[, VOI]</code></li>
 </ul></li>
 </ul>
 <p> </p>
@@ -547,13 +585,22 @@ $(document).ready(function () {
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  Some potential correlations present like with LOGAREA (positive), </span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># YR.ISOl (positive), maybe ALT (positive) and FGRAZE (negative).</span></span></code></pre></div>
 <p> </p>
-<p>4. Start with a model of ABUND containing all predictors. Don’t include any interactions other than <code>LOGAREA * FGRAZE</code> at this point: I suggest you simplify this exercise by including only the main effects (unless you have identified some interactions that you expect to be biologically important and you really want to include them).</p>
+<p>4. Start with a model of ABUND containing all predictors. Don’t
+include any interactions other than <code>LOGAREA * FGRAZE</code> at
+this point: I suggest you simplify this exercise by including only the
+main effects (unless you have identified some interactions that you
+expect to be biologically important and you really want to include
+them).</p>
 <p> </p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>M1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> LOGDIST <span class="sc">+</span> LOGLDIST <span class="sc">+</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                 YR.ISOL <span class="sc">+</span> ALT <span class="sc">+</span> LOGAREA <span class="sc">*</span> FGRAZE,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> loyn)</span></code></pre></div>
 <p> </p>
-<p>5. Have a look at the summary of the model, and compare the estimates of the coefficients with their standard errors. Are there any which have large SE relative to the coefficient estimate? Do any of these correspond with predictors that you had identified as being potentially collinear?</p>
+<p>5. Have a look at the summary of the model, and compare the estimates
+of the coefficients with their standard errors. Are there any which have
+large SE relative to the coefficient estimate? Do any of these
+correspond with predictors that you had identified as being potentially
+collinear?</p>
 <p> </p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
@@ -598,7 +645,11 @@ $(document).ready(function () {
 <span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># so the large standard errors may be due to this (or to the predictor</span></span>
 <span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co"># having an effect near zero, i.e. no substantial effect) </span></span></code></pre></div>
 <p> </p>
-<p>6. Is every term needed (everything significant?) in this model? To find out, perform a model selection step using <code>drop1()</code> for choosing which single term might be candidate for deletion (remember to use the test = ”F” argument to perform F tests). What is that term? What hypothesis is being tested when we do this model selection step?</p>
+<p>6. Is every term needed (everything significant?) in this model? To
+find out, perform a model selection step using <code>drop1()</code> for
+choosing which single term might be candidate for deletion (remember to
+use the test = ”F” argument to perform F tests). What is that term? What
+hypothesis is being tested when we do this model selection step?</p>
 <p> </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wait: why did we not use &#39;summary&#39; or &#39;anova&#39; for this?</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -637,7 +688,11 @@ $(document).ready(function () {
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co"># because this was not specific: in reality we were testing</span></span>
 <span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple hypotheses at once)</span></span></code></pre></div>
 <p> </p>
-<p>7. Update the model and repeat single term deletions with <code>drop1()</code>, until there are no longer any non-significant terms, ignoring <code>LOGAREA</code> or <code>FGRAZE</code> (we want to leave them in for now, irrespective of what <code>drop1</code> suggests).</p>
+<p>7. Update the model and repeat single term deletions with
+<code>drop1()</code>, until there are no longer any non-significant
+terms, ignoring <code>LOGAREA</code> or <code>FGRAZE</code> (we want to
+leave them in for now, irrespective of what <code>drop1</code>
+suggests).</p>
 <p> </p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>M2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> LOGLDIST <span class="sc">+</span> <span class="co"># removing LOGDIST here</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                 YR.ISOL <span class="sc">+</span> ALT <span class="sc">+</span> LOGAREA <span class="sc">*</span> FGRAZE,</span>
@@ -696,7 +751,10 @@ $(document).ready(function () {
 <span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are, back to a</span></span>
 <span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="co"># familiar version of the model!</span></span></code></pre></div>
 <p> </p>
-<p>8. If all goes well, you should end up the previous question with the interactive model again <code>lm(ABUND ~ LOGAREA * FGRAZE)</code>. Do you need to simplify this model? Do you need to use <code>drop1()</code> for that?</p>
+<p>8. If all goes well, you should end up the previous question with the
+interactive model again <code>lm(ABUND ~ LOGAREA * FGRAZE)</code>. Do
+you need to simplify this model? Do you need to use <code>drop1()</code>
+for that?</p>
 <p> </p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If the goal of the study is simply to test the FGRAZE * LOGAREA interaction, then all we need is the associated significance test.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If the model is intended to be used for further inference (like</span></span>
@@ -743,7 +801,18 @@ $(document).ready(function () {
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co"># By applying &#39;drop1&#39; we have effectively tested the effect of the interaction,</span></span>
 <span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co"># i.e. the hypothesis that the effect of grazing level depends on patch size (or vice versa).</span></span></code></pre></div>
 <p> </p>
-<p>9. Let’s simplify the model anyway, considering the additive-only model <code>lm(ABUND ~ LOGAREA + FGRAZE)</code>. Although we could have validated models at each step the model selection procedure, this can become impractical. However, you really should validate your models at least in the final stages of model selection, by creating plots of the residuals for the candidate final model (I say “candidate” because should the model fail the validation, it may need revisiting irrespective of what the model selection procedure suggested). Remember that you can split your plotting device into 2 rows and 2 columns using the <code>par()</code> function before you create the plots. Check each of the assumptions of the model using these plots and report if these assumptions are acceptable.</p>
+<p>9. Let’s simplify the model anyway, considering the additive-only
+model <code>lm(ABUND ~ LOGAREA + FGRAZE)</code>. Although we could have
+validated models at each step the model selection procedure, this can
+become impractical. However, you really should validate your models at
+least in the final stages of model selection, by creating plots of the
+residuals for the candidate final model (I say “candidate” because
+should the model fail the validation, it may need revisiting
+irrespective of what the model selection procedure suggested). Remember
+that you can split your plotting device into 2 rows and 2 columns using
+the <code>par()</code> function before you create the plots. Check each
+of the assumptions of the model using these plots and report if these
+assumptions are acceptable.</p>
 <p> </p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>M6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> LOGAREA <span class="sc">+</span> FGRAZE, <span class="at">data =</span> loyn) </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># first split the plotting device into 2 rows and 2 columns</span></span>
@@ -786,7 +855,15 @@ $(document).ready(function () {
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This could be due to missing important predictors from the model, either</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># unknown predictors, or interactions.</span></span></code></pre></div>
 <p> </p>
-<p>10. Obtain summaries of the model output using the <code>anova()</code> and <code>summary()</code> functions. Make sure you understand the difference between these two summaries (e.g. what specific hypotheses are being tested for each of them), and the interpretation of the coefficients in the summary table: a good test of your understanding is to reconstruct the model formula in writing (on paper or in your script), to be able to make predictions by hand (see optional questions ‘A2’ and ‘A3’ at the end). If in doubt, try it and seek assistance!</p>
+<p>10. Obtain summaries of the model output using the
+<code>anova()</code> and <code>summary()</code> functions. Make sure you
+understand the difference between these two summaries (e.g. what
+specific hypotheses are being tested for each of them), and the
+interpretation of the coefficients in the summary table: a good test of
+your understanding is to reconstruct the model formula in writing (on
+paper or in your script), to be able to make predictions by hand (see
+optional questions ‘A2’ and ‘A3’ at the end). If in doubt, try it and
+seek assistance!</p>
 <p> </p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(M6)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
@@ -863,7 +940,9 @@ $(document).ready(function () {
 <span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a><span class="co"># - 1.59*FGRAZE4 - 11.89*FGRAZE5</span></span>
 <span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that (Intercept) = 1 always</span></span></code></pre></div>
 <p> </p>
-<p>11. What inference can you make from this model? What are the biological interpretations, and the statistical lessons you take away from this analysis of the Loyn data?</p>
+<p>11. What inference can you make from this model? What are the
+biological interpretations, and the statistical lessons you take away
+from this analysis of the Loyn data?</p>
 <p> </p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Biologically: confirming what we already found out in the previous LM exercises:</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># There is a significant effect of grazing levels, especially the highest</span></span>
@@ -903,7 +982,12 @@ $(document).ready(function () {
 <span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="co"># (for recently isolated patches, dispersal, and hence distance to nearest</span></span>
 <span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="co"># patches may have a less important effect)</span></span></code></pre></div>
 <p> </p>
-<p>12. Had we not been aiming to test the effect of the <code>LOGAREA * FGRAZE</code> interaction statistically, we could also have used AIC to perform the model selection. Let’s try this (taking the AIC values returned by <code>drop1</code> or using the function <code>step</code>), and summarize the performance of the alternative models in a table.</p>
+<p>12. Had we not been aiming to test the effect of the
+<code>LOGAREA * FGRAZE</code> interaction statistically, we could also
+have used AIC to perform the model selection. Let’s try this (taking the
+AIC values returned by <code>drop1</code> or using the function
+<code>step</code>), and summarize the performance of the alternative
+models in a table.</p>
 <p> </p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time, we are not doing any specific hypothesis testing, so there&#39;s</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># no need to force the LOGAREA * FGRAZE into the model until the</span></span>
@@ -1134,10 +1218,18 @@ LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE
 <p>End of the model selection exercise</p>
 <p> </p>
 </div>
-<div id="optional-additional-questions-if-you-want-to-take-it-further" class="section level2">
+<div id="optional-additional-questions-if-you-want-to-take-it-further"
+class="section level2">
 <h2>Optional additional questions, if you want to take it further</h2>
 <p> </p>
-<p>A1. Taking the final additive model from this practical: Since the <code>anova</code> function does sequential tests of the effects, the results could be different if we put <code>FGRAZE</code> first. Run the corresponding model and its analysis of variance. What null hypotheses are being tested? Do you reject or fail to reject the null hypotheses? What percentage of variation does the model explain overall? Hint: (SST-SSE)/SST. How much variation do <code>LOGAREA</code> and <code>FGRAZE</code> explain respectively?</p>
+<p>A1. Taking the final additive model from this practical: Since the
+<code>anova</code> function does sequential tests of the effects, the
+results could be different if we put <code>FGRAZE</code> first. Run the
+corresponding model and its analysis of variance. What null hypotheses
+are being tested? Do you reject or fail to reject the null hypotheses?
+What percentage of variation does the model explain overall? Hint:
+(SST-SSE)/SST. How much variation do <code>LOGAREA</code> and
+<code>FGRAZE</code> explain respectively?</p>
 <p> </p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>birds.add<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE <span class="sc">+</span> LOGAREA, <span class="at">data =</span> loyn)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(birds.add<span class="fl">.2</span>)</span>
@@ -1178,7 +1270,19 @@ LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE
 <span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusion: here the order matters a lot. This is not too surprising since</span></span>
 <span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="co"># the design is unbalanced and FGRAZE and LOGAREA covary (they are correlated)</span></span></code></pre></div>
 <p> </p>
-<p>A2. Looking at the summary table of the additive model, interpret all the coefficients, in terms of what they measure and how they affect the predictions of the model. Let’s then check that it all fits together: write down the equation of the model with the appropriate parameter estimates from the summary. By hand, calculate the predicted bird abundance (A) for a patch with <code>LOGAREA</code>= -0.5 and <code>GRAZE</code>= 1, and (B) for a patch with <code>LOGAREA</code>= -0.5 and <code>GRAZE</code>= 3. Can you predict the difference in expected abundance between (A) and (B) before doing the calculation? Hint: what measures the difference between <code>GRAZE3</code> and <code>GRAZE1</code> for a given patch area? Now, predict (C) for <code>LOGAREA</code>= 0.5 and <code>GRAZE</code>= 3. What does the difference between (C) and (B) correspond to?</p>
+<p>A2. Looking at the summary table of the additive model, interpret all
+the coefficients, in terms of what they measure and how they affect the
+predictions of the model. Let’s then check that it all fits together:
+write down the equation of the model with the appropriate parameter
+estimates from the summary. By hand, calculate the predicted bird
+abundance (A) for a patch with <code>LOGAREA</code>= -0.5 and
+<code>GRAZE</code>= 1, and (B) for a patch with <code>LOGAREA</code>=
+-0.5 and <code>GRAZE</code>= 3. Can you predict the difference in
+expected abundance between (A) and (B) before doing the calculation?
+Hint: what measures the difference between <code>GRAZE3</code> and
+<code>GRAZE1</code> for a given patch area? Now, predict (C) for
+<code>LOGAREA</code>= 0.5 and <code>GRAZE</code>= 3. What does the
+difference between (C) and (B) correspond to?</p>
 <p> </p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ABUND = 15.72*(Intercept) + 7.25*LOGAREA + 0.38*FGRAZE2 - 0.19*FGRAZE3</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - 1.59*FGRAZE4 - 11.89*FGRAZE5</span></span>
@@ -1217,7 +1321,12 @@ LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE
 <span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="co"># LOGAREA unit of difference and the slope is the change in expected</span></span>
 <span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="co"># abundance for a 1-unit increase in the predictor.</span></span></code></pre></div>
 <p> </p>
-<p>A3. Check if you can make sense of the interactive model structure (Model <code>birds.inter.1</code> in the previous practical), by writing down the equation of the model with the appropriate parameter estimates from the summary. Then, calculate again the predicted bird abundance (A) for a patch with LOGAREA= 2.5 and GRAZE= 1, and (B) for a patch with LOGAREA= -0.5 and GRAZE= 5.</p>
+<p>A3. Check if you can make sense of the interactive model structure
+(Model <code>birds.inter.1</code> in the previous practical), by writing
+down the equation of the model with the appropriate parameter estimates
+from the summary. Then, calculate again the predicted bird abundance (A)
+for a patch with LOGAREA= 2.5 and GRAZE= 1, and (B) for a patch with
+LOGAREA= -0.5 and GRAZE= 5.</p>
 <p> </p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>birds.inter<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE <span class="sc">*</span> LOGAREA , <span class="at">data =</span> loyn)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ABUND = 21.243*(Intercept) - 6.165*FGRAZE2 - 7.215*FGRAZE3 - 17.910*FGRAZE4</span></span>
@@ -1251,7 +1360,13 @@ LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE
 <span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Well done if you got there!</span></span></code></pre></div>
 <p> </p>
-<p>A4. Let’s compare the residuals diagnostics of the interactive model structure (Model <code>birds.inter.1</code> in the previous practical) with those of the additive model (final model from this practical). Remember, that you can split your plotting device into 2 rows and 2 columns using the <code>par()</code> function before you create the plots. Does the additional complexity of the interaction make a big difference?</p>
+<p>A4. Let’s compare the residuals diagnostics of the interactive model
+structure (Model <code>birds.inter.1</code> in the previous practical)
+with those of the additive model (final model from this practical).
+Remember, that you can split your plotting device into 2 rows and 2
+columns using the <code>par()</code> function before you create the
+plots. Does the additional complexity of the interaction make a big
+difference?</p>
 <p> </p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first split the plotting device into 2 rows and 2 columns</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>

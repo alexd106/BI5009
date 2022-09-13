@@ -13,8 +13,8 @@
 
 <title>PDF version of exercises</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -50,6 +50,7 @@
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -70,6 +71,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -222,7 +226,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -246,7 +250,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -264,7 +268,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -311,7 +315,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -360,19 +364,26 @@ $(document).ready(function () {
 
 
 <p> </p>
-<p>Click on the links below to download pdf versions of the exercises.</p>
+<p>Click on the links below to download pdf versions of the
+exercises.</p>
 <p> </p>
 <p> </p>
 <div id="section-1-exercises" class="section level4">
 <h4>Section 1 Exercises</h4>
 <p> </p>
 <ul>
-<li><p><a href="exercises/exercise_1.pdf" target="_blank">Exercise 1: Getting to know R and RStudio</a></p></li>
-<li><p><a href="exercises/exercise_2.pdf" target="_blank">Exercise 2: Basic R operations</a></p></li>
-<li><p><a href="exercises/exercise_3.pdf" target="_blank">Exercise 3: Importing and manipulating dataframes</a></p></li>
-<li><p><a href="exercises/exercise_4.pdf" target="_blank">Exercise 4: Visualising data using base R and lattice graphics</a></p></li>
-<li><p><a href="exercises/exercise_5.pdf" target="_blank">Exercise 5: Basic statistics in R</a></p></li>
-<li><p><a href="exercises/exercise_1.pdf" target="_blank">Exercise 1: Basic programming in R</a></p></li>
+<li><p><a href="exercises/exercise_1.pdf" target="_blank">Exercise 1:
+Getting to know R and RStudio</a></p></li>
+<li><p><a href="exercises/exercise_2.pdf" target="_blank">Exercise 2:
+Basic R operations</a></p></li>
+<li><p><a href="exercises/exercise_3.pdf" target="_blank">Exercise 3:
+Importing and manipulating dataframes</a></p></li>
+<li><p><a href="exercises/exercise_4.pdf" target="_blank">Exercise 4:
+Visualising data using base R and lattice graphics</a></p></li>
+<li><p><a href="exercises/exercise_5.pdf" target="_blank">Exercise 5:
+Basic statistics in R</a></p></li>
+<li><p><a href="exercises/exercise_1.pdf" target="_blank">Exercise 1:
+Basic programming in R</a></p></li>
 </ul>
 <p> </p>
 </div>
@@ -380,13 +391,22 @@ $(document).ready(function () {
 <h4>Section 2 Exercises</h4>
 <p> </p>
 <ul>
-<li><p><a href="./exercises/graphical_data_exploration_exercise.pdf">Graphical data Exploration exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_1_exercise.pdf">Linear model with single continuous explanatory variable exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_2_exercise.pdf">Linear model with single categorical explanatory variable exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_3_exercise.pdf">Linear model with multiple explanatory variables exercise</a></p></li>
-<li><p><a href="./exercises/linear_model_4_exercise.pdf">Linear model - model selection exercise</a></p></li>
-<li><p><a href="./exercises/GLM_1_Poisson_exercise.pdf">Generalised linear models 1 - Poisson GLM exercise</a></p></li>
-<li><p><a href="./exercises/GLM_2_Binomial_RayBin_exercise.pdf">Generalised linear models 2 - Binomial GLM exercise (0/1 data)</a></p></li>
+<li><p><a
+href="./exercises/graphical_data_exploration_exercise.pdf">Graphical
+data Exploration exercise</a></p></li>
+<li><p><a href="./exercises/linear_model_1_exercise.pdf">Linear model
+with single continuous explanatory variable exercise</a></p></li>
+<li><p><a href="./exercises/linear_model_2_exercise.pdf">Linear model
+with single categorical explanatory variable exercise</a></p></li>
+<li><p><a href="./exercises/linear_model_3_exercise.pdf">Linear model
+with multiple explanatory variables exercise</a></p></li>
+<li><p><a href="./exercises/linear_model_4_exercise.pdf">Linear model -
+model selection exercise</a></p></li>
+<li><p><a href="./exercises/GLM_1_Poisson_exercise.pdf">Generalised
+linear models 1 - Poisson GLM exercise</a></p></li>
+<li><p><a
+href="./exercises/GLM_2_Binomial_RayBin_exercise.pdf">Generalised linear
+models 2 - Binomial GLM exercise (0/1 data)</a></p></li>
 </ul>
 <!-- - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](./exercises/GLM_3_BinomialProportions_exercise.pdf)
 -->

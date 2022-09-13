@@ -13,8 +13,8 @@
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -50,6 +50,7 @@
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -70,6 +71,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -222,7 +226,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -246,7 +250,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -264,7 +268,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -311,7 +315,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -363,21 +367,59 @@ $(document).ready(function () {
 <div id="exercises" class="section level3">
 <h3>Exercises</h3>
 <p>The following exercises are split into two main sections.</p>
-<p><strong>Section 1</strong> of the exercises will introduce you to using R and comprises four exercises which corresponds to material covered in the first four Chapters of the <a href="https://intro2r.com">Introduction to R book</a>. We will be covering these exercises during the first two weeks of the course. It’s entirely up to you how you progress through these exercises, everyone learns R at their own pace and in their own way. You can either work your way through each section of the book and then test your understanding of the material by completing the associated exercise. Alternatively, you can start with each exercise and refer back to the appropriate material in the book. Or find another way that works for you. Whichever approach you use, make sure that you write your R code in RStudio (or your favourite script editor), annotate it liberally and save it regularly. At the end of the course you will have many hundreds of lines of code that you can refer back to at a later date when you’ve forgotten most of it! There is also an additional optional exercise (Exercise 5) which covers the book Chapter 7 - Programming in R. This exercise is entirely optional and should only be completed after you have finished the first four exercises.</p>
-<p><strong>Section 2</strong> exercises will cover material introduced during the third to sixth week of the course. These exercises will help you learn how to fit linear and generalised linear models using R, how to validate these models and how to interpret these models.</p>
-<p>I will release the <a href="exercise_solutions.html" target="_blank">solutions to the exercises</a> after each of our synchronous sessions. If you prefer to download these exercises in pdf format you can <a href="exercise_pdf.html" target="_blank">find them here</a>.</p>
-<p>Finally, just a word about the content of some of the early R exercises in Section 1. Initially, some of the material in these exercises might strike you as ‘pointless’, ‘trivial’ or ‘irrelevant’ and you may even ask yourself what possible use is generating sequences of numbers, concatenating elements in a vector or ordering lists of names (to name but a few). However, please stick with it, you’ll be amazed how many times you will use the skills (and code) that you have learned throughout these exercises when it comes to dealing with and analysing your own data.</p>
+<p><strong>Section 1</strong> of the exercises will introduce you to
+using R and comprises four exercises which corresponds to material
+covered in the first four Chapters of the <a
+href="https://intro2r.com">Introduction to R book</a>. We will be
+covering these exercises during the first two weeks of the course. It’s
+entirely up to you how you progress through these exercises, everyone
+learns R at their own pace and in their own way. You can either work
+your way through each section of the book and then test your
+understanding of the material by completing the associated exercise.
+Alternatively, you can start with each exercise and refer back to the
+appropriate material in the book. Or find another way that works for
+you. Whichever approach you use, make sure that you write your R code in
+RStudio (or your favourite script editor), annotate it liberally and
+save it regularly. At the end of the course you will have many hundreds
+of lines of code that you can refer back to at a later date when you’ve
+forgotten most of it! There is also an additional optional exercise
+(Exercise 5) which covers the book Chapter 7 - Programming in R. This
+exercise is entirely optional and should only be completed after you
+have finished the first four exercises.</p>
+<p><strong>Section 2</strong> exercises will cover material introduced
+during the third to sixth week of the course. These exercises will help
+you learn how to fit linear and generalised linear models using R, how
+to validate these models and how to interpret these models.</p>
+<p>I will release the <a href="exercise_solutions.html"
+target="_blank">solutions to the exercises</a> after each of our
+synchronous sessions. If you prefer to download these exercises in pdf
+format you can <a href="exercise_pdf.html" target="_blank">find them
+here</a>.</p>
+<p>Finally, just a word about the content of some of the early R
+exercises in Section 1. Initially, some of the material in these
+exercises might strike you as ‘pointless’, ‘trivial’ or ‘irrelevant’ and
+you may even ask yourself what possible use is generating sequences of
+numbers, concatenating elements in a vector or ordering lists of names
+(to name but a few). However, please stick with it, you’ll be amazed how
+many times you will use the skills (and code) that you have learned
+throughout these exercises when it comes to dealing with and analysing
+your own data.</p>
 <p>Have fun!</p>
 <p> </p>
 <div id="section-1-exercises" class="section level4">
 <h4>Section 1 Exercises</h4>
 <p> </p>
 <ul>
-<li><p><a href="exercise_1.html" target="_blank">Exercise 1: Getting to know R and RStudio</a></p></li>
-<li><p><a href="exercise_2.html" target="_blank">Exercise 2: Basic R operations</a></p></li>
-<li><p><a href="exercise_3.html" target="_blank">Exercise 3: Importing and manipulating dataframes</a></p></li>
-<li><p><a href="exercise_4.html" target="_blank">Exercise 4: Visualising data using base R and lattice graphics</a></p></li>
-<li><p><a href="exercise_5.html" target="_blank">Exercise 5: Basic programming in R</a></p></li>
+<li><p><a href="exercise_1.html" target="_blank">Exercise 1: Getting to
+know R and RStudio</a></p></li>
+<li><p><a href="exercise_2.html" target="_blank">Exercise 2: Basic R
+operations</a></p></li>
+<li><p><a href="exercise_3.html" target="_blank">Exercise 3: Importing
+and manipulating dataframes</a></p></li>
+<li><p><a href="exercise_4.html" target="_blank">Exercise 4: Visualising
+data using base R and lattice graphics</a></p></li>
+<li><p><a href="exercise_5.html" target="_blank">Exercise 5: Basic
+programming in R (optional)</a></p></li>
 </ul>
 <p> </p>
 </div>
@@ -385,18 +427,26 @@ $(document).ready(function () {
 <h4>Section 2 Exercises</h4>
 <p> </p>
 <ul>
-<li><p><a href="graphical_data_exploration_exercise.html">Graphical data Exploration exercise</a></p></li>
-<li><p><a href="linear_model_1_exercise.html">Linear model with single continuous explanatory variable exercise</a></p></li>
-<li><p><a href="linear_model_2_exercise.html">Linear model with single categorical explanatory variable exercise</a></p></li>
-<li><p><a href="LM_3_multiple_exercise.html">Linear model with multiple explanatory variables exercise</a></p></li>
-<li><p><a href="LM_4_Selection_exercise.html">Linear model - model selection exercise</a></p></li>
-<li><p><a href="GLM_1_Poisson_exercise.html">Generalised linear models 1 - Poisson GLM exercise</a></p></li>
-<li><p><a href="GLM_2_Binomial_RayBin_exercise.html">Generalised linear models 2 - Binomial GLM exercise</a></p></li>
+<li><p><a href="graphical_data_exploration_exercise.html">Graphical data
+Exploration exercise</a></p></li>
+<li><p><a href="linear_model_1_exercise.html">Linear model with single
+continuous explanatory variable exercise</a></p></li>
+<li><p><a href="linear_model_2_exercise.html">Linear model with single
+categorical explanatory variable exercise</a></p></li>
+<li><p><a href="LM_3_multiple_exercise.html">Linear model with multiple
+explanatory variables exercise</a></p></li>
+<li><p><a href="LM_4_Selection_exercise.html">Linear model - model
+selection exercise</a></p></li>
+<li><p><a href="GLM_1_Poisson_exercise.html">Generalised linear models 1
+- Poisson GLM exercise</a></p></li>
+<li><p><a href="GLM_2_Binomial_RayBin_exercise.html">Generalised linear
+models 2 - Binomial GLM exercise</a></p></li>
 </ul>
 <!-- - [Generalised linear models 3 - Binomial GLM exercise (proportion data)](GLM_3_BinomialProportions_exercise.html)
 -->
 <p> </p>
-<p><a href="optional_exercises.html">Additional optional exercises</a></p>
+<p><a href="optional_exercises.html">Additional optional
+exercises</a></p>
 <p> </p>
 <p><a href="exercise_pdf.html">pdf version of exercises</a></p>
 </div>

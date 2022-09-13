@@ -13,8 +13,8 @@
 
 <title>Exercise</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -42,6 +42,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -174,6 +175,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -329,7 +333,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -353,7 +357,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-desktop"></span>
      
     Learn
@@ -371,7 +375,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -418,7 +422,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -460,7 +464,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -475,38 +479,102 @@ $(document).ready(function () {
 
 
 <p> </p>
-<div id="a-linear-model-with-interaction-between-continuous-and-categorical-predictors-explanatory-variables" class="section level2">
-<h2>A linear model with interaction between continuous and categorical predictors (= explanatory variables)</h2>
+<div
+id="a-linear-model-with-interaction-between-continuous-and-categorical-predictors-explanatory-variables"
+class="section level2">
+<h2>A linear model with interaction between continuous and categorical
+predictors (= explanatory variables)</h2>
 <p> </p>
-<p>This exercise builds on the linear model with one continuous predictor, and the linear model with one categorical predictor, by adding these two sources of variation in the same model and allowing their effects to interact (i.e., the effect of one predictor changes with the value of the other predictor). It is the third of four complementary exercises, based on the <code>loyn</code> data set.</p>
+<p>This exercise builds on the linear model with one continuous
+predictor, and the linear model with one categorical predictor, by
+adding these two sources of variation in the same model and allowing
+their effects to interact (i.e., the effect of one predictor changes
+with the value of the other predictor). It is the third of four
+complementary exercises, based on the <code>loyn</code> data set.</p>
 <p> </p>
-<p>1. As in previous exercises, either create a new R script (perhaps call it linear_model_3) or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</p>
+<p>1. As in previous exercises, either create a new R script (perhaps
+call it linear_model_3) or continue with your previous R script in your
+RStudio Project. Again, make sure you include any metadata you feel is
+appropriate (title, description of task, date of creation etc) and don’t
+forget to comment out your metadata with a <code>#</code> at the
+beginning of the line.</p>
 <p> </p>
-<p>2. Import the data file ‘loyn.txt’ into R and take a look at the structure of this dataframe using the <code>str()</code> function. We know that the abundance of birds <code>ABUND</code> increases quickly with the area of the patch <code>LOGAREA</code>, and more slowly for the larger patches (a saturating “log-linear relationship”). We now also know that bird abundance changes in a non-linear way with the grazing intensity <code>FGRAZE</code>. But how do these effects combine together? Would a small patch with low grazing intensity have more birds than a larger patch with high grazing intensity? Could the (poor) fit of the <code>ABUND ~ LOGAREA</code> model for the large patches be improved, if we accounted for grazing intensity in the patches?</p>
+<p>2. Import the data file ‘loyn.txt’ into R and take a look at the
+structure of this dataframe using the <code>str()</code> function. We
+know that the abundance of birds <code>ABUND</code> increases quickly
+with the area of the patch <code>LOGAREA</code>, and more slowly for the
+larger patches (a saturating “log-linear relationship”). We now also
+know that bird abundance changes in a non-linear way with the grazing
+intensity <code>FGRAZE</code>. But how do these effects combine
+together? Would a small patch with low grazing intensity have more birds
+than a larger patch with high grazing intensity? Could the (poor) fit of
+the <code>ABUND ~ LOGAREA</code> model for the large patches be
+improved, if we accounted for grazing intensity in the patches?</p>
 <p> </p>
 <p> </p>
-<p>3. As previously we want to treat <code>AREA</code> as a log-transformed area to limit the influence of the few disproportionately large patches, and <code>GRAZE</code> as a categorical variable with five levels. So the first thing we need to do is create the corresponding variables in the loyn dataframe, called <code>LOGAREA</code> and <code>FGRAZE</code>.</p>
+<p>3. As previously we want to treat <code>AREA</code> as a
+log-transformed area to limit the influence of the few
+disproportionately large patches, and <code>GRAZE</code> as a
+categorical variable with five levels. So the first thing we need to do
+is create the corresponding variables in the loyn dataframe, called
+<code>LOGAREA</code> and <code>FGRAZE</code>.</p>
 <p> </p>
 <p> </p>
-<p>4. Explore the relationship between grazing and patch area, using a scatterplot. You could explore the joint effect of <code>FGRAZE</code> and <code>LOGAREA</code> on <code>ABUND</code>, using panel plots. Hint: See the function <code>coplot</code> in the Data exploration lecture slide 24, and/or the help page for <code>coplot</code>. Factor levels increase from the bottom-left panel to the top-right panel. What pattern do you see? Is it okay to assume the effect of <code>LOGAREA</code> to be the same for all grazing levels? This is effectively asking if we should let the slope of <code>LOGAREA</code> vary across <code>FGRAZE</code> levels, which is the definition of an interaction.</p>
+<p>4. Explore the relationship between grazing and patch area, using a
+scatterplot. You could explore the joint effect of <code>FGRAZE</code>
+and <code>LOGAREA</code> on <code>ABUND</code>, using panel plots. Hint:
+See the function <code>coplot</code> in the Data exploration lecture
+slide 24, and/or the help page for <code>coplot</code>. Factor levels
+increase from the bottom-left panel to the top-right panel. What pattern
+do you see? Is it okay to assume the effect of <code>LOGAREA</code> to
+be the same for all grazing levels? This is effectively asking if we
+should let the slope of <code>LOGAREA</code> vary across
+<code>FGRAZE</code> levels, which is the definition of an
+interaction.</p>
 <p> </p>
 <p> </p>
-<p>5. Fit an appropriate linear model in R to explain the variation in the response variable, <code>ABUND</code> with the explanatory variables <code>LOGAREA</code> and <code>FGRAZE</code> acting interactively. Hint: <code>*</code> is the interaction symbol! Remember to use the <code>data =</code> argument. Assign this linear model to an appropriately named object, like <code>birds.inter.1</code>.</p>
+<p>5. Fit an appropriate linear model in R to explain the variation in
+the response variable, <code>ABUND</code> with the explanatory variables
+<code>LOGAREA</code> and <code>FGRAZE</code> acting interactively. Hint:
+<code>*</code> is the interaction symbol! Remember to use the
+<code>data =</code> argument. Assign this linear model to an
+appropriately named object, like <code>birds.inter.1</code>.</p>
 <p> </p>
 <p> </p>
-<p>6. Let’s first check the assumptions of your linear model by creating plots of the residuals from the model. Remember, that you can split your plotting device into 2 rows and 2 columns using the <code>par()</code> function before you create the plots. Check each of the assumptions using these plots and report whether your model meets these assumptions.</p>
+<p>6. Let’s first check the assumptions of your linear model by creating
+plots of the residuals from the model. Remember, that you can split your
+plotting device into 2 rows and 2 columns using the <code>par()</code>
+function before you create the plots. Check each of the assumptions
+using these plots and report whether your model meets these
+assumptions.</p>
 <p> </p>
 <p> </p>
-<p>7. Use the <code>summary()</code> function on the first model object to produce the table of parameter estimates. Using this output, take each line in turn and answer the following questions: (A) what does this parameter measure, specifically? (B) What is the biological interpretation of the corresponding estimate? (C) What is the null hypothesis associated with it? (D) Do you reject or fail to reject this hypothesis? I encourage you to get someone to discuss your answers with you.</p>
+<p>7. Use the <code>summary()</code> function on the first model object
+to produce the table of parameter estimates. Using this output, take
+each line in turn and answer the following questions: (A) what does this
+parameter measure, specifically? (B) What is the biological
+interpretation of the corresponding estimate? (C) What is the null
+hypothesis associated with it? (D) Do you reject or fail to reject this
+hypothesis? I encourage you to get someone to discuss your answers with
+you.</p>
 <p> </p>
 <p> </p>
-<p>8. Let’s now plot the predictions of your initial model to figure out how it really fits the data. Here’s a recipe, using the <code>predict()</code> function.</p>
+<p>8. Let’s now plot the predictions of your initial model to figure out
+how it really fits the data. Here’s a recipe, using the
+<code>predict()</code> function.</p>
 <ul>
-<li>plot the raw data, using a different colour per <code>FGRAZE</code> level</li>
+<li>plot the raw data, using a different colour per <code>FGRAZE</code>
+level</li>
 <li>for each <code>FGRAZE</code> level in turn,</li>
-<li>create a sequence of <code>LOGAREA</code> from the minimum value to the maximum within the grazing level (unless you wish to predict outside the range of observed values)</li>
-<li>store it in a data frame (e.g. <code>dat4pred</code>) containing the variables <code>FGRAZE</code> and <code>LOGAREA.</code> Remember that <code>FGRAZE</code> is a factor, so its values require double quotes.</li>
-<li>add a predicted column containing the predictions of the model for the new data frame, using <code>predict()</code></li>
+<li>create a sequence of <code>LOGAREA</code> from the minimum value to
+the maximum within the grazing level (unless you wish to predict outside
+the range of observed values)</li>
+<li>store it in a data frame (e.g. <code>dat4pred</code>) containing the
+variables <code>FGRAZE</code> and <code>LOGAREA.</code> Remember that
+<code>FGRAZE</code> is a factor, so its values require double
+quotes.</li>
+<li>add a predicted column containing the predictions of the model for
+the new data frame, using <code>predict()</code></li>
 <li>plot the predictions with the appropriate colours</li>
 </ul>
 <p>See the script below, for one of many ways of doing this.</p>
@@ -570,7 +638,8 @@ $(document).ready(function () {
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a> <span class="at">lwd=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="LM_3_multiple_exercise_files/figure-html/Q8a-1.png" width="672" /></p>
 <p> </p>
-<p><strong>(Optional, for the geeks)</strong> Alternative method, using a loop:</p>
+<p><strong>(Optional, for the geeks)</strong> Alternative method, using
+a loop:</p>
 <p> </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Okay, that was a long-winded way of doing this.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If, like me, you prefer more compact code and less risks of errors,</span></span>
@@ -594,13 +663,19 @@ $(document).ready(function () {
 <p><img src="LM_3_multiple_exercise_files/figure-html/Q8b-1.png" width="672" /></p>
 <p> </p>
 <blockquote>
-<p>Take some time to observe the predictions from the model, and how the lines have different intercepts and slopes (as assumed by the model with interactive effects).</p>
+<p>Take some time to observe the predictions from the model, and how the
+lines have different intercepts and slopes (as assumed by the model with
+interactive effects).</p>
 </blockquote>
 <p> </p>
-<p>9. From a biological point of view, what have we learned so far from the interactive model? (Assume that the assumptions are adequately met, for now). Do you think the model is biologically plausible? Is it supported statistically?</p>
+<p>9. From a biological point of view, what have we learned so far from
+the interactive model? (Assume that the assumptions are adequately met,
+for now). Do you think the model is biologically plausible? Is it
+supported statistically?</p>
 <p> </p>
 <p> </p>
-<p>End of the Linear model with interactive continuous and categorical predictors exercise</p>
+<p>End of the Linear model with interactive continuous and categorical
+predictors exercise</p>
 </div>
 
 
