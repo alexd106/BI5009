@@ -462,16 +462,20 @@ $(document).ready(function () {
 class="section level2">
 <h2>Exercise 3: Importing and manipulating dataframes</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/data-r.html">Chapter 3</a> to help
+you complete the questions in this exercise.</p>
+<p> </p>
 <p>1. As in previous exercises, either create a new R script or continue
 with your previous R script in your RStudio Project. Again, make sure
 you include any metadata you feel is appropriate (title, description of
 task, date of creation etc) and don’t forget to comment out your
 metadata with a <code>#</code> at the beginning of the line.</p>
 <p> </p>
-<p>2. Download the data file <em>‘whaledata.xls’</em> from the
-<strong><a href="data.html"><i class="fa fa-download"></i>
-Data</a></strong> link and save it to the <code>data</code> directory
-inside your RStudio project directory.</p>
+<p>2. If you haven’t already, download the data file
+<em>‘whaledata.xlsx’</em> from the <strong><a
+href="data.html"><i class="fa fa-download"></i> Data</a></strong> link
+and save it to the <code>data</code> directory you created in Exercise
+1.</p>
 <p> </p>
 <p>3. Open this file in Microsoft Excel (or even better use an open
 source equivalent - <a
@@ -584,7 +588,7 @@ href="https://intro2r.com/wrangling-data-frames.html#logical-indexes">Section
 columns by default) based on the following criteria (note: you will need
 to assign the results of these statements to appropriately named
 variables, I’ll leave it up to you to use informative names!):</p>
-<ol style="list-style-type: lower-alpha">
+<ul>
 <li>at depths greater than 1200 m</li>
 <li>gradient steeper than 200 degrees</li>
 <li>water noise level of ‘low’</li>
@@ -593,8 +597,8 @@ variables, I’ll leave it up to you to use informative names!):</p>
 than the median value of gradient (132)</li>
 <li>all observations from between latitudes 60.0 and 61.0 and longitudes
 -6.0 and -4.0</li>
-<li>all rows that do not have a water noise level of medium</li>
-</ol>
+<li>all rows that do not have a water noise level of mediumm</li>
+</ul>
 <p> </p>
 <p>10. A really neat feature of extracting rows based on conditional
 statements is that you can include R functions within the statement
@@ -605,8 +609,9 @@ the value 132.</p>
 <p>11. However, when using functions in conditional statements you need
 to be careful. For example, write some code to extract all rows from the
 dataframe <code>whale</code> with depths greater than 1500 m and with a
-greater number of whales spotted than average. Take a look at the output
-- can you see a problem? Discuss the cause of this problem with an
+greater number of whales spotted than average (hint: use the
+<code>mean()</code> function in your conditional statement). Can you see
+a problem with the output? Discuss the cause of this problem with an
 instructor and explore possible solutions.</p>
 <p> </p>
 <p>12. Although you have concentrated on using the square bracket

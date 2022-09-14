@@ -16,11 +16,15 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
+Read [Chapter 1](https://intro2r.com/chap1.html) to help you complete the questions in this exercise. We'll also bounce occasionally to [Chapter 2](https://intro2r.com/basics_r.html) for a few questions where links will be provided.
+
+\  
+
 1. Start RStudio on your computer. Create a new RStudio Project (select File --> New Project on the main menu). Create the Project in a new directory by selecting 'New Directory' and then select 'New Project'. Give the Project a suitable name in the 'Directory name:' box (maybe 'BI5009_statistics'? - see [Section 1.9](https://intro2r.com/file_names.html) of the Introduction to R book for a discussion on naming files and directories). Choose where you would like to create this Project directory by clicking on the 'Browse' button. Finally create the project by clicking on the 'Create Project' button. This will be your main RStudio Project file and directory which you will use throughout this course. If you're confused see [Section 1.6](https://intro2r.com/rsprojs.html) of the introduction to R Book which covers RStudio Projects or watch the 'RStudio Projects' video [here](https://alexd106.github.io/BI5009/howto.html).
 
 \  
 
-2. Now create a new R script inside this Project by selecting File --> New File --> R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File --> Save from the main menu. Call this script 'exercise_1' or something similar (remember, files names should not [contain spaces!](https://intro2r.com/file_names.html)). Click on the 'Files' tab in the bottom right RStudio pane to see whether your file has been saved in the correct location. Read [Section 1.10](https://intro2r.com/proj_doc.html) for more information about R scripts.
+2. Now create a new R script inside this Project by selecting File --> New File --> R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File --> Save from the main menu. Call this script 'exercise_1' or something similar (remember, files names should not [contain spaces!](https://intro2r.com/file_names.html)). Click on the 'Files' tab in the bottom right RStudio pane to see whether your file has been saved in the correct location. Ok, at the top of almost every R script (there are very few exceptions to this!) you should include some metadata to help your collaborators (and the future you) know who wrote the script, when it was written and what the script does (amongst other things). Include this information at the top of your R script making sure that you place a `#` at the beginning of every line to let R know this is a comment. See [Section 1.10](https://intro2r.com/proj-doc.html) for a little more detail.
 
 \  
 
@@ -56,15 +60,15 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-11.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a 'design plot' but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function. See [Section 2.5](https://intro2r.com/help.html) of the R book for more details.
+11.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name (see [Section 2.5.1](https://intro2r.com/help.html#help) of the Introduction to R book). Look through the list and once you have figured what the correct function is then bring up the help file for this function (Hint: the function name probably has the words 'plot' and 'design' in it!). 
 
 \  
 
-12. Another strategy would be to use the `help.search()` function to search through R's help files. Search the R help system for instances of the character string ‘plot’. See if you can figure out how to narrow your search by only searching for ‘plot’ in the `nlme` package (hint: see the help page for `help.search()` or [Section 2.5](https://intro2r.com/help.html) of the R book.
+12. Another strategy would be to use the `help.search()` function to search through R's help files. Search the R help system for instances of the character string ‘plot’. Take a look at [Section 2.5.1](https://intro2r.com/help.html#r-help) for more information. Also, see if you can figure out how to narrow your search by only searching for ‘plot’ in the `nlme` package (hint: see the help page for `help.search()`).
 
 \  
 
-13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's a job for future exercises) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory (try Google or read [Section 1.7](https://intro2r.com/work-d.html) of the R book).
+13.	R's working directory is the default location of any files you read into R, or export from R. Although you won't be importing or exporting files just yet (that's tomorrows job) it's useful to be able to determine what your current working directory is. So, read [Section 1.7](https://intro2r.com/work-d.html) of the Introduction to R book to introduce yourself to working directories and figure out how to display your current working directory.
 
 \  
 

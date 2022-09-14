@@ -483,6 +483,9 @@ $(document).ready(function () {
 class="section level2">
 <h2>Exercise 4: Visualising data using base R and lattice graphics</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/graphics-base-r.html">Chapter 4</a>
+to help you complete the questions in this exercise.</p>
+<p> </p>
 <p>1. As in previous exercises, either create a new R script or continue
 with your previous R script in your RStudio Project. Again, make sure
 you include any metadata you feel is appropriate (title, description of
@@ -666,22 +669,22 @@ unusually large value. Actually, this value is biologically implausible
 and clearly an error. The researchers were asked to go back and check
 their field notebooks and sure enough they discover a typo. It looks
 like a tired researcher accidentally inserted a zero by mistake when
-transcribing these data. We can clearly see this value is over 400 so we
-can use the <code>which()</code> function to identify which observation
-this is <code>which(squid$nid.length &gt; 400)</code>. It looks like
-this is the 11<sup>th</sup> observation of the
-<code>squid$nid.length</code> variable. Use your skill with the square
-brackets <code>[ ]</code> to first confirm the this is the correct value
-(you should get 430.2) and then change this value to 43.2 (use the
-<code>[ ]</code> notation again. Do <strong>not</strong> use the data
-editor in RStudio as this is not reproducible!). Now redo the dotchart
-to visualise your correction. Caution: You can only do this because you
-have confirmed that this is a transcribing error. You should
-<strong>not</strong> remove or change values in your data just because
-you feel like it or they look ‘unusual’. This is scientific fraud! Also,
-the advantage of making this change in your R script rather than in
-Excel is that you now have a permanent record of the change you made and
-can state a clear reason for the change.</p>
+transcribing these data (mistakes in data are very common and why we
+<strong>always</strong> explore, check and validate any data we are
+working on). We can clearly see this value is over 400 so we can use the
+<code>which()</code> function to identify which observation this is
+<code>which(squid$nid.length &gt; 400)</code>. It looks like this is the
+11<sup>th</sup> observation of the <code>squid$nid.length</code>
+variable. Use your skill with the square brackets <code>[ ]</code> to
+first confirm the this is the correct value (you should get 430.2) and
+then change this value to 43.2. Now redo the dotchart to visualise your
+correction. Caution: You can only do this because you have confirmed
+that this is an transcribing error. You should <strong>not</strong>
+remove or change values in your data just because you feel like it or
+they look ‘unusual’. This is scientific fraud! Also, the advantage of
+making this change in your R script rather than in Excel is that you now
+have a permanent record of the change you made and can state a clear
+reason for the change.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(squid<span class="sc">$</span>nid.length <span class="sc">&gt;</span> <span class="dv">400</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 11</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>

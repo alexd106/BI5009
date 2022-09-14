@@ -368,6 +368,11 @@ $(document).ready(function () {
 class="section level2">
 <h2>Exercise 1 : Getting to know R and RStudio</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/chap1.html">Chapter 1</a> to help
+you complete the questions in this exercise. We’ll also bounce
+occasionally to <a href="https://intro2r.com/basics_r.html">Chapter
+2</a> for a few questions where links will be provided.</p>
+<p> </p>
 <ol style="list-style-type: decimal">
 <li>Start RStudio on your computer. Create a new RStudio Project (select
 File –&gt; New Project on the main menu). Create the Project in a new
@@ -395,9 +400,15 @@ File –&gt; Save from the main menu. Call this script ‘exercise_1’ or
 something similar (remember, files names should not <a
 href="https://intro2r.com/file_names.html">contain spaces!</a>). Click
 on the ‘Files’ tab in the bottom right RStudio pane to see whether your
-file has been saved in the correct location. Read <a
-href="https://intro2r.com/proj_doc.html">Section 1.10</a> for more
-information about R scripts.</li>
+file has been saved in the correct location. Ok, at the top of almost
+every R script (there are very few exceptions to this!) you should
+include some metadata to help your collaborators (and the future you)
+know who wrote the script, when it was written and what the script does
+(amongst other things). Include this information at the top of your R
+script making sure that you place a <code>#</code> at the beginning of
+every line to let R know this is a comment. See <a
+href="https://intro2r.com/proj-doc.html">Section 1.10</a> for a little
+more detail.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
@@ -495,34 +506,35 @@ you want.</li>
 <ol start="11" style="list-style-type: decimal">
 <li>OK, back to RStudio. Sometimes you may forget the exact name of a
 function you want to use so it would be useful to be able to search
-through all the function names. For example, you want to create a
-‘design plot’ but can only remember that the name of the function has
-the word ‘plot’ in it. Use the <code>apropos()</code> function to list
-all the functions with the word plot in their name. Look through the
-list and once you have figured what the correct function is then bring
-up the help file for this function. See <a
-href="https://intro2r.com/help.html">Section 2.5</a> of the R book for
-more details.</li>
+through all the function names. For example, you want to create a design
+plot but can only remember that the name of the function has the word
+‘plot’ in it. Use the <code>apropos()</code> function to list all the
+functions with the word plot in their name (see <a
+href="https://intro2r.com/help.html#help">Section 2.5.1</a> of the
+Introduction to R book). Look through the list and once you have figured
+what the correct function is then bring up the help file for this
+function (Hint: the function name probably has the words ‘plot’ and
+‘design’ in it!).</li>
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
 <li>Another strategy would be to use the <code>help.search()</code>
 function to search through R’s help files. Search the R help system for
-instances of the character string ‘plot’. See if you can figure out how
-to narrow your search by only searching for ‘plot’ in the
-<code>nlme</code> package (hint: see the help page for
-<code>help.search()</code> or <a
-href="https://intro2r.com/help.html">Section 2.5</a> of the R book.</li>
+instances of the character string ‘plot’. Take a look at <a
+href="https://intro2r.com/help.html#r-help">Section 2.5.1</a> for more
+information. Also, see if you can figure out how to narrow your search
+by only searching for ‘plot’ in the <code>nlme</code> package (hint: see
+the help page for <code>help.search()</code>).</li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
 <li>R’s working directory is the default location of any files you read
-into R, or save out of R. Although you won’t be reading in or exporting
-files just yet (that’s a job for future exercises) it is useful to be
-able to determine what your current working directory is. So, figure out
-how to display your current working directory (try Google or read <a
-href="https://intro2r.com/work-d.html">Section 1.7</a> of the R
-book).</li>
+into R, or export from R. Although you won’t be importing or exporting
+files just yet (that’s tomorrows job) it’s useful to be able to
+determine what your current working directory is. So, read <a
+href="https://intro2r.com/work-d.html">Section 1.7</a> of the
+Introduction to R book to introduce yourself to working directories and
+figure out how to display your current working directory.</li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">

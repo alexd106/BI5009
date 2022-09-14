@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-3\. Fit an appropriate linear model in R (remember you may have to transform the `AREA` variable, return to your data exploration if in doubt) using the `lm()` function. Try to remember which is your response variable and which is your explanatory variable. Also remember to use the `data =` argument. Assign this linear model to an appropriately named object (`loyn.lm` if you imagination fails you!).
+3\. Create a scatterplot of bird abundance and forest patch area to remind yourself what this relationship looks like. Remember you may have to transform the `AREA` variable, return to your data exploration if in doubt. Try to remember which is your response variable (y axis) and which is your explanatory variable (x axis). Now fit an appropriate linear model to describe this relationship using the `lm()` function. Remember to use the `data =` argument. Assign this linear model to an appropriately named object (`loyn.lm` if you imagination fails you!).
 
 \  
 

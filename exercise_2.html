@@ -367,54 +367,69 @@ $(document).ready(function () {
 <div id="exercise-2-basic-r-operations" class="section level2">
 <h2>Exercise 2 : Basic R operations</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/basics-r.html">Chapter 2</a> to
+help you complete the questions in this exercise.</p>
+<p> </p>
 <ol style="list-style-type: decimal">
 <li>Open up your RStudio Project from Exercise 1 and either create a new
-R script or continue with your previous R script. Make sure you include
-any metadata you feel is appropriate (title, description of task, date
-of creation etc). Don’t forget to comment out your metadata with a
+R script or continue with your previous R script. Remember to save your
+R script with a suitable name (exercise_2?). Make sure you include any
+metadata you feel is appropriate (title, description of task, date of
+script creation etc). Don’t forget to comment out your metadata with a
 <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>Let’s use R as a fancy calculator. Find the natural log, log10,
-log2, square root and the natural antilog of 12.43. Don’t forget to
-write your code in RStudio’s script editor and source the code into the
-console. See <a href="https://intro2r.com/getting-started.html">Section
-2.1</a> of the R book to get you started.</li>
+<li>Let’s use R as a fancy calculator. Find the natural log, log to the
+base 10, log to the base 2, square root and the natural antilog of
+12.43. See <a
+href="https://intro2r.com/getting-started.html#getting-started">Section
+2.1</a> of the Introduction to R book for more information on
+mathematical functions in R. Don’t forget to write your code in
+RStudio’s script editor and source the code into the console.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
 <li>Next, use R to determine the area of a circle with a diameter of 20
-cm and assign the result to a variable called <code>area_circle</code>.
-Google is your friend if you can’t remember the formula! Also, remember
-that R already knows about <code>pi</code>. Don’t worry if you’re
-stumped and feel free to ask one of the instructors for guidance.</li>
+cm and assign the result to an object called <code>area_circle</code>.
+If you can’t remember how to create and assign objects see <a
+href="https://intro2r.com/objects-in-r.html#objects-in-r">Section
+2.2</a> or watch this <a
+href="https://alexd106.github.io/BI5009/howto.html#objs-vid">video</a>.
+Google is your friend if you can’t remember the formula to calculate the
+area of a circle! Also, remember that R already knows about
+<code>pi</code>. Don’t worry if you’re stumped and feel free to ask one
+of the instructors for guidance.</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>Now for something a little more tricky (but don’t stress!).
-Calculate the cube root of 14 x 0.51. You might need to think creatively
-for a solution (hint: think exponents), and remember that R follows the
-usual order of mathematical operators so you might need to use brackets
-in your code (remember BODMAS from School?). See <a
-href="https://en.wikipedia.org/wiki/Order_of_operations">this page</a>
-if you’ve never heard of this.</li>
+<li>Now for something a little more tricky. Calculate the cube root of
+14 x 0.51. You might need to think creatively for a solution (hint:
+think exponents), and remember that R follows the usual order of
+mathematical operators so you might need to use brackets in your code
+(see <a href="https://en.wikipedia.org/wiki/Order_of_operations">this
+page</a> if you’ve never heard of this). The point of this question is
+not to torture you with maths (so please don’t stress!), its to get you
+used to writing mathematical equations in R and highlight the order of
+operations.</li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
 <li>Ok, you’re now ready to explore one of R’s basic (but very useful)
 data structures - vectors. A vector is a sequence of elements (or
-components) that are all of the same data type. Although technically not
+components) that are all of the same data type (see <a
+href="https://intro2r.com/data-structures.html#scal_vecs">Section
+3.2.1</a> for an introduction to vectors). Although technically not
 correct it might be useful to think of a vector as something like a
-single column in a spreadsheet. See the start of <a
-href="https://intro2r.com/data-structures.html">Section 3.2</a> of the R
-book for a more detailed explanation of vectors. There are a multitude
-of ways to create vectors in R but we will use the concatenate function
-<code>c()</code> to create a vector called <code>weight</code>
-containing the weight (in kg) of 10 children:
-<code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code>. Take a look at <a
-href="https://intro2r.com/using-functions-in-r.html">Section 2.3</a> of
-the R book for more details.</li>
+single column in a spreadsheet. There are a multitude of ways to create
+vectors in R but you will use the concatenate function <code>c()</code>
+to create a vector called <code>weight</code> containing the weight (in
+kg) of 10 children: <code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code>
+(<a
+href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+2.3</a> or watch this <a
+href="https://alexd106.github.io/BI5009/howto.html#vec-vid">video</a>
+for more information).</li>
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
@@ -456,9 +471,10 @@ equal to 99 cm and assign to a variable called
 each child. The BMI is calculated as weight (in kg) divided by the
 square of the height (in meters). Store the results of this calculation
 in a variable called <code>bmi</code>. Note: you don’t need to do this
-calculation for each child individually, you can use the vectors in the
-equation – this is called <a
-href="https://intro2r.com/vectors.html#vectorisation">vectorisation</a>.</li>
+calculation for each child individually, you can use both vectors in the
+BMI equation – this is called vectorisation (see <a
+href="https://intro2r.com/vectors.html#vectorisation">Section 2.4.4</a>
+of the Introduction to R book).</li>
 </ol>
 <p> </p>
 <ol start="9" style="list-style-type: decimal">
@@ -480,20 +496,20 @@ variable called <code>seq1</code>.</li>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li><p>Let’s go mad! Generate the following sequences. You will need to
-experiment with the arguments to the <code>rep()</code> function to
-generate these sequences (see <a
+<li>Let’s go sequence crazy! Generate the following sequences. You will
+need to experiment with the arguments to the <code>rep()</code> function
+to generate these sequences (see <a
 href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
-2.3</a> again):</p>
+2.3</a> for some clues):</li>
+</ol>
 <ul>
 <li>1 2 3 1 2 3 1 2 3</li>
 <li>“a” “a” “a” “c” “c” “c” “e” “e” “e” “g” “g” “g”</li>
 <li>“a” “c” “e” “g” “a” “c” “e” “g” “a” “c” “e” “g”</li>
 <li>1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3</li>
 <li>1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</li>
-<li>4 sevens, 3 twos, 1 eight and 5 ones</li>
-</ul></li>
-</ol>
+<li>7 7 7 7 2 2 2 8 1 1 1 1 1</li>
+</ul>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
 <li>Ok, back to the variable <code>height</code> you created in Q7.
@@ -550,7 +566,7 @@ the mean without this missing value?</li>
 <ol start="17" style="list-style-type: decimal">
 <li>Finally, list all variables in your workspace that you have created
 in this exercise. Remove the variable <code>seq1</code> from the
-workspace.</li>
+workspace using the <code>rm()</code> function.</li>
 </ol>
 <p> </p>
 <p>End of Exercise 2</p>

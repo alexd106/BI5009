@@ -482,20 +482,26 @@ $(document).ready(function () {
 <div id="exercise-2-basic-r-operations" class="section level2">
 <h2>Exercise 2 : Basic R operations</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/basics-r.html">Chapter 2</a> to
+help you complete the questions in this exercise.</p>
+<p> </p>
 <ol style="list-style-type: decimal">
 <li>Open up your RStudio Project from Exercise 1 and either create a new
-R script or continue with your previous R script. Make sure you include
-any metadata you feel is appropriate (title, description of task, date
-of creation etc). Don’t forget to comment out your metadata with a
+R script or continue with your previous R script. Remember to save your
+R script with a suitable name (exercise_2?). Make sure you include any
+metadata you feel is appropriate (title, description of task, date of
+script creation etc). Don’t forget to comment out your metadata with a
 <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Let’s use R as a fancy calculator. Find the natural log, log10,
-log2, square root and the natural antilog of 12.43. Don’t forget to
-write your code in RStudio’s script editor and source the code into the
-console. See <a href="https://intro2r.com/getting-started.html">Section
-2.1</a> of the R book to get you started.</p>
+<li><p>Let’s use R as a fancy calculator. Find the natural log, log to
+the base 10, log to the base 2, square root and the natural antilog of
+12.43. See <a
+href="https://intro2r.com/getting-started.html#getting-started">Section
+2.1</a> of the Introduction to R book for more information on
+mathematical functions in R. Don’t forget to write your code in
+RStudio’s script editor and source the code into the console.</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fl">12.43</span>)              <span class="co"># natural log</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="fl">12.43</span>)            <span class="co"># log to base 10</span></span>
@@ -507,23 +513,30 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Next, use R to determine the area of a circle with a diameter of
-20 cm and assign the result to a variable called
-<code>area_circle</code>. Google is your friend if you can’t remember
-the formula! Also, remember that R already knows about <code>pi</code>.
-Don’t worry if you’re stumped and feel free to ask one of the
-instructors for guidance.</p>
+20 cm and assign the result to an object called
+<code>area_circle</code>. If you can’t remember how to create and assign
+objects see <a
+href="https://intro2r.com/objects-in-r.html#objects-in-r">Section
+2.2</a> or watch this <a
+href="https://alexd106.github.io/BI5009/howto.html#objs-vid">video</a>.
+Google is your friend if you can’t remember the formula to calculate the
+area of a circle! Also, remember that R already knows about
+<code>pi</code>. Don’t worry if you’re stumped and feel free to ask one
+of the instructors for guidance.</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>area_circle <span class="ot">&lt;-</span> pi <span class="sc">*</span> (<span class="dv">20</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Now for something a little more tricky (but don’t stress!).
-Calculate the cube root of 14 x 0.51. You might need to think creatively
-for a solution (hint: think exponents), and remember that R follows the
-usual order of mathematical operators so you might need to use brackets
-in your code (remember BODMAS from School?). See <a
-href="https://en.wikipedia.org/wiki/Order_of_operations">this page</a>
-if you’ve never heard of this.</p>
+<li><p>Now for something a little more tricky. Calculate the cube root
+of 14 x 0.51. You might need to think creatively for a solution (hint:
+think exponents), and remember that R follows the usual order of
+mathematical operators so you might need to use brackets in your code
+(see <a href="https://en.wikipedia.org/wiki/Order_of_operations">this
+page</a> if you’ve never heard of this). The point of this question is
+not to torture you with maths (so please don’t stress!), its to get you
+used to writing mathematical equations in R and highlight the order of
+operations.</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">14</span> <span class="sc">*</span> <span class="fl">0.51</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div></li>
 </ol>
@@ -531,17 +544,19 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1
 <ol start="5" style="list-style-type: decimal">
 <li><p>Ok, you’re now ready to explore one of R’s basic (but very
 useful) data structures - vectors. A vector is a sequence of elements
-(or components) that are all of the same data type. Although technically
-not correct it might be useful to think of a vector as something like a
-single column in a spreadsheet. See the start of <a
-href="https://intro2r.com/data-structures.html">Section 3.2</a> of the R
-book for a more detailed explanation of vectors. There are a multitude
-of ways to create vectors in R but we will use the concatenate function
-<code>c()</code> to create a vector called <code>weight</code>
-containing the weight (in kg) of 10 children:
-<code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code>. Take a look at <a
-href="https://intro2r.com/using-functions-in-r.html">Section 2.3</a> of
-the R book for more details.</p>
+(or components) that are all of the same data type (see <a
+href="https://intro2r.com/data-structures.html#scal_vecs">Section
+3.2.1</a> for an introduction to vectors). Although technically not
+correct it might be useful to think of a vector as something like a
+single column in a spreadsheet. There are a multitude of ways to create
+vectors in R but you will use the concatenate function <code>c()</code>
+to create a vector called <code>weight</code> containing the weight (in
+kg) of 10 children: <code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code>
+(<a
+href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+2.3</a> or watch this <a
+href="https://alexd106.github.io/BI5009/howto.html#vec-vid">video</a>
+for more information).</p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="dv">62</span>, <span class="dv">57</span>, <span class="dv">59</span>, <span class="dv">59</span>, <span class="dv">64</span>, <span class="dv">56</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">66</span>)</span></code></pre></div></li>
 </ol>
@@ -602,8 +617,10 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1
 each child. The BMI is calculated as weight (in kg) divided by the
 square of the height (in meters). Store the results of this calculation
 in a variable called <code>bmi</code>. Note: you don’t need to do this
-calculation for each child individually, you can use the vectors in the
-equation – this is called vectorisation.</p>
+calculation for each child individually, you can use both vectors in the
+BMI equation – this is called vectorisation (see <a
+href="https://intro2r.com/vectors.html#vectorisation">Section 2.4.4</a>
+of the Introduction to R book).</p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> weight<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>    <span class="co"># don&#39;t forget to convert height to meters</span></span></code></pre></div></li>
 </ol>
@@ -726,7 +743,7 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15
 <ol start="17" style="list-style-type: decimal">
 <li><p>Finally, list all variables in your workspace that you have
 created in this exercise. Remove the variable <code>seq1</code> from the
-workspace.</p>
+workspace using the <code>rm()</code> function.</p>
 <div class="sourceCode" id="cb16"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()          <span class="co"># list all variables in workspace</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(seq1)      <span class="co"># remove variable seq1 from the workspace</span></span>
