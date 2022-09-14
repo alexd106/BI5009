@@ -35,7 +35,7 @@ As in previous exercises, either create a new R script (perhaps call it GLM_Bino
 
 \  
 
-1\. Import the data file 'DrugsMites.txt' into R. We want to model the variable Toxic as a categorical predictor with 4 levels, so create a new variable with Toxic as a factor.
+1\. Import the data file 'DrugsMites.xlsx' into R in the usual way. We want to model the variable Toxic as a categorical predictor with 4 levels, so create a new variable with Toxic as a factor.
 
 \  
 

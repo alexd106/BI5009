@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-2\. Import the data file 'loyn.txt' into R and take a look at the summary of the graphical data exploration you performed during the previous exercise. The aim of this exercise is to get familiar with fitting a simple linear model with a continuous response variable, bird abundance (`ABUND`) and a single continuous explanatory variable forest area (`AREA`) in R. Ignore the other explanatory variables for now. 
+2\. Import the data file 'loyn.txt' (you previously saved this file in your 'data' directory for the previous exercise) into R and take a look at the summary of the graphical data exploration you performed during the previous exercise. The aim of this exercise is to get familiar with fitting a simple linear model with a continuous response variable, bird abundance (`ABUND`) and a single continuous explanatory variable forest area (`AREA`) in R. Ignore the other explanatory variables for now. 
 
 \  
 
