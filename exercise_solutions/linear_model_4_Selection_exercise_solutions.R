@@ -28,21 +28,21 @@ loyn$LOGLDIST <- log10(loyn$LDIST)
 
 
 ## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
-VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
-pairs(loyn[, VOI])
-
-# There is variable degrees of imbalance (correlation) between predictors
-# such as:
-# LOGAREA and FGRAZE, 
-# LOGDIST and LOGLDIST (quite expected), 
-# YR.ISOL and other variables like LOGAREA or FGRAZE, 
-# LOGAREA and ALT, 
-# but overall a decent spread of observations across these pairs of predictors.
-
-# The relationship between the response variable ABUND and all the predictors
-# is visible in the top row:
-#  Some potential correlations present like with LOGAREA (positive), 
-# YR.ISOl (positive), maybe ALT (positive) and FGRAZE (negative).
+## VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
+## pairs(loyn[, VOI])
+## 
+## # There is variable degrees of imbalance (correlation) between predictors
+## # such as:
+## # LOGAREA and FGRAZE,
+## # LOGDIST and LOGLDIST (quite expected),
+## # YR.ISOL and other variables like LOGAREA or FGRAZE,
+## # LOGAREA and ALT,
+## # but overall a decent spread of observations across these pairs of predictors.
+## 
+## # The relationship between the response variable ABUND and all the predictors
+## # is visible in the top row:
+## #  Some potential correlations present like with LOGAREA (positive),
+## # YR.ISOl (positive), maybe ALT (positive) and FGRAZE (negative).
 
 
 ## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------
@@ -185,19 +185,19 @@ plot(M6)
 
 
 ## ----Q9extra, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------
-# (Extra)
-# ABUND being bounded by zero, it wouldn't be too surprising if the variance increases with the mean abundance.
-# This is often improved by log-transforming the response
-loyn$logABUND<- log(loyn$ABUND + 1) # here the natural log
-M6log <- lm(logABUND ~ LOGAREA + FGRAZE, data = loyn)
-par(mfrow = c(2,2))
-plot(M6log)
-
-# Not this time! Lots of extreme negative residuals generated.
-
-# Back to `M6`, then. The other issue was the extreme residuals.
-# This could be due to missing important predictors from the model, either
-# unknown predictors, or interactions.
+## # (Extra)
+## # ABUND being bounded by zero, it wouldn't be too surprising if the variance increases with the mean abundance.
+## # This is often improved by log-transforming the response
+## loyn$logABUND<- log(loyn$ABUND + 1) # here the natural log
+## M6log <- lm(logABUND ~ LOGAREA + FGRAZE, data = loyn)
+## par(mfrow = c(2,2))
+## plot(M6log)
+## 
+## # Not this time! Lots of extreme negative residuals generated.
+## 
+## # Back to `M6`, then. The other issue was the extreme residuals.
+## # This could be due to missing important predictors from the model, either
+## # unknown predictors, or interactions.
 
 
 ## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------
@@ -449,23 +449,23 @@ sum(birds.inter.1.coef * c(1, 0, 0, 0, 1, -0.5, 0, 0, 0, -0.5)) # 1.130203
 
 
 ## ----A4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------
-# first split the plotting device into 2 rows and 2 columns
-par(mfrow = c(2,2))
-
-# create the residuals plots for the additive model
-plot(M6)
-
-# create the residuals plots for the interactive model
-plot(birds.inter.1)
-
-# Not a great deal of an improvement! Just marginally better in every respect,
-# thanks to increasing the fit slightly by throwing lots of 
-# (unnecessary?) new model parameters at the data.
-
-# By increasing the complexity of the model, we have improved
-# the fit, but there is little evidence that what we have
-# additionally captured is of biological interest. It most
-# likely is just noise in the data, because the sample size is
-# too low for the model (and us) to be able to distinguish true
-# patterns from noise (See plots from Question 8).
+## # first split the plotting device into 2 rows and 2 columns
+## par(mfrow = c(2,2))
+## 
+## # create the residuals plots for the additive model
+## plot(M6)
+## 
+## # create the residuals plots for the interactive model
+## plot(birds.inter.1)
+## 
+## # Not a great deal of an improvement! Just marginally better in every respect,
+## # thanks to increasing the fit slightly by throwing lots of
+## # (unnecessary?) new model parameters at the data.
+## 
+## # By increasing the complexity of the model, we have improved
+## # the fit, but there is little evidence that what we have
+## # additionally captured is of biological interest. It most
+## # likely is just noise in the data, because the sample size is
+## # too low for the model (and us) to be able to distinguish true
+## # patterns from noise (See plots from Question 8).
 
