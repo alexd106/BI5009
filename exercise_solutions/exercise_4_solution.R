@@ -204,13 +204,16 @@ pairs(squid[,c(5, 8, 9, 11, 12, 13)], diag.panel = panel.hist, upper.panel = pan
 			lower.panel = panel.smooth)
 
 
-## ----Q13a, tidy = TRUE---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ----Q13a----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # quick and dirty way
 # need to transform ovary.weight first
 squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
 
 # create the plot
-with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)", col = as.numeric(Fmaturity), xlim =     c(60, 350), ylim = c(0, 8.5)))
+with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", 
+                 ylab = "square root ovary weight (g)", 
+                 col = as.numeric(Fmaturity), 
+                 xlim = c(60, 350), ylim = c(0, 8.5)))
 
 # create the legend
 labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
@@ -218,7 +221,7 @@ cols <- as.numeric(levels(squid$Fmaturity))
 legend("topleft", labs,col = cols, pch = 1)
 
 
-## ----Q13b, tidy = TRUE---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ----Q13b----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # longer but more control
 
 # need to scales package to set transparency of points
@@ -226,18 +229,49 @@ legend("topleft", labs,col = cols, pch = 1)
 library(scales)
 
 #setup the axes but dont plot the points
-with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)",
-					type = "n", xlim = c(60, 350), ylim = c(0, 8.5)))
+with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", 
+                 ylab = "square root ovary weight (g)",
+                 type = "n", xlim = c(60, 350), ylim = c(0, 8.5)))
 
 # plot the points with custom colours
-with(squid, points(DML[Fmaturity == "1"], ovary.weight.sqrt[Fmaturity == "1"], col = alpha("deepskyblue3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "2"], ovary.weight.sqrt[Fmaturity == "2"], col = alpha("darkolivegreen3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "3"], ovary.weight.sqrt[Fmaturity == "3"], col = alpha("coral3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "4"], ovary.weight.sqrt[Fmaturity == "4"], col = alpha("lemonchiffon3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "5"], ovary.weight.sqrt[Fmaturity == "5"], col = alpha("darkorchid3", 0.7), pch = 16))
+with(squid, points(DML[Fmaturity == "1"], ovary.weight.sqrt[Fmaturity == "1"], 
+                   col = alpha("deepskyblue3", 0.7), pch = 16))
+with(squid, points(DML[Fmaturity == "2"], ovary.weight.sqrt[Fmaturity == "2"], 
+                   col = alpha("darkolivegreen3", 0.7), pch = 16))
+with(squid, points(DML[Fmaturity == "3"], ovary.weight.sqrt[Fmaturity == "3"], 
+                   col = alpha("coral3", 0.7), pch = 16))
+with(squid, points(DML[Fmaturity == "4"], ovary.weight.sqrt[Fmaturity == "4"], 
+                   col = alpha("lemonchiffon3", 0.7), pch = 16))
+with(squid, points(DML[Fmaturity == "5"], ovary.weight.sqrt[Fmaturity == "5"], 
+                   col = alpha("darkorchid3", 0.7), pch = 16))
     
 # include the legend
 labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
-cols <- c("deepskyblue3", "darkolivegreen3", "coral3", "lemonchiffon3", "darkorchid3")
+cols <- c("deepskyblue3", "darkolivegreen3", "coral3", 
+          "lemonchiffon3", "darkorchid3")
 legend(55, 8.2, labs,col = alpha(cols, 0.7), pch = 16, bty = "n")
+
+
+## ----Q13c----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# or use the ggplot2 package
+# square root transform ovary weight
+squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
+
+library(ggplot2)
+ggplot(data = squid) +
+  geom_point(aes(x = DML, y = ovary.weight.sqrt, colour = Fmaturity), 
+             alpha = 0.8, size = 2) +
+  scale_colour_manual(values = c("deepskyblue3", "darkolivegreen3", "coral3", 
+                                 "lemonchiffon3", "darkorchid3"), 
+                      labels = c("stage 1", "stage 2", "stage 3", 
+                                 "stage 4", "stage 5")) +
+ theme_classic(base_size = 12) +
+  labs(colour = "", x = "DML (mm)", y = "square root ovary weight (g)")
+
+# OR
+ggplot(data = squid) +
+  geom_point(aes(x = DML, y = ovary.weight.sqrt, colour = Fmaturity), 
+             alpha = 0.8, size = 2) +
+  theme_classic() +
+  labs(colour = "", x = "DML (mm)", y = "square root ovary weight (g)")
 

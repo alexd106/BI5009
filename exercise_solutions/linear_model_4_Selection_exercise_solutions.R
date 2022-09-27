@@ -25,6 +25,24 @@ loyn$LOGLDIST <- log10(loyn$LDIST)
 # study system and study site
 
 
+## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------------------------------
+## VOI <- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
+## pairs(loyn[, VOI])
+## 
+## # There are variable degrees of imbalance (correlation) between explanatory variables
+## # such as:
+## 
+## # LOGAREA and FGRAZE,
+## # LOGDIST and LOGLDIST (quite expected),
+## # YR.ISOL and other variables like LOGAREA or FGRAZE,
+## # LOGAREA and ALT
+## 
+## # but overall a decent spread of observations across these pairs of explanatory variables.
+## # The relationship between the response variable ABUND and all the explanatory variables
+## # is visible in the top row:
+## 
+## #  Some potential correlations present like with LOGAREA (positive),
+## # YR.ISOl (positive), maybe ALT (positive) and FGRAZE (negative).
 
 
 ## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------------
@@ -160,6 +178,23 @@ plot(M6)
 # Leverage plot.  
 
 
+## ----Q9extra, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------------------------------------------------
+## # (Extra)
+## # As ABUND is bounded by zero, it wouldn't be too surprising if the variance
+## # increases with the mean abundance. This is often improved by log-transforming
+## # the response variable.
+## 
+## loyn$logABUND<- log(loyn$ABUND + 1) # here the natural log, with a small addition
+## # as the log of zero is negative infinity
+## 
+## M6log <- lm(logABUND ~ LOGAREA + FGRAZE, data = loyn)
+## par(mfrow = c(2,2))
+## plot(M6log)
+## 
+## # Not this time! Lots of extreme negative residuals generated.
+## # Back to `M6`, then. The other issue was the extreme residuals.
+## # This could be due to missing important explanatory variables from the model, either
+## # unknown explanatory variables, or interactions.
 
 
 ## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------------------------------------------------------
@@ -386,4 +421,24 @@ sum(birds.inter.1.coef * c(1, 0, 0, 0, 0, 2.5, 0, 0, 0, 0)) # 31.60296
 # or
 sum(birds.inter.1.coef * c(1, 0, 0, 0, 1, -0.5, 0, 0, 0, -0.5)) # 1.130203 
 # Well done if you got there!
+
+
+## ----A4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------------------------------
+## # first split the plotting device into 2 rows and 2 columns
+## par(mfrow = c(2,2))
+## 
+## # create the residuals plots for the additive model
+## plot(M6)
+## 
+## # create the residuals plots for the interactive model
+## plot(birds.inter.1)
+## 
+## # Not a great deal of an improvement! Just marginally better in every respect,
+## # thanks to increasing the fit slightly by throwing lots of
+## # (unnecessary?) new model parameters at the data.
+## # By increasing the complexity of the model, we have improved
+## # the fit, but there is not good evidence that what we have
+## # additionally captured is of biological interest.
+## # Our sample size is likely not large enough to distinguish true
+## # but weak patterns from noise (See plots from Question 8).
 
