@@ -1,4 +1,4 @@
-## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 loyn <- read.table("data/loyn.txt", header = TRUE, stringsAsFactors = TRUE)
 str(loyn)
 loyn$LOGAREA <- log10(loyn$AREA)
@@ -8,7 +8,7 @@ loyn$LOGDIST <- log10(loyn$DIST)
 loyn$LOGLDIST <- log10(loyn$LDIST)
 
 
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 # Example:
 # Rank	|	explanatory variable	|	Biological effect
 # 1	    |	LOGAREA	              |	Large patches containing proportionally
@@ -27,13 +27,13 @@ loyn$LOGLDIST <- log10(loyn$LDIST)
 
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 M1 <- lm(ABUND ~ LOGDIST + LOGLDIST + YR.ISOL + ALT + 
                  LOGAREA * FGRAZE,
                  data = loyn)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 summary(M1)
 
 # Yes, they are the coefficients with the larger p-values.
@@ -45,7 +45,7 @@ summary(M1)
 # having an effect near zero, i.e. no substantial effect) 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 # Wait: why did we not use 'summary' or 'anova' for this?
 # 'summary' tests if the coefficient for each explanatory variable is significantly
 # different from zero.
@@ -71,7 +71,7 @@ drop1(M1, test = "F")
 # multiple hypotheses at once)
 
 
-## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 M2 <- lm(ABUND ~ LOGLDIST + YR.ISOL + ALT + LOGAREA * FGRAZE,
         data = loyn) # removing LOGDIST here
 
@@ -103,7 +103,7 @@ M5 <- lm(ABUND ~ LOGAREA * FGRAZE, data = loyn)
 # familiar version of the model!
 
 
-## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 # If the goal of the study is simply to test the FGRAZE * LOGAREA interaction, then all we need is the associated significance test.
 
 # If the model is intended to be used for further hypothesis
@@ -131,7 +131,7 @@ drop1(M5, test = "F")
 # i.e. the hypothesis that the effect of grazing level depends on patch size (or vice versa).
 
 
-## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")---------------------------------------------
+## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
 M6 <- lm(ABUND ~ LOGAREA + FGRAZE, data = loyn) 
 # first split the plotting device into 2 rows and 2 columns
 
@@ -162,7 +162,7 @@ plot(M6)
 
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
 anova(M6)
 # null hypothesis 1: There is no effect of LOGAREA on ABUND
 # (the proportion of variation explained by LOGAREA is zero)
@@ -198,7 +198,7 @@ summary(M6)
 # Note that (Intercept) = 1 always, as it is the population mean given the other variables
 
 
-## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------
+## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
 # Biologically: confirming what we already found out in the previous 
 # LM exercises:
 # There is a significant effect of grazing levels, especially the highest
@@ -234,7 +234,7 @@ summary(M6)
 # patches may have a less important effect)
 
 
-## ----Q12a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------------------------
+## ----Q12a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------
 # This time, we are not doing any specific hypothesis testing, so there's
 # no need to force the LOGAREA * FGRAZE into the model until the
 # end of the model selection.
@@ -284,16 +284,16 @@ summary.table <- summary.table[order(summary.table$AIC), ]
 summary.table$deltaAIC <- summary.table$AIC - summary.table$AIC[1]
 
 
-## ----Q12b, eval=FALSE, echo=SOLUTIONS, results=FALSE, collapse=TRUE-------------------------------------------------------------------------------------------
+## ----Q12b, eval=FALSE, echo=SOLUTIONS, results=FALSE, collapse=TRUE----------------------------------------------
 ## # print the table on screen
 ## summary.table
 
 
-## ----Q12c, eval=TRUE, echo=FALSE, results='asis'--------------------------------------------------------------------------------------------------------------
+## ----Q12c, eval=TRUE, echo=FALSE, results='asis'-----------------------------------------------------------------
 knitr::kable(summary.table, format = "html")
 
 
-## ----Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------------------------
+## ----Q12d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------
 # Ordinarily, we would validate the model, but we won't here since 
 # the minimum adequate model is the one we came up with in the
 # exercise on continuous and categorical explanatory variables .
@@ -316,7 +316,7 @@ knitr::kable(summary.table, format = "html")
 # of theory in the research area, and of the research questions.
 
 
-## ----A1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----A1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 birds.add.2 <- lm(ABUND ~ FGRAZE + LOGAREA, data = loyn)
 anova(birds.add.2)
 # null hypothesis 1: There is no effect of FGRAZE on ABUND
@@ -340,7 +340,7 @@ birds.add.2.SST<- sum(anova(birds.add.2)$'Sum Sq') # compute SST
 # the design is unbalanced and FGRAZE and LOGAREA covary (they are correlated)
 
 
-## ----A2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----A2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 # ABUND = 15.72*(Intercept) + 7.25*LOGAREA + 0.38*FGRAZE2 - 0.19*FGRAZE3
 # - 1.59*FGRAZE4 - 11.89*FGRAZE5
 # Note that (Intercept) = 1 always
@@ -366,7 +366,7 @@ sum(M6.coef * c(1, 0.5, 0, 1, 0, 0)) # 19.15072
 # abundance for a 1-unit increase in the explanatory variable.
 
 
-## ----A3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----A3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 birds.inter.1 <- lm(ABUND ~ FGRAZE * LOGAREA , data = loyn)
 # ABUND = 21.243*(Intercept) - 6.165*FGRAZE2 - 7.215*FGRAZE3 - 17.910*FGRAZE4
 # - 17.043*FGRAZE5 + 4.144*LOGAREA + 4.368*FGRAZE2:LOGAREA

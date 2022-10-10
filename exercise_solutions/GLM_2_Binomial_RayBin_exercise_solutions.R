@@ -1,9 +1,9 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 dat<- read.csv("./data/RayMaturity.csv", stringsAsFactors= T)
 str(dat)
 
 
-## ----Q3a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE--------------------------------------------------------------------------------------------------
+## ----Q3a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE-----------------------------------------------------
 # count the number of observations per month, and per year:
 table(dat$Month)
 # majority of the data are from April-May-June
@@ -28,7 +28,7 @@ plot(Obs.Per.Year.Month)
 
 
 
-## ----Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")--------------------------------------------
+## ----Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
 Obs.Per.Sex.Area<- table(dat$Sex, dat$Area)
 plot(Obs.Per.Sex.Area)
 # most data are from males and from the English Channel
@@ -46,7 +46,7 @@ boxplot(Lg ~ fMonth, data= dat)
 
 
 
-## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE--------------------------------------------------------------------------------------------------
+## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE-----------------------------------------------------
 # Maturity in relation to Sex
 mean.per.Sex<- tapply(dat$Mature, list(dat$Sex), mean)
 barplot(mean.per.Sex, ylim= c(0, 1),
@@ -55,7 +55,7 @@ barplot(mean.per.Sex, ylim= c(0, 1),
 
 
 
-## ----Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")--------------------------------------------
+## ----Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
 # Maturity in relation to Area
 mean.per.Area<- tapply(dat$Mature, list(dat$Area), mean)
 barplot(mean.per.Area, ylim= c(0, 1),
@@ -83,12 +83,12 @@ barplot(mean.per.Month, ylim= c(0, 1),
 
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 datM<- dat[dat$Sex == "M", ]
 Mat1<- glm(Mature ~ Lg + Area + Lg:Area, family= binomial, data= datM)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 summary(Mat1)
 
 # "(Intercept)" is the predicted value on the link (logit) scale for
@@ -125,7 +125,7 @@ summary(Mat1)
 
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
 
 drop1(Mat1, test= "Chisq")
 # the interaction of length by area is significant: nothing to simplify.
@@ -135,7 +135,7 @@ drop1(Mat1, test= "Chisq")
 # 33%, pretty good for a binomial model!
 
 
-## ----Q7a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8-----------------
+## ----Q7a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8----
 par(mfrow= c(2, 2))
 plot(Mat1) # not very useful
 
@@ -157,7 +157,7 @@ plot(res2.p ~ datM$Lg, col= datM$Mature + 1) # scatterplot
 # Can't see anything useful.
 
 
-## ----Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5-----------------------------------------------------------------------
+## ----Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5--------------------------
 library(arm)
 par(mfrow= c(1, 1))
 binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
@@ -165,7 +165,7 @@ binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 
 
 
-## ----Q8b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8-----------------
+## ----Q8b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8----
 par(mfrow= c(2, 2))
 binnedplot(x= as.numeric(datM$Area), y= res2.p, xlab= "Area")
 binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
@@ -177,7 +177,7 @@ binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 
 
 
-## ----Q10a, eval=TRUE, echo=TRUE, results=TRUE, collapse=TRUE, fig.height=5------------------------------------------------------------------------------------
+## ----Q10a, eval=TRUE, echo=TRUE, results=TRUE, collapse=TRUE, fig.height=5---------------------------------------
 # create a sequence of increasing lengths
 Seq.Length<- 74:100
 
@@ -210,7 +210,7 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 
 
 
-## ----Q10b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5-----------------------------
+## ----Q10b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5----
 # create a sequence of increasing lengths
 Seq.Length<- 74:100
 
@@ -246,7 +246,7 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 
 
 
-## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5------------------------------
+## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5----
 # create a sequence of increasing lengths
 Seq.Length<- 74:100
 
@@ -296,7 +296,7 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 
 
 
-## ----binnedplot_alternative, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")------------------------------
+## ----binnedplot_alternative, eval=TRUE, echo=TRUE, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
 par(mfrow= c(1, 1))
 # plot the residuals against length
 plot(res2.p ~ datM$Lg, col= datM$Mature + 1)
@@ -308,7 +308,7 @@ lines(lg.means ~ lg.vals, col= 3)
 abline(h= 0, lty= 3, col= grey(0.5))
 
 
-## ----Optional1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5------------------------
+## ----Optional1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=5----
 Mat2<- glm(Mature ~ Lg + Area + Sex + Lg:Area + Lg:Sex, family= binomial, data= dat)
 drop1(Mat2, test= "Chisq")
 # interation with Sex not significant -> simplify
