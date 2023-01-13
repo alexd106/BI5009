@@ -156,7 +156,7 @@ plotmeans(ABUND ~ FGRAZE, xlab = "grazing level",
 
 library(effects)
 loyn.effects <- allEffects(birds.lm)
-plot(loyn.effects,"FGRAZE", lty = 0)
+plot(loyn.effects,"FGRAZE", lines = list(lty = 0))
 
 
 ## ----Q11c, eval=TRUE, echo=TRUE, collapse=FALSE------------------------------------------------------------------
