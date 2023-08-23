@@ -530,16 +530,6 @@ length?</li>
 exercises, either create a new R script (perhaps call it GLM_RayBin) or
 continue with your previous R script in your RStudio Project.</p>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>dat<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/RayMaturity.csv&quot;</span>, <span class="at">stringsAsFactors=</span> T)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">str</span>(dat)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    1148 obs. of  7 variables:</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">##  $ X     : int  127 128 129 130 131 132 133 134 135 136 ...</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">##  $ Lg    : num  74 75 78 79 81 81 81 81 82 83 ...</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">##  $ Sex   : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="do">##  $ Area  : Factor w/ 2 levels &quot;ATL&quot;,&quot;ECH&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="do">##  $ Month : int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="do">##  $ Year  : int  2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 ...</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="do">##  $ Mature: int  0 0 0 0 0 1 0 1 1 1 ...</span></span></code></pre></div>
 <p> </p>
 <p>3. Let’s first take a look at the structure of this dataframe, and do
 an initial data exploration. 0/1 data (Bernoulli) are more difficult
@@ -565,54 +555,38 @@ area of each rectangle is proportional to the count.</li>
 (see the code). Use the same approach for other variables. For example,
 is there is an even representation of sexes in the two areas?</p>
 <p> </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># count the number of observations per month, and per year:</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>Month)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># count the number of observations per month, and per year:</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>Month)</span></code></pre></div>
 <pre><code>## 
 ##   4   5   6   7   8   9 
 ## 253 294 300  98 114  89</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># majority of the data are from April-May-June</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>Year)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># majority of the data are from April-May-June</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>Year)</span></code></pre></div>
 <pre><code>## 
 ## 2012 2013 2014 
 ##   60  537  551</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># count observations per year/month combination and represent as mosaicplot</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>Obs.Per.Year.Month<span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>Year, dat<span class="sc">$</span>Month)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># See what&#39;s in the table:</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>Obs.Per.Year.Month</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># count observations per year/month combination and represent as mosaicplot</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>Obs.Per.Year.Month<span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>Year, dat<span class="sc">$</span>Month)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co"># See what&#39;s in the table:</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>Obs.Per.Year.Month</span></code></pre></div>
 <pre><code>##       
 ##          4   5   6   7   8   9
 ##   2012   0  29   8  20   0   3
 ##   2013 105  75 182  40 114  21
 ##   2014 148 190 110  38   0  65</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Year in rows, Months in columns</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># mosaic plot (this is the default plot for a contingency table in R)</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">plot</span>(Obs.Per.Year.Month)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Year in rows, Months in columns</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># mosaic plot (this is the default plot for a contingency table in R)</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">plot</span>(Obs.Per.Year.Month)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3a-1.png" width="672" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># fewer observations in 2012 (column is narrow)</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># variable sample size from each month from April to Sept (height / area of the squares varies)</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># but overall a fairly &quot;random&quot; representation of all months across years,</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># so should not be problematic</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># (for example, an issue might arise if all observations from Spring</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co"># came from one year and all Summer observations from a different</span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># year, hence not comparable maybe)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>Obs.Per.Sex.Area<span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>Sex, dat<span class="sc">$</span>Area)</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">plot</span>(Obs.Per.Sex.Area)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3b-1.png" width="672" /></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># most data are from males and from the English Channel</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># we would thus expect to be able to estimate the effects for</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># the males more precisely than for the females.</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># if we include data from all sexes in the model and do not account</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># for sex effects, the result would be biased towards males.</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># Likewise for Area.</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># Is length correlated with Month?</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>dat<span class="sc">$</span>fMonth<span class="ot">&lt;-</span> <span class="fu">factor</span>(dat<span class="sc">$</span>Month)</span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">boxplot</span>(Lg <span class="sc">~</span> fMonth, <span class="at">data=</span> dat)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3b-2.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># A little maybe, but not that clear. Shouldn&#39;t be a problem</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># fewer observations in 2012 (column is narrow)</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># variable sample size from each month from April to Sept (height / area of the squares varies)</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># but overall a fairly &quot;random&quot; representation of all months across years,</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># so should not be problematic</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co"># (for example, an issue might arise if all observations from Spring</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># came from one year and all Summer observations from a different</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co"># year, hence not comparable maybe)</span></span></code></pre></div>
 <p>Next we look for factors affecting the probability of maturity. Which
 ones are continuous or categorical?</p>
 <ul>
@@ -634,40 +608,12 @@ approach is to treat the continuous variable as discrete (using
 </ul>
 <p>Below is an example with Sex. Repeat with other relevant
 predictors.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Maturity in relation to Sex</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>mean.per.Sex<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Sex), mean)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Sex, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>         <span class="at">xlab=</span> <span class="st">&quot;Sex&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Maturity in relation to Sex</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>mean.per.Sex<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Sex), mean)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Sex, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>         <span class="at">xlab=</span> <span class="st">&quot;Sex&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3c-1.png" width="672" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Probability maybe higher in males?</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Maturity in relation to Area</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>mean.per.Area<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Area), mean)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Area, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>          <span class="at">xlab=</span> <span class="st">&quot;Area&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3d-1.png" width="672" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Probability higher in the English Channel?</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># Maturity in relation to length</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>mean.per.Lg<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(<span class="fu">as.factor</span>(dat<span class="sc">$</span>Lg)), mean)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Lg, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>          <span class="at">xlab=</span> <span class="st">&quot;Length class&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3d-2.png" width="672" /></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Probability increases massively with length, as expected</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># Can we ignore the year effect?</span></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>mean.per.Year<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Year), mean)</span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Year, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>          <span class="at">xlab=</span> <span class="st">&quot;Length class&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3d-3.png" width="672" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># not much going on, probably safe to ignore</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># Can we ignore the month effect?</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>mean.per.Month<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Month), mean)</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Month, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>          <span class="at">xlab=</span> <span class="st">&quot;Length class&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3d-4.png" width="672" /></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># some trend here, not ideal given that most data are from April-May-June</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># Maybe Month should be included</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Probability maybe higher in males?</span></span></code></pre></div>
 <p> </p>
 <p>4. Time to fit a model to address some of the research questions. For
 simplicity, we will ignore Sex and Month for now, but if you wish, you
@@ -678,8 +624,6 @@ length and area, and whether the effect of length varies between areas
 (using <code>glm()</code> and the appropriate <code>family</code>
 argument). Hint: do you need to include an interaction term?</p>
 <p> </p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>datM<span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>, ]</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>Mat1<span class="ot">&lt;-</span> <span class="fu">glm</span>(Mature <span class="sc">~</span> Lg <span class="sc">+</span> Area <span class="sc">+</span> Lg<span class="sc">:</span>Area, <span class="at">family=</span> binomial, <span class="at">data=</span> datM)</span></code></pre></div>
 <p> </p>
 <p>5. Obtain summaries of the model output using the
 <code>summary()</code> function.</p>
@@ -696,111 +640,14 @@ it refer to?</li>
 </ul></li>
 </ul>
 <p> </p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">summary</span>(Mat1)</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="do">## glm(formula = Mature ~ Lg + Area + Lg:Area, family = binomial, </span></span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="do">##     data = datM)</span></span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a><span class="do">## -2.8553  -0.2560   0.3349   0.5758   2.2134  </span></span>
-<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a><span class="do">##              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a><span class="do">## (Intercept) -41.97057    5.11871  -8.199 2.42e-16 ***</span></span>
-<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a><span class="do">## Lg            0.52120    0.06303   8.269  &lt; 2e-16 ***</span></span>
-<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a><span class="do">## AreaECH      15.53175    5.73658   2.707  0.00678 ** </span></span>
-<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a><span class="do">## Lg:AreaECH   -0.18606    0.07054  -2.638  0.00835 ** </span></span>
-<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb21-21"><a href="#cb21-21" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a><span class="do">##     Null deviance: 1031.65  on 910  degrees of freedom</span></span>
-<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a><span class="do">## Residual deviance:  693.39  on 907  degrees of freedom</span></span>
-<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a><span class="do">## AIC: 701.39</span></span>
-<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 5</span></span>
-<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a><span class="co"># &quot;(Intercept)&quot; is the predicted value on the link (logit) scale for</span></span>
-<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a><span class="co"># Lg = 0, females (Sex= &quot;F&quot;) on the Atlantic coast (Area= &quot;ATL&quot;)</span></span>
-<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a></span>
-<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a><span class="co"># &quot;Lg&quot; is the slope of Length for females on the Atlantic coast.</span></span>
-<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a><span class="co"># Assumes a linear increase (on the logit scale)</span></span>
-<span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a></span>
-<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a><span class="co"># &quot;AreaECH&quot; is the estimated difference (on the logit scale) between</span></span>
-<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a><span class="co"># the Channel and the Atlantic coast.</span></span>
-<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co"># Positive means higher odds of being mature in the Channel</span></span>
-<span id="cb21-37"><a href="#cb21-37" tabindex="-1"></a></span>
-<span id="cb21-38"><a href="#cb21-38" tabindex="-1"></a><span class="co"># &quot;Lg:AreaECH&quot; is the difference between the slope of Length in the Channel</span></span>
-<span id="cb21-39"><a href="#cb21-39" tabindex="-1"></a><span class="co"># compared to the slope of Length in the Atlantic.</span></span>
-<span id="cb21-40"><a href="#cb21-40" tabindex="-1"></a><span class="co"># Negative means that the increase is slower in the Channel</span></span>
-<span id="cb21-41"><a href="#cb21-41" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" tabindex="-1"></a><span class="co"># A mathematical description of the model</span></span>
-<span id="cb21-43"><a href="#cb21-43" tabindex="-1"></a><span class="co"># (more or less how I would present it in the methods section of a paper):</span></span>
-<span id="cb21-44"><a href="#cb21-44" tabindex="-1"></a><span class="co"># maturity ~ Bernoulli(p)  or maturity ~ Binomial(N= 1, p)</span></span>
-<span id="cb21-45"><a href="#cb21-45" tabindex="-1"></a><span class="co"># log(p / (1-p)) = -41.97 + 0.52*Length</span></span>
-<span id="cb21-46"><a href="#cb21-46" tabindex="-1"></a><span class="co">#    + 15.53 * AeraECH</span></span>
-<span id="cb21-47"><a href="#cb21-47" tabindex="-1"></a><span class="co">#    -0.19 * AeraECH * Length </span></span>
-<span id="cb21-48"><a href="#cb21-48" tabindex="-1"></a></span>
-<span id="cb21-49"><a href="#cb21-49" tabindex="-1"></a><span class="co"># The coefficients are on the logit scale,</span></span>
-<span id="cb21-50"><a href="#cb21-50" tabindex="-1"></a><span class="co"># so cannot be interpreted directly as probabilities. </span></span>
-<span id="cb21-51"><a href="#cb21-51" tabindex="-1"></a><span class="co"># They are interpreted as changes in log-odds:</span></span>
-<span id="cb21-52"><a href="#cb21-52" tabindex="-1"></a><span class="co"># For a given body length, a ray in the English Channel has</span></span>
-<span id="cb21-53"><a href="#cb21-53" tabindex="-1"></a><span class="co"># log-odds increased by 15.53 compared to a ray in the Atlantic.</span></span>
-<span id="cb21-54"><a href="#cb21-54" tabindex="-1"></a><span class="co"># This is equivalent to saying that the odds increase by exp(15.53).</span></span>
-<span id="cb21-55"><a href="#cb21-55" tabindex="-1"></a></span>
-<span id="cb21-56"><a href="#cb21-56" tabindex="-1"></a><span class="co"># None of this is particularly intuitive, so we will mostly</span></span>
-<span id="cb21-57"><a href="#cb21-57" tabindex="-1"></a><span class="co"># rely on predictions on the probability (response) scale</span></span>
-<span id="cb21-58"><a href="#cb21-58" tabindex="-1"></a><span class="co"># for the interpretation of the model</span></span></code></pre></div>
 <p> </p>
 <p>6. Do you need to simplify the model? Use <code>drop1</code> to find
 out, with the appropriate test distribution (Chi-squared).</p>
 <p> </p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">drop1</span>(Mat1, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="do">## Mature ~ Lg + Area + Lg:Area</span></span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="do">##         Df Deviance    AIC   LRT Pr(&gt;Chi)   </span></span>
-<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="do">## &lt;none&gt;       693.39 701.39                  </span></span>
-<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a><span class="do">## Lg:Area  1   701.26 707.26 7.875 0.005012 **</span></span>
-<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a><span class="co"># the interaction of length by area is significant: nothing to simplify.</span></span>
-<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a><span class="co"># out of interest, the total proportion of deviance explained is </span></span>
-<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a>(Mat1<span class="sc">$</span>null.deviance <span class="sc">-</span> Mat1<span class="sc">$</span>deviance) <span class="sc">/</span> Mat1<span class="sc">$</span>null.deviance</span>
-<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a><span class="do">## [1] 0.3278893</span></span>
-<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a><span class="co"># 33%, pretty good for a binomial model!</span></span></code></pre></div>
 <p> </p>
 <p>7. Let’s now produce plots to validate the model, using Pearson
 residuals and the usual model validation tools. Are they helpful?</p>
 <p> </p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">plot</span>(Mat1) <span class="co"># not very useful</span></span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q7a-1.png" width="768" /></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="co"># to make sense of what we are seeing, we can add colors: red</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="co"># for residuals of mature individuals, black for residuals of immatures</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="fu">plot</span>(Mat1, <span class="at">col=</span> datM<span class="sc">$</span>Mature <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q7a-2.png" width="768" /></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># Still not very telling</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co"># let&#39;s plot against predictors:</span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>res2.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(Mat1, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="fu">plot</span>(res2.p <span class="sc">~</span> datM<span class="sc">$</span>Sex) <span class="co"># boxplot (x axis is a factor)</span></span>
-<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="fu">plot</span>(res2.p <span class="sc">~</span> datM<span class="sc">$</span>Area) <span class="co"># boxplot</span></span>
-<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="fu">plot</span>(res2.p <span class="sc">~</span> datM<span class="sc">$</span>Lg, <span class="at">col=</span> datM<span class="sc">$</span>Mature <span class="sc">+</span> <span class="dv">1</span>) <span class="co"># scatterplot</span></span>
-<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a><span class="co"># Can&#39;t see anything useful.</span></span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q7a-3.png" width="768" /></p>
 <p>8. These plots are not very useful, because the data are 0/1 and thus
 the individual residuals (difference between the 0/1 observations and
 continuous fitted values) follow weird patterns. But we can actually get
@@ -818,11 +665,11 @@ If needed you can convert categorical predictors into numerical:
 <p>Here is an example using <code>binnedplot</code> with
 <code>Month</code> (even if it is not in the model, but to see if it
 should). You can try yourself with area, and body length.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> datM<span class="sc">$</span>Month, <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Month&quot;</span>, <span class="at">nclass =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> datM<span class="sc">$</span>Month, <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Month&quot;</span>, <span class="at">nclass =</span> <span class="dv">6</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q8a-1.png" width="480" /></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># nclass= 6 because we have 6 months in the data</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># nclass= 6 because we have 6 months in the data</span></span></code></pre></div>
 <blockquote>
 <p>We want residuals to be close to zero, but how far is too far?
 <code>binnedplot</code> conveniently adds expected limits (grey lines),
@@ -830,22 +677,9 @@ beyond which the the fit of the model is questionable. Here the
 residuals per month are close to the limit, and even outside for August:
 including <code>Month</code> would probably improve the model a bit.</p>
 </blockquote>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(datM<span class="sc">$</span>Area), <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Area&quot;</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> datM<span class="sc">$</span>Month, <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Month&quot;</span>, <span class="at">nclass =</span> <span class="dv">6</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="co"># nclass= 6 because we have 6 months in the data</span></span>
-<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> datM<span class="sc">$</span>Lg, <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Length&quot;</span>, <span class="at">nclass=</span> <span class="dv">20</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="co"># could use more or less than 20</span></span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q8b-1.png" width="768" /></p>
 <p> </p>
 <p>9. Are you happy with the diagnostic plots?</p>
 <p> </p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># things look fine with Area, with residuals well within</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="co"># the expected limits (grey lines)</span></span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Same with length, except for the extreme lengths, </span></span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="co"># for which the residuals are slightly too low and too high, respectively.</span></span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a><span class="co"># We&#39;ll see in the graphs of the predictions if this is a big concern.</span></span></code></pre></div>
 <p> </p>
 <p>10. Assuming that the model is fine as it is, let’s plot the
 predictions of the model in relation to length <code>Lg</code> for the
@@ -853,35 +687,35 @@ Channel and the Atlantic coast. For the sake of understanding how the
 models works, let’s start with predictions on the link scale
 <code>type= "link"</code>. What do these numbers represent?</p>
 <p> </p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># create a sequence of increasing lengths</span></span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>Seq.Length<span class="ot">&lt;-</span> <span class="dv">74</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES ON THE ATLANTIC COAST</span></span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>dat.new.ATL<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ATL&quot;</span>)</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>Mat1.pred.ATL<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ATL, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co"># Add them to the prediction data frame, to keep the workspace tidy</span></span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>fit<span class="ot">&lt;-</span> Mat1.pred.ATL<span class="sc">$</span>fit</span>
-<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a><span class="co"># Same approach for MALES IN THE ENGLISH CHANNEL</span></span>
-<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a>dat.new.ECH<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ECH&quot;</span>)</span>
-<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a>Mat1.pred.ECH<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ECH, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a>dat.new.ECH<span class="sc">$</span>fit<span class="ot">&lt;-</span> Mat1.pred.ECH<span class="sc">$</span>fit</span>
-<span id="cb30-16"><a href="#cb30-16" tabindex="-1"></a></span>
-<span id="cb30-17"><a href="#cb30-17" tabindex="-1"></a><span class="co"># PLOTTING THE TWO AREAS TOGETHER</span></span>
-<span id="cb30-18"><a href="#cb30-18" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a><span class="co"># plot predictions for Atlantic coast</span></span>
-<span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL<span class="sc">$</span>fit, </span>
-<span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a>      <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">xlab=</span> <span class="st">&quot;Length (cm)&quot;</span>,</span>
-<span id="cb30-22"><a href="#cb30-22" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted value (link scale)&quot;</span>,</span>
-<span id="cb30-23"><a href="#cb30-23" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Predictions for Males&quot;</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb30-24"><a href="#cb30-24" tabindex="-1"></a></span>
-<span id="cb30-25"><a href="#cb30-25" tabindex="-1"></a><span class="co"># Add predictions for English Channel</span></span>
-<span id="cb30-26"><a href="#cb30-26" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH<span class="sc">$</span>fit, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb30-27"><a href="#cb30-27" tabindex="-1"></a></span>
-<span id="cb30-28"><a href="#cb30-28" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.3</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Atlantic coast&quot;</span>, <span class="st">&quot;English Channel&quot;</span>), </span>
-<span id="cb30-29"><a href="#cb30-29" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># create a sequence of increasing lengths</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>Seq.Length<span class="ot">&lt;-</span> <span class="dv">74</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES ON THE ATLANTIC COAST</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>dat.new.ATL<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ATL&quot;</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>Mat1.pred.ATL<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ATL, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co"># Add them to the prediction data frame, to keep the workspace tidy</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>fit<span class="ot">&lt;-</span> Mat1.pred.ATL<span class="sc">$</span>fit</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co"># Same approach for MALES IN THE ENGLISH CHANNEL</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>dat.new.ECH<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ECH&quot;</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>Mat1.pred.ECH<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ECH, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>dat.new.ECH<span class="sc">$</span>fit<span class="ot">&lt;-</span> Mat1.pred.ECH<span class="sc">$</span>fit</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co"># PLOTTING THE TWO AREAS TOGETHER</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co"># plot predictions for Atlantic coast</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL<span class="sc">$</span>fit, </span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a>      <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">xlab=</span> <span class="st">&quot;Length (cm)&quot;</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted value (link scale)&quot;</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Predictions for Males&quot;</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="co"># Add predictions for English Channel</span></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH<span class="sc">$</span>fit, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.3</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Atlantic coast&quot;</span>, <span class="st">&quot;English Channel&quot;</span>), </span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q10a-1.png" width="672" /></p>
 <blockquote>
 <p>The predictions on the link scale are linear, as they should be. But
@@ -900,38 +734,6 @@ back-transformation formula to compute the predicted values on the
 probability (response) scale, and plot them against length, for each
 area.</p>
 <p> </p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># create a sequence of increasing lengths</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>Seq.Length<span class="ot">&lt;-</span> <span class="dv">74</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES ON THE ATLANTIC COAST</span></span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>dat.new.ATL<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ATL&quot;</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>Mat1.pred.ATL<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ATL, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a><span class="co"># Convert predictions to the response (probability) scale.</span></span>
-<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a><span class="co"># And add them to the prediction data frame to keep the workspace tidy</span></span>
-<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">exp</span>(Mat1.pred.ATL<span class="sc">$</span>fit)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(Mat1.pred.ATL<span class="sc">$</span>fit)) </span>
-<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a><span class="co"># or </span></span>
-<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ATL<span class="sc">$</span>fit)</span>
-<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a></span>
-<span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES IN THE ENGLISH CHANNEL</span></span>
-<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a>dat.new.ECH<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ECH&quot;</span>)</span>
-<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a>Mat1.pred.ECH<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ECH, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a>dat.new.ECH<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ECH<span class="sc">$</span>fit)</span>
-<span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a></span>
-<span id="cb31-19"><a href="#cb31-19" tabindex="-1"></a><span class="co"># PLOTTING IT TOGETHER</span></span>
-<span id="cb31-20"><a href="#cb31-20" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb31-21"><a href="#cb31-21" tabindex="-1"></a><span class="co"># plot predictions for Atlantic coast</span></span>
-<span id="cb31-22"><a href="#cb31-22" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL<span class="sc">$</span>fit.resp, </span>
-<span id="cb31-23"><a href="#cb31-23" tabindex="-1"></a>      <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">xlab=</span> <span class="st">&quot;Length (cm)&quot;</span>,</span>
-<span id="cb31-24"><a href="#cb31-24" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted probability&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb31-25"><a href="#cb31-25" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Predictions for Males&quot;</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb31-26"><a href="#cb31-26" tabindex="-1"></a></span>
-<span id="cb31-27"><a href="#cb31-27" tabindex="-1"></a><span class="co"># Add predictions for English Channel</span></span>
-<span id="cb31-28"><a href="#cb31-28" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH<span class="sc">$</span>fit.resp, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb31-29"><a href="#cb31-29" tabindex="-1"></a></span>
-<span id="cb31-30"><a href="#cb31-30" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.3</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Atlantic coast&quot;</span>, <span class="st">&quot;English Channel&quot;</span>), </span>
-<span id="cb31-31"><a href="#cb31-31" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q10b-1.png" width="672" /></p>
 <p>11. <strong>Optionally</strong>, you may add the confidence intervals
 around the predictions (this would be highly recommended in a
 report).</p>
@@ -946,79 +748,11 @@ link function is different)</li>
 </ul></li>
 </ul>
 <p> </p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># create a sequence of increasing lengths</span></span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>Seq.Length<span class="ot">&lt;-</span> <span class="dv">74</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES ON THE ATLANTIC COAST</span></span>
-<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>dat.new.ATL<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ATL&quot;</span>)</span>
-<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>Mat1.pred.ATL<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ATL, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a><span class="co"># Convert predictions to the response (probability) scale.</span></span>
-<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a><span class="co"># And add them to the prediction data frame to keep the workspace tidy</span></span>
-<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">exp</span>(Mat1.pred.ATL<span class="sc">$</span>fit)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(Mat1.pred.ATL<span class="sc">$</span>fit)) </span>
-<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a><span class="co"># or dat.new.ATL$fit.resp&lt;- plogis(Mat1.pred.ATL$fit)</span></span>
-<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a></span>
-<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a><span class="co"># Calculate the confidence limits on the link scale and transform onto the response scale:</span></span>
-<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a><span class="co"># lower 95% CI</span></span>
-<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ATL<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>Mat1.pred.ATL<span class="sc">$</span>se.fit)</span>
-<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="co"># upper 95% CI</span></span>
-<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a>dat.new.ATL<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ATL<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>Mat1.pred.ATL<span class="sc">$</span>se.fit)</span>
-<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a></span>
-<span id="cb32-19"><a href="#cb32-19" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES IN THE ENGLISH CHANNEL</span></span>
-<span id="cb32-20"><a href="#cb32-20" tabindex="-1"></a>dat.new.ECH<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ECH&quot;</span>)</span>
-<span id="cb32-21"><a href="#cb32-21" tabindex="-1"></a>Mat1.pred.ECH<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat1, dat.new.ECH, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb32-22"><a href="#cb32-22" tabindex="-1"></a>dat.new.ECH<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ECH<span class="sc">$</span>fit)</span>
-<span id="cb32-23"><a href="#cb32-23" tabindex="-1"></a>dat.new.ECH<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ECH<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>Mat1.pred.ECH<span class="sc">$</span>se.fit)</span>
-<span id="cb32-24"><a href="#cb32-24" tabindex="-1"></a>dat.new.ECH<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat1.pred.ECH<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>Mat1.pred.ECH<span class="sc">$</span>se.fit)</span>
-<span id="cb32-25"><a href="#cb32-25" tabindex="-1"></a></span>
-<span id="cb32-26"><a href="#cb32-26" tabindex="-1"></a><span class="co"># PLOTTING IT ALL TOGETHER</span></span>
-<span id="cb32-27"><a href="#cb32-27" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb32-28"><a href="#cb32-28" tabindex="-1"></a><span class="co"># plot predictions for Atlantic coast</span></span>
-<span id="cb32-29"><a href="#cb32-29" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL<span class="sc">$</span>fit.resp, </span>
-<span id="cb32-30"><a href="#cb32-30" tabindex="-1"></a>      <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">xlab=</span> <span class="st">&quot;Length (cm)&quot;</span>,</span>
-<span id="cb32-31"><a href="#cb32-31" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted probability&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb32-32"><a href="#cb32-32" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Predictions for Males&quot;</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb32-33"><a href="#cb32-33" tabindex="-1"></a><span class="co"># Add the upper and lower confidence limits of predictions</span></span>
-<span id="cb32-34"><a href="#cb32-34" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL<span class="sc">$</span>UCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb32-35"><a href="#cb32-35" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL<span class="sc">$</span>LCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb32-36"><a href="#cb32-36" tabindex="-1"></a></span>
-<span id="cb32-37"><a href="#cb32-37" tabindex="-1"></a><span class="co"># Add predictions for English Channel</span></span>
-<span id="cb32-38"><a href="#cb32-38" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH<span class="sc">$</span>fit.resp, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb32-39"><a href="#cb32-39" tabindex="-1"></a><span class="co"># Add the upper and lower confidence limits</span></span>
-<span id="cb32-40"><a href="#cb32-40" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH<span class="sc">$</span>UCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb32-41"><a href="#cb32-41" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH<span class="sc">$</span>LCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb32-42"><a href="#cb32-42" tabindex="-1"></a></span>
-<span id="cb32-43"><a href="#cb32-43" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.3</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Atlantic coast&quot;</span>, <span class="st">&quot;English Channel&quot;</span>), </span>
-<span id="cb32-44"><a href="#cb32-44" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q11-1.png" width="672" /></p>
 <p> </p>
 <p>12. How satisfied are you with the model, and with all the
 assumptions being met? What have you learned from it, with respect to
 the initial aims of the study?</p>
 <p> </p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># The model seems to fit the data satisfortorily, base on the validation plots.</span></span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="co"># Ignoring the effect of Month may bias the results slightly,</span></span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="co"># but hopefully not much (if you wish you could check this yourself)</span></span>
-<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a><span class="co"># With respect to the large residuals at extreme body lengths,</span></span>
-<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a><span class="co"># we can see on the graphs that the predicted probabilities are already</span></span>
-<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a><span class="co"># very high and low, respectively (close to 0 or 1).</span></span>
-<span id="cb33-9"><a href="#cb33-9" tabindex="-1"></a><span class="co"># Therefore, they wouldn&#39;t change very much even if we improved the model.</span></span>
-<span id="cb33-10"><a href="#cb33-10" tabindex="-1"></a><span class="co"># So, no much concern here.</span></span>
-<span id="cb33-11"><a href="#cb33-11" tabindex="-1"></a></span>
-<span id="cb33-12"><a href="#cb33-12" tabindex="-1"></a><span class="co"># We infer from the graph of the predictions that:</span></span>
-<span id="cb33-13"><a href="#cb33-13" tabindex="-1"></a></span>
-<span id="cb33-14"><a href="#cb33-14" tabindex="-1"></a><span class="co"># a minority of males is mature at 75 cm</span></span>
-<span id="cb33-15"><a href="#cb33-15" tabindex="-1"></a><span class="co"># almost all males are mature after 85 cm</span></span>
-<span id="cb33-16"><a href="#cb33-16" tabindex="-1"></a><span class="co"># 50% of males have reached maturity at a length around</span></span>
-<span id="cb33-17"><a href="#cb33-17" tabindex="-1"></a><span class="co"># 78-80 cm, however maturity is reached</span></span>
-<span id="cb33-18"><a href="#cb33-18" tabindex="-1"></a><span class="co"># earlier in the Channel than on the Atlantic coastal area.</span></span>
-<span id="cb33-19"><a href="#cb33-19" tabindex="-1"></a></span>
-<span id="cb33-20"><a href="#cb33-20" tabindex="-1"></a><span class="co"># We could speculate that the difference in the rate of maturation</span></span>
-<span id="cb33-21"><a href="#cb33-21" tabindex="-1"></a><span class="co"># between the two areas is due to a higher fishing pressure on the</span></span>
-<span id="cb33-22"><a href="#cb33-22" tabindex="-1"></a><span class="co"># species in the English Channel. This is correlative.</span></span>
-<span id="cb33-23"><a href="#cb33-23" tabindex="-1"></a><span class="co"># More research needed if we want to establish the cause!</span></span></code></pre></div>
 <p> </p>
 <p>End of the Binomial (Bernoulli) GLM exercise - Maturity-length
 relationship in rays</p>
@@ -1029,16 +763,15 @@ this “DIY” alternative instead, in the code chunk below. The green line
 shows the mean of the residuals for each value or bin of the X
 variable.</p>
 <p> </p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="co"># plot the residuals against length</span></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="fu">plot</span>(res2.p <span class="sc">~</span> datM<span class="sc">$</span>Lg, <span class="at">col=</span> datM<span class="sc">$</span>Mature <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="co"># get the mean of the residuals for each 1 cm of length</span></span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>lg.means<span class="ot">&lt;-</span> <span class="fu">tapply</span>(res2.p, <span class="fu">list</span>(datM<span class="sc">$</span>Lg), mean)</span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="co"># convert ordered bin labels into numbers (1 to 365)</span></span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>lg.vals<span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">names</span>(lg.means))</span>
-<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a><span class="fu">lines</span>(lg.means <span class="sc">~</span> lg.vals, <span class="at">col=</span> <span class="dv">3</span>)</span>
-<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="dv">0</span>, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>))</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/binnedplot_alternative-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># plot the residuals against length</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">plot</span>(res2.p <span class="sc">~</span> datM<span class="sc">$</span>Lg, <span class="at">col=</span> datM<span class="sc">$</span>Mature <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># get the mean of the residuals for each 1 cm of length</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>lg.means<span class="ot">&lt;-</span> <span class="fu">tapply</span>(res2.p, <span class="fu">list</span>(datM<span class="sc">$</span>Lg), mean)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># convert ordered bin labels into numbers (1 to 365)</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>lg.vals<span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">names</span>(lg.means))</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="fu">lines</span>(lg.means <span class="sc">~</span> lg.vals, <span class="at">col=</span> <span class="dv">3</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="dv">0</span>, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>))</span></code></pre></div>
 <p> </p>
 <p><strong>Optional</strong>. If you are curious about the Sex effect,
 you can add it in the model. Note that as well as differences between
@@ -1046,127 +779,10 @@ areas, there may be an interaction between length and sex (Males and
 Females reach maturity at different rates). Simplify the model if
 necessary, validate, and plot the predictions for all areas and sexes.
 Remember to use the original, full data set with the females in!</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>Mat2<span class="ot">&lt;-</span> <span class="fu">glm</span>(Mature <span class="sc">~</span> Lg <span class="sc">+</span> Area <span class="sc">+</span> Sex <span class="sc">+</span> Lg<span class="sc">:</span>Area <span class="sc">+</span> Lg<span class="sc">:</span>Sex, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">drop1</span>(Mat2, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="do">## Mature ~ Lg + Area + Sex + Lg:Area + Lg:Sex</span></span>
-<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="do">##         Df Deviance    AIC    LRT Pr(&gt;Chi)  </span></span>
-<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a><span class="do">## &lt;none&gt;       807.81 819.81                  </span></span>
-<span id="cb35-9"><a href="#cb35-9" tabindex="-1"></a><span class="do">## Lg:Area  1   814.10 824.10 6.2890  0.01215 *</span></span>
-<span id="cb35-10"><a href="#cb35-10" tabindex="-1"></a><span class="do">## Lg:Sex   1   810.23 820.23 2.4199  0.11980  </span></span>
-<span id="cb35-11"><a href="#cb35-11" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb35-12"><a href="#cb35-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb35-13"><a href="#cb35-13" tabindex="-1"></a><span class="co"># interation with Sex not significant -&gt; simplify</span></span>
-<span id="cb35-14"><a href="#cb35-14" tabindex="-1"></a>Mat3<span class="ot">&lt;-</span> <span class="fu">glm</span>(Mature <span class="sc">~</span> Lg <span class="sc">+</span> Area <span class="sc">+</span> Sex <span class="sc">+</span> Lg<span class="sc">:</span>Area, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb35-15"><a href="#cb35-15" tabindex="-1"></a><span class="fu">drop1</span>(Mat3, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb35-16"><a href="#cb35-16" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb35-17"><a href="#cb35-17" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb35-18"><a href="#cb35-18" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb35-19"><a href="#cb35-19" tabindex="-1"></a><span class="do">## Mature ~ Lg + Area + Sex + Lg:Area</span></span>
-<span id="cb35-20"><a href="#cb35-20" tabindex="-1"></a><span class="do">##         Df Deviance    AIC    LRT  Pr(&gt;Chi)    </span></span>
-<span id="cb35-21"><a href="#cb35-21" tabindex="-1"></a><span class="do">## &lt;none&gt;       810.23 820.23                     </span></span>
-<span id="cb35-22"><a href="#cb35-22" tabindex="-1"></a><span class="do">## Sex      1   857.44 865.44 47.208 6.384e-12 ***</span></span>
-<span id="cb35-23"><a href="#cb35-23" tabindex="-1"></a><span class="do">## Lg:Area  1   816.44 824.44  6.206   0.01273 *  </span></span>
-<span id="cb35-24"><a href="#cb35-24" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb35-25"><a href="#cb35-25" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb35-26"><a href="#cb35-26" tabindex="-1"></a><span class="co"># All effects significant -&gt; noting to drop.</span></span>
-<span id="cb35-27"><a href="#cb35-27" tabindex="-1"></a></span>
-<span id="cb35-28"><a href="#cb35-28" tabindex="-1"></a><span class="co"># I skip the model validation here, as it is quite similar to previously</span></span>
-<span id="cb35-29"><a href="#cb35-29" tabindex="-1"></a></span>
-<span id="cb35-30"><a href="#cb35-30" tabindex="-1"></a><span class="co"># PREDICTIONS</span></span>
-<span id="cb35-31"><a href="#cb35-31" tabindex="-1"></a><span class="co"># create a sequence of increasing lengths</span></span>
-<span id="cb35-32"><a href="#cb35-32" tabindex="-1"></a>Seq.Length<span class="ot">&lt;-</span> <span class="dv">74</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb35-33"><a href="#cb35-33" tabindex="-1"></a></span>
-<span id="cb35-34"><a href="#cb35-34" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES ON THE ATLANTIC COAST</span></span>
-<span id="cb35-35"><a href="#cb35-35" tabindex="-1"></a>dat.new.ATL.M<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ATL&quot;</span>)</span>
-<span id="cb35-36"><a href="#cb35-36" tabindex="-1"></a>Mat3.pred.ATL.M<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat3, dat.new.ATL, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb35-37"><a href="#cb35-37" tabindex="-1"></a><span class="co"># fitted values on the response scale:</span></span>
-<span id="cb35-38"><a href="#cb35-38" tabindex="-1"></a>dat.new.ATL.M<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ATL.M<span class="sc">$</span>fit)</span>
-<span id="cb35-39"><a href="#cb35-39" tabindex="-1"></a><span class="co"># lower 95% CI</span></span>
-<span id="cb35-40"><a href="#cb35-40" tabindex="-1"></a>dat.new.ATL.M<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ATL.M<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ATL.M<span class="sc">$</span>se.fit)</span>
-<span id="cb35-41"><a href="#cb35-41" tabindex="-1"></a><span class="co"># upper 95% CI</span></span>
-<span id="cb35-42"><a href="#cb35-42" tabindex="-1"></a>dat.new.ATL.M<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ATL.M<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ATL.M<span class="sc">$</span>se.fit)</span>
-<span id="cb35-43"><a href="#cb35-43" tabindex="-1"></a></span>
-<span id="cb35-44"><a href="#cb35-44" tabindex="-1"></a><span class="co"># PREDICTIONS FOR MALES IN THE ENGLISH CHANNEL</span></span>
-<span id="cb35-45"><a href="#cb35-45" tabindex="-1"></a>dat.new.ECH.M<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;M&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ECH&quot;</span>)</span>
-<span id="cb35-46"><a href="#cb35-46" tabindex="-1"></a>Mat3.pred.ECH.M<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat3, dat.new.ECH.M, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb35-47"><a href="#cb35-47" tabindex="-1"></a>dat.new.ECH.M<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ECH.M<span class="sc">$</span>fit)</span>
-<span id="cb35-48"><a href="#cb35-48" tabindex="-1"></a>dat.new.ECH.M<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ECH.M<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ECH.M<span class="sc">$</span>se.fit)</span>
-<span id="cb35-49"><a href="#cb35-49" tabindex="-1"></a>dat.new.ECH.M<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ECH.M<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ECH.M<span class="sc">$</span>se.fit)</span>
-<span id="cb35-50"><a href="#cb35-50" tabindex="-1"></a></span>
-<span id="cb35-51"><a href="#cb35-51" tabindex="-1"></a><span class="co"># PREDICTIONS FOR FEMALES ON THE ATLANTIC COAST</span></span>
-<span id="cb35-52"><a href="#cb35-52" tabindex="-1"></a>dat.new.ATL.F<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;F&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ATL&quot;</span>)</span>
-<span id="cb35-53"><a href="#cb35-53" tabindex="-1"></a>Mat3.pred.ATL.F<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat3, dat.new.ATL.F, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb35-54"><a href="#cb35-54" tabindex="-1"></a>dat.new.ATL.F<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">exp</span>(Mat3.pred.ATL.F<span class="sc">$</span>fit)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(Mat3.pred.ATL.F<span class="sc">$</span>fit)) </span>
-<span id="cb35-55"><a href="#cb35-55" tabindex="-1"></a>dat.new.ATL.F<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ATL.F<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ATL.F<span class="sc">$</span>se.fit)</span>
-<span id="cb35-56"><a href="#cb35-56" tabindex="-1"></a>dat.new.ATL.F<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ATL.F<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ATL.F<span class="sc">$</span>se.fit)</span>
-<span id="cb35-57"><a href="#cb35-57" tabindex="-1"></a></span>
-<span id="cb35-58"><a href="#cb35-58" tabindex="-1"></a><span class="co"># PREDICTIONS FOR FEMALES IN THE ENGLISH CHANNEL</span></span>
-<span id="cb35-59"><a href="#cb35-59" tabindex="-1"></a>dat.new.ECH.F<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex=</span> <span class="st">&quot;F&quot;</span>, <span class="at">Lg=</span> Seq.Length, <span class="at">Area=</span> <span class="st">&quot;ECH&quot;</span>)</span>
-<span id="cb35-60"><a href="#cb35-60" tabindex="-1"></a>Mat3.pred.ECH.F<span class="ot">&lt;-</span> <span class="fu">predict</span>(Mat3, dat.new.ECH.F, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb35-61"><a href="#cb35-61" tabindex="-1"></a>dat.new.ECH.F<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ECH.F<span class="sc">$</span>fit)</span>
-<span id="cb35-62"><a href="#cb35-62" tabindex="-1"></a>dat.new.ECH.F<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ECH.F<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ECH.F<span class="sc">$</span>se.fit)</span>
-<span id="cb35-63"><a href="#cb35-63" tabindex="-1"></a>dat.new.ECH.F<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(Mat3.pred.ECH.F<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>Mat3.pred.ECH.F<span class="sc">$</span>se.fit)</span>
-<span id="cb35-64"><a href="#cb35-64" tabindex="-1"></a></span>
-<span id="cb35-65"><a href="#cb35-65" tabindex="-1"></a><span class="do">## PLOTTING MALES AND FEMALES TOGETHER:</span></span>
-<span id="cb35-66"><a href="#cb35-66" tabindex="-1"></a><span class="co"># PLOTTING MALES</span></span>
-<span id="cb35-67"><a href="#cb35-67" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb35-68"><a href="#cb35-68" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL.M<span class="sc">$</span>fit.resp, </span>
-<span id="cb35-69"><a href="#cb35-69" tabindex="-1"></a>      <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">xlab=</span> <span class="st">&quot;Length (cm)&quot;</span>,</span>
-<span id="cb35-70"><a href="#cb35-70" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted probability&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb35-71"><a href="#cb35-71" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Predictions for all groups&quot;</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb35-72"><a href="#cb35-72" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL.M<span class="sc">$</span>UCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb35-73"><a href="#cb35-73" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL.M<span class="sc">$</span>LCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;navy&quot;</span>)</span>
-<span id="cb35-74"><a href="#cb35-74" tabindex="-1"></a></span>
-<span id="cb35-75"><a href="#cb35-75" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH.M<span class="sc">$</span>fit.resp, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb35-76"><a href="#cb35-76" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH.M<span class="sc">$</span>UCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb35-77"><a href="#cb35-77" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH.M<span class="sc">$</span>LCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb35-78"><a href="#cb35-78" tabindex="-1"></a></span>
-<span id="cb35-79"><a href="#cb35-79" tabindex="-1"></a><span class="co"># ADDING FEMALES TO THE PLOT</span></span>
-<span id="cb35-80"><a href="#cb35-80" tabindex="-1"></a><span class="co"># plot predictions for Atlantic coast</span></span>
-<span id="cb35-81"><a href="#cb35-81" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL.F<span class="sc">$</span>fit.resp, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;darkgreen&quot;</span>)</span>
-<span id="cb35-82"><a href="#cb35-82" tabindex="-1"></a><span class="co"># Add upper and lower prediction confidence limits</span></span>
-<span id="cb35-83"><a href="#cb35-83" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL.F<span class="sc">$</span>UCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;darkgreen&quot;</span>)</span>
-<span id="cb35-84"><a href="#cb35-84" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ATL.F<span class="sc">$</span>LCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;darkgreen&quot;</span>)</span>
-<span id="cb35-85"><a href="#cb35-85" tabindex="-1"></a><span class="co"># Add predictions for English Channel</span></span>
-<span id="cb35-86"><a href="#cb35-86" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH.F<span class="sc">$</span>fit.resp, <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">&quot;green&quot;</span>)</span>
-<span id="cb35-87"><a href="#cb35-87" tabindex="-1"></a><span class="co"># Add upper and lower prediction confidence limits</span></span>
-<span id="cb35-88"><a href="#cb35-88" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH.F<span class="sc">$</span>UCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;green&quot;</span>)</span>
-<span id="cb35-89"><a href="#cb35-89" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span> Seq.Length, <span class="at">y=</span> dat.new.ECH.F<span class="sc">$</span>LCI, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="st">&quot;green&quot;</span>)</span>
-<span id="cb35-90"><a href="#cb35-90" tabindex="-1"></a></span>
-<span id="cb35-91"><a href="#cb35-91" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.4</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Males Atlantic coast&quot;</span>, <span class="st">&quot;Males English Channel&quot;</span>, <span class="st">&quot;Females Atlantic coast&quot;</span>, <span class="st">&quot;Females English Channel&quot;</span>), </span>
-<span id="cb35-92"><a href="#cb35-92" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Optional1-1.png" width="672" /></p>
 <p> </p>
 <p>What can we infer from this, with respect to the initial aims of the
 study?</p>
 <p> </p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># The model seems to be fitting the data satisfactorily.</span></span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="co"># We infer from the graph of the predictions that:</span></span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="co"># As previously,</span></span>
-<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="co"># a minority of males is mature at 75 cm</span></span>
-<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a><span class="co"># almost all males are mature at 85 cm</span></span>
-<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a><span class="co"># 50% of males have reached maturity at a length around</span></span>
-<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a><span class="co"># 78-80 cm, however maturity is reached</span></span>
-<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a><span class="co"># earlier in the Channel than on the Atlantic coastal area.</span></span>
-<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a></span>
-<span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a><span class="co"># In addition,</span></span>
-<span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a><span class="co"># Females mature at a larger length than males:</span></span>
-<span id="cb36-14"><a href="#cb36-14" tabindex="-1"></a><span class="co"># a minority of females is mature at 75 cm</span></span>
-<span id="cb36-15"><a href="#cb36-15" tabindex="-1"></a><span class="co"># almost all females are mature at 90 cm</span></span>
-<span id="cb36-16"><a href="#cb36-16" tabindex="-1"></a><span class="co"># 50% of females have reached maturity at a length around</span></span>
-<span id="cb36-17"><a href="#cb36-17" tabindex="-1"></a><span class="co"># 83 cm, without a clear difference between the Channel</span></span>
-<span id="cb36-18"><a href="#cb36-18" tabindex="-1"></a><span class="co"># and the Atlantic coastal area (but note that the confidence</span></span>
-<span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a><span class="co"># intervals are wider than males, due to the smaller sample size).</span></span>
-<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a></span>
-<span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a><span class="co"># We could speculate that the difference in the rate of maturation</span></span>
-<span id="cb36-22"><a href="#cb36-22" tabindex="-1"></a><span class="co"># between the two areas is due to a higher fishing pressure on the</span></span>
-<span id="cb36-23"><a href="#cb36-23" tabindex="-1"></a><span class="co"># species in the English Channel, although the pattern found in</span></span>
-<span id="cb36-24"><a href="#cb36-24" tabindex="-1"></a><span class="co"># females does not support this so clearly. More data and research needed?</span></span></code></pre></div>
 </div>
 
 

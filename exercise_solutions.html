@@ -44,6 +44,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -369,42 +470,132 @@ href="course_code.html">find these here</a>.</p>
 <p> </p>
 <div id="section-1-exercise-solutions" class="section level4">
 <h4>Section 1 Exercise solutions</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;.&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  sort <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">&quot;(exercise_[12]_solution.html)&quot;</span>, . , <span class="at">value=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> file_name <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.html&quot;</span>, <span class="st">&quot;&quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="fu">paste0</span>(., <span class="st">&quot;s&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="fu">str_to_sentence</span>(.)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;){target=&#39;_blank&#39;}&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <ul>
 <li><p><a href="exercise_1_solution.html" target="_blank">Exercise 1
 solutions</a></p></li>
 <li><p><a href="exercise_2_solution.html" target="_blank">Exercise 2
 solutions</a></p></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;.&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  sort <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="co"># grep(&quot;(exercise_[34]_solution.html|exercise_[34]_ggplot_solution.html)&quot;, . , value=TRUE) %&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">&quot;(exercise_[34]_solution.html)&quot;</span>, . , <span class="at">value=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="co"># .[c(1,3,2)]</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  .[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> file_name <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.html&quot;</span>, <span class="st">&quot;&quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="fu">paste0</span>(., <span class="st">&quot;s&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="fu">str_to_sentence</span>(.)</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;){target=&#39;_blank&#39;}&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
 <li><p><a href="exercise_3_solution.html" target="_blank">Exercise 3
 solutions</a></p></li>
 <li><p><a href="exercise_4_solution.html" target="_blank">Exercise 4
 solutions</a></p></li>
-<li><p><a href="exercise_5_solution.html" target="_blank">Exercise 5
-solutions</a></p></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;.&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  sort <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">&quot;(exercise_[5]_solution.html)&quot;</span>, . , <span class="at">value=</span><span class="cn">TRUE</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> file_name <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.html&quot;</span>, <span class="st">&quot;&quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="fu">paste0</span>(., <span class="st">&quot;s&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  <span class="fu">str_to_sentence</span>(.)</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;){target=&#39;_blank&#39;}&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="exercise_5_solution.html" target="_blank">Exercise 5
+solutions</a></li>
 </ul>
 <p> </p>
 </div>
 <div id="section-2-exercise-solutions" class="section level4">
 <h4>Section 2 Exercise solutions</h4>
 <p> </p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Graphical data exploration exercise&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;graphical_data_exploration_exercise_solutions.html&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <ul>
-<li><p><a
+<li><a
 href="graphical_data_exploration_exercise_solutions.html">Graphical data
-exploration exercise</a></p></li>
-<li><p><a href="linear_model_1_exercise_solutions.html">Linear model
-with single continuous explanatory variable exercise</a></p></li>
-<li><p><a href="linear_model_2_exercise_solutions.html">Linear model
-with single categorical explanatory variable exercise</a></p></li>
-<li><p><a href="LM_3_multiple_exercise_solutions.html">Linear model with
-multiple explanatory variables exercise</a></p></li>
-<li><p><a href="LM_4_Selection_exercise_solutions.html">Linear model -
-model selection exercise</a></p></li>
-<li><p><a href="GLM_1_Poisson_exercise_solutions.html">Generalised
-linear models 1 - Poisson GLM exercise</a></p></li>
-<li><p><a
-href="GLM_2_Binomial_RayBin_exercise_solutions.html">Generalised linear
-models 2 - Binomial GLM exercise</a></p></li>
+exploration exercise</a></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Linear model with single continuous explanatory variable exercise&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;linear_model_1_exercise_solutions.html&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="linear_model_1_exercise_solutions.html">Linear model with
+single continuous explanatory variable exercise</a></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Linear model with single categorical explanatory variable exercise&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;linear_model_2_exercise_solutions.html&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="linear_model_2_exercise_solutions.html">Linear model with
+single categorical explanatory variable exercise</a></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Linear model with multiple explanatory variables exercise&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;LM_3_multiple_exercise_solutions.html&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="LM_3_multiple_exercise_solutions.html">Linear model with
+multiple explanatory variables exercise</a></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Linear model - model selection exercise&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;LM_4_Selection_exercise_solutions.html&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="LM_4_Selection_exercise_solutions.html">Linear model -
+model selection exercise</a></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Generalised linear models 1 - Poisson GLM exercise&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;GLM_1_Poisson_exercise_solutions.html&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="GLM_1_Poisson_exercise_solutions.html">Generalised linear
+models 1 - Poisson GLM exercise</a></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>link_name <span class="ot">&lt;-</span> <span class="st">&quot;Generalised linear models 2 - Binomial GLM exercise&quot;</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="st">&quot;GLM_2_Binomial_RayBin_exercise_solutions.html&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;- [&quot;</span>, link_name, <span class="st">&quot;](&quot;</span>, file_name, <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<ul>
+<li><a href="GLM_2_Binomial_RayBin_exercise_solutions.html">Generalised
+linear models 2 - Binomial GLM exercise</a></li>
 </ul>
 <!--
+
+```r
+link_name <- "Generalised linear models 3 - Binomial GLM exercise"
+file_name <- "GLM_3_BinomialProportions_exercise_solutions.html"
+paste0("- [", link_name, "](", file_name, ")") %>%
+cat(sep="\n\n")
+```
+
 - [Generalised linear models 3 - Binomial GLM exercise](GLM_3_BinomialProportions_exercise_solutions.html)
 -->
 <p> </p>

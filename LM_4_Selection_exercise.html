@@ -11,7 +11,7 @@
 
 
 
-<title>Exercises</title>
+<title>Exercise</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -30,6 +30,7 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -206,6 +207,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -353,9 +357,17 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Exercises</h1>
+
+<h1 class="title toc-ignore">Exercise</h1>
 
 </div>
 
@@ -364,188 +376,261 @@ $(document).ready(function () {
 <div id="model-selection-with-the-loyn-data" class="section level2">
 <h2>Model selection with the Loyn data</h2>
 <p> </p>
-<p>The exercise from the previous practical assumed a pre-conceived
-model with the area of the patch <code>LOGAREA</code>, and the grazing
-intensity <code>FGRAZE</code> as interactive effects. This is useful as
-a training exercise, and might be the way to approach the analysis of
-these data if the experiment had been designed to test these effects
-only. However, if other explanatory variables are presumed to be
-important, not including them in the model could bias our results.
-Alternatively, if the goal of the analysis is just to explore what model
-form(s) explain the data in a parsimonious way (as opposed to formally
-testing hypotheses), we would also want to include these extra
-explanatory variables.</p>
+<p>In the previous exercise you fitted a pre-conceived model which
+included the main effects of the area of the forest patch
+(<code>LOGAREA</code>), the grazing intensity (<code>FGRAZE</code>) and
+the interaction between these two explanatory variables
+(<code>FGRAZE:LOGAREA</code>). This was useful as a training exercise,
+and might be a viable approach when analysing these data if the
+experiment had been designed to test these effects only. However, if
+other potentially important variables are not included in the model this
+may lead to biased inferences (interpretation). Additionally, if the
+goal of the analysis is to explore what models explain the data in a
+parsimonious way (as opposed to formally testing hypotheses), we would
+also want to include relevant additional explanatory variables.</p>
 <p> </p>
-<p>Here we revisit the loyn data analysis, asking if a better model for
-the data could be achieved by including additional explanatory variables
-by applying a model selection procedure. Because we would like to test
-the significance of the interaction between <code>LOGAREA</code>, and
-<code>FGRAZE</code>, while accounting for the potential confounding
-effects of other explanatory variables, we will want to force
-<code>LOGAREA</code>, <code>FGRAZE</code> and their interaction to
-remain in the model until the very last step of the model selection
-exercise.</p>
+<p>Here we revisit the previous loyn data analysis, and ask if a
+‘better’ model for these data could be achieved by including additional
+explanatory variables and by performing model selection. Because we
+would like to test the significance of the interaction between
+<code>LOGAREA</code>, and <code>FGRAZE</code>, whilst accounting for the
+potential effects of other explanatory variables, we will also include
+<code>LOGAREA</code>, <code>FGRAZE</code> and their interaction in the
+model as before. Including other interaction terms between other
+variables may be reasonable, but we will focus only on the
+<code>FGRAZE:LOGAREA</code> interaction as we have relatively little
+information in this data set (67 observations). This will hopefully
+avoid fitting an overly complex model which will estimate many
+parameters for which we have very little data. This is a balance you
+will all have to maintain with your own data and analyses (or better
+still, perform a power analysis before you even collect your data). No
+4-way interaction terms in your models please!</p>
 <p> </p>
-<p>1. Load the loyn data and repeat the data preparations done
-previously (FGRAZE, LOGAREA). Here we will be using all the explanatory
-variables to explain variation in bird density. If needed, remind
-yourself of your data exploration you conducted previously. Do any of
-the remaining variables need transforming? If so, what transformation
-did you apply? Add the required variables to the dataframe.</p>
+<p>It’s also important to note that we will assume that all the
+explanatory variables were collected by the researchers because they
+<em>believed</em> them to be biologically relevant for explaining bird
+abundance (i.e. data were collected for a reason). Of course, this is
+probably not your area of expertise but it is nevertheless a good idea
+to pause and think what might be relevant or not-so relevant and why.
+This highlights the importance of knowing your study organism / study
+area and discussing research designs with colleagues and other experts
+in the field before you collect your data. What you should try to avoid
+is collecting heaps of data across many variables (just because you can)
+and then expecting your statistical models to make sense of it for you.
+As mentioned in the lecture, model selection is a relatively
+controversial topic and should not be treated as a purely mechanical
+process. Your expertise needs to be woven into this process otherwise
+you may end up with a model that is implausible or not very useful (and
+all models need to be useful!).</p>
 <p> </p>
+<p>1. Import the ‘loyn.txt’ data file into RStudio and assign it to a
+variable called <code>loyn</code>. Here we will be using all the
+explanatory variables to explain the variation in bird density. If
+needed, remind yourself of your data exploration you conducted
+previously. Do any of the remaining variables need transforming
+(i.e. <code>AREA</code>, <code>DIST</code>, <code>LDIST</code>) or
+converting to a factor type variable (i.e. <code>GRAZE</code>)? Add the
+transformed variables to the <code>loyn</code> dataframe.</p>
 <p> </p>
-<p>2. We assume that all the explanatory variables have been collected
-by the authors <em>because</em> they were believed to be biologically
-relevant for explaining bird abundance. However, it is a good idea to
-pause and think what might be relevant or not-so relevant or partly
-redundant and why, before even exploring the relationships with bird
-abundance (yes, even graphically). You could do this in a table format,
-and include a hypothetical ranking of importance. Is there anything that
-limits your ability to fill such a table?</p>
+<p>2. Let’s start with a very quick graphical exploration of any
+potential relationships between each explanatory variable (collinearity)
+and also between our response and explanatory variables (what we’re
+interested in). Create a pairs plot using the function
+<code>pairs()</code>of your variables of interest. Hint: restrict the
+plot to the variables you actually need. An effective way of doing this
+is to store the names of the variables of interest in a vector
+<code>VOI &lt;- c("Var1", "Var2", ...)</code> and then use the naming
+method for subsetting the data set <code>Mydata[, VOI]</code>. If you
+feel like it, you can also add the correlations to the lower triangle of
+the plot as you did previously (don’t forget to define the function
+first).</p>
 <p> </p>
+<p>3. Now, let’s fit our maximal model. Start with a model of
+<code>ABUND</code> and include all explanatory variables as main
+effects. Also include the interaction <code>LOGAREA:FGRAZE</code> but no
+other interaction terms as justified in the preamble above. Don’t forget
+to include the transformed versions of the variables where appropriate
+(but not the untransformed variables as well otherwise you will have
+very strong collinearity between these variables!). Perhaps, call this
+model <code>M1</code>.</p>
 <p> </p>
-<p>3. It’s useful to start with a graphical exploration of the
-relationships between explanatory variables and between explanatory
-variables and the response variable. A pairs plot using the
-<code>pairs()</code> function is a very effective way of doing this when
-the number of variables is not too large.</p>
-<ul>
-<li>Hints:
-<ul>
-<li>restrict the plot to the variables you actually need</li>
-<li>an effective way of doing this is to store the names of the
-variables of interest in a vector
-<code>VOI &lt;-  c("Var1", "Var2", ...)</code></li>
-<li>and then use the naming method for subsetting the data set
-<code>Mydata[, VOI]</code></li>
-</ul></li>
-</ul>
+<p>4. Have a look at the summary table of the model using the
+<code>summary()</code> function. You’ll probably find this summary is
+quite complicated with lots of parameter estimates (14) and P values
+testing lots of hypotheses. Are all the P values less than our cut-off
+of 0.05? If not, then this suggests that some form of model selection is
+warranted to simplify our model.</p>
 <p> </p>
+<p>5. Let’s perform a first step in model selection using the
+<code>drop1()</code> function and use an <em>F</em> test based model
+selection approach. This will allow us to decide which explanatory
+variables may be suitable for removal from the model. Remember to use
+the <code>test = "F"</code> argument to perform <em>F</em> tests when
+using <code>drop1()</code>. Which explanatory variable is the best
+candidate for removal and why? What hypothesis is being tested when we
+do this model selection step?</p>
 <p> </p>
-<p>4. Start with a model of ABUND containing all explanatory variables.
-Don’t include any interactions other than <code>LOGAREA * FGRAZE</code>
-at this point: I suggest you simplify this exercise by including only
-the main effects (unless you have identified some interactions that you
-expect to be biologically important and you really want to include
-them).</p>
+<p>6. Update and refit your model and remove the least significant
+explanatory variable (from above). Repeat single term deletions with
+<code>drop1()</code> again using this updated model. You can update the
+model by just fitting a new model without the appropriate explanatory
+variable and assign it to a new name (<code>M2</code>). Alternatively
+you can use the <code>update()</code> function instead. I’ll show you
+both ways in the solutions below.</p>
 <p> </p>
+<p>7. Again, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+<code>drop1()</code>.</p>
 <p> </p>
-<p>5. Have a look at the summary of the model, and compare the estimates
-of the coefficients with their standard errors. Are there any which have
-large SE relative to the coefficient estimate? Do any of these
-correspond with explanatory variables that you had identified as being
-potentially collinear?</p>
+<p>8. Once again, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+<code>drop1()</code>.</p>
 <p> </p>
+<p>9. And finally, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+<code>drop1()</code>.</p>
 <p> </p>
-<p>6. Is every term needed (everything significant?) in this model? To
-find out, perform a model selection step using <code>drop1()</code> for
-choosing which single term might be candidate for deletion (remember to
-use the <code>test = "F"</code> argument to perform F tests). Remember
-to think carefully about what hypothesis is being tested when we do this
-model selection step?</p>
+<p>10. If all goes well, your final model should be
+<code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code> which you
+encountered in the previous exercise. Also, you may have noticed that
+the output from the <code>drop1()</code> function does not include the
+main effects of <code>LOGAREA</code> or <code>FRGRAZE</code>. Can you
+think why this might be the case?</p>
 <p> </p>
+<p>11. Now that you have your final model, you should go through your
+model validation and model interpretation as usual. As we have already
+completed this in the previous exercise I’ll leave it up to you to
+decide whether you include it here (you should be able to just copy and
+paste the code). Please make sure you understand the biological
+interpretation of each of the parameter estimates and the interpretation
+of the hypotheses you are testing.</p>
 <p> </p>
-<p>7. Update the model and repeat single term deletions with
-<code>drop1()</code>, until there are no longer any non-significant
-terms, ignoring <code>LOGAREA</code> , <code>FGRAZE</code>, and their
-interaction (we want to leave them in for now, irrespective of what
-<code>drop1</code> suggests).</p>
+<p><strong>OPTIONAL questions</strong> if you have time / energy /
+inclination!</p>
 <p> </p>
+<p>A1. If we weren’t aiming to directly test the effect of the
+<code>LOGAREA:FGRAZE</code> interaction statistically (i.e. test this
+specific hypothesis), we could also have used AIC to perform model
+selection. Repeat the model selection you did above, but this time use
+the <code>drop1()</code> function and perform model selection using AIC
+instead. Don’t forget, if we want to perform model selection based on
+AIC with the <code>drop1()</code> function we need to omit the
+<code>test = "F"</code> argument)</p>
 <p> </p>
-<p>8. If all goes well, you should have ended up with the interactive
-model again <code>ABUND ~ LOGAREA * FGRAZE</code>. Do you need to
-simplify this model? Do you need to use <code>drop1()</code> for
-that?</p>
+<p>A2. Refit your model with the variable associated with the lowest AIC
+value removed. Run <code>drop1()</code> again on your updated model.
+Perhaps call this new model <code>M2.AIC</code>.</p>
 <p> </p>
+<p>A3. Refit your model with the variable associated with the lowest AIC
+value removed and run <code>drop1()</code> again on your new model
+(<code>M3.AIC</code>).</p>
 <p> </p>
-<p>9. Let’s simplify the model anyway, considering the additive-only
-model <code>ABUND ~ LOGAREA + FGRAZE</code>. Although we could have
-validated models at each step the model selection procedure, this can
-become impractical. However, you really should validate your models at
-least in the final stages of model selection, by creating plots of the
-residuals for the candidate final model (I say “candidate” because
-should the model fail the validation, it may need revisiting
-irrespective of what the model selection procedure suggested). Remember
-that you can split your plotting device into 2 rows and 2 columns using
-the <code>par()</code> function before you create the plots. Check each
-of the assumptions of the model using these plots and report if these
-assumptions are acceptable.</p>
+<p>A4. Repeat your model selection by removing the variable indicated by
+the model with the lowest AIC.</p>
 <p> </p>
+<p>A5. Rinse and repeat as above.</p>
 <p> </p>
-<p>10. Obtain summaries of the model output using the
-<code>anova()</code> and <code>summary()</code> functions. Make sure you
-understand the difference between these two summaries (e.g. what
-specific hypotheses are being tested for each of them), and the
-interpretation of the coefficients in the summary table: a good test of
-your understanding is to reconstruct the model formula in writing (on
-paper or in your script), to be able to make predictions by hand (see
-optional questions ‘A2’ and ‘A3’ at the end). If in doubt, try it and
-seek assistance!</p>
+<p>If all goes well, your final model should be
+<code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code>. This is the
+same model you ended up with when using the <em>F</em> test based model
+selection. This might not always be the case and generally speaking AIC
+based model selection approaches tend to favour more complicated minimum
+adequate models compared to <em>F</em> test based approaches.</p>
+<p>We don’t need to re-validate or re-interpret the model, since we have
+already done this previously.</p>
+<p>I guess the next question is how to present your results from the
+model selection process (using either <em>F</em> tests or AIC) in your
+paper and/or thesis chapter. One approach which I quite like is to
+construct a table which includes a description of all of our models and
+associated summary statistics. Let’s do this for the AIC based model
+selection but the same principles apply when using <em>F</em> tests
+(although you will be presenting <em>F</em> statistics and P values
+rather than AIC values).</p>
+<p>Although you can use the output from the <code>drop1()</code> (and do
+a bit more wrangling) let’s make it a little simpler by fitting all of
+our nested models and then use the <code>AIC()</code> function to
+calculate the AIC values for each model rather than
+<code>drop1()</code>.</p>
 <p> </p>
-<p> </p>
-<p>11. What inferences can we make from this model? What are the
-biological interpretations, and the statistical lessons you take away
-from this analysis of the loyn data?</p>
-<p> </p>
-<p> </p>
-<p>12. Had we not been aiming to test the hypothesis associated with the
-<code>LOGAREA * FGRAZE</code> interaction, we could also have used AIC
-to perform the model selection. Let’s try this (taking the AIC values
-returned by <code>AIC</code> and summarising the performance of the
-alternative models in a table.</p>
-<p> </p>
+<p>Or if you prefer a prettier version to include directly in your paper
+/ thesis. You will need to install the <code>knitr</code> package before
+you can do this. See the ‘Installing R Markdown’ in <a
+href="https://intro2r.com/install-rm.html">Appendix A</a> in the
+Introduction to R book for more details.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:center;">
+AIC
+</th>
+<th style="text-align:right;">
+deltaAIC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LOGAREA + FGRAZE + LOGAREA:FGRAZE
+</td>
+<td style="text-align:center;">
+413.71
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
+</td>
+<td style="text-align:center;">
+414.57
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE
+</td>
+<td style="text-align:center;">
+416.41
+</td>
+<td style="text-align:right;">
+2.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
+</td>
+<td style="text-align:center;">
+418.37
+</td>
+<td style="text-align:right;">
+4.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
+</td>
+<td style="text-align:center;">
+420.34
+</td>
+<td style="text-align:right;">
+6.63
+</td>
+</tr>
+</tbody>
+</table>
 <p> </p>
 <p>End of the model selection exercise</p>
-<p> </p>
-</div>
-<div
-id="optional-additional-questions-if-youre-fast-or-want-to-take-it-further"
-class="section level2">
-<h2>Optional additional questions, if you’re fast or want to take it
-further</h2>
-<p> </p>
-<p>A1. Taking the final additive model from this practical: Since the
-<code>anova</code> function does sequential tests of the effects, the
-results could be different if we put <code>FGRAZE</code> first. Run the
-corresponding model and its analysis of variance. What null hypotheses
-are being tested? Do you reject or fail to reject the null hypotheses?
-What percentage of variation does the model explain overall? Hint:
-(SST-SSE)/SST. How much variation do <code>LOGAREA</code> and
-<code>FGRAZE</code> explain respectively?</p>
-<p> </p>
-<p> </p>
-<p>A2. Looking at the summary table of the additive model, interpret all
-the coefficients, in terms of what they measure and how they affect the
-predictions of the model. Let’s then check that it all fits together:
-write down the equation of the model with the appropriate parameter
-estimates from the summary. By hand, calculate the predicted bird
-abundance (A) for a patch with <code>LOGAREA</code>= -0.5 and
-<code>GRAZE</code>= 1, and (B) for a patch with <code>LOGAREA</code>=
--0.5 and <code>GRAZE</code>= 3. Can you predict the difference in
-expected abundance between (A) and (B) before doing the calculation?
-Hint: what measures the difference between <code>GRAZE3</code> and
-<code>GRAZE1</code> for a given patch area? Now, predict (C) for
-<code>LOGAREA</code>= 0.5 and <code>GRAZE</code>= 3. What does the
-difference between (C) and (B) correspond to?</p>
-<p> </p>
-<p> </p>
-<p>A3. Check if you can make sense of the interactive model structure
-(Model <code>birds.inter.1</code> in the previous practical), by writing
-down the equation of the model with the appropriate parameter estimates
-from the summary. Then, calculate again the predicted bird abundance (A)
-for a patch with LOGAREA = 2.5 and GRAZE = 1, and (B) for a patch with
-LOGAREA = -0.5 and GRAZE = 5.</p>
-<p> </p>
-<p> </p>
-<p>A4. Let’s compare the residuals diagnostics of the interactive model
-structure (Model <code>birds.inter.1</code> in the previous practical)
-with those of the additive model (final model from this practical).
-Remember, that you can split your plotting device into 2 rows and 2
-columns using the <code>par()</code> function before you create the
-plots. Does the additional complexity of the interaction make a big
-difference?</p>
-<p> </p>
-<p> </p>
 </div>
 
 
@@ -581,6 +666,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
