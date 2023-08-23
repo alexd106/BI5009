@@ -1,5 +1,5 @@
 ---
-title: "BI5009"
+title: "BI5012"
 output: 
   html_document:
     toc: no
@@ -11,7 +11,7 @@ output:
 
 \  
 
-Hello and welcome to BI5009. This website compliments the BI5009 MyAberdeen course site and is mainly used to host exercises and associated exercise solutions, data files and short howto videos covering some important R related topics. You can find all other material for BI5009 on the [MyAberdeen course website](https://abdn.blackboard.com/ultra/).   
+Hello and welcome to BI5012. This website compliments the BI5012 MyAberdeen course site and is mainly used to host exercises and associated exercise solutions, data files and short howto videos covering some important R related topics. You can find all other material for BI5012 on the [MyAberdeen course website](https://abdn.blackboard.com/ultra/).   
 
 \  
 

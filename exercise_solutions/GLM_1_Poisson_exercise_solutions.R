@@ -1,4 +1,4 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 sp<- read.table(file= "./data/species.txt", header= TRUE)
 str(sp)
 
@@ -19,11 +19,11 @@ coplot(logSp ~ Biomass | pH, data= sp)
 
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 sp.glm1<- glm(Species ~ Biomass, family= poisson, data= sp)
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 summary(sp.glm1)
 
 # Model description:
@@ -32,18 +32,18 @@ summary(sp.glm1)
 
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 # On the link scale:
 3.18 - 0.064*5 # 2.86
 # On the response scale (species count):
 exp(3.18 - 0.064*5) # 17.46
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------
 sp.glm2<- glm(Species ~ Biomass * pH, family= poisson, data= sp)
 
 
-## ----Q7-9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------
+## ----Q7-9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------
 summary(sp.glm2)
 anova(sp.glm2, test= "Chisq")
 
@@ -65,7 +65,7 @@ drop1(sp.glm2, test= "Chisq")
 
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------
 # "(Intercept)" is the predicted value on the link (log) scale for
 # Biomass = 0, and pH= "low"
 

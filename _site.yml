@@ -1,7 +1,7 @@
-name: "BI5009"
+name: "BI5012"
 output_dir: "."
 navbar:
-  title: "BI5009"
+  title: "BI5012"
   icon: fa-home
   left:
     - text: "Home"

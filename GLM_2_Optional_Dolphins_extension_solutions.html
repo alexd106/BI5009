@@ -13,7 +13,7 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -90,11 +90,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -103,14 +103,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -342,7 +342,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BI5009</a>
+      <a class="navbar-brand" href="index.html">BI5012</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -513,164 +513,164 @@ two by two:
 <code>fTide4 + fMonth + fTime6 + fTide4:fMonth + fTide4:fTime6 + fMonth:fTime6</code>.
 What hypotheses do these interactions correspond to?</p>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PA2<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fTide4 <span class="sc">+</span> fMonth <span class="sc">+</span> fTime6 <span class="sc">+</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            fTide4<span class="sc">:</span>fMonth <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6 <span class="sc">+</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PA2) <span class="co"># inspect the model coefficients</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## glm(formula = presence ~ fTide4 + fMonth + fTime6 + fTide4:fMonth + </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">##     fTide4:fTime6 + fMonth:fTime6, family = binomial, data = dat)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="do">## -1.5115  -0.8427  -0.5549   1.0741   2.9924  </span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">##                       Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)          -1.736653   0.456987  -3.800 0.000145 ***</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42               0.091884   0.459802   0.200 0.841611    </span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43              -0.583025   0.516274  -1.129 0.258774    </span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44              -0.008886   0.483203  -0.018 0.985329    </span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2              -0.388569   0.766729  -0.507 0.612303    </span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3              -0.514044   0.774513  -0.664 0.506883    </span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4               1.513584   0.538675   2.810 0.004957 ** </span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5               0.993961   0.547169   1.817 0.069286 .  </span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6               0.591142   0.561093   1.054 0.292087    </span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7               1.635041   0.542026   3.017 0.002557 ** </span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8               1.208554   0.535759   2.256 0.024084 *  </span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9               0.844215   0.556850   1.516 0.129506    </span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10              1.956297   0.554080   3.531 0.000414 ***</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11              2.494588   0.540074   4.619 3.86e-06 ***</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12              1.301942   0.556494   2.340 0.019307 *  </span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6AM1             0.426159   0.543223   0.785 0.432747    </span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6AM2            -0.733075   0.600867  -1.220 0.222454    </span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6MDay           -2.286839   1.095177  -2.088 0.036789 *  </span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6PM1            -0.144138   0.562167  -0.256 0.797644    </span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6PM2             0.964092   0.524844   1.837 0.066223 .  </span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth2      -0.234073   0.734572  -0.319 0.749990    </span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth2       0.103220   0.787867   0.131 0.895766    </span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth2       0.380628   0.723850   0.526 0.599000    </span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth3      -0.294141   0.677149  -0.434 0.664012    </span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth3      -0.851279   0.769553  -1.106 0.268641    </span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth3      -1.230419   0.819837  -1.501 0.133405    </span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth4      -0.356522   0.541811  -0.658 0.510526    </span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth4      -0.028836   0.587107  -0.049 0.960827    </span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth4       0.219313   0.563589   0.389 0.697175    </span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth5      -0.290937   0.490591  -0.593 0.553158    </span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth5      -0.165659   0.538676  -0.308 0.758440    </span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth5      -0.270988   0.529477  -0.512 0.608790    </span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth6       0.279671   0.516911   0.541 0.588478    </span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth6       1.203798   0.551037   2.185 0.028918 *  </span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth6       0.715606   0.541204   1.322 0.186085    </span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth7      -0.528256   0.500883  -1.055 0.291585    </span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth7      -0.043550   0.544981  -0.080 0.936309    </span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth7       0.162778   0.526721   0.309 0.757291    </span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth8      -0.319598   0.498437  -0.641 0.521393    </span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth8       0.141297   0.540692   0.261 0.793840    </span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth8      -0.055742   0.532116  -0.105 0.916570    </span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth9       0.204099   0.547755   0.373 0.709438    </span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth9       0.715113   0.592643   1.207 0.227567    </span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth9       0.566067   0.572839   0.988 0.323065    </span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth10     -0.795445   0.515501  -1.543 0.122818    </span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth10     -0.243968   0.562353  -0.434 0.664409    </span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth10     -0.418649   0.560011  -0.748 0.454718    </span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth11     -0.574539   0.510283  -1.126 0.260198    </span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth11     -0.877165   0.569594  -1.540 0.123565    </span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth11     -0.979858   0.554718  -1.766 0.077327 .  </span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fMonth12     -0.042667   0.526466  -0.081 0.935407    </span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fMonth12      0.287455   0.573504   0.501 0.616212    </span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fMonth12     -0.559902   0.604505  -0.926 0.354334    </span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fTime6AM1    -0.122861   0.310170  -0.396 0.692025    </span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fTime6AM1     0.104056   0.329629   0.316 0.752248    </span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fTime6AM1    -0.434900   0.317424  -1.370 0.170658    </span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fTime6AM2     0.620587   0.377733   1.643 0.100398    </span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fTime6AM2     0.706911   0.381577   1.853 0.063939 .  </span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fTime6AM2     0.102259   0.369192   0.277 0.781795    </span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fTime6MDay    0.004338   0.349060   0.012 0.990084    </span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fTime6MDay    0.171084   0.362711   0.472 0.637154    </span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fTime6MDay   -0.576757   0.332160  -1.736 0.082496 .  </span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fTime6PM1     0.003292   0.332238   0.010 0.992094    </span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fTime6PM1     0.211593   0.359225   0.589 0.555844    </span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fTime6PM1     0.007826   0.343038   0.023 0.981799    </span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42:fTime6PM2     0.124299   0.336439   0.369 0.711788    </span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43:fTime6PM2     0.195782   0.342441   0.572 0.567508    </span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44:fTime6PM2     0.028964   0.328197   0.088 0.929676    </span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM1    -0.182046   0.811974  -0.224 0.822600    </span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM1     0.668004   0.878482   0.760 0.447011    </span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM1    -0.823819   0.659069  -1.250 0.211309    </span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM1     0.351414   0.630135   0.558 0.577063    </span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM1     0.101034   0.637975   0.158 0.874168    </span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM1    -0.129462   0.631961  -0.205 0.837683    </span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM1    -0.202794   0.614688  -0.330 0.741465    </span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM1    -1.180274   0.636964  -1.853 0.063887 .  </span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM1   -0.952876   0.634174  -1.503 0.132956    </span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM1   -0.967854   0.624448  -1.550 0.121157    </span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM1   -0.761817   0.640082  -1.190 0.233973    </span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM2    -0.290430   0.900506  -0.323 0.747060    </span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM2     0.022688   1.113777   0.020 0.983748    </span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM2    -0.267542   0.691236  -0.387 0.698720    </span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM2     1.277617   0.653995   1.954 0.050754 .  </span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM2     0.353497   0.664671   0.532 0.594839    </span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM2     0.558089   0.648408   0.861 0.389400    </span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM2     0.306463   0.647120   0.474 0.635799    </span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM2    -1.157571   0.704973  -1.642 0.100588    </span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM2   -0.883833   0.666616  -1.326 0.184889    </span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM2   -2.119493   0.757004  -2.800 0.005113 ** </span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM2   -1.817799   0.802722  -2.265 0.023541 *  </span></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6MDay    1.495156   1.389682   1.076 0.281973    </span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6MDay    1.887648   1.436385   1.314 0.188790    </span></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6MDay    1.643026   1.146531   1.433 0.151846    </span></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6MDay    2.956139   1.142440   2.588 0.009666 ** </span></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6MDay    2.579822   1.139519   2.264 0.023577 *  </span></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6MDay    2.111067   1.141834   1.849 0.064481 .  </span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6MDay    2.505544   1.131455   2.214 0.026798 *  </span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6MDay    1.490101   1.149239   1.297 0.194770    </span></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6MDay  -0.296222   1.226470  -0.242 0.809149    </span></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6MDay   0.791483   1.149040   0.689 0.490936    </span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6MDay   0.435567   1.207048   0.361 0.718209    </span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM1    -0.839212   0.932177  -0.900 0.367976    </span></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM1   -12.636828 217.109041  -0.058 0.953585    </span></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM1    -1.164543   0.669107  -1.740 0.081781 .  </span></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM1     0.298445   0.647383   0.461 0.644797    </span></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM1     0.317729   0.647974   0.490 0.623892    </span></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM1    -0.598478   0.644820  -0.928 0.353339    </span></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM1    -0.523132   0.644427  -0.812 0.416919    </span></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM1    -0.868811   0.672927  -1.291 0.196672    </span></span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM1   -0.676389   0.653847  -1.034 0.300914    </span></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM1   -1.158308   0.637850  -1.816 0.069377 .  </span></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM1   -0.744472   0.676721  -1.100 0.271281    </span></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM2    -1.500206   0.861955  -1.740 0.081777 .  </span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM2     0.264422   0.878167   0.301 0.763334    </span></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM2    -2.372324   0.662130  -3.583 0.000340 ***</span></span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM2    -0.465887   0.608355  -0.766 0.443787    </span></span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM2    -0.841556   0.613093  -1.373 0.169865    </span></span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM2    -0.660396   0.599648  -1.101 0.270763    </span></span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM2    -1.603815   0.626542  -2.560 0.010474 *  </span></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM2    -2.018865   0.619859  -3.257 0.001126 ** </span></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM2   -0.881468   0.591153  -1.491 0.135935    </span></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM2   -1.115632   0.597317  -1.868 0.061798 .  </span></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM2   -1.000925   0.608876  -1.644 0.100199    </span></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="do">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual deviance: 5097.1  on 4877  degrees of freedom</span></span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="do">## AIC: 5343.1</span></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 14</span></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="co"># fTide4:fMonth assumes that the effect of tidal state on dolphin presence</span></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="co"># (actually, probability of recording) changes according to time of year</span></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="co"># fTide4:fTime6 assumes that the effect of tidal state on dolphin presence</span></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="co"># changes according to time of day (or vice-versa)</span></span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="co"># fMonth:fTime6 assumes that the effect of time of day on dolphin presence</span></span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="co"># changes according to time of year</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>PA2<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fTide4 <span class="sc">+</span> fMonth <span class="sc">+</span> fTime6 <span class="sc">+</span> </span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>            fTide4<span class="sc">:</span>fMonth <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6 <span class="sc">+</span> </span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>            fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">summary</span>(PA2) <span class="co"># inspect the model coefficients</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="do">## glm(formula = presence ~ fTide4 + fMonth + fTime6 + fTide4:fMonth + </span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="do">##     fTide4:fTime6 + fMonth:fTime6, family = binomial, data = dat)</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="do">## -1.5115  -0.8427  -0.5549   1.0741   2.9924  </span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="do">##                       Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="do">## (Intercept)          -1.736653   0.456987  -3.800 0.000145 ***</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="do">## fTide42               0.091884   0.459802   0.200 0.841611    </span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="do">## fTide43              -0.583025   0.516274  -1.129 0.258774    </span></span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="do">## fTide44              -0.008886   0.483203  -0.018 0.985329    </span></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="do">## fMonth2              -0.388569   0.766729  -0.507 0.612303    </span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="do">## fMonth3              -0.514044   0.774513  -0.664 0.506883    </span></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="do">## fMonth4               1.513584   0.538675   2.810 0.004957 ** </span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="do">## fMonth5               0.993961   0.547169   1.817 0.069286 .  </span></span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="do">## fMonth6               0.591142   0.561093   1.054 0.292087    </span></span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="do">## fMonth7               1.635041   0.542026   3.017 0.002557 ** </span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="do">## fMonth8               1.208554   0.535759   2.256 0.024084 *  </span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="do">## fMonth9               0.844215   0.556850   1.516 0.129506    </span></span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="do">## fMonth10              1.956297   0.554080   3.531 0.000414 ***</span></span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="do">## fMonth11              2.494588   0.540074   4.619 3.86e-06 ***</span></span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="do">## fMonth12              1.301942   0.556494   2.340 0.019307 *  </span></span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a><span class="do">## fTime6AM1             0.426159   0.543223   0.785 0.432747    </span></span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a><span class="do">## fTime6AM2            -0.733075   0.600867  -1.220 0.222454    </span></span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a><span class="do">## fTime6MDay           -2.286839   1.095177  -2.088 0.036789 *  </span></span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a><span class="do">## fTime6PM1            -0.144138   0.562167  -0.256 0.797644    </span></span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a><span class="do">## fTime6PM2             0.964092   0.524844   1.837 0.066223 .  </span></span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a><span class="do">## fTide42:fMonth2      -0.234073   0.734572  -0.319 0.749990    </span></span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a><span class="do">## fTide43:fMonth2       0.103220   0.787867   0.131 0.895766    </span></span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a><span class="do">## fTide44:fMonth2       0.380628   0.723850   0.526 0.599000    </span></span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a><span class="do">## fTide42:fMonth3      -0.294141   0.677149  -0.434 0.664012    </span></span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a><span class="do">## fTide43:fMonth3      -0.851279   0.769553  -1.106 0.268641    </span></span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="do">## fTide44:fMonth3      -1.230419   0.819837  -1.501 0.133405    </span></span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="do">## fTide42:fMonth4      -0.356522   0.541811  -0.658 0.510526    </span></span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="do">## fTide43:fMonth4      -0.028836   0.587107  -0.049 0.960827    </span></span>
+<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a><span class="do">## fTide44:fMonth4       0.219313   0.563589   0.389 0.697175    </span></span>
+<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a><span class="do">## fTide42:fMonth5      -0.290937   0.490591  -0.593 0.553158    </span></span>
+<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a><span class="do">## fTide43:fMonth5      -0.165659   0.538676  -0.308 0.758440    </span></span>
+<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a><span class="do">## fTide44:fMonth5      -0.270988   0.529477  -0.512 0.608790    </span></span>
+<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a><span class="do">## fTide42:fMonth6       0.279671   0.516911   0.541 0.588478    </span></span>
+<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a><span class="do">## fTide43:fMonth6       1.203798   0.551037   2.185 0.028918 *  </span></span>
+<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a><span class="do">## fTide44:fMonth6       0.715606   0.541204   1.322 0.186085    </span></span>
+<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a><span class="do">## fTide42:fMonth7      -0.528256   0.500883  -1.055 0.291585    </span></span>
+<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a><span class="do">## fTide43:fMonth7      -0.043550   0.544981  -0.080 0.936309    </span></span>
+<span id="cb1-54"><a href="#cb1-54" tabindex="-1"></a><span class="do">## fTide44:fMonth7       0.162778   0.526721   0.309 0.757291    </span></span>
+<span id="cb1-55"><a href="#cb1-55" tabindex="-1"></a><span class="do">## fTide42:fMonth8      -0.319598   0.498437  -0.641 0.521393    </span></span>
+<span id="cb1-56"><a href="#cb1-56" tabindex="-1"></a><span class="do">## fTide43:fMonth8       0.141297   0.540692   0.261 0.793840    </span></span>
+<span id="cb1-57"><a href="#cb1-57" tabindex="-1"></a><span class="do">## fTide44:fMonth8      -0.055742   0.532116  -0.105 0.916570    </span></span>
+<span id="cb1-58"><a href="#cb1-58" tabindex="-1"></a><span class="do">## fTide42:fMonth9       0.204099   0.547755   0.373 0.709438    </span></span>
+<span id="cb1-59"><a href="#cb1-59" tabindex="-1"></a><span class="do">## fTide43:fMonth9       0.715113   0.592643   1.207 0.227567    </span></span>
+<span id="cb1-60"><a href="#cb1-60" tabindex="-1"></a><span class="do">## fTide44:fMonth9       0.566067   0.572839   0.988 0.323065    </span></span>
+<span id="cb1-61"><a href="#cb1-61" tabindex="-1"></a><span class="do">## fTide42:fMonth10     -0.795445   0.515501  -1.543 0.122818    </span></span>
+<span id="cb1-62"><a href="#cb1-62" tabindex="-1"></a><span class="do">## fTide43:fMonth10     -0.243968   0.562353  -0.434 0.664409    </span></span>
+<span id="cb1-63"><a href="#cb1-63" tabindex="-1"></a><span class="do">## fTide44:fMonth10     -0.418649   0.560011  -0.748 0.454718    </span></span>
+<span id="cb1-64"><a href="#cb1-64" tabindex="-1"></a><span class="do">## fTide42:fMonth11     -0.574539   0.510283  -1.126 0.260198    </span></span>
+<span id="cb1-65"><a href="#cb1-65" tabindex="-1"></a><span class="do">## fTide43:fMonth11     -0.877165   0.569594  -1.540 0.123565    </span></span>
+<span id="cb1-66"><a href="#cb1-66" tabindex="-1"></a><span class="do">## fTide44:fMonth11     -0.979858   0.554718  -1.766 0.077327 .  </span></span>
+<span id="cb1-67"><a href="#cb1-67" tabindex="-1"></a><span class="do">## fTide42:fMonth12     -0.042667   0.526466  -0.081 0.935407    </span></span>
+<span id="cb1-68"><a href="#cb1-68" tabindex="-1"></a><span class="do">## fTide43:fMonth12      0.287455   0.573504   0.501 0.616212    </span></span>
+<span id="cb1-69"><a href="#cb1-69" tabindex="-1"></a><span class="do">## fTide44:fMonth12     -0.559902   0.604505  -0.926 0.354334    </span></span>
+<span id="cb1-70"><a href="#cb1-70" tabindex="-1"></a><span class="do">## fTide42:fTime6AM1    -0.122861   0.310170  -0.396 0.692025    </span></span>
+<span id="cb1-71"><a href="#cb1-71" tabindex="-1"></a><span class="do">## fTide43:fTime6AM1     0.104056   0.329629   0.316 0.752248    </span></span>
+<span id="cb1-72"><a href="#cb1-72" tabindex="-1"></a><span class="do">## fTide44:fTime6AM1    -0.434900   0.317424  -1.370 0.170658    </span></span>
+<span id="cb1-73"><a href="#cb1-73" tabindex="-1"></a><span class="do">## fTide42:fTime6AM2     0.620587   0.377733   1.643 0.100398    </span></span>
+<span id="cb1-74"><a href="#cb1-74" tabindex="-1"></a><span class="do">## fTide43:fTime6AM2     0.706911   0.381577   1.853 0.063939 .  </span></span>
+<span id="cb1-75"><a href="#cb1-75" tabindex="-1"></a><span class="do">## fTide44:fTime6AM2     0.102259   0.369192   0.277 0.781795    </span></span>
+<span id="cb1-76"><a href="#cb1-76" tabindex="-1"></a><span class="do">## fTide42:fTime6MDay    0.004338   0.349060   0.012 0.990084    </span></span>
+<span id="cb1-77"><a href="#cb1-77" tabindex="-1"></a><span class="do">## fTide43:fTime6MDay    0.171084   0.362711   0.472 0.637154    </span></span>
+<span id="cb1-78"><a href="#cb1-78" tabindex="-1"></a><span class="do">## fTide44:fTime6MDay   -0.576757   0.332160  -1.736 0.082496 .  </span></span>
+<span id="cb1-79"><a href="#cb1-79" tabindex="-1"></a><span class="do">## fTide42:fTime6PM1     0.003292   0.332238   0.010 0.992094    </span></span>
+<span id="cb1-80"><a href="#cb1-80" tabindex="-1"></a><span class="do">## fTide43:fTime6PM1     0.211593   0.359225   0.589 0.555844    </span></span>
+<span id="cb1-81"><a href="#cb1-81" tabindex="-1"></a><span class="do">## fTide44:fTime6PM1     0.007826   0.343038   0.023 0.981799    </span></span>
+<span id="cb1-82"><a href="#cb1-82" tabindex="-1"></a><span class="do">## fTide42:fTime6PM2     0.124299   0.336439   0.369 0.711788    </span></span>
+<span id="cb1-83"><a href="#cb1-83" tabindex="-1"></a><span class="do">## fTide43:fTime6PM2     0.195782   0.342441   0.572 0.567508    </span></span>
+<span id="cb1-84"><a href="#cb1-84" tabindex="-1"></a><span class="do">## fTide44:fTime6PM2     0.028964   0.328197   0.088 0.929676    </span></span>
+<span id="cb1-85"><a href="#cb1-85" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM1    -0.182046   0.811974  -0.224 0.822600    </span></span>
+<span id="cb1-86"><a href="#cb1-86" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM1     0.668004   0.878482   0.760 0.447011    </span></span>
+<span id="cb1-87"><a href="#cb1-87" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM1    -0.823819   0.659069  -1.250 0.211309    </span></span>
+<span id="cb1-88"><a href="#cb1-88" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM1     0.351414   0.630135   0.558 0.577063    </span></span>
+<span id="cb1-89"><a href="#cb1-89" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM1     0.101034   0.637975   0.158 0.874168    </span></span>
+<span id="cb1-90"><a href="#cb1-90" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM1    -0.129462   0.631961  -0.205 0.837683    </span></span>
+<span id="cb1-91"><a href="#cb1-91" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM1    -0.202794   0.614688  -0.330 0.741465    </span></span>
+<span id="cb1-92"><a href="#cb1-92" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM1    -1.180274   0.636964  -1.853 0.063887 .  </span></span>
+<span id="cb1-93"><a href="#cb1-93" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM1   -0.952876   0.634174  -1.503 0.132956    </span></span>
+<span id="cb1-94"><a href="#cb1-94" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM1   -0.967854   0.624448  -1.550 0.121157    </span></span>
+<span id="cb1-95"><a href="#cb1-95" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM1   -0.761817   0.640082  -1.190 0.233973    </span></span>
+<span id="cb1-96"><a href="#cb1-96" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM2    -0.290430   0.900506  -0.323 0.747060    </span></span>
+<span id="cb1-97"><a href="#cb1-97" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM2     0.022688   1.113777   0.020 0.983748    </span></span>
+<span id="cb1-98"><a href="#cb1-98" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM2    -0.267542   0.691236  -0.387 0.698720    </span></span>
+<span id="cb1-99"><a href="#cb1-99" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM2     1.277617   0.653995   1.954 0.050754 .  </span></span>
+<span id="cb1-100"><a href="#cb1-100" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM2     0.353497   0.664671   0.532 0.594839    </span></span>
+<span id="cb1-101"><a href="#cb1-101" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM2     0.558089   0.648408   0.861 0.389400    </span></span>
+<span id="cb1-102"><a href="#cb1-102" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM2     0.306463   0.647120   0.474 0.635799    </span></span>
+<span id="cb1-103"><a href="#cb1-103" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM2    -1.157571   0.704973  -1.642 0.100588    </span></span>
+<span id="cb1-104"><a href="#cb1-104" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM2   -0.883833   0.666616  -1.326 0.184889    </span></span>
+<span id="cb1-105"><a href="#cb1-105" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM2   -2.119493   0.757004  -2.800 0.005113 ** </span></span>
+<span id="cb1-106"><a href="#cb1-106" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM2   -1.817799   0.802722  -2.265 0.023541 *  </span></span>
+<span id="cb1-107"><a href="#cb1-107" tabindex="-1"></a><span class="do">## fMonth2:fTime6MDay    1.495156   1.389682   1.076 0.281973    </span></span>
+<span id="cb1-108"><a href="#cb1-108" tabindex="-1"></a><span class="do">## fMonth3:fTime6MDay    1.887648   1.436385   1.314 0.188790    </span></span>
+<span id="cb1-109"><a href="#cb1-109" tabindex="-1"></a><span class="do">## fMonth4:fTime6MDay    1.643026   1.146531   1.433 0.151846    </span></span>
+<span id="cb1-110"><a href="#cb1-110" tabindex="-1"></a><span class="do">## fMonth5:fTime6MDay    2.956139   1.142440   2.588 0.009666 ** </span></span>
+<span id="cb1-111"><a href="#cb1-111" tabindex="-1"></a><span class="do">## fMonth6:fTime6MDay    2.579822   1.139519   2.264 0.023577 *  </span></span>
+<span id="cb1-112"><a href="#cb1-112" tabindex="-1"></a><span class="do">## fMonth7:fTime6MDay    2.111067   1.141834   1.849 0.064481 .  </span></span>
+<span id="cb1-113"><a href="#cb1-113" tabindex="-1"></a><span class="do">## fMonth8:fTime6MDay    2.505544   1.131455   2.214 0.026798 *  </span></span>
+<span id="cb1-114"><a href="#cb1-114" tabindex="-1"></a><span class="do">## fMonth9:fTime6MDay    1.490101   1.149239   1.297 0.194770    </span></span>
+<span id="cb1-115"><a href="#cb1-115" tabindex="-1"></a><span class="do">## fMonth10:fTime6MDay  -0.296222   1.226470  -0.242 0.809149    </span></span>
+<span id="cb1-116"><a href="#cb1-116" tabindex="-1"></a><span class="do">## fMonth11:fTime6MDay   0.791483   1.149040   0.689 0.490936    </span></span>
+<span id="cb1-117"><a href="#cb1-117" tabindex="-1"></a><span class="do">## fMonth12:fTime6MDay   0.435567   1.207048   0.361 0.718209    </span></span>
+<span id="cb1-118"><a href="#cb1-118" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM1    -0.839212   0.932177  -0.900 0.367976    </span></span>
+<span id="cb1-119"><a href="#cb1-119" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM1   -12.636828 217.109041  -0.058 0.953585    </span></span>
+<span id="cb1-120"><a href="#cb1-120" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM1    -1.164543   0.669107  -1.740 0.081781 .  </span></span>
+<span id="cb1-121"><a href="#cb1-121" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM1     0.298445   0.647383   0.461 0.644797    </span></span>
+<span id="cb1-122"><a href="#cb1-122" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM1     0.317729   0.647974   0.490 0.623892    </span></span>
+<span id="cb1-123"><a href="#cb1-123" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM1    -0.598478   0.644820  -0.928 0.353339    </span></span>
+<span id="cb1-124"><a href="#cb1-124" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM1    -0.523132   0.644427  -0.812 0.416919    </span></span>
+<span id="cb1-125"><a href="#cb1-125" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM1    -0.868811   0.672927  -1.291 0.196672    </span></span>
+<span id="cb1-126"><a href="#cb1-126" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM1   -0.676389   0.653847  -1.034 0.300914    </span></span>
+<span id="cb1-127"><a href="#cb1-127" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM1   -1.158308   0.637850  -1.816 0.069377 .  </span></span>
+<span id="cb1-128"><a href="#cb1-128" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM1   -0.744472   0.676721  -1.100 0.271281    </span></span>
+<span id="cb1-129"><a href="#cb1-129" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM2    -1.500206   0.861955  -1.740 0.081777 .  </span></span>
+<span id="cb1-130"><a href="#cb1-130" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM2     0.264422   0.878167   0.301 0.763334    </span></span>
+<span id="cb1-131"><a href="#cb1-131" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM2    -2.372324   0.662130  -3.583 0.000340 ***</span></span>
+<span id="cb1-132"><a href="#cb1-132" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM2    -0.465887   0.608355  -0.766 0.443787    </span></span>
+<span id="cb1-133"><a href="#cb1-133" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM2    -0.841556   0.613093  -1.373 0.169865    </span></span>
+<span id="cb1-134"><a href="#cb1-134" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM2    -0.660396   0.599648  -1.101 0.270763    </span></span>
+<span id="cb1-135"><a href="#cb1-135" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM2    -1.603815   0.626542  -2.560 0.010474 *  </span></span>
+<span id="cb1-136"><a href="#cb1-136" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM2    -2.018865   0.619859  -3.257 0.001126 ** </span></span>
+<span id="cb1-137"><a href="#cb1-137" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM2   -0.881468   0.591153  -1.491 0.135935    </span></span>
+<span id="cb1-138"><a href="#cb1-138" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM2   -1.115632   0.597317  -1.868 0.061798 .  </span></span>
+<span id="cb1-139"><a href="#cb1-139" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM2   -1.000925   0.608876  -1.644 0.100199    </span></span>
+<span id="cb1-140"><a href="#cb1-140" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb1-141"><a href="#cb1-141" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb1-142"><a href="#cb1-142" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-143"><a href="#cb1-143" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb1-144"><a href="#cb1-144" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-145"><a href="#cb1-145" tabindex="-1"></a><span class="do">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
+<span id="cb1-146"><a href="#cb1-146" tabindex="-1"></a><span class="do">## Residual deviance: 5097.1  on 4877  degrees of freedom</span></span>
+<span id="cb1-147"><a href="#cb1-147" tabindex="-1"></a><span class="do">## AIC: 5343.1</span></span>
+<span id="cb1-148"><a href="#cb1-148" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-149"><a href="#cb1-149" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 14</span></span>
+<span id="cb1-150"><a href="#cb1-150" tabindex="-1"></a></span>
+<span id="cb1-151"><a href="#cb1-151" tabindex="-1"></a><span class="co"># fTide4:fMonth assumes that the effect of tidal state on dolphin presence</span></span>
+<span id="cb1-152"><a href="#cb1-152" tabindex="-1"></a><span class="co"># (actually, probability of recording) changes according to time of year</span></span>
+<span id="cb1-153"><a href="#cb1-153" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" tabindex="-1"></a><span class="co"># fTide4:fTime6 assumes that the effect of tidal state on dolphin presence</span></span>
+<span id="cb1-155"><a href="#cb1-155" tabindex="-1"></a><span class="co"># changes according to time of day (or vice-versa)</span></span>
+<span id="cb1-156"><a href="#cb1-156" tabindex="-1"></a></span>
+<span id="cb1-157"><a href="#cb1-157" tabindex="-1"></a><span class="co"># fMonth:fTime6 assumes that the effect of time of day on dolphin presence</span></span>
+<span id="cb1-158"><a href="#cb1-158" tabindex="-1"></a><span class="co"># changes according to time of year</span></span></code></pre></div>
 <p> </p>
 <p>14. Perform model selection “by hand” using the AIC, and construct an
 AIC table, using the example in the lecture. “By hand” means without
@@ -694,324 +694,324 @@ which hypothesis is best supported by the data:
 </ul></li>
 </ul>
 <p> </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Because I don&#39;t have specific predictions here, and I suspect the presence</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of dolphins at Sutors may respond to all combinations of the 3 environmental</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factors we have, I&#39;ll go for a quite systematic exploration here (you may</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># have a different logic, knowledge about dolphins, more specific predictions, </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and a more restricted list of models you consider plausible: that would be</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># entirely fine)</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remove interactions one-at-a-time</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>PA21<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTide4 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>PA22<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6 <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>PA23<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTide4 <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># remove interactions two-at-a-time</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>PA24<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>PA25<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>PA26<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTide4, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all interactions</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>PA27<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA2)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5343.076</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA21)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5326.557</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA22)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5328.189</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA23)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5405.739</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA24)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5310.091</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA25)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5387.219</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA26)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5391.219</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA27)</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5371.901</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># PA24 seems best so far</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the main effect not involved in the interaction of PA24 (fTide4)</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>PA28<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(PA28)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5315.361</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># we could simplify further, but it is unlikely that simpler models </span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># would be supported based on what we know, so I&#39;ll stop here</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing a table </span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># (you can do this with pen and paper, or in R, for example like this)</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>ModelStructure<span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fTide4 * fMonth + fTide4 * fTime6 + fMonth * fTime6&quot;</span>,     </span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTide4 + fMonth:fTime6&quot;</span>,</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTime6 + fTide4:fTime6&quot;</span> ,</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTide4 + fTide4:fTime6&quot;</span>,</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTime6&quot;</span>,</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fTide4:fTime6&quot;</span>,</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTide4&quot;</span>,</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6&quot;</span>,</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTime6 + fMonth:fTime6&quot;</span>)</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>AICval<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">AIC</span>(PA2),</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA21),</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA22),</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA23),</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA24),</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA25),</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA26),</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA27),</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>            <span class="fu">AIC</span>(PA28))</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>ModelName<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PA2&quot;</span>,</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA21&quot;</span>,</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA22&quot;</span>,</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA23&quot;</span>,</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA24&quot;</span>,</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA25&quot;</span>,</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA26&quot;</span>,</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA27&quot;</span>,</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;PA28&quot;</span>)</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co"># combine models and AIC values in a table</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>ModSelTab<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">model=</span> ModelName, <span class="at">structure=</span> ModelStructure, <span class="at">AIC=</span> AICval)</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the table by increasing AIC value</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>ModSelTab<span class="ot">&lt;-</span> ModSelTab[<span class="fu">order</span>(ModSelTab<span class="sc">$</span>AIC), ]</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co"># compute AIC differences with best model, and round to 2 decimals</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>ModSelTab<span class="sc">$</span>delta<span class="ot">&lt;-</span> <span class="fu">round</span>(ModSelTab<span class="sc">$</span>AIC <span class="sc">-</span> ModSelTab<span class="sc">$</span>AIC[<span class="dv">1</span>], <span class="dv">2</span>)</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="co"># compute AIC weight, and round to 2 decimals</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>ModSelTab<span class="sc">$</span>weight<span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">exp</span>(<span class="sc">-</span>ModSelTab<span class="sc">$</span>delta <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">exp</span>(<span class="sc">-</span>ModSelTab<span class="sc">$</span>delta <span class="sc">/</span> <span class="dv">2</span>)), <span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(knitr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(ModSelTab)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Model PA24 is far ahead, with an AIC more than 5 units lower than the next best model.</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># It attracts almost all the AIC weight, accordingly.</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Depending on the set of models you decided to compare, </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># your best model and AIC weights may vary from mine.</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Because I don&#39;t have specific predictions here, and I suspect the presence</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># of dolphins at Sutors may respond to all combinations of the 3 environmental</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># factors we have, I&#39;ll go for a quite systematic exploration here (you may</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># have a different logic, knowledge about dolphins, more specific predictions, </span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># and a more restricted list of models you consider plausible: that would be</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># entirely fine)</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># remove interactions one-at-a-time</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>PA21<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTide4 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>PA22<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6 <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>PA23<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTide4 <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># remove interactions two-at-a-time</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>PA24<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>PA25<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>PA26<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTide4, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co"># remove all interactions</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>PA27<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTide4 <span class="sc">+</span> fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="fu">AIC</span>(PA2)</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="do">## [1] 5343.076</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="fu">AIC</span>(PA21)</span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="do">## [1] 5326.557</span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="fu">AIC</span>(PA22)</span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="do">## [1] 5328.189</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="fu">AIC</span>(PA23)</span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="do">## [1] 5405.739</span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="fu">AIC</span>(PA24)</span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="do">## [1] 5310.091</span></span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a><span class="fu">AIC</span>(PA25)</span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="do">## [1] 5387.219</span></span>
+<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="fu">AIC</span>(PA26)</span>
+<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a><span class="do">## [1] 5391.219</span></span>
+<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a><span class="fu">AIC</span>(PA27)</span>
+<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="do">## [1] 5371.901</span></span>
+<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a><span class="co"># PA24 seems best so far</span></span>
+<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" tabindex="-1"></a><span class="co"># remove the main effect not involved in the interaction of PA24 (fTide4)</span></span>
+<span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a>PA28<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fMonth <span class="sc">+</span> fTime6 <span class="sc">+</span> fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
+<span id="cb2-40"><a href="#cb2-40" tabindex="-1"></a><span class="fu">AIC</span>(PA28)</span>
+<span id="cb2-41"><a href="#cb2-41" tabindex="-1"></a><span class="do">## [1] 5315.361</span></span>
+<span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" tabindex="-1"></a><span class="co"># we could simplify further, but it is unlikely that simpler models </span></span>
+<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a><span class="co"># would be supported based on what we know, so I&#39;ll stop here</span></span>
+<span id="cb2-45"><a href="#cb2-45" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" tabindex="-1"></a><span class="co"># Constructing a table </span></span>
+<span id="cb2-47"><a href="#cb2-47" tabindex="-1"></a><span class="co"># (you can do this with pen and paper, or in R, for example like this)</span></span>
+<span id="cb2-48"><a href="#cb2-48" tabindex="-1"></a>ModelStructure<span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-49"><a href="#cb2-49" tabindex="-1"></a>  <span class="st">&quot;fTide4 * fMonth + fTide4 * fTime6 + fMonth * fTime6&quot;</span>,     </span>
+<span id="cb2-50"><a href="#cb2-50" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTide4 + fMonth:fTime6&quot;</span>,</span>
+<span id="cb2-51"><a href="#cb2-51" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTime6 + fTide4:fTime6&quot;</span> ,</span>
+<span id="cb2-52"><a href="#cb2-52" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTide4 + fTide4:fTime6&quot;</span>,</span>
+<span id="cb2-53"><a href="#cb2-53" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTime6&quot;</span>,</span>
+<span id="cb2-54"><a href="#cb2-54" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fTide4:fTime6&quot;</span>,</span>
+<span id="cb2-55"><a href="#cb2-55" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6 + fMonth:fTide4&quot;</span>,</span>
+<span id="cb2-56"><a href="#cb2-56" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTide4 + fTime6&quot;</span>,</span>
+<span id="cb2-57"><a href="#cb2-57" tabindex="-1"></a>  <span class="st">&quot;fMonth + fTime6 + fMonth:fTime6&quot;</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" tabindex="-1"></a>AICval<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">AIC</span>(PA2),</span>
+<span id="cb2-60"><a href="#cb2-60" tabindex="-1"></a>            <span class="fu">AIC</span>(PA21),</span>
+<span id="cb2-61"><a href="#cb2-61" tabindex="-1"></a>            <span class="fu">AIC</span>(PA22),</span>
+<span id="cb2-62"><a href="#cb2-62" tabindex="-1"></a>            <span class="fu">AIC</span>(PA23),</span>
+<span id="cb2-63"><a href="#cb2-63" tabindex="-1"></a>            <span class="fu">AIC</span>(PA24),</span>
+<span id="cb2-64"><a href="#cb2-64" tabindex="-1"></a>            <span class="fu">AIC</span>(PA25),</span>
+<span id="cb2-65"><a href="#cb2-65" tabindex="-1"></a>            <span class="fu">AIC</span>(PA26),</span>
+<span id="cb2-66"><a href="#cb2-66" tabindex="-1"></a>            <span class="fu">AIC</span>(PA27),</span>
+<span id="cb2-67"><a href="#cb2-67" tabindex="-1"></a>            <span class="fu">AIC</span>(PA28))</span>
+<span id="cb2-68"><a href="#cb2-68" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" tabindex="-1"></a>ModelName<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PA2&quot;</span>,</span>
+<span id="cb2-70"><a href="#cb2-70" tabindex="-1"></a>            <span class="st">&quot;PA21&quot;</span>,</span>
+<span id="cb2-71"><a href="#cb2-71" tabindex="-1"></a>            <span class="st">&quot;PA22&quot;</span>,</span>
+<span id="cb2-72"><a href="#cb2-72" tabindex="-1"></a>            <span class="st">&quot;PA23&quot;</span>,</span>
+<span id="cb2-73"><a href="#cb2-73" tabindex="-1"></a>            <span class="st">&quot;PA24&quot;</span>,</span>
+<span id="cb2-74"><a href="#cb2-74" tabindex="-1"></a>            <span class="st">&quot;PA25&quot;</span>,</span>
+<span id="cb2-75"><a href="#cb2-75" tabindex="-1"></a>            <span class="st">&quot;PA26&quot;</span>,</span>
+<span id="cb2-76"><a href="#cb2-76" tabindex="-1"></a>            <span class="st">&quot;PA27&quot;</span>,</span>
+<span id="cb2-77"><a href="#cb2-77" tabindex="-1"></a>            <span class="st">&quot;PA28&quot;</span>)</span>
+<span id="cb2-78"><a href="#cb2-78" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" tabindex="-1"></a><span class="co"># combine models and AIC values in a table</span></span>
+<span id="cb2-80"><a href="#cb2-80" tabindex="-1"></a>ModSelTab<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">model=</span> ModelName, <span class="at">structure=</span> ModelStructure, <span class="at">AIC=</span> AICval)</span>
+<span id="cb2-81"><a href="#cb2-81" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" tabindex="-1"></a><span class="co"># sort the table by increasing AIC value</span></span>
+<span id="cb2-83"><a href="#cb2-83" tabindex="-1"></a>ModSelTab<span class="ot">&lt;-</span> ModSelTab[<span class="fu">order</span>(ModSelTab<span class="sc">$</span>AIC), ]</span>
+<span id="cb2-84"><a href="#cb2-84" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" tabindex="-1"></a><span class="co"># compute AIC differences with best model, and round to 2 decimals</span></span>
+<span id="cb2-86"><a href="#cb2-86" tabindex="-1"></a>ModSelTab<span class="sc">$</span>delta<span class="ot">&lt;-</span> <span class="fu">round</span>(ModSelTab<span class="sc">$</span>AIC <span class="sc">-</span> ModSelTab<span class="sc">$</span>AIC[<span class="dv">1</span>], <span class="dv">2</span>)</span>
+<span id="cb2-87"><a href="#cb2-87" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" tabindex="-1"></a><span class="co"># compute AIC weight, and round to 2 decimals</span></span>
+<span id="cb2-89"><a href="#cb2-89" tabindex="-1"></a>ModSelTab<span class="sc">$</span>weight<span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">exp</span>(<span class="sc">-</span>ModSelTab<span class="sc">$</span>delta <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">exp</span>(<span class="sc">-</span>ModSelTab<span class="sc">$</span>delta <span class="sc">/</span> <span class="dv">2</span>)), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">require</span>(knitr)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">kable</span>(ModSelTab)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># Model PA24 is far ahead, with an AIC more than 5 units lower than the next best model.</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># It attracts almost all the AIC weight, accordingly.</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># Depending on the set of models you decided to compare, </span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># your best model and AIC weights may vary from mine.</span></span></code></pre></div>
 <p> </p>
 <p>15. Do the validation of your best model, using the approach taken in
 question 7.</p>
 <p> </p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>res24.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA24, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTide4), <span class="at">y=</span>  res24.p, <span class="at">xlab=</span> <span class="st">&quot;Tide angle&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># okay</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTime6), <span class="at">y=</span>  res24.p, <span class="at">xlab=</span> <span class="st">&quot;hour&quot;</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># okay</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> dat<span class="sc">$</span>julianday, <span class="at">y=</span>  res24.p, <span class="at">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># okay</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We could also check seasonal variation in diel pattern (&quot;time by season&quot; interaction):</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="fu">tapply</span>(res24.p, <span class="fu">list</span>(dat<span class="sc">$</span>mon, dat<span class="sc">$</span>fTime6), mean), <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="at">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>res24.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA24, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTide4), <span class="at">y=</span>  res24.p, <span class="at">xlab=</span> <span class="st">&quot;Tide angle&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co"># okay</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTime6), <span class="at">y=</span>  res24.p, <span class="at">xlab=</span> <span class="st">&quot;hour&quot;</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co"># okay</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> dat<span class="sc">$</span>julianday, <span class="at">y=</span>  res24.p, <span class="at">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co"># okay</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co"># We could also check seasonal variation in diel pattern (&quot;time by season&quot; interaction):</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">matplot</span>(<span class="fu">tapply</span>(res24.p, <span class="fu">list</span>(dat<span class="sc">$</span>mon, dat<span class="sc">$</span>fTime6), mean), <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>        <span class="at">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="at">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q15-1.png" width="768" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual variation is tiny (check y-axis and compare with Question 9); </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># no consistent pattern of variation. Pretty good!</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># There are few assumptions for the Bernoulli distribution other than </span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># observations being zeros and ones.</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Some assumptions valid for all models still apply here, such as: model </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># correctly specified; independent</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># residuals. The latter is violated in this data set, due to consecutive </span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># measurements in time. This issue</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># is explored in the linked paper, using mixed models for non-independent data </span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (covered in the course BI5302). </span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The paper also uses GAMs (Generalised Additive Models, an extension of GLMs)</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># for avoiding the discretization of continuous variables, and</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># accounting for the cyclicity of the predictors (estimates at each end should </span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Residual variation is tiny (check y-axis and compare with Question 9); </span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># no consistent pattern of variation. Pretty good!</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># There are few assumptions for the Bernoulli distribution other than </span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># observations being zeros and ones.</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># Some assumptions valid for all models still apply here, such as: model </span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># correctly specified; independent</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># residuals. The latter is violated in this data set, due to consecutive </span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># measurements in time. This issue</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># is explored in the linked paper, using mixed models for non-independent data </span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># (covered in the course BI5302). </span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># The paper also uses GAMs (Generalised Additive Models, an extension of GLMs)</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># for avoiding the discretization of continuous variables, and</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># accounting for the cyclicity of the predictors (estimates at each end should </span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)</span></span></code></pre></div>
 <p> </p>
 <p>16. Interpret the model, using plots of the predictions (use the
 approach taken in question 9) .</p>
 <p> </p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Model PA24 assumes that dolphin presence (actually, probability of recording) </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># changes according to time of year, time of day and tidal stage, and that the</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># effect of time of day changes with the time of year (fMonth:fTime6).</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PA24)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## glm(formula = presence ~ fMonth + fTide4 + fTime6 + fMonth:fTime6, </span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     family = binomial, data = dat)</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="do">## -1.2733  -0.8636  -0.5617   1.1534   2.9595  </span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="do">##                      Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)          -1.64415    0.38590  -4.261 2.04e-05 ***</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2              -0.23790    0.61045  -0.390 0.696748    </span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3              -0.89331    0.70966  -1.259 0.208110    </span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4               1.47415    0.45998   3.205 0.001352 ** </span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5               0.80539    0.47239   1.705 0.088208 .  </span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6               1.08256    0.47037   2.301 0.021364 *  </span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7               1.52380    0.46019   3.311 0.000929 ***</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8               1.11535    0.45483   2.452 0.014197 *  </span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9               1.21898    0.44379   2.747 0.006019 ** </span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10              1.54792    0.45375   3.411 0.000646 ***</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11              1.83358    0.44164   4.152 3.30e-05 ***</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12              1.17666    0.46218   2.546 0.010901 *  </span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide42              -0.11702    0.09660  -1.211 0.225763    </span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide43              -0.30872    0.09891  -3.121 0.001801 ** </span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="do">## fTide44              -0.23268    0.09807  -2.373 0.017660 *  </span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6AM1             0.30910    0.50874   0.608 0.543469    </span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6AM2            -0.37350    0.53474  -0.698 0.484882    </span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6MDay           -2.41382    1.07781  -2.240 0.025120 *  </span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6PM1            -0.12247    0.52354  -0.234 0.815050    </span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="do">## fTime6PM2             0.99681    0.47657   2.092 0.036471 *  </span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM1    -0.33296    0.79113  -0.421 0.673852    </span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM1     0.56488    0.85542   0.660 0.509022    </span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM1    -0.92433    0.64061  -1.443 0.149056    </span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM1     0.30708    0.61897   0.496 0.619815    </span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM1     0.08137    0.62534   0.130 0.896472    </span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM1    -0.15093    0.62037  -0.243 0.807779    </span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM1    -0.20235    0.60423  -0.335 0.737710    </span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM1    -1.24727    0.62484  -1.996 0.045917 *  </span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM1   -0.95738    0.62061  -1.543 0.122920    </span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM1   -0.85615    0.60744  -1.409 0.158701    </span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM1   -0.67218    0.62834  -1.070 0.284717    </span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM2    -0.35142    0.88142  -0.399 0.690112    </span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM2    -0.09895    1.07867  -0.092 0.926908    </span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM2    -0.26743    0.66937  -0.400 0.689508    </span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM2     1.28053    0.63995   2.001 0.045393 *  </span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM2     0.61323    0.64744   0.947 0.343557    </span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM2     0.55066    0.63392   0.869 0.385038    </span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM2     0.29451    0.63417   0.464 0.642362    </span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM2    -1.12461    0.69018  -1.629 0.103220    </span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM2   -0.87941    0.65261  -1.348 0.177807    </span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM2   -2.14682    0.74197  -2.893 0.003811 ** </span></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM2   -1.65592    0.78777  -2.102 0.035550 *  </span></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6MDay    1.38586    1.38230   1.003 0.316064    </span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6MDay    1.90559    1.42825   1.334 0.182133    </span></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6MDay    1.61553    1.14221   1.414 0.157245    </span></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6MDay    2.96495    1.13909   2.603 0.009244 ** </span></span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6MDay    2.64493    1.13503   2.330 0.019792 *  </span></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6MDay    2.10969    1.13793   1.854 0.063743 .  </span></span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6MDay    2.49968    1.12796   2.216 0.026683 *  </span></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6MDay    1.40500    1.14584   1.226 0.220132    </span></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6MDay  -0.19915    1.21907  -0.163 0.870234    </span></span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6MDay   0.88304    1.14196   0.773 0.439364    </span></span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6MDay   0.51470    1.20228   0.428 0.668579    </span></span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM1    -0.97086    0.92121  -1.054 0.291931    </span></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM1   -12.74694  221.61939  -0.058 0.954133    </span></span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM1    -1.20467    0.66213  -1.819 0.068852 .  </span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM1     0.29520    0.64304   0.459 0.646189    </span></span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM1     0.36786    0.64121   0.574 0.566177    </span></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM1    -0.61913    0.63849  -0.970 0.332209    </span></span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM1    -0.54886    0.63604  -0.863 0.388179    </span></span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM1    -0.92905    0.66699  -1.393 0.163649    </span></span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM1   -0.67431    0.64306  -1.049 0.294358    </span></span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM1   -1.07160    0.62588  -1.712 0.086868 .  </span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM1   -0.65547    0.66750  -0.982 0.326114    </span></span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM2    -1.51818    0.84964  -1.787 0.073963 .  </span></span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM2    -0.06066    0.83723  -0.072 0.942237    </span></span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM2    -2.37033    0.65084  -3.642 0.000271 ***</span></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM2    -0.46996    0.59774  -0.786 0.431732    </span></span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM2    -0.70634    0.60001  -1.177 0.239116    </span></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM2    -0.65386    0.58731  -1.113 0.265570    </span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM2    -1.57322    0.61499  -2.558 0.010524 *  </span></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM2    -1.92208    0.60290  -3.188 0.001432 ** </span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM2   -0.86211    0.57748  -1.493 0.135469    </span></span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM2   -1.12473    0.58150  -1.934 0.053091 .  </span></span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM2   -0.91934    0.59731  -1.539 0.123770    </span></span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="do">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual deviance: 5160.1  on 4925  degrees of freedom</span></span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a><span class="do">## AIC: 5310.1</span></span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 14</span></span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a><span class="co"># This is tricky to interpret due to the number of coefficients (75), </span></span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a><span class="co"># and the presence of interactions. Best to use plots!</span></span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s illustrate the differences in predictions for two different months, </span></span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="co"># for example June and December (this could be done for each of the 12 months)</span></span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a><span class="co"># June</span></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>                <span class="at">fMonth=</span> <span class="st">&quot;6&quot;</span>,</span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>                                <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>PA24.pred<span class="ot">&lt;-</span> <span class="fu">predict</span>(PA24, dat4pred, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit)</span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), dat4pred<span class="sc">$</span>fit.resp, <span class="at">pch=</span> <span class="dv">16</span>, </span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">main=</span> <span class="fu">paste</span>(<span class="st">&quot;Month =&quot;</span>, <span class="dv">6</span>),</span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span> <span class="dv">1</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a><span class="co"># December</span></span>
-<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
-<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>                <span class="at">fMonth=</span> <span class="st">&quot;12&quot;</span>,</span>
-<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>                                <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>PA24.pred<span class="ot">&lt;-</span> <span class="fu">predict</span>(PA24, dat4pred, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit)</span>
-<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
-<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
-<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), dat4pred<span class="sc">$</span>fit.resp, <span class="at">pch=</span> <span class="dv">16</span>, </span>
-<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">main=</span> <span class="fu">paste</span>(<span class="st">&quot;Month =&quot;</span>, <span class="dv">12</span>),</span>
-<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span> <span class="dv">1</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
-<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
-<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
-<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># Model PA24 assumes that dolphin presence (actually, probability of recording) </span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># changes according to time of year, time of day and tidal stage, and that the</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># effect of time of day changes with the time of year (fMonth:fTime6).</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="fu">summary</span>(PA24)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="do">## glm(formula = presence ~ fMonth + fTide4 + fTime6 + fMonth:fTime6, </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="do">##     family = binomial, data = dat)</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="do">## -1.2733  -0.8636  -0.5617   1.1534   2.9595  </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="do">##                      Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="do">## (Intercept)          -1.64415    0.38590  -4.261 2.04e-05 ***</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="do">## fMonth2              -0.23790    0.61045  -0.390 0.696748    </span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="do">## fMonth3              -0.89331    0.70966  -1.259 0.208110    </span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="do">## fMonth4               1.47415    0.45998   3.205 0.001352 ** </span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="do">## fMonth5               0.80539    0.47239   1.705 0.088208 .  </span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="do">## fMonth6               1.08256    0.47037   2.301 0.021364 *  </span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="do">## fMonth7               1.52380    0.46019   3.311 0.000929 ***</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="do">## fMonth8               1.11535    0.45483   2.452 0.014197 *  </span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="do">## fMonth9               1.21898    0.44379   2.747 0.006019 ** </span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="do">## fMonth10              1.54792    0.45375   3.411 0.000646 ***</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="do">## fMonth11              1.83358    0.44164   4.152 3.30e-05 ***</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="do">## fMonth12              1.17666    0.46218   2.546 0.010901 *  </span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="do">## fTide42              -0.11702    0.09660  -1.211 0.225763    </span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="do">## fTide43              -0.30872    0.09891  -3.121 0.001801 ** </span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="do">## fTide44              -0.23268    0.09807  -2.373 0.017660 *  </span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="do">## fTime6AM1             0.30910    0.50874   0.608 0.543469    </span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="do">## fTime6AM2            -0.37350    0.53474  -0.698 0.484882    </span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="do">## fTime6MDay           -2.41382    1.07781  -2.240 0.025120 *  </span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="do">## fTime6PM1            -0.12247    0.52354  -0.234 0.815050    </span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="do">## fTime6PM2             0.99681    0.47657   2.092 0.036471 *  </span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM1    -0.33296    0.79113  -0.421 0.673852    </span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM1     0.56488    0.85542   0.660 0.509022    </span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM1    -0.92433    0.64061  -1.443 0.149056    </span></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM1     0.30708    0.61897   0.496 0.619815    </span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM1     0.08137    0.62534   0.130 0.896472    </span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM1    -0.15093    0.62037  -0.243 0.807779    </span></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM1    -0.20235    0.60423  -0.335 0.737710    </span></span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM1    -1.24727    0.62484  -1.996 0.045917 *  </span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM1   -0.95738    0.62061  -1.543 0.122920    </span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM1   -0.85615    0.60744  -1.409 0.158701    </span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM1   -0.67218    0.62834  -1.070 0.284717    </span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="do">## fMonth2:fTime6AM2    -0.35142    0.88142  -0.399 0.690112    </span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="do">## fMonth3:fTime6AM2    -0.09895    1.07867  -0.092 0.926908    </span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="do">## fMonth4:fTime6AM2    -0.26743    0.66937  -0.400 0.689508    </span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="do">## fMonth5:fTime6AM2     1.28053    0.63995   2.001 0.045393 *  </span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="do">## fMonth6:fTime6AM2     0.61323    0.64744   0.947 0.343557    </span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="do">## fMonth7:fTime6AM2     0.55066    0.63392   0.869 0.385038    </span></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="do">## fMonth8:fTime6AM2     0.29451    0.63417   0.464 0.642362    </span></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="do">## fMonth9:fTime6AM2    -1.12461    0.69018  -1.629 0.103220    </span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="do">## fMonth10:fTime6AM2   -0.87941    0.65261  -1.348 0.177807    </span></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="do">## fMonth11:fTime6AM2   -2.14682    0.74197  -2.893 0.003811 ** </span></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="do">## fMonth12:fTime6AM2   -1.65592    0.78777  -2.102 0.035550 *  </span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="do">## fMonth2:fTime6MDay    1.38586    1.38230   1.003 0.316064    </span></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="do">## fMonth3:fTime6MDay    1.90559    1.42825   1.334 0.182133    </span></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="do">## fMonth4:fTime6MDay    1.61553    1.14221   1.414 0.157245    </span></span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="do">## fMonth5:fTime6MDay    2.96495    1.13909   2.603 0.009244 ** </span></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a><span class="do">## fMonth6:fTime6MDay    2.64493    1.13503   2.330 0.019792 *  </span></span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a><span class="do">## fMonth7:fTime6MDay    2.10969    1.13793   1.854 0.063743 .  </span></span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="do">## fMonth8:fTime6MDay    2.49968    1.12796   2.216 0.026683 *  </span></span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="do">## fMonth9:fTime6MDay    1.40500    1.14584   1.226 0.220132    </span></span>
+<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a><span class="do">## fMonth10:fTime6MDay  -0.19915    1.21907  -0.163 0.870234    </span></span>
+<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a><span class="do">## fMonth11:fTime6MDay   0.88304    1.14196   0.773 0.439364    </span></span>
+<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a><span class="do">## fMonth12:fTime6MDay   0.51470    1.20228   0.428 0.668579    </span></span>
+<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM1    -0.97086    0.92121  -1.054 0.291931    </span></span>
+<span id="cb7-72"><a href="#cb7-72" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM1   -12.74694  221.61939  -0.058 0.954133    </span></span>
+<span id="cb7-73"><a href="#cb7-73" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM1    -1.20467    0.66213  -1.819 0.068852 .  </span></span>
+<span id="cb7-74"><a href="#cb7-74" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM1     0.29520    0.64304   0.459 0.646189    </span></span>
+<span id="cb7-75"><a href="#cb7-75" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM1     0.36786    0.64121   0.574 0.566177    </span></span>
+<span id="cb7-76"><a href="#cb7-76" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM1    -0.61913    0.63849  -0.970 0.332209    </span></span>
+<span id="cb7-77"><a href="#cb7-77" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM1    -0.54886    0.63604  -0.863 0.388179    </span></span>
+<span id="cb7-78"><a href="#cb7-78" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM1    -0.92905    0.66699  -1.393 0.163649    </span></span>
+<span id="cb7-79"><a href="#cb7-79" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM1   -0.67431    0.64306  -1.049 0.294358    </span></span>
+<span id="cb7-80"><a href="#cb7-80" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM1   -1.07160    0.62588  -1.712 0.086868 .  </span></span>
+<span id="cb7-81"><a href="#cb7-81" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM1   -0.65547    0.66750  -0.982 0.326114    </span></span>
+<span id="cb7-82"><a href="#cb7-82" tabindex="-1"></a><span class="do">## fMonth2:fTime6PM2    -1.51818    0.84964  -1.787 0.073963 .  </span></span>
+<span id="cb7-83"><a href="#cb7-83" tabindex="-1"></a><span class="do">## fMonth3:fTime6PM2    -0.06066    0.83723  -0.072 0.942237    </span></span>
+<span id="cb7-84"><a href="#cb7-84" tabindex="-1"></a><span class="do">## fMonth4:fTime6PM2    -2.37033    0.65084  -3.642 0.000271 ***</span></span>
+<span id="cb7-85"><a href="#cb7-85" tabindex="-1"></a><span class="do">## fMonth5:fTime6PM2    -0.46996    0.59774  -0.786 0.431732    </span></span>
+<span id="cb7-86"><a href="#cb7-86" tabindex="-1"></a><span class="do">## fMonth6:fTime6PM2    -0.70634    0.60001  -1.177 0.239116    </span></span>
+<span id="cb7-87"><a href="#cb7-87" tabindex="-1"></a><span class="do">## fMonth7:fTime6PM2    -0.65386    0.58731  -1.113 0.265570    </span></span>
+<span id="cb7-88"><a href="#cb7-88" tabindex="-1"></a><span class="do">## fMonth8:fTime6PM2    -1.57322    0.61499  -2.558 0.010524 *  </span></span>
+<span id="cb7-89"><a href="#cb7-89" tabindex="-1"></a><span class="do">## fMonth9:fTime6PM2    -1.92208    0.60290  -3.188 0.001432 ** </span></span>
+<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a><span class="do">## fMonth10:fTime6PM2   -0.86211    0.57748  -1.493 0.135469    </span></span>
+<span id="cb7-91"><a href="#cb7-91" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM2   -1.12473    0.58150  -1.934 0.053091 .  </span></span>
+<span id="cb7-92"><a href="#cb7-92" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM2   -0.91934    0.59731  -1.539 0.123770    </span></span>
+<span id="cb7-93"><a href="#cb7-93" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb7-94"><a href="#cb7-94" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb7-95"><a href="#cb7-95" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-96"><a href="#cb7-96" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb7-97"><a href="#cb7-97" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-98"><a href="#cb7-98" tabindex="-1"></a><span class="do">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
+<span id="cb7-99"><a href="#cb7-99" tabindex="-1"></a><span class="do">## Residual deviance: 5160.1  on 4925  degrees of freedom</span></span>
+<span id="cb7-100"><a href="#cb7-100" tabindex="-1"></a><span class="do">## AIC: 5310.1</span></span>
+<span id="cb7-101"><a href="#cb7-101" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-102"><a href="#cb7-102" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 14</span></span>
+<span id="cb7-103"><a href="#cb7-103" tabindex="-1"></a><span class="co"># This is tricky to interpret due to the number of coefficients (75), </span></span>
+<span id="cb7-104"><a href="#cb7-104" tabindex="-1"></a><span class="co"># and the presence of interactions. Best to use plots!</span></span>
+<span id="cb7-105"><a href="#cb7-105" tabindex="-1"></a></span>
+<span id="cb7-106"><a href="#cb7-106" tabindex="-1"></a><span class="co"># Let&#39;s illustrate the differences in predictions for two different months, </span></span>
+<span id="cb7-107"><a href="#cb7-107" tabindex="-1"></a><span class="co"># for example June and December (this could be done for each of the 12 months)</span></span>
+<span id="cb7-108"><a href="#cb7-108" tabindex="-1"></a></span>
+<span id="cb7-109"><a href="#cb7-109" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb7-110"><a href="#cb7-110" tabindex="-1"></a><span class="co"># June</span></span>
+<span id="cb7-111"><a href="#cb7-111" tabindex="-1"></a>dat4pred<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
+<span id="cb7-112"><a href="#cb7-112" tabindex="-1"></a>                <span class="at">fMonth=</span> <span class="st">&quot;6&quot;</span>,</span>
+<span id="cb7-113"><a href="#cb7-113" tabindex="-1"></a>                                <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
+<span id="cb7-114"><a href="#cb7-114" tabindex="-1"></a>PA24.pred<span class="ot">&lt;-</span> <span class="fu">predict</span>(PA24, dat4pred, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
+<span id="cb7-115"><a href="#cb7-115" tabindex="-1"></a>dat4pred<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit)</span>
+<span id="cb7-116"><a href="#cb7-116" tabindex="-1"></a>dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
+<span id="cb7-117"><a href="#cb7-117" tabindex="-1"></a>dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
+<span id="cb7-118"><a href="#cb7-118" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), dat4pred<span class="sc">$</span>fit.resp, <span class="at">pch=</span> <span class="dv">16</span>, </span>
+<span id="cb7-119"><a href="#cb7-119" tabindex="-1"></a>      <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">main=</span> <span class="fu">paste</span>(<span class="st">&quot;Month =&quot;</span>, <span class="dv">6</span>),</span>
+<span id="cb7-120"><a href="#cb7-120" tabindex="-1"></a>    <span class="at">col=</span> <span class="dv">1</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
+<span id="cb7-121"><a href="#cb7-121" tabindex="-1"></a>      <span class="at">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb7-122"><a href="#cb7-122" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
+<span id="cb7-123"><a href="#cb7-123" tabindex="-1"></a>    <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
+<span id="cb7-124"><a href="#cb7-124" tabindex="-1"></a>      <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span>
+<span id="cb7-125"><a href="#cb7-125" tabindex="-1"></a></span>
+<span id="cb7-126"><a href="#cb7-126" tabindex="-1"></a><span class="co"># December</span></span>
+<span id="cb7-127"><a href="#cb7-127" tabindex="-1"></a>dat4pred<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
+<span id="cb7-128"><a href="#cb7-128" tabindex="-1"></a>                <span class="at">fMonth=</span> <span class="st">&quot;12&quot;</span>,</span>
+<span id="cb7-129"><a href="#cb7-129" tabindex="-1"></a>                                <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
+<span id="cb7-130"><a href="#cb7-130" tabindex="-1"></a>PA24.pred<span class="ot">&lt;-</span> <span class="fu">predict</span>(PA24, dat4pred, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
+<span id="cb7-131"><a href="#cb7-131" tabindex="-1"></a>dat4pred<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit)</span>
+<span id="cb7-132"><a href="#cb7-132" tabindex="-1"></a>dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
+<span id="cb7-133"><a href="#cb7-133" tabindex="-1"></a>dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
+<span id="cb7-134"><a href="#cb7-134" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), dat4pred<span class="sc">$</span>fit.resp, <span class="at">pch=</span> <span class="dv">16</span>, </span>
+<span id="cb7-135"><a href="#cb7-135" tabindex="-1"></a>      <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">main=</span> <span class="fu">paste</span>(<span class="st">&quot;Month =&quot;</span>, <span class="dv">12</span>),</span>
+<span id="cb7-136"><a href="#cb7-136" tabindex="-1"></a>    <span class="at">col=</span> <span class="dv">1</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
+<span id="cb7-137"><a href="#cb7-137" tabindex="-1"></a>      <span class="at">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb7-138"><a href="#cb7-138" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
+<span id="cb7-139"><a href="#cb7-139" tabindex="-1"></a>    <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
+<span id="cb7-140"><a href="#cb7-140" tabindex="-1"></a>      <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q16-1.png" width="768" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># In June, dolphins seem to have a similar probability of being recorded</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># at any time of the day and night, whereas in December they are mostly</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using the site by night (ca. 40% chances of being present against </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># only ca. 10% in the middle of the day)</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (FOR THE R GEEKS OUT THERE)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># For plots of predictions for all 12 months, it is possible to automate</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the process using a loop:</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(month <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>){ </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># at the first iteration, the variable `month` will take value 1, then</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># at the second iteration, the variable `month` will take value 2, </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># etc... until iteraction 12</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    dat4pred<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                                <span class="at">fMonth=</span> <span class="fu">as.character</span>(month),</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                                <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    PA24.pred<span class="ot">&lt;-</span> <span class="fu">predict</span>(PA24, dat4pred, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    dat4pred<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), dat4pred<span class="sc">$</span>fit.resp, <span class="at">pch=</span> <span class="dv">16</span>, </span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">main=</span> <span class="fu">paste</span>(<span class="st">&quot;Month =&quot;</span>, month),</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>          <span class="at">col=</span> <span class="dv">1</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>} <span class="co"># end of one iteration, start of the next</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># In June, dolphins seem to have a similar probability of being recorded</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># at any time of the day and night, whereas in December they are mostly</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># using the site by night (ca. 40% chances of being present against </span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># only ca. 10% in the middle of the day)</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># (FOR THE R GEEKS OUT THERE)</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co"># For plots of predictions for all 12 months, it is possible to automate</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co"># the process using a loop:</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="cf">for</span>(month <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>){ </span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="co"># at the first iteration, the variable `month` will take value 1, then</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  <span class="co"># at the second iteration, the variable `month` will take value 2, </span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>  <span class="co"># etc... until iteraction 12</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>    dat4pred<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>                                <span class="at">fMonth=</span> <span class="fu">as.character</span>(month),</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>                                <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>    PA24.pred<span class="ot">&lt;-</span> <span class="fu">predict</span>(PA24, dat4pred, <span class="at">type=</span> <span class="st">&quot;link&quot;</span>, <span class="at">se.fit=</span> T)</span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>    dat4pred<span class="sc">$</span>fit.resp<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit)</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>    dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>    dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA24.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA24.pred<span class="sc">$</span>se.fit)</span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), dat4pred<span class="sc">$</span>fit.resp, <span class="at">pch=</span> <span class="dv">16</span>, </span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a>          <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">main=</span> <span class="fu">paste</span>(<span class="st">&quot;Month =&quot;</span>, month),</span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a>          <span class="at">col=</span> <span class="dv">1</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a>          <span class="at">ylab=</span> <span class="st">&quot;Fitted probability (assuming Tide = 1)&quot;</span>, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a>    <span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>          <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a>          <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a>} <span class="co"># end of one iteration, start of the next</span></span></code></pre></div>
 <p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q16-2.png" width="768" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the better supported model, they tend to use the site</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># more in May, June and </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># July day and night, visit mostly by night from October to December,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and seldom from Jan to March.</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Of note is the low proportion of deviance explained by the model,</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># despite its complexity (75 parameters):</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>(PA24<span class="sc">$</span>null.deviance <span class="sc">-</span> PA24<span class="sc">$</span>deviance) <span class="sc">/</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    PA24<span class="sc">$</span>null.deviance </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.1008604</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 10%. However, this is quite normal with Bernoulli data,</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># since they do not contain a great deal of information</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># According to the better supported model, they tend to use the site</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># more in May, June and </span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># July day and night, visit mostly by night from October to December,</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># and seldom from Jan to March.</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co"># Of note is the low proportion of deviance explained by the model,</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># despite its complexity (75 parameters):</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>(PA24<span class="sc">$</span>null.deviance <span class="sc">-</span> PA24<span class="sc">$</span>deviance) <span class="sc">/</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>    PA24<span class="sc">$</span>null.deviance </span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="do">## [1] 0.1008604</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co"># 10%. However, this is quite normal with Bernoulli data,</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co"># since they do not contain a great deal of information</span></span></code></pre></div>
 <p> </p>
 <p><strong>End of the optional extension to Binomial (Bernoulli) GLM
 exercise</strong></p>
