@@ -41,7 +41,7 @@ cat("Exercises will be released as the course progresses")
 
 \  
 
-```{r ex15, results='asis', eval = isTRUE(show_exercise)}
+```{r, ex15, results='asis', eval = TRUE}
 ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
              ": Importing and manipulating dataframes", 
              ": Visualising data using base R and lattice graphics",
@@ -62,7 +62,7 @@ cat(sep="\n\n")
 
 \  
 
-```{r pdf-out, include = FALSE}
+```{r, pdf-out, include = FALSE}
 # TODO: generate list automagically
 rmarkdown::render("exercise_1.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_1.pdf", quiet = TRUE)
 rmarkdown::render("exercise_2.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_2.pdf", quiet = TRUE)

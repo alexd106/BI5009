@@ -31,7 +31,7 @@ Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidde
 - Download individual data files as needed, saving them to the new `data` directory you just made. Just click the link to download. If data displays in your browser (some do this), right-click the link instead and select *Save Link As...* (or similar) to save to the desired location.
   
   
-```{r, results='asis'}
+```{r, results='asis', echo=FALSE}
 dir <- "data/"
 list.files(dir) %>%
   sort %>% 

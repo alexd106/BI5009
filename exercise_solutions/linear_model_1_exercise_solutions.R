@@ -3,7 +3,7 @@ loyn <- read.table("./data/loyn.txt", header = TRUE,
                    stringsAsFactors = TRUE)
 str(loyn)
 
-# 56 observations and 8 variables (from str())
+# 67 observations and 8 variables (from str())
 
 
 ## ----Q3, eval=TRUE, echo=TRUE, collapse=TRUE---------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ anova(loyn.lm)
 # between LOGAREA and ABUND = 0
 # i.e. there is no relationship
 
-# The p value is very small (7.178e-11) therefore we 
+# The p value is very small (3.81e-14) therefore we 
 # reject this null hypothesis (i.e. the slope is different
 # from 0)
 
@@ -49,7 +49,7 @@ summary(loyn.lm)
 # is different from zero.
 
 # the null hypothesis for the slope is that the slope = 0
-# the p value is very small (7.18e-11)
+# the p value is very small (3.81e-14)
 # therefore we reject this null hypothesis and conclude that the slope
 # is different from zero (i.e. there is a significant relationship between
 # LOGAREA and ABUND).
@@ -58,7 +58,7 @@ summary(loyn.lm)
 ## ----Q7, eval=TRUE, echo=TRUE, collapse=TRUE---------------------------------------------------------------------------------
 summary(loyn.lm)
 
-# The multiple R-squared value is 0.548 and therefore 54.8% of
+# The multiple R-squared value is 0.588 and therefore 58.8% of
 # the variation in ABUND is explained by LOGAREA
 
 
@@ -101,8 +101,8 @@ plot(loyn.lm, which = 4)
 # to predict bird abundance if AREA == 100
 
 # if you log base 10 transformed the AREA variable
-10.4 + (9.78 * log10(100))
-
+bird_abundance100 = 10.4 + (9.78 * log10(100))
+bird_abundance100
 # if you used the natural log (i.e. log()) then you would use log()
 # not log10()
 
@@ -122,9 +122,25 @@ pred.vals <- predict(loyn.lm, newdata = my.data)
 ## ----Q11, eval=TRUE, echo=TRUE, collapse=TRUE--------------------------------------------------------------------------------
 # plot the lines on the plot. The x values are the new LOGAREA values from the my.data
 # dataframe, the predicted values are from pred.vals 
-plot(loyn$LOGAREA, loyn$ABUND, xlab = "Log10 Patch Area", ylab = "Bird Abundance")
+plot(loyn$LOGAREA, loyn$ABUND, xlab = "Log10 Patch Area", 
+     ylab = "Bird Abundance", ylim = c(0, 55))
 
 lines(my.data$LOGAREA, pred.vals, lty = 1,col = 2)
+
+# for those of you who are into plotting using the ggplot2 package,
+# this is one of those occasions where things are a little simpler!
+# Don't forget, you will need to install the ggplot2 package if
+# you've never used it before
+
+# install.packages('ggplot2')
+
+library(ggplot2)
+ggplot(mapping = aes(x = LOGAREA, y = ABUND), data = loyn) +
+    geom_point() +
+    xlab("Log10 Patch Area") +
+    ylab("Bird Abundance") +
+    geom_smooth(method = "lm", se = FALSE, colour = "red") +
+    theme_classic()
 
 
 ## ----Q12, eval=TRUE, echo=TRUE, collapse=TRUE--------------------------------------------------------------------------------
