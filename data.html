@@ -465,14 +465,14 @@ $(document).ready(function () {
 <p><strong>Option 1: Download all the data at once.</strong></p>
 <p>Download and extract <strong><a href="data/all_data.zip">this zip
 file
-<i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong> (NA
-Mb) with all the data for the entire course. This may include additional
-datasets that we won’t use here. You will need to uncompress this zip
-file using your favourite software (most operating systems now have at
-least one built-in (un)compression tool). Make sure you extract these
-files into a new directory called <code>data</code> in your RStudio
-project. See <a href="https://intro2r.com/rsprojs.html">here</a> for
-more information on RStudio projects and <a
+<i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong>
+(0.18 Mb) with all the data for the entire course. This may include
+additional datasets that we won’t use here. You will need to uncompress
+this zip file using your favourite software (most operating systems now
+have at least one built-in (un)compression tool). Make sure you extract
+these files into a new directory called <code>data</code> in your
+RStudio project. See <a href="https://intro2r.com/rsprojs.html">here</a>
+for more information on RStudio projects and <a
 href="https://intro2r.com/dir_struct.html">here</a> for some suggestions
 on directory structures (and how to create them).</p>
 <p> </p>
@@ -490,7 +490,7 @@ to the desired location.</p></li>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>dir <span class="ot">&lt;-</span> <span class="st">&quot;data/&quot;</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">list.files</span>(dir) <span class="sc">%&gt;%</span></span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  sort <span class="sc">%&gt;%</span> </span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.html$ | *.zip&quot;</span>, ., <span class="at">value=</span><span class="cn">TRUE</span>, <span class="at">invert=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.html$ | *.zip&quot;</span>, ., <span class="at">value =</span> <span class="cn">TRUE</span>, <span class="at">invert =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;    + [&quot;</span>, ., <span class="st">&quot;](&quot;</span>, <span class="fu">paste0</span>(dir, .), <span class="st">&quot;)&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 
