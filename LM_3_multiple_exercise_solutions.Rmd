@@ -136,6 +136,7 @@ anova(birds.inter.1)
 # dependent on the value of the other variable.
 ```
 
+\  
 
 8\. OK, now for the part you all know and love! Use the `summary()` function on your model object to produce the table of parameter estimates. Using this output, take each line in turn and answer the following questions: (A) what does this parameter estimate? (B) What is the biological interpretation of the corresponding estimate? (C) What is the null hypothesis associated with it? (D) Do you reject or fail to reject this hypothesis? Also compare the multiple R^2^ from this model the models you created in the previous two exercises. I encourage you to get someone to discuss your answers with you if you are confused :). 
 
