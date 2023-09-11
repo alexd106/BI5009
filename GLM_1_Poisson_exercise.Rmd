@@ -1,6 +1,5 @@
 ---
 title: 'Exercise'
-# author: TCornulier
 output: 
   html_document:
     toc: false
@@ -13,7 +12,7 @@ editor_options:
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
 
-SOLUTIONS<- FALSE
+SOLUTIONS <- FALSE
 ```
 
 \  
@@ -40,7 +39,6 @@ The data for this exercise were collected during an experiment which investigate
   + an effective way of doing this is to store the names of the variables of interest in a vector `VOI<- c("Var1", "Var2", ...)`
   + and then use the naming method for subsetting the data set `Mydata[, VOI]`
 
-
 \  
 
 ```{r Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
@@ -61,7 +59,6 @@ pairs(sp[, VOI])
 coplot(logSp ~ Biomass | pH, data= sp)
 # the relationships look clean and well distinct between treatments, 
 # supporting the idea of an interaction.
-
 ```
 
 \  
@@ -90,7 +87,6 @@ summary(sp.glm1)
 # Model description:
 # Species_i ~ Poisson(mu_i)
 # log(mu_i) = 3.18 - 0.064*Biomass_i
-
 ```
 
 \  
@@ -141,7 +137,6 @@ drop1(sp.glm2, test= "Chisq")
 # from the summary table, in this case, although the null hypothesis
 # is different (coefficient different from zero in the latter 
 # vs. significant proportion of variation explained in the former).
-
 ```
 
 \  
@@ -198,7 +193,6 @@ drop1(sp.glm2, test= "Chisq")
 # is increased by 0.48 compared to the low pH.
 # This is equivalent to saying that the counts increase by exp(0.48),
 # hence that they are multiplied by 1.62.
-
 ```
 
 \  
@@ -241,7 +235,6 @@ plot(sp$Biomass, res.p, ylab= "Std Pearson residuals", xlab= "Biomass")
 abline(h= 0, col= 2, lty= 2)
 # Species richness over-predicted for highest and lowest Biomass plots
 # Few cases: could be by chance?
-
 ```
 
 \  
@@ -390,10 +383,9 @@ legend("topright",
 # Caution is therefore required in interpreting effects from the 
 # summary of the model directly, and plotting on the response scale 
 # is critical before drawing any conclusion!
-
 ```
 
 \  
 
-End of the Poisson GLM - predicting species richness exercise
+End of the Poisson GLM exercise
 

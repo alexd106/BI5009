@@ -1,6 +1,5 @@
 ---
 title: "Exercise"
-# author: TCornulier
 output:
   html_document: 
     toc: no
@@ -86,8 +85,9 @@ plot(Obs.Per.Year.Month)
 # (for example, an issue might arise if all observations from Spring
 # came from one year and all Summer observations from a different
 # year, hence not comparable maybe)
-
 ```
+
+\  
 
 ```{r Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
 Obs.Per.Sex.Area<- table(dat$Sex, dat$Area)
@@ -104,8 +104,9 @@ plot(Obs.Per.Sex.Area)
 dat$fMonth<- factor(dat$Month)
 boxplot(Lg ~ fMonth, data= dat)
 # A little maybe, but not that clear. Shouldn't be a problem
-
 ```
+
+\  
 
 Next we look for factors affecting the probability of maturity. Which ones are continuous or categorical?
 
@@ -116,14 +117,17 @@ Next we look for factors affecting the probability of maturity. Which ones are c
 
 Below is an example with Sex. Repeat with other relevant predictors.
 
+\  
+
 ```{r Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE}
 # Maturity in relation to Sex
 mean.per.Sex<- tapply(dat$Mature, list(dat$Sex), mean)
 barplot(mean.per.Sex, ylim= c(0, 1),
 		 xlab= "Sex", ylab= "proportion mature")
 # Probability maybe higher in males?
-
 ```
+
+\  
 
 ```{r Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")}
 # Maturity in relation to Area
@@ -150,7 +154,6 @@ barplot(mean.per.Month, ylim= c(0, 1),
 		  xlab= "Length class", ylab= "proportion mature")
 # some trend here, not ideal given that most data are from April-May-June
 # Maybe Month should be included
-
 ```
 
 \  
@@ -210,7 +213,6 @@ summary(Mat1)
 # None of this is particularly intuitive, so we will mostly
 # rely on predictions on the probability (response) scale
 # for the interpretation of the model
-
 ```
 
 \  
@@ -257,19 +259,26 @@ plot(res2.p ~ datM$Lg, col= datM$Mature + 1) # scatterplot
 # Can't see anything useful.
 ```
 
+\  
+
 8\. These plots are not very useful, because the data are 0/1 and thus the individual residuals (difference between the 0/1 observations and continuous fitted values) follow weird patterns. But we can actually get a bit further by taking the mean of groups of residuals (groups being the levels of a predictor). The idea is that if there is no trend in the residuals, these means should be randomly distributed around zero (and ideally, close to zero as well). The `binnedplot()` function in the `arm` package does exactly that. for numerical variables, `binnedplot()` splits the variable into discrete bins, and calculates the mean of the residuals for each bin.  `binnedplot()` requires numerical variables: `binnedplot(x= MyContinuousPredictor, y= MyResiduals, xlab= "MyContinuousPredictor", nclass= NumberOfBinsWanted)`. If needed you can convert categorical predictors into numerical: `binnedplot(x= as.numeric(MyFactor), y= MyResiduals, xlab= "MyFactor")`.
 
 Here is an example using `binnedplot` with `Month` (even if it is not in the model, but to see if it should). You can try yourself with area, and body length.
+
+\  
 
 ```{r Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5}
 library(arm)
 par(mfrow= c(1, 1))
 binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 # nclass= 6 because we have 6 months in the data
-
 ```
 
-> We want residuals to be close to zero, but how far is too far? `binnedplot` conveniently adds expected limits (grey lines), beyond which the the fit of the model is questionable. Here the residuals per month are close to the limit, and even outside for August: including `Month` would probably improve the model a bit.
+\  
+
+We want residuals to be close to zero, but how far is too far? `binnedplot` conveniently adds expected limits (grey lines), beyond which the the fit of the model is questionable. Here the residuals per month are close to the limit, and even outside for August: including `Month` would probably improve the model a bit.
+
+\  
 
 ```{r Q8b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide"), fig.height=8, fig.width=8}
 par(mfrow= c(2, 2))
@@ -278,7 +287,6 @@ binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
 # nclass= 6 because we have 6 months in the data
 binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 # could use more or less than 20
-
 ```
 
 \  
@@ -294,7 +302,6 @@ binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 # Same with length, except for the extreme lengths, 
 # for which the residuals are slightly too low and too high, respectively.
 # We'll see in the graphs of the predictions if this is a big concern.
-
 ```
 
 \  
@@ -333,10 +340,11 @@ lines(x= Seq.Length, y= dat.new.ECH$fit, lwd= 2, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
-
 ```
 
-> The predictions on the link scale are linear, as they should be. But they represent the log-odds of being mature: # For a body length of 75 cm for example, a ray in the English Channel has log-odds of being mature of about -1.6: not exactly the most intuitive thing to interpret!
+\  
+
+The predictions on the link scale are linear, as they should be. But they represent the log-odds of being mature: # For a body length of 75 cm for example, a ray in the English Channel has log-odds of being mature of about -1.6: not exactly the most intuitive thing to interpret!
 
 The default link function for the binomial GLM is the logit function, `log(p/(1-p))`. And the fitted values can be transformed using `exp(fitted.value) / (1 + exp(fitted.value))`. You can use this formula to back-transform your predictions, but this is a bit cumbersome to write. R provides the function `plogis` which does the same calculation. Use `plogis` or the back-transformation formula to compute the predicted values on the probability (response) scale, and plot them against length, for each area.
 
@@ -374,9 +382,9 @@ lines(x= Seq.Length, y= dat.new.ECH$fit.resp, lwd= 2, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
-
-
 ```
+
+\  
 
 11\. **Optionally**, you may add the confidence intervals around the predictions (this would be highly recommended in a report).
 
@@ -431,7 +439,6 @@ lines(x= Seq.Length, y= dat.new.ECH$LCI, lty= 3, col= "cyan")
 
 legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"), 
           lwd= 2, col= c("navy", "cyan"), bty= "n")
-
 ```
 
 \  
@@ -464,7 +471,6 @@ legend(x= 87, y= 0.3, legend= c("Atlantic coast", "English Channel"),
 # between the two areas is due to a higher fishing pressure on the
 # species in the English Channel. This is correlative.
 # More research needed if we want to establish the cause!
-
 ```
 
 \  
@@ -567,7 +573,6 @@ lines(x= Seq.Length, y= dat.new.ECH.F$LCI, lty= 3, col= "green")
 legend(x= 87, y= 0.4, legend= c("Males Atlantic coast", "Males English Channel", "Females Atlantic coast", "Females English Channel"), 
           lwd= 2, col= c("navy", "cyan", "darkgreen", "green"), bty= "n")
 ```
-
 
 \  
 

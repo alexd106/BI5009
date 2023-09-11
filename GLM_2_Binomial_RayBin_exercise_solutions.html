@@ -597,6 +597,7 @@ is there is an even representation of sexes in the two areas?</p>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># (for example, an issue might arise if all observations from Spring</span></span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co"># came from one year and all Summer observations from a different</span></span>
 <span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># year, hence not comparable maybe)</span></span></code></pre></div>
+<p> </p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>Obs.Per.Sex.Area<span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>Sex, dat<span class="sc">$</span>Area)</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">plot</span>(Obs.Per.Sex.Area)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3b-1.png" width="672" /></p>
@@ -613,6 +614,7 @@ is there is an even representation of sexes in the two areas?</p>
 <span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">boxplot</span>(Lg <span class="sc">~</span> fMonth, <span class="at">data=</span> dat)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3b-2.png" width="672" /></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># A little maybe, but not that clear. Shouldn&#39;t be a problem</span></span></code></pre></div>
+<p> </p>
 <p>Next we look for factors affecting the probability of maturity. Which
 ones are continuous or categorical?</p>
 <ul>
@@ -634,12 +636,14 @@ approach is to treat the continuous variable as discrete (using
 </ul>
 <p>Below is an example with Sex. Repeat with other relevant
 predictors.</p>
+<p> </p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Maturity in relation to Sex</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>mean.per.Sex<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Sex), mean)</span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Sex, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>         <span class="at">xlab=</span> <span class="st">&quot;Sex&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion mature&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q3c-1.png" width="672" /></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Probability maybe higher in males?</span></span></code></pre></div>
+<p> </p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Maturity in relation to Area</span></span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>mean.per.Area<span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>Mature, <span class="fu">list</span>(dat<span class="sc">$</span>Area), mean)</span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">barplot</span>(mean.per.Area, <span class="at">ylim=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
@@ -801,6 +805,7 @@ residuals and the usual model validation tools. Are they helpful?</p>
 <span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a></span>
 <span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a><span class="co"># Can&#39;t see anything useful.</span></span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q7a-3.png" width="768" /></p>
+<p> </p>
 <p>8. These plots are not very useful, because the data are 0/1 and thus
 the individual residuals (difference between the 0/1 observations and
 continuous fitted values) follow weird patterns. But we can actually get
@@ -818,18 +823,19 @@ If needed you can convert categorical predictors into numerical:
 <p>Here is an example using <code>binnedplot</code> with
 <code>Month</code> (even if it is not in the model, but to see if it
 should). You can try yourself with area, and body length.</p>
+<p> </p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
 <span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> datM<span class="sc">$</span>Month, <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Month&quot;</span>, <span class="at">nclass =</span> <span class="dv">6</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q8a-1.png" width="480" /></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># nclass= 6 because we have 6 months in the data</span></span></code></pre></div>
-<blockquote>
+<p> </p>
 <p>We want residuals to be close to zero, but how far is too far?
 <code>binnedplot</code> conveniently adds expected limits (grey lines),
 beyond which the the fit of the model is questionable. Here the
 residuals per month are close to the limit, and even outside for August:
 including <code>Month</code> would probably improve the model a bit.</p>
-</blockquote>
+<p> </p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(datM<span class="sc">$</span>Area), <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Area&quot;</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> datM<span class="sc">$</span>Month, <span class="at">y=</span> res2.p, <span class="at">xlab=</span> <span class="st">&quot;Month&quot;</span>, <span class="at">nclass =</span> <span class="dv">6</span>)</span>
@@ -883,13 +889,12 @@ models works, let’s start with predictions on the link scale
 <span id="cb30-28"><a href="#cb30-28" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.3</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Atlantic coast&quot;</span>, <span class="st">&quot;English Channel&quot;</span>), </span>
 <span id="cb30-29"><a href="#cb30-29" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q10a-1.png" width="672" /></p>
-<blockquote>
+<p> </p>
 <p>The predictions on the link scale are linear, as they should be. But
 they represent the log-odds of being mature: # For a body length of 75
 cm for example, a ray in the English Channel has log-odds of being
 mature of about -1.6: not exactly the most intuitive thing to
 interpret!</p>
-</blockquote>
 <p>The default link function for the binomial GLM is the logit function,
 <code>log(p/(1-p))</code>. And the fitted values can be transformed
 using <code>exp(fitted.value) / (1 + exp(fitted.value))</code>. You can
@@ -932,6 +937,7 @@ area.</p>
 <span id="cb31-30"><a href="#cb31-30" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span> <span class="dv">87</span>, <span class="at">y=</span> <span class="fl">0.3</span>, <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;Atlantic coast&quot;</span>, <span class="st">&quot;English Channel&quot;</span>), </span>
 <span id="cb31-31"><a href="#cb31-31" tabindex="-1"></a>          <span class="at">lwd=</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <p><img src="GLM_2_Binomial_RayBin_exercise_solutions_files/figure-html/Q10b-1.png" width="672" /></p>
+<p> </p>
 <p>11. <strong>Optionally</strong>, you may add the confidence intervals
 around the predictions (this would be highly recommended in a
 report).</p>
@@ -1046,6 +1052,7 @@ areas, there may be an interaction between length and sex (Males and
 Females reach maturity at different rates). Simplify the model if
 necessary, validate, and plot the predictions for all areas and sexes.
 Remember to use the original, full data set with the females in!</p>
+<p> </p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>Mat2<span class="ot">&lt;-</span> <span class="fu">glm</span>(Mature <span class="sc">~</span> Lg <span class="sc">+</span> Area <span class="sc">+</span> Sex <span class="sc">+</span> Lg<span class="sc">:</span>Area <span class="sc">+</span> Lg<span class="sc">:</span>Sex, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">drop1</span>(Mat2, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
