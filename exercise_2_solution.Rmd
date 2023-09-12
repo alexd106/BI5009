@@ -21,7 +21,7 @@ Read [Chapter 2](https://intro2r.com/basics-r.html) to help you complete the que
 
 \  
 
-1. Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Remember to save your R script with a suitable name (exercise_2?). Make sure you include any metadata you feel is appropriate (title, description of task, date of script creation etc). Don't forget to comment out your metadata with a `#` at the beginning of the line. 
+1. Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Remember to save your R script with a suitable name (exercise_2 maybe). Make sure you include any metadata you feel is appropriate (title, description of task, date of script creation etc). Don't forget to comment out your metadata with a `#` at the beginning of the line. 
 
 \  
 
