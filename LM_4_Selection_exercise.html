@@ -511,46 +511,62 @@ inclination!</p>
 <p>A1. If we weren’t aiming to directly test the effect of the
 <code>LOGAREA:FGRAZE</code> interaction statistically (i.e. test this
 specific hypothesis), we could also have used AIC to perform model
-selection. Repeat the model selection you did above, but this time use
-the <code>drop1()</code> function and perform model selection using AIC
-instead. Don’t forget, if we want to perform model selection based on
-AIC with the <code>drop1()</code> function we need to omit the
-<code>test = "F"</code> argument)</p>
+selection. This time when we remove each term we are looking for the
+model with the lowest AIC (remember that lower AIC values are better).
+If you like, you can repeat the model selection you did above, starting
+with the same most-complex model (M1) as before, but this time use the
+<code>drop1()</code> function and perform model selection using AIC
+instead (omitting the <code>test = "F"</code> argument), each time
+removing the term that gives a model with a lower AIC.</p>
 <p> </p>
-<p>A2. Refit your model with the variable associated with the lowest AIC
-value removed. Run <code>drop1()</code> again on your updated model.
-Perhaps call this new model <code>M2.AIC</code>.</p>
+<p>A2. However, the “superpower” of AIC is the ability to
+<em>simultaneously</em> compare multiple competing models, something we
+are not taking advantage of when we perform a stepwise model selection
+process. So, another approach to selecting our best model is to decide
+which set of models we are going to compare <strong>before</strong> we
+fit any of them, then fit them all, extract the AIC values, and see
+which model(s) have the lowest.</p>
+<p><br />
+</p>
+<p>Fit 5 different models with the following terms, giving each model
+appropriate names to distinguish from the other models we have fitted so
+far: 1) “LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE”,
+2) “LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGLDIST:YR.ISOL +
+LOGAREA:FGRAZE”, 3) “YR.ISOL + LOGAREA + FGRAZE”, 4) “LOGAREA + FGRAZE +
+LOGAREA:FGRAZE”, 5) “LOGAREA + FGRAZE”. If you like, you can add further
+models using combinations of terms you think might give the best model.
+Which model do you think will have the lowest AIC?</p>
 <p> </p>
-<p>A3. Refit your model with the variable associated with the lowest AIC
-value removed and run <code>drop1()</code> again on your new model
-(<code>M3.AIC</code>).</p>
+<p>A3. Now we have fitted our set of models, we can calculate the AIC of
+each using the <code>AIC()</code> function. Which has the lowest? Which
+has the highest? Are there any within 2 AIC of the lowest AIC? Are there
+any models that differ in a single term and have an AIC difference of
+about 2? What does this tell us about the additional term?</p>
 <p> </p>
-<p>A4. Repeat your model selection by removing the variable indicated by
-the model with the lowest AIC.</p>
-<p> </p>
-<p>A5. Rinse and repeat as above.</p>
-<p> </p>
-<p>If all goes well, your final model should be
+<p>If all goes well, the best model should be
 <code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code>. This is the
 same model you ended up with when using the <em>F</em> test based model
-selection. This might not always be the case and generally speaking AIC
-based model selection approaches tend to favour more complicated minimum
-adequate models compared to <em>F</em> test based approaches.</p>
+selection in a stepwise manner. This might not always be the case and
+generally speaking AIC based model selection approaches tend to favour
+more complicated minimum adequate models compared to <em>F</em> test
+based approaches.</p>
 <p>We don’t need to re-validate or re-interpret the model, since we have
 already done this previously.</p>
 <p>I guess the next question is how to present your results from the
 model selection process (using either <em>F</em> tests or AIC) in your
 paper and/or thesis chapter. One approach which I quite like is to
 construct a table which includes a description of all of our models and
-associated summary statistics. Let’s do this for the AIC based model
-selection but the same principles apply when using <em>F</em> tests
-(although you will be presenting <em>F</em> statistics and P values
-rather than AIC values).</p>
+associated summary statistics. Let’s do this here for the AIC based
+model selection, but the same principles apply when using <em>F</em>
+tests (although you will be presenting <em>F</em> statistics and P
+values rather than AIC values).</p>
 <p>Although you can use the output from the <code>drop1()</code> (and do
 a bit more wrangling) let’s make it a little simpler by fitting all of
-our nested models and then use the <code>AIC()</code> function to
-calculate the AIC values for each model rather than
-<code>drop1()</code>.</p>
+our models and then use the <code>AIC()</code> function to calculate the
+AIC values for each model rather than <code>drop1()</code>. Note that
+the values differ slightly between the two approaches; using either is
+fine but best not to mix AIC values from the drop1() and AIC()
+functions.</p>
 <p> </p>
 <p>Or if you prefer a prettier version to include directly in your paper
 / thesis. You will need to install the <code>knitr</code> package before
@@ -585,40 +601,19 @@ LOGAREA + FGRAZE + LOGAREA:FGRAZE
 </tr>
 <tr>
 <td style="text-align:left;">
-ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
+LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
 </td>
 <td style="text-align:center;">
-414.57
+418.54
 </td>
 <td style="text-align:right;">
-0.86
+4.83
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE
-</td>
-<td style="text-align:center;">
-416.41
-</td>
-<td style="text-align:right;">
-2.70
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
-</td>
-<td style="text-align:center;">
-418.37
-</td>
-<td style="text-align:right;">
-4.66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
+LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGLDIST:YR.ISOL +
+LOGAREA:FGRAZE
 </td>
 <td style="text-align:center;">
 420.34
@@ -627,9 +622,38 @@ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
 6.63
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+LOGAREA + FGRAZE
+</td>
+<td style="text-align:center;">
+422.61
+</td>
+<td style="text-align:right;">
+8.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+YR.ISOL + LOGAREA + FGRAZE
+</td>
+<td style="text-align:center;">
+424.60
+</td>
+<td style="text-align:right;">
+10.89
+</td>
+</tr>
 </tbody>
 </table>
 <p> </p>
+<p>Which model selection approach do you prefer? Can you think of pros
+and cons of either approach?</p>
+<p>Whichever model selection approach you chose, what is key to remember
+is to perform a fully manual and thought-through model selection
+process, informed by the understanding of theory in the research area,
+and of the research questions, with rigorous model validation
+throughout.</p>
 <p>End of the model selection exercise</p>
 </div>
 

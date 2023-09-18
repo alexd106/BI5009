@@ -143,104 +143,62 @@ drop1(M5, test= "F")
 
 
 ## ----QA1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
-# This time, we are not doing any specific hypothesis testing, rather we are 
-# attempting to select a model with the 'best' goodness of fit with the minimal
-# number of estimated parameters. 
-
-# We will start with a reasonably complex but PLAUSABLE model (this is the same 
-# model we started with using F test based model selection above.
-
-M.start.AIC<- lm(ABUND ~ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE +
-               LOGAREA:FGRAZE, data = loyn)
-
-drop1(M.start.AIC)
+drop1(M1)
+#Removing the term 'LOGLDIST' gives the lowest AIC of 226.23
+#So refit your model with this term removed. Run `drop1()` again on your updated model. Perhaps call this new model `M2.AIC`.
+M2.AIC <- update(M1, formula = . ~ . - LOGLDIST)
+drop1(M2.AIC) #removing which term gives the lowest AIC?
+#Continue in this manner until removing any terms INCREASES the AIC. Then we have our minimal adequate model (which should be the same as the final model we finished with last time)
 
 
 ## ----QA2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
-# So, our starting model with no variables removed has an AIC of 228.20. If we 
-# remove the interaction term `LOGAREA:FGRAZE` from the model then this results 
-# in a big increase in AIC (238.02 - 228.20 = 9.82) so this suggests that there 
-# is substantial evidence that the interaction should remain in the model. The 
-# models without `LOGLDIST`, `LOGDIST`, `YR.ISOL` all have pretty much the 
-# same AIC value (around 226) so in practice we could remove any of them. Let's 
-# remove the term that results in the model with the lowest AIC which is the 
-# `LOGLDIST` variable (AIC 226.23).
+#Fit each model using the terms described above, giving each a unique and sensible name
+M.AIC.1<- lm(ABUND ~ LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE, data= loyn)
 
-M2.AIC <- update(M.start.AIC, formula = . ~ . - LOGLDIST)
-drop1(M2.AIC)
+M.AIC.2<- lm(ABUND ~ LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGLDIST:YR.ISOL + LOGAREA:FGRAZE, data= loyn)
+
+M.AIC.3<- lm(ABUND ~ YR.ISOL + LOGAREA + FGRAZE, data= loyn)
+
+M.AIC.4<- lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE, data= loyn)
+
+M.AIC.5<- lm(ABUND ~ LOGAREA + FGRAZE, data= loyn)
 
 
 ## ----QA3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
-# Ok, as the model without the variable `YR.ISOL` has the lowest AIC (224.27) 
-# let's update our model and remove this variable.
+AIC(M.AIC.1)
+#AIC of 418.54
+AIC(M.AIC.2)
+#AIC of 420.34
+AIC(M.AIC.3)
+#AIC of 424.60
+AIC(M.AIC.4)
+#AIC of 413.71
+AIC(M.AIC.5)
+#AIC of 422.61
 
-M3.AIC <- update(M2.AIC, formula = . ~ . - YR.ISOL)
-drop1(M3.AIC)
-
-
-## ----QA4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
-# So, now the model without `LOGDIST` has the lowest AIC (222.43) so we should 
-# refit the model without this variable and run `drop1()` again.
-
-M4.AIC <- update(M3.AIC, formula = . ~ . - LOGDIST)
-drop1(M4.AIC)
-
-
-## ----QA5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
-# And the model without the variable `ALT` has an AIC of 221.57 which is about 
-# the same as the model with `ALT` (AIC 222.43), so let's remove this variable 
-# from the model as this suggests that the simpler model fits our data just as 
-# well as the more complicated model.
-
-M5.AIC <- update(M4.AIC, formula = . ~ . - ALT)
-drop1(M5.AIC)
-
-# OK, so now we have a model with the main effects of LOGAREA, FGRAZE and the 
-# interaction term LOGAREA:FGRAZE. When we remove the interaction term the 
-# AIC value increases by 8.9 (230.47-221.57) and this suggests that if we 
-# remove the interaction term the model fit is significantly worse. Therefore we 
-# should leave it in and finish our model selection here.
+#So the model with the lowest AIC (= 413.71) is M.AIC.4, with the terms 'LOGAREA + FGRAZE + LOGAREA:FGRAZE'
 
 
 ## ----QA2a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------
-# one way of constructing a summary table for reporting the results:
+# This is one way of constructing a summary table for reporting the results:
 
-# create a vector of all the models compared during out model selection
+# create a vector of the formulas for all the models compared during our model selection (remember to add any custom models you have have added yourself!):
 
 model.formulas<- c(
-  "LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE",
-	"LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE",
-	"ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE",
-	"ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE", 
-	"LOGAREA + FGRAZE + LOGAREA:FGRAZE")
+  "LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE", 
+  "LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGLDIST:YR.ISOL + LOGAREA:FGRAZE", 
+  "YR.ISOL + LOGAREA + FGRAZE", 
+  "LOGAREA + FGRAZE + LOGAREA:FGRAZE", 
+  "LOGAREA + FGRAZE")
 
-# fit each model. Need to use the noquote() function to remove the 
-# quotations around our model formula otherwise you will get an error when 
-# using the lm() function.
-# You will also need to paste the response variable 'ABUND ~ ' 
-# together with out explanatory variables to create a valid model formula
+#Collect the AIC values for each model (note they will be the 2nd column of the object 'model.AIC')
 
-M.start <- lm(noquote(paste('ABUND ~', model.formulas[1])), data = loyn)
-M.step2 <- lm(noquote(paste('ABUND ~', model.formulas[2])), data = loyn)
-M.step3 <- lm(noquote(paste('ABUND ~', model.formulas[3])), data = loyn)
-M.step4 <- lm(noquote(paste('ABUND ~', model.formulas[4])), data = loyn)
-M.step5 <- lm(noquote(paste('ABUND ~', model.formulas[5])), data = loyn)
-
-# obtain the AIC values for each model. Note: these will be different 
-# than those obtained with the drop1() function due to a small difference in
-# how AIC is calculated. This isn;t a problem, just don't mix and match
-# the AIC values form drop1 and AIC functions.
-
-model.AIC<- c(AIC(M.start),
-	AIC(M.step2),
-	AIC(M.step3),
-	AIC(M.step4),
-	AIC(M.step5))
+model.AIC = AIC(M.AIC.1, M.AIC.2, M.AIC.3, M.AIC.4, M.AIC.5) #these are the 5 models you already fitted in step A2 (plus any extra you added yourself)
 
 # create a dataframe of models and AIC values
 
 summary.table<- data.frame(Model = model.formulas,
-	AIC= round(model.AIC, 2))
+	AIC= round(model.AIC[,2], 2))
 
 # Sort the models from lowest AIC (preferred) to highest (least preferred)
 
