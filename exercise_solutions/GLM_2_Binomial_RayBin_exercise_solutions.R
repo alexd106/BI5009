@@ -1,9 +1,9 @@
-## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 dat<- read.csv("./data/RayMaturity.csv", stringsAsFactors= T)
 str(dat)
 
 
-## ----Q3a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE----------------------------------------------------------------------
+## ----Q3a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE----------------------------------------------------------
 # count the number of observations per month, and per year:
 table(dat$Month)
 # majority of the data are from April-May-June
@@ -27,7 +27,7 @@ plot(Obs.Per.Year.Month)
 # year, hence not comparable maybe)
 
 
-## ----Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----------------
+## ----Q3b, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
 Obs.Per.Sex.Area<- table(dat$Sex, dat$Area)
 plot(Obs.Per.Sex.Area)
 # most data are from males and from the English Channel
@@ -44,7 +44,7 @@ boxplot(Lg ~ fMonth, data= dat)
 # A little maybe, but not that clear. Shouldn't be a problem
 
 
-## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE----------------------------------------------------------------------
+## ----Q3c, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE----------------------------------------------------------
 # Maturity in relation to Sex
 mean.per.Sex<- tapply(dat$Mature, list(dat$Sex), mean)
 barplot(mean.per.Sex, ylim= c(0, 1),
@@ -52,7 +52,7 @@ barplot(mean.per.Sex, ylim= c(0, 1),
 # Probability maybe higher in males?
 
 
-## ----Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----------------
+## ----Q3d, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE, fig.show= ifelse(SOLUTIONS, "asis", "hide")----
 # Maturity in relation to Area
 mean.per.Area<- tapply(dat$Mature, list(dat$Area), mean)
 barplot(mean.per.Area, ylim= c(0, 1),
@@ -79,12 +79,12 @@ barplot(mean.per.Month, ylim= c(0, 1),
 # Maybe Month should be included
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 datM<- dat[dat$Sex == "M", ]
 Mat1<- glm(Mature ~ Lg + Area + Lg:Area, family= binomial, data= datM)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 summary(Mat1)
 
 # "(Intercept)" is the predicted value on the link (logit) scale for
@@ -120,7 +120,7 @@ summary(Mat1)
 # for the interpretation of the model
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 
 drop1(Mat1, test= "Chisq")
 # the interaction of length by area is significant: nothing to simplify.
@@ -152,7 +152,7 @@ plot(res2.p ~ datM$Lg, col= datM$Mature + 1) # scatterplot
 # Can't see anything useful.
 
 
-## ----Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5-------------------------------------------
+## ----Q8a, eval=TRUE, echo=TRUE, results=TRUE, collapse=FALSE, fig.height=5, fig.width=5-------------------------------
 library(arm)
 par(mfrow= c(1, 1))
 binnedplot(x= datM$Month, y= res2.p, xlab= "Month", nclass = 6)
@@ -170,7 +170,7 @@ binnedplot(x= datM$Lg, y= res2.p, xlab= "Length", nclass= 20)
 
 
 
-## ----Q10a, eval=TRUE, echo=TRUE, results=TRUE, collapse=TRUE, fig.height=5--------------------------------------------------------
+## ----Q10a, eval=TRUE, echo=TRUE, results=TRUE, collapse=TRUE, fig.height=5--------------------------------------------
 # create a sequence of increasing lengths
 Seq.Length<- 74:100
 

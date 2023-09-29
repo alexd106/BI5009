@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-3\. These data are from a study originally conducted by Loyn (1987)^1^ and subsequently re-analysed by Quinn and Keough (2002)^2^ and Zuur et al (2009)^3^. The aim of the study was to relate bird density in 56 forest patches to a number of different environmental variables and management practices. A summary of the variables is: **ABUND**: Density of birds, Continuous response; **AREA**: Size of forest patch, Continuous explanatory; **DIST**: Distance to nearest patch, Continuous explanatory; **LDIST**: Distance to nearest larger patch, Continuous explanatory; **ALT**: Mean altitude of patch, Continuous explanatory; **YR.ISOL**: Year of isolation of clearance, Continuous explanatory; **GRAZE**: Index of livestock grazing intensity, 5 level Categorical explanatory 1= low graze, 5 = high graze. Add a description of your variables to the metadata you created previously. Clearly highlight which variable is the response variable and which variables are potential explanatory variables. 
+3\. These data are from a study originally conducted by Loyn (1987)^1^ and subsequently re-analysed by Quinn and Keough (2002)^2^ and Zuur et al (2009)^3^. The aim of the study was to relate bird density in 67 forest patches to a number of different environmental variables and management practices. A summary of the variables is: **ABUND**: Density of birds, Continuous response; **AREA**: Size of forest patch, Continuous explanatory; **DIST**: Distance to nearest patch, Continuous explanatory; **LDIST**: Distance to nearest larger patch, Continuous explanatory; **ALT**: Mean altitude of patch, Continuous explanatory; **YR.ISOL**: Year of isolation of clearance, Continuous explanatory; **GRAZE**: Index of livestock grazing intensity, 5 level Categorical explanatory 1= low graze, 5 = high graze. Add a description of your variables to the metadata you created previously. Clearly highlight which variable is the response variable and which variables are potential explanatory variables. 
 
 \  
 
@@ -38,7 +38,7 @@ loyn <- read.table("./data/loyn.txt", header = TRUE,
                    stringsAsFactors = TRUE)
 str(loyn)
 
-# 56 observations and 8 variables (from str())
+# 67 observations and 8 variables (from str())
 
 summary(loyn)
 

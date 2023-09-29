@@ -1,4 +1,4 @@
-## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 loyn <- read.table("data/loyn.txt", header = TRUE)
 str(loyn)
 
@@ -12,16 +12,16 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 
 
 
-## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 M1 <- lm(ABUND ~ LOGDIST + LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + 
            FGRAZE:LOGAREA, data = loyn)
 
 
-## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q4, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 summary(M1)
 
 
-## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 # Wait: why can't we use information from the 'summary(M1)' or 'anova(M1)' functions
 # to do this?
 
@@ -49,7 +49,7 @@ drop1(M1, test = "F")
 # the number of degrees of freedom it uses (1)
 
 
-## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q6, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 # new model removing LOGLDIST 
 M2 <- lm(ABUND ~ LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE +
            LOGAREA:FGRAZE, data = loyn) 
@@ -65,7 +65,7 @@ drop1(M2, test = "F")
 # with respect to the number of degrees of freedom it uses (1)
 
 
-## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 M3 <- update(M2, formula = . ~ . - YR.ISOL)
 
 drop1(M3, test = "F")
@@ -74,14 +74,14 @@ drop1(M3, test = "F")
 # the next model.
 
 
-## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q8, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 M4 <- update(M3, formula = . ~ . - LOGDIST)
 drop1(M4, test = "F")
 
 # ALT is not significant (p = 0.331)
 
 
-## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------------------
+## ----Q9, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------------------------
 # and finally drop ALT from the model
 M5 <- update(M4, formula = . ~ . - ALT)
 drop1(M5, test = "F")
@@ -91,7 +91,7 @@ drop1(M5, test = "F")
 # process comes to an end.
 
 
-## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----Q10, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 # As the interaction between LOGAREA and FGRAZE was significant at each step of
 # model selection process the main effects should be left in our model,
 # irrespective of significance. This is because it is quite difficult to 
@@ -108,7 +108,7 @@ anova(M5)
 drop1(M5, test= "F") 
 
 
-## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----Q11, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 # Biologically: confirming what we already found out in the previous exercise:
 # There is a significant interaction between the area of the patch and the level 
 # of grazing 
@@ -142,7 +142,7 @@ drop1(M5, test= "F")
 # patches may have a less important effect)
 
 
-## ----QA1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----QA1, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 drop1(M1)
 #Removing the term 'LOGLDIST' gives the lowest AIC of 226.23
 #So refit your model with this term removed. Run `drop1()` again on your updated model. Perhaps call this new model `M2.AIC`.
@@ -151,7 +151,7 @@ drop1(M2.AIC) #removing which term gives the lowest AIC?
 #Continue in this manner until removing any terms INCREASES the AIC. Then we have our minimal adequate model (which should be the same as the final model we finished with last time)
 
 
-## ----QA2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----QA2, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 #Fit each model using the terms described above, giving each a unique and sensible name
 M.AIC.1<- lm(ABUND ~ LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE, data= loyn)
 
@@ -164,7 +164,7 @@ M.AIC.4<- lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE, data= loyn)
 M.AIC.5<- lm(ABUND ~ LOGAREA + FGRAZE, data= loyn)
 
 
-## ----QA3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------------------
+## ----QA3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE-------------------------------------------------
 AIC(M.AIC.1)
 #AIC of 418.54
 AIC(M.AIC.2)
@@ -179,7 +179,7 @@ AIC(M.AIC.5)
 #So the model with the lowest AIC (= 413.71) is M.AIC.4, with the terms 'LOGAREA + FGRAZE + LOGAREA:FGRAZE'
 
 
-## ----QA2a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------------------
+## ----QA2a, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE------------------------------------------------
 # This is one way of constructing a summary table for reporting the results:
 
 # create a vector of the formulas for all the models compared during our model selection (remember to add any custom models you have have added yourself!):
@@ -213,6 +213,6 @@ summary.table$deltaAIC<- summary.table$AIC - summary.table$AIC[1]
 summary.table
 
 
-## ----Q12c, eval=TRUE, echo=FALSE--------------------------------------------------------------------------------------------------
+## ----Q12c, eval=TRUE, echo=FALSE--------------------------------------------------------------------------------------
 knitr::kable(summary.table, "html", align = "lcr", row.names = FALSE)
 
