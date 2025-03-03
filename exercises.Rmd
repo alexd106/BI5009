@@ -74,8 +74,8 @@ rmarkdown::render("linear_model_1_exercise.Rmd", output_format = "pdf_document",
 rmarkdown::render("linear_model_2_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_2_exercise.pdf", quiet = TRUE)
 rmarkdown::render("LM_3_multiple_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_3_exercise.pdf", quiet = TRUE)
 rmarkdown::render("LM_4_Selection_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/linear_model_4_exercise.pdf", quiet = TRUE)
-rmarkdown::render("GLM_1_Poisson_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_1_Poisson_exercise.pdf", quiet = TRUE)
-rmarkdown::render("GLM_2_Binomial_RayBin_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_2_Binomial_RayBin_exercise.pdf", quiet = TRUE)
+# rmarkdown::render("GLM_1_Poisson_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_1_Poisson_exercise.pdf", quiet = TRUE)
+#rmarkdown::render("GLM_2_Binomial_RayBin_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_2_Binomial_RayBin_exercise.pdf", quiet = TRUE)
 ```
 
 #### Section 2 Exercises
