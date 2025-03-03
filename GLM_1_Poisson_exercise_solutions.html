@@ -13,7 +13,7 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -55,7 +55,7 @@
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -342,7 +342,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BI5012</a>
+      <a class="navbar-brand" href="index.html">EV5804</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -571,28 +571,24 @@ the complete model on paper.</p>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">## Call:</span></span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">## glm(formula = Species ~ Biomass, family = poisson, data = sp)</span></span>
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">## -4.7703  -1.5994  -0.1025   1.2722   4.5433  </span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">##              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="do">## (Intercept)  3.184094   0.039159   81.31  &lt; 2e-16 ***</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="do">## Biomass     -0.064441   0.009838   -6.55 5.74e-11 ***</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="do">## (Dispersion parameter for poisson family taken to be 1)</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">##              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">## (Intercept)  3.184094   0.039159   81.31  &lt; 2e-16 ***</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="do">## Biomass     -0.064441   0.009838   -6.55 5.74e-11 ***</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="do">## (Dispersion parameter for poisson family taken to be 1)</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="do">##     Null deviance: 452.35  on 89  degrees of freedom</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="do">## Residual deviance: 407.67  on 88  degrees of freedom</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="do">## AIC: 830.86</span></span>
 <span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="do">##     Null deviance: 452.35  on 89  degrees of freedom</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="do">## Residual deviance: 407.67  on 88  degrees of freedom</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="do">## AIC: 830.86</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co"># Model description:</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co"># Species_i ~ Poisson(mu_i)</span></span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co"># log(mu_i) = 3.18 - 0.064*Biomass_i</span></span></code></pre></div>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co"># Model description:</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co"># Species_i ~ Poisson(mu_i)</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co"># log(mu_i) = 3.18 - 0.064*Biomass_i</span></span></code></pre></div>
 <p> </p>
 <p>5. According to this model, what would be the predicted value (by
 hand) on the link scale log(mu) when Biomass= 5? What would this become
@@ -621,70 +617,66 @@ model simplification? Is the effect of the interaction significant?</p>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">## Call:</span></span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">## glm(formula = Species ~ Biomass * pH, family = poisson, data = sp)</span></span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## -2.4978  -0.7485  -0.0402   0.5575   3.2297  </span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##                Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">## (Intercept)     2.95255    0.08240  35.833  &lt; 2e-16 ***</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## Biomass        -0.26216    0.03803  -6.893 5.47e-12 ***</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## pHmid           0.48411    0.10723   4.515 6.34e-06 ***</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">## pHhigh          0.81557    0.10284   7.931 2.18e-15 ***</span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">## Biomass:pHmid   0.12314    0.04270   2.884 0.003927 ** </span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">## Biomass:pHhigh  0.15503    0.04003   3.873 0.000108 ***</span></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">## (Dispersion parameter for poisson family taken to be 1)</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##                Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## (Intercept)     2.95255    0.08240  35.833  &lt; 2e-16 ***</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">## Biomass        -0.26216    0.03803  -6.893 5.47e-12 ***</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## pHmid           0.48411    0.10723   4.515 6.34e-06 ***</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">## pHhigh          0.81557    0.10284   7.931 2.18e-15 ***</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">## Biomass:pHmid   0.12314    0.04270   2.884 0.003927 ** </span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## Biomass:pHhigh  0.15503    0.04003   3.873 0.000108 ***</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">## (Dispersion parameter for poisson family taken to be 1)</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">##     Null deviance: 452.346  on 89  degrees of freedom</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">## Residual deviance:  83.201  on 84  degrees of freedom</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">## AIC: 514.39</span></span>
 <span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="do">##     Null deviance: 452.346  on 89  degrees of freedom</span></span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="do">## Residual deviance:  83.201  on 84  degrees of freedom</span></span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="do">## AIC: 514.39</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="fu">anova</span>(sp.glm2, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="do">## Analysis of Deviance Table</span></span>
 <span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
-<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="fu">anova</span>(sp.glm2, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="do">## Analysis of Deviance Table</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="do">## Model: poisson, link: log</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="do">## Response: Species</span></span>
 <span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="do">## Model: poisson, link: log</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="do">## Terms added sequentially (first to last)</span></span>
 <span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="do">## Response: Species</span></span>
-<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="do">## Terms added sequentially (first to last)</span></span>
-<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="do">##            Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
-<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="do">## NULL                          89     452.35              </span></span>
-<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="do">## Biomass     1   44.673        88     407.67 2.328e-11 ***</span></span>
-<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="do">## pH          2  308.431        86      99.24 &lt; 2.2e-16 ***</span></span>
-<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="do">## Biomass:pH  2   16.040        84      83.20 0.0003288 ***</span></span>
-<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a></span>
-<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co"># anova is useful for getting an idea of the relative contributions</span></span>
-<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co"># of each term, but beware that order does matter for all but the last term!</span></span>
-<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a></span>
-<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="co"># drop1 would provide the same answer in this case, since there are</span></span>
-<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="co"># no other interactions involved (and interactions are always last). </span></span>
-<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="co"># In general this would be the method of choice if our purpose is </span></span>
-<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="co"># to perform model simplification.</span></span>
-<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a></span>
-<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="fu">drop1</span>(sp.glm2, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
-<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="do">## Species ~ Biomass * pH</span></span>
-<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="do">##            Df Deviance    AIC   LRT  Pr(&gt;Chi)    </span></span>
-<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="do">## &lt;none&gt;          83.201 514.39                    </span></span>
-<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="do">## Biomass:pH  2   99.242 526.43 16.04 0.0003288 ***</span></span>
-<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a></span>
-<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="co"># the ANOVA table provides a global test across pH levels. </span></span>
-<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="co"># However the significance of the interactions is also unambiguous</span></span>
-<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="co"># from the summary table, in this case, although the null hypothesis</span></span>
-<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="co"># is different (coefficient different from zero in the latter </span></span>
-<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="co"># vs. significant proportion of variation explained in the former).</span></span></code></pre></div>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="do">##            Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    </span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="do">## NULL                          89     452.35              </span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="do">## Biomass     1   44.673        88     407.67 2.328e-11 ***</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="do">## pH          2  308.431        86      99.24 &lt; 2.2e-16 ***</span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="do">## Biomass:pH  2   16.040        84      83.20 0.0003288 ***</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co"># anova is useful for getting an idea of the relative contributions</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co"># of each term, but beware that order does matter for all but the last term!</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="co"># drop1 would provide the same answer in this case, since there are</span></span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co"># no other interactions involved (and interactions are always last). </span></span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co"># In general this would be the method of choice if our purpose is </span></span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="co"># to perform model simplification.</span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="fu">drop1</span>(sp.glm2, <span class="at">test=</span> <span class="st">&quot;Chisq&quot;</span>)</span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
+<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="do">## Model:</span></span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="do">## Species ~ Biomass * pH</span></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="do">##            Df Deviance    AIC   LRT  Pr(&gt;Chi)    </span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="do">## &lt;none&gt;          83.201 514.39                    </span></span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="do">## Biomass:pH  2   99.242 526.43 16.04 0.0003288 ***</span></span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="co"># the ANOVA table provides a global test across pH levels. </span></span>
+<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="co"># However the significance of the interactions is also unambiguous</span></span>
+<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="co"># from the summary table, in this case, although the null hypothesis</span></span>
+<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="co"># is different (coefficient different from zero in the latter </span></span>
+<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="co"># vs. significant proportion of variation explained in the former).</span></span></code></pre></div>
 <p> </p>
 <p>8. Make sure you understand the individual components of the two
 types of summaries, null hypotheses, and the mathematical and biological

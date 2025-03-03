@@ -13,7 +13,7 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -55,7 +55,7 @@
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -342,7 +342,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BI5012</a>
+      <a class="navbar-brand" href="index.html">EV5804</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -718,53 +718,49 @@ Is this model biologically sensible?</p>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="do">## glm(formula = presence ~ julianday + fTide4 + fTime6, family = binomial, </span></span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="do">##     data = dat)</span></span>
 <span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="do">## -1.0839  -0.8044  -0.7033   1.3490   2.0119  </span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">##               Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## (Intercept) -0.9987765  0.1138169  -8.775  &lt; 2e-16 ***</span></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## julianday    0.0021526  0.0003199   6.729 1.71e-11 ***</span></span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">## fTide42     -0.0991562  0.0916952  -1.081   0.2795    </span></span>
-<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="do">## fTide43     -0.2695689  0.0941676  -2.863   0.0042 ** </span></span>
-<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="do">## fTide44     -0.1853124  0.0930287  -1.992   0.0464 *  </span></span>
-<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="do">## fTime6AM1   -0.1622919  0.1073545  -1.512   0.1306    </span></span>
-<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="do">## fTime6AM2   -0.5147451  0.1131952  -4.547 5.43e-06 ***</span></span>
-<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="do">## fTime6MDay  -0.6448763  0.1157191  -5.573 2.51e-08 ***</span></span>
-<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="do">## fTime6PM1   -0.6481564  0.1161442  -5.581 2.40e-08 ***</span></span>
-<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="do">## fTime6PM2   -0.0544823  0.1079546  -0.505   0.6138    </span></span>
-<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="do">##               Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="do">## (Intercept) -0.9987765  0.1138169  -8.775  &lt; 2e-16 ***</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="do">## julianday    0.0021526  0.0003199   6.729 1.71e-11 ***</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="do">## fTide42     -0.0991562  0.0916952  -1.081   0.2795    </span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">## fTide43     -0.2695689  0.0941676  -2.863   0.0042 ** </span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## fTide44     -0.1853124  0.0930287  -1.992   0.0464 *  </span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## fTime6AM1   -0.1622919  0.1073545  -1.512   0.1306    </span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">## fTime6AM2   -0.5147451  0.1131952  -4.547 5.43e-06 ***</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="do">## fTime6MDay  -0.6448763  0.1157191  -5.573 2.51e-08 ***</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="do">## fTime6PM1   -0.6481564  0.1161442  -5.581 2.40e-08 ***</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="do">## fTime6PM2   -0.0544823  0.1079546  -0.505   0.6138    </span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="do">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="do">## Residual deviance: 5613.0  on 4990  degrees of freedom</span></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="do">## AIC: 5633</span></span>
 <span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="do">##     Null deviance: 5738.9  on 4999  degrees of freedom</span></span>
-<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="do">## Residual deviance: 5613.0  on 4990  degrees of freedom</span></span>
-<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a><span class="do">## AIC: 5633</span></span>
-<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
-<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="co"># &quot;(Intercept)&quot; is the predicted value on the link (logit) scale for julianday = 0, tidal</span></span>
-<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="co"># state 1 around midnight (&quot;fTime6MNight&quot;)</span></span>
-<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a></span>
-<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a><span class="co"># &quot;julianday&quot; is the slope of day of year, assumes a linear increase </span></span>
-<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a><span class="co"># (on the logit scale) from 1st Jan to 31st Dec</span></span>
-<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a></span>
-<span id="cb15-40"><a href="#cb15-40" tabindex="-1"></a><span class="co"># &quot;fTide4X&quot; is the estimated difference (on the logit scale) between</span></span>
-<span id="cb15-41"><a href="#cb15-41" tabindex="-1"></a><span class="co"># tidal states 1 and X</span></span>
-<span id="cb15-42"><a href="#cb15-42" tabindex="-1"></a></span>
-<span id="cb15-43"><a href="#cb15-43" tabindex="-1"></a><span class="co"># &quot;fTime6X&quot; is the estimated difference (on the logit scale) between</span></span>
-<span id="cb15-44"><a href="#cb15-44" tabindex="-1"></a><span class="co"># periods of the day 1 and X</span></span>
-<span id="cb15-45"><a href="#cb15-45" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" tabindex="-1"></a><span class="co"># A mathematical description of the model</span></span>
-<span id="cb15-47"><a href="#cb15-47" tabindex="-1"></a><span class="co"># (more or less how I would present it in the methods section of a paper):</span></span>
-<span id="cb15-48"><a href="#cb15-48" tabindex="-1"></a><span class="co"># presence ~ Bernoulli(p)  or presence ~ Binomial(N= 1, p)</span></span>
-<span id="cb15-49"><a href="#cb15-49" tabindex="-1"></a><span class="co"># log(p / (1-p)) = -0.999 + 0.0022*julianday</span></span>
-<span id="cb15-50"><a href="#cb15-50" tabindex="-1"></a><span class="co">#    -0.269 * fTide42 -0.185 * fTide43 -0.162 * fTide44   </span></span>
-<span id="cb15-51"><a href="#cb15-51" tabindex="-1"></a><span class="co">#    -0.099 * fTime6AM1 -0.514 * fTime6AM2</span></span>
-<span id="cb15-52"><a href="#cb15-52" tabindex="-1"></a><span class="co">#    -0.644 * fTime6MDay -0.648 * fTime6PM1 </span></span>
-<span id="cb15-53"><a href="#cb15-53" tabindex="-1"></a><span class="co">#    -0.054 * fTime6PM2 </span></span></code></pre></div>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
+<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a></span>
+<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a><span class="co"># &quot;(Intercept)&quot; is the predicted value on the link (logit) scale for julianday = 0, tidal</span></span>
+<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co"># state 1 around midnight (&quot;fTime6MNight&quot;)</span></span>
+<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a><span class="co"># &quot;julianday&quot; is the slope of day of year, assumes a linear increase </span></span>
+<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="co"># (on the logit scale) from 1st Jan to 31st Dec</span></span>
+<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a></span>
+<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a><span class="co"># &quot;fTide4X&quot; is the estimated difference (on the logit scale) between</span></span>
+<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a><span class="co"># tidal states 1 and X</span></span>
+<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a><span class="co"># &quot;fTime6X&quot; is the estimated difference (on the logit scale) between</span></span>
+<span id="cb15-40"><a href="#cb15-40" tabindex="-1"></a><span class="co"># periods of the day 1 and X</span></span>
+<span id="cb15-41"><a href="#cb15-41" tabindex="-1"></a></span>
+<span id="cb15-42"><a href="#cb15-42" tabindex="-1"></a><span class="co"># A mathematical description of the model</span></span>
+<span id="cb15-43"><a href="#cb15-43" tabindex="-1"></a><span class="co"># (more or less how I would present it in the methods section of a paper):</span></span>
+<span id="cb15-44"><a href="#cb15-44" tabindex="-1"></a><span class="co"># presence ~ Bernoulli(p)  or presence ~ Binomial(N= 1, p)</span></span>
+<span id="cb15-45"><a href="#cb15-45" tabindex="-1"></a><span class="co"># log(p / (1-p)) = -0.999 + 0.0022*julianday</span></span>
+<span id="cb15-46"><a href="#cb15-46" tabindex="-1"></a><span class="co">#    -0.269 * fTide42 -0.185 * fTide43 -0.162 * fTide44   </span></span>
+<span id="cb15-47"><a href="#cb15-47" tabindex="-1"></a><span class="co">#    -0.099 * fTime6AM1 -0.514 * fTime6AM2</span></span>
+<span id="cb15-48"><a href="#cb15-48" tabindex="-1"></a><span class="co">#    -0.644 * fTime6MDay -0.648 * fTime6PM1 </span></span>
+<span id="cb15-49"><a href="#cb15-49" tabindex="-1"></a><span class="co">#    -0.054 * fTime6PM2 </span></span></code></pre></div>
 <p> </p>
 <p>6. Are all the terms significant? If not, simplify the model.
 Remember to choose the correct ANOVA method (sequential or not), and the

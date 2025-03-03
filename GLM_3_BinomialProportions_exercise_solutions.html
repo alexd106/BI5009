@@ -13,7 +13,7 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -55,7 +55,7 @@
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -342,7 +342,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BI5012</a>
+      <a class="navbar-brand" href="index.html">EV5804</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -615,68 +615,64 @@ biological hypothesis does each term imply, qualitatively?</p>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="do">## glm(formula = cbind(Living_mites, Dead_mites) ~ Concentration * </span></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="do">##     fToxic, family = binomial, data = Mites)</span></span>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="do">## -2.0569  -0.5875  -0.1295   0.7435   2.6011  </span></span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">##                       Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="do">## (Intercept)            1.43483    0.41664   3.444 0.000574 ***</span></span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="do">## Concentration         -3.80101    0.87479  -4.345 1.39e-05 ***</span></span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="do">## fToxic2                0.00860    0.57713   0.015 0.988111    </span></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="do">## fToxic3                0.01419    0.58714   0.024 0.980717    </span></span>
-<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="do">## fToxic4                0.27387    0.58485   0.468 0.639594    </span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="do">## Concentration:fToxic2 -6.17647    2.28823  -2.699 0.006950 ** </span></span>
-<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="do">## Concentration:fToxic3 -1.89983    1.36204  -1.395 0.163062    </span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="do">## Concentration:fToxic4  1.48275    0.96299   1.540 0.123626    </span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="do">##                       Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="do">## (Intercept)            1.43483    0.41664   3.444 0.000574 ***</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="do">## Concentration         -3.80101    0.87479  -4.345 1.39e-05 ***</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="do">## fToxic2                0.00860    0.57713   0.015 0.988111    </span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">## fToxic3                0.01419    0.58714   0.024 0.980717    </span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="do">## fToxic4                0.27387    0.58485   0.468 0.639594    </span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="do">## Concentration:fToxic2 -6.17647    2.28823  -2.699 0.006950 ** </span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="do">## Concentration:fToxic3 -1.89983    1.36204  -1.395 0.163062    </span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="do">## Concentration:fToxic4  1.48275    0.96299   1.540 0.123626    </span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="do">##     Null deviance: 342.07  on 114  degrees of freedom</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="do">## Residual deviance: 117.67  on 107  degrees of freedom</span></span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="do">## AIC: 231.43</span></span>
 <span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="do">##     Null deviance: 342.07  on 114  degrees of freedom</span></span>
-<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="do">## Residual deviance: 117.67  on 107  degrees of freedom</span></span>
-<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="do">## AIC: 231.43</span></span>
-<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 6</span></span>
-<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a></span>
-<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="fu">coef</span>(M1)</span>
-<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a><span class="do">##           (Intercept)         Concentration               fToxic2               fToxic3               fToxic4 </span></span>
-<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="do">##           1.434827258          -3.801011714           0.008599625           0.014191002           0.273864642 </span></span>
-<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="do">## Concentration:fToxic2 Concentration:fToxic3 Concentration:fToxic4 </span></span>
-<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a><span class="do">##          -6.176473370          -1.899832702           1.482751939</span></span>
-<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a></span>
-<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a><span class="do">## Mathematical model description:</span></span>
-<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a></span>
-<span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a><span class="co"># Prop_surviving ~ Binomial(Ntot, P) </span></span>
-<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a><span class="co"># log(P / (1-P)) = </span></span>
-<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a><span class="co">#         1.43 - 3.80*Concentration </span></span>
-<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a><span class="co">#         + 0.0085*fToxic2 + 0.014*fToxic3 + 0.27*fToxic4 </span></span>
-<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a><span class="co">#         - 6.18*Concentration:fToxic2</span></span>
-<span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a><span class="co">#         - 1.90*Concentration*fToxic3 </span></span>
-<span id="cb13-46"><a href="#cb13-46" tabindex="-1"></a><span class="co">#         + 1.48*Concentration*fToxic4</span></span>
-<span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a></span>
-<span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a><span class="do">## &quot;biological&quot; hypotheses:</span></span>
-<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a></span>
-<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a><span class="co"># (Intercept):     the mean (on the logit scale) for Toxic 1 when its</span></span>
-<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a><span class="co"># concentration is 0 (null hypothesis not very useful, however</span></span>
-<span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a><span class="co"># the value is quite interesting, when back-transformed on the proportion</span></span>
-<span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a><span class="co"># scale: this is the proportion that survive the experiment in the absence</span></span>
-<span id="cb13-54"><a href="#cb13-54" tabindex="-1"></a><span class="co"># of toxic chemical. Shouldn&#39;t differ between chemicals, presumably?)</span></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 6</span></span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="fu">coef</span>(M1)</span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="do">##           (Intercept)         Concentration               fToxic2               fToxic3 </span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="do">##           1.434827258          -3.801011714           0.008599625           0.014191002 </span></span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="do">##               fToxic4 Concentration:fToxic2 Concentration:fToxic3 Concentration:fToxic4 </span></span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="do">##           0.273864642          -6.176473370          -1.899832702           1.482751939</span></span>
+<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="do">## Mathematical model description:</span></span>
+<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a></span>
+<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a><span class="co"># Prop_surviving ~ Binomial(Ntot, P) </span></span>
+<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a><span class="co"># log(P / (1-P)) = </span></span>
+<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a><span class="co">#         1.43 - 3.80*Concentration </span></span>
+<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="co">#         + 0.0085*fToxic2 + 0.014*fToxic3 + 0.27*fToxic4 </span></span>
+<span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a><span class="co">#         - 6.18*Concentration:fToxic2</span></span>
+<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a><span class="co">#         - 1.90*Concentration*fToxic3 </span></span>
+<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a><span class="co">#         + 1.48*Concentration*fToxic4</span></span>
+<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a></span>
+<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a><span class="do">## &quot;biological&quot; hypotheses:</span></span>
+<span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a></span>
+<span id="cb13-46"><a href="#cb13-46" tabindex="-1"></a><span class="co"># (Intercept):     the mean (on the logit scale) for Toxic 1 when its</span></span>
+<span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a><span class="co"># concentration is 0 (null hypothesis not very useful, however</span></span>
+<span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a><span class="co"># the value is quite interesting, when back-transformed on the proportion</span></span>
+<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a><span class="co"># scale: this is the proportion that survive the experiment in the absence</span></span>
+<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a><span class="co"># of toxic chemical. Shouldn&#39;t differ between chemicals, presumably?)</span></span>
+<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a></span>
+<span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a><span class="co"># Concentration: slope of Concentration, or change in survival per unit</span></span>
+<span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a><span class="co"># increase in Toxic 1 concentration (on logit link), or change in log-odds</span></span>
+<span id="cb13-54"><a href="#cb13-54" tabindex="-1"></a><span class="co"># of survival (on proportion scale)</span></span>
 <span id="cb13-55"><a href="#cb13-55" tabindex="-1"></a></span>
-<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a><span class="co"># Concentration: slope of Concentration, or change in survival per unit</span></span>
-<span id="cb13-57"><a href="#cb13-57" tabindex="-1"></a><span class="co"># increase in Toxic 1 concentration (on logit link), or change in log-odds</span></span>
-<span id="cb13-58"><a href="#cb13-58" tabindex="-1"></a><span class="co"># of survival (on proportion scale)</span></span>
+<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a><span class="co"># fToxic2:       difference between intercepts of Toxic 2 and Toxic 1</span></span>
+<span id="cb13-57"><a href="#cb13-57" tabindex="-1"></a><span class="co"># fToxic3:       difference between intercepts of Toxic 3 and Toxic 1</span></span>
+<span id="cb13-58"><a href="#cb13-58" tabindex="-1"></a><span class="co"># fToxic4:       difference between intercepts of Toxic 4 and Toxic 1</span></span>
 <span id="cb13-59"><a href="#cb13-59" tabindex="-1"></a></span>
-<span id="cb13-60"><a href="#cb13-60" tabindex="-1"></a><span class="co"># fToxic2:       difference between intercepts of Toxic 2 and Toxic 1</span></span>
-<span id="cb13-61"><a href="#cb13-61" tabindex="-1"></a><span class="co"># fToxic3:       difference between intercepts of Toxic 3 and Toxic 1</span></span>
-<span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a><span class="co"># fToxic4:       difference between intercepts of Toxic 4 and Toxic 1</span></span>
-<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a></span>
-<span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a><span class="co"># Concentration:fToxic2  difference between Conc. slopes for Toxic 2 and</span></span>
-<span id="cb13-65"><a href="#cb13-65" tabindex="-1"></a><span class="co"># Toxic 1. Negative means a more lethal effect than Toxic 1</span></span>
-<span id="cb13-66"><a href="#cb13-66" tabindex="-1"></a></span>
-<span id="cb13-67"><a href="#cb13-67" tabindex="-1"></a><span class="co"># Concentration:fToxic3  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span>
-<span id="cb13-68"><a href="#cb13-68" tabindex="-1"></a><span class="co"># Concentration:fToxic4  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span></code></pre></div>
+<span id="cb13-60"><a href="#cb13-60" tabindex="-1"></a><span class="co"># Concentration:fToxic2  difference between Conc. slopes for Toxic 2 and</span></span>
+<span id="cb13-61"><a href="#cb13-61" tabindex="-1"></a><span class="co"># Toxic 1. Negative means a more lethal effect than Toxic 1</span></span>
+<span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a></span>
+<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a><span class="co"># Concentration:fToxic3  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span>
+<span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a><span class="co"># Concentration:fToxic4  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span></code></pre></div>
 <p> </p>
 <p>6. Do you need to check for overdispersion? If so, how do you do
 it?</p>
@@ -800,40 +796,36 @@ results?</p>
 <span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="do">##     fToxic_4AsRef + Concentration:fToxic_4AsRef, family = binomial, </span></span>
 <span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a><span class="do">##     data = Mites)</span></span>
 <span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a><span class="do">## -2.0569  -0.5875  -0.1295   0.7435   2.6011  </span></span>
-<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a><span class="do">##                              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a><span class="do">## (Intercept)                    1.7087     0.4104   4.163 3.14e-05 ***</span></span>
-<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a><span class="do">## Concentration                 -2.3183     0.4026  -5.758 8.52e-09 ***</span></span>
-<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="do">## fToxic_4AsRef1                -0.2739     0.5848  -0.468 0.639594    </span></span>
-<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="do">## fToxic_4AsRef2                -0.2653     0.5727  -0.463 0.643213    </span></span>
-<span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a><span class="do">## fToxic_4AsRef3                -0.2597     0.5828  -0.446 0.655886    </span></span>
-<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef1  -1.4828     0.9630  -1.540 0.123626    </span></span>
-<span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef2  -7.6592     2.1524  -3.558 0.000373 ***</span></span>
-<span id="cb19-30"><a href="#cb19-30" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** </span></span>
-<span id="cb19-31"><a href="#cb19-31" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb19-32"><a href="#cb19-32" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb19-33"><a href="#cb19-33" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb19-34"><a href="#cb19-34" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="do">##                              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a><span class="do">## (Intercept)                    1.7087     0.4104   4.163 3.14e-05 ***</span></span>
+<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a><span class="do">## Concentration                 -2.3183     0.4026  -5.758 8.52e-09 ***</span></span>
+<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a><span class="do">## fToxic_4AsRef1                -0.2739     0.5848  -0.468 0.639594    </span></span>
+<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a><span class="do">## fToxic_4AsRef2                -0.2653     0.5727  -0.463 0.643213    </span></span>
+<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a><span class="do">## fToxic_4AsRef3                -0.2597     0.5828  -0.446 0.655886    </span></span>
+<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef1  -1.4828     0.9630  -1.540 0.123626    </span></span>
+<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef2  -7.6592     2.1524  -3.558 0.000373 ***</span></span>
+<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** </span></span>
+<span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb19-30"><a href="#cb19-30" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb19-31"><a href="#cb19-31" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb19-32"><a href="#cb19-32" tabindex="-1"></a><span class="do">##     Null deviance: 342.07  on 114  degrees of freedom</span></span>
+<span id="cb19-33"><a href="#cb19-33" tabindex="-1"></a><span class="do">## Residual deviance: 117.67  on 107  degrees of freedom</span></span>
+<span id="cb19-34"><a href="#cb19-34" tabindex="-1"></a><span class="do">## AIC: 231.43</span></span>
 <span id="cb19-35"><a href="#cb19-35" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb19-36"><a href="#cb19-36" tabindex="-1"></a><span class="do">##     Null deviance: 342.07  on 114  degrees of freedom</span></span>
-<span id="cb19-37"><a href="#cb19-37" tabindex="-1"></a><span class="do">## Residual deviance: 117.67  on 107  degrees of freedom</span></span>
-<span id="cb19-38"><a href="#cb19-38" tabindex="-1"></a><span class="do">## AIC: 231.43</span></span>
-<span id="cb19-39"><a href="#cb19-39" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb19-40"><a href="#cb19-40" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 6</span></span>
+<span id="cb19-36"><a href="#cb19-36" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 6</span></span>
+<span id="cb19-37"><a href="#cb19-37" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" tabindex="-1"></a><span class="co"># Concentration                 -2.3183     0.4026  -5.758 8.52e-09 ***</span></span>
+<span id="cb19-39"><a href="#cb19-39" tabindex="-1"></a><span class="co"># shows that the negative dose-effect relationship (slope for concentration) is significant</span></span>
+<span id="cb19-40"><a href="#cb19-40" tabindex="-1"></a><span class="co"># even for Toxic 4</span></span>
 <span id="cb19-41"><a href="#cb19-41" tabindex="-1"></a></span>
-<span id="cb19-42"><a href="#cb19-42" tabindex="-1"></a><span class="co"># Concentration                 -2.3183     0.4026  -5.758 8.52e-09 ***</span></span>
-<span id="cb19-43"><a href="#cb19-43" tabindex="-1"></a><span class="co"># shows that the negative dose-effect relationship (slope for concentration) is significant</span></span>
-<span id="cb19-44"><a href="#cb19-44" tabindex="-1"></a><span class="co"># even for Toxic 4</span></span>
-<span id="cb19-45"><a href="#cb19-45" tabindex="-1"></a></span>
-<span id="cb19-46"><a href="#cb19-46" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef1  -1.4828     0.9630  -1.540 0.123626    </span></span>
-<span id="cb19-47"><a href="#cb19-47" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef2  -7.6592     2.1524  -3.558 0.000373 ***</span></span>
-<span id="cb19-48"><a href="#cb19-48" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** </span></span>
-<span id="cb19-49"><a href="#cb19-49" tabindex="-1"></a><span class="co"># these coefficients and their p-values show that only the dose-effect relationships of Toxics 2 and 3</span></span>
-<span id="cb19-50"><a href="#cb19-50" tabindex="-1"></a><span class="co"># are significantly different from the dose-effect relationship of Toxic 4</span></span></code></pre></div>
+<span id="cb19-42"><a href="#cb19-42" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef1  -1.4828     0.9630  -1.540 0.123626    </span></span>
+<span id="cb19-43"><a href="#cb19-43" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef2  -7.6592     2.1524  -3.558 0.000373 ***</span></span>
+<span id="cb19-44"><a href="#cb19-44" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** </span></span>
+<span id="cb19-45"><a href="#cb19-45" tabindex="-1"></a><span class="co"># these coefficients and their p-values show that only the dose-effect relationships of Toxics 2 and 3</span></span>
+<span id="cb19-46"><a href="#cb19-46" tabindex="-1"></a><span class="co"># are significantly different from the dose-effect relationship of Toxic 4</span></span></code></pre></div>
 <p> </p>
 <p>10. <strong>Optional</strong> Include the 95 % CI on the plot above.
 You will need to obtain the fitted values and SE on the scale of the

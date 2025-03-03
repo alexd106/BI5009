@@ -116,6 +116,7 @@ paste0("- [", link_name, "](", file_name, ")") %>%
 cat(sep="\n\n")
 ```
 
+<!--
 ```{r sol_glm1, results='asis', eval = isTRUE(show_text_glm1)}
 link_name <- "Generalised linear models 1 - Poisson GLM exercise"
 file_name <- "GLM_1_Poisson_exercise_solutions.html"
@@ -129,7 +130,7 @@ file_name <- "GLM_2_Binomial_RayBin_exercise_solutions.html"
 paste0("- [", link_name, "](", file_name, ")") %>%
 cat(sep="\n\n")
 ```
-
+-->
 <!--
 ```{r sol_glm3, results='asis', eval = isTRUE(show_text_glm3)}
 link_name <- "Generalised linear models 3 - Binomial GLM exercise"
@@ -159,8 +160,8 @@ knitr::purl('./linear_model_1_exercise_solutions.Rmd', output = './exercise_solu
 knitr::purl('./linear_model_2_exercise_solutions.Rmd', output = './exercise_solutions/linear_model_2_exercise_solutions.R', quiet = TRUE)
 knitr::purl('./LM_3_multiple_exercise_solutions.Rmd', output = './exercise_solutions/linear_model_3_multiple_exercise_solutions.R', quiet = TRUE)
 knitr::purl('./LM_4_Selection_exercise_solutions.Rmd', output = './exercise_solutions/linear_model_4_Selection_exercise_solutions.R', quiet = TRUE)
-knitr::purl('./GLM_1_Poisson_exercise_solutions.Rmd', output = './exercise_solutions/GLM_1_Poisson_exercise_solutions.R', quiet = TRUE)
-knitr::purl('./GLM_2_Binomial_RayBin_exercise_solutions.Rmd', output = './exercise_solutions/GLM_2_Binomial_RayBin_exercise_solutions.R', quiet = TRUE)
+#knitr::purl('./GLM_1_Poisson_exercise_solutions.Rmd', output = './exercise_solutions/GLM_1_Poisson_exercise_solutions.R', quiet = TRUE)
+#knitr::purl('./GLM_2_Binomial_RayBin_exercise_solutions.Rmd', output = './exercise_solutions/GLM_2_Binomial_RayBin_exercise_solutions.R', quiet = TRUE)
 
 
 # knitr::purl('./GLM_3_BinomialProportions_exercise_solutions.Rmd', output = './exercise_solutions/GLM_3_BinomialProportions_exercise_solutions.R', quiet = TRUE)

@@ -13,7 +13,7 @@
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -55,7 +55,7 @@
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -342,7 +342,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BI5012</a>
+      <a class="navbar-brand" href="index.html">EV5804</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -706,58 +706,54 @@ it refer to?</li>
 <span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="do">## glm(formula = Mature ~ Lg + Area + Lg:Area, family = binomial, </span></span>
 <span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="do">##     data = datM)</span></span>
 <span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a><span class="do">## -2.8553  -0.2560   0.3349   0.5758   2.2134  </span></span>
-<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a><span class="do">##              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a><span class="do">## (Intercept) -41.97057    5.11871  -8.199 2.42e-16 ***</span></span>
-<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a><span class="do">## Lg            0.52120    0.06303   8.269  &lt; 2e-16 ***</span></span>
-<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a><span class="do">## AreaECH      15.53175    5.73658   2.707  0.00678 ** </span></span>
-<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a><span class="do">## Lg:AreaECH   -0.18606    0.07054  -2.638  0.00835 ** </span></span>
-<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="do">##              Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a><span class="do">## (Intercept) -41.97057    5.11871  -8.199 2.42e-16 ***</span></span>
+<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a><span class="do">## Lg            0.52120    0.06303   8.269  &lt; 2e-16 ***</span></span>
+<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a><span class="do">## AreaECH      15.53175    5.73658   2.707  0.00678 ** </span></span>
+<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a><span class="do">## Lg:AreaECH   -0.18606    0.07054  -2.638  0.00835 ** </span></span>
+<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a><span class="do">##     Null deviance: 1031.65  on 910  degrees of freedom</span></span>
+<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a><span class="do">## Residual deviance:  693.39  on 907  degrees of freedom</span></span>
+<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a><span class="do">## AIC: 701.39</span></span>
 <span id="cb21-21"><a href="#cb21-21" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a><span class="do">##     Null deviance: 1031.65  on 910  degrees of freedom</span></span>
-<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a><span class="do">## Residual deviance:  693.39  on 907  degrees of freedom</span></span>
-<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a><span class="do">## AIC: 701.39</span></span>
-<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 5</span></span>
-<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a><span class="co"># &quot;(Intercept)&quot; is the predicted value on the link (logit) scale for</span></span>
-<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a><span class="co"># Lg = 0, females (Sex= &quot;F&quot;) on the Atlantic coast (Area= &quot;ATL&quot;)</span></span>
-<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a></span>
-<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a><span class="co"># &quot;Lg&quot; is the slope of Length for females on the Atlantic coast.</span></span>
-<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a><span class="co"># Assumes a linear increase (on the logit scale)</span></span>
+<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 5</span></span>
+<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a><span class="co"># &quot;(Intercept)&quot; is the predicted value on the link (logit) scale for</span></span>
+<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a><span class="co"># Lg = 0, females (Sex= &quot;F&quot;) on the Atlantic coast (Area= &quot;ATL&quot;)</span></span>
+<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a></span>
+<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a><span class="co"># &quot;Lg&quot; is the slope of Length for females on the Atlantic coast.</span></span>
+<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a><span class="co"># Assumes a linear increase (on the logit scale)</span></span>
+<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a></span>
+<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a><span class="co"># &quot;AreaECH&quot; is the estimated difference (on the logit scale) between</span></span>
+<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a><span class="co"># the Channel and the Atlantic coast.</span></span>
+<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a><span class="co"># Positive means higher odds of being mature in the Channel</span></span>
 <span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a></span>
-<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a><span class="co"># &quot;AreaECH&quot; is the estimated difference (on the logit scale) between</span></span>
-<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a><span class="co"># the Channel and the Atlantic coast.</span></span>
-<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co"># Positive means higher odds of being mature in the Channel</span></span>
+<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a><span class="co"># &quot;Lg:AreaECH&quot; is the difference between the slope of Length in the Channel</span></span>
+<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a><span class="co"># compared to the slope of Length in the Atlantic.</span></span>
+<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co"># Negative means that the increase is slower in the Channel</span></span>
 <span id="cb21-37"><a href="#cb21-37" tabindex="-1"></a></span>
-<span id="cb21-38"><a href="#cb21-38" tabindex="-1"></a><span class="co"># &quot;Lg:AreaECH&quot; is the difference between the slope of Length in the Channel</span></span>
-<span id="cb21-39"><a href="#cb21-39" tabindex="-1"></a><span class="co"># compared to the slope of Length in the Atlantic.</span></span>
-<span id="cb21-40"><a href="#cb21-40" tabindex="-1"></a><span class="co"># Negative means that the increase is slower in the Channel</span></span>
-<span id="cb21-41"><a href="#cb21-41" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" tabindex="-1"></a><span class="co"># A mathematical description of the model</span></span>
-<span id="cb21-43"><a href="#cb21-43" tabindex="-1"></a><span class="co"># (more or less how I would present it in the methods section of a paper):</span></span>
-<span id="cb21-44"><a href="#cb21-44" tabindex="-1"></a><span class="co"># maturity ~ Bernoulli(p)  or maturity ~ Binomial(N= 1, p)</span></span>
-<span id="cb21-45"><a href="#cb21-45" tabindex="-1"></a><span class="co"># log(p / (1-p)) = -41.97 + 0.52*Length</span></span>
-<span id="cb21-46"><a href="#cb21-46" tabindex="-1"></a><span class="co">#    + 15.53 * AeraECH</span></span>
-<span id="cb21-47"><a href="#cb21-47" tabindex="-1"></a><span class="co">#    -0.19 * AeraECH * Length </span></span>
-<span id="cb21-48"><a href="#cb21-48" tabindex="-1"></a></span>
-<span id="cb21-49"><a href="#cb21-49" tabindex="-1"></a><span class="co"># The coefficients are on the logit scale,</span></span>
-<span id="cb21-50"><a href="#cb21-50" tabindex="-1"></a><span class="co"># so cannot be interpreted directly as probabilities. </span></span>
-<span id="cb21-51"><a href="#cb21-51" tabindex="-1"></a><span class="co"># They are interpreted as changes in log-odds:</span></span>
-<span id="cb21-52"><a href="#cb21-52" tabindex="-1"></a><span class="co"># For a given body length, a ray in the English Channel has</span></span>
-<span id="cb21-53"><a href="#cb21-53" tabindex="-1"></a><span class="co"># log-odds increased by 15.53 compared to a ray in the Atlantic.</span></span>
-<span id="cb21-54"><a href="#cb21-54" tabindex="-1"></a><span class="co"># This is equivalent to saying that the odds increase by exp(15.53).</span></span>
-<span id="cb21-55"><a href="#cb21-55" tabindex="-1"></a></span>
-<span id="cb21-56"><a href="#cb21-56" tabindex="-1"></a><span class="co"># None of this is particularly intuitive, so we will mostly</span></span>
-<span id="cb21-57"><a href="#cb21-57" tabindex="-1"></a><span class="co"># rely on predictions on the probability (response) scale</span></span>
-<span id="cb21-58"><a href="#cb21-58" tabindex="-1"></a><span class="co"># for the interpretation of the model</span></span></code></pre></div>
+<span id="cb21-38"><a href="#cb21-38" tabindex="-1"></a><span class="co"># A mathematical description of the model</span></span>
+<span id="cb21-39"><a href="#cb21-39" tabindex="-1"></a><span class="co"># (more or less how I would present it in the methods section of a paper):</span></span>
+<span id="cb21-40"><a href="#cb21-40" tabindex="-1"></a><span class="co"># maturity ~ Bernoulli(p)  or maturity ~ Binomial(N= 1, p)</span></span>
+<span id="cb21-41"><a href="#cb21-41" tabindex="-1"></a><span class="co"># log(p / (1-p)) = -41.97 + 0.52*Length</span></span>
+<span id="cb21-42"><a href="#cb21-42" tabindex="-1"></a><span class="co">#    + 15.53 * AeraECH</span></span>
+<span id="cb21-43"><a href="#cb21-43" tabindex="-1"></a><span class="co">#    -0.19 * AeraECH * Length </span></span>
+<span id="cb21-44"><a href="#cb21-44" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" tabindex="-1"></a><span class="co"># The coefficients are on the logit scale,</span></span>
+<span id="cb21-46"><a href="#cb21-46" tabindex="-1"></a><span class="co"># so cannot be interpreted directly as probabilities. </span></span>
+<span id="cb21-47"><a href="#cb21-47" tabindex="-1"></a><span class="co"># They are interpreted as changes in log-odds:</span></span>
+<span id="cb21-48"><a href="#cb21-48" tabindex="-1"></a><span class="co"># For a given body length, a ray in the English Channel has</span></span>
+<span id="cb21-49"><a href="#cb21-49" tabindex="-1"></a><span class="co"># log-odds increased by 15.53 compared to a ray in the Atlantic.</span></span>
+<span id="cb21-50"><a href="#cb21-50" tabindex="-1"></a><span class="co"># This is equivalent to saying that the odds increase by exp(15.53).</span></span>
+<span id="cb21-51"><a href="#cb21-51" tabindex="-1"></a></span>
+<span id="cb21-52"><a href="#cb21-52" tabindex="-1"></a><span class="co"># None of this is particularly intuitive, so we will mostly</span></span>
+<span id="cb21-53"><a href="#cb21-53" tabindex="-1"></a><span class="co"># rely on predictions on the probability (response) scale</span></span>
+<span id="cb21-54"><a href="#cb21-54" tabindex="-1"></a><span class="co"># for the interpretation of the model</span></span></code></pre></div>
 <p> </p>
 <p>6. Do you need to simplify the model? Use <code>drop1</code> to find
 out, with the appropriate test distribution (Chi-squared).</p>
