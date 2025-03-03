@@ -10,20 +10,20 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 
 
 ## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
-coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
-
-# or
-# library(lattice)
-# xyplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
-
-# - Within a grazing level, abundance seems to increase with the log patch area
-#   in a more or less linear fashion
-# - Overall, the mean abundance seems to decrease as grazing levels increase.
-#   This is most noticeable in the highest grazing level.
-# - Some of the slopes of the relationships (imagine a straight line) appear to be 
-#   somewhat different for the different graze levels. The slopes for graze levels
-#   1 and 2 are similar, but different for graze levels 3, 4, and 5. We will 
-#   need to test this with a model.
+# coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
+# 
+# # or
+# # library(lattice)
+# # xyplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
+# 
+# # - Within a grazing level, abundance seems to increase with the log patch area
+# #   in a more or less linear fashion
+# # - Overall, the mean abundance seems to decrease as grazing levels increase.
+# #   This is most noticeable in the highest grazing level.
+# # - Some of the slopes of the relationships (imagine a straight line) appear to be
+# #   somewhat different for the different graze levels. The slopes for graze levels
+# #   1 and 2 are similar, but different for graze levels 3, 4, and 5. We will
+# #   need to test this with a model.
 
 
 ## ----Q5, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
@@ -34,27 +34,27 @@ birds.inter.1 <- lm(ABUND ~ FGRAZE + LOGAREA + FGRAZE:LOGAREA, data = loyn)
 
 
 ## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
-# first split the plotting device into 2 rows and 2 columns
-par(mfrow = c(2,2))
-
-# now create the residuals plots
-plot(birds.inter.1)
-
-# To test the normality of residuals assumption we use the Normal Q-Q plot. 
-# The central residuals are not too far from the Q-Q line but the extremes
-# are too extreme (the tails of the distribution are too long). Some
-# observations, both high and low, are poorly explained by the model.
-
-# The plot of the residuals against the fitted values suggests these
-# extreme residuals happen for intermediate fitted values.
-
-# Looking at the homogeneity of variance assumption (Residuals vs
-# Fitted and Scale-Location plot),
-# the graphs are mostly messy, with no clear pattern emerging.
-
-# The observations with the highest leverage don't appear to be overly
-# influential, according to the Cook's distances in the Residuals vs
-# Leverage plot (all < 0.5).  
+# # first split the plotting device into 2 rows and 2 columns
+# par(mfrow = c(2,2))
+# 
+# # now create the residuals plots
+# plot(birds.inter.1)
+# 
+# # To test the normality of residuals assumption we use the Normal Q-Q plot.
+# # The central residuals are not too far from the Q-Q line but the extremes
+# # are too extreme (the tails of the distribution are too long). Some
+# # observations, both high and low, are poorly explained by the model.
+# 
+# # The plot of the residuals against the fitted values suggests these
+# # extreme residuals happen for intermediate fitted values.
+# 
+# # Looking at the homogeneity of variance assumption (Residuals vs
+# # Fitted and Scale-Location plot),
+# # the graphs are mostly messy, with no clear pattern emerging.
+# 
+# # The observations with the highest leverage don't appear to be overly
+# # influential, according to the Cook's distances in the Residuals vs
+# # Leverage plot (all < 0.5).
 
 
 ## ----Q7, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------

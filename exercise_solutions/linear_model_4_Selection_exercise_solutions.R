@@ -11,34 +11,34 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 
 
 ## ----Q2, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------
-# define the panel.cor function from ?pairs
-panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
-{
-    usr <- par("usr")
-    par(usr = c(0, 1, 0, 1))
-    r <- abs(cor(x, y))
-    txt <- format(c(r, 0.123456789), digits = digits)[1]
-    txt <- paste0(prefix, txt)
-    if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
-    text(0.5, 0.5, txt, cex = cex.cor * r)
-}
-
-# subset the variables of interest
-VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
-pairs(loyn[, VOI], lower.panel = panel.cor)
-
-# There are varying degrees of correlation between explanatory variables which
-# might indicate some collinearity, i.e. LOGAREA and FGRAZE (0.48), LOGDIST and 
-# LOGLDIST (0.59) and YR.ISOL and FGRAZE (0.56). However, the relationships
-# between these explanatory variables are quite weak so we can probably 
-# include these variables in the same model (but keep an eye on things). 
-# There also seems to be a reasonable spread of observations across these 
-# pairs of explanatory variables.
-
-# The relationship between the response variable ABUND and all the explanatory
-# variables is visible in the top row:
-# Some potential relationships present like with LOGAREA (positive), 
-# maybe ALT (positive) and FGRAZE (negative).
+# # define the panel.cor function from ?pairs
+# panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
+# {
+#     usr <- par("usr")
+#     par(usr = c(0, 1, 0, 1))
+#     r <- abs(cor(x, y))
+#     txt <- format(c(r, 0.123456789), digits = digits)[1]
+#     txt <- paste0(prefix, txt)
+#     if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
+#     text(0.5, 0.5, txt, cex = cex.cor * r)
+# }
+# 
+# # subset the variables of interest
+# VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
+# pairs(loyn[, VOI], lower.panel = panel.cor)
+# 
+# # There are varying degrees of correlation between explanatory variables which
+# # might indicate some collinearity, i.e. LOGAREA and FGRAZE (0.48), LOGDIST and
+# # LOGLDIST (0.59) and YR.ISOL and FGRAZE (0.56). However, the relationships
+# # between these explanatory variables are quite weak so we can probably
+# # include these variables in the same model (but keep an eye on things).
+# # There also seems to be a reasonable spread of observations across these
+# # pairs of explanatory variables.
+# 
+# # The relationship between the response variable ABUND and all the explanatory
+# # variables is visible in the top row:
+# # Some potential relationships present like with LOGAREA (positive),
+# # maybe ALT (positive) and FGRAZE (negative).
 
 
 ## ----Q3, eval=TRUE, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE--------------------------------
