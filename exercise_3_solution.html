@@ -11,7 +11,7 @@
 
 
 
-<title>Exercise Solutions</title>
+<title>Exercises</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -477,7 +477,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Exercise Solutions</h1>
+<h1 class="title toc-ignore">Exercises</h1>
 
 </div>
 
@@ -487,7 +487,7 @@ $(document).ready(function () {
 class="section level2">
 <h2>Exercise 3: Importing and manipulating dataframes</h2>
 <p> </p>
-<p>Read <a href="https://intro2r.com/data-r.html">Chapter 3</a> to help
+<p>Read <a href="https://intro2r.com/data_r.html">Chapter 3</a> to help
 you complete the questions in this exercise.</p>
 <p> </p>
 <p>1. As in previous exercises, either create a new R script or continue
@@ -499,11 +499,11 @@ metadata with a <code>#</code> at the beginning of the line.</p>
 <p>2. If you haven’t already, download the data file
 <em>‘whaledata.xlsx’</em> from the <strong><a
 href="data.html"><i class="fa fa-download"></i> Data</a></strong> link
-and save it to the <code>data</code> directory you created in Exercise
-1.</p>
+and save it to the <code>data</code> directory you created in Exercise 1
+in your RStudio project.</p>
 <p> </p>
-<p>3. Open this file in Microsoft Excel (or even better use an open
-source equivalent - <a
+<p>3. Open the <em>‘whaledata.xlsx’</em> file in Microsoft Excel (or
+even better use an open source equivalent - <a
 href="https://www.libreoffice.org/download/download/">LibreOffice</a> is
 a good free alternative) and save it as a tab delimited file type (see
 <a
@@ -547,10 +547,9 @@ href="https://intro2r.com/importing-data.html#import_fnc">Section
 3.2.2</a> of the Introduction to R book or watch this <a
 href="https://alexd106.github.io/BI5009/howto.html#import-vid">video</a>
 if you need any further information.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>whale <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>                    <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>whale <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p> </p>
-<p>6. Once you have imported your data file nothing much seems to happen
+<p>6. Once you’ve imported your data file nothing much seems to happen
 (don’t worry, this is normal). To examine the contents of the dataframe
 one option would be to just type the variable name (<code>whale</code>)
 into the console. This is probably not a good idea and doesn’t really
@@ -691,8 +690,8 @@ than the median value of gradient (132)</li>
 <p>10. A really neat feature of extracting rows based on conditional
 statements is that you can include R functions within the statement
 itself. To practice this, modify your answer to the gradient question in
-Q9e to use the <code>median()</code> function rather than hard coding
-the value 132.</p>
+Q9 to use the <code>median()</code> function rather than hard coding the
+value 132.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>whale.subset <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="fu">median</span>(whale<span class="sc">$</span>gradient), ]</span></code></pre></div>
 <p> </p>
 <p>11. However, when using functions in conditional statements you need
@@ -713,13 +712,14 @@ instructor and explore possible solutions.</p>
 <code>[ ]</code> notation to extract rows and columns from your
 dataframe, there are of course many other approaches. One such approach
 is to use the <code>subset()</code> function (see <code>?subset</code>
-or search the Introduction to R book for the term ‘subset’for more
-details). Use the <code>subset()</code> function to extract all rows in
-’May’ with a time at station less than 1000 minutes and a depth greater
-than 1000 m. Also use <code>subset()</code> to extract data collected in
-‘October’ from latitudes greater than 61 degrees but only include the
-columns <code>month</code>, <code>latitude</code>,
-<code>longitude</code> and <code>number.whales</code>.</p>
+or search for the <code>subset</code> function in the Introduction to R
+book to find more information). Use the <code>subset()</code> function
+to extract all rows in ‘May’ with a time at station less than 1000
+minutes and a depth greater than 1000 m. Also use <code>subset()</code>
+to extract data collected in ‘October’ from latitudes greater than 61
+degrees but only include the columns <code>month</code>,
+<code>latitude</code>, <code>longitude</code> and
+<code>number.whales</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;May&quot;</span> <span class="sc">&amp;</span> time.at.station <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> depth <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> latitude <span class="sc">&gt;</span> <span class="dv">61</span>, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;number.whales&quot;</span>))</span></code></pre></div>
@@ -741,11 +741,13 @@ dataframe in a variable called <code>whale.depth.sort</code>.</p>
 <p>14. Now for something a little more complicated. Sort all rows in the
 <code>whale</code> dataframe by ascending order of depth within each
 level of water noise. The trick here is to remember that you can order
-by more than one variable when using the <code>order()</code> function.
-Don’t forget to assign your sorted dataframe to a new variable with a
-sensible name. Repeat the previous ordering but this time order by
-<strong>decending</strong> order of depth within each level of water
-noise.</p>
+by more than one variable when using the <code>order()</code> function
+(see <a
+href="https://intro2r.com/wrangling-data-frames.html#ordering-data-frames">Section
+3.4.3</a> again). Don’t forget to assign your sorted dataframe to a new
+variable with a sensible name. Repeat the previous ordering but this
+time order by <strong>descending</strong> order of depth within each
+level of water noise.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># notice how the variable water.noise has been ordered - why?</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>whale.sorted <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>depth), ]        </span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
@@ -755,9 +757,11 @@ noise.</p>
 <p>15. Often, we would like to summarise variables by, for example,
 calculating a mean, median or counting the number of observations. To do
 this for a single variable it’s fairly straight forward :</p>
+<p> </p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">mean</span>(whale<span class="sc">$</span>time.at.station)     <span class="co"># mean time at station</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">median</span>(whale<span class="sc">$</span>depth)             <span class="co"># median depth</span></span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">length</span>(whale<span class="sc">$</span>number.whales)     <span class="co"># number of observations</span></span></code></pre></div>
+<p> </p>
 <p>15. (cont) Perhaps more interestingly, you might want summarise one
 variable conditional on the level of another factor variable. For
 example, write some R code to calculate the mean number of whales
@@ -802,13 +806,13 @@ have an adequate sample size (for subsequent modelling for example). Use
 the <code>table()</code> function to determine the number of
 observations for each level of water noise (see <a
 href="https://intro2r.com/summarising-data-frames.html#summarising-data-frames">Section
-3.5</a> for a few tips). Next use the same function to display the
-number of observations for each combination of water noise and month.
-(Optional): The <code>xtabs()</code> function is very flexible for
-creating tables of counts for factor combinations (aka contingency
-tables). Take a look at the help file (or Google) to figure out how to
-use the <code>xtabs()</code> function to replicate your use of the
-<code>table()</code> function.</p>
+3.5</a> again for more information). Next use the same function to
+display the number of observations for each combination of water noise
+and month. (Optional): The <code>xtabs()</code> function is very
+flexible for creating tables of counts for factor combinations (aka
+contingency tables). Take a look at the Introduction to R book, the help
+file or Google to figure out how to use the <code>xtabs()</code>
+function to replicate your use of the <code>table()</code> function.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># using table</span></span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">table</span>(whale<span class="sc">$</span>water.noise)</span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">table</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>month)</span>

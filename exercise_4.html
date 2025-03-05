@@ -30,6 +30,7 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -206,6 +207,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -353,6 +357,14 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Exercises</h1>
@@ -365,7 +377,7 @@ $(document).ready(function () {
 class="section level2">
 <h2>Exercise 4: Visualising data using base R and lattice graphics</h2>
 <p> </p>
-<p>Read <a href="https://intro2r.com/graphics-base-r.html">Chapter 4</a>
+<p>Read <a href="https://intro2r.com/graphics_base_r.html">Chapter 4</a>
 to help you complete the questions in this exercise.</p>
 <p> </p>
 <p>1. As in previous exercises, either create a new R script or continue
@@ -431,7 +443,7 @@ stage and month (aka a contingency table).</p>
 <p>6. The humble cleveland dotplot is a great way of identifying if you
 have potential outliers in continuous variables (See <a
 href="https://intro2r.com/simple-base-r-plots.html#dotcharts">Section
-4.2.4</a>). Create dotplots (using the <code>dotchart()</code> function)
+4.2.4</a>. Create dotplots (using the <code>dotchart()</code> function)
 for the following variables; <code>DML</code>, <code>weight</code>,
 <code>nid.length</code> and <code>ovary.weight</code>. Do these
 variables contain any unusually large or small observations? Don’t
@@ -504,9 +516,9 @@ these variables when creating your new plots (ask if you’re not sure how
 to do this). Which transformation best linearises this relationship?
 Again, save your plots as a pdf file (or try saving in your
 <code>output</code> directory as jpeg or png format using the
-<code>jpeg()</code> or <code>png()</code> functions - <a
+<code>jpeg()</code> or <code>png()</code> functions (<a
 href="https://intro2r.com/export_plots.html#export_plots">Section
-4.5</a> if you feel the need for a change!).</p>
+4.5</a>) if you feel the need for a change!).</p>
 <p> </p>
 <p>10. When visualising differences in a continuous variable between
 levels of a factor (categorical variable) then a boxplot is your friend
@@ -577,7 +589,8 @@ different colours and place it in a suitable position on the plot.
 Format the graph further to make it suitable for inclusion into your
 paper/thesis (i.e. add axes labels, change the axes scales etc). See <a
 href="https://intro2r.com/custom_plot.html#custom_plot">Section 4.3</a>
-for more details about customising plots.</p>
+for more details about customising plots. I have given you a few
+different solutions in the code below. give them a go!</p>
 <p> </p>
 <p><sup>1</sup> Smith JM et al (2005) Seasonal patterns of investment in
 reproductive and somatic tissues in the squid <em>Loligo forbesi</em>,
@@ -619,6 +632,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

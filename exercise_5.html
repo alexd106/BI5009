@@ -11,7 +11,7 @@
 
 
 
-<title>Exercise 5</title>
+<title>Exercises</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -30,6 +30,7 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -206,6 +207,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -353,63 +357,59 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Exercise 5</h1>
+
+<h1 class="title toc-ignore">Exercises</h1>
 
 </div>
 
 
 <p> </p>
-<div id="exercise-5-basic-programming-in-r-optional"
-class="section level2">
-<h2>Exercise 5: Basic programming in R (optional)</h2>
+<div id="exercise-6-basic-programming-in-r" class="section level2">
+<h2>Exercise 6: Basic programming in R</h2>
 <p> </p>
-<p>Read <a href="https://intro2r.com/prog-r.html">Chapter 7</a> to help
+<p>Read <a href="https://intro2r.com/prog_r.html">Chapter 7</a> to help
 you complete the questions in this exercise.</p>
 <p> </p>
-<ol style="list-style-type: decimal">
-<li>Create a function to calculate the area of a circle. Test the
+<p>1. Create a function to calculate the area of a circle. Test the
 function by finding the area of a circle with a diameter of 3.4 cm. Can
-you use it on a vector of data?</li>
-</ol>
+you use it on a vector of data?</p>
 <p> </p>
-<ol start="2" style="list-style-type: decimal">
-<li>Write a function to convert farenheit to centegrade (oC = (oF - 32)
-x 5/9). Get your function to print out your result in the following
+<p>2. Write a function to convert farenheit to centegrade (oC = (oF -
+32) x 5/9). Get your function to print out your result in the following
 format: “Farenheit : <em>value of oF</em> is equivalent to <em>value
-oC</em> centigrade.”</li>
-</ol>
+oC</em> centigrade.”</p>
 <p> </p>
-<ol start="3" style="list-style-type: decimal">
-<li>Create a vector of normally distributed data, of length 100, mean 35
-and standard deviation of 15. Write a function to calculate the mean,
+<p>3. Create a vector of normally distributed data, of length 100, mean
+35 and standard deviation of 15. Write a function to calculate the mean,
 median, and range of the vector, print these values out with appropriate
 labels. Also get the function to plot a histogram (as a proportion) of
-the values and add a density curve.</li>
-</ol>
+the values and add a density curve.</p>
 <p> </p>
-<ol start="4" style="list-style-type: decimal">
-<li>Write a function to calculate the median value of a vector of
+<p>4. Write a function to calculate the median value of a vector of
 numbers (yes I know there’s a <code>median()</code> function already but
 this is fun!). Be careful with vectors of an even sample size, as you
 will have to take the average of the two central numbers (hint: use
 modulo %%2 to determine whether the vector is an odd or an even size).
-Test your function on vectors with both odd and even sample sizes.</li>
-</ol>
+Test your function on vectors with both odd and even sample sizes.</p>
 <p> </p>
-<ol start="5" style="list-style-type: decimal">
-<li>You are a population ecologist for the day and wish to investigate
+<p>5. You are a population ecologist for the day and wish to investigate
 the properties of the <a
 href="https://en.wikipedia.org/wiki/Ricker_model">Ricker model</a>. The
-Ricker model is defined as:</li>
-</ol>
+Ricker model is defined as:</p>
 <p> </p>
 <p><span class="math display">\[ N_{t+1} = N_{t} exp\left[r\left(1-
 \frac{N_{t}}{K} \right) \right] \]</span></p>
 <p> </p>
-<ol start="5" style="list-style-type: decimal">
-<li>(cont) Where <em>N<sub>t</sub></em> is the population size at time
+<p>5. (cont) Where <em>N<sub>t</sub></em> is the population size at time
 <em>t</em>, <em>r</em> is the population growth rate and <em>K</em> is
 the carrying capacity. Write a function to simulate this model so you
 can conveniently determine the effect of changing <em>r</em> and the
@@ -418,10 +418,9 @@ but you want the option of being able to change this with your function.
 So, you will need a function with the following arguments; nzero which
 sets the initial population size, <em>r</em> which will determine the
 population growth rate, time which sets how long the simulation will run
-for and <em>K</em> which we will initially set to 100 by default.</li>
-</ol>
+for and <em>K</em> which we will initially set to 100 by default.</p>
 <p> </p>
-<p>End of Exercise 5</p>
+<p>End of Exercise 6</p>
 </div>
 
 
@@ -457,6 +456,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
