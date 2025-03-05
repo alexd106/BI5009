@@ -82,7 +82,7 @@ rmarkdown::render("linear_model_4_exercise.Rmd", output_format = "pdf_document",
 
 \  
 
- - [Graphical data Exploration exercise](graphical_data_exploration_exercise.html)
+ - [Graphical data exploration exercise](graphical_data_exploration_exercise.html)
 
  - [Linear model with single continuous explanatory variable exercise](linear_model_1_exercise.html)
  
