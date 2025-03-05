@@ -13,7 +13,7 @@ SOLUTIONS <- FALSE
 
 \  
 
-## Exercise 6: Basic programming in R
+## Exercise 5: Basic programming in R
 
 \  
 

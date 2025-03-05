@@ -24,7 +24,7 @@ The following exercises are split into two main sections.
 
 **Section 2** exercises will cover material introduced during the third week of the course. These exercises will help you learn how to fit linear models using R, how to validate these models and how to interpret these models.   
 
-The solutions and code for each of the exercises are available by following the [Exrecise Solutions <i class="fa fa-book" aria-hidden="true"></i>](exercise_solutions.html){target="_blank"} link in the navbar above. If you prefer to download the exercises in pdf format you can [find them here](exercise_pdf.html){target="_blank"}. 
+The solutions and code for each of the exercises are available by following the [Exercise Solutions <i class="fa fa-book" aria-hidden="true"></i>](exercise_solutions.html){target="_blank"} link in the navbar above. If you prefer to download the exercises in pdf format you can [find them here](exercise_pdf.html){target="_blank"}. 
 
 Finally, just a word about the content of some of the early R exercises in Section 1. Initially, some of the material in these exercises might strike you as ‘pointless’, ‘trivial’ or ‘irrelevant’ and you may even ask yourself what possible use is generating sequences of numbers, concatenating elements in a vector or ordering lists of names (to name but a few).  However, please stick with it, you’ll be amazed how many times you will use the skills (and code) that you have learned throughout these exercises when it comes to dealing with and analysing your own data. 
 

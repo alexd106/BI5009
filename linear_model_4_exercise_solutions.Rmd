@@ -15,7 +15,7 @@ SOLUTIONS <- TRUE
 
 \  
 
-## Model selection with the Loyn data
+## Linear models - Model selection
 
 \  
 
