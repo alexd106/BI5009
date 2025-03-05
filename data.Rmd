@@ -12,12 +12,31 @@ suppressPackageStartupMessages(library(dplyr))
 ```
 
 ```{r zipdir, echo=FALSE}
-if (file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r data/all_data.zip ./data")
-if (!file.exists("data/all_data.zip")) system("zip -r data/all_data.zip ./data")
+# if (file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r data/all_data.zip ./data")
+# if (!file.exists("data/all_data.zip")) system("zip -r data/all_data.zip ./data")
 ```
 
 \  
+**Download individual datasets as needed.** 
 
+- Create a new RStudio project for this course (call it 'EV5804' if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/QUADstatR/howto.html#rstudio_proj-vid).
+
+- Once you're working in your RStudio project create a new directory in your Project directory called `data` (all lowercase). You can easily create this new directory by clicking on the 'New Folder' button in the 'Files' tab in RStudio (see [Section 1.8](https://intro2r.com/dir-struct.html) of our Introduction to R book for a set-by-step guide how to do this).  
+
+- Download individual data files as needed, saving them to the new `data` folder you just made. Right click on the data file link below and select _Save link as..._ (or similar) to save to the desired location.
+
+```{r, results='asis'}
+dir <- "data/"
+list.files(dir) %>%
+  sort %>% 
+  # grep("\\.html$|*.zip", ., value = TRUE, invert = TRUE) %>% 
+  # grep("(\\.html$|loyn.txt)", ., value = TRUE, invert = TRUE) %>% 
+  grep("(loyn.xlsx|seeds.xlsx|species.txt|squid1.xlsx|whaledata.xlsx)", ., value = TRUE, invert = FALSE) %>% 
+  paste0("    + [", ., "](", paste0(dir, .), ")") %>% 
+  cat(sep = "\n")
+```
+
+<!--
 **Option 1: Download all the data at once.** 
 
 Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** `r paste0("(", round(file.info("data/all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire course. This may include additional datasets that we won't use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool). Make sure you extract these files into a new directory called `data` in your RStudio project. See [here](https://intro2r.com/rsprojs.html) for more information on RStudio projects and [here](https://intro2r.com/dir_struct.html) for some suggestions on directory structures (and how to create them).
@@ -29,7 +48,7 @@ Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidde
 - Create a new directory called `data` in your RStudio project.
 
 - Download individual data files as needed, saving them to the new `data` directory you just made. Just click the link to download. If data displays in your browser (some do this), right-click the link instead and select *Save Link As...* (or similar) to save to the desired location.
-  
+ 
   
 ```{r, results='asis', echo=FALSE}
 dir <- "data/"
@@ -40,3 +59,4 @@ list.files(dir) %>%
   cat(sep="\n")
 ```
 
+-->
