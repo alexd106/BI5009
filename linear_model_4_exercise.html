@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Exercises</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">EV5804</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="setup.html">
+    <span class="fa fa-cog"></span>
+     
+    Setup
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-desktop"></span>
+     
+    Learn
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="howto.html">
+        <span class="fa fa-tv"></span>
+         
+        How-to
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+    R Book
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://intro2r.com">
+        <span class="fa fa-firefox"></span>
+         
+        Web book
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="https://github.com/alexd106/Rbook/raw/master/docs/Rbook.pdf">
+        <span class="fa fa-file-pdf"></span>
+         
+        PDF book
+      </a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="exercises.html">
+    <span class="fa fa-book"></span>
+     
+    Exercises
+  </a>
+</li>
+<li>
+  <a href="exercise_solutions.html">
+    <span class="fa fa-book"></span>
+     
+    Exercise Solutions
+  </a>
+</li>
+<li>
+  <a href="data.html">
+    <span class="fa fa-download"></span>
+     
+    Data
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-question-circle"></span>
+     
+    Info
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="resources.html">
+        <span class="fa fa-book"></span>
+         
+        Resources
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/alexd106/BI5009">
+        <span class="fa fa-github fa-lg"></span>
+         
+        Source code
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/Scedacity">
+        <span class="fa fa-twitter fa-lg"></span>
+         
+        Twitter
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Exercises</h1>
+
+</div>
+
+
+<p> </p>
+<div id="model-selection-with-the-loyn-data" class="section level2">
+<h2>Model selection with the Loyn data</h2>
+<p> </p>
+<p>In the previous exercise you fitted a pre-conceived model which
+included the main effects of the area of the forest patch
+(<code>LOGAREA</code>), the grazing intensity (<code>FGRAZE</code>) and
+the interaction between these two explanatory variables
+(<code>FGRAZE:LOGAREA</code>). This was useful as a training exercise,
+and might be a viable approach when analysing these data if an
+experiment had been designed to test these effects only. However, if
+other potentially important variables are not included in the model this
+may lead to biased inferences (interpretation). Additionally, if the
+goal of the analysis is to explore what models explain the data in a
+parsimonious way (as opposed to formally testing hypotheses), we would
+also want to include relevant additional explanatory variables.</p>
+<p> </p>
+<p>Here we revisit the previous loyn data analysis, and ask if a
+‘better’ model for these data could be achieved by including additional
+explanatory variables and by performing model selection. Because we
+would like to test the significance of the interaction between
+<code>LOGAREA</code>, and <code>FGRAZE</code>, whilst accounting for the
+potential effects of other explanatory variables, we will also include
+<code>LOGAREA</code>, <code>FGRAZE</code> and their interaction
+(<code>FGRAZE:LOGAREA</code>) in the model as before. Including other
+interaction terms between other variables may be reasonable, but we will
+focus only on the <code>FGRAZE:LOGAREA</code> interaction as we have
+relatively little information in this data set (67 observations). This
+will hopefully avoid fitting an overly complex model which will estimate
+many parameters for which we have very little data. This is a balance
+you will all have to maintain with your own data and analyses (or better
+still, perform a power analysis before you even collect your data). No
+4-way interaction terms in your models please!</p>
+<p> </p>
+<p>It’s also important to note that we will assume that all the
+explanatory variables were collected by the researchers because <em>they
+believed</em> them to be biologically relevant for explaining bird
+abundance (i.e. data were collected for a reason). Of course, this is
+probably not your area of expertise but it is nevertheless a good idea
+to pause and think what might be relevant or not-so relevant and why.
+This highlights the importance of knowing your study organism / study
+area and discussing research designs with colleagues and other experts
+in the field before you collect your data. What you should try to avoid
+is collecting heaps of data across many variables (just because you can)
+and then expecting your statistical models to make sense of it for you.
+As mentioned in the lecture, model selection is a relatively
+controversial topic and should not be treated as a purely mechanical
+process (chuck everything in and see what comes out). Your expertise
+needs to be woven into this process otherwise you may end up with a
+model that is implausible or not very useful (and all models need to be
+useful!).</p>
+<p> </p>
+<p>1. Import the ‘loyn.txt’ data file into RStudio and assign it to a
+variable called <code>loyn</code>. Here we will be using all the
+explanatory variables to explain the variation in bird density. If
+needed, remind yourself of your data exploration you conducted
+previously. Do any of the remaining variables need transforming
+(i.e. <code>AREA</code>, <code>DIST</code>, <code>LDIST</code>) or
+converting to a factor type variable (i.e. <code>GRAZE</code>)? Add the
+transformed variables to the <code>loyn</code> dataframe.</p>
+<p> </p>
+<p>2. Let’s start with a very quick graphical exploration of any
+potential relationships between each explanatory variable (collinearity)
+and also between our response and explanatory variables (what we’re
+interested in). Create a pairs plot using the function
+<code>pairs()</code>of your variables of interest. Hint: restrict the
+plot to the variables you actually need. An effective way of doing this
+is to store the names of the variables of interest in a vector
+<code>VOI &lt;- c("Var1", "Var2", ...)</code> and then use the naming
+method for subsetting the data set <code>Mydata[, VOI]</code>. If you
+feel like it, you can also add the correlations to the lower triangle of
+the plot as you did previously (don’t forget to define the function
+first).</p>
+<p> </p>
+<p>3. Now, let’s fit our maximal model. Start with a model of
+<code>ABUND</code> and include all explanatory variables as main
+effects. Also include the interaction <code>LOGAREA:FGRAZE</code> but no
+other interaction terms as justified in the preamble above. Don’t forget
+to include the transformed versions of the variables where appropriate
+(but not the untransformed variables as well otherwise you will have
+very strong collinearity between these variables!). Perhaps, call this
+model <code>M1</code>.</p>
+<p> </p>
+<p>4. Have a look at the summary table of the model using the
+<code>summary()</code> function. You’ll probably find this summary is
+quite complicated with lots of parameter estimates (14) and P values
+testing lots of hypotheses. Are all the P values less than our cut-off
+of 0.05? If not, then this suggests that some form of model selection is
+warranted to simplify our model.</p>
+<p> </p>
+<p>5. Let’s perform a first step in model selection using the
+<code>drop1()</code> function and use an <em>F</em> test based model
+selection approach. This will allow us to decide which explanatory
+variables may be suitable for removal from the model. Remember to use
+the <code>test = "F"</code> argument to perform <em>F</em> tests when
+using <code>drop1()</code>. Which explanatory variable is the best
+candidate for removal and why?</p>
+<p>What hypothesis is being tested when we do this model selection
+step?</p>
+<p> </p>
+<p>6. Update and refit your model and remove the least significant
+explanatory variable (from above). Repeat single term deletions with
+<code>drop1()</code> again using this updated model. You can update the
+model by just fitting a new model without the appropriate explanatory
+variable and assign it to a new name (<code>M2</code>). Alternatively
+you can use the <code>update()</code> function instead (I show you how
+to do this in the solutions).</p>
+<p> </p>
+<p>7. Again, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+<code>drop1()</code>.</p>
+<p> </p>
+<p>8. Once again, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+<code>drop1()</code>.</p>
+<p> </p>
+<p>9. And finally, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+<code>drop1()</code>.</p>
+<p> </p>
+<p>10. If all goes well, your final model should be
+<code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code> which you
+encountered in the previous exercise. Also, you may have noticed that
+the output from the <code>drop1()</code> function does not include the
+main effects of <code>LOGAREA</code> or <code>FRGRAZE</code>. Can you
+think why this might be the case?</p>
+<p> </p>
+<p>11. Now that you have your final model, you should go through your
+model validation and model interpretation as usual. As we have already
+completed this in the previous exercise I’ll leave it up to you to
+decide whether you include it here (you should be able to just copy and
+paste the code).</p>
+<p>Please make sure you understand the biological interpretation of each
+of the parameter estimates and the interpretation of the hypotheses you
+are testing.</p>
+<p> </p>
+<p><strong>OPTIONAL questions</strong> if you have time / energy /
+inclination!</p>
+<p> </p>
+<p>A1. If we weren’t aiming to directly test the effect of the
+<code>LOGAREA:FGRAZE</code> interaction statistically (i.e. test this
+specific hypothesis), we could use AIC to perform model selection.
+Repeat the model selection you did above, but this time use the
+<code>drop1()</code> function and perform model selection using AIC
+instead. Don’t forget, if we want to perform model selection based on
+AIC with the <code>drop1()</code> function we need to omit the
+<code>test = "F"</code> argument)</p>
+<p> </p>
+<p>A2. Refit your model with the variable associated with the lowest AIC
+value removed. Run <code>drop1()</code> again on your updated model.
+Perhaps call this new model <code>M2.AIC</code>.</p>
+<p> </p>
+<p>A3. Refit your model with the variable associated with the lowest AIC
+value removed and run <code>drop1()</code> again on your new model
+(<code>M3.AIC</code>).</p>
+<p> </p>
+<p>A4. Repeat your model selection by removing the variable indicated by
+the model with the lowest AIC.</p>
+<p> </p>
+<p>A5. Rinse and repeat as above.</p>
+<p> </p>
+<p>If all goes well, your final model should be
+<code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code>. This is the
+same model you ended up with when using the <em>F</em> test based model
+selection. This might not always be the case and generally speaking AIC
+based model selection approaches tend to favour more complicated minimum
+adequate models compared to <em>F</em> test based approaches.</p>
+<p>We don’t need to re-validate or re-interpret the model, since we have
+already done this previously.</p>
+<p>I guess the next question is how to present your results from the
+model selection process (using either <em>F</em> tests or AIC) in your
+paper and/or thesis chapter. One approach which I quite like is to
+construct a table which includes a description of all of our models and
+associated summary statistics. Let’s do this for the AIC based model
+selection but the same principles apply when using <em>F</em> tests
+(although you will be presenting <em>F</em> statistics and P values
+rather than AIC values).</p>
+<p>Although you can use the output from the <code>drop1()</code> (and do
+a bit more wrangling) let’s make it a little simpler by fitting all of
+our models and then use the <code>AIC()</code> function to calculate the
+AIC values for each model rather than <code>drop1()</code>. Details on
+how to do this are given in the solutions to this exercise.</p>
+<p> </p>
+<p>End of the model selection exercise</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
