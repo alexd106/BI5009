@@ -14,7 +14,7 @@ SOLUTIONS <- FALSE
 
 \  
 
-## Linear model with an interaction between a continuous and a categorical variable
+## Linear model with multiple explanatory variables
 
 \  
 
