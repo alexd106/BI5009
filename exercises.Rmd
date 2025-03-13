@@ -37,7 +37,7 @@ Have fun!
 cat("Exercises will be released as the course progresses")
 ```
 
-#### Section 1 Exercises
+#### Section 1: Week 1 exercises
 
 \  
 
@@ -78,7 +78,7 @@ rmarkdown::render("linear_model_4_exercise.Rmd", output_format = "pdf_document",
 #rmarkdown::render("GLM_2_Binomial_RayBin_exercise.Rmd", output_format = "pdf_document", output_file = "./exercises/GLM_2_Binomial_RayBin_exercise.pdf", quiet = TRUE)
 ```
 
-#### Section 2 Exercises
+#### Section 2: Week 3 exercises
 
 \  
 
