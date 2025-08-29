@@ -1,5 +1,5 @@
 ---
-title: "EV5804"
+title: "EV020"
 output: 
   html_document:
     toc: no
@@ -11,7 +11,7 @@ output:
 
 \  
 
-Hello and welcome to EV5804. This website compliments the EV5804 MyAberdeen course site and is mainly used to host exercises and associated exercise solutions, data files and short howto videos covering some important R related topics. You can find all other material for EV5804 on the [MyAberdeen course website](https://abdn.blackboard.com/ultra/).   
+Hello and welcome to EV5020. This website compliments the EV5020 MyAberdeen course site and is mainly used to host exercises and associated exercise solutions, data files and short howto videos covering some important R related topics. You can find all other material for EV5020 on the [MyAberdeen course website](https://abdn.blackboard.com/ultra/).   
 
 \  
 

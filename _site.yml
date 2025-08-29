@@ -1,7 +1,7 @@
-name: "EV5804"
+name: "EV5020"
 output_dir: "."
 navbar:
-  title: "EV5804"
+  title: "EV5020"
   icon: fa-home
   left:
     - text: "Home"

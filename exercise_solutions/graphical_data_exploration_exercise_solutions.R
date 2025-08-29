@@ -1,4 +1,4 @@
-## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # loyn <- read.table("./data/loyn.txt", header = TRUE,
 #                    stringsAsFactors = TRUE)
 # str(loyn)
@@ -13,14 +13,14 @@
 # loyn$FGRAZE <- factor(loyn$GRAZE)
 
 
-## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # table(loyn$FGRAZE)
 # 
 # # or use xtabs function
 # xtabs(~ FGRAZE, data = loyn)
 
 
-## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # # mean abundance of birds for each level of FGRAZE
 # tapply(loyn$ABUND, loyn$FGRAZE, mean, na.rm = TRUE)
 # 
@@ -31,7 +31,7 @@
 # tapply(loyn$ABUND, loyn$FGRAZE, summary, na.rm = TRUE)
 
 
-## ----Q7a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------
+## ----Q7a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------------------------------------------------
 # # first split the plotting device into 2 rows
 # # and 3 columns
 # par(mfrow = c(2,3))
@@ -45,7 +45,7 @@
 # dotchart(loyn$GRAZE, main = "Grazing levels")
 
 
-## ----Q7b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------
+## ----Q7b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------------------------------------------------
 # # A fancier version of a dotplot - just for fun!
 # Z <- cbind(loyn$ABUND, loyn$AREA, loyn$DIST,
 #            loyn$LDIST,loyn$YR.ISOL,loyn$ALT,
@@ -68,7 +68,7 @@
 #         ylab = "Order of the data from text file")
 
 
-## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # # There appears to be two unusually large forest patches compared to the rest
 # # Also one potentially large distance in DIST
 # # One option would be to log10 transform AREA, DIST
@@ -89,7 +89,7 @@
 # dotchart(loyn$LOGDIST, main = "LOG Distance")
 
 
-## ----Q9a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------
+## ----Q9a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------------------------------------------------
 # # Vanilla pairs plot
 # 
 # pairs(loyn[,c("LOGAREA", "LOGDIST", "LDIST",
@@ -103,7 +103,7 @@
 # pairs(explan_vars)
 
 
-## ----Q9b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------
+## ----Q9b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------------------------------------------------
 # # And with correlations in the upper panel
 # 
 # # first need to define the panel.cor function
@@ -123,23 +123,23 @@
 #       upper.panel = panel.cor)
 
 
-## ----Q10a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE------------------------------------------------------------------
+## ----Q10a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------------------------------------------------
 # pairs(loyn[,c("ABUND","LOGAREA","LOGDIST", "LDIST",
 #     	"YR.ISOL","ALT","GRAZE")],
 #       	lower.panel = panel.cor)
 
 
-## ----Q10b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE------------------------------------------------------------------
+## ----Q10b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------------------------------------------------
 # plot(loyn$LOGAREA, loyn$ABUND, xlab = "log area", ylab = "bird abundance")
 
 
-## ----Q11a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE------------------------------------------------------------------
+## ----Q11a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------------------------------------------------
 # # Interaction between LOGAREA and FGRAZE?
 # # Do the slopes look similar or different?
 # coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
 
 
-## ----Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE------------------------------------------------------------------
+## ----Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------------------------------------------------
 # # Fancier version of the above plot
 # # with a line of best fit included just for fun
 # coplot(ABUND ~ LOGAREA | FGRAZE,

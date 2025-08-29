@@ -1,10 +1,10 @@
-## ----Q2, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q2, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # loyn <- read.table("data/loyn.txt", header = TRUE,
 #                    stringsAsFactors = TRUE)
 # str(loyn)
 
 
-## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q3, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # # create factor GRAZE as it was originally coded as an integer
 # loyn$FGRAZE <- factor(loyn$GRAZE)
 # 
@@ -12,7 +12,7 @@
 # class(loyn$FGRAZE)
 
 
-## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # boxplot(ABUND ~ FGRAZE, xlab = "Grazing level", ylab = "Bird abundance", data = loyn)
 # 
 # # mean bird abundance for each level of FGRAZE
@@ -26,11 +26,11 @@
 # # levels 2,3 and 4.
 
 
-## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # birds_lm <- lm(ABUND ~ FGRAZE, data = loyn)
 
 
-## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # anova(birds_lm)
 # 
 # # null hypothesis : There is no difference in the mean bird abundance between the
@@ -43,7 +43,7 @@
 # # of grazing intensity (F_4,62 = 14.98, p < 0.0001)
 
 
-## ----Q7, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q7, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # summary(birds_lm)
 # 
 # # Here the intercept (baseline) is the mean abundance of birds for FGRAZE level 1.
@@ -73,7 +73,7 @@
 # # significantly different from graze level 5.
 
 
-## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # # Set FGRAZE level 2 to be the intercept
 # 
 # loyn$FGRAZE <- relevel(loyn$FGRAZE, ref = "2")
@@ -97,12 +97,12 @@
 # # The intercept is now FGRAZE level 4, we can now compare between levels '4 and 5'
 
 
-## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------
+## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
 # # The multiple R-squared value is 0.491 and therefore 49.1% of
 # # the variation in ABUND is explained by FGRAZE
 
 
-## ----Q10, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-------------------------------------------------------------------
+## ----Q10, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE--------------------------------------------------------------------------------------------------------------
 # # first split the plotting device into 2 rows and 2 columns
 # par(mfrow = c(2,2))
 # 
@@ -140,7 +140,7 @@
 # # generalised least squares. This is not something we will do on this course but will cover in a more advanced statistics course!
 
 
-## ----Q11a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE-----------------------------------------------------------------
+## ----Q11a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE------------------------------------------------------------------------------------------------------------
 # # Using the gplots package, you may need to install this package first
 # # install.packages('gplots')
 # 
@@ -150,7 +150,7 @@
 #   ylab = "bird abundance", data = loyn, connect = FALSE)
 
 
-## ----Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE-----------------------------------------------------------------
+## ----Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE------------------------------------------------------------------------------------------------------------
 # # Using the effects package, you may need to install this package first
 # # install.packages('effects')
 # 
@@ -159,7 +159,7 @@
 # plot(loyn_effects,"FGRAZE", lty = 0)
 
 
-## ----Q11c, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE-----------------------------------------------------------------
+## ----Q11c, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE------------------------------------------------------------------------------------------------------------
 # # and finally using old faithful the predict function and base R graphics
 # # with the segments function
 # 
@@ -174,7 +174,7 @@
 # segments(1:5, pred_vals$fit, 1:5, pred_vals$fit + 1.96 * pred_vals$se.fit)
 
 
-## ----Q11d, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE-----------------------------------------------------------------
+## ----Q11d, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE------------------------------------------------------------------------------------------------------------
 # # using old faithful the predict function and base R graphics
 # # with the arrows function
 # 
@@ -191,7 +191,7 @@
 # points(1:5, pred_vals$fit, pch = 16)
 
 
-## ----Q11e, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE-----------------------------------------------------------------
+## ----Q11e, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE------------------------------------------------------------------------------------------------------------
 # # or using the ggplot2 package
 # library(ggplot2) # make the functions in ggplot2 available
 # 
