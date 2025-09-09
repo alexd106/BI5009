@@ -12,4 +12,5 @@
 .DS_Store
 # R markdown stuff
 *.log
-couse_end_message
+course_end_message
+course_welcome_message
