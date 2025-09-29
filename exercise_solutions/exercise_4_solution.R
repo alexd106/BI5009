@@ -1,5 +1,5 @@
 ## ----Q4, echo=SOLUTIONS----------------------------------------------------------------------------------------------------
-squid <- read.table('workshop/data/squid1.txt', header =TRUE, 
+squid <- read.table('data/squid1.txt', header =TRUE, 
                      stringsAsFactors = TRUE)
 
 str(squid)
