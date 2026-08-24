@@ -483,7 +483,7 @@ class="section level2">
 <p> </p>
 <p>Alternative (optional) solutions to Exercise 4 for those who use (or
 are interested in using) the <code>ggplot</code> approach to plotting
-data. See <a href="https://intro2r.com/graphics-r.html">Chapter 5</a> of
+data. See <a href="https://intro2r.com/graphics_r.html">Chapter 5</a> of
 the Introduction to R book for more information about how to use
 <code>ggplot</code>.</p>
 <p> </p>
@@ -508,7 +508,7 @@ href="data.html"><i class="fa fa-download"></i> Data</a></strong> link
 and save it to the <code>data</code> directory you created during
 exercise 1. Open this file in Microsoft Excel (or even better use an
 open source equivalent - <a
-href="https://www.libreoffice.org/download/download/">LibreOffice</a> is
+href="https://www.libreoffice.org/download/">LibreOffice</a> is
 a good free alternative) and save it as a tab delimited file type. Name
 the file <em>‘squid1.txt’</em> and save it to the <code>data</code>
 directory.</p>
@@ -644,11 +644,11 @@ for the following variables; <code>DML</code>, <code>weight</code>,
 variables contain any unusually large or small observations? Don’t
 forget, if you prefer to create a single figure with all 4 plots you can
 always split your plotting device into 2 rows and 2 columns (see <a
-href="https://intro2r.com/mult-graphs.html#mult_graphs">Section 4.4</a>
+href="https://intro2r.com/mult_graphs.html#mult_graphs">Section 4.4</a>
 of the book). Use the <code>pdf()</code> function to save a pdf version
 of your plot(s) in your <code>output</code> directory you created in
 Exercise 1 (see <a
-href="https://intro2r.com/export-plots.html#export_plots">Section
+href="https://intro2r.com/export_plots.html#export_plots">Section
 4.5</a> of the book to see how the <code>pdf()</code> function works). I
 have also included some alternative code in the <a
 href="exercise_4_solution.html">solutions for this exercise</a> using
@@ -804,7 +804,7 @@ created in Q4) . Include x and y axes labels in your plot. Make sure you
 understand the anatomy of a boxplot before moving on - please ask if
 you’re not sure. An alternative to the boxplot is the violin plot. A
 violin plot is a combination of a boxplot and a <a
-href="https://www.statmethods.net/graphs/density.html">kernel density
+href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density
 plot</a> and is great at visualising the distribution of a variable.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># note: Fmaturity is the recoded maturity.stage variable cerated in Q4</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Fmaturity, <span class="at">y =</span> DML)) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Maturity stage&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Dorsal mantel length&quot;</span>)</span>

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-Alternative (optional) solutions to Exercise 4 for those who use (or are interested in using) the `ggplot` approach to plotting data. See [Chapter 5](https://intro2r.com/graphics-r.html) of the Introduction to R book for more information about how to use `ggplot`.  
+Alternative (optional) solutions to Exercise 4 for those who use (or are interested in using) the `ggplot` approach to plotting data. See [Chapter 5](https://intro2r.com/graphics_r.html) of the Introduction to R book for more information about how to use `ggplot`.  
 
 \  
 
@@ -41,7 +41,7 @@ library(GGally)
 
 \  
 
-2\. Download the data file *‘squid1.xlsx’* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory you created during exercise 1. Open this file in Microsoft Excel (or even better use an open source equivalent - [LibreOffice](https://www.libreoffice.org/download/download/) is a good free alternative) and save it as a tab delimited file type. Name the file *‘squid1.txt'* and save it to the `data` directory.
+2\. Download the data file *‘squid1.xlsx’* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory you created during exercise 1. Open this file in Microsoft Excel (or even better use an open source equivalent - [LibreOffice](https://www.libreoffice.org/download/) is a good free alternative) and save it as a tab delimited file type. Name the file *‘squid1.txt'* and save it to the `data` directory.
 
 \  
 
@@ -142,7 +142,7 @@ ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
 
 \  
 
-6\. The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables (See [Section 4.2.4](https://intro2r.com/simple-base-r-plots.html#dotcharts). Create dotplots (using the `dotchart()` function) for the following variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns (see [Section 4.4](https://intro2r.com/mult-graphs.html#mult_graphs) of the book). Use the `pdf()` function to save a pdf version of your plot(s) in your `output` directory you created in Exercise 1 (see [Section 4.5](https://intro2r.com/export-plots.html#export_plots) of the book to see how the `pdf()` function works). I have also included some alternative code in the [solutions for this exercise](exercise_4_solution.html) using the `dotplot()` function from the `lattice` package.
+6\. The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables (See [Section 4.2.4](https://intro2r.com/simple-base-r-plots.html#dotcharts). Create dotplots (using the `dotchart()` function) for the following variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns (see [Section 4.4](https://intro2r.com/mult_graphs.html#mult_graphs) of the book). Use the `pdf()` function to save a pdf version of your plot(s) in your `output` directory you created in Exercise 1 (see [Section 4.5](https://intro2r.com/export_plots.html#export_plots) of the book to see how the `pdf()` function works). I have also included some alternative code in the [solutions for this exercise](exercise_4_solution.html) using the `dotplot()` function from the `lattice` package.
 
 ```{r Q6}
 p1 <- ggplot(data = squid) + 
@@ -257,7 +257,7 @@ ggsave('output/gg_xy_weight.png', device = 'png')
 
 \  
 
-10\. When visualising differences in a continuous variable between levels of a factor (categorical variable) then a boxplot is your friend (avoid using bar plots - Google 'bar plots are evil' for more info). Create a boxplot to visualise the differences in DML at each maturity stage (don't forget to use the recoded version of this variable you created in Q4) . Include x and y axes labels in your plot. Make sure you understand the anatomy of a boxplot before moving on - please ask if you're not sure. An alternative to the boxplot is the violin plot. A violin plot is a combination of a boxplot and a [kernel density plot](https://www.statmethods.net/graphs/density.html) and is great at visualising the distribution of a variable. 
+10\. When visualising differences in a continuous variable between levels of a factor (categorical variable) then a boxplot is your friend (avoid using bar plots - Google 'bar plots are evil' for more info). Create a boxplot to visualise the differences in DML at each maturity stage (don't forget to use the recoded version of this variable you created in Q4) . Include x and y axes labels in your plot. Make sure you understand the anatomy of a boxplot before moving on - please ask if you're not sure. An alternative to the boxplot is the violin plot. A violin plot is a combination of a boxplot and a [kernel density plot](https://en.wikipedia.org/wiki/Kernel_density_estimation) and is great at visualising the distribution of a variable. 
 
 ```{r Q10, tidy = TRUE}
 # note: Fmaturity is the recoded maturity.stage variable cerated in Q4

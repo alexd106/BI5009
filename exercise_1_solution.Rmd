@@ -84,7 +84,7 @@ first_char    # display the value
 
 \  
 
-9\. OK, let's leave RStudio for a minute. Using your favourite web browser, navigate to the [R-project website](http://www.r-project.org) and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful and save them on your computer (or USB drive).
+9\. OK, let's leave RStudio for a minute. Using your favourite web browser, navigate to the [R-project website](https://www.r-project.org/) and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful and save them on your computer (or USB drive).
 
 \  
 
@@ -92,7 +92,7 @@ first_char    # display the value
 
 \  
 
-11\.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name (see [Section 2.5.1](https://intro2r.com/help.html#help) of the Introduction to R book). Look through the list and once you have figured what the correct function is then bring up the help file for this function (Hint: the function name probably has the words 'plot' and 'design' in it!). 
+11\.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name (see [Section 2.5.1](https://intro2r.com/help.html#r-help) of the Introduction to R book). Look through the list and once you have figured what the correct function is then bring up the help file for this function (Hint: the function name probably has the words 'plot' and 'design' in it!). 
 
 ```{r Q11, echo=SOLUTIONS}
 apropos("plot")
