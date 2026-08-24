@@ -427,9 +427,9 @@ if you need any further information.</p>
 (don&#x2019;t worry, this is normal). To examine the contents of the dataframe
 one option would be to just type the variable name (<code>whale</code>)
 into the console. This is probably not a good idea and doesn&#x2019;t really
-tell you anything about the dataframe other than there&#x2019;s alot of data
+tell you anything about the dataframe other than there&#x2019;s a lot of data
 (try it)! A slightly better option is to use the <code>head()</code>
-function to display the first 5 rows of your dataframe. Again, this is
+function to display the first 6 rows of your dataframe. Again, this is
 likely to just fill up your console. A better option would be to use the
 <code>names()</code> function which will return a vector of variable
 names from your dataset. However, all you get are the names of the
@@ -468,13 +468,16 @@ called <code>whale.sub</code>.</p></li>
 <code>whale</code> dataframe and the columns <code>month</code>,
 <code>water.noise</code> and <code>number.whales</code> and assign to a
 variable called <code>whale.num</code>.</p></li>
-<li><p>Now, extract the first 50 rows and all columns form the original
+<li><p>Now, extract the first 50 rows and all columns from the original
 dataframe and assign to a variable <code>whale.may</code> (there&#x2019;s a
 better way to do this with conditional statements - see below).</p></li>
 <li><p>Finally, extract all rows except the first 10 rows and all
 columns except the last column. Remember, for some of these questions
 you can specify the columns you want either by position or by name.
-Practice both ways. Do you have a preference? If so why?</p></li>
+Practice both ways. Do you have a preference? If so why? One thing to
+watch out for: negative indexing works with column positions but not
+with column names, so something like
+<code>whale[, -c(&quot;gradient&quot;)]</code> will throw an error.</p></li>
 </ol>
 <p>&#xA0;</p>
 <p>9. In addition to extracting rows and columns from your dataframe by
@@ -487,7 +490,7 @@ to assign the results of these statements to appropriately named
 variables, I&#x2019;ll leave it up to you to use informative names!):</p>
 <ul>
 <li>at depths greater than 1200 m</li>
-<li>gradient steeper than 200 degrees</li>
+<li>gradient greater than 200</li>
 <li>water noise level of &#x2018;low&#x2019;</li>
 <li>water.noise level of &#x2018;high&#x2019; in the month of &#x2018;May&#x2019;</li>
 <li>month of &#x2018;October&#x2019;, water noise level of &#x2018;low&#x2019; and gradient greater

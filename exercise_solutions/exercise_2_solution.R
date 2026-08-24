@@ -41,7 +41,7 @@ shorter_child <- height[height <= 99]     # extract all heights less than or equ
 
 
 ## ----Q8,echo=SOLUTIONS-------------------------------------------------------------------------------------------------------------------------------------------------
-bmi <- weight/(height/100)^2    # don't forget to convert height to meters
+bmi <- weight/(height/100)^2    # don't forget to convert height to metres
 
 
 ## ----Q9,echo=SOLUTIONS-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ names_sort <- child_names[height_ord]     # Louise is shortest, Ronald is talles
 
 
 ## ----Q15,echo=SOLUTIONS------------------------------------------------------------------------------------------------------------------------------------------------
-weight_ord <- rev(order(weight))
+weight_ord <- order(weight, decreasing = TRUE)   # safer than rev(order(weight)), which reverses tied values too
 weight_rev <- child_names[weight_ord]     # Alfred is heaviest, Louise is lightest
 
 

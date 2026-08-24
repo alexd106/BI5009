@@ -9,8 +9,8 @@ circle.area <- function(d){
 
 # to use your new function
 
-circle.area(10)
-# [1] 78.53982
+circle.area(3.4)
+# [1] 9.079203
 
 # to test on a vector of diameters
 # first create a vector with diameters ranging from 0 to 50 in steps of 10
@@ -26,24 +26,24 @@ circle.area(cir.diam)
 ## ----Q2, echo=SOLUTIONS, tidy = TRUE-----------------------------------------------------------------------------------------------------------------------------------
 
 far.cent <- function(a){
-	val <- (a-32)*5/9
-	print(paste("Fahrenheit: ", round(a, digits = 3), "oF",sep = " "), quote = FALSE)# round 3dp
-	print(paste("Centigrade: ", round(val, digits = 3), "oC", sep = " "), quote = FALSE)# round 3dp
+	val <- (a - 32) * 5/9	# calculation
+	print(paste("Fahrenheit:", round(a, digits = 3), "oF is equivalent to",
+	            round(val, digits = 3), "oC centigrade"), quote = FALSE)   # round 3dp
 }
 
 # alternative Fahrenheit to centigrade using cat function
 
 far.cent2 <- function(a){
-	val <- (a - 32) * 5/9	#calculation
-	cat("Fahrenheit: ", round(a, digits = 3), "oF", "\n")   # use cat function
-	cat("Centigrade: ", round(val, digits = 3), "oC", "\n")   
+	val <- (a - 32) * 5/9	# calculation
+	cat("Fahrenheit:", round(a, digits = 3), "oF is equivalent to",
+	    round(val, digits = 3), "oC centigrade", "\n")   # use cat function
 }
 
 
 ## ----Q3, echo=SOLUTIONS------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Create a vector of normally distributed data
-# length 100, mean 35 and standard deviation of 29
+# length 100, mean 35 and standard deviation of 15
 
 vals <- rnorm(100, 35, 15)	# create some norm dist data mean 35, sd = 15
 
@@ -56,7 +56,7 @@ summary.fun <- function(dat){
 	print(paste("median:", mymedian, sep = " "), quote = FALSE)     # print median
 	print(paste("range:", "from:", mymin, "to", mymax, sep = " "), quote = FALSE) 
 	dens <- density(dat)                          # estimate density curve
-	hist(dat, main = "",type = "l",freq = FALSE)  # plot histogram
+	hist(dat, main = "", freq = FALSE)         # plot histogram as a density
 	lines(dens, lty = 1, col = "red")             # plot density curve
 }
 
@@ -78,8 +78,8 @@ ourmedian <- function(x){
 	  }
 }
 
-# use the function
-mydat <- sample(1:50, size = 10, replace = TRUE )
+# use the function on an even sample size
+mydat <- sample(1:50, size = 10, replace = TRUE)
 
 # our function
 ourmedian(mydat)
@@ -87,12 +87,19 @@ ourmedian(mydat)
 # R median function
 median(mydat)
 
+# and again on an odd sample size
+mydat.odd <- sample(1:50, size = 11, replace = TRUE)
+
+ourmedian(mydat.odd)
+
+median(mydat.odd)
+
 
 ## ----Q5, echo=SOLUTIONS, tidy = TRUE-----------------------------------------------------------------------------------------------------------------------------------
 
 # function to simulate Ricker model
 
-Ricker.model <- function(nzero, r, time, K=1){     # sets initial parameters
+Ricker.model <- function(nzero, r, time, K=100){     # sets initial parameters
   N <- numeric(time + 1)    # creates a real vector of length time+1 to store values of Nt+1
   N[1] <- nzero             # sets initial population size in first element of N
   for (i in 1:time) {				# loops over time

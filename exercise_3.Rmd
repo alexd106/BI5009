@@ -46,10 +46,10 @@ whale <- read.table('data/whaledata.txt', header = TRUE, stringsAsFactors = TRUE
 
 \  
 
-6\. Once you've imported your data file nothing much seems to happen (don't worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (`whale`) into the console. This is probably not a good idea and doesn't really tell you anything about the dataframe other than there's alot of data (try it)! A slightly better option is to use the `head()` function to display the first 5 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the `names()` function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the `str()` function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it's commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are `month` and `water.noise`?
+6\. Once you've imported your data file nothing much seems to happen (don't worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (`whale`) into the console. This is probably not a good idea and doesn't really tell you anything about the dataframe other than there's a lot of data (try it)! A slightly better option is to use the `head()` function to display the first 6 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the `names()` function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the `str()` function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it's commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are `month` and `water.noise`?
 
 ```{r Q6, echo=SOLUTIONS}
-head(whale)         # display the first 5 rows 
+head(whale)         # display the first 6 rows (the default) 
 names(whale)        # display the variable names
 str(whale)          # display the structure of the dataframe whale
 
@@ -97,15 +97,15 @@ a) Extract all the elements of the first 10 rows and the first 4 columns of the 
 
 b) Next, extract all observations (remember - rows) from the `whale` dataframe and the columns `month`, `water.noise` and `number.whales` and assign to a variable called `whale.num`. 
 
-c) Now, extract the first 50 rows and all columns form the original dataframe and assign to a variable `whale.may` (there's a better way to do this with conditional statements - see below). 
+c) Now, extract the first 50 rows and all columns from the original dataframe and assign to a variable `whale.may` (there's a better way to do this with conditional statements - see below). 
 
-d) Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name. Practice both ways. Do you have a preference? If so why? 
+d) Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name. Practice both ways. Do you have a preference? If so why? One thing to watch out for: negative indexing works with column positions but not with column names, so something like `whale[, -c("gradient")]` will throw an error. 
 
 ```{r Q8, echo=SOLUTIONS}
 # first 10 rows and first 4 columns
 whale.sub <- whale[1:10, 1:4]                                      
 
-# all rows and columns 1, 3 and 6
+# all rows and columns 1, 3 and 4
 whale.num <- whale[, c(1, 3, 4)] 
 # alternative way of indexing columns with named indexes
 whale.num <- whale[, c("month", "water.noise", "number.whales")]    
@@ -117,8 +117,9 @@ whale.may <- whale[1:50, ]
 whale.last <- whale[-c(1:10), -8]  
 # more general way if you have lots of columns
 whale.last <- whale[-c(1:10), -c(ncol(whale))] 
-# NOTE: this doesn't work for named columns
-whale.last <- whale[-c(1:10), -c("gradient")]   
+# NOTE: negative indexing does not work with column names - the line below
+# is deliberately commented out because it throws an error if you run it
+# whale.last <- whale[-c(1:10), -c("gradient")]
 ```
 
 \  
@@ -126,7 +127,7 @@ whale.last <- whale[-c(1:10), -c("gradient")]
 9\. In addition to extracting rows and columns from your dataframe by position you can also use conditional statements to select particular rows based on some logical criteria. This is very useful but takes a bit of practice to get used to (see [Section 3.4.2](https://intro2r.com/wrangling-data-frames.html#logical-indexes) for an introduction). Extract rows from your dataframe (all columns by default) based on the following criteria (note: you will need to assign the results of these statements to appropriately named variables, I'll leave it up to you to use informative names!):  
 
 - at depths greater than 1200 m
-- gradient steeper than 200 degrees
+- gradient greater than 200
 - water noise level of ‘low’
 - water.noise level of 'high' in the month of 'May'
 - month of 'October', water noise level of ‘low’ and gradient greater than the median value of gradient (132)

@@ -568,25 +568,28 @@ feel like it, you can also add the correlations to the lower triangle of
 the plot as you did previously (don&#x2019;t forget to define the function
 first).</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># define the panel.cor function from ?pairs</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>{</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>    usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">&quot;usr&quot;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    r <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">cor</span>(x, y))</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    txt <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">c</span>(r, <span class="fl">0.123456789</span>), <span class="at">digits =</span> digits)[<span class="dv">1</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>    txt <span class="ot">&lt;-</span> <span class="fu">paste0</span>(prefix, txt)</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">missing</span>(cex.cor)) cex.cor <span class="ot">&lt;-</span> <span class="fl">0.8</span><span class="sc">/</span><span class="fu">strwidth</span>(txt)</span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>    <span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="at">cex =</span> cex.cor <span class="sc">*</span> r)</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co"># subset the variables of interest</span></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>VOI<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABUND&quot;</span>, <span class="st">&quot;LOGAREA&quot;</span>, <span class="st">&quot;LOGDIST&quot;</span>, <span class="st">&quot;LOGLDIST&quot;</span>, <span class="st">&quot;YR.ISOL&quot;</span>, <span class="st">&quot;ALT&quot;</span>, <span class="st">&quot;FGRAZE&quot;</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">pairs</span>(loyn[, VOI], <span class="at">lower.panel =</span> panel.cor)</span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...){</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))   <span class="co"># set new plotting region, keep the old</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>    <span class="fu">on.exit</span>(<span class="fu">par</span>(op))                 <span class="co"># and restore the old one on exit</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    r <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">cor</span>(x, y))</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    txt <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">c</span>(r, <span class="fl">0.123456789</span>), <span class="at">digits =</span> digits)[<span class="dv">1</span>]</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    txt <span class="ot">&lt;-</span> <span class="fu">paste0</span>(prefix, txt)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">missing</span>(cex.cor)) cex.cor <span class="ot">&lt;-</span> <span class="fl">0.8</span><span class="sc">/</span><span class="fu">strwidth</span>(txt)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>    <span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="at">cex =</span> cex.cor <span class="sc">*</span> r)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>}</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># subset the variables of interest. Note we use the numeric GRAZE here,</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co"># not the factor FGRAZE: a correlation coefficient is only meaningful</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co"># between numeric variables, and GRAZE is an ordered index of grazing</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co"># intensity so a correlation with it is interpretable. It is still FGRAZE</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co"># that goes into the model.</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>VOI<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABUND&quot;</span>, <span class="st">&quot;LOGAREA&quot;</span>, <span class="st">&quot;LOGDIST&quot;</span>, <span class="st">&quot;LOGLDIST&quot;</span>, <span class="st">&quot;YR.ISOL&quot;</span>, <span class="st">&quot;ALT&quot;</span>, <span class="st">&quot;GRAZE&quot;</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="fu">pairs</span>(loyn[, VOI], <span class="at">lower.panel =</span> panel.cor)</span></code></pre></div>
 <p><img src="linear_model_4_exercise_solutions_files/figure-html/Q2-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co"># There are varying degrees of correlation between explanatory variables which</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># might indicate some collinearity, i.e. LOGAREA and FGRAZE (0.48), LOGDIST and </span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># LOGLDIST (0.59) and YR.ISOL and FGRAZE (0.56). However, the relationships</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># might indicate some collinearity, i.e. LOGAREA and GRAZE (0.48), LOGDIST and </span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># LOGLDIST (0.59) and YR.ISOL and GRAZE (0.56). However, the relationships</span></span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># between these explanatory variables are quite weak so we can probably </span></span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co"># include these variables in the same model (but keep an eye on things). </span></span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># There also seems to be a reasonable spread of observations across these </span></span>
@@ -595,7 +598,7 @@ first).</p>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co"># The relationship between the response variable ABUND and all the explanatory</span></span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co"># variables is visible in the top row:</span></span>
 <span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co"># Some potential relationships present like with LOGAREA (positive), </span></span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co"># maybe ALT (positive) and FGRAZE (negative).</span></span></code></pre></div>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co"># maybe ALT (positive) and GRAZE (negative).</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>3. Now, let&#x2019;s fit our maximal model. Start with a model of
 <code>ABUND</code> and include all explanatory variables as main
@@ -667,12 +670,12 @@ step?</p>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># The ANOVA table also allows testing the overall significance of a categorical explanatory</span></span>
 <span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># variable (like FGRAZE) which involves several parameters together (one for each level), </span></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># which is quite is handy. But the results of this ANOVA are based on sequential </span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># which is quite handy. But the results of this ANOVA are based on sequential </span></span>
 <span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># sums of squares and therefore the order of the variables in the model</span></span>
 <span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># (which is arbitrary here) matters.</span></span>
 <span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a></span>
 <span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co"># We could change the order but there are too many possible permutations.</span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># Summary P values don&apos;t suffer from this problem but tests different hypotheses.</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># Summary P values don&apos;t suffer from this problem but test different hypotheses.</span></span>
 <span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># It would be useful to use an ANOVA that doesn&apos;t depend on the order</span></span>
 <span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># of inclusion of the variables, this is effectively what &apos;drop1&apos; does.</span></span>
 <span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a></span>
@@ -793,7 +796,7 @@ explanatory variable (from above) and repeat single term deletions with
 <code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code> which you
 encountered in the previous exercise. Also, you may have noticed that
 the output from the <code>drop1()</code> function does not include the
-main effects of <code>LOGAREA</code> or <code>FRGRAZE</code>. Can you
+main effects of <code>LOGAREA</code> or <code>FGRAZE</code>. Can you
 think why this might be the case?</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># As the interaction between LOGAREA and FGRAZE was significant at each step of</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># model selection process the main effects should be left in our model,</span></span>

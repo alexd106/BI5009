@@ -92,14 +92,14 @@ shorter_child <- height[height <= 99]     # extract all heights less than or equ
 
 \  
 
-8\. Now you can use the information in your `weight` and `height` variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (**in meters**). 
+8\. Now you can use the information in your `weight` and `height` variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (**in metres**). 
 
 $$bmi_i = \frac{weight_i} {height_i^2}$$
 
 Store the results of this calculation in a variable called `bmi`. Note: you don’t need to do this calculation for each child individually, you can use both vectors in the BMI equation  – this is called vectorisation (see [Section 2.4.4](https://intro2r.com/vectors.html#vectorisation) of the Introduction to R book).
 
 ```{r Q8,echo=SOLUTIONS}
-bmi <- weight/(height/100)^2    # don't forget to convert height to meters
+bmi <- weight/(height/100)^2    # don't forget to convert height to metres
 ```
 
 \  
@@ -168,10 +168,10 @@ names_sort <- child_names[height_ord]     # Louise is shortest, Ronald is talles
 
 \  
 
-15\. Now order the names of the children by **descending** values of weight and assign the result to a variable called `weight_rev` (Hint: perhaps include the `rev()` function?). Who is the heaviest? Who is the lightest?
+15\. Now order the names of the children by **descending** values of weight and assign the result to a variable called `weight_rev` (Hint: take a look at the `decreasing` argument of the `order()` function). Who is the heaviest? Who is the lightest?
 
 ```{r Q15,echo=SOLUTIONS}
-weight_ord <- rev(order(weight))
+weight_ord <- order(weight, decreasing = TRUE)   # safer than rev(order(weight)), which reverses tied values too
 weight_rev <- child_names[weight_ord]     # Alfred is heaviest, Louise is lightest
 ```
 

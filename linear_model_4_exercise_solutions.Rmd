@@ -9,6 +9,9 @@ output:
 
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+# console width used to render the committed output. Leave this alone: at the
+# R default of 80 every summary() and str() block below re-wraps
+options(width = 130)
 
 SOLUTIONS <- TRUE
 ```
@@ -51,10 +54,9 @@ loyn$FGRAZE <- factor(loyn$GRAZE)
 
 ```{r Q2, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 # define the panel.cor function from ?pairs
-panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
-{
-    usr <- par("usr")
-    par(usr = c(0, 1, 0, 1))
+panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...){
+    op <- par(usr = c(0, 1, 0, 1))   # set new plotting region, keep the old
+    on.exit(par(op))                 # and restore the old one on exit
     r <- abs(cor(x, y))
     txt <- format(c(r, 0.123456789), digits = digits)[1]
     txt <- paste0(prefix, txt)
@@ -62,13 +64,17 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
     text(0.5, 0.5, txt, cex = cex.cor * r)
 }
 
-# subset the variables of interest
-VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "FGRAZE")
+# subset the variables of interest. Note we use the numeric GRAZE here,
+# not the factor FGRAZE: a correlation coefficient is only meaningful
+# between numeric variables, and GRAZE is an ordered index of grazing
+# intensity so a correlation with it is interpretable. It is still FGRAZE
+# that goes into the model.
+VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "GRAZE")
 pairs(loyn[, VOI], lower.panel = panel.cor)
 
 # There are varying degrees of correlation between explanatory variables which
-# might indicate some collinearity, i.e. LOGAREA and FGRAZE (0.48), LOGDIST and 
-# LOGLDIST (0.59) and YR.ISOL and FGRAZE (0.56). However, the relationships
+# might indicate some collinearity, i.e. LOGAREA and GRAZE (0.48), LOGDIST and 
+# LOGLDIST (0.59) and YR.ISOL and GRAZE (0.56). However, the relationships
 # between these explanatory variables are quite weak so we can probably 
 # include these variables in the same model (but keep an eye on things). 
 # There also seems to be a reasonable spread of observations across these 
@@ -77,7 +83,7 @@ pairs(loyn[, VOI], lower.panel = panel.cor)
 # The relationship between the response variable ABUND and all the explanatory
 # variables is visible in the top row:
 # Some potential relationships present like with LOGAREA (positive), 
-# maybe ALT (positive) and FGRAZE (negative).
+# maybe ALT (positive) and GRAZE (negative).
 ```
 
 \  
@@ -115,12 +121,12 @@ What hypothesis is being tested when we do this model selection step?
 
 # The ANOVA table also allows testing the overall significance of a categorical explanatory
 # variable (like FGRAZE) which involves several parameters together (one for each level), 
-# which is quite is handy. But the results of this ANOVA are based on sequential 
+# which is quite handy. But the results of this ANOVA are based on sequential 
 # sums of squares and therefore the order of the variables in the model
 # (which is arbitrary here) matters.
 
 # We could change the order but there are too many possible permutations.
-# Summary P values don't suffer from this problem but tests different hypotheses.
+# Summary P values don't suffer from this problem but test different hypotheses.
 # It would be useful to use an ANOVA that doesn't depend on the order
 # of inclusion of the variables, this is effectively what 'drop1' does.
 
@@ -192,7 +198,7 @@ drop1(M5, test = "F")
 
 \  
 
-10\. If all goes well, your final model should be `lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)` which you encountered in the previous exercise. Also, you may have noticed that the output from the `drop1()` function does not include the main effects of `LOGAREA` or `FRGRAZE`. Can you think why this might be the case? 
+10\. If all goes well, your final model should be `lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)` which you encountered in the previous exercise. Also, you may have noticed that the output from the `drop1()` function does not include the main effects of `LOGAREA` or `FGRAZE`. Can you think why this might be the case? 
 
 ```{r Q10, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 # As the interaction between LOGAREA and FGRAZE was significant at each step of

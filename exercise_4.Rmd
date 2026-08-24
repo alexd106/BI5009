@@ -78,9 +78,9 @@ str(squid)
 #  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 ...
 #  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...
 #  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...
-#  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
-#  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
-#  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
+#  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4",..: 3 1 2 2 3 1 2 3 3 4 ...
+#  $ Fmonth           : Factor w/ 12 levels "1","2","3","4",..: 12 12 12 12 12 12 ...
+#  $ Fyear            : Factor w/ 3 levels "1989","1990",..: 1 1 1 1 1 1 1 1 1 1 ...
  
 ```
 
@@ -130,7 +130,7 @@ ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
 
 \  
 
-6\. The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables (See [Section 4.2.4](https://intro2r.com/simple-base-r-plots.html#dotcharts). Create dotplots (using the `dotchart()` function) for the following variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns (see [Section 4.4](https://intro2r.com/mult_graphs.html#mult_graphs) of the book). Use the `pdf()` function to save a pdf version of your plot(s) in your `output` directory you created in Exercise 1 (see [Section 4.5](https://intro2r.com/export_plots.html#export_plots) of the book to see how the `pdf()` function works). I have also included some alternative code in the [solutions for this exercise](exercise_4_solution.html) using the `dotplot()` function from the `lattice` package.
+6\. The humble Cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables (See [Section 4.2.4](https://intro2r.com/simple-base-r-plots.html#dotcharts)). Create dotplots (using the `dotchart()` function) for the following variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns (see [Section 4.4](https://intro2r.com/mult_graphs.html#mult_graphs) of the book). Use the `pdf()` function to save a pdf version of your plot(s) in your `output` directory you created in Exercise 1 (see [Section 4.5](https://intro2r.com/export_plots.html#export_plots) of the book to see how the `pdf()` function works). I have also included some alternative code in the [solutions for this exercise](exercise_4_solution.html) using the `dotplot()` function from the `lattice` package.
 
 ```{r Q6, echo=SOLUTIONS}
 pdf('output/ex4_dotplots.pdf')
@@ -157,7 +157,7 @@ dotplot(as.matrix(squid[,c("DML", "weight", "nid.length", "ovary.weight")]),
 
 \  
 
-7\. It looks like the variable `nid.length` contains an unusually large value. Actually, this value is biologically implausible and clearly an error. The researchers were asked to go back and check their field notebooks and sure enough they discover a typo. It looks like a tired researcher accidentally inserted a zero by mistake when transcribing these data (mistakes in data are very common and why we **always** explore, check and validate any data we are working on). We can clearly see this value is over 400 so we can use the `which()` function to identify which observation this is `which(squid$nid.length > 400)`. It looks like this is the 11^th^ observation of the `squid$nid.length` variable. Use your skill with the square brackets `[ ]` to first confirm the this is the correct value (you should get 430.2) and then change this value to 43.2. Now redo the dotchart to visualise your correction. Caution: You can only do this because you have confirmed that this is an transcribing error. You should **not** remove or change values in your data just because you feel like it or they look 'unusual'. This is scientific fraud! Also, the advantage of making this change in your R script rather than in Excel is that you now have a permanent record of the change you made and can state a clear reason for the change.    
+7\. It looks like the variable `nid.length` contains an unusually large value. Actually, this value is biologically implausible and clearly an error. The researchers were asked to go back and check their field notebooks and sure enough they discover a typo. It looks like a tired researcher accidentally inserted a zero by mistake when transcribing these data (mistakes in data are very common and why we **always** explore, check and validate any data we are working on). We can clearly see this value is over 400 so we can use the `which()` function to identify which observation this is (`which(squid$nid.length > 400)`). Use your skill with the square brackets `[ ]` to first confirm that this is the correct value (you should get 430.2) and then change this value to 43.2. Now redo the dotchart to visualise your correction. Caution: You can only do this because you have confirmed that this is a transcribing error. You should **not** remove or change values in your data just because you feel like it or they look 'unusual'. This is scientific fraud! Also, the advantage of making this change in your R script rather than in Excel is that you now have a permanent record of the change you made and can state a clear reason for the change.    
 
 ```{r Q7, echo=SOLUTIONS}
 which(squid$nid.length > 400)
@@ -172,7 +172,7 @@ dotchart(squid$nid.length, main = "nid length")
 
 \  
  
-8\. When exploring your data it is often useful to visualise the distribution of continuous variables. Take a look at [Section 4.2.2](https://intro2r.com/simple-base-r-plots.html#histograms) and then create histograms for the variables; `DML`, `weight`, `eviscerate.weight` and `ovary.weight`. Again, its up to you if you want to plot all 4 plots separately or in the same figure. Export your plot(s) as pdf file(s) to the `output` directory. One potential problem with histograms is that the distribution of data can look quite different depending on the number of 'breaks' used. The `hist()` function does it's best to create appropriate 'breaks' for your plots (it uses the [Sturges algorithm](https://en.wikipedia.org/wiki/Histogram) for those that want to know) but experiment with changing the number of breaks for the `DML` variable to see how the shape of the distribution changes (see [Section 4.2.2](https://intro2r.com/simple-base-r-plots.html#histograms) of the book for further details of how to change the breaks).   
+8\. When exploring your data it is often useful to visualise the distribution of continuous variables. Take a look at [Section 4.2.2](https://intro2r.com/simple-base-r-plots.html#histograms) and then create histograms for the variables; `DML`, `weight`, `eviscerate.weight` and `ovary.weight`. Again, it's up to you if you want to plot all 4 plots separately or in the same figure. Export your plot(s) as pdf file(s) to the `output` directory. One potential problem with histograms is that the distribution of data can look quite different depending on the number of 'breaks' used. The `hist()` function does its best to create appropriate 'breaks' for your plots (it uses the [Sturges algorithm](https://en.wikipedia.org/wiki/Histogram) for those that want to know) but experiment with changing the number of breaks for the `DML` variable to see how the shape of the distribution changes (see [Section 4.2.2](https://intro2r.com/simple-base-r-plots.html#histograms) of the book for further details of how to change the breaks).   
 
 ```{r Q8, echo=SOLUTIONS}
 pdf('output/ex4_hist.pdf')
@@ -213,7 +213,7 @@ hist(squid$DML, xlab = "DML", breaks = brk4, main = "brk: 2")
 # clearly not linear
 plot(squid$DML, squid$weight)
 
-# natural log and sqrt tranform weight
+# natural log and sqrt transform weight
 squid$weight.sqrt <- sqrt(squid$weight)
 squid$weight.log <- log(squid$weight)
 
@@ -237,7 +237,7 @@ dev.off()
 10\. When visualising differences in a continuous variable between levels of a factor (categorical variable) then a boxplot is your friend (avoid using bar plots - Google 'bar plots are evil' for more info). Create a boxplot to visualise the differences in DML at each maturity stage (don't forget to use the recoded version of this variable you created in Q4) . Include x and y axes labels in your plot. Make sure you understand the anatomy of a boxplot before moving on - please ask if you're not sure (also see [Section 4.2.3](https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots) of the book). An alternative to the boxplot is the violin plot. A violin plot is a combination of a boxplot and a [kernel density plot](https://en.wikipedia.org/wiki/Kernel_density_estimation) and is great at visualising the distribution of a variable. To create a violin plot you will first need to install the `vioplot` package from CRAN and make it available using `library(vioplot)`. You can now use the `vioplot()` function in pretty much the same way as you created your boxplot (again [Section 4.2.3](https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots) of the book walks you through this).
 
 ```{r Q10, echo=SOLUTIONS, tidy = TRUE}
-# note: Fmaturity is the recoded maturity.stage variable cerated in Q4
+# note: Fmaturity is the recoded maturity.stage variable created in Q4
 boxplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML")
 
 # violin plot
@@ -247,7 +247,7 @@ vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , c
 
 \  
 
-11\. To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the `coplot()` function ([Section 4.2.6](https://intro2r.com/simple-base-r-plots.html#coplots)) to plot the relationship between DML on the x axis and square root transformed weight on the y axis (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the `xyplot()` function ([Section 4.2.7](https://intro2r.com/simple-base-r-plots.html#lattice-plots)) from the `lattice` package (don't forget to make the function available by using `library(lattice)` first). 
+11\. To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the `coplot()` function ([Section 4.2.6](https://intro2r.com/simple-base-r-plots.html#coplots)) to plot the relationship between DML on the x axis and square root transformed weight on the y axis (you created this variable in Q9) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the `xyplot()` function ([Section 4.2.7](https://intro2r.com/simple-base-r-plots.html#lattice-plots)) from the `lattice` package (don't forget to make the function available by using `library(lattice)` first). 
 
 ```{r Q11, echo=SOLUTIONS}
 coplot(weight.sqrt ~ DML | Fmaturity, data = squid)

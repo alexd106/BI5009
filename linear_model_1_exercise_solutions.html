@@ -644,11 +644,11 @@ device into 2 rows and 2 columns using <code>par(mfrow = c(2,2))</code>
 before you create the plots (<a href="https://intro2r.com/mult_graphs.html#mult_graphs">Section
 4.4</a>).</p>
 <p>Can you remember which plot is used to check the assumption of
-normality of the residuals? What is you assessment of this assumption?
+normality of the residuals? What is your assessment of this assumption?
 Next, check the homogeneity of variance of residuals assumption. Can you
 see any patterns in the &#x2018;residuals versus fitted&#x2019; or the
 &#x2018;Scale-Location&#x2019; plots? Is there more or less equal spread of the
-residuals? Finally, take a look at the leverage and Cooks distance plot
+residuals? Finally, take a look at the leverage and Cook&#x2019;s distance plot
 to assess whether you have any residuals with high leverage or any
 influential residuals. What is your assessment? Write a couple of
 sentences to summarise your assessment of the modelling assumptions as a
@@ -661,7 +661,7 @@ comment in your R code.</p>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q8-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># The normal Q-Q plot is used to assess normality of the residuals (top right).</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># If perfectly normal then all residuals would lie exactly on the 1:1 line.</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># If perfectly normal then all residuals would lie exactly on the reference line.</span></span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># In reality this is never going to happen so we are looking for obvious large </span></span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># departures. In this plot they don&apos;t look too bad, although the lower quantiles</span></span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># do seem to deviate. All in all I would be cautiously optimistic.</span></span>
@@ -675,8 +675,8 @@ comment in your R code.</p>
 <span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># But in short, the homogeneity of variance assumption looks ok.</span></span>
 <span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a></span>
 <span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co"># From the Residuals vs Leverage plot (bottom right) you can see that there are no residuals </span></span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co"># with a Cooks distance greater than 1. In fact they are all well below 0.5. If you want to </span></span>
-<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co"># produce a plot of just Cooks distance (perhaps this is clearer)</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co"># with a Cook&apos;s distance greater than 1. In fact they are all well below 0.5. If you want to </span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co"># produce a plot of just Cook&apos;s distance (perhaps this is clearer)</span></span>
 <span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="fu">plot</span>(loyn_lm, <span class="at">which =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q8-2.png" alt width="672"></p>

@@ -9,6 +9,9 @@ output:
 
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+# console width used to render the committed output. Leave this alone: at the
+# R default of 80 every summary() and str() block below re-wraps
+options(width = 130)
 SOLUTIONS <- FALSE
 ```
 
@@ -117,7 +120,7 @@ summary(loyn_lm)
 
 8\. Now onto a really important part of the model fitting process. Let's check the assumptions of your linear model by creating plots of the residuals from the model. Remember, you can easily create these plots by using the `plot()` function on your model object (`loyn_lm` or whatever you called it). Also remember that if you want to see all plots at once then you should split your plotting device into 2 rows and 2 columns using `par(mfrow = c(2,2))` before you create the plots ([Section 4.4](https://intro2r.com/mult_graphs.html#mult_graphs)).  
 
-Can you remember which plot is used to check the assumption of normality of the residuals? What is you assessment of this assumption? Next, check the homogeneity of variance of residuals assumption. Can you see any patterns in the 'residuals versus fitted' or the 'Scale-Location' plots? Is there more or less equal spread of the residuals? Finally, take a look at the leverage and Cooks distance plot to assess whether you have any residuals with high leverage or any influential residuals. What is your assessment? Write a couple of sentences to summarise your assessment of the modelling assumptions as a comment in your R code. 
+Can you remember which plot is used to check the assumption of normality of the residuals? What is your assessment of this assumption? Next, check the homogeneity of variance of residuals assumption. Can you see any patterns in the 'residuals versus fitted' or the 'Scale-Location' plots? Is there more or less equal spread of the residuals? Finally, take a look at the leverage and Cook's distance plot to assess whether you have any residuals with high leverage or any influential residuals. What is your assessment? Write a couple of sentences to summarise your assessment of the modelling assumptions as a comment in your R code. 
 
 ```{r Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 # first split the plotting device into 2 rows and 2 columns
@@ -127,7 +130,7 @@ par(mfrow = c(2,2))
 plot(loyn_lm)
 
 # The normal Q-Q plot is used to assess normality of the residuals (top right).
-# If perfectly normal then all residuals would lie exactly on the 1:1 line.
+# If perfectly normal then all residuals would lie exactly on the reference line.
 # In reality this is never going to happen so we are looking for obvious large 
 # departures. In this plot they don't look too bad, although the lower quantiles
 # do seem to deviate. All in all I would be cautiously optimistic.
@@ -141,8 +144,8 @@ plot(loyn_lm)
 # But in short, the homogeneity of variance assumption looks ok.
 
 # From the Residuals vs Leverage plot (bottom right) you can see that there are no residuals 
-# with a Cooks distance greater than 1. In fact they are all well below 0.5. If you want to 
-# produce a plot of just Cooks distance (perhaps this is clearer)
+# with a Cook's distance greater than 1. In fact they are all well below 0.5. If you want to 
+# produce a plot of just Cook's distance (perhaps this is clearer)
 par(mfrow = c(1,1))
 plot(loyn_lm, which = 4)
 

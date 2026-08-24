@@ -3,7 +3,7 @@ whale <- read.table('data/whaledata.txt', header = TRUE, stringsAsFactors = TRUE
 
 
 ## ----Q6, echo=SOLUTIONS------------------------------------------------------------------------------------------------------------------------------------------------
-head(whale)         # display the first 5 rows 
+head(whale)         # display the first 6 rows (the default) 
 names(whale)        # display the variable names
 str(whale)          # display the structure of the dataframe whale
 
@@ -43,7 +43,7 @@ summary(whale)
 # first 10 rows and first 4 columns
 whale.sub <- whale[1:10, 1:4]                                      
 
-# all rows and columns 1, 3 and 6
+# all rows and columns 1, 3 and 4
 whale.num <- whale[, c(1, 3, 4)] 
 # alternative way of indexing columns with named indexes
 whale.num <- whale[, c("month", "water.noise", "number.whales")]    
@@ -55,8 +55,9 @@ whale.may <- whale[1:50, ]
 whale.last <- whale[-c(1:10), -8]  
 # more general way if you have lots of columns
 whale.last <- whale[-c(1:10), -c(ncol(whale))] 
-# NOTE: this doesn't work for named columns
-whale.last <- whale[-c(1:10), -c("gradient")]   
+# NOTE: negative indexing does not work with column names - the line below
+# is deliberately commented out because it throws an error if you run it
+# whale.last <- whale[-c(1:10), -c("gradient")]
 
 
 ## ----Q9, echo=SOLUTIONS, tidy = TRUE-----------------------------------------------------------------------------------------------------------------------------------

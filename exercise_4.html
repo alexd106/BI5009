@@ -429,9 +429,9 @@ have the most observations? (optional) Use a combination of the
 flattened table of the number of observations for each year, maturity
 stage and month (aka a contingency table).</p>
 <p>&#xA0;</p>
-<p>6. The humble cleveland dotplot is a great way of identifying if you
+<p>6. The humble Cleveland dotplot is a great way of identifying if you
 have potential outliers in continuous variables (See <a href="https://intro2r.com/simple-base-r-plots.html#dotcharts">Section
-4.2.4</a>. Create dotplots (using the <code>dotchart()</code> function)
+4.2.4</a>). Create dotplots (using the <code>dotchart()</code> function)
 for the following variables; <code>DML</code>, <code>weight</code>,
 <code>nid.length</code> and <code>ovary.weight</code>. Do these
 variables contain any unusually large or small observations? Don&#x2019;t
@@ -454,30 +454,28 @@ transcribing these data (mistakes in data are very common and why we
 <strong>always</strong> explore, check and validate any data we are
 working on). We can clearly see this value is over 400 so we can use the
 <code>which()</code> function to identify which observation this is
-<code>which(squid$nid.length &gt; 400)</code>. It looks like this is the
-11<sup>th</sup> observation of the <code>squid$nid.length</code>
-variable. Use your skill with the square brackets <code>[ ]</code> to
-first confirm the this is the correct value (you should get 430.2) and
-then change this value to 43.2. Now redo the dotchart to visualise your
-correction. Caution: You can only do this because you have confirmed
-that this is an transcribing error. You should <strong>not</strong>
-remove or change values in your data just because you feel like it or
-they look &#x2018;unusual&#x2019;. This is scientific fraud! Also, the advantage of
-making this change in your R script rather than in Excel is that you now
-have a permanent record of the change you made and can state a clear
-reason for the change.</p>
+(<code>which(squid$nid.length &gt; 400)</code>). Use your skill with the
+square brackets <code>[ ]</code> to first confirm that this is the
+correct value (you should get 430.2) and then change this value to 43.2.
+Now redo the dotchart to visualise your correction. Caution: You can
+only do this because you have confirmed that this is a transcribing
+error. You should <strong>not</strong> remove or change values in your
+data just because you feel like it or they look &#x2018;unusual&#x2019;. This is
+scientific fraud! Also, the advantage of making this change in your R
+script rather than in Excel is that you now have a permanent record of
+the change you made and can state a clear reason for the change.</p>
 <p>&#xA0;</p>
 <p>8. When exploring your data it is often useful to visualise the
 distribution of continuous variables. Take a look at <a href="https://intro2r.com/simple-base-r-plots.html#histograms">Section
 4.2.2</a> and then create histograms for the variables;
 <code>DML</code>, <code>weight</code>, <code>eviscerate.weight</code>
-and <code>ovary.weight</code>. Again, its up to you if you want to plot
+and <code>ovary.weight</code>. Again, it&#x2019;s up to you if you want to plot
 all 4 plots separately or in the same figure. Export your plot(s) as pdf
 file(s) to the <code>output</code> directory. One potential problem with
 histograms is that the distribution of data can look quite different
 depending on the number of &#x2018;breaks&#x2019; used. The <code>hist()</code>
-function does it&#x2019;s best to create appropriate &#x2018;breaks&#x2019; for your plots
-(it uses the <a href="https://en.wikipedia.org/wiki/Histogram">Sturges
+function does its best to create appropriate &#x2018;breaks&#x2019; for your plots (it
+uses the <a href="https://en.wikipedia.org/wiki/Histogram">Sturges
 algorithm</a> for those that want to know) but experiment with changing
 the number of breaks for the <code>DML</code> variable to see how the
 shape of the distribution changes (see <a href="https://intro2r.com/simple-base-r-plots.html#histograms">Section
@@ -523,7 +521,7 @@ created your boxplot (again <a href="https://intro2r.com/simple-base-r-plots.htm
 but for different levels of a factor variable you can create a
 conditional scatterplot. Use the <code>coplot()</code> function (<a href="https://intro2r.com/simple-base-r-plots.html#coplots">Section
 4.2.6</a>) to plot the relationship between DML on the x axis and square
-root transformed weight on the y axis (you created this variable in Q8)
+root transformed weight on the y axis (you created this variable in Q9)
 for each level of maturity stage. Does the relationship between DML and
 weight look different for each maturity stage (suggesting an
 interaction)? If you prefer, you can also create a similar plot using

@@ -40,9 +40,9 @@ str(squid)
 #  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 ...
 #  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...
 #  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...
-#  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
-#  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
-#  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
+#  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4",..: 3 1 2 2 3 1 2 3 3 4 ...
+#  $ Fmonth           : Factor w/ 12 levels "1","2","3","4",..: 12 12 12 12 12 12 ...
+#  $ Fyear            : Factor w/ 3 levels "1989","1990",..: 1 1 1 1 1 1 1 1 1 1 ...
  
 
 
@@ -155,7 +155,7 @@ hist(squid$DML, xlab = "DML", breaks = brk4, main = "brk: 2")
 # clearly not linear
 plot(squid$DML, squid$weight)
 
-# natural log and sqrt tranform weight
+# natural log and sqrt transform weight
 squid$weight.sqrt <- sqrt(squid$weight)
 squid$weight.log <- log(squid$weight)
 
@@ -175,7 +175,7 @@ dev.off()
 
 
 ## ----Q10, echo=SOLUTIONS, tidy = TRUE----------------------------------------------------------------------------------------------------------------------------------
-# note: Fmaturity is the recoded maturity.stage variable cerated in Q4
+# note: Fmaturity is the recoded maturity.stage variable created in Q4
 boxplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML")
 
 # violin plot

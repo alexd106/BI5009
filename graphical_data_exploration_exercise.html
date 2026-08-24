@@ -369,17 +369,13 @@ $(document).ready(function () {
 <div id="exercise-graphical-data-exploration" class="section level2">
 <h2>Exercise: Graphical data exploration</h2>
 <p>&#xA0;</p>
-<p>1. Start RStudio on your computer. If you haven&#x2019;t already done so,
-create a new RStudio Project (select File &#x2013;&gt; New Project on the main
-menu). Create the Project in a new directory by selecting &#x2018;New
-Directory&#x2019; and then select &#x2018;New Project&#x2019;. Give the Project a suitable
-name (&#x2018;EV5020_stats&#x2019; maybe) in the &#x2018;Directory name:&#x2019; box and choose
-where you would like to create this Project directory by clicking on the
-&#x2018;Browse&#x2019; button. Finally create the project by clicking on the &#x2018;Create
-Project&#x2019; button. This will be your main RStudio Project file and
-directory which you will use throughout this course. See <a href="https://intro2r.com/rsprojs.html#rsprojs">Section 1.6</a> of the
-Introduction to R book for more information about RStudio Projects and
-<a href="https://alexd106.github.io/BI5009/howto.html#rstudio_proj-vid">here</a>
+<p>1. Start RStudio on your computer and reopen the RStudio Project you
+created in Exercise 1 (select File &#x2013;&gt; Open Project on the main menu,
+or use the Project drop-down at the top right of the RStudio window).
+You will use this same Project for the rest of the course, so there is
+no need to create a new one. If you need a reminder about RStudio
+Projects see <a href="https://intro2r.com/rsprojs.html#rsprojs">Section
+1.6</a> of the Introduction to R book and <a href="https://alexd106.github.io/BI5009/howto.html#rstudio_proj-vid">here</a>
 for a short video.</p>
 <p>Now create a new R script inside this Project by selecting File &#x2013;&gt;
 New File &#x2013;&gt; R Script from the main menu (or use the shortcut button).
@@ -410,7 +406,8 @@ directory.</p>
 to do some slight &#x2018;tweaking&#x2019; of these data to improve usability for this
 course. The aim of the study was to relate bird density in 67 forest
 patches to a number of different environmental variables and management
-practices. A summary of the variables is: <strong>ABUND</strong>:
+practices. A summary of the variables is: <strong>SITE</strong>: Forest
+patch identifier, not used in any analysis; <strong>ABUND</strong>:
 Density of birds, continuous response variable; <strong>AREA</strong>:
 Size of forest patch, continuous explanatory variable;
 <strong>DIST</strong>: Distance to nearest patch, continuous
@@ -431,7 +428,7 @@ object called <code>loyn</code> (checkout <a href="https://intro2r.com/importing
 3.3.2</a> if you need a reminder). Use the <code>str()</code> function
 to display the structure of the dataset and the <code>summary()</code>
 function to summarise the dataset. Copy and paste the output of
-<code>str()</code> and <code>Summary()</code> to your R code as a
+<code>str()</code> and <code>summary()</code> to your R code as a
 record. Don&#x2019;t forget to comment this code with a <code>#</code> at the
 beginning of each line (use the keyboard to comment code blocks <a href="https://intro2r.com/proj_doc.html#proj_doc">shortcut</a>?).</p>
 <p>How many observations are in this dataset? How many variables does

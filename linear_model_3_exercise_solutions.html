@@ -574,7 +574,7 @@ Can you remember how to specify the model using the &#x2018;shortcut&#x2019; ver
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>birds_inter1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE <span class="sc">+</span> LOGAREA <span class="sc">+</span> FGRAZE<span class="sc">:</span>LOGAREA, <span class="at">data =</span> loyn)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co"># Or use the &apos;shortcut&apos; - it&apos;s equivalent to the model above</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># birds.inter.1 &lt;- lm(ABUND ~ FGRAZE * LOGAREA, data = loyn)</span></span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># birds_inter1 &lt;- lm(ABUND ~ FGRAZE * LOGAREA, data = loyn)</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>6. As conscientious researchers, let&#x2019;s first check the assumptions of
 our linear model by creating plots of the residuals. Remember, that you
@@ -698,7 +698,7 @@ you&#x2019;re confused :).</p>
 <span id="cb9-38"><a href="#cb9-38" tabindex="-1"></a><span class="co"># The null hypothesis is that the slope of the relationship</span></span>
 <span id="cb9-39"><a href="#cb9-39" tabindex="-1"></a><span class="co"># between LOGAREA and ABUND = 0, for level FGRAZE = 1 only. </span></span>
 <span id="cb9-40"><a href="#cb9-40" tabindex="-1"></a><span class="co"># So, for graze 1 the slope is 4.14. This means, that for a 1 unit increase in LOGAREA</span></span>
-<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a><span class="co"># we get a corresponding increase of 4.4 birds on average.</span></span>
+<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a><span class="co"># we get a corresponding increase of 4.14 birds on average.</span></span>
 <span id="cb9-42"><a href="#cb9-42" tabindex="-1"></a><span class="co"># As the P value (0.022) is &lt; 0.05 we conclude that the slope is</span></span>
 <span id="cb9-43"><a href="#cb9-43" tabindex="-1"></a><span class="co"># significantly different than 0.</span></span>
 <span id="cb9-44"><a href="#cb9-44" tabindex="-1"></a></span>
@@ -733,7 +733,7 @@ you&#x2019;re confused :).</p>
 <span id="cb9-73"><a href="#cb9-73" tabindex="-1"></a></span>
 <span id="cb9-74"><a href="#cb9-74" tabindex="-1"></a><span class="co"># FGRAZE4:LOGAREA, # FGRAZE5:LOGAREA</span></span>
 <span id="cb9-75"><a href="#cb9-75" tabindex="-1"></a><span class="co"># These parameter estimates and null hypotheses are interpreted in the same way </span></span>
-<span id="cb9-76"><a href="#cb9-76" tabindex="-1"></a><span class="co"># as for FGRAZE4:LOGAREA and FGRAZE5:LOGAREA</span></span>
+<span id="cb9-76"><a href="#cb9-76" tabindex="-1"></a><span class="co"># as for FGRAZE2:LOGAREA and FGRAZE3:LOGAREA</span></span>
 <span id="cb9-77"><a href="#cb9-77" tabindex="-1"></a></span>
 <span id="cb9-78"><a href="#cb9-78" tabindex="-1"></a></span>
 <span id="cb9-79"><a href="#cb9-79" tabindex="-1"></a><span class="co"># The Multiple R-square value is 0.79, so 79% of the variation in the data is </span></span>

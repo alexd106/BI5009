@@ -9,6 +9,9 @@ output:
 
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+# console width used to render the committed output. Leave this alone: at the
+# R default of 80 every summary() and str() block below re-wraps
+options(width = 130)
 SOLUTIONS <- FALSE
 ```
 
@@ -73,7 +76,7 @@ coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
 birds_inter1 <- lm(ABUND ~ FGRAZE + LOGAREA + FGRAZE:LOGAREA, data = loyn)
 
 # Or use the 'shortcut' - it's equivalent to the model above
-# birds.inter.1 <- lm(ABUND ~ FGRAZE * LOGAREA, data = loyn)
+# birds_inter1 <- lm(ABUND ~ FGRAZE * LOGAREA, data = loyn)
 ```
 
 \  
@@ -158,7 +161,7 @@ summary(birds_inter1)
 # The null hypothesis is that the slope of the relationship
 # between LOGAREA and ABUND = 0, for level FGRAZE = 1 only. 
 # So, for graze 1 the slope is 4.14. This means, that for a 1 unit increase in LOGAREA
-# we get a corresponding increase of 4.4 birds on average.
+# we get a corresponding increase of 4.14 birds on average.
 # As the P value (0.022) is < 0.05 we conclude that the slope is
 # significantly different than 0.
 
@@ -193,7 +196,7 @@ summary(birds_inter1)
 
 # FGRAZE4:LOGAREA, # FGRAZE5:LOGAREA
 # These parameter estimates and null hypotheses are interpreted in the same way 
-# as for FGRAZE4:LOGAREA and FGRAZE5:LOGAREA
+# as for FGRAZE2:LOGAREA and FGRAZE3:LOGAREA
 
 
 # The Multiple R-square value is 0.79, so 79% of the variation in the data is 

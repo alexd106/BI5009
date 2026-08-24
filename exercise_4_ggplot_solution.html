@@ -542,7 +542,7 @@ original dataset. Here we would like to code them as factors. Create a
 new variable for each of these variables in the <code>squid</code>
 dataframe and recode them as factors. Use the <code>str()</code>
 function again to check the coding of these new variables.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>squid <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&apos;workshop/data/squid1.txt&apos;</span>, <span class="at">header =</span><span class="cn">TRUE</span>, </span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>squid <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&apos;data/squid1.txt&apos;</span>, <span class="at">header =</span><span class="cn">TRUE</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">str</span>(squid)</span>
@@ -583,9 +583,9 @@ function again to check the coding of these new variables.</p>
 <span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a><span class="co">#  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 ...</span></span>
 <span id="cb2-40"><a href="#cb2-40" tabindex="-1"></a><span class="co">#  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...</span></span>
 <span id="cb2-41"><a href="#cb2-41" tabindex="-1"></a><span class="co">#  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...</span></span>
-<span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a><span class="co">#  $ Fmaturity        : Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot; &quot;5&quot;...</span></span>
-<span id="cb2-43"><a href="#cb2-43" tabindex="-1"></a><span class="co">#  $ Fmonth           : Factor w/ 12 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot; ...</span></span>
-<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a><span class="co">#  $ Fyear            : Factor w/ 3 levels &quot;1989&quot;,&quot;1990&quot;,..1 ...</span></span></code></pre></div>
+<span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a><span class="co">#  $ Fmaturity        : Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 3 1 2 2 3 1 2 3 3 4 ...</span></span>
+<span id="cb2-43"><a href="#cb2-43" tabindex="-1"></a><span class="co">#  $ Fmonth           : Factor w/ 12 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 12 12 12 12 12 12 ...</span></span>
+<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a><span class="co">#  $ Fyear            : Factor w/ 3 levels &quot;1989&quot;,&quot;1990&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>5. How many observations are there per month and year combination
 (hint: remember the <code>table()</code> or <code>xtabs()</code>
@@ -631,9 +631,9 @@ stage and month (aka a contingency table).</p>
 <span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a><span class="co">#       4                16  8  6 13  6  1  1  0  0  0  0  0</span></span>
 <span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="co">#       5                18 21 23 16 23  3  0  0  0  0  0  0</span></span></code></pre></div>
 <p>&#xA0;</p>
-<p>6. The humble cleveland dotplot is a great way of identifying if you
+<p>6. The humble Cleveland dotplot is a great way of identifying if you
 have potential outliers in continuous variables (See <a href="https://intro2r.com/simple-base-r-plots.html#dotcharts">Section
-4.2.4</a>. Create dotplots (using the <code>dotchart()</code> function)
+4.2.4</a>). Create dotplots (using the <code>dotchart()</code> function)
 for the following variables; <code>DML</code>, <code>weight</code>,
 <code>nid.length</code> and <code>ovary.weight</code>. Do these
 variables contain any unusually large or small observations? Don&#x2019;t
@@ -668,7 +668,7 @@ package.</p>
 <span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a>pall</span>
 <span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co"># save the plot </span></span>
 <span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&apos;workshop/figures/gg_dotplot.pdf&apos;</span>, <span class="at">plot =</span> pall, <span class="at">device =</span> <span class="st">&apos;pdf&apos;</span>)</span></code></pre></div>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&apos;output/gg_dotplot.pdf&apos;</span>, <span class="at">plot =</span> pall, <span class="at">device =</span> <span class="st">&apos;pdf&apos;</span>)</span></code></pre></div>
 <p>&#xA0;</p>
 <p>7. It looks like the variable <code>nid.length</code> contains an
 unusually large value. Actually, this value is biologically implausible
@@ -679,18 +679,16 @@ transcribing these data (mistakes in data are very common and why we
 <strong>always</strong> explore, check and validate any data we are
 working on). We can clearly see this value is over 400 so we can use the
 <code>which()</code> function to identify which observation this is
-<code>which(squid$nid.length &gt; 400)</code>. It looks like this is the
-11<sup>th</sup> observation of the <code>squid$nid.length</code>
-variable. Use your skill with the square brackets <code>[ ]</code> to
-first confirm the this is the correct value (you should get 430.2) and
-then change this value to 43.2. Now redo the dotchart to visualise your
-correction. Caution: You can only do this because you have confirmed
-that this is an transcribing error. You should <strong>not</strong>
-remove or change values in your data just because you feel like it or
-they look &#x2018;unusual&#x2019;. This is scientific fraud! Also, the advantage of
-making this change in your R script rather than in Excel is that you now
-have a permanent record of the change you made and can state a clear
-reason for the change.</p>
+(<code>which(squid$nid.length &gt; 400)</code>). Use your skill with the
+square brackets <code>[ ]</code> to first confirm that this is the
+correct value (you should get 430.2) and then change this value to 43.2.
+Now redo the dotchart to visualise your correction. Caution: You can
+only do this because you have confirmed that this is a transcribing
+error. You should <strong>not</strong> remove or change values in your
+data just because you feel like it or they look &#x2018;unusual&#x2019;. This is
+scientific fraud! Also, the advantage of making this change in your R
+script rather than in Excel is that you now have a permanent record of
+the change you made and can state a clear reason for the change.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">which</span>(squid<span class="sc">$</span>nid.length <span class="sc">&gt;</span> <span class="dv">400</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co"># [1] 11</span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>squid<span class="sc">$</span>nid.length[<span class="dv">11</span>]</span>
@@ -705,13 +703,13 @@ reason for the change.</p>
 <p>8. When exploring your data it is often useful to visualise the
 distribution of continuous variables. Create histograms for the
 variables; <code>DML</code>, <code>weight</code>,
-<code>eviscerate.weight</code> and <code>ovary.weight</code>. Again, its
-up to you if you want to plot all 4 plots separately or in the same
+<code>eviscerate.weight</code> and <code>ovary.weight</code>. Again,
+it&#x2019;s up to you if you want to plot all 4 plots separately or in the same
 figure. Export your plot(s) as pdf file(s). One potential problem with
 histograms is that the distribution of data can look quite different
 depending on the number of &#x2018;breaks&#x2019; used. The <code>hist()</code>
-function does it&#x2019;s best to create appropriate &#x2018;breaks&#x2019; for your plots
-(it uses the <a href="https://en.wikipedia.org/wiki/Histogram">Sturges
+function does its best to create appropriate &#x2018;breaks&#x2019; for your plots (it
+uses the <a href="https://en.wikipedia.org/wiki/Histogram">Sturges
 algorithm</a> for those that want to know) but experiment with changing
 the number of breaks for the <code>DML</code> variable to see how the
 shape of the distribution changes (see the course manual for further
@@ -744,7 +742,7 @@ details of how to change the breaks).</p>
 <span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>bpall <span class="ot">&lt;-</span> <span class="fu">grid.arrange</span>(bp1, bp2, bp3, bp4, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
 <span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a></span>
 <span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="co"># save the plot to file</span></span>
-<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&apos;workshop/figures/gg_hist.pdf&apos;</span>, <span class="at">plot =</span> bpall, <span class="at">device =</span> <span class="st">&apos;pdf&apos;</span>)</span></code></pre></div>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&apos;output/gg_hist.pdf&apos;</span>, <span class="at">plot =</span> bpall, <span class="at">device =</span> <span class="st">&apos;pdf&apos;</span>)</span></code></pre></div>
 <p>&#xA0;</p>
 <p>9. Scatterplots are great for visualising relationships between two
 continuous variables. Plot the relationship between <code>DML</code> on
@@ -767,7 +765,7 @@ for a change!).</p>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DML, <span class="at">y =</span> weight)) <span class="sc">+</span></span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># natural log and sqrt tranform weight</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># natural log and sqrt transform weight</span></span>
 <span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>squid<span class="sc">$</span>weight.sqrt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(squid<span class="sc">$</span>weight)</span>
 <span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>squid<span class="sc">$</span>weight.log <span class="ot">&lt;-</span> <span class="fu">log</span>(squid<span class="sc">$</span>weight)</span>
 <span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a></span>
@@ -798,17 +796,18 @@ you&#x2019;re not sure. An alternative to the boxplot is the violin plot. A
 violin plot is a combination of a boxplot and a <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel
 density plot</a> and is great at visualising the distribution of a
 variable.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># note: Fmaturity is the recoded maturity.stage variable cerated in Q4</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Fmaturity, <span class="at">y =</span> DML)) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Maturity stage&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Dorsal mantel length&quot;</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># violin plot</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">x =</span> Fmaturity, <span class="at">y =</span> DML))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># note: Fmaturity is the recoded maturity.stage variable created in Q4</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Fmaturity, <span class="at">y =</span> DML)) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Maturity stage&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Dorsal mantel length&quot;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># violin plot</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">x =</span> Fmaturity, <span class="at">y =</span> DML))</span></code></pre></div>
 <p>&#xA0;</p>
 <p>11. To visualise the relationship between two continuous variables
 but for different levels of a factor variable you can create a
 conditional scatterplot. Use the <code>ggplot()</code> function to plot
 the relationship between DML and square root transformed weight (you
-created this variable in Q8) for each level of maturity stage. Does the
+created this variable in Q9) for each level of maturity stage. Does the
 relationship between DML and weight look different for each maturity
 stage (suggesting an interaction)?</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># use facet_wrap to produce a </span></span>
@@ -849,15 +848,20 @@ Format the graph further to make it suitable for inclusion into your
 paper/thesis (i.e.&#xA0;add axes labels, change the axes scales etc).</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># square root transform ovary weight</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>squid<span class="sc">$</span>ovary.weight.sqrt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(squid<span class="sc">$</span>ovary.weight)</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DML, <span class="at">y =</span> ovary.weight.sqrt, <span class="at">colour =</span> Fmaturity), <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;deepskyblue3&quot;</span>, <span class="st">&quot;darkolivegreen3&quot;</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="st">&quot;coral3&quot;</span>, <span class="st">&quot;lemonchiffon3&quot;</span>, <span class="st">&quot;darkorchid3&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;stage 1&quot;</span>, <span class="st">&quot;stage 2&quot;</span>, <span class="st">&quot;stage 3&quot;</span>, <span class="st">&quot;stage 4&quot;</span>, <span class="st">&quot;stage 5&quot;</span>)) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;DML (mm)&quot;</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DML, <span class="at">y =</span> ovary.weight.sqrt, <span class="at">colour =</span> Fmaturity), <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;DML (mm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">&quot;https://giphy.com/gifs/RyXVu4ZW454IM/fullscreen&quot;</span>, <span class="at">browser =</span> <span class="fu">getOption</span>(<span class="st">&quot;browser&quot;</span>), <span class="at">encodeIfNeeded =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DML, <span class="at">y =</span> ovary.weight.sqrt, <span class="at">colour =</span> Fmaturity),</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;deepskyblue3&quot;</span>, <span class="st">&quot;darkolivegreen3&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>    <span class="st">&quot;coral3&quot;</span>, <span class="st">&quot;lemonchiffon3&quot;</span>, <span class="st">&quot;darkorchid3&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;stage 1&quot;</span>, <span class="st">&quot;stage 2&quot;</span>, <span class="st">&quot;stage 3&quot;</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>    <span class="st">&quot;stage 4&quot;</span>, <span class="st">&quot;stage 5&quot;</span>)) <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;DML (mm)&quot;</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> squid) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DML, <span class="at">y =</span> ovary.weight.sqrt, <span class="at">colour =</span> Fmaturity),</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;DML (mm)&quot;</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">&quot;https://giphy.com/gifs/RyXVu4ZW454IM/fullscreen&quot;</span>, <span class="at">browser =</span> <span class="fu">getOption</span>(<span class="st">&quot;browser&quot;</span>),</span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>    <span class="at">encodeIfNeeded =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>&#xA0;</p>
 <p><sup>1</sup> Smith JM et al (2005) Seasonal patterns of investment in
 reproductive and somatic tissues in the squid <em>Loligo forbesi</em>,
