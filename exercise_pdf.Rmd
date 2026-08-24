@@ -36,10 +36,12 @@ ex_text <- c(": Getting to know R and RStudio", ": Basic R operations",
              ": Visualising data using base R and lattice graphics",
              ": Basic programming in R")
 
-dir <- "exercises"
-file_name <- list.files(dir) %>%
+# derive the names from the .Rmd sources, so this does not depend on the PDFs
+# already existing or on the order in which the site is rendered
+file_name <- list.files('.') %>%
               sort %>% 
-              grep("^exercise*", ., value=TRUE)
+              grep("^exercise_[0-9]\\.Rmd$", ., value=TRUE) %>%
+              sub("\\.Rmd$", ".pdf", .)
 
 link_name <- file_name %>%
               gsub("\\.pdf", "", .) %>%

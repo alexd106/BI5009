@@ -47,9 +47,12 @@ ex_text <- c(": Getting to know R and RStudio", ": Basic R operations",
              ": Visualising data using base R and lattice graphics",
              ": Basic programming in R (optional)")
 
+# derive the page names from the .Rmd sources rather than from rendered output,
+# so this works whether the site is rendered whole or a page at a time
 file_name <- list.files('.') %>%
   sort %>% 
-  grep("exercise_[0-9].html", . , value=TRUE)
+  grep("^exercise_[0-9]\\.Rmd$", . , value=TRUE) %>%
+  sub("\\.Rmd$", ".html", .)
 
 link_name <- file_name %>%
   gsub("\\.html", "", .) %>%
@@ -63,6 +66,13 @@ cat(sep="\n\n")
 \  
 
 ```{r, pdf-out, include = FALSE}
+# The PDFs must be written to the repo root, not into docs/: a full
+# render_site() wipes the output directory and repopulates it, so anything
+# written straight into docs/ during the render is destroyed. Writing here
+# lets render_site copy them across. exercises/ is gitignored, so only the
+# docs/ copy is committed
+dir.create('./exercises', showWarnings = FALSE)
+
 # TODO: generate list automagically
 rmarkdown::render("exercise_1.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_1.pdf", quiet = TRUE)
 rmarkdown::render("exercise_2.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_2.pdf", quiet = TRUE)

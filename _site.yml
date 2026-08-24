@@ -1,5 +1,5 @@
 name: "EV5020"
-output_dir: "."
+output_dir: "docs"
 navbar:
   title: "EV5020"
   icon: fa-home
@@ -61,4 +61,13 @@ output:
     #  - https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
     #  - styles.css
 
-exclude: ["LICENSE", "README.md", "*.Rproj", "*.key", "*.psd"]
+# Anything listed here stays out of the rendered site in docs/.
+# GLM_archive is retired teaching material; plan/, Intro_and_questions and the
+# course_*_message files are private working notes and must never be published
+exclude: ["LICENSE", "README.md", "*.Rproj", "*.key", "*.psd",
+          "GLM_archive", "rmd_archive", "plan", "Intro_and_questions",
+          "course_welcome_message", "course_end_message", "output"]
+
+# Dotfiles are not treated as site resources, so .nojekyll has to be named
+# explicitly or a full render_site() would leave docs/ without it
+include: [".nojekyll"]
