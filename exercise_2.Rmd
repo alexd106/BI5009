@@ -39,7 +39,7 @@ exp(12.43)              # exponent
 
 \  
 
-3\. Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to an object called `area_circle`. If you can't remember how to create and assign objects see [Section 2.2](https://intro2r.com/objects-in-r.html#objects-in-r) or watch this [video](https://alexd106.github.io/BI5009/howto.html#objs-vid). Google is your friend if you can't remember the formula to calculate the area of a circle! Also, remember that R already knows about `pi`. Don’t worry if you’re stumped and feel free to ask one of the instructors for guidance.
+3\. Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to an object called `area_circle`. If you can't remember how to create and assign objects see [Section 2.2](https://intro2r.com/objects-in-r.html#objects-in-r) or watch this [video](https://alexd106.github.io/EV5020/howto.html#objs-vid). Google is your friend if you can't remember the formula to calculate the area of a circle! Also, remember that R already knows about `pi`. Don’t worry if you’re stumped and feel free to ask one of the instructors for guidance.
 
 ```{r Q3, echo=SOLUTIONS}
 area_circle <- pi * (20/2)^2
@@ -55,7 +55,7 @@ area_circle <- pi * (20/2)^2
 
 \  
 
-5\. Ok, you're now ready to explore one of R's basic (but very useful) data structures - vectors. A vector is a sequence of elements (or components) that are all of the same data type (see [Section 3.2.1](https://intro2r.com/data-structures.html#scal_vecs) for an introduction to vectors). Although technically not correct it might be useful to think of a vector as something like a single column of data in a spreadsheet. There are a multitude of ways to create vectors in R but you will use the concatenate function `c()` to create a vector called `weight` containing the weight (in kg) of 10 children: `69, 62, 57, 59, 59, 64, 56, 66, 67, 66` ([Section 2.3](https://intro2r.com/using-functions-in-r.html#using-functions-in-r) or watch this [video](https://alexd106.github.io/BI5009/howto.html#vec-vid) for more information). 
+5\. Ok, you're now ready to explore one of R's basic (but very useful) data structures - vectors. A vector is a sequence of elements (or components) that are all of the same data type (see [Section 3.2.1](https://intro2r.com/data-structures.html#scal_vecs) for an introduction to vectors). Although technically not correct it might be useful to think of a vector as something like a single column of data in a spreadsheet. There are a multitude of ways to create vectors in R but you will use the concatenate function `c()` to create a vector called `weight` containing the weight (in kg) of 10 children: `69, 62, 57, 59, 59, 64, 56, 66, 67, 66` ([Section 2.3](https://intro2r.com/using-functions-in-r.html#using-functions-in-r) or watch this [video](https://alexd106.github.io/EV5020/howto.html#vec-vid) for more information). 
 
 ```{r Q5, echo=SOLUTIONS}
 weight <- c(69, 62, 57, 59, 59, 64, 56, 66, 67, 66)

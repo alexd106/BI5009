@@ -30,7 +30,7 @@ Read [Chapter 3](https://intro2r.com/data_r.html) to help you complete the quest
 
 \  
 
-3\. Open the *‘whaledata.xlsx’* file in Microsoft Excel (or even better use an open source equivalent - [LibreOffice](https://www.libreoffice.org/download/) is a good free alternative) and save it as a tab delimited file type (see [Section 3.3.1](https://intro2r.com/importing-data.html#saving-files-to-import) of the Introduction to R book or watch this [video](https://alexd106.github.io/BI5009/howto.html#import-vid) if you're not sure how to do this). Name the file *‘whaledata.txt'* and save it to the `data` directory. If you're a Windows user be careful with file extensions (things like *.txt*). By default, Windows doesn't show you the file extension (maybe the boffins at Microsoft don't think you need to know complicated things like this?) so if you enter *'whaledata.txt'* as a filename you might end up with a filename *'whaledata.txt.txt*'! 
+3\. Open the *‘whaledata.xlsx’* file in Microsoft Excel (or even better use an open source equivalent - [LibreOffice](https://www.libreoffice.org/download/) is a good free alternative) and save it as a tab delimited file type (see [Section 3.3.1](https://intro2r.com/importing-data.html#saving-files-to-import) of the Introduction to R book or watch this [video](https://alexd106.github.io/EV5020/howto.html#import-vid) if you're not sure how to do this). Name the file *‘whaledata.txt'* and save it to the `data` directory. If you're a Windows user be careful with file extensions (things like *.txt*). By default, Windows doesn't show you the file extension (maybe the boffins at Microsoft don't think you need to know complicated things like this?) so if you enter *'whaledata.txt'* as a filename you might end up with a filename *'whaledata.txt.txt*'! 
 
 \  
 
@@ -38,7 +38,7 @@ Read [Chapter 3](https://intro2r.com/data_r.html) to help you complete the quest
 
 \  
 
-5\. Now let's import the *‘whaledata.txt'* file into R. To do this you will use the workhorse function of data importing,  `read.table()`. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don't forget to include the appropriate arguments when using the `read.table()` function (remember that header?) and assign it a variable with an appropriate name (such as `whale`). Take a look at [Section 3.3.2](https://intro2r.com/importing-data.html#import_fnc) of the Introduction to R book or watch this [video](https://alexd106.github.io/BI5009/howto.html#import-vid) if you need any further information.
+5\. Now let's import the *‘whaledata.txt'* file into R. To do this you will use the workhorse function of data importing,  `read.table()`. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don't forget to include the appropriate arguments when using the `read.table()` function (remember that header?) and assign it a variable with an appropriate name (such as `whale`). Take a look at [Section 3.3.2](https://intro2r.com/importing-data.html#import_fnc) of the Introduction to R book or watch this [video](https://alexd106.github.io/EV5020/howto.html#import-vid) if you need any further information.
 
 ```{r Q5, echo=SOLUTIONS}
 whale <- read.table('data/whaledata.txt', header = TRUE, stringsAsFactors = TRUE)
@@ -91,7 +91,7 @@ summary(whale)
 
 \  
 
-8\. Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket `[ ]` notation which you used previously with vectors. The key thing to remember when using `[ ]` with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the `[ ]` (see [Section 3.4.1](https://intro2r.com/wrangling-data-frames.html#positional-indexes) and this [video](https://alexd106.github.io/BI5009/howto.html#dataw-vid) for some additional background information and a few examples). Let's practice. 
+8\. Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket `[ ]` notation which you used previously with vectors. The key thing to remember when using `[ ]` with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the `[ ]` (see [Section 3.4.1](https://intro2r.com/wrangling-data-frames.html#positional-indexes) and this [video](https://alexd106.github.io/EV5020/howto.html#dataw-vid) for some additional background information and a few examples). Let's practice. 
 
 a) Extract all the elements of the first 10 rows and the first 4 columns of the `whale` dataframe and assign to a new variable called `whale.sub`. 
 

@@ -43,7 +43,7 @@ navbar:
           href: "resources.html"
         - text: "Source code"
           icon: fa-github fa-lg
-          href: https://github.com/alexd106/BI5009
+          href: https://github.com/alexd106/EV5020
 
 output:
   html_document:
