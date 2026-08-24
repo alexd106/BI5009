@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercise</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -52,7 +52,7 @@
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -214,7 +214,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -365,11 +365,10 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div id="binomial-proportions-glm---mites-survival"
-class="section level1">
+<p>&#xA0;</p>
+<div id="binomial-proportions-glm---mites-survival" class="section level1">
 <h1>Binomial (Proportions) GLM - mites survival</h1>
-<p> </p>
+<p>&#xA0;</p>
 <p>The data for this exercise were collected for an experiment to test
 the toxicity of different chemicals at various concentrations to a
 species of mite. The aim was to determine whether the proportion of
@@ -377,8 +376,8 @@ mites surviving was related to the concentration of the chemical and
 whether this relationship depended on the type of chemical the mites
 were exposed to. We will be using a binomial GLM again for this example,
 but this time we will be using it to model proportion data, from counts
-of “successes” (= mite survival, unless you don’t like mites), and
-“failures” (= mite death).</p>
+of &#x201C;successes&#x201D; (= mite survival, unless you don&#x2019;t like mites), and
+&#x201C;failures&#x201D; (= mite death).</p>
 <ul>
 <li>Variables:
 <ul>
@@ -390,66 +389,66 @@ of “successes” (= mite survival, unless you don’t like mites), and
 <li><code>Proportion</code>= <code>Dead_mites / Total</code></li>
 </ul></li>
 </ul>
-<p> </p>
+<p>&#xA0;</p>
 <p>As in previous exercises, either create a new R script (perhaps call
 it GLM_BinomProps) or continue with your previous R script in your
 RStudio Project. Again, make sure you include any metadata you feel is
-appropriate (title, description of task, date of creation etc) and don’t
+appropriate (title, description of task, date of creation etc) and don&#x2019;t
 forget to comment out your metadata with a <code>#</code> at the
 beginning of the line.</p>
-<p> </p>
-<p>1. Import the data file ‘DrugsMites.xlsx’ into R in the usual way. We
+<p>&#xA0;</p>
+<p>1. Import the data file &#x2018;DrugsMites.xlsx&#x2019; into R in the usual way. We
 want to model the variable Toxic as a categorical predictor with 4
 levels, so create a new variable with Toxic as a factor.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>2. Perform the usual graphical data exploration, looking for
 outliers, relationships between predictors, and between response and
 predictors etc. You can use the variable <code>Proportion</code> in the
 data frame for these plots.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>3. In order to model the proportion of mites surviving, create a new
 variable (called something creative like Living_mites for example)
 representing the number of surviving mites by differencing the two
 variables Dead_mites and Total.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>4. We can now use this new variable when specifying a binomial GLM.
 Recall from the lecture that the response variable should be a data
 frame consisting of two columns, cbind(Living_mites, Dead_mites). Ask if
 in doubt. If you hate mites you could also swap the order of the two
 columns: you would then be modelling the proportion that die.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>5. Obtain summaries of the model output using the
 <code>summary()</code> function. Make sure you understand the
 mathematical and biological interpretation of the model, by writing down
 the complete model on paper (with distribution and link function). What
 biological hypothesis does each term imply, qualitatively?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>6. Do you need to check for overdispersion? If so, how do you do
 it?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>7. Do you need to perform model selection? What is the final
 model?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>8. Perform model validation: are you satisfied with the model?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>9. Obtain the fitted values from the model on the scale of the
 response, and plot to aid model interpretation. How do you interpret the
 results?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>10. <strong>Optional</strong> Include the 95 % CI on the plot above.
 You will need to obtain the fitted values and SE on the scale of the
 link function, calculate the CI and then back-transform.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>End of the Binomial (Proportions) GLM - mites survival</p>
 </div>
 
@@ -493,15 +492,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

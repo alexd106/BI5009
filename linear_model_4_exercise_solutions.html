@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,10 +476,10 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
+<p>&#xA0;</p>
 <div id="linear-models---model-selection" class="section level2">
 <h2>Linear models - Model selection</h2>
-<p> </p>
+<p>&#xA0;</p>
 <p>In the previous exercise you fitted a pre-conceived model which
 included the main effects of the area of the forest patch
 (<code>LOGAREA</code>), the grazing intensity (<code>FGRAZE</code>) and
@@ -492,9 +492,9 @@ may lead to biased inferences (interpretation). Additionally, if the
 goal of the analysis is to explore what models explain the data in a
 parsimonious way (as opposed to formally testing hypotheses), we would
 also want to include relevant additional explanatory variables.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>Here we revisit the previous loyn data analysis, and ask if a
-‘better’ model for these data could be achieved by including additional
+&#x2018;better&#x2019; model for these data could be achieved by including additional
 explanatory variables and by performing model selection. Because we
 would like to test the significance of the interaction between
 <code>LOGAREA</code>, and <code>FGRAZE</code>, whilst accounting for the
@@ -509,11 +509,11 @@ many parameters for which we have very little data. This is a balance
 you will all have to maintain with your own data and analyses (or better
 still, perform a power analysis before you even collect your data). No
 4-way interaction terms in your models please!</p>
-<p> </p>
-<p>It’s also important to note that we will assume that all the
+<p>&#xA0;</p>
+<p>It&#x2019;s also important to note that we will assume that all the
 explanatory variables were collected by the researchers because <em>they
 believed</em> them to be biologically relevant for explaining bird
-abundance (i.e. data were collected for a reason). Of course, this is
+abundance (i.e.&#xA0;data were collected for a reason). Of course, this is
 probably not your area of expertise but it is nevertheless a good idea
 to pause and think what might be relevant or not-so relevant and why.
 This highlights the importance of knowing your study organism / study
@@ -527,18 +527,18 @@ process (chuck everything in and see what comes out). Your expertise
 needs to be woven into this process otherwise you may end up with a
 model that is implausible or not very useful (and all models need to be
 useful!).</p>
-<p> </p>
-<p>1. Import the ‘loyn.txt’ data file into RStudio and assign it to a
+<p>&#xA0;</p>
+<p>1. Import the &#x2018;loyn.txt&#x2019; data file into RStudio and assign it to a
 variable called <code>loyn</code>. Here we will be using all the
 explanatory variables to explain the variation in bird density. If
 needed, remind yourself of your data exploration you conducted
 previously. Do any of the remaining variables need transforming
-(i.e. <code>AREA</code>, <code>DIST</code>, <code>LDIST</code>) or
-converting to a factor type variable (i.e. <code>GRAZE</code>)? Add the
+(i.e.&#xA0;<code>AREA</code>, <code>DIST</code>, <code>LDIST</code>) or
+converting to a factor type variable (i.e.&#xA0;<code>GRAZE</code>)? Add the
 transformed variables to the <code>loyn</code> dataframe.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>loyn <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/loyn.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">str</span>(loyn)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    67 obs. of  8 variables:</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## &apos;data.frame&apos;:    67 obs. of  8 variables:</span></span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">##  $ SITE   : int  1 60 2 3 61 4 5 6 7 8 ...</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">##  $ ABUND  : num  5.3 10 2 1.5 13 17.1 13.8 14.1 3.8 2.2 ...</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">##  $ AREA   : num  0.1 0.2 0.5 0.5 0.6 1 1 1 1 1 ...</span></span>
@@ -554,18 +554,18 @@ transformed variables to the <code>loyn</code> dataframe.</p>
 <span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co"># create factor GRAZE as it was originally coded as an integer</span></span>
 <span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">factor</span>(loyn<span class="sc">$</span>GRAZE)</span></code></pre></div>
-<p> </p>
-<p>2. Let’s start with a very quick graphical exploration of any
+<p>&#xA0;</p>
+<p>2. Let&#x2019;s start with a very quick graphical exploration of any
 potential relationships between each explanatory variable (collinearity)
-and also between our response and explanatory variables (what we’re
+and also between our response and explanatory variables (what we&#x2019;re
 interested in). Create a pairs plot using the function
 <code>pairs()</code>of your variables of interest. Hint: restrict the
 plot to the variables you actually need. An effective way of doing this
 is to store the names of the variables of interest in a vector
-<code>VOI &lt;- c("Var1", "Var2", ...)</code> and then use the naming
+<code>VOI &lt;- c(&quot;Var1&quot;, &quot;Var2&quot;, ...)</code> and then use the naming
 method for subsetting the data set <code>Mydata[, VOI]</code>. If you
 feel like it, you can also add the correlations to the lower triangle of
-the plot as you did previously (don’t forget to define the function
+the plot as you did previously (don&#x2019;t forget to define the function
 first).</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># define the panel.cor function from ?pairs</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...)</span>
@@ -582,7 +582,7 @@ first).</p>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co"># subset the variables of interest</span></span>
 <span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>VOI<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABUND&quot;</span>, <span class="st">&quot;LOGAREA&quot;</span>, <span class="st">&quot;LOGDIST&quot;</span>, <span class="st">&quot;LOGLDIST&quot;</span>, <span class="st">&quot;YR.ISOL&quot;</span>, <span class="st">&quot;ALT&quot;</span>, <span class="st">&quot;FGRAZE&quot;</span>)</span>
 <span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">pairs</span>(loyn[, VOI], <span class="at">lower.panel =</span> panel.cor)</span></code></pre></div>
-<p><img src="linear_model_4_exercise_solutions_files/figure-html/Q2-1.png" width="672" /></p>
+<p><img src="linear_model_4_exercise_solutions_files/figure-html/Q2-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co"># There are varying degrees of correlation between explanatory variables which</span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># might indicate some collinearity, i.e. LOGAREA and FGRAZE (0.48), LOGDIST and </span></span>
@@ -596,20 +596,20 @@ first).</p>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co"># variables is visible in the top row:</span></span>
 <span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co"># Some potential relationships present like with LOGAREA (positive), </span></span>
 <span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co"># maybe ALT (positive) and FGRAZE (negative).</span></span></code></pre></div>
-<p> </p>
-<p>3. Now, let’s fit our maximal model. Start with a model of
+<p>&#xA0;</p>
+<p>3. Now, let&#x2019;s fit our maximal model. Start with a model of
 <code>ABUND</code> and include all explanatory variables as main
 effects. Also include the interaction <code>LOGAREA:FGRAZE</code> but no
-other interaction terms as justified in the preamble above. Don’t forget
+other interaction terms as justified in the preamble above. Don&#x2019;t forget
 to include the transformed versions of the variables where appropriate
 (but not the untransformed variables as well otherwise you will have
 very strong collinearity between these variables!). Perhaps, call this
 model <code>M1</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>M1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> LOGDIST <span class="sc">+</span> LOGLDIST <span class="sc">+</span> YR.ISOL <span class="sc">+</span> ALT <span class="sc">+</span> LOGAREA <span class="sc">+</span> FGRAZE <span class="sc">+</span> </span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>           FGRAZE<span class="sc">:</span>LOGAREA, <span class="at">data =</span> loyn)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>4. Have a look at the summary table of the model using the
-<code>summary()</code> function. You’ll probably find this summary is
+<code>summary()</code> function. You&#x2019;ll probably find this summary is
 quite complicated with lots of parameter estimates (14) and P values
 testing lots of hypotheses. Are all the P values less than our cut-off
 of 0.05? If not, then this suggests that some form of model selection is
@@ -641,28 +641,28 @@ warranted to simplify our model.</p>
 <span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE4  14.166912   4.304081   3.292  0.00178 **</span></span>
 <span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE5   2.617845   3.347001   0.782  0.43761   </span></span>
 <span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">## Residual standard error: 5.009 on 53 degrees of freedom</span></span>
 <span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.8034, Adjusted R-squared:  0.7551 </span></span>
 <span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="do">## F-statistic: 16.66 on 13 and 53 DF,  p-value: 2.644e-14</span></span></code></pre></div>
-<p> </p>
-<p>5. Let’s perform a first step in model selection using the
+<p>&#xA0;</p>
+<p>5. Let&#x2019;s perform a first step in model selection using the
 <code>drop1()</code> function and use an <em>F</em> test based model
 selection approach. This will allow us to decide which explanatory
 variables may be suitable for removal from the model. Remember to use
-the <code>test = "F"</code> argument to perform <em>F</em> tests when
+the <code>test = &quot;F&quot;</code> argument to perform <em>F</em> tests when
 using <code>drop1()</code>. Which explanatory variable is the best
 candidate for removal and why?</p>
 <p>What hypothesis is being tested when we do this model selection
 step?</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Wait: why can&#39;t we use information from the &#39;summary(M1)&#39; or &#39;anova(M1)&#39; functions</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Wait: why can&apos;t we use information from the &apos;summary(M1)&apos; or &apos;anova(M1)&apos; functions</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># to do this?</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># the &#39;summary&#39; table tests if the coefficient for each explanatory variable </span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># the &apos;summary&apos; table tests if the coefficient for each explanatory variable </span></span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># is significantly different from zero.</span></span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># the &#39;anova&#39; tests for the significance of the proportion of variation explained</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># the &apos;anova&apos; tests for the significance of the proportion of variation explained</span></span>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># by a particular term in the model. </span></span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># The ANOVA table also allows testing the overall significance of a categorical explanatory</span></span>
@@ -672,9 +672,9 @@ step?</p>
 <span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># (which is arbitrary here) matters.</span></span>
 <span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a></span>
 <span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co"># We could change the order but there are too many possible permutations.</span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># Summary P values don&#39;t suffer from this problem but tests different hypotheses.</span></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># It would be useful to use an ANOVA that doesn&#39;t depend on the order</span></span>
-<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># of inclusion of the variables, this is effectively what &#39;drop1&#39; does.</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># Summary P values don&apos;t suffer from this problem but tests different hypotheses.</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># It would be useful to use an ANOVA that doesn&apos;t depend on the order</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># of inclusion of the variables, this is effectively what &apos;drop1&apos; does.</span></span>
 <span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a></span>
 <span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="fu">drop1</span>(M1, <span class="at">test =</span> <span class="st">&quot;F&quot;</span>)</span>
 <span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
@@ -690,13 +690,13 @@ step?</p>
 <span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="do">## ALT             1     20.84 1350.6 227.24  0.8306 0.366220   </span></span>
 <span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.04 1734.8 238.02  4.0358 0.006259 **</span></span>
 <span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a></span>
 <span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="co"># LOGLDIST is the least significant (p = 0.88), and therefore makes the least </span></span>
 <span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="co"># contribution to the variability explained by the model, with respect to </span></span>
 <span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="co"># the number of degrees of freedom it uses (1). This variable is a good candidate </span></span>
 <span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="co"># to remove from the model </span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>6. Update and refit your model and remove the least significant
 explanatory variable (from above). Repeat single term deletions with
 <code>drop1()</code> again using this updated model. You can update the
@@ -724,12 +724,12 @@ to do this in the solutions).</p>
 <span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="do">## ALT             1     22.24 1352.6 225.34  0.9029 0.346233   </span></span>
 <span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    406.74 1737.1 236.10  4.1275 0.005451 **</span></span>
 <span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a></span>
 <span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co"># YR.ISOL is now the least significant (p = 0.859), hence makes the least </span></span>
 <span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co"># contribution to the variability explained by the model, </span></span>
 <span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co"># with respect to the number of degrees of freedom it uses (1)</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>7. Again, update the model to remove the least significant
 explanatory variable (from above) and repeat single term deletions with
 <code>drop1()</code>.</p>
@@ -746,11 +746,11 @@ explanatory variable (from above) and repeat single term deletions with
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">## ALT             1     25.33 1356.5 223.53  1.0468 0.310729   </span></span>
 <span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.99 1737.1 234.10  4.1936 0.004916 **</span></span>
 <span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co"># LOGDIST now the least significant (p = 0.714) and should be removed from </span></span>
 <span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co"># the next model.</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>8. Once again, update the model to remove the least significant
 explanatory variable (from above) and repeat single term deletions with
 <code>drop1()</code>.</p>
@@ -765,10 +765,10 @@ explanatory variable (from above) and repeat single term deletions with
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="do">## ALT             1     22.84 1357.2 221.57  0.9584 0.331805   </span></span>
 <span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    408.56 1743.0 232.33  4.2864 0.004273 **</span></span>
 <span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a></span>
 <span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># ALT is not significant (p = 0.331)</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>9. And finally, update the model to remove the least significant
 explanatory variable (from above) and repeat single term deletions with
 <code>drop1()</code>.</p>
@@ -783,12 +783,12 @@ explanatory variable (from above) and repeat single term deletions with
 <span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1357.2 221.57                   </span></span>
 <span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4     389.3 1746.6 230.47  4.0874 0.00556 **</span></span>
 <span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a></span>
 <span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co"># the LOGAREA:FGRAZE term represents the interaction between LOGAREA and</span></span>
 <span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co"># FGRAZE. This is significant (p = 0.005) and so our model selection</span></span>
 <span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co"># process comes to an end.</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>10. If all goes well, your final model should be
 <code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code> which you
 encountered in the previous exercise. Also, you may have noticed that
@@ -799,7 +799,7 @@ think why this might be the case?</p>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># model selection process the main effects should be left in our model,</span></span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># irrespective of significance. This is because it is quite difficult to </span></span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># interpret an interaction without the main effects. The drop1 </span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># function is clever enough that it doesn&#39;t let you see the P values for the </span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># function is clever enough that it doesn&apos;t let you see the P values for the </span></span>
 <span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># main effects, in the presence of their significant interaction.</span></span>
 <span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a></span>
 <span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># Also note, because R always includes interactions *after* their main effects</span></span>
@@ -817,7 +817,7 @@ think why this might be the case?</p>
 <span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4  389.3    97.3   4.0874   0.00556 ** </span></span>
 <span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="do">## Residuals      57 1357.3    23.8                       </span></span>
 <span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="fu">drop1</span>(M5, <span class="at">test=</span> <span class="st">&quot;F&quot;</span>) </span>
 <span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
 <span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="do">## </span></span>
@@ -827,11 +827,11 @@ think why this might be the case?</p>
 <span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1357.2 221.57                   </span></span>
 <span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4     389.3 1746.6 230.47  4.0874 0.00556 **</span></span>
 <span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
-<p> </p>
+<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span></code></pre></div>
+<p>&#xA0;</p>
 <p>11. Now that you have your final model, you should go through your
 model validation and model interpretation as usual. As we have already
-completed this in the previous exercise I’ll leave it up to you to
+completed this in the previous exercise I&#x2019;ll leave it up to you to
 decide whether you include it here (you should be able to just copy and
 paste the code).</p>
 <p>Please make sure you understand the biological interpretation of each
@@ -868,20 +868,20 @@ are testing.</p>
 <span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a><span class="co"># affect how important dispersal has been to maintain or rescue populations </span></span>
 <span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="co"># (for recently isolated patches, dispersal, and hence distance to nearest</span></span>
 <span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a><span class="co"># patches may have a less important effect)</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>OPTIONAL questions</strong> if you have time / energy /
 inclination!</p>
-<p> </p>
-<p>A1. If we weren’t aiming to directly test the effect of the
-<code>LOGAREA:FGRAZE</code> interaction statistically (i.e. test this
+<p>&#xA0;</p>
+<p>A1. If we weren&#x2019;t aiming to directly test the effect of the
+<code>LOGAREA:FGRAZE</code> interaction statistically (i.e.&#xA0;test this
 specific hypothesis), we could use AIC to perform model selection.
 Repeat the model selection you did above, but this time use the
 <code>drop1()</code> function and perform model selection using AIC
-instead. Don’t forget, if we want to perform model selection based on
+instead. Don&#x2019;t forget, if we want to perform model selection based on
 AIC with the <code>drop1()</code> function we need to omit the
-<code>test = "F"</code> argument)</p>
+<code>test = &quot;F&quot;</code> argument)</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># This time, we are not doing any specific hypothesis testing, rather we are </span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># attempting to select a model with the &#39;best&#39; goodness of fit with the minimal</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># attempting to select a model with the &apos;best&apos; goodness of fit with the minimal</span></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># number of estimated parameters. </span></span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># We will start with a reasonably complex but PLAUSABLE model (this is the same </span></span>
@@ -903,7 +903,7 @@ AIC with the <code>drop1()</code> function we need to omit the
 <span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="do">## YR.ISOL         1      0.77 1330.6 226.24</span></span>
 <span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="do">## ALT             1     20.84 1350.6 227.24</span></span>
 <span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.04 1734.8 238.02</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>A2. Refit your model with the variable associated with the lowest AIC
 value removed. Run <code>drop1()</code> again on your updated model.
 Perhaps call this new model <code>M2.AIC</code>.</p>
@@ -912,7 +912,7 @@ Perhaps call this new model <code>M2.AIC</code>.</p>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># in a big increase in AIC (238.02 - 228.20 = 9.82) so this suggests that there </span></span>
 <span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># is substantial evidence that the interaction should remain in the model. The </span></span>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># models without `LOGLDIST`, `LOGDIST`, `YR.ISOL` all have pretty much the </span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># same AIC value (around 226) so in practice we could remove any of them. Let&#39;s </span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># same AIC value (around 226) so in practice we could remove any of them. Let&apos;s </span></span>
 <span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># remove the term that results in the model with the lowest AIC which is the </span></span>
 <span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co"># `LOGLDIST` variable (AIC 226.23).</span></span>
 <span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a></span>
@@ -928,12 +928,12 @@ Perhaps call this new model <code>M2.AIC</code>.</p>
 <span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="do">## YR.ISOL         1      0.78 1331.1 224.27</span></span>
 <span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="do">## ALT             1     22.24 1352.6 225.34</span></span>
 <span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    406.74 1737.1 236.10</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>A3. Refit your model with the variable associated with the lowest AIC
 value removed and run <code>drop1()</code> again on your new model
 (<code>M3.AIC</code>).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Ok, as the model without the variable `YR.ISOL` has the lowest AIC (224.27) </span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># let&#39;s update our model and remove this variable.</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># let&apos;s update our model and remove this variable.</span></span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>M3.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M2.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> YR.ISOL)</span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="fu">drop1</span>(M3.AIC)</span>
@@ -946,7 +946,7 @@ value removed and run <code>drop1()</code> again on your new model
 <span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">## LOGDIST         1      3.28 1334.4 222.43</span></span>
 <span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## ALT             1     25.33 1356.5 223.53</span></span>
 <span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.99 1737.1 234.10</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>A4. Repeat your model selection by removing the variable indicated by
 the model with the lowest AIC.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># So, now the model without `LOGDIST` has the lowest AIC (222.43) so we should </span></span>
@@ -962,10 +962,10 @@ the model with the lowest AIC.</p>
 <span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1334.4 222.43</span></span>
 <span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="do">## ALT             1     22.84 1357.2 221.57</span></span>
 <span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    408.56 1743.0 232.33</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>A5. Rinse and repeat as above.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># And the model without the variable `ALT` has an AIC of 221.57 which is about </span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># the same as the model with `ALT` (AIC 222.43), so let&#39;s remove this variable </span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># the same as the model with `ALT` (AIC 222.43), so let&apos;s remove this variable </span></span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># from the model as this suggests that the simpler model fits our data just as </span></span>
 <span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co"># well as the more complicated model.</span></span>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a></span>
@@ -984,25 +984,25 @@ the model with the lowest AIC.</p>
 <span id="cb17-18"><a href="#cb17-18" tabindex="-1"></a><span class="co"># AIC value increases by 8.9 (230.47-221.57) and this suggests that if we </span></span>
 <span id="cb17-19"><a href="#cb17-19" tabindex="-1"></a><span class="co"># remove the interaction term the model fit is significantly worse. Therefore we </span></span>
 <span id="cb17-20"><a href="#cb17-20" tabindex="-1"></a><span class="co"># should leave it in and finish our model selection here.</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>If all goes well, your final model should be
 <code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code>. This is the
 same model you ended up with when using the <em>F</em> test based model
 selection. This might not always be the case and generally speaking AIC
 based model selection approaches tend to favour more complicated minimum
 adequate models compared to <em>F</em> test based approaches.</p>
-<p>We don’t need to re-validate or re-interpret the model, since we have
+<p>We don&#x2019;t need to re-validate or re-interpret the model, since we have
 already done this previously.</p>
 <p>I guess the next question is how to present your results from the
 model selection process (using either <em>F</em> tests or AIC) in your
 paper and/or thesis chapter. One approach which I quite like is to
 construct a table which includes a description of all of our models and
-associated summary statistics. Let’s do this for the AIC based model
+associated summary statistics. Let&#x2019;s do this for the AIC based model
 selection but the same principles apply when using <em>F</em> tests
 (although you will be presenting <em>F</em> statistics and P values
 rather than AIC values).</p>
 <p>Although you can use the output from the <code>drop1()</code> (and do
-a bit more wrangling) let’s make it a little simpler by fitting all of
+a bit more wrangling) let&#x2019;s make it a little simpler by fitting all of
 our models and then use the <code>AIC()</code> function to calculate the
 AIC values for each model rather than <code>drop1()</code>. Details on
 how to do this are given in the solutions to this exercise.</p>
@@ -1021,18 +1021,18 @@ how to do this are given in the solutions to this exercise.</p>
 <span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># quotations around our model formula otherwise you will get an error when </span></span>
 <span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co"># using the lm() function.</span></span>
 <span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co"># You will also need to paste the response variable &#39;ABUND ~ &#39; </span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co"># You will also need to paste the response variable &apos;ABUND ~ &apos; </span></span>
 <span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co"># together with out explanatory variables to create a valid model formula</span></span>
 <span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a></span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>M.start <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&#39;ABUND ~&#39;</span>, model.formulas[<span class="dv">1</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>M.step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&#39;ABUND ~&#39;</span>, model.formulas[<span class="dv">2</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>M.step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&#39;ABUND ~&#39;</span>, model.formulas[<span class="dv">3</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>M.step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&#39;ABUND ~&#39;</span>, model.formulas[<span class="dv">4</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>M.step5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&#39;ABUND ~&#39;</span>, model.formulas[<span class="dv">5</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>M.start <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">1</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>M.step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">2</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>M.step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">3</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>M.step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">4</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>M.step5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">5</span>])), <span class="at">data =</span> loyn)</span>
 <span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a></span>
 <span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a><span class="co"># obtain the AIC values for each model. Note: these will be different </span></span>
 <span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="co"># than those obtained with the drop1() function due to a small difference in</span></span>
-<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a><span class="co"># how AIC is calculated. This isn;t a problem, just don&#39;t mix and match</span></span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a><span class="co"># how AIC is calculated. This isn;t a problem, just don&apos;t mix and match</span></span>
 <span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a><span class="co"># the AIC values form drop1 and AIC functions.</span></span>
 <span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a></span>
 <span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a>model.AIC<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">AIC</span>(M.start),</span>
@@ -1135,7 +1135,7 @@ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE
 </tr>
 </tbody>
 </table>
-<p> </p>
+<p>&#xA0;</p>
 <p>End of the model selection exercise</p>
 </div>
 
@@ -1179,15 +1179,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

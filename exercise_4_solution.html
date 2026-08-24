@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,31 +476,28 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div id="exercise-4-visualising-data-using-base-r-and-lattice-graphics"
-class="section level2">
+<p>&#xA0;</p>
+<div id="exercise-4-visualising-data-using-base-r-and-lattice-graphics" class="section level2">
 <h2>Exercise 4: Visualising data using base R and lattice graphics</h2>
-<p> </p>
+<p>&#xA0;</p>
 <p>Read <a href="https://intro2r.com/graphics_base_r.html">Chapter 4</a>
 to help you complete the questions in this exercise.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>1. As in previous exercises, either create a new R script or continue
 with your previous R script in your RStudio Project. Again, make sure
 you include any metadata you feel is appropriate (title, description of
-task, date of creation etc) and don’t forget to comment out your
+task, date of creation etc) and don&#x2019;t forget to comment out your
 metadata with a <code>#</code> at the beginning of the line.</p>
-<p> </p>
-<p>2. If you haven’t already download the data file
-<em>‘squid1.xlsx’</em> from the <strong><a
-href="data.html"><i class="fa fa-download"></i> Data</a></strong> link
+<p>&#xA0;</p>
+<p>2. If you haven&#x2019;t already download the data file
+<em>&#x2018;squid1.xlsx&#x2019;</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link
 and save it to the <code>data</code> directory you created during
 exercise 1. Open this file in Microsoft Excel (or even better use an
-open source equivalent - <a
-href="https://www.libreoffice.org/download/">LibreOffice</a> is
-a good free alternative) and save it as a tab delimited file type. Name
-the file <em>‘squid1.txt’</em> and save it to the <code>data</code>
+open source equivalent - <a href="https://www.libreoffice.org/download/">LibreOffice</a> is a good
+free alternative) and save it as a tab delimited file type. Name the
+file <em>&#x2018;squid1.txt&#x2019;</em> and save it to the <code>data</code>
 directory.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>3. These data were originally collected as part of a study published
 in Aquatic Living Resources<sup>1</sup> in 2005. The aim of the study
 was to investigate the seasonal patterns of investment in somatic and
@@ -519,11 +516,10 @@ weight measured without internal organs
 categorical measure of maturity (<code>maturity.stage</code>, ranging
 from 1 to 5 with 1 = immature, 5 = mature). The digestive gland weight
 (<code>dig.weight</code>) was also recorded to assess nutritional status
-of the individual. If you’re not familiar with squid morphology and are
-interested in finding out more see <a
-href="https://en.wikipedia.org/wiki/Cephalopod_size">here</a>.</p>
-<p> </p>
-<p>4. Import the <em>‘squid1.txt’</em> file into R using the
+of the individual. If you&#x2019;re not familiar with squid morphology and are
+interested in finding out more see <a href="https://en.wikipedia.org/wiki/Cephalopod_size">here</a>.</p>
+<p>&#xA0;</p>
+<p>4. Import the <em>&#x2018;squid1.txt&#x2019;</em> file into R using the
 <code>read.table()</code> function and assign it to a variable named
 <code>squid</code>. Use the <code>str()</code> function to display the
 structure of the dataset and the <code>summary()</code> function to
@@ -534,11 +530,11 @@ original dataset. Here we would like to code them as factors. Create a
 new variable for each of these variables in the <code>squid</code>
 dataframe and recode them as factors. Use the <code>str()</code>
 function again to check the coding of these new variables.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>squid <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;data/squid1.txt&#39;</span>, <span class="at">header =</span><span class="cn">TRUE</span>, </span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>squid <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&apos;data/squid1.txt&apos;</span>, <span class="at">header =</span><span class="cn">TRUE</span>, </span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">str</span>(squid)</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># &#39;data.frame&#39;: 519 obs. of  13 variables:</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># &apos;data.frame&apos;: 519 obs. of  13 variables:</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#  $ sample.no        : int  105128901 105128901 105128901 105128901 ...</span></span>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#  $ specimen         : int  1002 1003 1005 1007 1008 1009 1011 1013 ...</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#  $ year             : int  1989 1989 1989 1989 1989 1989 1989 1989 ...</span></span>
@@ -561,7 +557,7 @@ function again to check the coding of these new variables.</p>
 <span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>squid<span class="sc">$</span>Fyear <span class="ot">&lt;-</span> <span class="fu">factor</span>(squid<span class="sc">$</span>year)</span>
 <span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="fu">str</span>(squid)</span>
-<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co"># &#39;data.frame&#39;: 519 obs. of  16 variables:</span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co"># &apos;data.frame&apos;: 519 obs. of  16 variables:</span></span>
 <span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="co">#  $ sample.no        : int  105128901 105128901 105128901 ...</span></span>
 <span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="co">#  $ specimen         : int  1002 1003 1005 1007 1008 1009 ...</span></span>
 <span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="co">#  $ year             : int  1989 1989 1989 1989 1989 1989 ...</span></span>
@@ -578,10 +574,10 @@ function again to check the coding of these new variables.</p>
 <span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="co">#  $ Fmaturity        : Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot; &quot;5&quot;...</span></span>
 <span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="co">#  $ Fmonth           : Factor w/ 12 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot; ...</span></span>
 <span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="co">#  $ Fyear            : Factor w/ 3 levels &quot;1989&quot;,&quot;1990&quot;,..1 ...</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>5. How many observations are there per month and year combination
 (hint: remember the <code>table()</code> or <code>xtabs()</code>
-functions?)? Don’t forget to use the factor recoded versions of these
+functions?)? Don&#x2019;t forget to use the factor recoded versions of these
 variables. Do you have data for each month in each year? Which years
 have the most observations? (optional) Use a combination of the
 <code>xtabs()</code> and <code>ftable()</code> functions to create a
@@ -622,27 +618,23 @@ stage and month (aka a contingency table).</p>
 <span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a><span class="co">#       3                 2  0  0  1  1  0  0  0  0  0  0  0</span></span>
 <span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="co">#       4                16  8  6 13  6  1  1  0  0  0  0  0</span></span>
 <span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a><span class="co">#       5                18 21 23 16 23  3  0  0  0  0  0  0</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>6. The humble cleveland dotplot is a great way of identifying if you
-have potential outliers in continuous variables (See <a
-href="https://intro2r.com/simple-base-r-plots.html#dotcharts">Section
+have potential outliers in continuous variables (See <a href="https://intro2r.com/simple-base-r-plots.html#dotcharts">Section
 4.2.4</a>. Create dotplots (using the <code>dotchart()</code> function)
 for the following variables; <code>DML</code>, <code>weight</code>,
 <code>nid.length</code> and <code>ovary.weight</code>. Do these
-variables contain any unusually large or small observations? Don’t
+variables contain any unusually large or small observations? Don&#x2019;t
 forget, if you prefer to create a single figure with all 4 plots you can
-always split your plotting device into 2 rows and 2 columns (see <a
-href="https://intro2r.com/mult_graphs.html#mult_graphs">Section 4.4</a>
+always split your plotting device into 2 rows and 2 columns (see <a href="https://intro2r.com/mult_graphs.html#mult_graphs">Section 4.4</a>
 of the book). Use the <code>pdf()</code> function to save a pdf version
 of your plot(s) in your <code>output</code> directory you created in
-Exercise 1 (see <a
-href="https://intro2r.com/export_plots.html#export_plots">Section
+Exercise 1 (see <a href="https://intro2r.com/export_plots.html#export_plots">Section
 4.5</a> of the book to see how the <code>pdf()</code> function works). I
-have also included some alternative code in the <a
-href="exercise_4_solution.html">solutions for this exercise</a> using
+have also included some alternative code in the <a href="exercise_4_solution.html">solutions for this exercise</a> using
 the <code>dotplot()</code> function from the <code>lattice</code>
 package.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&#39;output/ex4_dotplots.pdf&#39;</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&apos;output/ex4_dotplots.pdf&apos;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>DML, <span class="at">main =</span> <span class="st">&quot;DML&quot;</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>weight, <span class="at">main =</span> <span class="st">&quot;weight&quot;</span>)</span>
@@ -654,7 +646,7 @@ package.</p>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="fu">dotplot</span>(<span class="fu">as.matrix</span>(squid[,<span class="fu">c</span>(<span class="st">&quot;DML&quot;</span>, <span class="st">&quot;weight&quot;</span>, <span class="st">&quot;nid.length&quot;</span>, <span class="st">&quot;ovary.weight&quot;</span>)]),</span>
 <span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>      <span class="at">groups=</span><span class="cn">FALSE</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>      <span class="at">strip =</span> <span class="fu">strip.custom</span>(<span class="at">bg =</span> <span class="st">&#39;white&#39;</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>      <span class="at">strip =</span> <span class="fu">strip.custom</span>(<span class="at">bg =</span> <span class="st">&apos;white&apos;</span>,</span>
 <span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>            <span class="at">par.strip.text =</span> <span class="fu">list</span>(<span class="at">cex =</span> <span class="fl">0.8</span>)),</span>
 <span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>        <span class="at">scales =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">relation =</span> <span class="st">&quot;free&quot;</span>),</span>
 <span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>                      <span class="at">y =</span> <span class="fu">list</span>(<span class="at">relation =</span> <span class="st">&quot;free&quot;</span>),</span>
@@ -662,7 +654,7 @@ package.</p>
 <span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>        <span class="at">col=</span><span class="dv">1</span>, <span class="at">cex  =</span><span class="fl">0.5</span>, <span class="at">pch =</span> <span class="dv">16</span>,</span>
 <span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Value of the variable&quot;</span>,</span>
 <span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Order of the data from text file&quot;</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>7. It looks like the variable <code>nid.length</code> contains an
 unusually large value. Actually, this value is biologically implausible
 and clearly an error. The researchers were asked to go back and check
@@ -680,7 +672,7 @@ then change this value to 43.2. Now redo the dotchart to visualise your
 correction. Caution: You can only do this because you have confirmed
 that this is an transcribing error. You should <strong>not</strong>
 remove or change values in your data just because you feel like it or
-they look ‘unusual’. This is scientific fraud! Also, the advantage of
+they look &#x2018;unusual&#x2019;. This is scientific fraud! Also, the advantage of
 making this change in your R script rather than in Excel is that you now
 have a permanent record of the change you made and can state a clear
 reason for the change.</p>
@@ -692,26 +684,24 @@ reason for the change.</p>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>squid<span class="sc">$</span>nid.length[<span class="dv">11</span>]</span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># [1] 43.2</span></span>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>nid.length, <span class="at">main =</span> <span class="st">&quot;nid length&quot;</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>8. When exploring your data it is often useful to visualise the
-distribution of continuous variables. Take a look at <a
-href="https://intro2r.com/simple-base-r-plots.html#histograms">Section
+distribution of continuous variables. Take a look at <a href="https://intro2r.com/simple-base-r-plots.html#histograms">Section
 4.2.2</a> and then create histograms for the variables;
 <code>DML</code>, <code>weight</code>, <code>eviscerate.weight</code>
 and <code>ovary.weight</code>. Again, its up to you if you want to plot
 all 4 plots separately or in the same figure. Export your plot(s) as pdf
 file(s) to the <code>output</code> directory. One potential problem with
 histograms is that the distribution of data can look quite different
-depending on the number of ‘breaks’ used. The <code>hist()</code>
-function does it’s best to create appropriate ‘breaks’ for your plots
+depending on the number of &#x2018;breaks&#x2019; used. The <code>hist()</code>
+function does it&#x2019;s best to create appropriate &#x2018;breaks&#x2019; for your plots
 (it uses the <a href="https://en.wikipedia.org/wiki/Histogram">Sturges
 algorithm</a> for those that want to know) but experiment with changing
 the number of breaks for the <code>DML</code> variable to see how the
-shape of the distribution changes (see <a
-href="https://intro2r.com/simple-base-r-plots.html#histograms">Section
+shape of the distribution changes (see <a href="https://intro2r.com/simple-base-r-plots.html#histograms">Section
 4.2.2</a> of the book for further details of how to change the
 breaks).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&#39;output/ex4_hist.pdf&#39;</span>)</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&apos;output/ex4_hist.pdf&apos;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">hist</span>(squid<span class="sc">$</span>DML, <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;DML&quot;</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="fu">hist</span>(squid<span class="sc">$</span>weight, <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;weight&quot;</span>)</span>
@@ -739,10 +729,9 @@ breaks).</p>
 <span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a></span>
 <span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a>brk4 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">80</span>, <span class="at">to =</span> <span class="dv">340</span>, <span class="at">by =</span> <span class="dv">2</span>)   </span>
 <span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="fu">hist</span>(squid<span class="sc">$</span>DML, <span class="at">xlab =</span> <span class="st">&quot;DML&quot;</span>, <span class="at">breaks =</span> brk4, <span class="at">main =</span> <span class="st">&quot;brk: 2&quot;</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>9. Scatterplots are great for visualising relationships between two
-continuous variables (<a
-href="https://intro2r.com/simple-base-r-plots.html#scatterplot">Section
+continuous variables (<a href="https://intro2r.com/simple-base-r-plots.html#scatterplot">Section
 4.2.1</a>). Plot the relationship between <code>DML</code> on the x axis
 and <code>weight</code> on the y axis. How would you describe this
 relationship? Is it linear? One approach to linearising relationships is
@@ -751,12 +740,11 @@ to apply a transformation on one or both variables. Try transforming the
 (<code>log()</code>) or square root (<code>sqrt()</code>)
 transformation. I suggest you create new variables in the
 <code>squid</code> dataframe for your transformed variables and use
-these variables when creating your new plots (ask if you’re not sure how
+these variables when creating your new plots (ask if you&#x2019;re not sure how
 to do this). Which transformation best linearises this relationship?
 Again, save your plots as a pdf file (or try saving in your
 <code>output</code> directory as jpeg or png format using the
-<code>jpeg()</code> or <code>png()</code> functions (<a
-href="https://intro2r.com/export_plots.html#export_plots">Section
+<code>jpeg()</code> or <code>png()</code> functions (<a href="https://intro2r.com/export_plots.html#export_plots">Section
 4.5</a>) if you feel the need for a change!).</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># clearly not linear</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">plot</span>(squid<span class="sc">$</span>DML, squid<span class="sc">$</span>weight)</span>
@@ -771,33 +759,30 @@ href="https://intro2r.com/export_plots.html#export_plots">Section
 <span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a></span>
 <span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># the square root transformation looks</span></span>
 <span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># most appropriate</span></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&#39;output/ex4_transf_plot.jpeg&#39;</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&apos;output/ex4_transf_plot.jpeg&apos;</span>)</span>
 <span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="fu">plot</span>(squid<span class="sc">$</span>DML, squid<span class="sc">$</span>weight.sqrt)</span>
 <span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
 <span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&#39;output/ex4_transf_plot.png&#39;</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&apos;output/ex4_transf_plot.png&apos;</span>)</span>
 <span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="fu">plot</span>(squid<span class="sc">$</span>DML, squid<span class="sc">$</span>weight.sqrt)</span>
 <span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>10. When visualising differences in a continuous variable between
 levels of a factor (categorical variable) then a boxplot is your friend
-(avoid using bar plots - Google ‘bar plots are evil’ for more info).
+(avoid using bar plots - Google &#x2018;bar plots are evil&#x2019; for more info).
 Create a boxplot to visualise the differences in DML at each maturity
-stage (don’t forget to use the recoded version of this variable you
+stage (don&#x2019;t forget to use the recoded version of this variable you
 created in Q4) . Include x and y axes labels in your plot. Make sure you
 understand the anatomy of a boxplot before moving on - please ask if
-you’re not sure (also see <a
-href="https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots">Section
+you&#x2019;re not sure (also see <a href="https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots">Section
 4.2.3</a> of the book). An alternative to the boxplot is the violin
-plot. A violin plot is a combination of a boxplot and a <a
-href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density
-plot</a> and is great at visualising the distribution of a variable. To
-create a violin plot you will first need to install the
+plot. A violin plot is a combination of a boxplot and a <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel
+density plot</a> and is great at visualising the distribution of a
+variable. To create a violin plot you will first need to install the
 <code>vioplot</code> package from CRAN and make it available using
 <code>library(vioplot)</code>. You can now use the
 <code>vioplot()</code> function in pretty much the same way as you
-created your boxplot (again <a
-href="https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots">Section
+created your boxplot (again <a href="https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots">Section
 4.2.3</a> of the book walks you through this).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># note: Fmaturity is the recoded maturity.stage variable cerated in Q4</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">boxplot</span>(DML <span class="sc">~</span> Fmaturity, <span class="at">data =</span> squid, <span class="at">xlab =</span> <span class="st">&quot;maturity stage&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;DML&quot;</span>)</span>
@@ -805,34 +790,31 @@ href="https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots">Section
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># violin plot</span></span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">library</span>(vioplot)</span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="fu">vioplot</span>(DML <span class="sc">~</span> Fmaturity, <span class="at">data =</span> squid, <span class="at">xlab =</span> <span class="st">&quot;maturity stage&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;DML&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>11. To visualise the relationship between two continuous variables
 but for different levels of a factor variable you can create a
-conditional scatterplot. Use the <code>coplot()</code> function (<a
-href="https://intro2r.com/simple-base-r-plots.html#coplots">Section
+conditional scatterplot. Use the <code>coplot()</code> function (<a href="https://intro2r.com/simple-base-r-plots.html#coplots">Section
 4.2.6</a>) to plot the relationship between DML on the x axis and square
 root transformed weight on the y axis (you created this variable in Q8)
 for each level of maturity stage. Does the relationship between DML and
 weight look different for each maturity stage (suggesting an
 interaction)? If you prefer, you can also create a similar plot using
-the <code>xyplot()</code> function (<a
-href="https://intro2r.com/simple-base-r-plots.html#lattice-plots">Section
-4.2.7</a>) from the <code>lattice</code> package (don’t forget to make
+the <code>xyplot()</code> function (<a href="https://intro2r.com/simple-base-r-plots.html#lattice-plots">Section
+4.2.7</a>) from the <code>lattice</code> package (don&#x2019;t forget to make
 the function available by using <code>library(lattice)</code>
 first).</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">coplot</span>(weight.sqrt <span class="sc">~</span> DML <span class="sc">|</span> Fmaturity, <span class="at">data =</span> squid)</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># using xyplot from the lattice package</span></span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">xyplot</span>(weight.sqrt <span class="sc">~</span> DML <span class="sc">|</span> Fmaturity, <span class="at">data =</span> squid)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>12. To explore the relationships between multiple continuous
-variables it’s hard to beat a pairs plot. Create a pairs plot for the
+variables it&#x2019;s hard to beat a pairs plot. Create a pairs plot for the
 variables; <code>DML</code>, <code>weight</code>,
 <code>eviscerate.weight</code>, <code>ovary.weight</code>,
-<code>nid.length</code>, and <code>nid.weight</code> (see <a
-href="https://intro2r.com/simple-base-r-plots.html#pairs-plots">Section
+<code>nid.length</code>, and <code>nid.weight</code> (see <a href="https://intro2r.com/simple-base-r-plots.html#pairs-plots">Section
 4.2.5</a> of the book for more details). If it looks a little cramped in
-RStudio then click on the ‘zoom’ button in the plot viewer to see a
+RStudio then click on the &#x2018;zoom&#x2019; button in the plot viewer to see a
 larger version. One of the great things about the <code>pairs()</code>
 function is that you can customise what goes into each panel. Modify
 your pairs plot to include a histogram of the variables on the diagonal
@@ -844,17 +826,16 @@ at the Introduction to R book to see how to do all this (or
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># vanilla pairs plot</span></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">pairs</span>(squid[, <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>)])</span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># customise the plot. You will need to define the panel.hist and panel.cor functions first. see the course manual or ?pairs</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># help file</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="fu">pairs</span>(squid[, <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>)], <span class="at">diag.panel =</span> panel.hist, <span class="at">upper.panel =</span> panel.cor, <span class="at">lower.panel =</span> panel.smooth)</span></code></pre></div>
-<p> </p>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># customise the plot. You will need to define the panel.hist and panel.cor functions first. see the course manual or ?pairs help file</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">pairs</span>(squid[, <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>)], <span class="at">diag.panel =</span> panel.hist, <span class="at">upper.panel =</span> panel.cor, <span class="at">lower.panel =</span> panel.smooth)</span></code></pre></div>
+<p>&#xA0;</p>
 <p>13. Almost every aspect of the figures you create in R is
 customisable. Learning how to get your plot looking just right is not
 only rewarding but also means that you will never have to include a plot
-in your paper/thesis that you’re not completely happy with. When you
+in your paper/thesis that you&#x2019;re not completely happy with. When you
 start learning how to use R it can sometimes seem to take a lot of work
-to customise your plots. Don’t worry, it gets easier with experience
+to customise your plots. Don&#x2019;t worry, it gets easier with experience
 (most of the time anyway) and you will always have your code if you want
 to create a similar plot in the future. Use the <code>plot()</code>
 function to produce a scatterplot of DML on the x axis and ovary weight
@@ -863,46 +844,43 @@ on the y axis (you might need to apply a transformation on the variable
 for each level of maturity stage. Produce a legend explaining the
 different colours and place it in a suitable position on the plot.
 Format the graph further to make it suitable for inclusion into your
-paper/thesis (i.e. add axes labels, change the axes scales etc). See <a
-href="https://intro2r.com/custom_plot.html#custom_plot">Section 4.3</a>
+paper/thesis (i.e.&#xA0;add axes labels, change the axes scales etc). See <a href="https://intro2r.com/custom_plot.html#custom_plot">Section 4.3</a>
 for more details about customising plots. I have given you a few
 different solutions in the code below. give them a go!</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># quick and dirty way need to transform ovary.weight first</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>squid<span class="sc">$</span>ovary.weight.sqrt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(squid<span class="sc">$</span>ovary.weight)</span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># create the plot</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">plot</span>(DML, ovary.weight.sqrt, <span class="at">xlab =</span> <span class="st">&quot;DML (mm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>, <span class="at">col =</span> <span class="fu">as.numeric</span>(Fmaturity),</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">350</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">8.5</span>)))</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co"># create the legend</span></span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stage 1&quot;</span>, <span class="st">&quot;stage 2&quot;</span>, <span class="st">&quot;stage 3&quot;</span>, <span class="st">&quot;stage 4&quot;</span>, <span class="st">&quot;stage 5&quot;</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">levels</span>(squid<span class="sc">$</span>Fmaturity))</span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, labs, <span class="at">col =</span> cols, <span class="at">pch =</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">plot</span>(DML, ovary.weight.sqrt, <span class="at">xlab =</span> <span class="st">&quot;DML (mm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>, <span class="at">col =</span> <span class="fu">as.numeric</span>(Fmaturity), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">350</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">8.5</span>)))</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># create the legend</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stage 1&quot;</span>, <span class="st">&quot;stage 2&quot;</span>, <span class="st">&quot;stage 3&quot;</span>, <span class="st">&quot;stage 4&quot;</span>, <span class="st">&quot;stage 5&quot;</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">levels</span>(squid<span class="sc">$</span>Fmaturity))</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, labs, <span class="at">col =</span> cols, <span class="at">pch =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># longer but more control</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># need to scales package to set transparency of points will the alpha function</span></span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
 <span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># setup the axes but dont plot the points</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">plot</span>(DML, ovary.weight.sqrt, <span class="at">xlab =</span> <span class="st">&quot;DML (mm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">350</span>),</span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">8.5</span>)))</span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co"># plot the points with custom colours</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;1&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;1&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;deepskyblue3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;2&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;2&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;darkolivegreen3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;3&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;3&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;coral3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;4&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;4&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;lemonchiffon3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
-<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;5&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;5&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;darkorchid3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co"># include the legend</span></span>
-<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stage 1&quot;</span>, <span class="st">&quot;stage 2&quot;</span>, <span class="st">&quot;stage 3&quot;</span>, <span class="st">&quot;stage 4&quot;</span>, <span class="st">&quot;stage 5&quot;</span>)</span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;deepskyblue3&quot;</span>, <span class="st">&quot;darkolivegreen3&quot;</span>, <span class="st">&quot;coral3&quot;</span>, <span class="st">&quot;lemonchiffon3&quot;</span>, <span class="st">&quot;darkorchid3&quot;</span>)</span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">55</span>, <span class="fl">8.2</span>, labs, <span class="at">col =</span> <span class="fu">alpha</span>(cols, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p> </p>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">plot</span>(DML, ovary.weight.sqrt, <span class="at">xlab =</span> <span class="st">&quot;DML (mm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;square root ovary weight (g)&quot;</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">350</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">8.5</span>)))</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># plot the points with custom colours</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;1&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;1&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;deepskyblue3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;2&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;2&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;darkolivegreen3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;3&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;3&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;coral3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;4&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;4&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;lemonchiffon3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="fu">with</span>(squid, <span class="fu">points</span>(DML[Fmaturity <span class="sc">==</span> <span class="st">&quot;5&quot;</span>], ovary.weight.sqrt[Fmaturity <span class="sc">==</span> <span class="st">&quot;5&quot;</span>], <span class="at">col =</span> <span class="fu">alpha</span>(<span class="st">&quot;darkorchid3&quot;</span>, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>))</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co"># include the legend</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stage 1&quot;</span>, <span class="st">&quot;stage 2&quot;</span>, <span class="st">&quot;stage 3&quot;</span>, <span class="st">&quot;stage 4&quot;</span>, <span class="st">&quot;stage 5&quot;</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;deepskyblue3&quot;</span>, <span class="st">&quot;darkolivegreen3&quot;</span>, <span class="st">&quot;coral3&quot;</span>, <span class="st">&quot;lemonchiffon3&quot;</span>, <span class="st">&quot;darkorchid3&quot;</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">55</span>, <span class="fl">8.2</span>, labs, <span class="at">col =</span> <span class="fu">alpha</span>(cols, <span class="fl">0.7</span>), <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p>&#xA0;</p>
 <p><sup>1</sup> Smith JM et al (2005) Seasonal patterns of investment in
 reproductive and somatic tissues in the squid <em>Loligo forbesi</em>,
-Aquatic Living Resources. 18, 341–351.</p>
-<p> </p>
+Aquatic Living Resources. 18, 341&#x2013;351.</p>
+<p>&#xA0;</p>
 <p>End of Exercise 4</p>
 </div>
 
@@ -946,15 +924,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

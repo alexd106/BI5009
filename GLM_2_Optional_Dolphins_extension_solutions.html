@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,13 +476,11 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div
-id="optional-extension-to-binomial-bernoulli-glm---dolphin-behavioural-plasticity"
-class="section level1">
+<p>&#xA0;</p>
+<div id="optional-extension-to-binomial-bernoulli-glm---dolphin-behavioural-plasticity" class="section level1">
 <h1>Optional extension to Binomial (Bernoulli) GLM - dolphin behavioural
 plasticity</h1>
-<p> </p>
+<p>&#xA0;</p>
 <p>This extension to the dolphin data analysis is for those who may be a
 bit ahead and would like to :</p>
 <ul>
@@ -500,13 +498,13 @@ a slightly more advanced model:
 </ul>
 <p>I recommend you continue with your previous R script for the GLM_2
 exercise, in your RStudio Project.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>13. To address the limitations of the previous analysis, fit a new
 model with categorical predictors only, and interactions between them,
 two by two:
 <code>fTide4 + fMonth + fTime6 + fTide4:fMonth + fTide4:fTime6 + fMonth:fTime6</code>.
 What hypotheses do these interactions correspond to?</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>PA2<span class="ot">&lt;-</span> <span class="fu">glm</span>(presence <span class="sc">~</span> fTide4 <span class="sc">+</span> fMonth <span class="sc">+</span> fTime6 <span class="sc">+</span> </span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>            fTide4<span class="sc">:</span>fMonth <span class="sc">+</span> fTide4<span class="sc">:</span>fTime6 <span class="sc">+</span> </span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>            fMonth<span class="sc">:</span>fTime6, <span class="at">family=</span> binomial, <span class="at">data=</span> dat)</span>
@@ -643,7 +641,7 @@ What hypotheses do these interactions correspond to?</p>
 <span id="cb1-134"><a href="#cb1-134" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM2   -1.115632   0.597317  -1.868 0.061798 .  </span></span>
 <span id="cb1-135"><a href="#cb1-135" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM2   -1.000925   0.608876  -1.644 0.100199    </span></span>
 <span id="cb1-136"><a href="#cb1-136" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb1-137"><a href="#cb1-137" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb1-137"><a href="#cb1-137" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb1-138"><a href="#cb1-138" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb1-139"><a href="#cb1-139" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
 <span id="cb1-140"><a href="#cb1-140" tabindex="-1"></a><span class="do">## </span></span>
@@ -661,21 +659,21 @@ What hypotheses do these interactions correspond to?</p>
 <span id="cb1-152"><a href="#cb1-152" tabindex="-1"></a></span>
 <span id="cb1-153"><a href="#cb1-153" tabindex="-1"></a><span class="co"># fMonth:fTime6 assumes that the effect of time of day on dolphin presence</span></span>
 <span id="cb1-154"><a href="#cb1-154" tabindex="-1"></a><span class="co"># changes according to time of year</span></span></code></pre></div>
-<p> </p>
-<p>14. Perform model selection “by hand” using the AIC, and construct an
-AIC table, using the example in the lecture. “By hand” means without
+<p>&#xA0;</p>
+<p>14. Perform model selection &#x201C;by hand&#x201D; using the AIC, and construct an
+AIC table, using the example in the lecture. &#x201C;By hand&#x201D; means without
 using <code>drop1</code> or <code>step</code> functions. You can get the
 AIC value from the model summary <code>summary(YourModel)</code> or by
 typing <code>AIC(YourModel)</code>. There are 18 possible models in
 total, including the full model above. You can choose to evaluate all 18
-models in a completely exploratory (the “ignorant and brave”) approach,
+models in a completely exploratory (the &#x201C;ignorant and brave&#x201D;) approach,
 or only a selection of models based on more specific research questions
-or predictions of your own (the “clear thinker” approach).</p>
+or predictions of your own (the &#x201C;clear thinker&#x201D; approach).</p>
 <ul>
-<li>Example: <em>“We know/expect that dolphins are affected by A, B and
+<li>Example: <em>&#x201C;We know/expect that dolphins are affected by A, B and
 C, but I suspect that the effect of B varies depending on the value of A
 whereas my colleague thinks that the effect of B depends on the value of
-C”</em>, which would suggest comparing the following models to find out
+C&#x201D;</em>, which would suggest comparing the following models to find out
 which hypothesis is best supported by the data:
 <ul>
 <li>A + B + C + A:B</li>
@@ -683,10 +681,10 @@ which hypothesis is best supported by the data:
 <li>A + B + C</li>
 </ul></li>
 </ul>
-<p> </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Because I don&#39;t have specific predictions here, and I suspect the presence</span></span>
+<p>&#xA0;</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Because I don&apos;t have specific predictions here, and I suspect the presence</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># of dolphins at Sutors may respond to all combinations of the 3 environmental</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># factors we have, I&#39;ll go for a quite systematic exploration here (you may</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># factors we have, I&apos;ll go for a quite systematic exploration here (you may</span></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># have a different logic, knowledge about dolphins, more specific predictions, </span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># and a more restricted list of models you consider plausible: that would be</span></span>
 <span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># entirely fine)</span></span>
@@ -727,7 +725,7 @@ which hypothesis is best supported by the data:
 <span id="cb2-41"><a href="#cb2-41" tabindex="-1"></a><span class="do">## [1] 5315.361</span></span>
 <span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a></span>
 <span id="cb2-43"><a href="#cb2-43" tabindex="-1"></a><span class="co"># we could simplify further, but it is unlikely that simpler models </span></span>
-<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a><span class="co"># would be supported based on what we know, so I&#39;ll stop here</span></span>
+<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a><span class="co"># would be supported based on what we know, so I&apos;ll stop here</span></span>
 <span id="cb2-45"><a href="#cb2-45" tabindex="-1"></a></span>
 <span id="cb2-46"><a href="#cb2-46" tabindex="-1"></a><span class="co"># Constructing a table </span></span>
 <span id="cb2-47"><a href="#cb2-47" tabindex="-1"></a><span class="co"># (you can do this with pen and paper, or in R, for example like this)</span></span>
@@ -777,12 +775,12 @@ which hypothesis is best supported by the data:
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">kable</span>(ModSelTab)</span></code></pre></div>
 <table>
 <colgroup>
-<col width="3%" />
-<col width="6%" />
-<col width="64%" />
-<col width="10%" />
-<col width="6%" />
-<col width="7%" />
+<col width="3%">
+<col width="6%">
+<col width="64%">
+<col width="10%">
+<col width="6%">
+<col width="7%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -879,10 +877,10 @@ fTide4:fTime6</td>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># Depending on the set of models you decided to compare, </span></span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># your best model and AIC weights may vary from mine.</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>15. Do the validation of your best model, using the approach taken in
 question 7.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>res24.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA24, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
@@ -896,7 +894,7 @@ question 7.</p>
 <span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co"># We could also check seasonal variation in diel pattern (&quot;time by season&quot; interaction):</span></span>
 <span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">matplot</span>(<span class="fu">tapply</span>(res24.p, <span class="fu">list</span>(dat<span class="sc">$</span>mon, dat<span class="sc">$</span>fTime6), mean), <span class="at">type=</span> <span class="st">&quot;l&quot;</span>, </span>
 <span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>        <span class="at">xlab=</span> <span class="st">&quot;month&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;proportion of hours present&quot;</span>, <span class="at">lty=</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q15-1.png" width="768" /></p>
+<p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q15-1.png" alt width="768"></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Residual variation is tiny (check y-axis and compare with Question 9); </span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># no consistent pattern of variation. Pretty good!</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
@@ -912,10 +910,10 @@ question 7.</p>
 <span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># for avoiding the discretization of continuous variables, and</span></span>
 <span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># accounting for the cyclicity of the predictors (estimates at each end should </span></span>
 <span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># match, e.g. 31st Dec-1st Jan, or 23:59 - 00:00)</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>16. Interpret the model, using plots of the predictions (use the
 approach taken in question 9) .</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># Model PA24 assumes that dolphin presence (actually, probability of recording) </span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># changes according to time of year, time of day and tidal stage, and that the</span></span>
@@ -1005,7 +1003,7 @@ approach taken in question 9) .</p>
 <span id="cb7-87"><a href="#cb7-87" tabindex="-1"></a><span class="do">## fMonth11:fTime6PM2   -1.12473    0.58150  -1.934 0.053091 .  </span></span>
 <span id="cb7-88"><a href="#cb7-88" tabindex="-1"></a><span class="do">## fMonth12:fTime6PM2   -0.91934    0.59731  -1.539 0.123770    </span></span>
 <span id="cb7-89"><a href="#cb7-89" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb7-91"><a href="#cb7-91" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb7-92"><a href="#cb7-92" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
 <span id="cb7-93"><a href="#cb7-93" tabindex="-1"></a><span class="do">## </span></span>
@@ -1017,7 +1015,7 @@ approach taken in question 9) .</p>
 <span id="cb7-99"><a href="#cb7-99" tabindex="-1"></a><span class="co"># This is tricky to interpret due to the number of coefficients (75), </span></span>
 <span id="cb7-100"><a href="#cb7-100" tabindex="-1"></a><span class="co"># and the presence of interactions. Best to use plots!</span></span>
 <span id="cb7-101"><a href="#cb7-101" tabindex="-1"></a></span>
-<span id="cb7-102"><a href="#cb7-102" tabindex="-1"></a><span class="co"># Let&#39;s illustrate the differences in predictions for two different months, </span></span>
+<span id="cb7-102"><a href="#cb7-102" tabindex="-1"></a><span class="co"># Let&apos;s illustrate the differences in predictions for two different months, </span></span>
 <span id="cb7-103"><a href="#cb7-103" tabindex="-1"></a><span class="co"># for example June and December (this could be done for each of the 12 months)</span></span>
 <span id="cb7-104"><a href="#cb7-104" tabindex="-1"></a></span>
 <span id="cb7-105"><a href="#cb7-105" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
@@ -1052,7 +1050,7 @@ approach taken in question 9) .</p>
 <span id="cb7-134"><a href="#cb7-134" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6), <span class="at">x1=</span> <span class="fu">as.numeric</span>(dat4pred<span class="sc">$</span>fTime6),</span>
 <span id="cb7-135"><a href="#cb7-135" tabindex="-1"></a>    <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
 <span id="cb7-136"><a href="#cb7-136" tabindex="-1"></a>      <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q16-1.png" width="768" /></p>
+<p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q16-1.png" alt width="768"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># In June, dolphins seem to have a similar probability of being recorded</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># at any time of the day and night, whereas in December they are mostly</span></span>
@@ -1082,7 +1080,7 @@ approach taken in question 9) .</p>
 <span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>          <span class="at">y0=</span> dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> dat4pred<span class="sc">$</span>UCI,</span>
 <span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a>          <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span>
 <span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a>} <span class="co"># end of one iteration, start of the next</span></span></code></pre></div>
-<p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q16-2.png" width="768" /></p>
+<p><img src="GLM_2_Optional_Dolphins_extension_solutions_files/figure-html/Q16-2.png" alt width="768"></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># According to the better supported model, they tend to use the site</span></span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># more in May, June and </span></span>
@@ -1096,16 +1094,14 @@ approach taken in question 9) .</p>
 <span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="do">## [1] 0.1008604</span></span>
 <span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co"># 10%. However, this is quite normal with Bernoulli data,</span></span>
 <span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co"># since they do not contain a great deal of information</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>End of the optional extension to Binomial (Bernoulli) GLM
 exercise</strong></p>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>For info,</strong> the publication here offers a different
 approach to analysing these data, using slightly fancier GLMs with
 smooth terms (called GAMs, for Generalized Additive Models), and a few
-additional refinements: [<a
-href="https://www.nature.com/articles/s41598-019-38900-4"
-class="uri">https://www.nature.com/articles/s41598-019-38900-4</a>].
+additional refinements: [<a href="https://www.nature.com/articles/s41598-019-38900-4" class="uri">https://www.nature.com/articles/s41598-019-38900-4</a>].
 What assumptions differ between this and your approach?</p>
 </div>
 
@@ -1149,15 +1145,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

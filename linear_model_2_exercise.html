@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -52,7 +52,7 @@
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -214,7 +214,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -365,30 +365,28 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div
-id="exercise-linear-model-with-single-categorical-explanatory-variable"
-class="section level2">
+<p>&#xA0;</p>
+<div id="exercise-linear-model-with-single-categorical-explanatory-variable" class="section level2">
 <h2>Exercise: Linear model with single categorical explanatory
 variable</h2>
-<p> </p>
+<p>&#xA0;</p>
 <p>1. As in previous exercises, either create a new R script (perhaps
-call it ‘linear_model_2’) or continue with your previous R script in
+call it &#x2018;linear_model_2&#x2019;) or continue with your previous R script in
 your RStudio Project. Again, make sure you include any metadata you feel
 is appropriate (title, description of task, date of creation etc) and
-don’t forget to comment out your metadata with a <code>#</code> at the
+don&#x2019;t forget to comment out your metadata with a <code>#</code> at the
 beginning of the line.</p>
-<p> </p>
-<p>2. Once again import the data file ‘loyn.txt’ into R and take a look
+<p>&#xA0;</p>
+<p>2. Once again import the data file &#x2018;loyn.txt&#x2019; into R and take a look
 at the structure of this dataframe using the <code>str()</code>
 function. In this exercise you will investigate whether the abundance of
 birds (<code>ABUND</code>) is different in areas with different grazing
 intensities (<code>GRAZE</code>). Remember, the <code>GRAZE</code>
 variable is an index of livestock grazing intensity. Level 1 = low
 grazing intensity and level 5 = high grazing intensity.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>3. As we discussed in the graphical data exploration exercise the
-<code>GRAZE</code> variable was originally coded as a numeric (i.e. 1,
+<code>GRAZE</code> variable was originally coded as a numeric (i.e.&#xA0;1,
 2, 3, 4, 5). In this exercise we actually want to treat
 <code>GRAZE</code> as a categorical variable with five levels (aka a
 factor). So the first thing we need to do is create a new variable in
@@ -396,25 +394,25 @@ the <code>loyn</code> dataframe called <code>FGRAZE</code> in which we
 store the <code>GRAZE</code> variable coerced to be a categorical
 variable with the <code>factor()</code> function (you can also use the
 <code>as.factor()</code> function if you prefer).</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>4. Explore any potential differences in bird abundance between each
 level of <code>FGRAZE</code> graphically using an appropriate plot
 (hint: a boxplot might be useful here). How would you interpret this
 plot? What might you expect to see in your analysis? Write your
 predictions in your R script as a comment. What is the mean number of
 birds for each level of <code>FGRAZE</code>?</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>5. Fit an appropriate linear model in R to explain the variation in
 the response variable, <code>ABUND</code>, with the explanatory variable
 <code>FGRAZE</code>. Remember to use the <code>data =</code> argument.
 Assign this linear model to an appropriately named object
 (<code>birds_lm</code> if your imagination fails you!).</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>6. Produce the ANOVA table using the <code>anova()</code> function on
 the model object. What null hypothesis is being tested? Do you reject or
 fail to reject the null hypothesis? What summary statistics would you
 report? Summarise in your R script as a comment.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>7. Use the <code>summary()</code> function on the model object to
 produce the table of parameter estimates (remember these are called
 coefficients in R). Using this output what is the estimate of the
@@ -428,7 +426,7 @@ do you reject or fail to reject this hypothesis?</p>
 <p>Repeat this interpretation for the <code>FGRAZE3</code>,
 <code>FGRAZE4</code> and <code>FGRAZE5</code> parameters. Summarise this
 as a comment in your R script.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>8. Now that you have interpreted all the contrasts with
 <code>FGRAZE</code> level 1 as the intercept, set the intercept to
 <code>FGRAZE</code> level 2 using the <code>relevel()</code> function,
@@ -437,13 +435,13 @@ refit the model, produce the new table of parameter estimates using the
 <p>Repeat this for <code>FGRAZE</code> levels 3, 4 and 5. Can you
 summarise which levels of <code>FGRAZE</code> are different from each
 other?</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>9. Staying with the summary table of parameter estimates, how much of
 the variation in bird abundance does the explanatory variable
 <code>FGRAZE</code> explain?</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>10. Now onto a really important part of the model fitting process.
-Let’s check the assumptions of your linear model by creating plots of
+Let&#x2019;s check the assumptions of your linear model by creating plots of
 the residuals from the model. Remember, you can easily create these
 plots by using the <code>plot()</code> function on your model object.
 Also remember that if you want to see all plots at once then you should
@@ -451,9 +449,9 @@ split your plotting device into 2 rows and 2 columns using the
 <code>par()</code> function before you create the plots. Check each of
 the assumptions using these plots and report whether your model meets
 these assumptions in your R script.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>11. This is an optional question and really just for information.
-I’ll give you the code in the solutions so don’t overly stress about
+I&#x2019;ll give you the code in the solutions so don&#x2019;t overly stress about
 this! Use Google (yep, this is OK!) to figure out how to plot your
 fitted values and 95% confidence intervals. Try Googling the
 <code>gplots</code> package or the <code>effects</code> package.</p>
@@ -464,8 +462,8 @@ plot of bird abundance and graze level (to add your upper and lower
 confidence intervals will need to use either the <code>segments()</code>
 or <code>arrows()</code> function).</p>
 <p>Or we can even use the <code>ggplot2</code> package. Check out the
-solutions code if you’re thoroughly confused!</p>
-<p> </p>
+solutions code if you&#x2019;re thoroughly confused!</p>
+<p>&#xA0;</p>
 <p>End of the linear model with single categorical explanatory variable
 exercise</p>
 </div>
@@ -510,15 +508,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

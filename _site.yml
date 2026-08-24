@@ -54,6 +54,7 @@ output:
     toc_float:
       collapsed: false
     fig_align: center
+    math_method: r-katex
     includes:
     # css: 'styles.css'
     # css:

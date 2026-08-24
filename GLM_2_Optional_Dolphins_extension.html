@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercise</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -52,7 +52,7 @@
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -214,7 +214,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -365,13 +365,11 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div
-id="optional-extension-to-binomial-bernoulli-glm---dolphin-behavioural-plasticity"
-class="section level1">
+<p>&#xA0;</p>
+<div id="optional-extension-to-binomial-bernoulli-glm---dolphin-behavioural-plasticity" class="section level1">
 <h1>Optional extension to Binomial (Bernoulli) GLM - dolphin behavioural
 plasticity</h1>
-<p> </p>
+<p>&#xA0;</p>
 <p>This extension to the dolphin data analysis is for those who may be a
 bit ahead and would like to :</p>
 <ul>
@@ -389,28 +387,28 @@ a slightly more advanced model:
 </ul>
 <p>I recommend you continue with your previous R script for the GLM_2
 exercise, in your RStudio Project.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>13. To address the limitations of the previous analysis, fit a new
 model with categorical predictors only, and interactions between them,
 two by two:
 <code>fTide4 + fMonth + fTime6 + fTide4:fMonth + fTide4:fTime6 + fMonth:fTime6</code>.
 What hypotheses do these interactions correspond to?</p>
-<p> </p>
-<p> </p>
-<p>14. Perform model selection “by hand” using the AIC, and construct an
-AIC table, using the example in the lecture. “By hand” means without
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>14. Perform model selection &#x201C;by hand&#x201D; using the AIC, and construct an
+AIC table, using the example in the lecture. &#x201C;By hand&#x201D; means without
 using <code>drop1</code> or <code>step</code> functions. You can get the
 AIC value from the model summary <code>summary(YourModel)</code> or by
 typing <code>AIC(YourModel)</code>. There are 18 possible models in
 total, including the full model above. You can choose to evaluate all 18
-models in a completely exploratory (the “ignorant and brave”) approach,
+models in a completely exploratory (the &#x201C;ignorant and brave&#x201D;) approach,
 or only a selection of models based on more specific research questions
-or predictions of your own (the “clear thinker” approach).</p>
+or predictions of your own (the &#x201C;clear thinker&#x201D; approach).</p>
 <ul>
-<li>Example: <em>“We know/expect that dolphins are affected by A, B and
+<li>Example: <em>&#x201C;We know/expect that dolphins are affected by A, B and
 C, but I suspect that the effect of B varies depending on the value of A
 whereas my colleague thinks that the effect of B depends on the value of
-C”</em>, which would suggest comparing the following models to find out
+C&#x201D;</em>, which would suggest comparing the following models to find out
 which hypothesis is best supported by the data:
 <ul>
 <li>A + B + C + A:B</li>
@@ -418,25 +416,23 @@ which hypothesis is best supported by the data:
 <li>A + B + C</li>
 </ul></li>
 </ul>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>15. Do the validation of your best model, using the approach taken in
 question 7.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>16. Interpret the model, using plots of the predictions (use the
 approach taken in question 9) .</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p><strong>End of the optional extension to Binomial (Bernoulli) GLM
 exercise</strong></p>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>For info,</strong> the publication here offers a different
 approach to analysing these data, using slightly fancier GLMs with
 smooth terms (called GAMs, for Generalized Additive Models), and a few
-additional refinements: [<a
-href="https://www.nature.com/articles/s41598-019-38900-4"
-class="uri">https://www.nature.com/articles/s41598-019-38900-4</a>].
+additional refinements: [<a href="https://www.nature.com/articles/s41598-019-38900-4" class="uri">https://www.nature.com/articles/s41598-019-38900-4</a>].
 What assumptions differ between this and your approach?</p>
 </div>
 
@@ -480,15 +476,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

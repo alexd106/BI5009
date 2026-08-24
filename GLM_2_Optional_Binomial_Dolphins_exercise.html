@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercise</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,11 +476,10 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div id="binomial-bernoulli-glm---dolphin-behavioural-plasticity"
-class="section level1">
+<p>&#xA0;</p>
+<div id="binomial-bernoulli-glm---dolphin-behavioural-plasticity" class="section level1">
 <h1>Binomial (Bernoulli) GLM - dolphin behavioural plasticity</h1>
-<p> </p>
+<p>&#xA0;</p>
 <p>1. The data for this exercise were collected by the Cromarty
 Lighthouse team, using underwater sound recorders (CPOD) to continuously
 monitor the pattern of presence and foraging behaviour of bottlenose
@@ -492,7 +491,7 @@ exercise, in case of interest.</p>
 <ul>
 <li><code>X</code> index of the observations</li>
 <li><code>presence</code>: 0 for absence, 1 for presence in 1h time
-slot. Note that “absence” refers to the absence of a detection, not to
+slot. Note that &#x201C;absence&#x201D; refers to the absence of a detection, not to
 the absence of dolphins. We can ignore this in the analysis, but we
 should keep it in mind when interpreting the results.</li>
 <li><code>year</code></li>
@@ -512,16 +511,16 @@ day and season (julianday).</p></li>
 <li><p>As in previous exercises, either create a new R script (perhaps
 call it GLM_PresAbs) or continue with your previous R script in your
 RStudio Project. Again, make sure you include any metadata you feel is
-appropriate (title, description of task, date of creation etc) and don’t
+appropriate (title, description of task, date of creation etc) and don&#x2019;t
 forget to comment out your metadata with a <code>#</code> at the
 beginning of the line.</p></li>
 </ul>
-<p> </p>
-<p>2. Import the data file ‘dolphin.csv’ into R (a “small” 5000
+<p>&#xA0;</p>
+<p>2. Import the data file &#x2018;dolphin.csv&#x2019; into R (a &#x201C;small&#x201D; 5000
 records-long subset of the original data set) by running the following
 chunk of code (please unfold and copy/paste - adjust the path as
 required).</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>dat<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/dolphin.csv&quot;</span>, <span class="at">stringsAsFactors=</span> T)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>dat<span class="sc">$</span>fTime6<span class="ot">&lt;-</span> <span class="fu">factor</span>(dat<span class="sc">$</span>Time6, <span class="at">levels=</span> <span class="fu">c</span>(<span class="st">&quot;MNight&quot;</span>, <span class="st">&quot;AM1&quot;</span>, <span class="st">&quot;AM2&quot;</span>, <span class="st">&quot;MDay&quot;</span>, <span class="st">&quot;PM1&quot;</span>, <span class="st">&quot;PM2&quot;</span>))</span>
@@ -532,7 +531,7 @@ required).</p>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>dat<span class="sc">$</span>fMonth<span class="ot">&lt;-</span> <span class="fu">factor</span>(dat<span class="sc">$</span>mon)</span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    5000 obs. of  12 variables:
+<pre><code>## &apos;data.frame&apos;:    5000 obs. of  12 variables:
 ##  $ X            : int  31458 14027 40551 40456 15894 13109 23797 6053 23445 34584 ...
 ##  $ presence     : int  0 1 0 0 1 0 0 0 0 0 ...
 ##  $ year         : int  2014 2011 2015 2015 2011 2011 2013 2010 2012 2014 ...
@@ -545,7 +544,7 @@ required).</p>
 ##  $ fTime6       : Factor w/ 6 levels &quot;MNight&quot;,&quot;AM1&quot;,..: 3 4 3 3 2 3 2 2 4 5 ...
 ##  $ fTide4       : Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 4 1 3 4 2 2 1 2 3 2 ...
 ##  $ fMonth       : Factor w/ 12 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 2 8 3 3 11 7 4 9 11 7 ...</code></pre>
-<p> </p>
+<p>&#xA0;</p>
 <p>3. Take a look at the structure of this dataframe, and do an initial
 data exploration.</p>
 <ul>
@@ -568,45 +567,45 @@ explore.</li>
 categories of interest.</li>
 <li><code>table()</code> is a useful way to count the number of
 observations per category or combinations of categories,
-e.g. <code>ObsPerMonthYear&lt;- table(dat$year, dat$mon)</code></li>
-<li><code>plot(ObsPerMonthYear)</code> returns a “mosaic plot” where the
+e.g.&#xA0;<code>ObsPerMonthYear&lt;- table(dat$year, dat$mon)</code></li>
+<li><code>plot(ObsPerMonthYear)</code> returns a &#x201C;mosaic plot&#x201D; where the
 area of each rectangle is proportional to the count.</li>
 <li>For factors affecting the proportion of time present, you could
 calculate mean presence per category, which is the proportion of time
 present:
 <code>bla&lt;- tapply(dat$presence, list(dat$GroupOfInterest), mean)</code>
 and plot this using
-<code>plot(bla, type= "b", ylim= c(0, 1), xlab= "GroupOfInterest", ylab= "presence")</code></li>
+<code>plot(bla, type= &quot;b&quot;, ylim= c(0, 1), xlab= &quot;GroupOfInterest&quot;, ylab= &quot;presence&quot;)</code></li>
 <li>In more than one dimension,
 <code>tmp&lt;- tapply(dat$presence, list(dat$Group1, dat$Group2), mean)</code>
 calculates the proportion of time present for each combination of Group1
 and Group2, and
-<code>matplot(tmp, type= "l", ylim= c(0, 1), xlab= "Group1", ylab= "presence", lty= 1)</code>
+<code>matplot(tmp, type= &quot;l&quot;, ylim= c(0, 1), xlab= &quot;Group1&quot;, ylab= &quot;presence&quot;, lty= 1)</code>
 plots the proportion of time present against Group1, with a separate
 line per Group2 categories.</li>
 </ul></li>
 </ul>
-<p> </p>
-<p> </p>
-<p>4. Let’s fit a model for these data. You will need to specify a
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>4. Let&#x2019;s fit a model for these data. You will need to specify a
 Binomial (Bernoulli) GLM (using <code>glm()</code> and the appropriate
 <code>family</code> argument). To start with, include the main effects
 of season (using the numerical day of the year), and tidal state and
 time of day as categorical predictors:
 <code>julianday + fTide4 + fTime6</code>.</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>5. Obtain summaries of the model output using the
 <code>summary()</code> function. How do you interpret each coefficient?
 Is this model biologically sensible?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>6. Are all the terms significant? If not, simplify the model.
 Remember to choose the correct ANOVA method (sequential or not), and the
 appropriate test. What is the proportion of deviance explained?</p>
-<p> </p>
-<p> </p>
-<p>7. Let’s now produce plots to validate the model, using Pearson
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>7. Let&#x2019;s now produce plots to validate the model, using Pearson
 residuals. The usual tools are not very helpful with a GLM for Bernoulli
 data (you can try anyway), but we can get a bit further by using the
 <code>binnedplot()</code> function in the <code>arm</code> package. For
@@ -614,7 +613,7 @@ numerical variables, <code>binnedplot()</code> splits the numerical
 variable into discrete bins, and plots the mean of the residuals for
 each bin. These means should be randomly distributed around zero (and
 ideally, close to zero when the sample size is large).</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">plot</span>(PA1) <span class="co"># not very useful</span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
@@ -623,7 +622,7 @@ ideally, close to zero when the sample size is large).</p>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">plot</span>(PA1, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># Not very telling either</span></span>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co"># let&#39;s plot against predictors:</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co"># let&apos;s plot against predictors:</span></span>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>res1.p<span class="ot">&lt;-</span> <span class="fu">resid</span>(PA1, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a></span>
 <span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
@@ -633,7 +632,7 @@ ideally, close to zero when the sample size is large).</p>
 <span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a></span>
 <span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>julianday, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>) <span class="co"># scatterplot</span></span>
 <span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co"># Can&#39;t see anything useful.</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co"># Can&apos;t see anything useful.</span></span>
 <span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a></span>
 <span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co"># Use arm if you can:</span></span>
 <span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co"># computes the mean of residuals per bin of numerical </span></span>
@@ -645,16 +644,16 @@ ideally, close to zero when the sample size is large).</p>
 <span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>fTide4), <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Tidal state&quot;</span>)</span>
 <span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>Time6), <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Time of day&quot;</span>)</span>
 <span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="fu">binnedplot</span>(<span class="at">x=</span> dat<span class="sc">$</span>julianday, <span class="at">y=</span> res1.p, <span class="at">xlab=</span> <span class="st">&quot;Day of the year&quot;</span>, <span class="at">nclass=</span> <span class="dv">100</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>8. Are you happy with the diagnostic plots?</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p>9. Assuming that the model is fine as it is, let’s plot the
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>9. Assuming that the model is fine as it is, let&#x2019;s plot the
 predictions for the probability of presence in relation to time of day
 <code>fTime6</code>. You will need to set the value of other predictors
 <code>fTide4</code>, <code>julianday</code> at a fixed level of your
-choice, e.g. tidal state “1” and day 180 (approx the middle of the
+choice, e.g.&#xA0;tidal state &#x201C;1&#x201D; and day 180 (approx the middle of the
 year). Optionally, you can add the confidence intervals around the
 predictions (highly recommended in a report).</p>
 <ul>
@@ -663,7 +662,7 @@ predictions (highly recommended in a report).</p>
 <li>As for the Poisson GLM, you will need to calculate the lower and
 upper bounds of the 95% CI on the link scale (same method)</li>
 <li>Only then convert these to the response scale</li>
-<li>Don’t forget that the link function is different though, and so is
+<li>Don&#x2019;t forget that the link function is different though, and so is
 the function for the back-transformation</li>
 <li>In R you can do the back-transformation yourself using the equation
 provided in the lecture, or using the pre-made <code>plogis</code>
@@ -695,9 +694,9 @@ are the lower and upper bounds of the confidence intervals that you
 calculated.</li>
 </ul></li>
 </ul>
-<p>The code is available below for you to unfold, if you don’t want to
+<p>The code is available below for you to unfold, if you don&#x2019;t want to
 try solving this puzzle yourself (you are always welcome to ask
-demonstrators for help).  </p>
+demonstrators for help). &#xA0;</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>PA1.dat4pred<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">fTime6=</span> <span class="fu">levels</span>(dat<span class="sc">$</span>fTime6),</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>                                <span class="at">julianday=</span> <span class="dv">180</span>, <span class="at">fTide4=</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
@@ -712,7 +711,7 @@ demonstrators for help).  </p>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>PA1.dat4pred<span class="sc">$</span>LCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA1.pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>PA1.pred<span class="sc">$</span>se.fit)</span>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co"># upper 95% CI</span></span>
 <span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>PA1.dat4pred<span class="sc">$</span>UCI<span class="ot">&lt;-</span> <span class="fu">plogis</span>(PA1.pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>PA1.pred<span class="sc">$</span>se.fit)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">y=</span> PA1.dat4pred<span class="sc">$</span>fit.resp, </span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>      <span class="at">pch=</span> <span class="dv">16</span>, <span class="at">cex=</span> <span class="fl">1.4</span>, <span class="at">xlab=</span> <span class="st">&quot;Section of day&quot;</span>,</span>
@@ -722,12 +721,12 @@ demonstrators for help).  </p>
 <span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">x1=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
 <span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>          <span class="at">y0=</span> PA1.dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> PA1.dat4pred<span class="sc">$</span>UCI,</span>
 <span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>          <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>10. <strong>Optional</strong>: Repeat question 9 for the predictions
 according to levels of <code>fTide4</code>, and then values of
 <code>julianday</code>, each time fixing other variables at a value of
 your choice.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># we will need 3 plots</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># repeat plotting of predictions for fTime6</span></span>
@@ -798,21 +797,21 @@ your choice.</p>
 <span id="cb6-68"><a href="#cb6-68" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">x1=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
 <span id="cb6-69"><a href="#cb6-69" tabindex="-1"></a>          <span class="at">y0=</span> PA1.dat4pred<span class="sc">$</span>LCI, <span class="at">y1=</span> PA1.dat4pred<span class="sc">$</span>UCI,</span>
 <span id="cb6-70"><a href="#cb6-70" tabindex="-1"></a>          <span class="at">length=</span> <span class="fl">0.02</span>, <span class="at">angle=</span> <span class="dv">90</span>, <span class="at">code=</span> <span class="dv">3</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>12. How satisfied are you with the model, and with all the
 assumptions being met? What have you learned from it, with respect to
 the initial aims of the study? Are there areas of improvement?</p>
-<p> </p>
-<p> </p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p><strong>End of the Binomial (Bernoulli) GLM - dolphin behavioural
 plasticity exercise</strong></p>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>Note:</strong> If you cannot install the <code>arm</code>
 package and access its <code>binnedplot</code> function, you can use
-this “DIY” alternative instead, in the code chunk below. The green line
+this &#x201C;DIY&#x201D; alternative instead, in the code chunk below. The green line
 shows the mean of the residuals for each value or bin of the X
 variable.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># plot the residuals against julianday</span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">plot</span>(res1.p <span class="sc">~</span> dat<span class="sc">$</span>julianday, <span class="at">col=</span> dat<span class="sc">$</span>presence <span class="sc">+</span> <span class="dv">1</span>)</span>
@@ -822,20 +821,17 @@ variable.</p>
 <span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>day.vals<span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">names</span>(day.means))</span>
 <span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="fu">lines</span>(day.means <span class="sc">~</span> day.vals, <span class="at">col=</span> <span class="dv">3</span>)</span>
 <span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="dv">0</span>, <span class="at">lty=</span> <span class="dv">3</span>, <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>))</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>For info,</strong> background on the data and the study can
-be found in this <a
-href="https://abdn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=619e9ee8-241a-4924-8550-ac5401283e2a">short
+be found in this <a href="https://abdn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=619e9ee8-241a-4924-8550-ac5401283e2a">short
 video</a>, courtesy of Paul Thompson. The exercise can be done entirely
 without consulting this. I recommend you watch this or any companion
 material (the referenced paper) outside the synchronous session, to make
 the most of the time you have with demonstrators to progress on the
 exercises.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p><strong>For info,</strong> the full original data (10 Mb) are
-publicly available here: [<a
-href="https://datadryad.org/dataset/doi:10.5061/dryad.k378542"
-class="uri">https://datadryad.org/dataset/doi:10.5061/dryad.k378542</a>],
+publicly available here: [<a href="https://datadryad.org/dataset/doi:10.5061/dryad.k378542" class="uri">https://datadryad.org/dataset/doi:10.5061/dryad.k378542</a>],
 in case of interest.</p>
 </div>
 
@@ -879,15 +875,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

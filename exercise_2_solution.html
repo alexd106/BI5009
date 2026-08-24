@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,84 +476,76 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
+<p>&#xA0;</p>
 <div id="exercise-2-basic-r-operations" class="section level2">
 <h2>Exercise 2 : Basic R operations</h2>
-<p> </p>
+<p>&#xA0;</p>
 <p>Read <a href="https://intro2r.com/basics_r.html">Chapter 2</a> to
 help you complete the questions in this exercise.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>1. Open up your RStudio Project from Exercise 1 and either create a
 new R script or continue with your previous R script. Remember to save
 your R script with a suitable name (exercise_2?). Make sure you include
 any metadata you feel is appropriate (title, description of task, date
-of script creation etc). Don’t forget to comment out your metadata with
+of script creation etc). Don&#x2019;t forget to comment out your metadata with
 a <code>#</code> at the beginning of the line.</p>
-<p> </p>
-<p>2. Let’s use R as a fancy calculator. Find the natural log, log to
+<p>&#xA0;</p>
+<p>2. Let&#x2019;s use R as a fancy calculator. Find the natural log, log to
 the base 10, log to the base 2, square root and the natural antilog of
-12.43. See <a
-href="https://intro2r.com/getting-started.html#getting-started">Section
+12.43. See <a href="https://intro2r.com/getting-started.html#getting-started">Section
 2.1</a> of the Introduction to R book for more information on
-mathematical functions in R. Don’t forget to write your code in
-RStudio’s script editor and source the code into the console.</p>
+mathematical functions in R. Don&#x2019;t forget to write your code in
+RStudio&#x2019;s script editor and source the code into the console.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">log</span>(<span class="fl">12.43</span>)              <span class="co"># natural log</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">log10</span>(<span class="fl">12.43</span>)            <span class="co"># log to base 10</span></span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">log2</span>(<span class="fl">12.43</span>)             <span class="co"># log to base 2</span></span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">log</span>(<span class="fl">12.43</span>, <span class="at">base =</span> <span class="dv">2</span>)    <span class="co"># alternative log to base 2</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fl">12.43</span>)             <span class="co"># square root</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">12.43</span>)              <span class="co"># exponent</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>3. Next, use R to determine the area of a circle with a diameter of
 20 cm and assign the result to an object called
-<code>area_circle</code>. If you can’t remember how to create and assign
-objects see <a
-href="https://intro2r.com/objects-in-r.html#objects-in-r">Section
-2.2</a> or watch this <a
-href="https://alexd106.github.io/BI5009/howto.html#objs-vid">video</a>.
-Google is your friend if you can’t remember the formula to calculate the
+<code>area_circle</code>. If you can&#x2019;t remember how to create and assign
+objects see <a href="https://intro2r.com/objects-in-r.html#objects-in-r">Section
+2.2</a> or watch this <a href="https://alexd106.github.io/BI5009/howto.html#objs-vid">video</a>.
+Google is your friend if you can&#x2019;t remember the formula to calculate the
 area of a circle! Also, remember that R already knows about
-<code>pi</code>. Don’t worry if you’re stumped and feel free to ask one
+<code>pi</code>. Don&#x2019;t worry if you&#x2019;re stumped and feel free to ask one
 of the instructors for guidance.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>area_circle <span class="ot">&lt;-</span> pi <span class="sc">*</span> (<span class="dv">20</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>4. Now for something a little more tricky. Calculate the cube root of
 14 x 0.51. You might need to think creatively for a solution (hint:
 think exponents), and remember that R follows the usual order of
 mathematical operators so you might need to use brackets in your code
 (see <a href="https://en.wikipedia.org/wiki/Order_of_operations">this
-page</a> if you’ve never heard of this). The point of this question is
-not to torture you with maths (so please don’t stress!), its to get you
+page</a> if you&#x2019;ve never heard of this). The point of this question is
+not to torture you with maths (so please don&#x2019;t stress!), its to get you
 used to writing mathematical equations in R and highlight the order of
 operations.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>(<span class="dv">14</span> <span class="sc">*</span> <span class="fl">0.51</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
-<p> </p>
-<p>5. Ok, you’re now ready to explore one of R’s basic (but very useful)
+<p>&#xA0;</p>
+<p>5. Ok, you&#x2019;re now ready to explore one of R&#x2019;s basic (but very useful)
 data structures - vectors. A vector is a sequence of elements (or
-components) that are all of the same data type (see <a
-href="https://intro2r.com/data-structures.html#scal_vecs">Section
+components) that are all of the same data type (see <a href="https://intro2r.com/data-structures.html#scal_vecs">Section
 3.2.1</a> for an introduction to vectors). Although technically not
 correct it might be useful to think of a vector as something like a
 single column of data in a spreadsheet. There are a multitude of ways to
 create vectors in R but you will use the concatenate function
 <code>c()</code> to create a vector called <code>weight</code>
 containing the weight (in kg) of 10 children:
-<code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code> (<a
-href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
-2.3</a> or watch this <a
-href="https://alexd106.github.io/BI5009/howto.html#vec-vid">video</a>
+<code>69, 62, 57, 59, 59, 64, 56, 66, 67, 66</code> (<a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+2.3</a> or watch this <a href="https://alexd106.github.io/BI5009/howto.html#vec-vid">video</a>
 for more information).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="dv">62</span>, <span class="dv">57</span>, <span class="dv">59</span>, <span class="dv">59</span>, <span class="dv">64</span>, <span class="dv">56</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">66</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>6. Now you can do some useful stuff to your <code>weight</code>
 vector. Get R to calculate the mean, variance, standard deviation, range
 of weights and the number of children of your <code>weight</code> vector
 (see <a href="https://intro2r.com/using-functions-in-r.html">Section
-2.3</a> for more details). Now read <a
-href="https://intro2r.com/vectors.html">Section 2.4</a> of the R book to
+2.3</a> for more details). Now read <a href="https://intro2r.com/vectors.html">Section 2.4</a> of the R book to
 learn how to work with vectors. After reading this section you should be
-able to extract the weights for the first five children using <a
-href="https://intro2r.com/vectors.html#positional-index">Positional
+able to extract the weights for the first five children using <a href="https://intro2r.com/vectors.html#positional-index">Positional
 indexes</a> and store these weights in a new variable called
 <code>first_five</code>. Remember, you will need to use the square
 brackets <code>[ ]</code> to extract (aka index, subset) elements from a
@@ -566,19 +558,18 @@ variable.</p>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> weight[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]                  <span class="co"># extract first 5 weight values</span></span>
 <span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> weight[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)]     <span class="co"># alternative method</span></span></code></pre></div>
-<p> </p>
-<p>7. We’re now going to use the the <code>c()</code> function again to
+<p>&#xA0;</p>
+<p>7. We&#x2019;re now going to use the the <code>c()</code> function again to
 create another vector called <code>height</code> containing the height
 (in cm) of the same 10 children:
 <code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the
 <code>summary()</code> function to summarise these data in the
 <code>height</code> object. Extract the height of the 2nd, 3rd, 9th and
 10th child and assign these heights to a variable called
-<code>some_child</code> (take a look at the section <a
-href="https://intro2r.com/vectors.html#positional-index">Positional
-indexes</a> in the R book if you’re stuck). We can also extract elements
+<code>some_child</code> (take a look at the section <a href="https://intro2r.com/vectors.html#positional-index">Positional
+indexes</a> in the R book if you&#x2019;re stuck). We can also extract elements
 using <a href="https://intro2r.com/vectors.html#logical-index">Logical
-indexes</a>. Let’s extract all the heights of children less than or
+indexes</a>. Let&#x2019;s extract all the heights of children less than or
 equal to 99 cm and assign to a variable called
 <code>shorter_child</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">112</span>, <span class="dv">102</span>, <span class="dv">83</span>, <span class="dv">84</span>, <span class="dv">99</span>, <span class="dv">90</span>, <span class="dv">77</span>, <span class="dv">112</span>, <span class="dv">133</span>, <span class="dv">112</span>)</span>
@@ -588,42 +579,39 @@ equal to 99 cm and assign to a variable called
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>some_child <span class="ot">&lt;-</span> height[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">10</span>)]      <span class="co"># extract the 2nd, 3rd, 9th, 10th height</span></span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>shorter_child <span class="ot">&lt;-</span> height[height <span class="sc">&lt;=</span> <span class="dv">99</span>]     <span class="co"># extract all heights less than or equal to 99</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>8. Now you can use the information in your <code>weight</code> and
 <code>height</code> variables to calculate the body mass index (BMI) for
 each child. The BMI is calculated as weight (in kg) divided by the
 square of the height (<strong>in meters</strong>).</p>
-<p><span class="math display">\[bmi_i = \frac{weight_i}
-{height_i^2}\]</span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>b</mi><mi>m</mi><msub><mi>i</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mi>w</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><msub><mi>t</mi><mi>i</mi></msub></mrow><mrow><mi>h</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><msubsup><mi>t</mi><mi>i</mi><mn>2</mn></msubsup></mrow></mfrac></mrow><annotation encoding="application/x-tex">bmi_i = \frac{weight_i}
+{height_i^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">bm</span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3343em;vertical-align:-0.9629em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7959em;"><span style="top:-2.4231em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.0448em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2769em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.9629em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 <p>Store the results of this calculation in a variable called
-<code>bmi</code>. Note: you don’t need to do this calculation for each
-child individually, you can use both vectors in the BMI equation – this
-is called vectorisation (see <a
-href="https://intro2r.com/vectors.html#vectorisation">Section 2.4.4</a>
+<code>bmi</code>. Note: you don&#x2019;t need to do this calculation for each
+child individually, you can use both vectors in the BMI equation &#x2013; this
+is called vectorisation (see <a href="https://intro2r.com/vectors.html#vectorisation">Section 2.4.4</a>
 of the Introduction to R book).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> weight<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>    <span class="co"># don&#39;t forget to convert height to meters</span></span></code></pre></div>
-<p> </p>
-<p>9. Now let’s practice a very useful skill - creating sequences
-(honestly it is…). Take a look at <a
-href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> weight<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>    <span class="co"># don&apos;t forget to convert height to meters</span></span></code></pre></div>
+<p>&#xA0;</p>
+<p>9. Now let&#x2019;s practice a very useful skill - creating sequences
+(honestly it is&#x2026;). Take a look at <a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
 2.3</a> in the R book (the bit on creating sequences) to see the myriad
-ways you can create sequences in R. Let’s use the <code>seq()</code>
+ways you can create sequences in R. Let&#x2019;s use the <code>seq()</code>
 function to create a sequence of numbers ranging from 0 to 1 in steps of
 0.1 (this is also a vector by the way) and assign this sequence to a
 variable called <code>seq1</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>seq1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>10. Next, see if you can figure out how to create a sequence from 10
 to 1 in steps of 0.5. Assign this sequence to a variable called
 <code>seq2</code>. Hint: you may find it useful to include the
 <code>rev()</code> function in your code (use the search facility in the
-Introduction to R book to search for <code>'rev'</code>).</p>
+Introduction to R book to search for <code>&apos;rev&apos;</code>).</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>seq2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="fl">0.5</span>))</span></code></pre></div>
-<p> </p>
-<p>11. Let’s go sequence crazy! Generate the following sequences. You
+<p>&#xA0;</p>
+<p>11. Let&#x2019;s go sequence crazy! Generate the following sequences. You
 will need to experiment with the arguments of the <code>rep()</code>
-function to generate these sequences (see <a
-href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
+function to generate these sequences (see <a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section
 2.3</a> for some clues):</p>
 <ul>
 <li>1 2 3 1 2 3 1 2 3</li>
@@ -639,35 +627,33 @@ href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Sectio
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">3</span>, <span class="at">times =</span> <span class="dv">2</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>)</span>
 <span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>12. OK, back to the variable <code>height</code> you created in Q7.
 Sort the values of <code>height</code> into ascending order (shortest to
 tallest) and assign the sorted vector to a new variable called
-<code>height_sorted</code>. Take a look at <a
-href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> in the
+<code>height_sorted</code>. Take a look at <a href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> in the
 R book to see how to do this. Now sort all heights into descending order
 and assign the new vector a name of your choice.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>height_sorted <span class="ot">&lt;-</span> <span class="fu">sort</span>(height)</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>height_rev <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">sort</span>(height))</span></code></pre></div>
-<p> </p>
-<p>13. Let’s give the children some names. Create a new vector called
+<p>&#xA0;</p>
+<p>13. Let&#x2019;s give the children some names. Create a new vector called
 <code>child_names</code> with the following names of the 10 children:
-<code>"Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William"</code>.</p>
+<code>&quot;Alfred&quot;, &quot;Barbara&quot;, &quot;James&quot;, &quot;Jane&quot;, &quot;John&quot;, &quot;Judy&quot;, &quot;Louise&quot;, &quot;Mary&quot;, &quot;Ronald&quot;, &quot;William&quot;</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>child_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Alfred&quot;</span>, <span class="st">&quot;Barbara&quot;</span>, <span class="st">&quot;James&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;John&quot;</span>, <span class="st">&quot;Judy&quot;</span>, <span class="st">&quot;Louise&quot;</span>, <span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Ronald&quot;</span>, <span class="st">&quot;William&quot;</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>14. A really useful (and common) task is to order the values of one
 variable by the order of another variable. To do this you will need to
 use the <code>order()</code> function in combination with the square
-bracket notation <code>[ ]</code>. Have a peep at <a
-href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> for
+bracket notation <code>[ ]</code>. Have a peep at <a href="https://intro2r.com/vectors.html#vec_ord">Section 2.4.3</a> for
 some details. Create a new variable called <code>names_sort</code> to
 store the names of the children ordered by child height (from shortest
-to tallest). Who is the shortest? who is the tallest child? If you’re
+to tallest). Who is the shortest? who is the tallest child? If you&#x2019;re
 not sure how to do this, please ask one of the instructors.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>height_ord <span class="ot">&lt;-</span> <span class="fu">order</span>(height)   <span class="co"># get the indexes of the heights, smallest to tallest</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>names_sort <span class="ot">&lt;-</span> child_names[height_ord]     <span class="co"># Louise is shortest, Ronald is tallest</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>15. Now order the names of the children by
 <strong>descending</strong> values of weight and assign the result to a
 variable called <code>weight_rev</code> (Hint: perhaps include the
@@ -675,19 +661,18 @@ variable called <code>weight_rev</code> (Hint: perhaps include the
 lightest?</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>weight_ord <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">order</span>(weight))</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>weight_rev <span class="ot">&lt;-</span> child_names[weight_ord]     <span class="co"># Alfred is heaviest, Louise is lightest</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>16. Almost there! In R, missing values are usually represented with
 an <code>NA</code>. Missing data can be tricky to deal with in R (and in
 statistics more generally) and cause some surprising behaviour when
-using some functions. Take a look at <a
-href="https://intro2r.com/vectors.html#na_vals">Section 2.4.5</a> of the
+using some functions. Take a look at <a href="https://intro2r.com/vectors.html#na_vals">Section 2.4.5</a> of the
 R book for more information about missing values. To explore this a
-little further let’s create a vector called <code>mydata</code> with the
+little further let&#x2019;s create a vector called <code>mydata</code> with the
 values <code>2, 4, 1, 6, 8, 5, NA, 4, 7</code>. Notice the value of the
 7<sup>th</sup> element of <code>mydata</code> is missing and represented
 with an <code>NA</code>. Now use the <code>mean()</code> function to
 calculate the mean of the values in <code>mydata</code>. What does R
-return? If you’re confused by this output take a look at the help page
+return? If you&#x2019;re confused by this output take a look at the help page
 for the function <code>mean()</code>. Can you figure out how to alter
 your use of the <code>mean()</code> function to calculate the mean
 ignoring this missing value?</p>
@@ -695,14 +680,14 @@ ignoring this missing value?</p>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">mean</span>(mydata)    <span class="co"># returns NA!</span></span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">mean</span>(mydata, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)    <span class="co"># returns 4.625</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>17. Finally, list all variables in your workspace that you have
 created in this exercise. Remove the variable <code>seq1</code> from the
 workspace using the <code>rm()</code> function.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">ls</span>()          <span class="co"># list all variables in workspace</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">rm</span>(seq1)      <span class="co"># remove variable seq1 from the workspace</span></span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">ls</span>()          <span class="co"># check seq1 has been removed</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>End of Exercise 2</p>
 </div>
 
@@ -746,15 +731,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

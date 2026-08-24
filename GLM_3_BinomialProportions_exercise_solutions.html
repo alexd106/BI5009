@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercise Solutions</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,11 +476,10 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
-<div id="binomial-proportions-glm---mites-survival"
-class="section level1">
+<p>&#xA0;</p>
+<div id="binomial-proportions-glm---mites-survival" class="section level1">
 <h1>Binomial (Proportions) GLM - mites survival</h1>
-<p> </p>
+<p>&#xA0;</p>
 <p>The data for this exercise were collected for an experiment to test
 the toxicity of different chemicals at various concentrations to a
 species of mite. The aim was to determine whether the proportion of
@@ -488,8 +487,8 @@ mites surviving was related to the concentration of the chemical and
 whether this relationship depended on the type of chemical the mites
 were exposed to. We will be using a binomial GLM again for this example,
 but this time we will be using it to model proportion data, from counts
-of “successes” (= mite survival, unless you don’t like mites), and
-“failures” (= mite death).</p>
+of &#x201C;successes&#x201D; (= mite survival, unless you don&#x2019;t like mites), and
+&#x201C;failures&#x201D; (= mite death).</p>
 <ul>
 <li>Variables:
 <ul>
@@ -501,21 +500,21 @@ of “successes” (= mite survival, unless you don’t like mites), and
 <li><code>Proportion</code>= <code>Dead_mites / Total</code></li>
 </ul></li>
 </ul>
-<p> </p>
+<p>&#xA0;</p>
 <p>As in previous exercises, either create a new R script (perhaps call
 it GLM_BinomProps) or continue with your previous R script in your
 RStudio Project. Again, make sure you include any metadata you feel is
-appropriate (title, description of task, date of creation etc) and don’t
+appropriate (title, description of task, date of creation etc) and don&#x2019;t
 forget to comment out your metadata with a <code>#</code> at the
 beginning of the line.</p>
-<p> </p>
-<p>1. Import the data file ‘DrugsMites.xlsx’ into R in the usual way. We
+<p>&#xA0;</p>
+<p>1. Import the data file &#x2018;DrugsMites.xlsx&#x2019; into R in the usual way. We
 want to model the variable Toxic as a categorical predictor with 4
 levels, so create a new variable with Toxic as a factor.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Mites<span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;./data/DrugsMites.txt&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">str</span>(Mites)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    115 obs. of  6 variables:</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## &apos;data.frame&apos;:    115 obs. of  6 variables:</span></span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">##  $ ID           : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">##  $ Concentration: num  0 0 0 0 0 0.25 0.25 0.25 0.25 0.25 ...</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">##  $ Toxic        : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
@@ -526,7 +525,7 @@ levels, so create a new variable with Toxic as a factor.</p>
 <span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>Mites<span class="sc">$</span>fToxic<span class="ot">&lt;-</span> <span class="fu">factor</span>(Mites<span class="sc">$</span>Toxic)</span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="fu">str</span>(Mites)</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    115 obs. of  7 variables:</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="do">## &apos;data.frame&apos;:    115 obs. of  7 variables:</span></span>
 <span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="do">##  $ ID           : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
 <span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="do">##  $ Concentration: num  0 0 0 0 0 0.25 0.25 0.25 0.25 0.25 ...</span></span>
 <span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="do">##  $ Toxic        : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
@@ -534,75 +533,75 @@ levels, so create a new variable with Toxic as a factor.</p>
 <span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="do">##  $ Total        : int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
 <span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="do">##  $ Proportion   : num  0 0 0.25 0 0 0.5 0.25 0.75 0.5 0.25 ...</span></span>
 <span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="do">##  $ fToxic       : Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>2. Perform the usual graphical data exploration, looking for
 outliers, relationships between predictors, and between response and
 predictors etc. You can use the variable <code>Proportion</code> in the
 data frame for these plots.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Outliers Y</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">boxplot</span>(Mites<span class="sc">$</span>Proportion) <span class="co"># not very useful for this data set</span></span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-1.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">dotchart</span>(Mites<span class="sc">$</span>Proportion)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-2.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-2.png" alt width="672"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># Outliers X</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">dotchart</span>(Mites<span class="sc">$</span>Concentration)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-3.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-3.png" alt width="672"></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co"># Correlations between predictors</span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">jitter</span>(Mites<span class="sc">$</span>Concentration), <span class="fu">jitter</span>(Mites<span class="sc">$</span>Toxic))</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-4.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-4.png" alt width="672"></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># Toxics 2 and 3 have not been assayed at the highest concentrations</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># but have had more trials at the lower concentrations</span></span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># Relationships</span></span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">boxplot</span>(Proportion <span class="sc">~</span> Toxic, <span class="at">data=</span> Mites)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-5.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-5.png" alt width="672"></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">with</span>(Mites, <span class="fu">plot</span>(<span class="at">x=</span> Concentration, <span class="at">y=</span> Proportion))</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-6.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-6.png" alt width="672"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># Since lots of proportions have the same values, we can also add</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># a bit of noise to the coordinates in the previous plot, to limit overlap:</span></span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">with</span>(Mites, <span class="fu">plot</span>(<span class="at">x=</span> <span class="fu">jitter</span>(Concentration), <span class="at">y=</span> <span class="fu">jitter</span>(Proportion)))</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-7.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-7.png" alt width="672"></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">coplot</span>(<span class="fu">jitter</span>(Proportion) <span class="sc">~</span> <span class="fu">jitter</span>(Concentration) <span class="sc">|</span> fToxic, <span class="at">data=</span> Mites)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-8.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q2-8.png" alt width="672"></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># looks like researchers stopped increasing concentration of a chemical when they had</span></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># reached ~ 100 % mortality in assays</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>3. In order to model the proportion of mites surviving, create a new
 variable (called something creative like Living_mites for example)
 representing the number of surviving mites by differencing the two
 variables Dead_mites and Total.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>Mites<span class="sc">$</span>Living_mites<span class="ot">&lt;-</span> Mites<span class="sc">$</span>Total <span class="sc">-</span> Mites<span class="sc">$</span>Dead_mites</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">table</span>(Mites<span class="sc">$</span>Total)</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="do">##  3  4  5 </span></span>
 <span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="do">## 40 25 50</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>4. We can now use this new variable when specifying a binomial GLM.
 Recall from the lecture that the response variable should be a data
 frame consisting of two columns, cbind(Living_mites, Dead_mites). Ask if
 in doubt. If you hate mites you could also swap the order of the two
 columns: you would then be modelling the proportion that die.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>M1<span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(Living_mites, Dead_mites) <span class="sc">~</span> Concentration <span class="sc">+</span> fToxic <span class="sc">+</span> Concentration <span class="sc">:</span> fToxic, <span class="at">family=</span> binomial, <span class="at">data=</span> Mites)</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co"># equivalent to:</span></span>
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>M1<span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(Living_mites, Dead_mites) <span class="sc">~</span> Concentration <span class="sc">*</span> fToxic, <span class="at">family=</span> binomial, <span class="at">data=</span> Mites)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>5. Obtain summaries of the model output using the
 <code>summary()</code> function. Make sure you understand the
 mathematical and biological interpretation of the model, by writing down
 the complete model on paper (with distribution and link function). What
 biological hypothesis does each term imply, qualitatively?</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">summary</span>(M1)</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="do">## Call:</span></span>
@@ -620,7 +619,7 @@ biological hypothesis does each term imply, qualitatively?</p>
 <span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="do">## Concentration:fToxic3 -1.89983    1.36204  -1.395 0.163062    </span></span>
 <span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="do">## Concentration:fToxic4  1.48275    0.96299   1.540 0.123626    </span></span>
 <span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
 <span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="do">## </span></span>
@@ -631,10 +630,10 @@ biological hypothesis does each term imply, qualitatively?</p>
 <span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 6</span></span>
 <span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a></span>
 <span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="fu">coef</span>(M1)</span>
-<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="do">##           (Intercept)         Concentration               fToxic2               fToxic3               fToxic4 </span></span>
-<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="do">##           1.434827258          -3.801011714           0.008599625           0.014191002           0.273864642 </span></span>
-<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="do">## Concentration:fToxic2 Concentration:fToxic3 Concentration:fToxic4 </span></span>
-<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="do">##          -6.176473370          -1.899832702           1.482751939</span></span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="do">##           (Intercept)         Concentration               fToxic2               fToxic3               fToxic4 Concentration:fToxic2 Concentration:fToxic3 </span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="do">##           1.434827258          -3.801011714           0.008599625           0.014191002           0.273864642          -6.176473370          -1.899832702 </span></span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="do">## Concentration:fToxic4 </span></span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="do">##           1.482751939</span></span>
 <span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a></span>
 <span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="do">## Mathematical model description:</span></span>
 <span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a></span>
@@ -652,7 +651,7 @@ biological hypothesis does each term imply, qualitatively?</p>
 <span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a><span class="co"># concentration is 0 (null hypothesis not very useful, however</span></span>
 <span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a><span class="co"># the value is quite interesting, when back-transformed on the proportion</span></span>
 <span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a><span class="co"># scale: this is the proportion that survive the experiment in the absence</span></span>
-<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a><span class="co"># of toxic chemical. Shouldn&#39;t differ between chemicals, presumably?)</span></span>
+<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a><span class="co"># of toxic chemical. Shouldn&apos;t differ between chemicals, presumably?)</span></span>
 <span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a></span>
 <span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a><span class="co"># Concentration: slope of Concentration, or change in survival per unit</span></span>
 <span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a><span class="co"># increase in Toxic 1 concentration (on logit link), or change in log-odds</span></span>
@@ -667,21 +666,21 @@ biological hypothesis does each term imply, qualitatively?</p>
 <span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a></span>
 <span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a><span class="co"># Concentration:fToxic3  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span>
 <span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a><span class="co"># Concentration:fToxic4  difference between Conc. slopes for Toxic 2 and Toxic 1</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>6. Do you need to check for overdispersion? If so, how do you do
 it?</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Yes, because this is a binomial variable with more than 1 trial per observation</span></span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># Residual deviance: 117.67  on 107  degrees of freedom</span></span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># -&gt; negligible overdispersion</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>7. Do you need to perform model selection? What is the final
 model?</p>
-<p> </p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># we don&#39;t need to perform model selection here: given that the assay is</span></span>
+<p>&#xA0;</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># we don&apos;t need to perform model selection here: given that the assay is</span></span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># to compare the effect of different chemicals, the interaction alone is the</span></span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># focus of the experiment. If it is not significant, we would have our answer</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># and the simplified model wouldn&#39;t have much use.</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># and the simplified model wouldn&apos;t have much use.</span></span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="fu">drop1</span>(M1, <span class="at">test=</span> <span class="st">&quot;Chi&quot;</span>)</span>
 <span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
@@ -692,13 +691,13 @@ model?</p>
 <span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">## &lt;none&gt;                    117.67 231.43                     </span></span>
 <span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## Concentration:fToxic  3   145.86 253.62 28.189 3.315e-06 ***</span></span>
 <span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a></span>
 <span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co"># interaction is significant: we can reject the null hypothesis that there is</span></span>
 <span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co"># no difference between  chemicals.</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>8. Perform model validation: are you satisfied with the model?</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">vif</span>(M1)</span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="do">##                          GVIF Df GVIF^(1/(2*Df))</span></span>
@@ -733,24 +732,24 @@ model?</p>
 <span id="cb16-32"><a href="#cb16-32" tabindex="-1"></a><span class="co"># because when predicted values are small (near p=0), the variance of the binomial distribution is very</span></span>
 <span id="cb16-33"><a href="#cb16-33" tabindex="-1"></a><span class="co"># small. Pearson residuals being the raw residuals (difference between observed and predicted) divided</span></span>
 <span id="cb16-34"><a href="#cb16-34" tabindex="-1"></a><span class="co"># by the sqrt of the variance (a very small value), the Pearson residuals can thus be very large even</span></span>
-<span id="cb16-35"><a href="#cb16-35" tabindex="-1"></a><span class="co"># if the raw residual isn&#39;t.</span></span>
+<span id="cb16-35"><a href="#cb16-35" tabindex="-1"></a><span class="co"># if the raw residual isn&apos;t.</span></span>
 <span id="cb16-36"><a href="#cb16-36" tabindex="-1"></a></span>
 <span id="cb16-37"><a href="#cb16-37" tabindex="-1"></a><span class="co">#Independence</span></span>
 <span id="cb16-38"><a href="#cb16-38" tabindex="-1"></a>E1<span class="ot">&lt;-</span> <span class="fu">resid</span>(M1, <span class="at">type=</span> <span class="st">&quot;pearson&quot;</span>)</span>
 <span id="cb16-39"><a href="#cb16-39" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span> <span class="fu">jitter</span>(Mites<span class="sc">$</span>Concentration), <span class="at">y=</span> <span class="fu">jitter</span>(E1), </span>
 <span id="cb16-40"><a href="#cb16-40" tabindex="-1"></a>        <span class="at">xlab=</span> <span class="st">&quot;Concentration&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Pearson residuals&quot;</span>)</span>
 <span id="cb16-41"><a href="#cb16-41" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="dv">0</span>, <span class="at">col=</span> <span class="fu">grey</span>(<span class="fl">0.5</span>), <span class="at">lty=</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q8-1.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q8-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a></span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># Some trends in the residuals against concentration, suggesting that a straight</span></span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># line on the logit scale is not a perfect fit for these data. The model remains</span></span>
 <span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co"># good enough for its purpose of evidencing differences in the toxicity between</span></span>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co"># chemicals</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>9. Obtain the fitted values from the model on the scale of the
 response, and plot to aid model interpretation. How do you interpret the
 results?</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>MyData1<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>MyData2<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;2&quot;</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>MyData3<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;3&quot;</span>)</span>
@@ -773,7 +772,7 @@ results?</p>
 <span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>            <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>), </span>
 <span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>            <span class="at">lty=</span> <span class="dv">1</span>, </span>
 <span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>            <span class="at">col=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q9-1.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q9-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a></span>
 <span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># All chemicals have a significant negative effect on the proportion of mites surviving, as their</span></span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># concentration increases (to ascertain this you could relevel in hindsight the least powerful chemical</span></span>
@@ -801,7 +800,7 @@ results?</p>
 <span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef2  -7.6592     2.1524  -3.558 0.000373 ***</span></span>
 <span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="do">## Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** </span></span>
 <span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb19-30"><a href="#cb19-30" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
 <span id="cb19-31"><a href="#cb19-31" tabindex="-1"></a><span class="do">## </span></span>
@@ -820,11 +819,11 @@ results?</p>
 <span id="cb19-44"><a href="#cb19-44" tabindex="-1"></a><span class="co"># Concentration:fToxic_4AsRef3  -3.3826     1.1189  -3.023 0.002502 ** </span></span>
 <span id="cb19-45"><a href="#cb19-45" tabindex="-1"></a><span class="co"># these coefficients and their p-values show that only the dose-effect relationships of Toxics 2 and 3</span></span>
 <span id="cb19-46"><a href="#cb19-46" tabindex="-1"></a><span class="co"># are significantly different from the dose-effect relationship of Toxic 4</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>10. <strong>Optional</strong> Include the 95 % CI on the plot above.
 You will need to obtain the fitted values and SE on the scale of the
 link function, calculate the CI and then back-transform.</p>
-<p> </p>
+<p>&#xA0;</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Sketch model fit with 95% confidence bands for Toxic 1</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>MyData1<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>MyData2<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Concentration=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">2.16</span>, <span class="at">length=</span> <span class="dv">50</span>), <span class="at">fToxic=</span> <span class="st">&quot;2&quot;</span>)</span>
@@ -847,18 +846,18 @@ link function, calculate the CI and then back-transform.</p>
 <span id="cb20-20"><a href="#cb20-20" tabindex="-1"></a><span class="fu">lines</span>(MyData1<span class="sc">$</span>Concentration, G1.UP, <span class="at">col=</span> <span class="dv">1</span>, <span class="at">lty=</span> <span class="dv">2</span>)</span>
 <span id="cb20-21"><a href="#cb20-21" tabindex="-1"></a><span class="fu">lines</span>(MyData1<span class="sc">$</span>Concentration, G1.LO, <span class="at">col=</span> <span class="dv">1</span>, <span class="at">lty=</span> <span class="dv">2</span>)</span>
 <span id="cb20-22"><a href="#cb20-22" tabindex="-1"></a></span>
-<span id="cb20-23"><a href="#cb20-23" tabindex="-1"></a><span class="co"># repeat the example above for all &#39;Toxic&#39; levels (gets a bit busy on the graph)</span></span>
+<span id="cb20-23"><a href="#cb20-23" tabindex="-1"></a><span class="co"># repeat the example above for all &apos;Toxic&apos; levels (gets a bit busy on the graph)</span></span>
 <span id="cb20-24"><a href="#cb20-24" tabindex="-1"></a></span>
 <span id="cb20-25"><a href="#cb20-25" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, </span>
 <span id="cb20-26"><a href="#cb20-26" tabindex="-1"></a>            <span class="at">legend=</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>), </span>
 <span id="cb20-27"><a href="#cb20-27" tabindex="-1"></a>            <span class="at">lty=</span> <span class="dv">1</span>, </span>
 <span id="cb20-28"><a href="#cb20-28" tabindex="-1"></a>            <span class="at">col=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q10-1.png" width="672" /></p>
+<p><img src="GLM_3_BinomialProportions_exercise_solutions_files/figure-html/Q10-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a></span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co"># Note how the confidence intervals are and should be asymmetrical on the response scale</span></span>
 <span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co"># (they are symmetrical on the link scale), and the logit link effectively</span></span>
 <span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># prevents them from going below 0 or above 1</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>End of the Binomial (Proportions) GLM - mites survival</p>
 </div>
 
@@ -902,15 +901,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>

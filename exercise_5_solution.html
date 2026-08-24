@@ -4,19 +4,19 @@
 
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 
 
 
 
 <title>Exercises</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet">
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,8 +31,8 @@
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type = "text/css">
+<style type="text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 
 
-</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -476,13 +476,13 @@ $(document).ready(function () {
 </div>
 
 
-<p> </p>
+<p>&#xA0;</p>
 <div id="exercise-5-basic-programming-in-r" class="section level2">
 <h2>Exercise 5: Basic programming in R</h2>
-<p> </p>
+<p>&#xA0;</p>
 <p>Read <a href="https://intro2r.com/prog_r.html">Chapter 7</a> to help
 you complete the questions in this exercise.</p>
-<p> </p>
+<p>&#xA0;</p>
 <p>1. Create a function to calculate the area of a circle. Test the
 function by finding the area of a circle with a diameter of 3.4 cm. Can
 you use it on a vector of data?</p>
@@ -507,11 +507,11 @@ you use it on a vector of data?</p>
 <span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="fu">circle.area</span>(cir.diam)</span>
 <span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="co"># [1]    0.00000   78.53982  314.15927  706.85835 1256.63706 1963.49541</span></span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>2. Write a function to convert farenheit to centegrade (oC = (oF -
 32) x 5/9). Get your function to print out your result in the following
-format: “Farenheit : <em>value of oF</em> is equivalent to <em>value
-oC</em> centigrade.”</p>
+format: &#x201C;Farenheit : <em>value of oF</em> is equivalent to <em>value
+oC</em> centigrade.&#x201D;</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>far.cent <span class="ot">&lt;-</span> <span class="cf">function</span>(a) {</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    val <span class="ot">&lt;-</span> (a <span class="sc">-</span> <span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Fahrenheit: &quot;</span>, <span class="fu">round</span>(a, <span class="at">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oF&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>), <span class="at">quote =</span> <span class="cn">FALSE</span>)  <span class="co"># round 3dp</span></span>
@@ -525,7 +525,7 @@ oC</em> centigrade.”</p>
 <span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Fahrenheit: &quot;</span>, <span class="fu">round</span>(a, <span class="at">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oF&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)  <span class="co"># use cat function</span></span>
 <span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Centigrade: &quot;</span>, <span class="fu">round</span>(val, <span class="at">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oC&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>}</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>3. Create a vector of normally distributed data, of length 100, mean
 35 and standard deviation of 15. Write a function to calculate the mean,
 median, and range of the vector, print these values out with appropriate
@@ -551,9 +551,9 @@ the values and add a density curve.</p>
 <span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co"># use the function</span></span>
 <span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="fu">summary.fun</span>(vals)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>4. Write a function to calculate the median value of a vector of
-numbers (yes I know there’s a <code>median()</code> function already but
+numbers (yes I know there&#x2019;s a <code>median()</code> function already but
 this is fun!). Be careful with vectors of an even sample size, as you
 will have to take the average of the two central numbers (hint: use
 modulo %%2 to determine whether the vector is an odd or an even size).
@@ -578,15 +578,14 @@ Test your function on vectors with both odd and even sample sizes.</p>
 <span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a></span>
 <span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co"># R median function</span></span>
 <span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="fu">median</span>(mydat)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>5. You are a population ecologist for the day and wish to investigate
-the properties of the <a
-href="https://en.wikipedia.org/wiki/Ricker_model">Ricker model</a>. The
+the properties of the <a href="https://en.wikipedia.org/wiki/Ricker_model">Ricker model</a>. The
 Ricker model is defined as:</p>
-<p> </p>
-<p><span class="math display">\[ N_{t+1} = N_{t} exp\left[r\left(1-
-\frac{N_{t}}{K} \right) \right] \]</span></p>
-<p> </p>
+<p>&#xA0;</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>N</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>N</mi><mi>t</mi></msub><mi>e</mi><mi>x</mi><mi>p</mi><mrow><mo fence="true">[</mo><mi>r</mi><mrow><mo fence="true">(</mo><mn>1</mn><mo>&#x2212;</mo><mfrac><msub><mi>N</mi><mi>t</mi></msub><mi>K</mi></mfrac><mo fence="true">)</mo></mrow><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">N_{t+1} = N_{t} exp\left[r\left(1-
+\frac{N_{t}}{K} \right) \right]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></p>
+<p>&#xA0;</p>
 <p>5. (cont) Where <em>N<sub>t</sub></em> is the population size at time
 <em>t</em>, <em>r</em> is the population growth rate and <em>K</em> is
 the carrying capacity. Write a function to simulate this model so you
@@ -613,7 +612,7 @@ for and <em>K</em> which we will initially set to 100 by default.</p>
 <span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a></span>
 <span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co"># To run play around with the different parameters, especially r</span></span>
 <span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="fu">Ricker.model</span>(<span class="at">nzero =</span> <span class="fl">0.1</span>, <span class="at">r =</span> <span class="dv">1</span>, <span class="at">time =</span> <span class="dv">100</span>)</span></code></pre></div>
-<p> </p>
+<p>&#xA0;</p>
 <p>End of Exercise 6</p>
 </div>
 
@@ -657,15 +656,6 @@ $(document).ready(function () {
 </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 </body>
 </html>
