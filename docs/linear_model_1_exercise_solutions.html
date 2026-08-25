@@ -561,12 +561,75 @@ take you through it.</p>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co"># reject this null hypothesis (i.e. the slope is different</span></span>
 <span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co"># from 0)</span></span></code></pre></div>
 <p>&#xA0;</p>
+<div id="pval_note" class="section level3">
+<h3>A note on P values and confidence intervals</h3>
+<p>&#xA0;</p>
+<p>Before you go on, a short word about how we will report the results
+of our models for the rest of the course, because it differs a little
+from what you will most often see in print.</p>
+<p>Throughout these exercises you will see P values, and you will see
+them everywhere in the published literature, so it&#x2019;s important that you
+can read them. A P value answers one rather narrow question, and it&#x2019;s
+worth being precise about what that question is.</p>
+<p>Imagine that forest patch area had no effect whatsoever on bird
+abundance, and that we then repeated this whole study over and over
+again, each time going out and surveying a fresh sample of 67 patches.
+Purely through the luck of which patches we happened to land on, some of
+those studies would give us a slope close to zero and others would give
+us a surprisingly steep one. The P value is the proportion of those
+imaginary repeat studies that would produce a slope at least as far from
+zero as the one we actually got. (Notice something rather odd about
+that. The P value doesn&#x2019;t depend only on the slope we actually measured,
+it also counts every slope <em>more</em> extreme than ours, results
+which never happened and which we never saw. That is a genuine and
+long-standing criticism of P values, not a quirk of the way I&#x2019;ve
+explained it here.)</p>
+<p>So a small P value is telling you that your data would be an unusual
+thing to see if there really were no effect. It does not tell you the
+probability that there is no effect, and it certainly doesn&#x2019;t tell you
+how big an effect is.</p>
+<p>The 0.05 threshold is a convention, not a fact about nature. A result
+at P = 0.049 and a result at P = 0.051 are practically identical, and
+treating them as two different kinds of finding is a mistake that you
+will nevertheless see made regularly in print.</p>
+<p>Two consequences that we will hold to throughout this course:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Lead with the estimate and its confidence interval, not
+with the test.</strong> The interval tells you the size of the effect
+and how precisely you have measured it, which is what a reader actually
+needs to know.</p></li>
+<li><p><strong>A large P value never means &#x2018;no difference&#x2019;.</strong> It
+means that you have not detected one, which might be because there is no
+difference, or because your study is too small or too noisy to see it.
+Look at the confidence interval: if it stretches from &#x2018;trivial&#x2019; to
+&#x2018;enormous&#x2019;, then the honest conclusion is that you can&#x2019;t tell.</p></li>
+</ol>
+<p>None of this means that hypothesis tests are useless, or that you
+should stop using them. You will meet the threshold based style
+constantly when reading papers, so learn to read it fluently, and get
+into the habit of translating it into estimates and intervals in your
+own head as you go. (if you want to read more about P values and how to
+misinterpret them see <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4877414/">here</a>)</p>
+<p>&#xA0;</p>
 <p>5. Now display the table of parameter (coefficient) estimates using
 the <code>summary()</code> function on your model object. Again, make
 sure you understand the different components of this output and be sure
 to ask if in doubt. What are the estimates of the intercept and slope?
 Write down the word equation of this linear model including your
 parameter estimates (hint: think y = a + bx).</p>
+<p>Your estimates of the intercept and slope are just that, estimates.
+They come from a single sample of 67 forest patches and a different
+sample of patches would have given you slightly different values. To get
+a handle on how precisely each parameter has been estimated, use the
+<code>confint()</code> function on your model object to obtain the 95%
+confidence intervals for both the intercept and the slope. Now interpret
+the interval for the slope <em>in birds</em>: what range of values for
+the change in bird abundance per 1 unit increase in <code>LOGAREA</code>
+are these data reasonably consistent with? Keep this on the scale of the
+transformation, which is the scale the model was fitted on (a 1 unit
+increase in <code>LOGAREA</code> is a tenfold increase in patch area on
+the original scale, but we will come back to the original scale in
+Question 13).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">summary</span>(loyn_lm)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">## Call:</span></span>
@@ -591,11 +654,38 @@ parameter estimates (hint: think y = a + bx).</p>
 <span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co"># the estimate of the slope = 9.78</span></span>
 <span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a></span>
 <span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co"># word equation</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co"># ABUND = 10.40 + 9.78 * LOGAREA</span></span></code></pre></div>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co"># ABUND = 10.40 + 9.78 * LOGAREA</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co"># the estimates on their own tell you nothing about how precisely they have</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co"># been measured, so let&apos;s also get their 95% confidence intervals</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="fu">confint</span>(loyn_lm)</span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">##                2.5 %   97.5 %</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="do">## (Intercept) 8.051470 12.76168</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="do">## LOGAREA     7.755675 11.81096</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co"># the 95% confidence interval for the slope is 7.76 to 11.81. In words, for</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co"># every 1 unit increase in LOGAREA these data are consistent with an increase</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co"># of somewhere between about 7.8 and 11.8 birds (and a 1 unit increase in</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co"># LOGAREA is a tenfold increase in patch area on the original scale). Our best</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co"># estimate is 9.78 birds, but it&apos;s the interval that tells us how precisely</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co"># we&apos;ve measured it.</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co"># notice that both ends of this interval describe a substantial effect (bird</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co"># abundance in these data ranges from 1.5 to 39.6 birds), so our ecological</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co"># conclusion, that forest patch area matters and matters a lot, holds right</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co"># across the whole interval. This is a well resolved result. You&apos;ll meet a</span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co"># much less well resolved one in the linear model 3 exercise.</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co"># the 95% confidence interval for the intercept is 8.05 to 12.76. The intercept</span></span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co"># is the predicted bird abundance when LOGAREA = 0, which is a patch of 1</span></span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co"># hectare (because log10(1) = 0), so these data are consistent with somewhere</span></span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co"># between about 8 and 13 birds in a one hectare patch.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>6. What is the null hypothesis associated with the intercept? What is
 the null hypothesis associated with the slope? Do you reject or fail to
-reject these hypotheses?</p>
+reject these hypotheses? Finally, have a go at stating these same two
+findings again, but this time without using the word &#x2018;significant&#x2019;
+anywhere. Which of your two versions tells a reader more?</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># the null hypothesis for the intercept is that the intercept = 0</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># the p value is very small (certainly less than the (not so magic) 0.05)</span></span>
@@ -606,7 +696,21 @@ reject these hypotheses?</p>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># the p value is very small (3.81e-14)</span></span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># therefore we reject this null hypothesis and conclude that the slope</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># is different from zero (i.e. there is a significant relationship between</span></span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># LOGAREA and ABUND).</span></span></code></pre></div>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># LOGAREA and ABUND).</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># and now the same two findings without the word &apos;significant&apos;</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># Bird abundance increases with forest patch area. We estimate an increase of</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co"># 9.78 birds (95% CI: 7.76 to 11.81) for every 1 unit increase in LOGAREA</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># (i.e. for every tenfold increase in patch area).</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># In a one hectare patch we estimate a bird abundance of 10.41 birds</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># (95% CI: 8.05 to 12.76).</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co"># the second version is a bit longer, but it tells a reader by how much bird</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co"># abundance changes, in what units, and how precisely we know it. The word</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co"># &apos;significant&apos; only tells them that we were able to detect the effect at all.</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co"># It says nothing whatsoever about whether the effect is large or whether it</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co"># is ecologically important.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>7. Looking again at the output from the <code>summary()</code>
 function how much variation in bird abundance is explained by your log
@@ -632,7 +736,14 @@ transformed <code>AREA</code> variable?</p>
 <span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="do">## F-statistic: 92.85 on 1 and 65 DF,  p-value: 3.81e-14</span></span>
 <span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a></span>
 <span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co"># The multiple R-squared value is 0.588 and therefore 58.8% of</span></span>
-<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co"># the variation in ABUND is explained by LOGAREA</span></span></code></pre></div>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co"># the variation in ABUND is explained by LOGAREA</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co"># One word of caution about R-squared. It measures how well the model fits</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co"># these data and nothing more. A high R-squared doesn&apos;t mean that the</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co"># relationship is important, that LOGAREA causes the change in ABUND, or that</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># the model would predict well for a new set of forest patches. Equally, a low</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># R-squared doesn&apos;t mean that an effect is unimportant, as plenty of real and</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co"># useful effects sit inside very noisy systems.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>8. Now onto a really important part of the model fitting process.
 Let&#x2019;s check the assumptions of your linear model by creating plots of
@@ -749,20 +860,22 @@ you have created the plot).</p>
 <span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q11-2.png" alt width="672"></p>
 <p>&#xA0;</p>
-<p>12. OK, this is an optional question so feel free to skip if you&#x2019;ve
-had enough! (you can find the R code for this question in the exercise
-solutions if you want to refer to it at a later date). Let&#x2019;s recreate
-the plot you made in Question 11, but this time we&#x2019;ll add the 95%
-confidence intervals in addition to the fitted values. Remember, you
-will need to use the <code>predict()</code> function again but this time
-include the<code>se.fit = TRUE</code> argument (store these new values
-in a new object called <code>pred_vals_se</code>). When you use the
-<code>se.fit = TRUE</code> argument with the <code>predict()</code>
-function the returned object will have a slightly different structure
-compared to when you used it before. Use the <code>str()</code> function
-on the <code>pred.vals.se</code> to take a look at the structure. See if
-you can figure out how to access the fitted values and the standard
-errors. Once you&#x2019;ve got your head around this you can now use the
+<p>12. Now let&#x2019;s recreate the plot you made in Question 11, but this
+time we&#x2019;ll add the 95% confidence intervals in addition to the fitted
+values. This question is worth spending some time on: the confidence
+band around the fitted line is simply the visual counterpart of the
+confidence intervals you calculated for the parameters back in Question
+5, and it shows you at a glance how precisely this relationship has been
+estimated. Remember, you will need to use the <code>predict()</code>
+function again but this time include the<code>se.fit = TRUE</code>
+argument (store these new values in a new object called
+<code>pred_vals_se</code>). When you use the <code>se.fit = TRUE</code>
+argument with the <code>predict()</code> function the returned object
+will have a slightly different structure compared to when you used it
+before. Use the <code>str()</code> function on the
+<code>pred.vals.se</code> to take a look at the structure. See if you
+can figure out how to access the fitted values and the standard errors.
+Once you&#x2019;ve got your head around this you can now use the
 <code>lines()</code> function three times to add the fitted values (as
 before) and also the upper and lower 95% confidence intervals. Don&#x2019;t
 forget, if you want the 95% confidence intervals then you will need to
@@ -818,9 +931,11 @@ module).</p>
 <span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q12-2.png" alt width="672"></p>
 <p>&#xA0;</p>
-<p>13. And another optional question (honestly, it&#x2019;s optional!). This
-time plot the relationship between bird abundance (<code>ABUND</code>)
-and the original untransformed <code>AREA</code> variable. Now
+<p>13. This one is optional, so feel free to skip it if you&#x2019;ve had
+enough (you can always find the R code for this question in the exercise
+solutions if you want to refer back to it at a later date). This time
+plot the relationship between bird abundance (<code>ABUND</code>) and
+the original untransformed <code>AREA</code> variable. Now
 back-transform your fitted values (remember you got these with the
 <code>predict()</code> function) to the original scale and add these to
 the plot as a line. Hint 1: you don&#x2019;t need to reuse the
@@ -857,6 +972,7 @@ your R script.</p>
 <p>&#xA0;</p>
 <p>End of the linear model with single continuous explanatory variable
 exercise</p>
+</div>
 </div>
 
 

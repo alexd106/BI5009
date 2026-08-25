@@ -426,6 +426,19 @@ do you reject or fail to reject this hypothesis?</p>
 <p>Repeat this interpretation for the <code>FGRAZE3</code>,
 <code>FGRAZE4</code> and <code>FGRAZE5</code> parameters. Summarise this
 as a comment in your R script.</p>
+<p>Finally, a reminder of the two things we agreed in the <a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">note
+on P values and confidence intervals</a> in the previous exercise: lead
+with the estimate and its interval rather than with the test, and never
+read a large P value as evidence that two things are the same. Use the
+<code>confint()</code> function on your model object to obtain the 95%
+confidence intervals for the intercept and for each of the four
+contrasts. Now go back over what you&#x2019;ve just written and report each
+contrast again as an estimated difference in bird abundance
+<em>with</em> its confidence interval, rather than as a hypothesis that
+you either reject or fail to reject. Which of the four differences has
+been estimated most precisely, and which least precisely? Can you see
+why? (hint: how many forest patches are there in each grazing level? The
+<code>table()</code> function will tell you).</p>
 <p>&#xA0;</p>
 <p>8. Now that you have interpreted all the contrasts with
 <code>FGRAZE</code> level 1 as the intercept, set the intercept to
@@ -434,7 +447,9 @@ refit the model, produce the new table of parameter estimates using the
 <code>summary()</code> function again and interpret.</p>
 <p>Repeat this for <code>FGRAZE</code> levels 3, 4 and 5. Can you
 summarise which levels of <code>FGRAZE</code> are different from each
-other?</p>
+other? Use <code>confint()</code> on each of your refitted models as
+well as <code>summary()</code>, and as you go, keep an eye on what
+releveling does and does not change.</p>
 <p>&#xA0;</p>
 <p>9. Staying with the summary table of parameter estimates, how much of
 the variation in bird abundance does the explanatory variable

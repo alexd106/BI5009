@@ -45,6 +45,28 @@ summary(loyn_lm)
 # word equation
 # ABUND = 10.40 + 9.78 * LOGAREA
 
+# the estimates on their own tell you nothing about how precisely they have
+# been measured, so let's also get their 95% confidence intervals
+confint(loyn_lm)
+
+# the 95% confidence interval for the slope is 7.76 to 11.81. In words, for
+# every 1 unit increase in LOGAREA these data are consistent with an increase
+# of somewhere between about 7.8 and 11.8 birds (and a 1 unit increase in
+# LOGAREA is a tenfold increase in patch area on the original scale). Our best
+# estimate is 9.78 birds, but it's the interval that tells us how precisely
+# we've measured it.
+
+# notice that both ends of this interval describe a substantial effect (bird
+# abundance in these data ranges from 1.5 to 39.6 birds), so our ecological
+# conclusion, that forest patch area matters and matters a lot, holds right
+# across the whole interval. This is a well resolved result. You'll meet a
+# much less well resolved one in the linear model 3 exercise.
+
+# the 95% confidence interval for the intercept is 8.05 to 12.76. The intercept
+# is the predicted bird abundance when LOGAREA = 0, which is a patch of 1
+# hectare (because log10(1) = 0), so these data are consistent with somewhere
+# between about 8 and 13 birds in a one hectare patch.
+
 
 ## ----Q6, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------
 
@@ -59,12 +81,33 @@ summary(loyn_lm)
 # is different from zero (i.e. there is a significant relationship between
 # LOGAREA and ABUND).
 
+# and now the same two findings without the word 'significant'
+
+# Bird abundance increases with forest patch area. We estimate an increase of
+# 9.78 birds (95% CI: 7.76 to 11.81) for every 1 unit increase in LOGAREA
+# (i.e. for every tenfold increase in patch area).
+# In a one hectare patch we estimate a bird abundance of 10.41 birds
+# (95% CI: 8.05 to 12.76).
+
+# the second version is a bit longer, but it tells a reader by how much bird
+# abundance changes, in what units, and how precisely we know it. The word
+# 'significant' only tells them that we were able to detect the effect at all.
+# It says nothing whatsoever about whether the effect is large or whether it
+# is ecologically important.
+
 
 ## ----Q7, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------
 summary(loyn_lm)
 
 # The multiple R-squared value is 0.588 and therefore 58.8% of
 # the variation in ABUND is explained by LOGAREA
+
+# One word of caution about R-squared. It measures how well the model fits
+# these data and nothing more. A high R-squared doesn't mean that the
+# relationship is important, that LOGAREA causes the change in ABUND, or that
+# the model would predict well for a new set of forest patches. Equally, a low
+# R-squared doesn't mean that an effect is unimportant, as plenty of real and
+# useful effects sit inside very noisy systems.
 
 
 ## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------

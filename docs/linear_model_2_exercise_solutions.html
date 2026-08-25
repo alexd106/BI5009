@@ -588,6 +588,19 @@ do you reject or fail to reject this hypothesis?</p>
 <p>Repeat this interpretation for the <code>FGRAZE3</code>,
 <code>FGRAZE4</code> and <code>FGRAZE5</code> parameters. Summarise this
 as a comment in your R script.</p>
+<p>Finally, a reminder of the two things we agreed in the <a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">note
+on P values and confidence intervals</a> in the previous exercise: lead
+with the estimate and its interval rather than with the test, and never
+read a large P value as evidence that two things are the same. Use the
+<code>confint()</code> function on your model object to obtain the 95%
+confidence intervals for the intercept and for each of the four
+contrasts. Now go back over what you&#x2019;ve just written and report each
+contrast again as an estimated difference in bird abundance
+<em>with</em> its confidence interval, rather than as a hypothesis that
+you either reject or fail to reject. Which of the four differences has
+been estimated most precisely, and which least precisely? Can you see
+why? (hint: how many forest patches are there in each grazing level? The
+<code>table()</code> function will tell you).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">summary</span>(birds_lm)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="do">## Call:</span></span>
@@ -615,27 +628,54 @@ as a comment in your R script.</p>
 <span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co"># the null hypothesis for the intercept is that the intercept = 0.</span></span>
 <span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co"># As the p value (p &lt; 2e-16) is very small we reject this null hypothesis and conclude that the</span></span>
 <span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># intercept is significantly different from 0. However, from a biological perspective this</span></span>
-<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># is not a particularly informative hypothesis to test.</span></span>
-<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co"># the remaining estimates are differences (contrasts) between each level and the </span></span>
-<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co"># baseline. For example the FGRAZE2 estimate is - 9.2 and therefore there are 9.2 fewer </span></span>
-<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co"># birds on average in graze level 2 compared to graze level 1. This difference is  </span></span>
-<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co"># significantly different from zero (p = 0.004). </span></span>
-<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a></span>
-<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="co"># The difference between graze level 3 (FGRAZE3) and graze level 1 (intercept) is </span></span>
-<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="co"># -8.45 (8.45 fewer birds in graze 3 compared to graze 1). This difference is significantly </span></span>
-<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="co"># different from 0 (p = 0.003) and therefore the mean abundance of birds in graze level 1 is</span></span>
-<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="co"># significantly different from graze level 3.</span></span>
-<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a></span>
-<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="co"># The difference between graze level 4 (FGRAZE4) and graze level 1 (intercept) is </span></span>
-<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co"># -9.66 (9.66 fewer birds in graze 4 compared to graze 1). This difference is significantly </span></span>
-<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co"># different from 0 (p = 0.002) and therefore the mean abundance of birds in graze level 1 is</span></span>
-<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="co"># significantly different from graze level 4.</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># is not a particularly informative hypothesis to test. Nobody seriously entertained the idea</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co"># that lightly grazed patches contain no birds at all, so rejecting it tells us nothing we</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co"># didn&apos;t already know.</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co"># now for the confidence intervals</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="fu">confint</span>(birds_lm)</span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="do">##                 2.5 %     97.5 %</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="do">## (Intercept)  24.49422  32.751934</span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="do">## FGRAZE2     -15.30362  -3.106170</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="do">## FGRAZE3     -13.94324  -2.973506</span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="do">## FGRAZE4     -15.50062  -3.822453</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="do">## FGRAZE5     -28.16985 -16.491684</span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co"># the far more useful thing to take from the intercept is the estimate itself together with</span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co"># its interval: mean bird abundance in graze level 1 is estimated at 28.62 birds</span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="co"># (95% CI: 24.49 to 32.75 birds).</span></span>
 <span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a></span>
-<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co"># The difference between graze level 5 (FGRAZE5) and graze level 1 (intercept) is </span></span>
-<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co"># -22.33 (22.33 fewer birds in graze 5 compared to graze 1). This difference is significantly </span></span>
-<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co"># different from 0 (p = 1.64e-10) and therefore the mean abundance of birds in graze level 1 is</span></span>
-<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co"># significantly different from graze level 5.</span></span></code></pre></div>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co"># the remaining estimates are differences (contrasts) between each level and the</span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co"># baseline. Let&apos;s report each one as an estimated difference with an interval, and leave</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co"># the P value until the end of the sentence where it belongs.</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co"># FGRAZE2: we estimate 9.20 fewer birds on average in graze level 2 than in graze level 1</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co"># (95% CI: 15.30 fewer to 3.11 fewer birds, p = 0.004). The whole interval lies below zero,</span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="co"># so we have clear evidence of a difference here. But notice how wide it is. A shortfall of</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co"># 3 birds and a shortfall of 15 birds would mean rather different things ecologically, and</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co"># with these data we can&apos;t distinguish between them.</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co"># FGRAZE3: we estimate 8.46 fewer birds in graze level 3 than in graze level 1</span></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="co"># (95% CI: 13.94 fewer to 2.97 fewer birds, p = 0.003).</span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="co"># FGRAZE4: we estimate 9.66 fewer birds in graze level 4 than in graze level 1</span></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co"># (95% CI: 15.50 fewer to 3.82 fewer birds, p = 0.002).</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="co"># FGRAZE5: we estimate 22.33 fewer birds in graze level 5 than in graze level 1</span></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="co"># (95% CI: 28.17 fewer to 16.49 fewer birds, p = 1.64e-10). This is far and away the</span></span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="co"># largest of the four differences, and the entire interval sits well below the intervals</span></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a><span class="co"># for the other three contrasts.</span></span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="co"># which contrast is best estimated? Compare the widths of the intervals: FGRAZE3 spans</span></span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="co"># 10.97 birds, FGRAZE4 and FGRAZE5 both span 11.68 birds, and FGRAZE2 spans 12.20 birds.</span></span>
+<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a><span class="co"># So FGRAZE3 is the most precisely estimated and FGRAZE2 the least. Now look at the group</span></span>
+<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a><span class="co"># sizes with table(loyn$FGRAZE): graze level 3 has 17 patches, levels 4 and 5 have 13 each,</span></span>
+<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a><span class="co"># and level 2 has only 11. More data means a narrower interval. This is worth remembering</span></span>
+<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a><span class="co"># when you design your own sampling.</span></span>
+<span id="cb7-72"><a href="#cb7-72" tabindex="-1"></a><span class="fu">table</span>(loyn<span class="sc">$</span>FGRAZE)</span>
+<span id="cb7-73"><a href="#cb7-73" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-74"><a href="#cb7-74" tabindex="-1"></a><span class="do">##  1  2  3  4  5 </span></span>
+<span id="cb7-75"><a href="#cb7-75" tabindex="-1"></a><span class="do">## 13 11 17 13 13</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>8. Now that you have interpreted all the contrasts with
 <code>FGRAZE</code> level 1 as the intercept, set the intercept to
@@ -644,7 +684,9 @@ refit the model, produce the new table of parameter estimates using the
 <code>summary()</code> function again and interpret.</p>
 <p>Repeat this for <code>FGRAZE</code> levels 3, 4 and 5. Can you
 summarise which levels of <code>FGRAZE</code> are different from each
-other?</p>
+other? Use <code>confint()</code> on each of your refitted models as
+well as <code>summary()</code>, and as you go, keep an eye on what
+releveling does and does not change.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Set FGRAZE level 2 to be the intercept</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
@@ -728,7 +770,14 @@ other?</p>
 <span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
 <span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
 <span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a></span>
-<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 4, we can now compare between levels &apos;4 and 5&apos;</span></span></code></pre></div>
+<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 4, we can now compare between levels &apos;4 and 5&apos;</span></span>
+<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a></span>
+<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="co"># One important thing to notice as you work through these. Releveling doesn&apos;t change the</span></span>
+<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="co"># model at all: the fitted values, the residuals, the R^2 and the F test are all identical</span></span>
+<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="co"># every time. All that changes is which set of comparisons R chooses to show you. The</span></span>
+<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="co"># estimated difference between graze levels 2 and 3, and the confidence interval around it,</span></span>
+<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="co"># mean exactly the same thing whichever of the two you make the baseline. Only the sign</span></span>
+<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="co"># flips. Run confint() on birds_lm2 and birds_lm3 and check this for yourself.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>9. Staying with the summary table of parameter estimates, how much of
 the variation in bird abundance does the explanatory variable

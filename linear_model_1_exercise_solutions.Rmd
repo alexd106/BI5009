@@ -75,7 +75,33 @@ anova(loyn_lm)
 
 \  
 
+### A note on P values and confidence intervals {#pval_note}
+
+\  
+
+Before you go on, a short word about how we will report the results of our models for the rest of the course, because it differs a little from what you will most often see in print.
+
+Throughout these exercises you will see P values, and you will see them everywhere in the published literature, so it's important that you can read them. A P value answers one rather narrow question, and it's worth being precise about what that question is.
+
+Imagine that forest patch area had no effect whatsoever on bird abundance, and that we then repeated this whole study over and over again, each time going out and surveying a fresh sample of 67 patches. Purely through the luck of which patches we happened to land on, some of those studies would give us a slope close to zero and others would give us a surprisingly steep one. The P value is the proportion of those imaginary repeat studies that would produce a slope at least as far from zero as the one we actually got. (Notice something rather odd about that. The P value doesn't depend only on the slope we actually measured, it also counts every slope *more* extreme than ours, results which never happened and which we never saw. That is a genuine and long-standing criticism of P values, not a quirk of the way I've explained it here.)
+
+So a small P value is telling you that your data would be an unusual thing to see if there really were no effect. It does not tell you the probability that there is no effect, and it certainly doesn't tell you how big an effect is.
+
+The 0.05 threshold is a convention, not a fact about nature. A result at P = 0.049 and a result at P = 0.051 are practically identical, and treating them as two different kinds of finding is a mistake that you will nevertheless see made regularly in print.
+
+Two consequences that we will hold to throughout this course:
+
+1. **Lead with the estimate and its confidence interval, not with the test.** The interval tells you the size of the effect and how precisely you have measured it, which is what a reader actually needs to know.
+
+2. **A large P value never means 'no difference'.** It means that you have not detected one, which might be because there is no difference, or because your study is too small or too noisy to see it. Look at the confidence interval: if it stretches from 'trivial' to 'enormous', then the honest conclusion is that you can't tell.
+
+None of this means that hypothesis tests are useless, or that you should stop using them. You will meet the threshold based style constantly when reading papers, so learn to read it fluently, and get into the habit of translating it into estimates and intervals in your own head as you go. (if you want to read more about P values and how to misinterpret them see [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC4877414/))
+
+\  
+
 5\. Now display the table of parameter (coefficient) estimates using the `summary()` function on your model object. Again, make sure you understand the different components of this output and be sure to ask if in doubt. What are the estimates of the intercept and slope? Write down the word equation of this linear model including your parameter estimates (hint: think y = a + bx).
+
+Your estimates of the intercept and slope are just that, estimates. They come from a single sample of 67 forest patches and a different sample of patches would have given you slightly different values. To get a handle on how precisely each parameter has been estimated, use the `confint()` function on your model object to obtain the 95% confidence intervals for both the intercept and the slope. Now interpret the interval for the slope *in birds*: what range of values for the change in bird abundance per 1 unit increase in `LOGAREA` are these data reasonably consistent with? Keep this on the scale of the transformation, which is the scale the model was fitted on (a 1 unit increase in `LOGAREA` is a tenfold increase in patch area on the original scale, but we will come back to the original scale in Question 13).
 
 ```{r Q5, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 summary(loyn_lm)
@@ -85,11 +111,33 @@ summary(loyn_lm)
 
 # word equation
 # ABUND = 10.40 + 9.78 * LOGAREA
+
+# the estimates on their own tell you nothing about how precisely they have
+# been measured, so let's also get their 95% confidence intervals
+confint(loyn_lm)
+
+# the 95% confidence interval for the slope is 7.76 to 11.81. In words, for
+# every 1 unit increase in LOGAREA these data are consistent with an increase
+# of somewhere between about 7.8 and 11.8 birds (and a 1 unit increase in
+# LOGAREA is a tenfold increase in patch area on the original scale). Our best
+# estimate is 9.78 birds, but it's the interval that tells us how precisely
+# we've measured it.
+
+# notice that both ends of this interval describe a substantial effect (bird
+# abundance in these data ranges from 1.5 to 39.6 birds), so our ecological
+# conclusion, that forest patch area matters and matters a lot, holds right
+# across the whole interval. This is a well resolved result. You'll meet a
+# much less well resolved one in the linear model 3 exercise.
+
+# the 95% confidence interval for the intercept is 8.05 to 12.76. The intercept
+# is the predicted bird abundance when LOGAREA = 0, which is a patch of 1
+# hectare (because log10(1) = 0), so these data are consistent with somewhere
+# between about 8 and 13 birds in a one hectare patch.
 ```
 
 \  
 
-6\. What is the null hypothesis associated with the intercept? What is the null hypothesis associated with the slope? Do you reject or fail to reject these hypotheses?
+6\. What is the null hypothesis associated with the intercept? What is the null hypothesis associated with the slope? Do you reject or fail to reject these hypotheses? Finally, have a go at stating these same two findings again, but this time without using the word 'significant' anywhere. Which of your two versions tells a reader more?
 
 ```{r Q6, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 
@@ -103,6 +151,20 @@ summary(loyn_lm)
 # therefore we reject this null hypothesis and conclude that the slope
 # is different from zero (i.e. there is a significant relationship between
 # LOGAREA and ABUND).
+
+# and now the same two findings without the word 'significant'
+
+# Bird abundance increases with forest patch area. We estimate an increase of
+# 9.78 birds (95% CI: 7.76 to 11.81) for every 1 unit increase in LOGAREA
+# (i.e. for every tenfold increase in patch area).
+# In a one hectare patch we estimate a bird abundance of 10.41 birds
+# (95% CI: 8.05 to 12.76).
+
+# the second version is a bit longer, but it tells a reader by how much bird
+# abundance changes, in what units, and how precisely we know it. The word
+# 'significant' only tells them that we were able to detect the effect at all.
+# It says nothing whatsoever about whether the effect is large or whether it
+# is ecologically important.
 ```
 
 \  
@@ -114,6 +176,13 @@ summary(loyn_lm)
 
 # The multiple R-squared value is 0.588 and therefore 58.8% of
 # the variation in ABUND is explained by LOGAREA
+
+# One word of caution about R-squared. It measures how well the model fits
+# these data and nothing more. A high R-squared doesn't mean that the
+# relationship is important, that LOGAREA causes the change in ABUND, or that
+# the model would predict well for a new set of forest patches. Equally, a low
+# R-squared doesn't mean that an effect is unimportant, as plenty of real and
+# useful effects sit inside very noisy systems.
 ```
 
 \  
@@ -218,7 +287,7 @@ ggplot(mapping = aes(x = LOGAREA, y = ABUND), data = loyn) +
 
 \  
 
-12\. OK, this is an optional question so feel free to skip if you've had enough! (you can find the R code for this question in the exercise solutions if you want to refer to it at a later date). Let's recreate the plot you made in Question 11, but this time we'll add the 95% confidence intervals in addition to the fitted values. Remember, you will need to use the `predict()` function again but this time include the`se.fit = TRUE` argument (store these new values in a new object called `pred_vals_se`). When you use the `se.fit = TRUE` argument with the `predict()` function the returned object will have a slightly different structure compared to when you used it before. Use the `str()` function on the `pred.vals.se` to take a look at the structure. See if you can figure out how to access the fitted values and the standard errors. Once you've got your head around this you can now use the `lines()` function three times to add the fitted values (as before) and also the upper and lower 95% confidence intervals. Don't forget, if you want the 95% confidence intervals then you will need to multiply your standard error values by the critical value of 1.96. If you need a reminder then take a look at the video on confidence intervals on the course MyAberdeen site (in the 'Introductory statistics lectures' folder which you can find in the 'Course Information' learning module).  
+12\. Now let's recreate the plot you made in Question 11, but this time we'll add the 95% confidence intervals in addition to the fitted values. This question is worth spending some time on: the confidence band around the fitted line is simply the visual counterpart of the confidence intervals you calculated for the parameters back in Question 5, and it shows you at a glance how precisely this relationship has been estimated. Remember, you will need to use the `predict()` function again but this time include the`se.fit = TRUE` argument (store these new values in a new object called `pred_vals_se`). When you use the `se.fit = TRUE` argument with the `predict()` function the returned object will have a slightly different structure compared to when you used it before. Use the `str()` function on the `pred.vals.se` to take a look at the structure. See if you can figure out how to access the fitted values and the standard errors. Once you've got your head around this you can now use the `lines()` function three times to add the fitted values (as before) and also the upper and lower 95% confidence intervals. Don't forget, if you want the 95% confidence intervals then you will need to multiply your standard error values by the critical value of 1.96. If you need a reminder then take a look at the video on confidence intervals on the course MyAberdeen site (in the 'Introductory statistics lectures' folder which you can find in the 'Course Information' learning module).  
 
 ```{r Q12, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 pred_vals_se <- predict(loyn_lm, newdata = my_data, se.fit = TRUE) # note the use of the se.fit argument
@@ -262,7 +331,7 @@ ggplot(mapping = aes(x = LOGAREA, y = ABUND), data = loyn) +
 
 \  
 
-13\. And another optional question (honestly, it's optional!). This time plot the relationship between bird abundance (`ABUND`) and the original untransformed `AREA` variable. Now back-transform your fitted values (remember you got these with the `predict()` function) to the original scale and add these to the plot as a line. Hint 1: you don't need to reuse the `predict()` function, you just need to back-transform your `my.data$LOGAREA` values. Hint 2: remember if you used a log~10~ transformation (`log10()`) then you can back-transform using `10^my.data$LOGAREA` and if you used a natural log transformation then use `exp(my.data$LOGAREA)` to back-transform. Comment on the differences between the plot on the transformed (log) scale and the plot on the back-transformed scale in your R script.
+13\. This one is optional, so feel free to skip it if you've had enough (you can always find the R code for this question in the exercise solutions if you want to refer back to it at a later date). This time plot the relationship between bird abundance (`ABUND`) and the original untransformed `AREA` variable. Now back-transform your fitted values (remember you got these with the `predict()` function) to the original scale and add these to the plot as a line. Hint 1: you don't need to reuse the `predict()` function, you just need to back-transform your `my.data$LOGAREA` values. Hint 2: remember if you used a log~10~ transformation (`log10()`) then you can back-transform using `10^my.data$LOGAREA` and if you used a natural log transformation then use `exp(my.data$LOGAREA)` to back-transform. Comment on the differences between the plot on the transformed (log) scale and the plot on the back-transformed scale in your R script.
 
 ```{r Q13, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 # back transformed LOGAREA and 95% confidence intervals

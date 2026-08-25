@@ -50,27 +50,45 @@ summary(birds_lm)
 # the null hypothesis for the intercept is that the intercept = 0.
 # As the p value (p < 2e-16) is very small we reject this null hypothesis and conclude that the
 # intercept is significantly different from 0. However, from a biological perspective this
-# is not a particularly informative hypothesis to test.
+# is not a particularly informative hypothesis to test. Nobody seriously entertained the idea
+# that lightly grazed patches contain no birds at all, so rejecting it tells us nothing we
+# didn't already know.
 
-# the remaining estimates are differences (contrasts) between each level and the 
-# baseline. For example the FGRAZE2 estimate is - 9.2 and therefore there are 9.2 fewer 
-# birds on average in graze level 2 compared to graze level 1. This difference is  
-# significantly different from zero (p = 0.004). 
+# now for the confidence intervals
+confint(birds_lm)
 
-# The difference between graze level 3 (FGRAZE3) and graze level 1 (intercept) is 
-# -8.45 (8.45 fewer birds in graze 3 compared to graze 1). This difference is significantly 
-# different from 0 (p = 0.003) and therefore the mean abundance of birds in graze level 1 is
-# significantly different from graze level 3.
+# the far more useful thing to take from the intercept is the estimate itself together with
+# its interval: mean bird abundance in graze level 1 is estimated at 28.62 birds
+# (95% CI: 24.49 to 32.75 birds).
 
-# The difference between graze level 4 (FGRAZE4) and graze level 1 (intercept) is 
-# -9.66 (9.66 fewer birds in graze 4 compared to graze 1). This difference is significantly 
-# different from 0 (p = 0.002) and therefore the mean abundance of birds in graze level 1 is
-# significantly different from graze level 4.
+# the remaining estimates are differences (contrasts) between each level and the
+# baseline. Let's report each one as an estimated difference with an interval, and leave
+# the P value until the end of the sentence where it belongs.
 
-# The difference between graze level 5 (FGRAZE5) and graze level 1 (intercept) is 
-# -22.33 (22.33 fewer birds in graze 5 compared to graze 1). This difference is significantly 
-# different from 0 (p = 1.64e-10) and therefore the mean abundance of birds in graze level 1 is
-# significantly different from graze level 5.
+# FGRAZE2: we estimate 9.20 fewer birds on average in graze level 2 than in graze level 1
+# (95% CI: 15.30 fewer to 3.11 fewer birds, p = 0.004). The whole interval lies below zero,
+# so we have clear evidence of a difference here. But notice how wide it is. A shortfall of
+# 3 birds and a shortfall of 15 birds would mean rather different things ecologically, and
+# with these data we can't distinguish between them.
+
+# FGRAZE3: we estimate 8.46 fewer birds in graze level 3 than in graze level 1
+# (95% CI: 13.94 fewer to 2.97 fewer birds, p = 0.003).
+
+# FGRAZE4: we estimate 9.66 fewer birds in graze level 4 than in graze level 1
+# (95% CI: 15.50 fewer to 3.82 fewer birds, p = 0.002).
+
+# FGRAZE5: we estimate 22.33 fewer birds in graze level 5 than in graze level 1
+# (95% CI: 28.17 fewer to 16.49 fewer birds, p = 1.64e-10). This is far and away the
+# largest of the four differences, and the entire interval sits well below the intervals
+# for the other three contrasts.
+
+# which contrast is best estimated? Compare the widths of the intervals: FGRAZE3 spans
+# 10.97 birds, FGRAZE4 and FGRAZE5 both span 11.68 birds, and FGRAZE2 spans 12.20 birds.
+# So FGRAZE3 is the most precisely estimated and FGRAZE2 the least. Now look at the group
+# sizes with table(loyn$FGRAZE): graze level 3 has 17 patches, levels 4 and 5 have 13 each,
+# and level 2 has only 11. More data means a narrower interval. This is worth remembering
+# when you design your own sampling.
+table(loyn$FGRAZE)
 
 
 ## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------
@@ -95,6 +113,13 @@ birds_lm4 <- lm(ABUND ~ FGRAZE, data = loyn)
 summary(birds_lm4)
 
 # The intercept is now FGRAZE level 4, we can now compare between levels '4 and 5'
+
+# One important thing to notice as you work through these. Releveling doesn't change the
+# model at all: the fitted values, the residuals, the R^2 and the F test are all identical
+# every time. All that changes is which set of comparisons R chooses to show you. The
+# estimated difference between graze levels 2 and 3, and the confidence interval around it,
+# mean exactly the same thing whichever of the two you make the baseline. Only the sign
+# flips. Run confint() on birds_lm2 and birds_lm3 and check this for yourself.
 
 
 ## ----Q9, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------
