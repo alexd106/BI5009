@@ -52,6 +52,21 @@ M1 <- lm(ABUND ~ LOGDIST + LOGLDIST + YR.ISOL + ALT + LOGAREA + FGRAZE +
 ## ----Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------------------------------
 summary(M1)
 
+# No, not all of the P values are less than 0.05, which is what prompts us to
+# simplify the model over the next few questions.
+
+# As for the question about chance: at a 0.05 threshold you expect about 1 test
+# in every 20 to fall below it even when nothing at all is going on. So in a
+# table of 14 tests you would expect roughly one 'significant' result even if
+# none of these variables mattered in the slightest. Bear that in mind whenever
+# somebody hands you a large table of tests. A single starred coefficient in a
+# table this size is weak evidence on its own, and hunting through a big model
+# for whatever happens to sit below 0.05 is a poor way to do science.
+
+# It's also part of the reason why the selection procedure we are about to use
+# follows a stated rule, applied consistently, rather than picking out whatever
+# happens to look interesting.
+
 
 ## ----Q5, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------------------------------
 # Wait: why can't we use information from the 'summary(M1)' or 'anova(M1)' functions
@@ -142,9 +157,21 @@ drop1(M5, test= "F")
 
 
 ## ----Q11, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------
+# the estimates and their confidence intervals for the final model
+summary(M5)
+confint(M5)
+
+# and remember from the previous exercise that everything here except the
+# intercept and LOGAREA is a DIFFERENCE from graze level 1, not a value for that
+# grazing level. If you want the intercept and slope for a particular grazing
+# level you need to add the relevant contrast onto the baseline.
+
 # Biologically: confirming what we already found out in the previous exercise:
-# There is a significant interaction between the area of the patch and the level 
-# of grazing 
+# the relationship between bird abundance and patch area depends on the level of
+# grazing (interaction F_4,57 = 4.09, p = 0.006). The fitted slopes range from
+# 4.14 birds per 1 unit increase in LOGAREA at graze level 1 up to 17.78 at
+# graze level 4, so the effect of patch area varies roughly fourfold across the
+# grazing levels. No single number describes 'the effect of area' in these data 
 
 # However, some observations are poorly predicted (fitted) using the set of
 # available explanatory variables (i.e. the two very large forest patches)
@@ -173,6 +200,32 @@ drop1(M5, test= "F")
 # affect how important dispersal has been to maintain or rescue populations 
 # (for recently isolated patches, dispersal, and hence distance to nearest
 # patches may have a less important effect)
+
+# And now that caveat, which is the answer to the question at the end of Q11.
+# The P values and confidence intervals printed for M5 are too optimistic.
+
+# They are calculated as if M5 had been specified in advance. It wasn't. We
+# arrived at it by fitting a 14 parameter model to these data and then dropping
+# terms one at a time on the basis of what those same data told us. The
+# selection procedure kept precisely those terms that happened to look
+# strongest in this particular sample, so the surviving estimates are biased
+# away from zero and their intervals are narrower than they ought to be.
+
+# This is known as post-selection inference. There are ways of handling it
+# (splitting the sample, bootstrapping the whole selection procedure, or simply
+# fitting a model specified in advance from theory and reporting that instead)
+# and we're not going to cover any of them on this course. What you should take
+# away is that the problem exists and that you should say so plainly whenever
+# you report a model you arrived at by selection. The great majority of
+# published papers that use stepwise selection do not.
+
+# Worth noticing though: the model we've arrived at by selection is exactly the
+# model we fitted by hand in the previous exercise, where it was specified in
+# advance from the study's own hypotheses. That's a genuinely reassuring
+# outcome and it's worth saying so in a write up. It also illustrates the point
+# above rather nicely. The version of this model that was specified in advance
+# carries more evidential weight than the version that was selected, even
+# though the numbers printed out are identical.
 
 
 ## ----QA1, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------

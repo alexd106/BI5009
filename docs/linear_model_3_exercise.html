@@ -453,16 +453,28 @@ we say anything about the hypotheses for the main effects of
 <p>&#xA0;</p>
 <p>8. OK, now for the part you all know and love! Use the
 <code>summary()</code> function on your model object to produce the
-table of parameter estimates. Using this output, take each line in turn
-and answer the following questions:</p>
+table of parameter estimates, and the <code>confint()</code> function to
+obtain the 95% confidence interval for each of those estimates. Using
+this output, take each line in turn and answer the following
+questions:</p>
 <ul>
 <li>what does this parameter estimate?</li>
 <li>What is the biological interpretation of the corresponding
 estimate?</li>
 <li>What is the null hypothesis associated with it?</li>
 <li>Do you reject or fail to reject this hypothesis?</li>
+<li>What does the confidence interval tell you that the P value on its
+own does not?</li>
 </ul>
-<p>Also compare the multiple R<sup>2</sup> from this model the models
+<p>Take particular care over the three parameters whose P values are
+greater than 0.05 (<code>FGRAZE2</code>, <code>FGRAZE2:LOGAREA</code>
+and <code>FGRAZE5:LOGAREA</code>). It is very tempting to write that
+these grazing levels &#x2018;are the same&#x2019; as graze level 1, but a large P
+value never licenses that conclusion (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).
+For each of these three, look at the confidence interval and ask
+yourself what range of differences these data are actually consistent
+with <em>before</em> you write anything down.</p>
+<p>Also compare the multiple R<sup>2</sup> from this model to the models
 you created in the previous two exercises.</p>
 <p>Please ask one of the course instructors to take you through this if
 you&#x2019;re confused :).</p>
@@ -496,6 +508,11 @@ admittedly it is!) but most of the code is just repeated for each level
 of graze. Just work through it slowly and logically and hopefully it
 will make sense (please ask if you are confused). I will also show you
 some alternative (easier?) ways to do this in the solutions.</p>
+<p>Once you have your plot, take a good look at the fitted lines for
+graze levels 1 and 2. Back in Question 8 the P values for both
+<code>FGRAZE2</code> and <code>FGRAZE2:LOGAREA</code> were greater than
+0.05. Does the picture support the claim that these two grazing levels
+behave identically? What does it show you instead?</p>
 <p><strong>(Optional, for the geeks)</strong> Alternative method given
 in the solutions using a<code>for</code> loop. Just keep this code in
 case you ever want to do something like this in the future.</p>

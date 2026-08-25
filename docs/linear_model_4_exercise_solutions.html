@@ -617,6 +617,10 @@ quite complicated with lots of parameter estimates (14) and P values
 testing lots of hypotheses. Are all the P values less than our cut-off
 of 0.05? If not, then this suggests that some form of model selection is
 warranted to simplify our model.</p>
+<p>Before you go any further though, a word of caution about looking at
+14 tests all at once. If none of these explanatory variables had any
+real effect on bird abundance whatsoever, roughly how many of the 14 P
+values would you still expect to fall below 0.05 purely by chance?</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">summary</span>(M1)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">## Call:</span></span>
@@ -648,7 +652,22 @@ warranted to simplify our model.</p>
 <span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">## Residual standard error: 5.009 on 53 degrees of freedom</span></span>
 <span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.8034, Adjusted R-squared:  0.7551 </span></span>
-<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="do">## F-statistic: 16.66 on 13 and 53 DF,  p-value: 2.644e-14</span></span></code></pre></div>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="do">## F-statistic: 16.66 on 13 and 53 DF,  p-value: 2.644e-14</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co"># No, not all of the P values are less than 0.05, which is what prompts us to</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co"># simplify the model over the next few questions.</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co"># As for the question about chance: at a 0.05 threshold you expect about 1 test</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co"># in every 20 to fall below it even when nothing at all is going on. So in a</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co"># table of 14 tests you would expect roughly one &apos;significant&apos; result even if</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co"># none of these variables mattered in the slightest. Bear that in mind whenever</span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co"># somebody hands you a large table of tests. A single starred coefficient in a</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co"># table this size is weak evidence on its own, and hunting through a big model</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co"># for whatever happens to sit below 0.05 is a poor way to do science.</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co"># It&apos;s also part of the reason why the selection procedure we are about to use</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="co"># follows a stated rule, applied consistently, rather than picking out whatever</span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co"># happens to look interesting.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>5. Let&#x2019;s perform a first step in model selection using the
 <code>drop1()</code> function and use an <em>F</em> test based model
@@ -839,38 +858,123 @@ decide whether you include it here (you should be able to just copy and
 paste the code).</p>
 <p>Please make sure you understand the biological interpretation of each
 of the parameter estimates and the interpretation of the hypotheses you
-are testing.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Biologically: confirming what we already found out in the previous exercise:</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># There is a significant interaction between the area of the patch and the level </span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co"># of grazing </span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># However, some observations are poorly predicted (fitted) using the set of</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co"># available explanatory variables (i.e. the two very large forest patches)</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co"># Interpretation: </span></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># Bird abundance might increase with patch area due to populations being more</span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co"># viable in large patches (e.g. less prone to extinction), </span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co"># or perhaps because there is proportionally less edge effect in larger</span></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co"># patches, and this in turn provides more high quality habitat for species </span></span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co"># associated with these habitat patches</span></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co"># The negative effect of grazing may be due to grazing decreasing resource</span></span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co"># availability for birds, for example plants or seeds directly, or insects</span></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co"># associated with the grazed plants. There may also be more disturbance of birds</span></span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co"># in highly grazed forest patches resulting in fewer foraging opportunities</span></span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co"># or chances to mate (this is all speculation mind you!).</span></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co"># Methodologically:</span></span>
-<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co"># Doing model selection is difficult without intrinsic / expert knowledge</span></span>
-<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co"># of the system, to guide what variables to include.</span></span>
-<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="co"># Even with this data set, many more models could have been formulated.</span></span>
-<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="co"># For example, for me, theory would have suggested to test an interaction </span></span>
-<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="co"># between YR.ISOL and LOGDIST (or LOGLDIST?), </span></span>
-<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a><span class="co"># because LOGDIST will affect the dispersal of birds between patches </span></span>
-<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a><span class="co"># (hence the colonisation rate), and the time since isolation of the patch may </span></span>
-<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a><span class="co"># affect how important dispersal has been to maintain or rescue populations </span></span>
-<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="co"># (for recently isolated patches, dispersal, and hence distance to nearest</span></span>
-<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a><span class="co"># patches may have a less important effect)</span></span></code></pre></div>
+are testing. As before, lead with the estimate and its confidence
+interval (<code>confint()</code>) and treat the P value as supporting
+evidence rather than as the finding (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).</p>
+<p>There is also one caveat that applies to your final model here but
+did not apply to the model you fitted in the previous exercise, even
+though the two models are identical. Have a think about it before you
+look at the solutions. The P values and confidence intervals for your
+final model are calculated as though you had specified that model in
+advance. You didn&#x2019;t: you arrived at it by looking at these same data.
+Does that make them too optimistic, too conservative, or does it make no
+difference at all?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># the estimates and their confidence intervals for the final model</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">summary</span>(M5)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE, data = loyn)</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="do">## -15.3238  -2.4528  -0.1822   2.5097  11.3529 </span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="do">##                 Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="do">## (Intercept)       21.243      3.433   6.187 7.09e-08 ***</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="do">## LOGAREA            4.144      1.772   2.339  0.02287 *  </span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="do">## FGRAZE2           -6.061      3.825  -1.584  0.11863    </span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="do">## FGRAZE3          -12.321      4.217  -2.921  0.00499 ** </span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="do">## FGRAZE4          -15.407      4.614  -3.339  0.00149 ** </span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="do">## FGRAZE5          -17.043      3.795  -4.491 3.51e-05 ***</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE2    4.270      2.413   1.770  0.08211 .  </span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE3    9.058      3.079   2.942  0.00471 ** </span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE4   13.634      4.149   3.286  0.00174 ** </span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE5    1.996      3.143   0.635  0.52803    </span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="do">## Residual standard error: 4.88 on 57 degrees of freedom</span></span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.7993, Adjusted R-squared:  0.7676 </span></span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a><span class="do">## F-statistic: 25.22 on 9 and 57 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a><span class="fu">confint</span>(M5)</span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="do">##                       2.5 %    97.5 %</span></span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a><span class="do">## (Intercept)      14.3676366 28.118388</span></span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a><span class="do">## LOGAREA           0.5959599  7.691998</span></span>
+<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a><span class="do">## FGRAZE2         -13.7209357  1.599213</span></span>
+<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a><span class="do">## FGRAZE3         -20.7659072 -3.875532</span></span>
+<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a><span class="do">## FGRAZE4         -24.6469072 -6.167018</span></span>
+<span id="cb12-36"><a href="#cb12-36" tabindex="-1"></a><span class="do">## FGRAZE5         -24.6426335 -9.443360</span></span>
+<span id="cb12-37"><a href="#cb12-37" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE2  -0.5613549  9.101626</span></span>
+<span id="cb12-38"><a href="#cb12-38" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE3   2.8925901 15.222510</span></span>
+<span id="cb12-39"><a href="#cb12-39" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE4   5.3258033 21.941349</span></span>
+<span id="cb12-40"><a href="#cb12-40" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE5  -4.2986048  8.289899</span></span>
+<span id="cb12-41"><a href="#cb12-41" tabindex="-1"></a></span>
+<span id="cb12-42"><a href="#cb12-42" tabindex="-1"></a><span class="co"># and remember from the previous exercise that everything here except the</span></span>
+<span id="cb12-43"><a href="#cb12-43" tabindex="-1"></a><span class="co"># intercept and LOGAREA is a DIFFERENCE from graze level 1, not a value for that</span></span>
+<span id="cb12-44"><a href="#cb12-44" tabindex="-1"></a><span class="co"># grazing level. If you want the intercept and slope for a particular grazing</span></span>
+<span id="cb12-45"><a href="#cb12-45" tabindex="-1"></a><span class="co"># level you need to add the relevant contrast onto the baseline.</span></span>
+<span id="cb12-46"><a href="#cb12-46" tabindex="-1"></a></span>
+<span id="cb12-47"><a href="#cb12-47" tabindex="-1"></a><span class="co"># Biologically: confirming what we already found out in the previous exercise:</span></span>
+<span id="cb12-48"><a href="#cb12-48" tabindex="-1"></a><span class="co"># the relationship between bird abundance and patch area depends on the level of</span></span>
+<span id="cb12-49"><a href="#cb12-49" tabindex="-1"></a><span class="co"># grazing (interaction F_4,57 = 4.09, p = 0.006). The fitted slopes range from</span></span>
+<span id="cb12-50"><a href="#cb12-50" tabindex="-1"></a><span class="co"># 4.14 birds per 1 unit increase in LOGAREA at graze level 1 up to 17.78 at</span></span>
+<span id="cb12-51"><a href="#cb12-51" tabindex="-1"></a><span class="co"># graze level 4, so the effect of patch area varies roughly fourfold across the</span></span>
+<span id="cb12-52"><a href="#cb12-52" tabindex="-1"></a><span class="co"># grazing levels. No single number describes &apos;the effect of area&apos; in these data </span></span>
+<span id="cb12-53"><a href="#cb12-53" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" tabindex="-1"></a><span class="co"># However, some observations are poorly predicted (fitted) using the set of</span></span>
+<span id="cb12-55"><a href="#cb12-55" tabindex="-1"></a><span class="co"># available explanatory variables (i.e. the two very large forest patches)</span></span>
+<span id="cb12-56"><a href="#cb12-56" tabindex="-1"></a></span>
+<span id="cb12-57"><a href="#cb12-57" tabindex="-1"></a><span class="co"># Interpretation: </span></span>
+<span id="cb12-58"><a href="#cb12-58" tabindex="-1"></a><span class="co"># Bird abundance might increase with patch area due to populations being more</span></span>
+<span id="cb12-59"><a href="#cb12-59" tabindex="-1"></a><span class="co"># viable in large patches (e.g. less prone to extinction), </span></span>
+<span id="cb12-60"><a href="#cb12-60" tabindex="-1"></a><span class="co"># or perhaps because there is proportionally less edge effect in larger</span></span>
+<span id="cb12-61"><a href="#cb12-61" tabindex="-1"></a><span class="co"># patches, and this in turn provides more high quality habitat for species </span></span>
+<span id="cb12-62"><a href="#cb12-62" tabindex="-1"></a><span class="co"># associated with these habitat patches</span></span>
+<span id="cb12-63"><a href="#cb12-63" tabindex="-1"></a></span>
+<span id="cb12-64"><a href="#cb12-64" tabindex="-1"></a><span class="co"># The negative effect of grazing may be due to grazing decreasing resource</span></span>
+<span id="cb12-65"><a href="#cb12-65" tabindex="-1"></a><span class="co"># availability for birds, for example plants or seeds directly, or insects</span></span>
+<span id="cb12-66"><a href="#cb12-66" tabindex="-1"></a><span class="co"># associated with the grazed plants. There may also be more disturbance of birds</span></span>
+<span id="cb12-67"><a href="#cb12-67" tabindex="-1"></a><span class="co"># in highly grazed forest patches resulting in fewer foraging opportunities</span></span>
+<span id="cb12-68"><a href="#cb12-68" tabindex="-1"></a><span class="co"># or chances to mate (this is all speculation mind you!).</span></span>
+<span id="cb12-69"><a href="#cb12-69" tabindex="-1"></a></span>
+<span id="cb12-70"><a href="#cb12-70" tabindex="-1"></a><span class="co"># Methodologically:</span></span>
+<span id="cb12-71"><a href="#cb12-71" tabindex="-1"></a><span class="co"># Doing model selection is difficult without intrinsic / expert knowledge</span></span>
+<span id="cb12-72"><a href="#cb12-72" tabindex="-1"></a><span class="co"># of the system, to guide what variables to include.</span></span>
+<span id="cb12-73"><a href="#cb12-73" tabindex="-1"></a><span class="co"># Even with this data set, many more models could have been formulated.</span></span>
+<span id="cb12-74"><a href="#cb12-74" tabindex="-1"></a><span class="co"># For example, for me, theory would have suggested to test an interaction </span></span>
+<span id="cb12-75"><a href="#cb12-75" tabindex="-1"></a><span class="co"># between YR.ISOL and LOGDIST (or LOGLDIST?), </span></span>
+<span id="cb12-76"><a href="#cb12-76" tabindex="-1"></a><span class="co"># because LOGDIST will affect the dispersal of birds between patches </span></span>
+<span id="cb12-77"><a href="#cb12-77" tabindex="-1"></a><span class="co"># (hence the colonisation rate), and the time since isolation of the patch may </span></span>
+<span id="cb12-78"><a href="#cb12-78" tabindex="-1"></a><span class="co"># affect how important dispersal has been to maintain or rescue populations </span></span>
+<span id="cb12-79"><a href="#cb12-79" tabindex="-1"></a><span class="co"># (for recently isolated patches, dispersal, and hence distance to nearest</span></span>
+<span id="cb12-80"><a href="#cb12-80" tabindex="-1"></a><span class="co"># patches may have a less important effect)</span></span>
+<span id="cb12-81"><a href="#cb12-81" tabindex="-1"></a></span>
+<span id="cb12-82"><a href="#cb12-82" tabindex="-1"></a><span class="co"># And now that caveat, which is the answer to the question at the end of Q11.</span></span>
+<span id="cb12-83"><a href="#cb12-83" tabindex="-1"></a><span class="co"># The P values and confidence intervals printed for M5 are too optimistic.</span></span>
+<span id="cb12-84"><a href="#cb12-84" tabindex="-1"></a></span>
+<span id="cb12-85"><a href="#cb12-85" tabindex="-1"></a><span class="co"># They are calculated as if M5 had been specified in advance. It wasn&apos;t. We</span></span>
+<span id="cb12-86"><a href="#cb12-86" tabindex="-1"></a><span class="co"># arrived at it by fitting a 14 parameter model to these data and then dropping</span></span>
+<span id="cb12-87"><a href="#cb12-87" tabindex="-1"></a><span class="co"># terms one at a time on the basis of what those same data told us. The</span></span>
+<span id="cb12-88"><a href="#cb12-88" tabindex="-1"></a><span class="co"># selection procedure kept precisely those terms that happened to look</span></span>
+<span id="cb12-89"><a href="#cb12-89" tabindex="-1"></a><span class="co"># strongest in this particular sample, so the surviving estimates are biased</span></span>
+<span id="cb12-90"><a href="#cb12-90" tabindex="-1"></a><span class="co"># away from zero and their intervals are narrower than they ought to be.</span></span>
+<span id="cb12-91"><a href="#cb12-91" tabindex="-1"></a></span>
+<span id="cb12-92"><a href="#cb12-92" tabindex="-1"></a><span class="co"># This is known as post-selection inference. There are ways of handling it</span></span>
+<span id="cb12-93"><a href="#cb12-93" tabindex="-1"></a><span class="co"># (splitting the sample, bootstrapping the whole selection procedure, or simply</span></span>
+<span id="cb12-94"><a href="#cb12-94" tabindex="-1"></a><span class="co"># fitting a model specified in advance from theory and reporting that instead)</span></span>
+<span id="cb12-95"><a href="#cb12-95" tabindex="-1"></a><span class="co"># and we&apos;re not going to cover any of them on this course. What you should take</span></span>
+<span id="cb12-96"><a href="#cb12-96" tabindex="-1"></a><span class="co"># away is that the problem exists and that you should say so plainly whenever</span></span>
+<span id="cb12-97"><a href="#cb12-97" tabindex="-1"></a><span class="co"># you report a model you arrived at by selection. The great majority of</span></span>
+<span id="cb12-98"><a href="#cb12-98" tabindex="-1"></a><span class="co"># published papers that use stepwise selection do not.</span></span>
+<span id="cb12-99"><a href="#cb12-99" tabindex="-1"></a></span>
+<span id="cb12-100"><a href="#cb12-100" tabindex="-1"></a><span class="co"># Worth noticing though: the model we&apos;ve arrived at by selection is exactly the</span></span>
+<span id="cb12-101"><a href="#cb12-101" tabindex="-1"></a><span class="co"># model we fitted by hand in the previous exercise, where it was specified in</span></span>
+<span id="cb12-102"><a href="#cb12-102" tabindex="-1"></a><span class="co"># advance from the study&apos;s own hypotheses. That&apos;s a genuinely reassuring</span></span>
+<span id="cb12-103"><a href="#cb12-103" tabindex="-1"></a><span class="co"># outcome and it&apos;s worth saying so in a write up. It also illustrates the point</span></span>
+<span id="cb12-104"><a href="#cb12-104" tabindex="-1"></a><span class="co"># above rather nicely. The version of this model that was specified in advance</span></span>
+<span id="cb12-105"><a href="#cb12-105" tabindex="-1"></a><span class="co"># carries more evidential weight than the version that was selected, even</span></span>
+<span id="cb12-106"><a href="#cb12-106" tabindex="-1"></a><span class="co"># though the numbers printed out are identical.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p><strong>OPTIONAL questions</strong> if you have time / energy /
 inclination!</p>

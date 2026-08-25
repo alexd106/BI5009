@@ -426,6 +426,22 @@ do you reject or fail to reject this hypothesis?</p>
 <p>Repeat this interpretation for the <code>FGRAZE3</code>,
 <code>FGRAZE4</code> and <code>FGRAZE5</code> parameters. Summarise this
 as a comment in your R script.</p>
+<p>Finally, just a reminder about P values and confidence intervals (see
+the <a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">note</a>
+in the previous exercise if you&#x2019;d like it again): lead with the estimate
+and its interval rather than with the test, and never read a large P
+value as evidence that two things are the same. Use the
+<code>confint()</code> function on your model object to obtain the 95%
+confidence intervals for the intercept and for each of the four
+contrasts. Now go back over what you&#x2019;ve just written and report each
+contrast again as an estimated difference in bird abundance
+<em>with</em> its confidence interval, rather than as a hypothesis that
+you either reject or fail to reject. Which of the four
+<em>differences</em> has been estimated most precisely, and which least
+precisely? Can you see why? (hint: each contrast compares two grazing
+levels, so how precisely you can estimate it depends on how many forest
+patches there are in <strong>both</strong> of them. The
+<code>table()</code> function will give you the group sizes).</p>
 <p>&#xA0;</p>
 <p>8. Now that you have interpreted all the contrasts with
 <code>FGRAZE</code> level 1 as the intercept, set the intercept to
@@ -434,7 +450,9 @@ refit the model, produce the new table of parameter estimates using the
 <code>summary()</code> function again and interpret.</p>
 <p>Repeat this for <code>FGRAZE</code> levels 3, 4 and 5. Can you
 summarise which levels of <code>FGRAZE</code> are different from each
-other?</p>
+other? Use <code>confint()</code> on each of your refitted models as
+well as <code>summary()</code>, and as you go, keep an eye on what
+releveling does and does not change.</p>
 <p>&#xA0;</p>
 <p>9. Staying with the summary table of parameter estimates, how much of
 the variation in bird abundance does the explanatory variable
@@ -450,19 +468,42 @@ split your plotting device into 2 rows and 2 columns using the
 the assumptions using these plots and report whether your model meets
 these assumptions in your R script.</p>
 <p>&#xA0;</p>
-<p>11. This is an optional question and really just for information.
-I&#x2019;ll give you the code in the solutions so don&#x2019;t overly stress about
-this! Use Google (yep, this is OK!) to figure out how to plot your
-fitted values and 95% confidence intervals. Try Googling the
-<code>gplots</code> package or the <code>effects</code> package.</p>
-<p>Alternatively, have a go at using our old trusty
-<code>predict()</code> function to calculate the fitted values and
-standard errors. Add the fitted values and 95% confidence intervals to a
-plot of bird abundance and graze level (to add your upper and lower
-confidence intervals will need to use either the <code>segments()</code>
-or <code>arrows()</code> function).</p>
-<p>Or we can even use the <code>ggplot2</code> package. Check out the
-solutions code if you&#x2019;re thoroughly confused!</p>
+<p>11. To finish, let&#x2019;s plot the model. Don&#x2019;t panic about the code, I&#x2019;ll
+give you that in the solutions, but do spend some time on the two
+questions underneath because they matter rather more than the code
+does.</p>
+<p>Have a go at using our old trusty <code>predict()</code> function to
+calculate the fitted mean bird abundance for each level of
+<code>FGRAZE</code> along with the standard errors. Then plot these
+fitted values against grazing level and add the 95% confidence intervals
+(you will need either the <code>arrows()</code> or the
+<code>segments()</code> function to add the intervals to the plot).
+There are also a few packages that will do the whole job for you in one
+line, and I&#x2019;ve put those in the solutions as alternatives, so feel free
+to use Google (yep, this is OK!) and have a look at the
+<code>gplots</code> package, the <code>effects</code> package or
+<code>ggplot2</code> if you fancy it.</p>
+<p>Once you have your plot:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The five intervals on your plot are <strong>not</strong> the four
+intervals you calculated in Question 7. What is each one an interval
+for? And why are there five here but only four in the
+<code>summary()</code> table? Compare the interval for graze level 2 on
+your plot against the <code>FGRAZE2</code> interval from
+<code>confint()</code>, and make sure you can say in words why the two
+are different.</p></li>
+<li><p>Looking at your plot, is it safe to conclude that two grazing
+levels differ whenever their intervals don&#x2019;t overlap? And is it safe to
+conclude that they don&#x2019;t differ whenever their intervals do overlap?
+Think carefully about this one before you look at the solution, because
+reading differences off overlapping error bars by eye is a mistake that
+appears in print constantly.</p></li>
+</ol>
+<p>&#xA0;</p>
+<p><strong>Alternative ways of producing the same plot.</strong> All
+four of these give you essentially the same figure as the one above, so
+use whichever you find easiest. Don&#x2019;t worry if you can&#x2019;t follow all of
+the code, none of it is examinable.</p>
 <p>&#xA0;</p>
 <p>End of the linear model with single categorical explanatory variable
 exercise</p>

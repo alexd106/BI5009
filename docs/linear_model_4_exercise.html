@@ -454,6 +454,10 @@ quite complicated with lots of parameter estimates (14) and P values
 testing lots of hypotheses. Are all the P values less than our cut-off
 of 0.05? If not, then this suggests that some form of model selection is
 warranted to simplify our model.</p>
+<p>Before you go any further though, a word of caution about looking at
+14 tests all at once. If none of these explanatory variables had any
+real effect on bird abundance whatsoever, roughly how many of the 14 P
+values would you still expect to fall below 0.05 purely by chance?</p>
 <p>&#xA0;</p>
 <p>5. Let&#x2019;s perform a first step in model selection using the
 <code>drop1()</code> function and use an <em>F</em> test based model
@@ -499,7 +503,17 @@ decide whether you include it here (you should be able to just copy and
 paste the code).</p>
 <p>Please make sure you understand the biological interpretation of each
 of the parameter estimates and the interpretation of the hypotheses you
-are testing.</p>
+are testing. As before, lead with the estimate and its confidence
+interval (<code>confint()</code>) and treat the P value as supporting
+evidence rather than as the finding (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).</p>
+<p>There is also one caveat that applies to your final model here but
+did not apply to the model you fitted in the previous exercise, even
+though the two models are identical. Have a think about it before you
+look at the solutions. The P values and confidence intervals for your
+final model are calculated as though you had specified that model in
+advance. You didn&#x2019;t: you arrived at it by looking at these same data.
+Does that make them too optimistic, too conservative, or does it make no
+difference at all?</p>
 <p>&#xA0;</p>
 <p><strong>OPTIONAL questions</strong> if you have time / energy /
 inclination!</p>
