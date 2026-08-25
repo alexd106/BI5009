@@ -56,8 +56,9 @@ summary(M1)
 # simplify the model over the next few questions.
 
 # As for the question about chance: at a 0.05 threshold you expect about 1 test
-# in every 20 to fall below it even when nothing at all is going on. With 14
-# tests that's 14 * 0.05 = 0.7, so call it one. Bear this in mind whenever
+# in every 20 to fall below it even when nothing at all is going on. So in a
+# table of 14 tests you would expect roughly one 'significant' result even if
+# none of these variables mattered in the slightest. Bear that in mind whenever
 # somebody hands you a large table of tests. A single starred coefficient in a
 # table this size is weak evidence on its own, and hunting through a big model
 # for whatever happens to sit below 0.05 is a poor way to do science.
@@ -159,6 +160,11 @@ drop1(M5, test= "F")
 # the estimates and their confidence intervals for the final model
 summary(M5)
 confint(M5)
+
+# and remember from the previous exercise that everything here except the
+# intercept and LOGAREA is a DIFFERENCE from graze level 1, not a value for that
+# grazing level. If you want the intercept and slope for a particular grazing
+# level you need to add the relevant contrast onto the baseline.
 
 # Biologically: confirming what we already found out in the previous exercise:
 # the relationship between bird abundance and patch area depends on the level of

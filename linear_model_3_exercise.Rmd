@@ -155,6 +155,32 @@ summary(birds_inter1)
 # and the 95% confidence intervals for each of those estimates
 confint(birds_inter1)
 
+# Before working through these one at a time, be clear about one thing, and it's
+# the same point we made in the previous exercise. Apart from the intercept and
+# LOGAREA, every estimate in this table is a DIFFERENCE. FGRAZE2 is not graze
+# level 2's intercept, it's how far graze level 2's intercept sits from graze
+# level 1's. FGRAZE2:LOGAREA is not graze level 2's slope, it's how far graze
+# level 2's slope sits from graze level 1's. To get the actual intercept and
+# slope for a grazing level you add the relevant contrast onto the baseline.
+
+# for graze level 2, for example:
+#   intercept = 21.24 + (-6.06) = 15.18
+#   slope     =  4.14 +   4.27  =  8.41
+
+# and here are all five at once
+# (unname() just strips the coefficient names off, otherwise the rows come out
+# labelled FGRAZE2, FGRAZE3 and so on, which is the very thing we're trying to
+# stop you thinking)
+b <- unname(coef(birds_inter1))
+round(data.frame(FGRAZE    = 1:5,
+                 intercept = c(b[1], b[1] + b[2:5]),
+                 slope     = c(b[6], b[6] + b[7:10])), 2)
+
+# Those five intercepts and five slopes are exactly the five lines you'll plot
+# in Q9. Keep them to hand, because some of the interpretations below only make
+# sense once you can see how small graze level 1's own slope (4.14) is next to
+# the differences we're estimating against it.
+
 # (Intercept)
 # Here the Intercept (baseline) is the predicted ABUND when LOGAREA = 0,
 # for FGRAZE level 1. Note that LOGAREA = 0 is a patch of 1 hectare (because
@@ -371,7 +397,8 @@ legend("topleft",
 # lines). They are not on top of each other. The graze level 2 line starts
 # lower and climbs more steeply, and the two lines cross. That is precisely
 # what the estimates in Question 8 said: an intercept 6.06 birds lower and a
-# slope 4.27 steeper. What the large P values tell us is that we can't rule
+# slope 4.27 steeper, which is the graze level 2 row of the table you made in
+# Q8 (intercept 15.18, slope 8.41). What the large P values tell us is that we can't rule
 # out the possibility that the two lines really are identical, given how few
 # patches we have in graze level 2 (11 of them) and how much scatter there is
 # around each line. They do not tell us that the two lines ARE identical, and

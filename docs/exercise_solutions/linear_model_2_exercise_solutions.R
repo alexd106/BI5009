@@ -82,13 +82,29 @@ confint(birds_lm)
 # largest of the four differences, and the entire interval sits well below the intervals
 # for the other three contrasts.
 
-# which contrast is best estimated? Compare the widths of the intervals: FGRAZE3 spans
-# 10.97 birds, FGRAZE4 and FGRAZE5 both span 11.68 birds, and FGRAZE2 spans 12.20 birds.
-# So FGRAZE3 is the most precisely estimated and FGRAZE2 the least. Now look at the group
-# sizes with table(loyn$FGRAZE): graze level 3 has 17 patches, levels 4 and 5 have 13 each,
-# and level 2 has only 11. More data means a narrower interval. This is worth remembering
-# when you design your own sampling.
+# Before going further, be clear about what these four intervals are intervals FOR. They
+# are intervals for the DIFFERENCE between a grazing level and graze level 1. They are not
+# intervals for the bird abundance of a grazing level. So "-15.30 to -3.11" means "graze
+# level 2 has somewhere between 3.11 and 15.30 fewer birds than graze level 1". It does
+# not mean "graze level 2 has between 3.11 and 15.30 birds in it". We will get intervals
+# for the five levels themselves in Q11, and they are different numbers entirely.
+
+# so, which of the four differences is estimated most precisely? Compare the widths of the
+# intervals: FGRAZE3 spans 10.97 birds, FGRAZE4 and FGRAZE5 both span 11.68, and FGRAZE2
+# spans 12.20. So the graze 1 versus graze 3 difference is the best estimated of the four,
+# and graze 1 versus graze 2 the worst.
+
+# why? Each of these is a comparison between two groups, so its precision depends on how
+# much data there is in BOTH of them, not just one. Graze level 1 is the baseline and so
+# appears in all four comparisons, which means the thing that varies between them is the
+# size of the other group:
 table(loyn$FGRAZE)
+
+# graze level 3 has 17 patches, levels 4 and 5 have 13 each, and level 2 has only 11. The
+# comparison involving the largest group is the tightest, and the one involving the
+# smallest group is the loosest. Worth remembering when you are deciding how to spread
+# your effort in your own sampling: a comparison is only ever as good as the smaller of
+# the two groups going into it.
 
 
 ## ----Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE-----------------------------------------------------------------------------------------------------------------
@@ -166,42 +182,12 @@ plot(birds_lm_sqrt)
 
 
 ## ----Q11a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
-# Using the gplots package, you may need to install this package first
-# install.packages('gplots')
+# using old faithful, the predict function, with base R graphics and the
+# arrows function
 
+# back in Q8 we changed the baseline level a few times with relevel(). Let's put
+# it back to graze level 1 so everything below comes out in the natural order
 loyn$FGRAZE <- relevel(loyn$FGRAZE, ref = "1")
-library(gplots)
-plotmeans(ABUND ~ FGRAZE, xlab = "grazing level",
-  ylab = "bird abundance", data = loyn, connect = FALSE)
-
-
-## ----Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
-# Using the effects package, you may need to install this package first
-# install.packages('effects')
-
-library(effects)
-loyn_effects <- allEffects(birds_lm)
-plot(loyn_effects,"FGRAZE", lty = 0)
-
-
-## ----Q11c, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
-# and finally using old faithful the predict function and base R graphics
-# with the segments function
-
-my_data <- data.frame(FGRAZE = c("1", "2", "3", "4", "5"))
-pred_vals <- predict(birds_lm, newdata = my_data, se.fit = TRUE)
-
-# now plot these values
-
-plot(1:5, seq(0, 50, length=5), type = "n", xlab = "Graze intensity", ylab = "Bird Abundance")
-points(1:5, pred_vals$fit)
-segments(1:5, pred_vals$fit, 1:5, pred_vals$fit - 1.96 * pred_vals$se.fit)
-segments(1:5, pred_vals$fit, 1:5, pred_vals$fit + 1.96 * pred_vals$se.fit)
-
-
-## ----Q11d, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
-# using old faithful the predict function and base R graphics 
-# with the arrows function 
 
 my_data <- data.frame(FGRAZE = c("1", "2", "3", "4", "5"))
 pred_vals <- predict(birds_lm, newdata = my_data, se.fit = TRUE)
@@ -216,8 +202,91 @@ arrows(1:5, pred_vals$fit, 1:5, pred_vals$fit + 1.96 * pred_vals$se.fit,
 points(1:5, pred_vals$fit, pch = 16)
 
 
+## ----Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------------------------
+# (a) what are these five intervals?
+
+# They are 95% confidence intervals for the MEAN bird abundance within each of the five
+# grazing levels. There are five of them because there are five groups. The summary()
+# table gave you only four intervals because those are contrasts, i.e. DIFFERENCES from
+# the baseline, and a set of five groups only has four differences from a baseline.
+# Nothing has gone missing.
+
+# here are the five group means and their intervals written out
+round(data.frame(FGRAZE = 1:5,
+                 mean   = pred_vals$fit,
+                 lower  = pred_vals$fit - 1.96 * pred_vals$se.fit,
+                 upper  = pred_vals$fit + 1.96 * pred_vals$se.fit), 2)
+
+# graze level 2 is 19.42 birds (15.02 to 23.82) on this plot, but the FGRAZE2 interval
+# from confint() was -9.20 (-15.30 to -3.11). In words: "graze level 2 holds somewhere
+# around 15 to 24 birds" versus "graze level 2 holds somewhere between 3 and 15 FEWER
+# birds than graze level 1". Both are true and both are useful, but they answer different
+# questions and you must never quote one when you mean the other.
+
+# graze level 1 is the one place the two agree: 28.62 birds (24.57 to 32.67) here against
+# an intercept of 28.62 (24.49 to 32.75) from confint(), because the intercept IS the mean
+# of graze level 1. The last-decimal difference is only because confint() uses the t
+# distribution with 62 degrees of freedom, a multiplier of 2.00, while our plotting code
+# above uses 1.96.
+
+
+# (b) overlap, which is the one that really matters
+
+# The rule works in one direction only.
+
+# If two intervals do NOT overlap, those two means are clearly different (the difference
+# between them would have a P value below 0.05). That direction is safe.
+
+# If two intervals DO overlap, you cannot conclude anything from that. In particular you
+# must not conclude that the two means are the same, or even that the difference isn't
+# 'significant'. Two intervals can overlap quite noticeably while the difference between
+# those two means still has a confidence interval that comfortably excludes zero.
+
+# The reason is that the uncertainty in a difference is smaller than the two uncertainties
+# added together. So the interval for a difference is narrower than you would guess by eye
+# from looking at the two intervals for the means, and judging by overlap alone makes you
+# too cautious. You end up reporting 'no difference' for comparisons that were perfectly
+# well resolved.
+
+# In these particular data the two views do happen to agree, and every pair of grazing
+# levels whose difference is clearly resolved also has non-overlapping intervals. Don't
+# take that as reassurance though, it's a coincidence of this dataset and not a rule.
+
+# So what should you actually do? Use a plot like this to show a reader the overall
+# pattern, because it does that far better than a table of contrasts ever will. But when
+# you want to make a claim about one specific comparison, quote the confidence interval
+# for that DIFFERENCE, which is what Q7 gave you, and not the two intervals for the means.
+
+
+## ----Q11c, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
+# Alternative 1: the same thing with segments() instead of arrows()
+
+plot(1:5, seq(0, 50, length=5), type = "n", xlab = "Graze intensity", ylab = "Bird Abundance")
+points(1:5, pred_vals$fit)
+segments(1:5, pred_vals$fit, 1:5, pred_vals$fit - 1.96 * pred_vals$se.fit)
+segments(1:5, pred_vals$fit, 1:5, pred_vals$fit + 1.96 * pred_vals$se.fit)
+
+
+## ----Q11d, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
+# Alternative 2: using the gplots package, you may need to install this first
+# install.packages('gplots')
+
+library(gplots)
+plotmeans(ABUND ~ FGRAZE, xlab = "grazing level",
+  ylab = "bird abundance", data = loyn, connect = FALSE)
+
+
 ## ----Q11e, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
-# or using the ggplot2 package
+# Alternative 3: using the effects package, you may need to install this first
+# install.packages('effects')
+
+library(effects)
+loyn_effects <- allEffects(birds_lm)
+plot(loyn_effects,"FGRAZE", lty = 0)
+
+
+## ----Q11f, eval=SOLUTIONS, echo=SOLUTIONS, collapse=FALSE--------------------------------------------------------------------------------------------------------------
+# Alternative 4: using the ggplot2 package
 library(ggplot2) # make the functions in ggplot2 available
 
 
@@ -240,6 +309,5 @@ ggplot(loyn, aes(x = FGRAZE, y = ABUND)) +
         size = 3, position=position_nudge(x = 0.15)) +
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
         width = 0.1, position=position_nudge(x = 0.15))
-
 
 
