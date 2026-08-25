@@ -1019,6 +1019,50 @@ package first if you don&#x2019;t already have it.</p>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>     <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="linear_model_3_exercise_solutions_files/figure-html/Q9c-1.png" alt width="672"></p>
 <p>&#xA0;</p>
+<p>10. And again, but with less help this time. Write up this analysis
+as a single paragraph for your thesis, referring to your figure from
+Question 9. No ingredient list, you decide what goes in.</p>
+<p>Three things I&#x2019;d like you to get right, because they&#x2019;re the three
+that people most often get wrong when reporting an interaction:</p>
+<ul>
+<li>You have a clear interaction. Is &#x201C;bird abundance increases with
+patch area&#x201D; a sentence you can write on its own here?</li>
+<li><code>FGRAZE2</code> and <code>FGRAZE2:LOGAREA</code> both had
+confidence intervals that included zero. Report them without claiming
+that the two grazing levels are the same.</li>
+<li>Your model has 10 parameters. Does a reader need all 10 of
+them?</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Same health warning: my version, not the version.</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># The relationship between bird abundance and forest patch area depended on grazing</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># intensity (interaction F 4,57 = 4.09, p = 0.006; R2 = 0.80, n = 67). Abundance increased</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># with log10 patch area at every grazing level, but the rate of increase varied roughly</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># fourfold, from 4.1 birds per unit log10 area at the lowest grazing intensity to 17.8 at</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># level 4 (Figure X). In a one hectare patch, abundance at grazing level 2 was an</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co"># estimated 6.1 birds lower than at level 1 (95% CI: 13.7 lower to 1.6 higher), and its</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co"># slope an estimated 4.3 steeper (95% CI: 0.6 shallower to 9.1 steeper); with only 11</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co"># patches at that grazing level these data cannot resolve either comparison. Patch area</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co"># therefore matters most in moderately grazed patches and least in lightly grazed ones,</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co"># where abundance is already high even in small patches.</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co"># on the three things:</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co"># 1. No. With an interaction in the model, &quot;bird abundance increases with patch area&quot; is</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#    not a complete sentence, because how much it increases depends on grazing level. Only</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#    ever quote a main effect with its condition attached.</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co"># 2. Look at the two clauses in the middle of the paragraph. They give the estimate, they</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#    give the interval, and then they say plainly that we can&apos;t resolve the comparison.</span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#    What they never do is say the two levels are the same. &quot;We cannot tell&quot; is a</span></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="co">#    legitimate result and it is perfectly publishable.</span></span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co"># 3. No. Ten coefficients in prose is unreadable, and most of them are contrasts against</span></span>
+<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a><span class="co">#    a baseline no reader cares about. Report the interaction test, the range of fitted</span></span>
+<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a><span class="co">#    slopes, the figure, and the R2 and n. If a journal wants the full table it goes in a</span></span>
+<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a><span class="co">#    supplement. Your figure from Q9 does more work than the table ever will: five fitted</span></span>
+<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="co">#    lines whose slopes visibly differ IS the finding.</span></span></code></pre></div>
+<p>&#xA0;</p>
 <p>End of the Linear model with continuous and categorical explanatory
 variables exercise</p>
 </div>
