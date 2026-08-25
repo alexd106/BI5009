@@ -228,6 +228,35 @@ confint(M5)
 # though the numbers printed out are identical.
 
 
+## ----Q12report, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------
+# Same health warning: my version, not the version.
+
+# METHODS. Bird abundance was modelled against log10 patch area, log10 distance to the
+# nearest patch, log10 distance to the nearest larger patch, year of isolation, altitude
+# and grazing intensity (a five level factor), plus the area by grazing interaction.
+# Distance and area variables were log10 transformed after graphical exploration showed
+# strong right skew. Terms were removed by backward selection using single term deletions
+# and F tests, with main effects retained wherever they appeared in a retained interaction.
+
+# RESULTS. Four terms were removed in turn (distance to the nearest larger patch, year of
+# isolation, distance to the nearest patch, altitude), leaving patch area, grazing
+# intensity and their interaction. Bird abundance increased with patch area at every
+# grazing level, but at a rate that varied roughly fourfold with grazing intensity
+# (interaction F 4,57 = 4.09, p = 0.006; R2 = 0.80, n = 67). Because the final model was
+# selected using these same data, the P values and confidence intervals quoted here are
+# optimistic and should be treated as descriptive.
+
+# (that's about 170 words, so there was room to spare)
+
+# The two things a naive account would have left out are the selection history and that
+# last sentence. Without the history a reader can't tell how much searching went on, and a
+# model reported bare looks as though it was specified in advance on theoretical grounds,
+# which carries far more weight than one arrived at by trying things and discarding them.
+# Without the caveat they would take the P values at face value. So report the starting
+# model, the criterion and the order of removal, and say plainly that the model was
+# selected.
+
+
 ## ----QA1, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------
 # This time, we are not doing any specific hypothesis testing, rather we are 
 # attempting to select a model with the 'best' goodness of fit with the minimal

@@ -1010,6 +1010,46 @@ the code, none of it is examinable.</p>
 <span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>        <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>))</span></code></pre></div>
 <p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11f-2.png" alt width="672"></p>
 <p>&#xA0;</p>
+<p>12. Same idea, but this time I&#x2019;m not giving you the sentences, only
+the ingredients. Write a short results paragraph (four or five sentences
+is plenty) describing the effect of grazing intensity on bird abundance.
+Make sure it contains:</p>
+<ul>
+<li>the overall test of whether abundance differs among grazing levels,
+with its <em>F</em> statistic and degrees of freedom</li>
+<li>the estimated mean abundance at the lowest grazing intensity</li>
+<li>the size of the difference between the lowest and the highest
+grazing intensities, with its confidence interval</li>
+<li>the sample size</li>
+</ul>
+<p>One thing to think about while you&#x2019;re writing. Your
+<code>summary()</code> table hands you four contrasts, all against graze
+level 1, and writing all four out in prose is tedious to read and buries
+the pattern. Have another look at your plot from Question 11. What is
+the pattern here, and can you get it across in a single sentence?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Same health warning as the previous exercise: this is my version, not the version.</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co"># Mean bird abundance differed among the five grazing intensity levels (F 4,62 = 14.98,</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co"># p &lt; 0.001, n = 67 patches). Abundance was highest at the lowest grazing intensity</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co"># (mean 28.6 birds, 95% CI: 24.5 to 32.8) and lowest at the highest intensity (mean 6.3</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co"># birds), a difference of 22.3 birds (95% CI: 16.5 to 28.2). Grazing levels 2, 3 and 4</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co"># were similar to one another (means 19.4, 20.2 and 19.0 birds) and all sat roughly 8 to</span></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co"># 10 birds below level 1. The effect is therefore not a smooth decline across the grazing</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co"># gradient, it is concentrated at the highest grazing intensity. Grazing intensity</span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="co"># accounted for 49.2% of the variation in bird abundance.</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co"># The pattern is a STEP, not a gradient. Levels 2, 3 and 4 are more or less</span></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co"># interchangeable, level 1 sits above them and level 5 a long way below. Saying that in</span></span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co"># one sentence is far more use to a reader than four separate contrast statements, and</span></span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a><span class="co"># it&apos;s the kind of thing that might actually inform a grazing management decision. Watch</span></span>
+<span id="cb20-16"><a href="#cb20-16" tabindex="-1"></a><span class="co"># the wording though: &quot;similar to one another&quot; describes the estimated means. It is not a</span></span>
+<span id="cb20-17"><a href="#cb20-17" tabindex="-1"></a><span class="co"># claim that they are identical, and we haven&apos;t tested them against each other anyway.</span></span>
+<span id="cb20-18"><a href="#cb20-18" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" tabindex="-1"></a><span class="co"># One thing I left out on purpose: the P value for the intercept (p &lt; 2e-16). That tests</span></span>
+<span id="cb20-20"><a href="#cb20-20" tabindex="-1"></a><span class="co"># the hypothesis &quot;there are no birds at all in the least grazed patches&quot;, which nobody</span></span>
+<span id="cb20-21"><a href="#cb20-21" tabindex="-1"></a><span class="co"># believed and nobody needed testing. A statistically impeccable result can still be</span></span>
+<span id="cb20-22"><a href="#cb20-22" tabindex="-1"></a><span class="co"># biologically pointless, and a fair part of writing up well is deciding what to leave out.</span></span></code></pre></div>
+<p>&#xA0;</p>
 <p>End of the linear model with single categorical explanatory variable
 exercise</p>
 </div>

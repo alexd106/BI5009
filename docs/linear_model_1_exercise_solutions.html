@@ -963,12 +963,58 @@ your R script.</p>
 <span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">10</span><span class="sc">^</span>(my_data<span class="sc">$</span>LOGAREA), pred_vals_se<span class="sc">$</span>fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q13-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co"># the model doesn&apos;t look too great now! Technically, if we transform variables in our model</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># then we should only really interpret the model on the scale of the transformation.</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># If we interpret on the back transformed scale, you can see the model doesn&apos;t really fit the </span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># data very well, especially for the two large forest patch AREAs and also those patches with</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># high bird abundance.</span></span></code></pre></div>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co"># the model doesn&apos;t look too great now! The fit is poor at both ends. Those 4 to 8</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># hectare patches holding 24 to 28 birds are under-predicted by about 8 birds, and on</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># this plot they&apos;re squashed against the left hand axis where they&apos;re easy to miss.</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># Notice the gap too. Patches run from 0.1 to 144 hectares and then jump to 973 and 1771,</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># so the right hand half of this plot rests on two points (the same two that had high</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># leverage in Q8) and the line across it is an assumption. You could restrict the analysis</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># to the smaller patches, which is defensible if your question is really about small</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># remnants, but it doesn&apos;t fix the misfit at the low end, the gap is much less severe on</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># the log10 scale the model is actually fitted on, and dropping data because a plot looks</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co"># wrong is a decision you would have to declare.</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co"># And the thing we promised back in Q5: the fitted line is straight on the log scale and</span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co"># curved here, so there is no single &apos;birds per hectare&apos; slope to quote. A hectare added</span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co"># to a 1 hectare patch is worth about 2.9 birds, a hectare added to a 1000 hectare patch</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co"># about 0.004. What stays constant is the multiplicative step, 9.78 birds per tenfold</span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co"># increase in area, which is why we reported the estimate per 1 unit of LOGAREA in Q5.</span></span></code></pre></div>
+<p>&#xA0;</p>
+<p>14. Time to write up this analysis. Everything you&#x2019;ve worked out in
+this exercise would end up in your thesis as about three sentences, so
+let&#x2019;s practice writing them. I&#x2019;ve given you the skeleton below and all
+you need to do is fill in the gaps using your output from Questions 5, 7
+and 12. Don&#x2019;t worry about matching my wording exactly, there&#x2019;s no single
+right answer here.</p>
+<blockquote>
+<p>Bird abundance increased with forest patch area. A linear model of
+bird abundance against log<sub>10</sub> transformed patch area estimated
+an increase of ______ birds (95% CI: ______ to ______) for every 1 unit
+increase in log<sub>10</sub> area, which is a tenfold increase in patch
+area (<em>F</em><sub><strong><em>,</em></strong></sub> = ______,
+<em>p</em> ______). The model explained ______% of the variation in bird
+abundance (<em>n</em> = ______ patches).</p>
+</blockquote>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Before you read mine, a health warning. This is how I would write it up, and it&apos;s</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># one reasonable version among many. Reporting conventions vary a good deal between</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># journals, between subfields and between supervisors. What matters is that the</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># estimate, its uncertainty and the sample size are all in there, that you haven&apos;t</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co"># claimed anything the data don&apos;t support, and that somebody could reproduce what you</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co"># did from what you&apos;ve written. Compare yours against mine, and against the papers</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># you&apos;re reading. Where they differ, ask yourself which is clearer and which is more</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co"># honest.</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co"># Bird abundance increased with forest patch area. A linear model of bird abundance</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co"># against log10 transformed patch area estimated an increase of 9.78 birds (95% CI:</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co"># 7.76 to 11.81) for every 1 unit increase in log10 area, which is a tenfold increase</span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co"># in patch area (F 1,65 = 92.85, p &lt; 0.001). The model explained 58.8% of the variation</span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co"># in bird abundance (n = 67 patches).</span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co"># Notice that two of those numbers didn&apos;t come from summary(). The confidence interval</span></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="co"># came from confint() and the sample size you had to go and look up. Always give n. Two</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="co"># studies reporting the same estimate with n = 67 and n = 6700 are not making the same</span></span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a><span class="co"># claim, and it&apos;s the confidence interval that gives the game away.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>End of the linear model with single continuous explanatory variable
 exercise</p>

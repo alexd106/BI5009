@@ -976,6 +976,43 @@ difference at all?</p>
 <span id="cb12-105"><a href="#cb12-105" tabindex="-1"></a><span class="co"># carries more evidential weight than the version that was selected, even</span></span>
 <span id="cb12-106"><a href="#cb12-106" tabindex="-1"></a><span class="co"># though the numbers printed out are identical.</span></span></code></pre></div>
 <p>&#xA0;</p>
+<p>12. Last write-up, and the least help of the lot. You arrived at your
+final model by a selection procedure, which brings a couple of reporting
+problems that the previous three exercises didn&#x2019;t have.</p>
+<p>Write <strong>no more than 200 words</strong> describing this
+analysis for the methods and results of a paper. Your reader is an
+ecologist who knows their stuff but isn&#x2019;t a statistician, and who wasn&#x2019;t
+in the room while you did the analysis. They need to be able to work out
+from your text exactly what you did and how much to trust it. Questions
+4 and 11 have already told you the two things an honest account has to
+include that a naive one would leave out.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Same health warning: my version, not the version.</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># METHODS. Bird abundance was modelled against log10 patch area, log10 distance to the</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># nearest patch, log10 distance to the nearest larger patch, year of isolation, altitude</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># and grazing intensity (a five level factor), plus the area by grazing interaction.</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co"># Distance and area variables were log10 transformed after graphical exploration showed</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co"># strong right skew. Terms were removed by backward selection using single term deletions</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co"># and F tests, with main effects retained wherever they appeared in a retained interaction.</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co"># RESULTS. Four terms were removed in turn (distance to the nearest larger patch, year of</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># isolation, distance to the nearest patch, altitude), leaving patch area, grazing</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co"># intensity and their interaction. Bird abundance increased with patch area at every</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co"># grazing level, but at a rate that varied roughly fourfold with grazing intensity</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co"># (interaction F 4,57 = 4.09, p = 0.006; R2 = 0.80, n = 67). Because the final model was</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co"># selected using these same data, the P values and confidence intervals quoted here are</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co"># optimistic and should be treated as descriptive.</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co"># (that&apos;s about 170 words, so there was room to spare)</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co"># The two things a naive account would have left out are the selection history and that</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co"># last sentence. Without the history a reader can&apos;t tell how much searching went on, and a</span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co"># model reported bare looks as though it was specified in advance on theoretical grounds,</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co"># which carries far more weight than one arrived at by trying things and discarding them.</span></span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="co"># Without the caveat they would take the P values at face value. So report the starting</span></span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="co"># model, the criterion and the order of removal, and say plainly that the model was</span></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="co"># selected.</span></span></code></pre></div>
+<p>&#xA0;</p>
 <p><strong>OPTIONAL questions</strong> if you have time / energy /
 inclination!</p>
 <p>&#xA0;</p>
@@ -987,110 +1024,110 @@ Repeat the model selection you did above, but this time use the
 instead. Don&#x2019;t forget, if we want to perform model selection based on
 AIC with the <code>drop1()</code> function we need to omit the
 <code>test = &quot;F&quot;</code> argument)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># This time, we are not doing any specific hypothesis testing, rather we are </span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># attempting to select a model with the &apos;best&apos; goodness of fit with the minimal</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># number of estimated parameters. </span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># We will start with a reasonably complex but PLAUSABLE model (this is the same </span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co"># model we started with using F test based model selection above.</span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>M.start.AIC<span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> LOGLDIST <span class="sc">+</span> LOGDIST <span class="sc">+</span> YR.ISOL <span class="sc">+</span> ALT <span class="sc">+</span> LOGAREA <span class="sc">+</span> FGRAZE <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>               LOGAREA<span class="sc">:</span>FGRAZE, <span class="at">data =</span> loyn)</span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="fu">drop1</span>(M.start.AIC)</span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="do">## ABUND ~ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + </span></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="do">##     LOGAREA:FGRAZE</span></span>
-<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1329.8 228.20</span></span>
-<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="do">## LOGLDIST        1      0.55 1330.3 226.23</span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="do">## LOGDIST         1      4.02 1333.8 226.40</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="do">## YR.ISOL         1      0.77 1330.6 226.24</span></span>
-<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="do">## ALT             1     20.84 1350.6 227.24</span></span>
-<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.04 1734.8 238.02</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># This time, we are not doing any specific hypothesis testing, rather we are </span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># attempting to select a model with the &apos;best&apos; goodness of fit with the minimal</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># number of estimated parameters. </span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># We will start with a reasonably complex but PLAUSABLE model (this is the same </span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># model we started with using F test based model selection above.</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>M.start.AIC<span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> LOGLDIST <span class="sc">+</span> LOGDIST <span class="sc">+</span> YR.ISOL <span class="sc">+</span> ALT <span class="sc">+</span> LOGAREA <span class="sc">+</span> FGRAZE <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>               LOGAREA<span class="sc">:</span>FGRAZE, <span class="at">data =</span> loyn)</span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="fu">drop1</span>(M.start.AIC)</span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="do">## Model:</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="do">## ABUND ~ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + </span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="do">##     LOGAREA:FGRAZE</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1329.8 228.20</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="do">## LOGLDIST        1      0.55 1330.3 226.23</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="do">## LOGDIST         1      4.02 1333.8 226.40</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="do">## YR.ISOL         1      0.77 1330.6 226.24</span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="do">## ALT             1     20.84 1350.6 227.24</span></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.04 1734.8 238.02</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>A2. Refit your model with the variable associated with the lowest AIC
 value removed. Run <code>drop1()</code> again on your updated model.
 Perhaps call this new model <code>M2.AIC</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># So, our starting model with no variables removed has an AIC of 228.20. If we </span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># remove the interaction term `LOGAREA:FGRAZE` from the model then this results </span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># in a big increase in AIC (238.02 - 228.20 = 9.82) so this suggests that there </span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># is substantial evidence that the interaction should remain in the model. The </span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># models without `LOGLDIST`, `LOGDIST`, `YR.ISOL` all have pretty much the </span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># same AIC value (around 226) so in practice we could remove any of them. Let&apos;s </span></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># remove the term that results in the model with the lowest AIC which is the </span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co"># `LOGLDIST` variable (AIC 226.23).</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>M2.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M.start.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> LOGLDIST)</span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="fu">drop1</span>(M2.AIC)</span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="do">## ABUND ~ LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1330.3 226.23</span></span>
-<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="do">## LOGDIST         1      3.64 1334.0 224.41</span></span>
-<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="do">## YR.ISOL         1      0.78 1331.1 224.27</span></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="do">## ALT             1     22.24 1352.6 225.34</span></span>
-<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    406.74 1737.1 236.10</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># So, our starting model with no variables removed has an AIC of 228.20. If we </span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># remove the interaction term `LOGAREA:FGRAZE` from the model then this results </span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># in a big increase in AIC (238.02 - 228.20 = 9.82) so this suggests that there </span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># is substantial evidence that the interaction should remain in the model. The </span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># models without `LOGLDIST`, `LOGDIST`, `YR.ISOL` all have pretty much the </span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># same AIC value (around 226) so in practice we could remove any of them. Let&apos;s </span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co"># remove the term that results in the model with the lowest AIC which is the </span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co"># `LOGLDIST` variable (AIC 226.23).</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>M2.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M.start.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> LOGLDIST)</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="fu">drop1</span>(M2.AIC)</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## Model:</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">## ABUND ~ LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1330.3 226.23</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="do">## LOGDIST         1      3.64 1334.0 224.41</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="do">## YR.ISOL         1      0.78 1331.1 224.27</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="do">## ALT             1     22.24 1352.6 225.34</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    406.74 1737.1 236.10</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>A3. Refit your model with the variable associated with the lowest AIC
 value removed and run <code>drop1()</code> again on your new model
 (<code>M3.AIC</code>).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Ok, as the model without the variable `YR.ISOL` has the lowest AIC (224.27) </span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># let&apos;s update our model and remove this variable.</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>M3.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M2.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> YR.ISOL)</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="fu">drop1</span>(M3.AIC)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="do">## ABUND ~ LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1331.1 224.27</span></span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">## LOGDIST         1      3.28 1334.4 222.43</span></span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## ALT             1     25.33 1356.5 223.53</span></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.99 1737.1 234.10</span></span></code></pre></div>
-<p>&#xA0;</p>
-<p>A4. Repeat your model selection by removing the variable indicated by
-the model with the lowest AIC.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># So, now the model without `LOGDIST` has the lowest AIC (222.43) so we should </span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># refit the model without this variable and run `drop1()` again.</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Ok, as the model without the variable `YR.ISOL` has the lowest AIC (224.27) </span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># let&apos;s update our model and remove this variable.</span></span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>M4.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M3.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> LOGDIST)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">drop1</span>(M4.AIC)</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>M3.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M2.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> YR.ISOL)</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">drop1</span>(M3.AIC)</span>
 <span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
 <span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="do">## ABUND ~ ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="do">## ABUND ~ LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
 <span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
-<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1334.4 222.43</span></span>
-<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="do">## ALT             1     22.84 1357.2 221.57</span></span>
-<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    408.56 1743.0 232.33</span></span></code></pre></div>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1331.1 224.27</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="do">## LOGDIST         1      3.28 1334.4 222.43</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="do">## ALT             1     25.33 1356.5 223.53</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    405.99 1737.1 234.10</span></span></code></pre></div>
+<p>&#xA0;</p>
+<p>A4. Repeat your model selection by removing the variable indicated by
+the model with the lowest AIC.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># So, now the model without `LOGDIST` has the lowest AIC (222.43) so we should </span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># refit the model without this variable and run `drop1()` again.</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>M4.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M3.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> LOGDIST)</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="fu">drop1</span>(M4.AIC)</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="do">## Model:</span></span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="do">## ABUND ~ ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1334.4 222.43</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="do">## ALT             1     22.84 1357.2 221.57</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4    408.56 1743.0 232.33</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>A5. Rinse and repeat as above.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># And the model without the variable `ALT` has an AIC of 221.57 which is about </span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># the same as the model with `ALT` (AIC 222.43), so let&apos;s remove this variable </span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># from the model as this suggests that the simpler model fits our data just as </span></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co"># well as the more complicated model.</span></span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>M5.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M4.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> ALT)</span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="fu">drop1</span>(M5.AIC)</span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="do">## Model:</span></span>
-<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="do">## ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
-<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
-<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1357.2 221.57</span></span>
-<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4     389.3 1746.6 230.47</span></span>
-<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co"># OK, so now we have a model with the main effects of LOGAREA, FGRAZE and the </span></span>
-<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co"># interaction term LOGAREA:FGRAZE. When we remove the interaction term the </span></span>
-<span id="cb17-18"><a href="#cb17-18" tabindex="-1"></a><span class="co"># AIC value increases by 8.9 (230.47-221.57) and this suggests that if we </span></span>
-<span id="cb17-19"><a href="#cb17-19" tabindex="-1"></a><span class="co"># remove the interaction term the model fit is significantly worse. Therefore we </span></span>
-<span id="cb17-20"><a href="#cb17-20" tabindex="-1"></a><span class="co"># should leave it in and finish our model selection here.</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># And the model without the variable `ALT` has an AIC of 221.57 which is about </span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co"># the same as the model with `ALT` (AIC 222.43), so let&apos;s remove this variable </span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># from the model as this suggests that the simpler model fits our data just as </span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># well as the more complicated model.</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>M5.AIC <span class="ot">&lt;-</span> <span class="fu">update</span>(M4.AIC, <span class="at">formula =</span> . <span class="sc">~</span> . <span class="sc">-</span> ALT)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="fu">drop1</span>(M5.AIC)</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="do">## Single term deletions</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="do">## Model:</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="do">## ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="do">##                Df Sum of Sq    RSS    AIC</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="do">## &lt;none&gt;                      1357.2 221.57</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="do">## LOGAREA:FGRAZE  4     389.3 1746.6 230.47</span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co"># OK, so now we have a model with the main effects of LOGAREA, FGRAZE and the </span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co"># interaction term LOGAREA:FGRAZE. When we remove the interaction term the </span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co"># AIC value increases by 8.9 (230.47-221.57) and this suggests that if we </span></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co"># remove the interaction term the model fit is significantly worse. Therefore we </span></span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co"># should leave it in and finish our model selection here.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>If all goes well, your final model should be
 <code>lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)</code>. This is the
@@ -1113,63 +1150,63 @@ a bit more wrangling) let&#x2019;s make it a little simpler by fitting all of
 our models and then use the <code>AIC()</code> function to calculate the
 AIC values for each model rather than <code>drop1()</code>. Details on
 how to do this are given in the solutions to this exercise.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># one way of constructing a summary table for reporting the results:</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># create a vector of all the models compared during out model selection</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>model.formulas<span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  <span class="st">&quot;LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>,</span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>    <span class="st">&quot;LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>,</span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>    <span class="st">&quot;ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>,</span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>    <span class="st">&quot;ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>, </span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>    <span class="st">&quot;LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co"># fit each model. Need to use the noquote() function to remove the </span></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># quotations around our model formula otherwise you will get an error when </span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co"># using the lm() function.</span></span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co"># You will also need to paste the response variable &apos;ABUND ~ &apos; </span></span>
-<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co"># together with out explanatory variables to create a valid model formula</span></span>
-<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a></span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>M.start <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">1</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>M.step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">2</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>M.step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">3</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>M.step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">4</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>M.step5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">5</span>])), <span class="at">data =</span> loyn)</span>
-<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a></span>
-<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a><span class="co"># obtain the AIC values for each model. Note: these will be different </span></span>
-<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="co"># than those obtained with the drop1() function due to a small difference in</span></span>
-<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a><span class="co"># how AIC is calculated. This isn;t a problem, just don&apos;t mix and match</span></span>
-<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a><span class="co"># the AIC values form drop1 and AIC functions.</span></span>
-<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a></span>
-<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a>model.AIC<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">AIC</span>(M.start),</span>
-<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step2),</span>
-<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step3),</span>
-<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step4),</span>
-<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step5))</span>
-<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a></span>
-<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a><span class="co"># create a dataframe of models and AIC values</span></span>
-<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a></span>
-<span id="cb18-38"><a href="#cb18-38" tabindex="-1"></a>summary.table<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model =</span> model.formulas,</span>
-<span id="cb18-39"><a href="#cb18-39" tabindex="-1"></a>    <span class="at">AIC=</span> <span class="fu">round</span>(model.AIC, <span class="dv">2</span>))</span>
-<span id="cb18-40"><a href="#cb18-40" tabindex="-1"></a></span>
-<span id="cb18-41"><a href="#cb18-41" tabindex="-1"></a><span class="co"># Sort the models from lowest AIC (preferred) to highest (least preferred)</span></span>
-<span id="cb18-42"><a href="#cb18-42" tabindex="-1"></a></span>
-<span id="cb18-43"><a href="#cb18-43" tabindex="-1"></a>summary.table<span class="ot">&lt;-</span> summary.table[<span class="fu">order</span>(summary.table<span class="sc">$</span>AIC), ]</span>
-<span id="cb18-44"><a href="#cb18-44" tabindex="-1"></a></span>
-<span id="cb18-45"><a href="#cb18-45" tabindex="-1"></a><span class="co"># Add the difference in AIC with respect to best model</span></span>
-<span id="cb18-46"><a href="#cb18-46" tabindex="-1"></a></span>
-<span id="cb18-47"><a href="#cb18-47" tabindex="-1"></a>summary.table<span class="sc">$</span>deltaAIC<span class="ot">&lt;-</span> summary.table<span class="sc">$</span>AIC <span class="sc">-</span> summary.table<span class="sc">$</span>AIC[<span class="dv">1</span>]</span>
-<span id="cb18-48"><a href="#cb18-48" tabindex="-1"></a></span>
-<span id="cb18-49"><a href="#cb18-49" tabindex="-1"></a><span class="co"># print the dataframe to the console</span></span>
-<span id="cb18-50"><a href="#cb18-50" tabindex="-1"></a></span>
-<span id="cb18-51"><a href="#cb18-51" tabindex="-1"></a>summary.table</span>
-<span id="cb18-52"><a href="#cb18-52" tabindex="-1"></a><span class="do">##                                                                    Model    AIC deltaAIC</span></span>
-<span id="cb18-53"><a href="#cb18-53" tabindex="-1"></a><span class="do">## 5                                      LOGAREA + FGRAZE + LOGAREA:FGRAZE 413.71     0.00</span></span>
-<span id="cb18-54"><a href="#cb18-54" tabindex="-1"></a><span class="do">## 4                                ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE 414.57     0.86</span></span>
-<span id="cb18-55"><a href="#cb18-55" tabindex="-1"></a><span class="do">## 3                      ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE 416.41     2.70</span></span>
-<span id="cb18-56"><a href="#cb18-56" tabindex="-1"></a><span class="do">## 2            LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE 418.37     4.66</span></span>
-<span id="cb18-57"><a href="#cb18-57" tabindex="-1"></a><span class="do">## 1 LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE 420.34     6.63</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># one way of constructing a summary table for reporting the results:</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># create a vector of all the models compared during out model selection</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>model.formulas<span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>  <span class="st">&quot;LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>    <span class="st">&quot;LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>    <span class="st">&quot;ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>    <span class="st">&quot;ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>, </span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>    <span class="st">&quot;LOGAREA + FGRAZE + LOGAREA:FGRAZE&quot;</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co"># fit each model. Need to use the noquote() function to remove the </span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co"># quotations around our model formula otherwise you will get an error when </span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co"># using the lm() function.</span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co"># You will also need to paste the response variable &apos;ABUND ~ &apos; </span></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="co"># together with out explanatory variables to create a valid model formula</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a>M.start <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">1</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a>M.step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">2</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a>M.step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">3</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a>M.step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">4</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a>M.step5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">noquote</span>(<span class="fu">paste</span>(<span class="st">&apos;ABUND ~&apos;</span>, model.formulas[<span class="dv">5</span>])), <span class="at">data =</span> loyn)</span>
+<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="co"># obtain the AIC values for each model. Note: these will be different </span></span>
+<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="co"># than those obtained with the drop1() function due to a small difference in</span></span>
+<span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a><span class="co"># how AIC is calculated. This isn;t a problem, just don&apos;t mix and match</span></span>
+<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="co"># the AIC values form drop1 and AIC functions.</span></span>
+<span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" tabindex="-1"></a>model.AIC<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">AIC</span>(M.start),</span>
+<span id="cb19-31"><a href="#cb19-31" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step2),</span>
+<span id="cb19-32"><a href="#cb19-32" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step3),</span>
+<span id="cb19-33"><a href="#cb19-33" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step4),</span>
+<span id="cb19-34"><a href="#cb19-34" tabindex="-1"></a>    <span class="fu">AIC</span>(M.step5))</span>
+<span id="cb19-35"><a href="#cb19-35" tabindex="-1"></a></span>
+<span id="cb19-36"><a href="#cb19-36" tabindex="-1"></a><span class="co"># create a dataframe of models and AIC values</span></span>
+<span id="cb19-37"><a href="#cb19-37" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" tabindex="-1"></a>summary.table<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model =</span> model.formulas,</span>
+<span id="cb19-39"><a href="#cb19-39" tabindex="-1"></a>    <span class="at">AIC=</span> <span class="fu">round</span>(model.AIC, <span class="dv">2</span>))</span>
+<span id="cb19-40"><a href="#cb19-40" tabindex="-1"></a></span>
+<span id="cb19-41"><a href="#cb19-41" tabindex="-1"></a><span class="co"># Sort the models from lowest AIC (preferred) to highest (least preferred)</span></span>
+<span id="cb19-42"><a href="#cb19-42" tabindex="-1"></a></span>
+<span id="cb19-43"><a href="#cb19-43" tabindex="-1"></a>summary.table<span class="ot">&lt;-</span> summary.table[<span class="fu">order</span>(summary.table<span class="sc">$</span>AIC), ]</span>
+<span id="cb19-44"><a href="#cb19-44" tabindex="-1"></a></span>
+<span id="cb19-45"><a href="#cb19-45" tabindex="-1"></a><span class="co"># Add the difference in AIC with respect to best model</span></span>
+<span id="cb19-46"><a href="#cb19-46" tabindex="-1"></a></span>
+<span id="cb19-47"><a href="#cb19-47" tabindex="-1"></a>summary.table<span class="sc">$</span>deltaAIC<span class="ot">&lt;-</span> summary.table<span class="sc">$</span>AIC <span class="sc">-</span> summary.table<span class="sc">$</span>AIC[<span class="dv">1</span>]</span>
+<span id="cb19-48"><a href="#cb19-48" tabindex="-1"></a></span>
+<span id="cb19-49"><a href="#cb19-49" tabindex="-1"></a><span class="co"># print the dataframe to the console</span></span>
+<span id="cb19-50"><a href="#cb19-50" tabindex="-1"></a></span>
+<span id="cb19-51"><a href="#cb19-51" tabindex="-1"></a>summary.table</span>
+<span id="cb19-52"><a href="#cb19-52" tabindex="-1"></a><span class="do">##                                                                    Model    AIC deltaAIC</span></span>
+<span id="cb19-53"><a href="#cb19-53" tabindex="-1"></a><span class="do">## 5                                      LOGAREA + FGRAZE + LOGAREA:FGRAZE 413.71     0.00</span></span>
+<span id="cb19-54"><a href="#cb19-54" tabindex="-1"></a><span class="do">## 4                                ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE 414.57     0.86</span></span>
+<span id="cb19-55"><a href="#cb19-55" tabindex="-1"></a><span class="do">## 3                      ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE 416.41     2.70</span></span>
+<span id="cb19-56"><a href="#cb19-56" tabindex="-1"></a><span class="do">## 2            LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE 418.37     4.66</span></span>
+<span id="cb19-57"><a href="#cb19-57" tabindex="-1"></a><span class="do">## 1 LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE 420.34     6.63</span></span></code></pre></div>
 <table>
 <thead>
 <tr>

@@ -311,3 +311,28 @@ ggplot(loyn, aes(x = FGRAZE, y = ABUND)) +
         width = 0.1, position=position_nudge(x = 0.15))
 
 
+
+## ----Q12, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE----------------------------------------------------------------------------------------------------------------
+# Same health warning as the previous exercise: this is my version, not the version.
+
+# Mean bird abundance differed among the five grazing intensity levels (F 4,62 = 14.98,
+# p < 0.001, n = 67 patches). Abundance was highest at the lowest grazing intensity
+# (mean 28.6 birds, 95% CI: 24.5 to 32.8) and lowest at the highest intensity (mean 6.3
+# birds), a difference of 22.3 birds (95% CI: 16.5 to 28.2). Grazing levels 2, 3 and 4
+# were similar to one another (means 19.4, 20.2 and 19.0 birds) and all sat roughly 8 to
+# 10 birds below level 1. The effect is therefore not a smooth decline across the grazing
+# gradient, it is concentrated at the highest grazing intensity. Grazing intensity
+# accounted for 49.2% of the variation in bird abundance.
+
+# The pattern is a STEP, not a gradient. Levels 2, 3 and 4 are more or less
+# interchangeable, level 1 sits above them and level 5 a long way below. Saying that in
+# one sentence is far more use to a reader than four separate contrast statements, and
+# it's the kind of thing that might actually inform a grazing management decision. Watch
+# the wording though: "similar to one another" describes the estimated means. It is not a
+# claim that they are identical, and we haven't tested them against each other anyway.
+
+# One thing I left out on purpose: the P value for the intercept (p < 2e-16). That tests
+# the hypothesis "there are no birds at all in the least grazed patches", which nobody
+# believed and nobody needed testing. A statistically impeccable result can still be
+# biologically pointless, and a fair part of writing up well is deciding what to leave out.
+

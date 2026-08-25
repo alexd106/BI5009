@@ -248,10 +248,43 @@ lines(10^(my_data$LOGAREA), pred_vals_se$fit, lty = 1,col = "firebrick")
 lines(10^(my_data$LOGAREA), pred_vals_se$fit + (1.96 * pred_vals_se$se.fit), lty = 2, col = "firebrick")
 lines(10^(my_data$LOGAREA), pred_vals_se$fit - (1.96 * pred_vals_se$se.fit), lty = 2, col = "firebrick")
 
-# the model doesn't look too great now! Technically, if we transform variables in our model
-# then we should only really interpret the model on the scale of the transformation.
+# the model doesn't look too great now! The fit is poor at both ends. Those 4 to 8
+# hectare patches holding 24 to 28 birds are under-predicted by about 8 birds, and on
+# this plot they're squashed against the left hand axis where they're easy to miss.
 
-# If we interpret on the back transformed scale, you can see the model doesn't really fit the 
-# data very well, especially for the two large forest patch AREAs and also those patches with
-# high bird abundance.
+# Notice the gap too. Patches run from 0.1 to 144 hectares and then jump to 973 and 1771,
+# so the right hand half of this plot rests on two points (the same two that had high
+# leverage in Q8) and the line across it is an assumption. You could restrict the analysis
+# to the smaller patches, which is defensible if your question is really about small
+# remnants, but it doesn't fix the misfit at the low end, the gap is much less severe on
+# the log10 scale the model is actually fitted on, and dropping data because a plot looks
+# wrong is a decision you would have to declare.
+
+# And the thing we promised back in Q5: the fitted line is straight on the log scale and
+# curved here, so there is no single 'birds per hectare' slope to quote. A hectare added
+# to a 1 hectare patch is worth about 2.9 birds, a hectare added to a 1000 hectare patch
+# about 0.004. What stays constant is the multiplicative step, 9.78 birds per tenfold
+# increase in area, which is why we reported the estimate per 1 unit of LOGAREA in Q5.
+
+
+## ----Q14, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE---------------------------------------------------------------------------------------------
+# Before you read mine, a health warning. This is how I would write it up, and it's
+# one reasonable version among many. Reporting conventions vary a good deal between
+# journals, between subfields and between supervisors. What matters is that the
+# estimate, its uncertainty and the sample size are all in there, that you haven't
+# claimed anything the data don't support, and that somebody could reproduce what you
+# did from what you've written. Compare yours against mine, and against the papers
+# you're reading. Where they differ, ask yourself which is clearer and which is more
+# honest.
+
+# Bird abundance increased with forest patch area. A linear model of bird abundance
+# against log10 transformed patch area estimated an increase of 9.78 birds (95% CI:
+# 7.76 to 11.81) for every 1 unit increase in log10 area, which is a tenfold increase
+# in patch area (F 1,65 = 92.85, p < 0.001). The model explained 58.8% of the variation
+# in bird abundance (n = 67 patches).
+
+# Notice that two of those numbers didn't come from summary(). The confidence interval
+# came from confint() and the sample size you had to go and look up. Always give n. Two
+# studies reporting the same estimate with n = 67 and n = 6700 are not making the same
+# claim, and it's the confidence interval that gives the game away.
 

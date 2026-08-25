@@ -444,4 +444,46 @@ ggplot(loyn, aes(x = LOGAREA, y = ABUND, colour = FGRAZE) ) +
 
 \  
 
+10\. And again, but with less help this time. Write up this analysis as a single paragraph for your thesis, referring to your figure from Question 9. No ingredient list, you decide what goes in.
+
+Three things I'd like you to get right, because they're the three that people most often get wrong when reporting an interaction:
+
+- You have a clear interaction. Is "bird abundance increases with patch area" a sentence you can write on its own here?
+- `FGRAZE2` and `FGRAZE2:LOGAREA` both had confidence intervals that included zero. Report them without claiming that the two grazing levels are the same.
+- Your model has 10 parameters. Does a reader need all 10 of them?
+
+```{r Q10, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
+# Same health warning: my version, not the version.
+
+# The relationship between bird abundance and forest patch area depended on grazing
+# intensity (interaction F 4,57 = 4.09, p = 0.006; R2 = 0.80, n = 67). Abundance increased
+# with log10 patch area at every grazing level, but the rate of increase varied roughly
+# fourfold, from 4.1 birds per unit log10 area at the lowest grazing intensity to 17.8 at
+# level 4 (Figure X). In a one hectare patch, abundance at grazing level 2 was an
+# estimated 6.1 birds lower than at level 1 (95% CI: 13.7 lower to 1.6 higher), and its
+# slope an estimated 4.3 steeper (95% CI: 0.6 shallower to 9.1 steeper); with only 11
+# patches at that grazing level these data cannot resolve either comparison. Patch area
+# therefore matters most in moderately grazed patches and least in lightly grazed ones,
+# where abundance is already high even in small patches.
+
+# on the three things:
+
+# 1. No. With an interaction in the model, "bird abundance increases with patch area" is
+#    not a complete sentence, because how much it increases depends on grazing level. Only
+#    ever quote a main effect with its condition attached.
+
+# 2. Look at the two clauses in the middle of the paragraph. They give the estimate, they
+#    give the interval, and then they say plainly that we can't resolve the comparison.
+#    What they never do is say the two levels are the same. "We cannot tell" is a
+#    legitimate result and it is perfectly publishable.
+
+# 3. No. Ten coefficients in prose is unreadable, and most of them are contrasts against
+#    a baseline no reader cares about. Report the interaction test, the range of fitted
+#    slopes, the figure, and the R2 and n. If a journal wants the full table it goes in a
+#    supplement. Your figure from Q9 does more work than the table ever will: five fitted
+#    lines whose slopes visibly differ IS the finding.
+```
+
+\  
+
 End of the Linear model with continuous and categorical explanatory variables exercise
