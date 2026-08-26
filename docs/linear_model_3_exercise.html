@@ -437,6 +437,18 @@ can split your plotting device into 2 rows and 2 columns using the
 <code>par()</code> function before you create the plots. Check each of
 the assumptions using these plots and report whether your model meets
 these assumptions.</p>
+<p>Those four plots all show the residuals against the <em>fitted
+values</em>. As you saw in the lectures, it is also worth plotting the
+residuals against each <em>explanatory variable</em> in turn. Extract
+the residuals from your model with the <code>resid()</code> function,
+store them in the <code>loyn</code> dataframe, and then plot them
+against <code>LOGAREA</code> (a scatterplot) and against
+<code>FGRAZE</code> (a boxplot). Add a horizontal line at zero to each
+using <code>abline(h = 0, lty = 2)</code> to make patterns easier to
+see. What can these two plots tell you that the previous four
+cannot?</p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 <p>&#xA0;</p>
 <p>7. Use the <code>anova()</code> function to produce the ANOVA table
 of your linear model. Remember, this ANOVA table is based on sequential
@@ -470,7 +482,7 @@ own does not?</li>
 greater than 0.05 (<code>FGRAZE2</code>, <code>FGRAZE2:LOGAREA</code>
 and <code>FGRAZE5:LOGAREA</code>). It is very tempting to write that
 these grazing levels &#x2018;are the same&#x2019; as graze level 1, but a large P
-value never licenses that conclusion (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).
+value never allows that conclusion (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).
 For each of these three, look at the confidence interval and ask
 yourself what range of differences these data are actually consistent
 with <em>before</em> you write anything down.</p>
@@ -523,7 +535,7 @@ package first if you don&#x2019;t already have it.</p>
 <p>&#xA0;</p>
 <p>10. And again, but with less help this time. Write up this analysis
 as a single paragraph for your thesis, referring to your figure from
-Question 9. No ingredient list, you decide what goes in.</p>
+Question 9. No ingredient list this time, you decide what goes in.</p>
 <p>Three things I&#x2019;d like you to get right, because they&#x2019;re the three
 that people most often get wrong when reporting an interaction:</p>
 <ul>

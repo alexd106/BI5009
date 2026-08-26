@@ -549,18 +549,16 @@ this is called an interaction.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">coplot</span>(ABUND <span class="sc">~</span> LOGAREA <span class="sc">|</span> FGRAZE, <span class="at">data =</span> loyn)</span></code></pre></div>
 <p><img src="linear_model_3_exercise_solutions_files/figure-html/Q4-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># library(lattice)</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># xyplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># - Within a grazing level, abundance seems to increase with the log patch area</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#   in a more or less linear fashion</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># - Overall, the mean abundance seems to decrease as grazing levels increase.</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#   This is most noticeable in the highest grazing level.</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co"># - Some of the slopes of the relationships (imagine a straight line) appear to be </span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#   somewhat different for the different graze levels. The slopes for graze levels</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#   1 and 2 are similar, but different for graze levels 3, 4, and 5. We will </span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#   need to test this with a model.</span></span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># or library(lattice) xyplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># - Within a grazing level, abundance seems to increase with the log patch area</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#   in a more or less linear fashion</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># - Overall, the mean abundance seems to decrease as grazing levels increase.</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#   This is most noticeable in the highest grazing level.</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># - Some of the slopes of the relationships (imagine a straight line) appear to be </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#   somewhat different for the different graze levels. The slopes for graze levels</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#   1 and 2 are similar, but different for graze levels 3, 4, and 5. We will </span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#   need to test this with a model.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>5. Fit an appropriate linear model in R to explain the variation in
 the response variable <code>ABUND</code> with the explanatory variables
@@ -582,6 +580,16 @@ can split your plotting device into 2 rows and 2 columns using the
 <code>par()</code> function before you create the plots. Check each of
 the assumptions using these plots and report whether your model meets
 these assumptions.</p>
+<p>Those four plots all show the residuals against the <em>fitted
+values</em>. As you saw in the lectures, it is also worth plotting the
+residuals against each <em>explanatory variable</em> in turn. Extract
+the residuals from your model with the <code>resid()</code> function,
+store them in the <code>loyn</code> dataframe, and then plot them
+against <code>LOGAREA</code> (a scatterplot) and against
+<code>FGRAZE</code> (a boxplot). Add a horizontal line at zero to each
+using <code>abline(h = 0, lty = 2)</code> to make patterns easier to
+see. What can these two plots tell you that the previous four
+cannot?</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># first split the plotting device into 2 rows and 2 columns</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
@@ -589,21 +597,81 @@ these assumptions.</p>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">plot</span>(birds_inter1)</span></code></pre></div>
 <p><img src="linear_model_3_exercise_solutions_files/figure-html/Q6-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># To test the normality of residuals assumption we use the Normal Q-Q plot. </span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># The central residuals are not too far from the Q-Q line but the extremes</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># are too extreme (the tails of the distribution are too long). Some</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co"># observations, both high and low, are poorly explained by the model.</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># To test the normality of residuals assumption we use the Normal Q-Q plot. The central</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># residuals are not too far from the Q-Q line but the extremes are too extreme (the</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># tails of the distribution are too long). Some observations, both high and low, are</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co"># poorly explained by the model.</span></span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># The plot of the residuals against the fitted values suggests these</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co"># extreme residuals happen for intermediate fitted values.</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># The plot of the residuals against the fitted values suggests these extreme residuals</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co"># happen for intermediate fitted values.</span></span>
 <span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co"># Looking at the homogeneity of variance assumption (Residuals vs</span></span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co"># Fitted and Scale-Location plot),</span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co"># the graphs are mostly messy, with no clear pattern emerging.</span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co"># The observations with the highest leverage don&apos;t appear to be overly</span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co"># influential, according to the Cook&apos;s distances in the Residuals vs</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co"># Leverage plot (all &lt; 0.5).  </span></span></code></pre></div>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co"># Looking at the homogeneity of variance assumption (Residuals vs Fitted and</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co"># Scale-Location plot), the graphs are mostly messy, with no clear pattern emerging.</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co"># The observations with the highest leverage don&apos;t appear to be overly influential,</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co"># according to the Cook&apos;s distances in the Residuals vs Leverage plot (all &lt; 0.5).</span></span></code></pre></div>
+<p>&#xA0;</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># now the residuals against each explanatory variable in turn</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># extract the residuals and keep them in the dataframe, so they stay lined up</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># with the variables we want to plot them against</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>loyn<span class="sc">$</span>resid_inter <span class="ot">&lt;-</span> <span class="fu">resid</span>(birds_inter1)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="fu">plot</span>(resid_inter <span class="sc">~</span> LOGAREA, <span class="at">data =</span> loyn, <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;LOGAREA&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="fu">boxplot</span>(resid_inter <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn,</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Grazing level&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="linear_model_3_exercise_solutions_files/figure-html/Q6b-1.png" alt width="672"></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># WHAT ARE WE LOOKING FOR HERE? Not an overall trend. If a variable is in the</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># model then least squares guarantees the residuals average out to zero against</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># it, so there is nothing to find on that score. Check it for yourself if you</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># like: cor(loyn$resid_inter, loyn$LOGAREA) is exactly 0, and the mean residual</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># is exactly 0 within every level of FGRAZE.</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># What these plots CAN show you is shape and spread.</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># Against LOGAREA: the scatter is fairly even across the range with no obvious</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co"># curve, so there is no sign that we need a quadratic term for patch area.</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co"># Against FGRAZE: the middle of each box sits on zero, as it must, but the boxes</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># are not the same height. Graze level 3 is much more variable than graze levels</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co"># 2 and 4. The residual variances are 21.8, 10.3, 48.5, 6.1 and 12.0, so the</span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co"># largest is about eight times the smallest. That is a hint that the homogeneity</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co"># of variance assumption is shakier than the Scale-Location plot made it look.</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co"># Don&apos;t over-react to it though: with only 11 to 17 patches per level these</span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="co"># variance estimates are themselves quite imprecise.</span></span></code></pre></div>
+<p>&#xA0;</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># The other, and arguably more useful, version of this check is to plot the</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># residuals against variables that are NOT in the model. If something you left</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># out shows a clear pattern here, it may well belong in the model.</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co"># we only created LOGAREA and FGRAZE earlier in this exercise, so make the</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co"># other two transformed variables now (same log10 transformation you used in</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># the graphical data exploration exercise)</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>loyn<span class="sc">$</span>LOGDIST <span class="ot">&lt;-</span> <span class="fu">log10</span>(loyn<span class="sc">$</span>DIST)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>loyn<span class="sc">$</span>LOGLDIST <span class="ot">&lt;-</span> <span class="fu">log10</span>(loyn<span class="sc">$</span>LDIST)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="fu">plot</span>(resid_inter <span class="sc">~</span> LOGDIST, <span class="at">data =</span> loyn, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="fu">plot</span>(resid_inter <span class="sc">~</span> LOGLDIST, <span class="at">data =</span> loyn, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="fu">plot</span>(resid_inter <span class="sc">~</span> YR.ISOL, <span class="at">data =</span> loyn, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="fu">plot</span>(resid_inter <span class="sc">~</span> ALT, <span class="at">data =</span> loyn, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="linear_model_3_exercise_solutions_files/figure-html/Q6c-1.png" alt width="672"></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># All four are patternless (the correlations are 0.02, -0.02, -0.03 and 0.11),</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># so nothing we have left out is crying out to be added. That is reassuring, and</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># it is worth remembering when we come to do formal model selection in the next</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># exercise.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>7. Use the <code>anova()</code> function to produce the ANOVA table
 of your linear model. Remember, this ANOVA table is based on sequential
@@ -617,31 +685,30 @@ with this interaction term?</p>
 <p>What is the biological interpretation of this interaction term? Can
 we say anything about the hypotheses for the main effects of
 <code>FGRAZE</code> or <code>LOGAREA</code>?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">anova</span>(birds_inter1)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">## Response: ABUND</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">##                Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">## FGRAZE          4 3324.2  831.06 34.9018 1.005e-14 ***</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">## LOGAREA         1 1692.0 1692.04 71.0600 1.335e-11 ***</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## FGRAZE:LOGAREA  4  389.3   97.33  4.0874   0.00556 ** </span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">## Residuals      57 1357.3   23.81                      </span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co"># The null hypothesis is that there is no significant interaction between </span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co"># FGRAZE and LOGAREA. </span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co"># As the P value is smaller than our cutoff of 0.05 (p = 0.005) we reject the </span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co"># null hypothesis and conclude that there is a significant interaction. </span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co"># This means that there is a significant relationship between bird abundance </span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co"># and log area, and that this relationship is different for different levels of </span></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co"># graze (at least one of them is different). Put another way, the slopes of the </span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co"># relationship between abundance and log area for each level of graze are different.</span></span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co"># As there is a significant interaction, it&apos;s difficult to interpret the main</span></span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co"># effects of FGRAZE and LOGAREA as by definition the effect of one variable is </span></span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co"># dependent on the value of the other variable.</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">anova</span>(birds_inter1)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="do">## Response: ABUND</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="do">##                Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="do">## FGRAZE          4 3324.2  831.06 34.9018 1.005e-14 ***</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="do">## LOGAREA         1 1692.0 1692.04 71.0600 1.335e-11 ***</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="do">## FGRAZE:LOGAREA  4  389.3   97.33  4.0874   0.00556 ** </span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="do">## Residuals      57 1357.3   23.81                      </span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co"># The null hypothesis is that there is no significant interaction between FGRAZE and</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co"># LOGAREA. As the P value is smaller than our cutoff of 0.05 (p = 0.005) we reject the</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co"># null hypothesis and conclude that there is a significant interaction.</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co"># This means that there is a significant relationship between bird abundance and log</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co"># area, and that this relationship is different for different levels of graze (at least</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co"># one of them is different). Put another way, the slopes of the relationship between</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co"># abundance and log area for each level of graze are different.</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co"># As there is a significant interaction, it&apos;s difficult to interpret the main effects of</span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co"># FGRAZE and LOGAREA as by definition the effect of one variable is dependent on the</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="co"># value of the other variable.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>8. OK, now for the part you all know and love! Use the
 <code>summary()</code> function on your model object to produce the
@@ -662,7 +729,7 @@ own does not?</li>
 greater than 0.05 (<code>FGRAZE2</code>, <code>FGRAZE2:LOGAREA</code>
 and <code>FGRAZE5:LOGAREA</code>). It is very tempting to write that
 these grazing levels &#x2018;are the same&#x2019; as graze level 1, but a large P
-value never licenses that conclusion (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).
+value never allows that conclusion (<a href="https://alexd106.github.io/EV5020/linear_model_1_exercise.html#pval_note">reminder</a>).
 For each of these three, look at the confidence interval and ask
 yourself what range of differences these data are actually consistent
 with <em>before</em> you write anything down.</p>
@@ -670,200 +737,147 @@ with <em>before</em> you write anything down.</p>
 you created in the previous two exercises.</p>
 <p>Please ask one of the course instructors to take you through this if
 you&#x2019;re confused :).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">summary</span>(birds_inter1)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ FGRAZE + LOGAREA + FGRAZE:LOGAREA, data = loyn)</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="do">## -15.3238  -2.4528  -0.1822   2.5097  11.3529 </span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="do">##                 Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="do">## (Intercept)       21.243      3.433   6.187 7.09e-08 ***</span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="do">## FGRAZE2           -6.061      3.825  -1.584  0.11863    </span></span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="do">## FGRAZE3          -12.321      4.217  -2.921  0.00499 ** </span></span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="do">## FGRAZE4          -15.407      4.614  -3.339  0.00149 ** </span></span>
-<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="do">## FGRAZE5          -17.043      3.795  -4.491 3.51e-05 ***</span></span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="do">## LOGAREA            4.144      1.772   2.339  0.02287 *  </span></span>
-<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="do">## FGRAZE2:LOGAREA    4.270      2.413   1.770  0.08211 .  </span></span>
-<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="do">## FGRAZE3:LOGAREA    9.058      3.079   2.942  0.00471 ** </span></span>
-<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="do">## FGRAZE4:LOGAREA   13.634      4.149   3.286  0.00174 ** </span></span>
-<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a><span class="do">## FGRAZE5:LOGAREA    1.996      3.143   0.635  0.52803    </span></span>
-<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
-<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a><span class="do">## Residual standard error: 4.88 on 57 degrees of freedom</span></span>
-<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.7993, Adjusted R-squared:  0.7676 </span></span>
-<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a><span class="do">## F-statistic: 25.22 on 9 and 57 DF,  p-value: &lt; 2.2e-16</span></span>
-<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="co"># and the 95% confidence intervals for each of those estimates</span></span>
-<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="fu">confint</span>(birds_inter1)</span>
-<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="do">##                       2.5 %    97.5 %</span></span>
-<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a><span class="do">## (Intercept)      14.3676366 28.118388</span></span>
-<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a><span class="do">## FGRAZE2         -13.7209357  1.599213</span></span>
-<span id="cb9-34"><a href="#cb9-34" tabindex="-1"></a><span class="do">## FGRAZE3         -20.7659072 -3.875532</span></span>
-<span id="cb9-35"><a href="#cb9-35" tabindex="-1"></a><span class="do">## FGRAZE4         -24.6469072 -6.167018</span></span>
-<span id="cb9-36"><a href="#cb9-36" tabindex="-1"></a><span class="do">## FGRAZE5         -24.6426335 -9.443360</span></span>
-<span id="cb9-37"><a href="#cb9-37" tabindex="-1"></a><span class="do">## LOGAREA           0.5959599  7.691998</span></span>
-<span id="cb9-38"><a href="#cb9-38" tabindex="-1"></a><span class="do">## FGRAZE2:LOGAREA  -0.5613549  9.101626</span></span>
-<span id="cb9-39"><a href="#cb9-39" tabindex="-1"></a><span class="do">## FGRAZE3:LOGAREA   2.8925901 15.222510</span></span>
-<span id="cb9-40"><a href="#cb9-40" tabindex="-1"></a><span class="do">## FGRAZE4:LOGAREA   5.3258033 21.941349</span></span>
-<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a><span class="do">## FGRAZE5:LOGAREA  -4.2986048  8.289899</span></span>
-<span id="cb9-42"><a href="#cb9-42" tabindex="-1"></a></span>
-<span id="cb9-43"><a href="#cb9-43" tabindex="-1"></a><span class="co"># Before working through these one at a time, be clear about one thing, and it&apos;s</span></span>
-<span id="cb9-44"><a href="#cb9-44" tabindex="-1"></a><span class="co"># the same point we made in the previous exercise. Apart from the intercept and</span></span>
-<span id="cb9-45"><a href="#cb9-45" tabindex="-1"></a><span class="co"># LOGAREA, every estimate in this table is a DIFFERENCE. FGRAZE2 is not graze</span></span>
-<span id="cb9-46"><a href="#cb9-46" tabindex="-1"></a><span class="co"># level 2&apos;s intercept, it&apos;s how far graze level 2&apos;s intercept sits from graze</span></span>
-<span id="cb9-47"><a href="#cb9-47" tabindex="-1"></a><span class="co"># level 1&apos;s. FGRAZE2:LOGAREA is not graze level 2&apos;s slope, it&apos;s how far graze</span></span>
-<span id="cb9-48"><a href="#cb9-48" tabindex="-1"></a><span class="co"># level 2&apos;s slope sits from graze level 1&apos;s. To get the actual intercept and</span></span>
-<span id="cb9-49"><a href="#cb9-49" tabindex="-1"></a><span class="co"># slope for a grazing level you add the relevant contrast onto the baseline.</span></span>
-<span id="cb9-50"><a href="#cb9-50" tabindex="-1"></a></span>
-<span id="cb9-51"><a href="#cb9-51" tabindex="-1"></a><span class="co"># for graze level 2, for example:</span></span>
-<span id="cb9-52"><a href="#cb9-52" tabindex="-1"></a><span class="co">#   intercept = 21.24 + (-6.06) = 15.18</span></span>
-<span id="cb9-53"><a href="#cb9-53" tabindex="-1"></a><span class="co">#   slope     =  4.14 +   4.27  =  8.41</span></span>
-<span id="cb9-54"><a href="#cb9-54" tabindex="-1"></a></span>
-<span id="cb9-55"><a href="#cb9-55" tabindex="-1"></a><span class="co"># and here are all five at once</span></span>
-<span id="cb9-56"><a href="#cb9-56" tabindex="-1"></a><span class="co"># (unname() just strips the coefficient names off, otherwise the rows come out</span></span>
-<span id="cb9-57"><a href="#cb9-57" tabindex="-1"></a><span class="co"># labelled FGRAZE2, FGRAZE3 and so on, which is the very thing we&apos;re trying to</span></span>
-<span id="cb9-58"><a href="#cb9-58" tabindex="-1"></a><span class="co"># stop you thinking)</span></span>
-<span id="cb9-59"><a href="#cb9-59" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">unname</span>(<span class="fu">coef</span>(birds_inter1))</span>
-<span id="cb9-60"><a href="#cb9-60" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(<span class="at">FGRAZE    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb9-61"><a href="#cb9-61" tabindex="-1"></a>                 <span class="at">intercept =</span> <span class="fu">c</span>(b[<span class="dv">1</span>], b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]),</span>
-<span id="cb9-62"><a href="#cb9-62" tabindex="-1"></a>                 <span class="at">slope     =</span> <span class="fu">c</span>(b[<span class="dv">6</span>], b[<span class="dv">6</span>] <span class="sc">+</span> b[<span class="dv">7</span><span class="sc">:</span><span class="dv">10</span>])), <span class="dv">2</span>)</span>
-<span id="cb9-63"><a href="#cb9-63" tabindex="-1"></a><span class="do">##   FGRAZE intercept slope</span></span>
-<span id="cb9-64"><a href="#cb9-64" tabindex="-1"></a><span class="do">## 1      1     21.24  4.14</span></span>
-<span id="cb9-65"><a href="#cb9-65" tabindex="-1"></a><span class="do">## 2      2     15.18  8.41</span></span>
-<span id="cb9-66"><a href="#cb9-66" tabindex="-1"></a><span class="do">## 3      3      8.92 13.20</span></span>
-<span id="cb9-67"><a href="#cb9-67" tabindex="-1"></a><span class="do">## 4      4      5.84 17.78</span></span>
-<span id="cb9-68"><a href="#cb9-68" tabindex="-1"></a><span class="do">## 5      5      4.20  6.14</span></span>
-<span id="cb9-69"><a href="#cb9-69" tabindex="-1"></a></span>
-<span id="cb9-70"><a href="#cb9-70" tabindex="-1"></a><span class="co"># Those five intercepts and five slopes are exactly the five lines you&apos;ll plot</span></span>
-<span id="cb9-71"><a href="#cb9-71" tabindex="-1"></a><span class="co"># in Q9. Keep them to hand, because some of the interpretations below only make</span></span>
-<span id="cb9-72"><a href="#cb9-72" tabindex="-1"></a><span class="co"># sense once you can see how small graze level 1&apos;s own slope (4.14) is next to</span></span>
-<span id="cb9-73"><a href="#cb9-73" tabindex="-1"></a><span class="co"># the differences we&apos;re estimating against it.</span></span>
-<span id="cb9-74"><a href="#cb9-74" tabindex="-1"></a></span>
-<span id="cb9-75"><a href="#cb9-75" tabindex="-1"></a><span class="co"># (Intercept)</span></span>
-<span id="cb9-76"><a href="#cb9-76" tabindex="-1"></a><span class="co"># Here the Intercept (baseline) is the predicted ABUND when LOGAREA = 0,</span></span>
-<span id="cb9-77"><a href="#cb9-77" tabindex="-1"></a><span class="co"># for FGRAZE level 1. Note that LOGAREA = 0 is a patch of 1 hectare (because</span></span>
-<span id="cb9-78"><a href="#cb9-78" tabindex="-1"></a><span class="co"># log10(1) = 0), so this is a real patch size and not an extrapolation.</span></span>
-<span id="cb9-79"><a href="#cb9-79" tabindex="-1"></a><span class="co"># We estimate 21.24 birds (95% CI: 14.37 to 28.12 birds).</span></span>
-<span id="cb9-80"><a href="#cb9-80" tabindex="-1"></a><span class="co"># the null hypothesis for the intercept is that the intercept = 0</span></span>
-<span id="cb9-81"><a href="#cb9-81" tabindex="-1"></a><span class="co"># As the P value &lt; 0.05 (7.09e-08) we reject this null hypothesis, although</span></span>
-<span id="cb9-82"><a href="#cb9-82" tabindex="-1"></a><span class="co"># &apos;are there no birds at all in a one hectare patch?&apos; was never a question</span></span>
-<span id="cb9-83"><a href="#cb9-83" tabindex="-1"></a><span class="co"># that anyone needed answering.</span></span>
-<span id="cb9-84"><a href="#cb9-84" tabindex="-1"></a></span>
-<span id="cb9-85"><a href="#cb9-85" tabindex="-1"></a><span class="co"># LOGAREA </span></span>
-<span id="cb9-86"><a href="#cb9-86" tabindex="-1"></a><span class="co"># Represents the slope of the relationship between ABUND and LOGAREA, </span></span>
-<span id="cb9-87"><a href="#cb9-87" tabindex="-1"></a><span class="co"># specific to FGRAZE = 1.</span></span>
-<span id="cb9-88"><a href="#cb9-88" tabindex="-1"></a><span class="co"># The null hypothesis is that the slope of the relationship</span></span>
-<span id="cb9-89"><a href="#cb9-89" tabindex="-1"></a><span class="co"># between LOGAREA and ABUND = 0, for level FGRAZE = 1 only. </span></span>
-<span id="cb9-90"><a href="#cb9-90" tabindex="-1"></a><span class="co"># So, for graze 1 the slope is 4.14. This means that for a 1 unit increase in</span></span>
-<span id="cb9-91"><a href="#cb9-91" tabindex="-1"></a><span class="co"># LOGAREA (i.e. a tenfold increase in patch area) we get a corresponding</span></span>
-<span id="cb9-92"><a href="#cb9-92" tabindex="-1"></a><span class="co"># increase of 4.14 birds on average (95% CI: 0.60 to 7.69 birds).</span></span>
-<span id="cb9-93"><a href="#cb9-93" tabindex="-1"></a><span class="co"># As the P value (0.022) is &lt; 0.05 we conclude that the slope is different</span></span>
-<span id="cb9-94"><a href="#cb9-94" tabindex="-1"></a><span class="co"># from 0. Notice how wide that interval is though: these data are consistent</span></span>
-<span id="cb9-95"><a href="#cb9-95" tabindex="-1"></a><span class="co"># with anything from a barely detectable increase of 0.6 birds up to a</span></span>
-<span id="cb9-96"><a href="#cb9-96" tabindex="-1"></a><span class="co"># substantial 7.7 birds. We are reasonably confident about the direction of</span></span>
-<span id="cb9-97"><a href="#cb9-97" tabindex="-1"></a><span class="co"># this effect but not at all confident about its size.</span></span>
-<span id="cb9-98"><a href="#cb9-98" tabindex="-1"></a></span>
-<span id="cb9-99"><a href="#cb9-99" tabindex="-1"></a><span class="co"># FGRAZE2</span></span>
-<span id="cb9-100"><a href="#cb9-100" tabindex="-1"></a><span class="co"># Is the estimated difference (contrasts) between the *intercept* of FGRAZE level</span></span>
-<span id="cb9-101"><a href="#cb9-101" tabindex="-1"></a><span class="co"># 2 and the reference level intercept, FGRAZE = 1.</span></span>
-<span id="cb9-102"><a href="#cb9-102" tabindex="-1"></a><span class="co"># The null hypothesis associated with this estimate is that the difference</span></span>
-<span id="cb9-103"><a href="#cb9-103" tabindex="-1"></a><span class="co"># in the intercepts between graze level 1 and graze level 2 = 0.</span></span>
-<span id="cb9-104"><a href="#cb9-104" tabindex="-1"></a><span class="co"># The estimated difference is -6.06 birds (95% CI: -13.72 to +1.60) and the</span></span>
-<span id="cb9-105"><a href="#cb9-105" tabindex="-1"></a><span class="co"># P value is 0.118. The interval includes zero, so we fail to reject the null</span></span>
-<span id="cb9-106"><a href="#cb9-106" tabindex="-1"></a><span class="co"># hypothesis. In other words, we have no clear evidence that these two</span></span>
-<span id="cb9-107"><a href="#cb9-107" tabindex="-1"></a><span class="co"># intercepts differ.</span></span>
-<span id="cb9-108"><a href="#cb9-108" tabindex="-1"></a></span>
-<span id="cb9-109"><a href="#cb9-109" tabindex="-1"></a><span class="co"># And that is exactly where we stop. It is very tempting to take one more step</span></span>
-<span id="cb9-110"><a href="#cb9-110" tabindex="-1"></a><span class="co"># and conclude that the intercepts for graze level 1 and graze level 2 &apos;are the</span></span>
-<span id="cb9-111"><a href="#cb9-111" tabindex="-1"></a><span class="co"># same&apos;, but we can&apos;t. A P value is calculated on the assumption that the null</span></span>
-<span id="cb9-112"><a href="#cb9-112" tabindex="-1"></a><span class="co"># hypothesis is true, so it can never be turned round into evidence that the</span></span>
-<span id="cb9-113"><a href="#cb9-113" tabindex="-1"></a><span class="co"># null hypothesis IS true. A large P value has two quite different causes and</span></span>
-<span id="cb9-114"><a href="#cb9-114" tabindex="-1"></a><span class="co"># it cannot tell them apart: either the effect really is negligible, or our</span></span>
-<span id="cb9-115"><a href="#cb9-115" tabindex="-1"></a><span class="co"># study simply isn&apos;t able to resolve it.</span></span>
-<span id="cb9-116"><a href="#cb9-116" tabindex="-1"></a></span>
-<span id="cb9-117"><a href="#cb9-117" tabindex="-1"></a><span class="co"># So look at what this interval does NOT rule out. These data are compatible</span></span>
-<span id="cb9-118"><a href="#cb9-118" tabindex="-1"></a><span class="co"># with graze level 2 having nearly 14 fewer birds in a one hectare patch. That</span></span>
-<span id="cb9-119"><a href="#cb9-119" tabindex="-1"></a><span class="co"># is larger than the raw difference in group means between graze levels 1 and 2</span></span>
-<span id="cb9-120"><a href="#cb9-120" tabindex="-1"></a><span class="co"># (9.2 birds, from the previous exercise) and it is about 1.4 standard</span></span>
-<span id="cb9-121"><a href="#cb9-121" tabindex="-1"></a><span class="co"># deviations of bird abundance. They are equally compatible with graze level 2</span></span>
-<span id="cb9-122"><a href="#cb9-122" tabindex="-1"></a><span class="co"># having slightly more birds. With only 11 forest patches in graze level 2 this</span></span>
-<span id="cb9-123"><a href="#cb9-123" tabindex="-1"></a><span class="co"># is a precision problem, not a null result. The honest conclusion is &apos;we can&apos;t</span></span>
-<span id="cb9-124"><a href="#cb9-124" tabindex="-1"></a><span class="co"># tell from these data&apos;, and that is a perfectly legitimate thing to report.</span></span>
-<span id="cb9-125"><a href="#cb9-125" tabindex="-1"></a></span>
-<span id="cb9-126"><a href="#cb9-126" tabindex="-1"></a><span class="co"># FGRAZE3, FGRAZE4, FGRAZE5</span></span>
-<span id="cb9-127"><a href="#cb9-127" tabindex="-1"></a><span class="co"># The parameter estimates have the same interpretation as for FGRAZE2 (above). </span></span>
-<span id="cb9-128"><a href="#cb9-128" tabindex="-1"></a><span class="co"># They are all estimates of the difference between FGRAZE at the appropriate level </span></span>
-<span id="cb9-129"><a href="#cb9-129" tabindex="-1"></a><span class="co"># and FGRAZE 1 (Intercept).</span></span>
-<span id="cb9-130"><a href="#cb9-130" tabindex="-1"></a><span class="co"># FGRAZE3: -12.32 birds (95% CI: -20.77 to -3.88, p = 0.005)</span></span>
-<span id="cb9-131"><a href="#cb9-131" tabindex="-1"></a><span class="co"># FGRAZE4: -15.41 birds (95% CI: -24.65 to -6.17, p = 0.001)</span></span>
-<span id="cb9-132"><a href="#cb9-132" tabindex="-1"></a><span class="co"># FGRAZE5: -17.04 birds (95% CI: -24.64 to -9.44, p &lt; 0.001)</span></span>
-<span id="cb9-133"><a href="#cb9-133" tabindex="-1"></a><span class="co"># For all three the entire interval lies below zero, so here we do have clear</span></span>
-<span id="cb9-134"><a href="#cb9-134" tabindex="-1"></a><span class="co"># evidence that the intercepts are lower than that of graze level 1. Notice</span></span>
-<span id="cb9-135"><a href="#cb9-135" tabindex="-1"></a><span class="co"># that these intervals are wide as well. We know the direction, and we know</span></span>
-<span id="cb9-136"><a href="#cb9-136" tabindex="-1"></a><span class="co"># that all three are substantial reductions, but the size is only pinned down</span></span>
-<span id="cb9-137"><a href="#cb9-137" tabindex="-1"></a><span class="co"># to within roughly 15 birds either way.</span></span>
-<span id="cb9-138"><a href="#cb9-138" tabindex="-1"></a></span>
-<span id="cb9-139"><a href="#cb9-139" tabindex="-1"></a><span class="co"># FGRAZE2:LOGAREA</span></span>
-<span id="cb9-140"><a href="#cb9-140" tabindex="-1"></a><span class="co"># This represents the difference in the slope of the relationship between ABUND </span></span>
-<span id="cb9-141"><a href="#cb9-141" tabindex="-1"></a><span class="co"># and LOGAREA between graze level 2 and graze level 1.</span></span>
-<span id="cb9-142"><a href="#cb9-142" tabindex="-1"></a><span class="co"># The null hypothesis is that the difference in slopes between graze level 1 </span></span>
-<span id="cb9-143"><a href="#cb9-143" tabindex="-1"></a><span class="co"># and 2 = 0 (i.e. no difference).</span></span>
-<span id="cb9-144"><a href="#cb9-144" tabindex="-1"></a><span class="co"># The estimated difference in slopes is 4.27 (95% CI: -0.56 to 9.10) with a</span></span>
-<span id="cb9-145"><a href="#cb9-145" tabindex="-1"></a><span class="co"># P value of 0.082. The interval includes zero, so we have no clear evidence</span></span>
-<span id="cb9-146"><a href="#cb9-146" tabindex="-1"></a><span class="co"># that these two slopes differ. And once again, that is not the same thing as</span></span>
-<span id="cb9-147"><a href="#cb9-147" tabindex="-1"></a><span class="co"># saying that they are the same. The graze level 1 slope is itself only 4.14,</span></span>
-<span id="cb9-148"><a href="#cb9-148" tabindex="-1"></a><span class="co"># so an interval running all the way up to 9.10 is consistent with graze level</span></span>
-<span id="cb9-149"><a href="#cb9-149" tabindex="-1"></a><span class="co"># 2 responding to patch area more than twice as steeply as graze level 1.</span></span>
-<span id="cb9-150"><a href="#cb9-150" tabindex="-1"></a><span class="co"># Writing those two slopes off as identical would be a serious misreport of</span></span>
-<span id="cb9-151"><a href="#cb9-151" tabindex="-1"></a><span class="co"># what these data actually show.</span></span>
-<span id="cb9-152"><a href="#cb9-152" tabindex="-1"></a></span>
-<span id="cb9-153"><a href="#cb9-153" tabindex="-1"></a><span class="co"># FGRAZE3:LOGAREA</span></span>
-<span id="cb9-154"><a href="#cb9-154" tabindex="-1"></a><span class="co"># This represents the difference in the slope of the relationship between ABUND </span></span>
-<span id="cb9-155"><a href="#cb9-155" tabindex="-1"></a><span class="co"># and LOGAREA between graze level 3 and graze level 1.</span></span>
-<span id="cb9-156"><a href="#cb9-156" tabindex="-1"></a><span class="co"># The null hypothesis is that the difference in slopes between graze level 1 </span></span>
-<span id="cb9-157"><a href="#cb9-157" tabindex="-1"></a><span class="co"># and 3 = 0 (i.e. no difference).</span></span>
-<span id="cb9-158"><a href="#cb9-158" tabindex="-1"></a><span class="co"># The estimated difference in slopes is 9.06 (95% CI: 2.89 to 15.22) with a</span></span>
-<span id="cb9-159"><a href="#cb9-159" tabindex="-1"></a><span class="co"># P value of 0.005. The whole interval lies above zero, so we do have clear</span></span>
-<span id="cb9-160"><a href="#cb9-160" tabindex="-1"></a><span class="co"># evidence that the relationship between bird abundance and patch area is</span></span>
-<span id="cb9-161"><a href="#cb9-161" tabindex="-1"></a><span class="co"># steeper in graze level 3 than it is in graze level 1.</span></span>
-<span id="cb9-162"><a href="#cb9-162" tabindex="-1"></a></span>
-<span id="cb9-163"><a href="#cb9-163" tabindex="-1"></a><span class="co"># FGRAZE4:LOGAREA</span></span>
-<span id="cb9-164"><a href="#cb9-164" tabindex="-1"></a><span class="co"># Same interpretation again: the estimated difference in slopes between graze</span></span>
-<span id="cb9-165"><a href="#cb9-165" tabindex="-1"></a><span class="co"># level 4 and graze level 1 is 13.63 (95% CI: 5.33 to 21.94, p = 0.002). The</span></span>
-<span id="cb9-166"><a href="#cb9-166" tabindex="-1"></a><span class="co"># whole interval is above zero, so we have clear evidence of a steeper</span></span>
-<span id="cb9-167"><a href="#cb9-167" tabindex="-1"></a><span class="co"># relationship in graze level 4 than in graze level 1, and this is the largest</span></span>
-<span id="cb9-168"><a href="#cb9-168" tabindex="-1"></a><span class="co"># slope difference in the model.</span></span>
-<span id="cb9-169"><a href="#cb9-169" tabindex="-1"></a></span>
-<span id="cb9-170"><a href="#cb9-170" tabindex="-1"></a><span class="co"># FGRAZE5:LOGAREA</span></span>
-<span id="cb9-171"><a href="#cb9-171" tabindex="-1"></a><span class="co"># The estimated difference in slopes between graze level 5 and graze level 1 is</span></span>
-<span id="cb9-172"><a href="#cb9-172" tabindex="-1"></a><span class="co"># 2.00 (95% CI: -4.30 to 8.29) with a P value of 0.528. This is the least</span></span>
-<span id="cb9-173"><a href="#cb9-173" tabindex="-1"></a><span class="co"># informative parameter in the whole model, and a P value of 0.53 is about as</span></span>
-<span id="cb9-174"><a href="#cb9-174" tabindex="-1"></a><span class="co"># unremarkable as they come, so it is very tempting indeed to write it off as</span></span>
-<span id="cb9-175"><a href="#cb9-175" tabindex="-1"></a><span class="co"># &apos;no difference&apos;. But look at the interval. It runs from a slope 4.3 shallower</span></span>
-<span id="cb9-176"><a href="#cb9-176" tabindex="-1"></a><span class="co"># than graze level 1&apos;s to one 8.3 steeper, and graze level 1&apos;s own slope is</span></span>
-<span id="cb9-177"><a href="#cb9-177" tabindex="-1"></a><span class="co"># only 4.14. These data are therefore consistent with graze level 5 having</span></span>
-<span id="cb9-178"><a href="#cb9-178" tabindex="-1"></a><span class="co"># essentially no relationship with patch area at all, and equally consistent</span></span>
-<span id="cb9-179"><a href="#cb9-179" tabindex="-1"></a><span class="co"># with it having a relationship three times steeper than graze level 1. We have</span></span>
-<span id="cb9-180"><a href="#cb9-180" tabindex="-1"></a><span class="co"># learned almost nothing about this particular comparison, which is a very</span></span>
-<span id="cb9-181"><a href="#cb9-181" tabindex="-1"></a><span class="co"># different statement from having learned that there is nothing there.</span></span>
-<span id="cb9-182"><a href="#cb9-182" tabindex="-1"></a></span>
-<span id="cb9-183"><a href="#cb9-183" tabindex="-1"></a><span class="co"># One general point that is worth pausing over before you move on. The</span></span>
-<span id="cb9-184"><a href="#cb9-184" tabindex="-1"></a><span class="co"># parameters whose intervals exclude zero and those whose intervals include it</span></span>
-<span id="cb9-185"><a href="#cb9-185" tabindex="-1"></a><span class="co"># are not two different kinds of result. They sit on a continuum of evidence.</span></span>
-<span id="cb9-186"><a href="#cb9-186" tabindex="-1"></a><span class="co"># FGRAZE2:LOGAREA (p = 0.08) and FGRAZE3:LOGAREA (p = 0.005) differ in degree,</span></span>
-<span id="cb9-187"><a href="#cb9-187" tabindex="-1"></a><span class="co"># not in kind, and drawing a line at 0.05 and sorting them into &apos;real&apos; and &apos;not</span></span>
-<span id="cb9-188"><a href="#cb9-188" tabindex="-1"></a><span class="co"># real&apos; throws that information away.</span></span>
-<span id="cb9-189"><a href="#cb9-189" tabindex="-1"></a></span>
-<span id="cb9-190"><a href="#cb9-190" tabindex="-1"></a><span class="co"># The Multiple R-square value is 0.79, so 79% of the variation in the data is </span></span>
-<span id="cb9-191"><a href="#cb9-191" tabindex="-1"></a><span class="co"># explained by the model. This is quite a bit more than the models with only</span></span>
-<span id="cb9-192"><a href="#cb9-192" tabindex="-1"></a><span class="co"># LOGAREA and FGRAZE as single explanatory variables. Remember though that</span></span>
-<span id="cb9-193"><a href="#cb9-193" tabindex="-1"></a><span class="co"># R-squared tells you how well this model fits these data, and nothing more</span></span>
-<span id="cb9-194"><a href="#cb9-194" tabindex="-1"></a><span class="co"># than that.</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">summary</span>(birds_inter1)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ FGRAZE + LOGAREA + FGRAZE:LOGAREA, data = loyn)</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="do">## -15.3238  -2.4528  -0.1822   2.5097  11.3529 </span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="do">##                 Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">## (Intercept)       21.243      3.433   6.187 7.09e-08 ***</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="do">## FGRAZE2           -6.061      3.825  -1.584  0.11863    </span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="do">## FGRAZE3          -12.321      4.217  -2.921  0.00499 ** </span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="do">## FGRAZE4          -15.407      4.614  -3.339  0.00149 ** </span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="do">## FGRAZE5          -17.043      3.795  -4.491 3.51e-05 ***</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="do">## LOGAREA            4.144      1.772   2.339  0.02287 *  </span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="do">## FGRAZE2:LOGAREA    4.270      2.413   1.770  0.08211 .  </span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="do">## FGRAZE3:LOGAREA    9.058      3.079   2.942  0.00471 ** </span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="do">## FGRAZE4:LOGAREA   13.634      4.149   3.286  0.00174 ** </span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="do">## FGRAZE5:LOGAREA    1.996      3.143   0.635  0.52803    </span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="do">## Residual standard error: 4.88 on 57 degrees of freedom</span></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.7993, Adjusted R-squared:  0.7676 </span></span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="do">## F-statistic: 25.22 on 9 and 57 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="co"># and the 95% confidence intervals for each of those estimates</span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="fu">confint</span>(birds_inter1)</span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="do">##                       2.5 %    97.5 %</span></span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="do">## (Intercept)      14.3676366 28.118388</span></span>
+<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a><span class="do">## FGRAZE2         -13.7209357  1.599213</span></span>
+<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="do">## FGRAZE3         -20.7659072 -3.875532</span></span>
+<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="do">## FGRAZE4         -24.6469072 -6.167018</span></span>
+<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a><span class="do">## FGRAZE5         -24.6426335 -9.443360</span></span>
+<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a><span class="do">## LOGAREA           0.5959599  7.691998</span></span>
+<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a><span class="do">## FGRAZE2:LOGAREA  -0.5613549  9.101626</span></span>
+<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="do">## FGRAZE3:LOGAREA   2.8925901 15.222510</span></span>
+<span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a><span class="do">## FGRAZE4:LOGAREA   5.3258033 21.941349</span></span>
+<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a><span class="do">## FGRAZE5:LOGAREA  -4.2986048  8.289899</span></span>
+<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a><span class="co"># One thing first, and it&apos;s the same point we made in the previous exercise. Apart from</span></span>
+<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a><span class="co"># the intercept and LOGAREA, every estimate in this table is a DIFFERENCE. FGRAZE2 is</span></span>
+<span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a><span class="co"># not graze level 2&apos;s intercept, it is how different graze level 2&apos;s intercept is from</span></span>
+<span id="cb13-46"><a href="#cb13-46" tabindex="-1"></a><span class="co"># graze level 1&apos;s. FGRAZE2:LOGAREA is not graze level 2&apos;s slope, it is how different</span></span>
+<span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a><span class="co"># that slope is from graze level 1&apos;s. To get the actual intercept and slope for a</span></span>
+<span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a><span class="co"># grazing level, add the relevant contrast onto the baseline:</span></span>
+<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a></span>
+<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a><span class="co">#   graze level 2 intercept = 21.24 + (-6.06) = 15.18</span></span>
+<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a><span class="co">#   graze level 2 slope     =  4.14 +   4.27  =  8.41</span></span>
+<span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a><span class="co"># Keep graze level 1&apos;s own slope of 4.14 in mind as you read on. Several of the</span></span>
+<span id="cb13-54"><a href="#cb13-54" tabindex="-1"></a><span class="co"># differences below are estimated against it, and they only make sense once you can see</span></span>
+<span id="cb13-55"><a href="#cb13-55" tabindex="-1"></a><span class="co"># how small it is.</span></span>
+<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" tabindex="-1"></a><span class="co"># (Intercept) Here the Intercept (baseline) is the predicted ABUND when LOGAREA = 0, for</span></span>
+<span id="cb13-58"><a href="#cb13-58" tabindex="-1"></a><span class="co"># FGRAZE level 1. Note that LOGAREA = 0 is a patch of 1 hectare (because log10(1) = 0),</span></span>
+<span id="cb13-59"><a href="#cb13-59" tabindex="-1"></a><span class="co"># so this is a real patch size and not an extrapolation. We estimate 21.24 birds (95%</span></span>
+<span id="cb13-60"><a href="#cb13-60" tabindex="-1"></a><span class="co"># CI: 14.37 to 28.12 birds). the null hypothesis for the intercept is that the intercept</span></span>
+<span id="cb13-61"><a href="#cb13-61" tabindex="-1"></a><span class="co"># = 0 As the P value &lt; 0.05 (7.09e-08) we reject this null hypothesis, although &apos;are</span></span>
+<span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a><span class="co"># there no birds at all in a one hectare patch?&apos; was never a question that anyone needed</span></span>
+<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a><span class="co"># answering.</span></span>
+<span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" tabindex="-1"></a><span class="co"># LOGAREA Represents the slope of the relationship between ABUND and LOGAREA, specific</span></span>
+<span id="cb13-66"><a href="#cb13-66" tabindex="-1"></a><span class="co"># to FGRAZE = 1. The null hypothesis is that the slope of the relationship between</span></span>
+<span id="cb13-67"><a href="#cb13-67" tabindex="-1"></a><span class="co"># LOGAREA and ABUND = 0, for level FGRAZE = 1 only. So, for graze 1 the slope is 4.14.</span></span>
+<span id="cb13-68"><a href="#cb13-68" tabindex="-1"></a><span class="co"># This means that for a 1 unit increase in LOGAREA (i.e. a tenfold increase in patch</span></span>
+<span id="cb13-69"><a href="#cb13-69" tabindex="-1"></a><span class="co"># area) we get a corresponding increase of 4.14 birds on average (95% CI: 0.60 to 7.69</span></span>
+<span id="cb13-70"><a href="#cb13-70" tabindex="-1"></a><span class="co"># birds). As the P value (0.022) is &lt; 0.05 we conclude that the slope is different from</span></span>
+<span id="cb13-71"><a href="#cb13-71" tabindex="-1"></a><span class="co"># 0. Notice how wide that interval is though: these data are consistent with anything</span></span>
+<span id="cb13-72"><a href="#cb13-72" tabindex="-1"></a><span class="co"># from a barely detectable increase of 0.6 birds up to a substantial 7.7 birds. We are</span></span>
+<span id="cb13-73"><a href="#cb13-73" tabindex="-1"></a><span class="co"># reasonably confident about the direction of this effect but not at all confident about</span></span>
+<span id="cb13-74"><a href="#cb13-74" tabindex="-1"></a><span class="co"># its size.</span></span>
+<span id="cb13-75"><a href="#cb13-75" tabindex="-1"></a></span>
+<span id="cb13-76"><a href="#cb13-76" tabindex="-1"></a><span class="co"># FGRAZE2 The difference between the intercept of graze level 2 and that of graze level</span></span>
+<span id="cb13-77"><a href="#cb13-77" tabindex="-1"></a><span class="co"># 1. The null hypothesis is that this difference = 0. In a one hectare patch, graze</span></span>
+<span id="cb13-78"><a href="#cb13-78" tabindex="-1"></a><span class="co"># level 2 is estimated to hold 6.06 fewer birds than graze level 1 (95% CI: -13.72 to</span></span>
+<span id="cb13-79"><a href="#cb13-79" tabindex="-1"></a><span class="co"># +1.60, p = 0.118). The interval includes zero, so we fail to reject the null</span></span>
+<span id="cb13-80"><a href="#cb13-80" tabindex="-1"></a><span class="co"># hypothesis.</span></span>
+<span id="cb13-81"><a href="#cb13-81" tabindex="-1"></a></span>
+<span id="cb13-82"><a href="#cb13-82" tabindex="-1"></a><span class="co"># Stop there. Do NOT go on to say the two are &apos;the same&apos;. Look at what this interval</span></span>
+<span id="cb13-83"><a href="#cb13-83" tabindex="-1"></a><span class="co"># still allows: anything from 13.7 fewer birds to 1.6 more. Nearly 14 fewer birds is a</span></span>
+<span id="cb13-84"><a href="#cb13-84" tabindex="-1"></a><span class="co"># bigger difference than the raw gap between these two grazing levels in the previous</span></span>
+<span id="cb13-85"><a href="#cb13-85" tabindex="-1"></a><span class="co"># exercise (9.2 birds), so it is not a small possibility we are dismissing.</span></span>
+<span id="cb13-86"><a href="#cb13-86" tabindex="-1"></a></span>
+<span id="cb13-87"><a href="#cb13-87" tabindex="-1"></a><span class="co"># With only 11 patches at graze level 2, this is a precision problem, not a null result.</span></span>
+<span id="cb13-88"><a href="#cb13-88" tabindex="-1"></a><span class="co"># The honest conclusion is &apos;these data can&apos;t tell us&apos;, and that is a perfectly</span></span>
+<span id="cb13-89"><a href="#cb13-89" tabindex="-1"></a><span class="co"># legitimate thing to report.</span></span>
+<span id="cb13-90"><a href="#cb13-90" tabindex="-1"></a></span>
+<span id="cb13-91"><a href="#cb13-91" tabindex="-1"></a><span class="co"># FGRAZE3, FGRAZE4, FGRAZE5</span></span>
+<span id="cb13-92"><a href="#cb13-92" tabindex="-1"></a><span class="co"># Same interpretation as FGRAZE2: each is the difference in intercept from</span></span>
+<span id="cb13-93"><a href="#cb13-93" tabindex="-1"></a><span class="co"># graze level 1.</span></span>
+<span id="cb13-94"><a href="#cb13-94" tabindex="-1"></a><span class="co"># FGRAZE3: -12.32 birds (95% CI: -20.77 to -3.88, p = 0.005)</span></span>
+<span id="cb13-95"><a href="#cb13-95" tabindex="-1"></a><span class="co"># FGRAZE4: -15.41 birds (95% CI: -24.65 to -6.17, p = 0.001)</span></span>
+<span id="cb13-96"><a href="#cb13-96" tabindex="-1"></a><span class="co"># FGRAZE5: -17.04 birds (95% CI: -24.64 to -9.44, p &lt; 0.001)</span></span>
+<span id="cb13-97"><a href="#cb13-97" tabindex="-1"></a><span class="co"># All three intervals lie entirely below zero, so here we do have clear</span></span>
+<span id="cb13-98"><a href="#cb13-98" tabindex="-1"></a><span class="co"># evidence of lower abundance than at graze level 1. But notice how wide they</span></span>
+<span id="cb13-99"><a href="#cb13-99" tabindex="-1"></a><span class="co"># still are. We know the direction and that all three reductions are</span></span>
+<span id="cb13-100"><a href="#cb13-100" tabindex="-1"></a><span class="co"># substantial; we do not know the size to better than about 15 birds either way.</span></span>
+<span id="cb13-101"><a href="#cb13-101" tabindex="-1"></a></span>
+<span id="cb13-102"><a href="#cb13-102" tabindex="-1"></a><span class="co"># FGRAZE2:LOGAREA This represents the difference in the slope of the relationship</span></span>
+<span id="cb13-103"><a href="#cb13-103" tabindex="-1"></a><span class="co"># between ABUND and LOGAREA between graze level 2 and graze level 1. The null hypothesis</span></span>
+<span id="cb13-104"><a href="#cb13-104" tabindex="-1"></a><span class="co"># is that the difference in slopes between graze level 1 and 2 = 0 (i.e. no difference).</span></span>
+<span id="cb13-105"><a href="#cb13-105" tabindex="-1"></a><span class="co"># The estimated difference in slopes is 4.27 (95% CI: -0.56 to 9.10, p = 0.082). The</span></span>
+<span id="cb13-106"><a href="#cb13-106" tabindex="-1"></a><span class="co"># interval includes zero, so no clear evidence that the slopes differ, and once again</span></span>
+<span id="cb13-107"><a href="#cb13-107" tabindex="-1"></a><span class="co"># that is not the same as saying they are the same. Graze level 1&apos;s own slope is only</span></span>
+<span id="cb13-108"><a href="#cb13-108" tabindex="-1"></a><span class="co"># 4.14, so an interval reaching 9.10 is consistent with graze level 2 responding to</span></span>
+<span id="cb13-109"><a href="#cb13-109" tabindex="-1"></a><span class="co"># patch area more than twice as steeply.</span></span>
+<span id="cb13-110"><a href="#cb13-110" tabindex="-1"></a></span>
+<span id="cb13-111"><a href="#cb13-111" tabindex="-1"></a><span class="co"># FGRAZE3:LOGAREA This represents the difference in the slope of the relationship</span></span>
+<span id="cb13-112"><a href="#cb13-112" tabindex="-1"></a><span class="co"># between ABUND and LOGAREA between graze level 3 and graze level 1. The null hypothesis</span></span>
+<span id="cb13-113"><a href="#cb13-113" tabindex="-1"></a><span class="co"># is that the difference in slopes between graze level 1 and 3 = 0 (i.e. no difference).</span></span>
+<span id="cb13-114"><a href="#cb13-114" tabindex="-1"></a><span class="co"># The estimated difference in slopes is 9.06 (95% CI: 2.89 to 15.22) with a P value of</span></span>
+<span id="cb13-115"><a href="#cb13-115" tabindex="-1"></a><span class="co"># 0.005. The whole interval lies above zero, so we do have clear evidence that the</span></span>
+<span id="cb13-116"><a href="#cb13-116" tabindex="-1"></a><span class="co"># relationship between bird abundance and patch area is steeper in graze level 3 than it</span></span>
+<span id="cb13-117"><a href="#cb13-117" tabindex="-1"></a><span class="co"># is in graze level 1.</span></span>
+<span id="cb13-118"><a href="#cb13-118" tabindex="-1"></a></span>
+<span id="cb13-119"><a href="#cb13-119" tabindex="-1"></a><span class="co"># FGRAZE4:LOGAREA Same interpretation again: the estimated difference in slopes between</span></span>
+<span id="cb13-120"><a href="#cb13-120" tabindex="-1"></a><span class="co"># graze level 4 and graze level 1 is 13.63 (95% CI: 5.33 to 21.94, p = 0.002). The whole</span></span>
+<span id="cb13-121"><a href="#cb13-121" tabindex="-1"></a><span class="co"># interval is above zero, so we have clear evidence of a steeper relationship in graze</span></span>
+<span id="cb13-122"><a href="#cb13-122" tabindex="-1"></a><span class="co"># level 4 than in graze level 1, and this is the largest slope difference in the model.</span></span>
+<span id="cb13-123"><a href="#cb13-123" tabindex="-1"></a></span>
+<span id="cb13-124"><a href="#cb13-124" tabindex="-1"></a><span class="co"># FGRAZE5:LOGAREA The estimated difference in slopes between graze level 5 and graze</span></span>
+<span id="cb13-125"><a href="#cb13-125" tabindex="-1"></a><span class="co"># level 1 is 2.00 (95% CI: -4.30 to 8.29, p = 0.528). With a P value that unremarkable</span></span>
+<span id="cb13-126"><a href="#cb13-126" tabindex="-1"></a><span class="co"># it is very tempting to write this off as &apos;no difference&apos;. But the interval runs from</span></span>
+<span id="cb13-127"><a href="#cb13-127" tabindex="-1"></a><span class="co"># 4.3 shallower than graze level 1&apos;s slope to 8.3 steeper, against a graze level 1 slope</span></span>
+<span id="cb13-128"><a href="#cb13-128" tabindex="-1"></a><span class="co"># of only 4.14. So these data are consistent with graze level 5 having essentially no</span></span>
+<span id="cb13-129"><a href="#cb13-129" tabindex="-1"></a><span class="co"># relationship with patch area, and equally consistent with it having one three times</span></span>
+<span id="cb13-130"><a href="#cb13-130" tabindex="-1"></a><span class="co"># steeper. We have learned almost nothing here, which is a very different statement from</span></span>
+<span id="cb13-131"><a href="#cb13-131" tabindex="-1"></a><span class="co"># having learned there is nothing there.</span></span>
+<span id="cb13-132"><a href="#cb13-132" tabindex="-1"></a></span>
+<span id="cb13-133"><a href="#cb13-133" tabindex="-1"></a><span class="co"># One general point before you move on. Parameters whose intervals exclude zero and</span></span>
+<span id="cb13-134"><a href="#cb13-134" tabindex="-1"></a><span class="co"># those whose intervals include it are not two different kinds of result. They sit on a</span></span>
+<span id="cb13-135"><a href="#cb13-135" tabindex="-1"></a><span class="co"># continuum of evidence. FGRAZE2:LOGAREA (p = 0.08) and FGRAZE3:LOGAREA (p = 0.005)</span></span>
+<span id="cb13-136"><a href="#cb13-136" tabindex="-1"></a><span class="co"># differ in degree, not in kind.</span></span>
+<span id="cb13-137"><a href="#cb13-137" tabindex="-1"></a></span>
+<span id="cb13-138"><a href="#cb13-138" tabindex="-1"></a><span class="co"># The Multiple R-square value is 0.79, so 79% of the variation in the data is explained</span></span>
+<span id="cb13-139"><a href="#cb13-139" tabindex="-1"></a><span class="co"># by the model. This is quite a bit more than the models with only LOGAREA and FGRAZE as</span></span>
+<span id="cb13-140"><a href="#cb13-140" tabindex="-1"></a><span class="co"># single explanatory variables. Remember though that R-squared tells you how well this</span></span>
+<span id="cb13-141"><a href="#cb13-141" tabindex="-1"></a><span class="co"># model fits these data, and nothing more than that.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>9. Right, now hang onto your hat! Let&#x2019;s plot the predictions from
 your model to figure out how it really fits the data (and help us
@@ -899,129 +913,124 @@ graze levels 1 and 2. Back in Question 8 the P values for both
 <code>FGRAZE2</code> and <code>FGRAZE2:LOGAREA</code> were greater than
 0.05. Does the picture support the claim that these two grazing levels
 behave identically? What does it show you instead?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">plot</span>(ABUND <span class="sc">~</span> LOGAREA, <span class="at">data =</span> loyn, <span class="at">col =</span> GRAZE, <span class="at">pch =</span> <span class="dv">16</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># Note: # colour 1 means black in R</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># colour 2 means red in R</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co"># colour 3 means green in R</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co"># colour 4 means blue in R</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># colour 5 means cyan in R</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co"># FGRAZE1</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co"># create a sequence of increasing LOGAREA within the observed range</span></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">1</span>]),</span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">1</span>]),</span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co"># create data frame for prediction</span></span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;1&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co"># predict for new data</span></span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>P1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co"># add the predictions to the plot of the data</span></span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P1, <span class="at">col =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co"># FGRAZE2</span></span>
-<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">2</span>]),</span>
-<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">2</span>]),</span>
-<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
-<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;2&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
-<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a>P2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
-<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a></span>
-<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P2, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a></span>
-<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a><span class="co"># FGRAZE3</span></span>
-<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">3</span>]),</span>
-<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">3</span>]),</span>
-<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;3&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
-<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a></span>
-<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a>P3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
-<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a></span>
-<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P3, <span class="at">col =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-45"><a href="#cb10-45" tabindex="-1"></a></span>
-<span id="cb10-46"><a href="#cb10-46" tabindex="-1"></a><span class="co"># FGRAZE4</span></span>
-<span id="cb10-47"><a href="#cb10-47" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">4</span>]),</span>
-<span id="cb10-48"><a href="#cb10-48" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">4</span>]),</span>
-<span id="cb10-49"><a href="#cb10-49" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
-<span id="cb10-50"><a href="#cb10-50" tabindex="-1"></a></span>
-<span id="cb10-51"><a href="#cb10-51" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;4&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
-<span id="cb10-52"><a href="#cb10-52" tabindex="-1"></a></span>
-<span id="cb10-53"><a href="#cb10-53" tabindex="-1"></a>P4 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
-<span id="cb10-54"><a href="#cb10-54" tabindex="-1"></a></span>
-<span id="cb10-55"><a href="#cb10-55" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P4, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-56"><a href="#cb10-56" tabindex="-1"></a></span>
-<span id="cb10-57"><a href="#cb10-57" tabindex="-1"></a><span class="co"># FGRAZE5</span></span>
-<span id="cb10-58"><a href="#cb10-58" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">5</span>]),</span>
-<span id="cb10-59"><a href="#cb10-59" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">5</span>]),</span>
-<span id="cb10-60"><a href="#cb10-60" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
-<span id="cb10-61"><a href="#cb10-61" tabindex="-1"></a></span>
-<span id="cb10-62"><a href="#cb10-62" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;5&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
-<span id="cb10-63"><a href="#cb10-63" tabindex="-1"></a></span>
-<span id="cb10-64"><a href="#cb10-64" tabindex="-1"></a>P5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
-<span id="cb10-65"><a href="#cb10-65" tabindex="-1"></a></span>
-<span id="cb10-66"><a href="#cb10-66" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P5, <span class="at">col =</span> <span class="dv">5</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-67"><a href="#cb10-67" tabindex="-1"></a></span>
-<span id="cb10-68"><a href="#cb10-68" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, </span>
-<span id="cb10-69"><a href="#cb10-69" tabindex="-1"></a> <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;Graze = &quot;</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), </span>
-<span id="cb10-70"><a href="#cb10-70" tabindex="-1"></a> <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb10-71"><a href="#cb10-71" tabindex="-1"></a> <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
-<span id="cb10-72"><a href="#cb10-72" tabindex="-1"></a> <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">plot</span>(ABUND <span class="sc">~</span> LOGAREA, <span class="at">data =</span> loyn, <span class="at">col =</span> GRAZE, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># Note: # colour 1 means black in R colour 2 means red in R colour 3 means green in R</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># colour 4 means blue in R colour 5 means cyan in R</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># FGRAZE1 create a sequence of increasing LOGAREA within the observed range</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">1</span>]),</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">1</span>]),</span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co"># create data frame for prediction</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;1&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co"># predict for new data</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>P1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co"># add the predictions to the plot of the data</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P1, <span class="at">col =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co"># FGRAZE2</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">2</span>]),</span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">2</span>]),</span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;2&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
+<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a>P2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
+<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P2, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" tabindex="-1"></a><span class="co"># FGRAZE3</span></span>
+<span id="cb14-32"><a href="#cb14-32" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">3</span>]),</span>
+<span id="cb14-33"><a href="#cb14-33" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">3</span>]),</span>
+<span id="cb14-34"><a href="#cb14-34" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb14-35"><a href="#cb14-35" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;3&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
+<span id="cb14-37"><a href="#cb14-37" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" tabindex="-1"></a>P3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
+<span id="cb14-39"><a href="#cb14-39" tabindex="-1"></a></span>
+<span id="cb14-40"><a href="#cb14-40" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P3, <span class="at">col =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-41"><a href="#cb14-41" tabindex="-1"></a></span>
+<span id="cb14-42"><a href="#cb14-42" tabindex="-1"></a><span class="co"># FGRAZE4</span></span>
+<span id="cb14-43"><a href="#cb14-43" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">4</span>]),</span>
+<span id="cb14-44"><a href="#cb14-44" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">4</span>]),</span>
+<span id="cb14-45"><a href="#cb14-45" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb14-46"><a href="#cb14-46" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;4&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
+<span id="cb14-48"><a href="#cb14-48" tabindex="-1"></a></span>
+<span id="cb14-49"><a href="#cb14-49" tabindex="-1"></a>P4 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
+<span id="cb14-50"><a href="#cb14-50" tabindex="-1"></a></span>
+<span id="cb14-51"><a href="#cb14-51" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P4, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-52"><a href="#cb14-52" tabindex="-1"></a></span>
+<span id="cb14-53"><a href="#cb14-53" tabindex="-1"></a><span class="co"># FGRAZE5</span></span>
+<span id="cb14-54"><a href="#cb14-54" tabindex="-1"></a>LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">5</span>]),</span>
+<span id="cb14-55"><a href="#cb14-55" tabindex="-1"></a>                    <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> <span class="dv">5</span>]),</span>
+<span id="cb14-56"><a href="#cb14-56" tabindex="-1"></a>                    <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb14-57"><a href="#cb14-57" tabindex="-1"></a></span>
+<span id="cb14-58"><a href="#cb14-58" tabindex="-1"></a>dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="st">&quot;5&quot;</span>, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
+<span id="cb14-59"><a href="#cb14-59" tabindex="-1"></a></span>
+<span id="cb14-60"><a href="#cb14-60" tabindex="-1"></a>P5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
+<span id="cb14-61"><a href="#cb14-61" tabindex="-1"></a></span>
+<span id="cb14-62"><a href="#cb14-62" tabindex="-1"></a><span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, P5, <span class="at">col =</span> <span class="dv">5</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-63"><a href="#cb14-63" tabindex="-1"></a></span>
+<span id="cb14-64"><a href="#cb14-64" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, </span>
+<span id="cb14-65"><a href="#cb14-65" tabindex="-1"></a> <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;Graze = &quot;</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), </span>
+<span id="cb14-66"><a href="#cb14-66" tabindex="-1"></a> <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb14-67"><a href="#cb14-67" tabindex="-1"></a> <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb14-68"><a href="#cb14-68" tabindex="-1"></a> <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="linear_model_3_exercise_solutions_files/figure-html/Q9a-1.png" alt width="672"></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Now, about those fitted lines for graze levels 1 and 2 (the black and red</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># lines). They are not on top of each other. The graze level 2 line starts</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># lower and climbs more steeply, and the two lines cross. That is precisely</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># what the estimates in Question 8 said: an intercept 6.06 birds lower and a</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># slope 4.27 steeper, which is the graze level 2 row of the table you made in</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># Q8 (intercept 15.18, slope 8.41). What the large P values tell us is that we can&apos;t rule</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># out the possibility that the two lines really are identical, given how few</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># patches we have in graze level 2 (11 of them) and how much scatter there is</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># around each line. They do not tell us that the two lines ARE identical, and</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co"># the plot makes that difference easy to see. The estimated pattern is right</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co"># there in front of you; it just isn&apos;t estimated precisely enough for us to be</span></span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co"># sure of it.</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Now, about those fitted lines for graze levels 1 and 2 (the black and red lines). They</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># are not on top of each other. The graze level 2 line starts lower and climbs more</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># steeply, and the two lines cross. That is precisely what the estimates in Question 8</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># said: an intercept 6.06 birds lower and a slope 4.27 steeper, which is the graze level</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># 2 row of the table you made in Q8 (intercept 15.18, slope 8.41). What the large P</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># values tell us is that we can&apos;t rule out the possibility that the two lines really are</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co"># identical, given how few patches we have in graze level 2 (11 of them) and how much</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co"># scatter there is around each line. They do not tell us that the two lines ARE</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># identical, and the plot makes that difference easy to see. The estimated pattern is</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co"># right there in front of you; it just isn&apos;t estimated precisely enough for us to be</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co"># sure of it.</span></span></code></pre></div>
 <p><strong>(Optional, for the geeks)</strong> Alternative method given
 in the solutions using a<code>for</code> loop. Just keep this code in
 case you ever want to do something like this in the future.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Okay, that was a long-winded way of doing this.</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># If, like me, you prefer more compact code and less risks of errors,</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co"># you can use a loop, to save repeating the sequence 5 times:</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">plot</span>(ABUND <span class="sc">~</span> LOGAREA, <span class="at">data =</span> loyn, <span class="at">col =</span> GRAZE, <span class="at">pch =</span> <span class="dv">16</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="cf">for</span>(g <span class="cf">in</span> <span class="fu">levels</span>(loyn<span class="sc">$</span>FGRAZE)){ <span class="co"># g will take the values &quot;1&quot;, &quot;2&quot;,..., &quot;5&quot; in turn</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>    LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> g]),</span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>                                        <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> g]),</span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>                                                        <span class="at">length =</span> <span class="dv">20</span>)</span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>    dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> g, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>    predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>    <span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, predicted, <span class="at">col =</span> <span class="fu">as.numeric</span>(g), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>}</span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, </span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a> <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;Graze = &quot;</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), </span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a> <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a> <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a> <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Okay, that was a long-winded way of doing this. If, like me, you prefer more compact</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># code and less risks of errors, you can use a loop, to save repeating the sequence 5</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># times:</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">plot</span>(ABUND <span class="sc">~</span> LOGAREA, <span class="at">data =</span> loyn, <span class="at">col =</span> GRAZE, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="cf">for</span>(g <span class="cf">in</span> <span class="fu">levels</span>(loyn<span class="sc">$</span>FGRAZE)){ <span class="co"># g will take the values &quot;1&quot;, &quot;2&quot;,..., &quot;5&quot; in turn</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    LOGAREA.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> g]),</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>                                        <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA[loyn<span class="sc">$</span>FGRAZE <span class="sc">==</span> g]),</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>                                                        <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>    dat4pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> g, <span class="at">LOGAREA =</span> LOGAREA.seq)</span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>    predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_inter1, <span class="at">newdata =</span> dat4pred)</span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>    <span class="fu">lines</span>(dat4pred<span class="sc">$</span>LOGAREA, predicted, <span class="at">col =</span> <span class="fu">as.numeric</span>(g), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>}</span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, </span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a> <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">&quot;Graze = &quot;</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), </span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a> <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">bty=</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a> <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a> <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="linear_model_3_exercise_solutions_files/figure-html/Q9b-1.png" alt width="672"></p>
 <p><strong>(Optional, for the lazy!)</strong> And, if you want an even
 easier way, then we can use the <code>ggolot2</code> package (code in
 the solutions). Note: you will need to install the <code>ggplot2</code>
 package first if you don&#x2019;t already have it.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># install.packages(&apos;ggplot2&apos;, dep = TRUE)</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="fu">ggplot</span>(loyn, <span class="fu">aes</span>(<span class="at">x =</span> LOGAREA, <span class="at">y =</span> ABUND, <span class="at">colour =</span> FGRAZE) ) <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>     <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>     <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># install.packages(&apos;ggplot2&apos;, dep = TRUE)</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="fu">ggplot</span>(loyn, <span class="fu">aes</span>(<span class="at">x =</span> LOGAREA, <span class="at">y =</span> ABUND, <span class="at">colour =</span> FGRAZE) ) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>     <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>     <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="linear_model_3_exercise_solutions_files/figure-html/Q9c-1.png" alt width="672"></p>
 <p>&#xA0;</p>
 <p>10. And again, but with less help this time. Write up this analysis
 as a single paragraph for your thesis, referring to your figure from
-Question 9. No ingredient list, you decide what goes in.</p>
+Question 9. No ingredient list this time, you decide what goes in.</p>
 <p>Three things I&#x2019;d like you to get right, because they&#x2019;re the three
 that people most often get wrong when reporting an interaction:</p>
 <ul>
@@ -1033,35 +1042,65 @@ that the two grazing levels are the same.</li>
 <li>Your model has 10 parameters. Does a reader need all 10 of
 them?</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Same health warning: my version, not the version.</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># The relationship between bird abundance and forest patch area depended on grazing</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># intensity (interaction F 4,57 = 4.09, p = 0.006; R2 = 0.80, n = 67). Abundance increased</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># with log10 patch area at every grazing level, but the rate of increase varied roughly</span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># fourfold, from 4.1 birds per unit log10 area at the lowest grazing intensity to 17.8 at</span></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># level 4 (Figure X). In a one hectare patch, abundance at grazing level 2 was an</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co"># estimated 6.1 birds lower than at level 1 (95% CI: 13.7 lower to 1.6 higher), and its</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co"># slope an estimated 4.3 steeper (95% CI: 0.6 shallower to 9.1 steeper); with only 11</span></span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co"># patches at that grazing level these data cannot resolve either comparison. Patch area</span></span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co"># therefore matters most in moderately grazed patches and least in lightly grazed ones,</span></span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co"># where abundance is already high even in small patches.</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co"># on the three things:</span></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co"># 1. No. With an interaction in the model, &quot;bird abundance increases with patch area&quot; is</span></span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#    not a complete sentence, because how much it increases depends on grazing level. Only</span></span>
-<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#    ever quote a main effect with its condition attached.</span></span>
-<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co"># 2. Look at the two clauses in the middle of the paragraph. They give the estimate, they</span></span>
-<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#    give the interval, and then they say plainly that we can&apos;t resolve the comparison.</span></span>
-<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#    What they never do is say the two levels are the same. &quot;We cannot tell&quot; is a</span></span>
-<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="co">#    legitimate result and it is perfectly publishable.</span></span>
-<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co"># 3. No. Ten coefficients in prose is unreadable, and most of them are contrasts against</span></span>
-<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a><span class="co">#    a baseline no reader cares about. Report the interaction test, the range of fitted</span></span>
-<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a><span class="co">#    slopes, the figure, and the R2 and n. If a journal wants the full table it goes in a</span></span>
-<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a><span class="co">#    supplement. Your figure from Q9 does more work than the table ever will: five fitted</span></span>
-<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="co">#    lines whose slopes visibly differ IS the finding.</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Same health warning as before: my version, not the only version.</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># The relationship between bird abundance and forest patch area depended on grazing</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># intensity (interaction F 4,57 = 4.09, p = 0.006; adjusted R2 = 0.77, n = 67 patches).</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># Abundance increased with patch area at every grazing level, but the rate of increase</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># varied more than fourfold, from 4.1 birds per tenfold increase in area at the lowest</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># grazing intensity to 17.8 at grazing level 4 (Fig. 1). In a one hectare patch,</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># abundance at grazing level 2 was an estimated 6.1 birds lower than at level 1 (95% CI:</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># 13.7 lower to 1.6 higher) and its slope 4.3 steeper (95% CI: 0.6 shallower to 9.1</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># steeper); with only 11 patches at that grazing level these data cannot resolve either</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># comparison. Patch area therefore mattered least in the most lightly grazed patches,</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co"># which already held high numbers of birds even when small, and most at intermediate to</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># high grazing intensities.</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co"># Right, so what&apos;s going on in that paragraph? Let&apos;s take my three questions in turn.</span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co"># 1. No, you can&apos;t write that sentence on its own, and this is the big one.</span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#    Once you have an interaction in the model, &quot;bird abundance increases with</span></span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#    patch area&quot; is an incomplete sentence, because HOW MUCH it increases</span></span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a><span class="co">#    depends on the grazing level. The honest version always carries the</span></span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a><span class="co">#    condition with it: &quot;abundance increased with patch area at every grazing</span></span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="co">#    level, but the rate varied fourfold&quot;. Get into the habit of never letting</span></span>
+<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a><span class="co">#    a main effect out on its own when it sits inside an interaction.</span></span>
+<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="co"># 2. Look at the two clauses in the middle of my paragraph.</span></span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a><span class="co">#    They give the estimate, they give the interval, and then they say plainly</span></span>
+<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a><span class="co">#    that we can&apos;t resolve the comparison. What they never do is claim the two</span></span>
+<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a><span class="co">#    grazing levels are the same. I&apos;ve also told the reader WHY we can&apos;t</span></span>
+<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a><span class="co">#    resolve it (only 11 patches), which turns &apos;we don&apos;t know&apos; from something</span></span>
+<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a><span class="co">#    that sounds like a failure into a useful piece of information about the</span></span>
+<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a><span class="co">#    study. &quot;We cannot tell from these data&quot; is a legitimate result and it is</span></span>
+<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a><span class="co">#    perfectly publishable.</span></span>
+<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a></span>
+<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a><span class="co"># 3. No, and it&apos;s worth being clear about why.</span></span>
+<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a></span>
+<span id="cb18-38"><a href="#cb18-38" tabindex="-1"></a><span class="co">#    It is NOT that the baseline is uninteresting. Graze level 1 is the lightest</span></span>
+<span id="cb18-39"><a href="#cb18-39" tabindex="-1"></a><span class="co">#    grazing intensity, so it&apos;s a perfectly sensible reference to compare the</span></span>
+<span id="cb18-40"><a href="#cb18-40" tabindex="-1"></a><span class="co">#    others against, and a reader will care about it. The problem is simply that</span></span>
+<span id="cb18-41"><a href="#cb18-41" tabindex="-1"></a><span class="co">#    ten numbers written out in prose is unreadable. Nobody can hold five</span></span>
+<span id="cb18-42"><a href="#cb18-42" tabindex="-1"></a><span class="co">#    intercepts and five slopes in their head from a block of text.</span></span>
+<span id="cb18-43"><a href="#cb18-43" tabindex="-1"></a></span>
+<span id="cb18-44"><a href="#cb18-44" tabindex="-1"></a><span class="co">#    So report the interaction test, the range of fitted slopes, the figure,</span></span>
+<span id="cb18-45"><a href="#cb18-45" tabindex="-1"></a><span class="co">#    and the adjusted R2 and n, then let your figure do the heavy lifting. If a</span></span>
+<span id="cb18-46"><a href="#cb18-46" tabindex="-1"></a><span class="co">#    journal wants the full coefficient table it goes in a supplement. Your</span></span>
+<span id="cb18-47"><a href="#cb18-47" tabindex="-1"></a><span class="co">#    figure from Q9 does far more work than the table ever will: five fitted</span></span>
+<span id="cb18-48"><a href="#cb18-48" tabindex="-1"></a><span class="co">#    lines whose slopes visibly differ IS the finding.</span></span>
+<span id="cb18-49"><a href="#cb18-49" tabindex="-1"></a></span>
+<span id="cb18-50"><a href="#cb18-50" tabindex="-1"></a><span class="co"># Two last things I did on purpose that are worth copying.</span></span>
+<span id="cb18-51"><a href="#cb18-51" tabindex="-1"></a></span>
+<span id="cb18-52"><a href="#cb18-52" tabindex="-1"></a><span class="co"># I said &apos;adjusted R2&apos; rather than just &apos;R2&apos;. With 10 parameters the two differ</span></span>
+<span id="cb18-53"><a href="#cb18-53" tabindex="-1"></a><span class="co"># noticeably here (0.80 against 0.77), and a reader can&apos;t check your number if they</span></span>
+<span id="cb18-54"><a href="#cb18-54" tabindex="-1"></a><span class="co"># don&apos;t know which one you quoted.</span></span>
+<span id="cb18-55"><a href="#cb18-55" tabindex="-1"></a></span>
+<span id="cb18-56"><a href="#cb18-56" tabindex="-1"></a><span class="co"># I wrote &apos;per tenfold increase in area&apos; rather than &apos;per unit log10 area&apos;. Both are</span></span>
+<span id="cb18-57"><a href="#cb18-57" tabindex="-1"></a><span class="co"># correct, but only one of them means anything to an ecologist reading quickly. Wherever</span></span>
+<span id="cb18-58"><a href="#cb18-58" tabindex="-1"></a><span class="co"># you&apos;ve transformed a variable, try to hand the reader the effect back on a scale they</span></span>
+<span id="cb18-59"><a href="#cb18-59" tabindex="-1"></a><span class="co"># can picture.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>End of the Linear model with continuous and categorical explanatory
 variables exercise</p>

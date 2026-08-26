@@ -538,12 +538,13 @@ birds for each level of <code>FGRAZE</code>?</p>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">##         1         2         3         4         5 </span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">## 28.623077 19.418182 20.164706 18.961538  6.292308</span></span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># it looks from this plot and the table of means that the bird abundance is lowest for FGRAZE level 5 and </span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># highest for level 1. The bird abundance for levels 2, 3 and 4 all look similar.</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># so in terms of differences in ABUND between groups we might expect FGRAZE level 5 to be different from</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co"># the other grazing intensity group and possibly FGRAZE level 1 to be different from graze level 2,3 and 4</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co"># but this is not particularly clear. We might also expect there to be no differences between grazing </span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># levels 2,3 and 4. </span></span></code></pre></div>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># it looks from this plot and the table of means that the bird abundance is lowest for</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># FGRAZE level 5 and highest for level 1. The bird abundance for levels 2, 3 and 4 all</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># look similar. So in terms of differences in ABUND between groups we might expect</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co"># FGRAZE level 5 to be different from the other grazing intensity group and possibly</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co"># FGRAZE level 1 to be different from graze level 2,3 and 4 but this is not particularly</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># clear. We might also expect there to be no differences between grazing levels 2,3 and</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co"># 4.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>5. Fit an appropriate linear model in R to explain the variation in
 the response variable, <code>ABUND</code>, with the explanatory variable
@@ -566,14 +567,17 @@ report? Summarise in your R script as a comment.</p>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="do">## ---</span></span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># null hypothesis : There is no difference in the mean bird abundance between the </span></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># five levels of grazing.</span></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># the p value is very small therefore reject this null hypothesis. In other words</span></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># there is a difference in the mean bird abundance between grazing intensity levels.</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># null hypothesis : There is no difference in the mean bird abundance between the five</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># levels of grazing. The p value is very small therefore reject this null hypothesis. In</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># other words there is a difference in the mean bird abundance between grazing intensity</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># levels.</span></span>
 <span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co"># for a report you might write something like:</span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># there was a significant difference in the mean abundance of birds between the five levels</span></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># of grazing intensity (F_4,62 = 14.98, p &lt; 0.0001)</span></span></code></pre></div>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co"># the summary statistics to report from this table are the F statistic with both of its</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># degrees of freedom, and the P value: F_4,62 = 14.98, p &lt; 0.0001.</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># note that this test tells you only that the five means are not all equal. It doesn&apos;t</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="co"># tell you which levels differ, or by how much. That&apos;s what the rest of this exercise is</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co"># for, and you&apos;ll put the whole thing together into a written summary in Q12.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>7. Use the <code>summary()</code> function on the model object to
 produce the table of parameter estimates (remember these are called
@@ -627,13 +631,13 @@ patches there are in <strong>both</strong> of them. The
 <span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
 <span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
 <span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co"># Here the intercept (baseline) is the mean abundance of birds for FGRAZE level 1.</span></span>
-<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co"># the null hypothesis for the intercept is that the intercept = 0.</span></span>
-<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co"># As the p value (p &lt; 2e-16) is very small we reject this null hypothesis and conclude that the</span></span>
-<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># intercept is significantly different from 0. However, from a biological perspective this</span></span>
-<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># is not a particularly informative hypothesis to test. Nobody seriously entertained the idea</span></span>
-<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co"># that lightly grazed patches contain no birds at all, so rejecting it tells us nothing we</span></span>
-<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co"># didn&apos;t already know.</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co"># Here the intercept (baseline) is the mean abundance of birds for FGRAZE level 1. the</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co"># null hypothesis for the intercept is that the intercept = 0. As the p value (p &lt;</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co"># 2e-16) is very small we reject this null hypothesis and conclude that the intercept is</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># significantly different from 0. However, from a biological perspective this is not a</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># particularly informative hypothesis to test. Nobody seriously entertained the idea</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co"># that lightly grazed patches contain no birds at all, so rejecting it tells us nothing</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co"># we didn&apos;t already know.</span></span>
 <span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a></span>
 <span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co"># now for the confidence intervals</span></span>
 <span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="fu">confint</span>(birds_lm)</span>
@@ -644,57 +648,62 @@ patches there are in <strong>both</strong> of them. The
 <span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="do">## FGRAZE4     -15.50062  -3.822453</span></span>
 <span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="do">## FGRAZE5     -28.16985 -16.491684</span></span>
 <span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a></span>
-<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co"># the far more useful thing to take from the intercept is the estimate itself together with</span></span>
-<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co"># its interval: mean bird abundance in graze level 1 is estimated at 28.62 birds</span></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co"># the far more useful thing to take from the intercept is the estimate itself together</span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co"># with its interval: mean bird abundance in graze level 1 is estimated at 28.62 birds</span></span>
 <span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="co"># (95% CI: 24.49 to 32.75 birds).</span></span>
 <span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a></span>
 <span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co"># the remaining estimates are differences (contrasts) between each level and the</span></span>
 <span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co"># baseline. Let&apos;s report each one as an estimated difference with an interval, and leave</span></span>
 <span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co"># the P value until the end of the sentence where it belongs.</span></span>
 <span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a></span>
-<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co"># FGRAZE2: we estimate 9.20 fewer birds on average in graze level 2 than in graze level 1</span></span>
-<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co"># (95% CI: 15.30 fewer to 3.11 fewer birds, p = 0.004). The whole interval lies below zero,</span></span>
-<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="co"># so we have clear evidence of a difference here. But notice how wide it is. A shortfall of</span></span>
-<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co"># 3 birds and a shortfall of 15 birds would mean rather different things ecologically, and</span></span>
-<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co"># with these data we can&apos;t distinguish between them.</span></span>
-<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a></span>
-<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co"># FGRAZE3: we estimate 8.46 fewer birds in graze level 3 than in graze level 1</span></span>
-<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="co"># (95% CI: 13.94 fewer to 2.97 fewer birds, p = 0.003).</span></span>
-<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a></span>
-<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="co"># FGRAZE4: we estimate 9.66 fewer birds in graze level 4 than in graze level 1</span></span>
-<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co"># (95% CI: 15.50 fewer to 3.82 fewer birds, p = 0.002).</span></span>
-<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a></span>
-<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="co"># FGRAZE5: we estimate 22.33 fewer birds in graze level 5 than in graze level 1</span></span>
-<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="co"># (95% CI: 28.17 fewer to 16.49 fewer birds, p = 1.64e-10). This is far and away the</span></span>
-<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="co"># largest of the four differences, and the entire interval sits well below the intervals</span></span>
-<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a><span class="co"># for the other three contrasts.</span></span>
-<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a></span>
-<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="co"># Before going further, be clear about what these four intervals are intervals FOR. They</span></span>
-<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="co"># are intervals for the DIFFERENCE between a grazing level and graze level 1. They are not</span></span>
-<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a><span class="co"># intervals for the bird abundance of a grazing level. So &quot;-15.30 to -3.11&quot; means &quot;graze</span></span>
-<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a><span class="co"># level 2 has somewhere between 3.11 and 15.30 fewer birds than graze level 1&quot;. It does</span></span>
-<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a><span class="co"># not mean &quot;graze level 2 has between 3.11 and 15.30 birds in it&quot;. We will get intervals</span></span>
-<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a><span class="co"># for the five levels themselves in Q11, and they are different numbers entirely.</span></span>
-<span id="cb7-72"><a href="#cb7-72" tabindex="-1"></a></span>
-<span id="cb7-73"><a href="#cb7-73" tabindex="-1"></a><span class="co"># so, which of the four differences is estimated most precisely? Compare the widths of the</span></span>
-<span id="cb7-74"><a href="#cb7-74" tabindex="-1"></a><span class="co"># intervals: FGRAZE3 spans 10.97 birds, FGRAZE4 and FGRAZE5 both span 11.68, and FGRAZE2</span></span>
-<span id="cb7-75"><a href="#cb7-75" tabindex="-1"></a><span class="co"># spans 12.20. So the graze 1 versus graze 3 difference is the best estimated of the four,</span></span>
-<span id="cb7-76"><a href="#cb7-76" tabindex="-1"></a><span class="co"># and graze 1 versus graze 2 the worst.</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co"># FGRAZE2: we estimate 9.20 fewer birds on average in graze level 2 than in graze level</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="co"># (95% CI: 15.30 fewer to 3.11 fewer birds, p = 0.004). The whole interval lies below</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co"># zero,</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co"># so we have clear evidence of a difference here. But notice how wide it is. A shortfall</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="co"># of</span></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co"># 3 birds and a shortfall of 15 birds would mean rather different things ecologically,</span></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="co"># and</span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="co"># with these data we can&apos;t distinguish between them.</span></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co"># FGRAZE3: we estimate 8.46 fewer birds in graze level 3 than in graze level 1 (95% CI:</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="co"># 13.94 fewer to 2.97 fewer birds, p = 0.003).</span></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="co"># FGRAZE4: we estimate 9.66 fewer birds in graze level 4 than in graze level 1 (95% CI:</span></span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="co"># 15.50 fewer to 3.82 fewer birds, p = 0.002).</span></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a></span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a><span class="co"># FGRAZE5: we estimate 22.33 fewer birds in graze level 5 than in graze level 1 (95% CI:</span></span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="co"># 28.17 fewer to 16.49 fewer birds, p = 1.64e-10). This is far and away the largest of</span></span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="co"># the four differences, and the entire interval sits well below the intervals for the</span></span>
+<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a><span class="co"># other three contrasts.</span></span>
+<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a></span>
+<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a><span class="co"># Before going further, be clear about what these four intervals are intervals FOR. They</span></span>
+<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a><span class="co"># are intervals for the DIFFERENCE between a grazing level and graze level 1. They are</span></span>
+<span id="cb7-72"><a href="#cb7-72" tabindex="-1"></a><span class="co"># not intervals for the bird abundance of a grazing level. So &quot;-15.30 to -3.11&quot; means</span></span>
+<span id="cb7-73"><a href="#cb7-73" tabindex="-1"></a><span class="co"># &quot;graze level 2 has somewhere between 3.11 and 15.30 fewer birds than graze level 1&quot;.</span></span>
+<span id="cb7-74"><a href="#cb7-74" tabindex="-1"></a><span class="co"># It does not mean &quot;graze level 2 has between 3.11 and 15.30 birds in it&quot;. We will get</span></span>
+<span id="cb7-75"><a href="#cb7-75" tabindex="-1"></a><span class="co"># intervals for the five levels themselves in Q11, and they are different numbers</span></span>
+<span id="cb7-76"><a href="#cb7-76" tabindex="-1"></a><span class="co"># entirely.</span></span>
 <span id="cb7-77"><a href="#cb7-77" tabindex="-1"></a></span>
-<span id="cb7-78"><a href="#cb7-78" tabindex="-1"></a><span class="co"># why? Each of these is a comparison between two groups, so its precision depends on how</span></span>
-<span id="cb7-79"><a href="#cb7-79" tabindex="-1"></a><span class="co"># much data there is in BOTH of them, not just one. Graze level 1 is the baseline and so</span></span>
-<span id="cb7-80"><a href="#cb7-80" tabindex="-1"></a><span class="co"># appears in all four comparisons, which means the thing that varies between them is the</span></span>
-<span id="cb7-81"><a href="#cb7-81" tabindex="-1"></a><span class="co"># size of the other group:</span></span>
-<span id="cb7-82"><a href="#cb7-82" tabindex="-1"></a><span class="fu">table</span>(loyn<span class="sc">$</span>FGRAZE)</span>
-<span id="cb7-83"><a href="#cb7-83" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-84"><a href="#cb7-84" tabindex="-1"></a><span class="do">##  1  2  3  4  5 </span></span>
-<span id="cb7-85"><a href="#cb7-85" tabindex="-1"></a><span class="do">## 13 11 17 13 13</span></span>
-<span id="cb7-86"><a href="#cb7-86" tabindex="-1"></a></span>
-<span id="cb7-87"><a href="#cb7-87" tabindex="-1"></a><span class="co"># graze level 3 has 17 patches, levels 4 and 5 have 13 each, and level 2 has only 11. The</span></span>
-<span id="cb7-88"><a href="#cb7-88" tabindex="-1"></a><span class="co"># comparison involving the largest group is the tightest, and the one involving the</span></span>
-<span id="cb7-89"><a href="#cb7-89" tabindex="-1"></a><span class="co"># smallest group is the loosest. Worth remembering when you are deciding how to spread</span></span>
-<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a><span class="co"># your effort in your own sampling: a comparison is only ever as good as the smaller of</span></span>
-<span id="cb7-91"><a href="#cb7-91" tabindex="-1"></a><span class="co"># the two groups going into it.</span></span></code></pre></div>
+<span id="cb7-78"><a href="#cb7-78" tabindex="-1"></a><span class="co"># so, which of the four differences is estimated most precisely? Compare the widths of</span></span>
+<span id="cb7-79"><a href="#cb7-79" tabindex="-1"></a><span class="co"># the intervals: FGRAZE3 spans 10.97 birds, FGRAZE4 and FGRAZE5 both span 11.68, and</span></span>
+<span id="cb7-80"><a href="#cb7-80" tabindex="-1"></a><span class="co"># FGRAZE2 spans 12.20. So the graze 1 versus graze 3 difference is the best estimated of</span></span>
+<span id="cb7-81"><a href="#cb7-81" tabindex="-1"></a><span class="co"># the four, and graze 1 versus graze 2 the worst.</span></span>
+<span id="cb7-82"><a href="#cb7-82" tabindex="-1"></a></span>
+<span id="cb7-83"><a href="#cb7-83" tabindex="-1"></a><span class="co"># why? Each of these is a comparison between two groups, so its precision depends on how</span></span>
+<span id="cb7-84"><a href="#cb7-84" tabindex="-1"></a><span class="co"># much data there is in BOTH of them, not just one. Graze level 1 is the baseline and so</span></span>
+<span id="cb7-85"><a href="#cb7-85" tabindex="-1"></a><span class="co"># appears in all four comparisons, which means the thing that varies between them is the</span></span>
+<span id="cb7-86"><a href="#cb7-86" tabindex="-1"></a><span class="co"># size of the other group:</span></span>
+<span id="cb7-87"><a href="#cb7-87" tabindex="-1"></a><span class="fu">table</span>(loyn<span class="sc">$</span>FGRAZE)</span>
+<span id="cb7-88"><a href="#cb7-88" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-89"><a href="#cb7-89" tabindex="-1"></a><span class="do">##  1  2  3  4  5 </span></span>
+<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a><span class="do">## 13 11 17 13 13</span></span>
+<span id="cb7-91"><a href="#cb7-91" tabindex="-1"></a></span>
+<span id="cb7-92"><a href="#cb7-92" tabindex="-1"></a><span class="co"># graze level 3 has 17 patches, levels 4 and 5 have 13 each, and level 2 has only 11.</span></span>
+<span id="cb7-93"><a href="#cb7-93" tabindex="-1"></a><span class="co"># The comparison involving the largest group is the tightest, and the one involving the</span></span>
+<span id="cb7-94"><a href="#cb7-94" tabindex="-1"></a><span class="co"># smallest group is the loosest. Worth remembering when you are deciding how to spread</span></span>
+<span id="cb7-95"><a href="#cb7-95" tabindex="-1"></a><span class="co"># your effort in your own sampling: a comparison is only ever as good as the smaller of</span></span>
+<span id="cb7-96"><a href="#cb7-96" tabindex="-1"></a><span class="co"># the two groups going into it.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>8. Now that you have interpreted all the contrasts with
 <code>FGRAZE</code> level 1 as the intercept, set the intercept to
@@ -732,77 +741,125 @@ releveling does and does not change.</p>
 <span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="do">## Residual standard error: 7.447 on 62 degrees of freedom</span></span>
 <span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
 <span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 2, we can now compare between levels &apos;2 and 3&apos;, &apos;2 and 4&apos;, and &apos;2 and 5&apos;</span></span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co"># Also note that the rest of the model output (R^2, F, DF etc) is the same as the previous model (i.e. its </span></span>
-<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co"># the same model we have just changed the intercept and therefore the contrasts).</span></span>
-<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;3&quot;</span>)</span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a>birds_lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn)</span>
-<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="fu">summary</span>(birds_lm3)</span>
-<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ FGRAZE, data = loyn)</span></span>
-<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
-<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="do">## -17.2647  -4.3269  -0.0182   5.0948  17.5353 </span></span>
-<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="do">## (Intercept)  20.1647     1.8062  11.164  &lt; 2e-16 ***</span></span>
-<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="do">## FGRAZE2      -0.7465     2.8817  -0.259  0.79645    </span></span>
-<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="do">## FGRAZE1       8.4584     2.7438   3.083  0.00306 ** </span></span>
-<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="do">## FGRAZE4      -1.2032     2.7438  -0.438  0.66255    </span></span>
-<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="do">## FGRAZE5     -13.8724     2.7438  -5.056 4.06e-06 ***</span></span>
-<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="fu">confint</span>(birds_lm2)</span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="do">##                  2.5 %    97.5 %</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="do">## (Intercept)  14.929641 23.906722</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="do">## FGRAZE1       3.106170 15.303621</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="do">## FGRAZE3      -5.013969  6.507018</span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="do">## FGRAZE4      -6.555369  5.642082</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="do">## FGRAZE5     -19.224600 -7.027149</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 2, so we can compare between levels &apos;2 and 3&apos;, &apos;2</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co"># and 4&apos;, and &apos;2 and 5&apos;.</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co"># Also note that the rest of the model output (R^2, F, DF etc) is the same as the</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co"># previous model. It is the same model, we have just changed the intercept and therefore</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="co"># the contrasts.</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;3&quot;</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a>birds_lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn)</span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="fu">summary</span>(birds_lm3)</span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ FGRAZE, data = loyn)</span></span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="do">## -17.2647  -4.3269  -0.0182   5.0948  17.5353 </span></span>
 <span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="do">## Residual standard error: 7.447 on 62 degrees of freedom</span></span>
-<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
-<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
-<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a></span>
-<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 3, we can now compare between levels &apos;3 and 4&apos;, &apos;and 3 and 5&apos;</span></span>
-<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a></span>
-<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;4&quot;</span>)</span>
-<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a>birds_lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn)</span>
-<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="fu">summary</span>(birds_lm4)</span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="do">## (Intercept)  20.1647     1.8062  11.164  &lt; 2e-16 ***</span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="do">## FGRAZE2      -0.7465     2.8817  -0.259  0.79645    </span></span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="do">## FGRAZE1       8.4584     2.7438   3.083  0.00306 ** </span></span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="do">## FGRAZE4      -1.2032     2.7438  -0.438  0.66255    </span></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="do">## FGRAZE5     -13.8724     2.7438  -5.056 4.06e-06 ***</span></span>
+<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ FGRAZE, data = loyn)</span></span>
-<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
-<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="do">## -17.2647  -4.3269  -0.0182   5.0948  17.5353 </span></span>
-<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="do">## (Intercept)  18.9615     2.0655   9.180 3.65e-13 ***</span></span>
-<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a><span class="do">## FGRAZE3       1.2032     2.7438   0.438  0.66255    </span></span>
-<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="do">## FGRAZE2       0.4566     3.0509   0.150  0.88151    </span></span>
-<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a><span class="do">## FGRAZE1       9.6615     2.9210   3.308  0.00157 ** </span></span>
-<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a><span class="do">## FGRAZE5     -12.6692     2.9210  -4.337 5.41e-05 ***</span></span>
-<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb8-78"><a href="#cb8-78" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
+<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="do">## Residual standard error: 7.447 on 62 degrees of freedom</span></span>
+<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
+<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
+<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="fu">confint</span>(birds_lm3)</span>
+<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="do">##                  2.5 %    97.5 %</span></span>
+<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="do">## (Intercept)  16.554125 23.775286</span></span>
+<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="do">## FGRAZE2      -6.507018  5.013969</span></span>
+<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="do">## FGRAZE1       2.973506 13.943236</span></span>
+<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="do">## FGRAZE4      -6.688033  4.281698</span></span>
+<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="do">## FGRAZE5     -19.357264 -8.387533</span></span>
+<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a></span>
+<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 3, so we can compare &apos;3 and 4&apos; and &apos;3 and 5&apos;</span></span>
+<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a></span>
+<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;4&quot;</span>)</span>
+<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a>birds_lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn)</span>
+<span id="cb8-78"><a href="#cb8-78" tabindex="-1"></a><span class="fu">summary</span>(birds_lm4)</span>
 <span id="cb8-79"><a href="#cb8-79" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-80"><a href="#cb8-80" tabindex="-1"></a><span class="do">## Residual standard error: 7.447 on 62 degrees of freedom</span></span>
-<span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
-<span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
-<span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a></span>
-<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 4, we can now compare between levels &apos;4 and 5&apos;</span></span>
-<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a></span>
-<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="co"># One important thing to notice as you work through these. Releveling doesn&apos;t change the</span></span>
-<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="co"># model at all: the fitted values, the residuals, the R^2 and the F test are all identical</span></span>
-<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="co"># every time. All that changes is which set of comparisons R chooses to show you. The</span></span>
-<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="co"># estimated difference between graze levels 2 and 3, and the confidence interval around it,</span></span>
-<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="co"># mean exactly the same thing whichever of the two you make the baseline. Only the sign</span></span>
-<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="co"># flips. Run confint() on birds_lm2 and birds_lm3 and check this for yourself.</span></span></code></pre></div>
+<span id="cb8-80"><a href="#cb8-80" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="do">## lm(formula = ABUND ~ FGRAZE, data = loyn)</span></span>
+<span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a><span class="do">## -17.2647  -4.3269  -0.0182   5.0948  17.5353 </span></span>
+<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="do">## (Intercept)  18.9615     2.0655   9.180 3.65e-13 ***</span></span>
+<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="do">## FGRAZE3       1.2032     2.7438   0.438  0.66255    </span></span>
+<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="do">## FGRAZE2       0.4566     3.0509   0.150  0.88151    </span></span>
+<span id="cb8-92"><a href="#cb8-92" tabindex="-1"></a><span class="do">## FGRAZE1       9.6615     2.9210   3.308  0.00157 ** </span></span>
+<span id="cb8-93"><a href="#cb8-93" tabindex="-1"></a><span class="do">## FGRAZE5     -12.6692     2.9210  -4.337 5.41e-05 ***</span></span>
+<span id="cb8-94"><a href="#cb8-94" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb8-95"><a href="#cb8-95" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
+<span id="cb8-96"><a href="#cb8-96" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-97"><a href="#cb8-97" tabindex="-1"></a><span class="do">## Residual standard error: 7.447 on 62 degrees of freedom</span></span>
+<span id="cb8-98"><a href="#cb8-98" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4915, Adjusted R-squared:  0.4587 </span></span>
+<span id="cb8-99"><a href="#cb8-99" tabindex="-1"></a><span class="do">## F-statistic: 14.98 on 4 and 62 DF,  p-value: 1.272e-08</span></span>
+<span id="cb8-100"><a href="#cb8-100" tabindex="-1"></a><span class="fu">confint</span>(birds_lm4)</span>
+<span id="cb8-101"><a href="#cb8-101" tabindex="-1"></a><span class="do">##                  2.5 %    97.5 %</span></span>
+<span id="cb8-102"><a href="#cb8-102" tabindex="-1"></a><span class="do">## (Intercept)  14.832682 23.090395</span></span>
+<span id="cb8-103"><a href="#cb8-103" tabindex="-1"></a><span class="do">## FGRAZE3      -4.281698  6.688033</span></span>
+<span id="cb8-104"><a href="#cb8-104" tabindex="-1"></a><span class="do">## FGRAZE2      -5.642082  6.555369</span></span>
+<span id="cb8-105"><a href="#cb8-105" tabindex="-1"></a><span class="do">## FGRAZE1       3.822453 15.500624</span></span>
+<span id="cb8-106"><a href="#cb8-106" tabindex="-1"></a><span class="do">## FGRAZE5     -18.508316 -6.830146</span></span>
+<span id="cb8-107"><a href="#cb8-107" tabindex="-1"></a></span>
+<span id="cb8-108"><a href="#cb8-108" tabindex="-1"></a><span class="co"># The intercept is now FGRAZE level 4, so we can compare &apos;4 and 5&apos;</span></span>
+<span id="cb8-109"><a href="#cb8-109" tabindex="-1"></a></span>
+<span id="cb8-110"><a href="#cb8-110" tabindex="-1"></a><span class="co"># Putting all ten pairwise differences together, with their intervals, the picture is:</span></span>
+<span id="cb8-111"><a href="#cb8-111" tabindex="-1"></a><span class="co"># level 1 sits well above the other four, level 5 sits well below the other four, and</span></span>
+<span id="cb8-112"><a href="#cb8-112" tabindex="-1"></a><span class="co"># levels 2, 3 and 4 cannot be separated from one another by these data.</span></span>
+<span id="cb8-113"><a href="#cb8-113" tabindex="-1"></a></span>
+<span id="cb8-114"><a href="#cb8-114" tabindex="-1"></a><span class="co"># One important thing to notice as you work through these. Releveling doesn&apos;t change the</span></span>
+<span id="cb8-115"><a href="#cb8-115" tabindex="-1"></a><span class="co"># model at all: the fitted values, the residuals, the R^2 and the F test are all</span></span>
+<span id="cb8-116"><a href="#cb8-116" tabindex="-1"></a><span class="co"># identical every time. All that changes is which set of comparisons R chooses to show</span></span>
+<span id="cb8-117"><a href="#cb8-117" tabindex="-1"></a><span class="co"># you.</span></span>
+<span id="cb8-118"><a href="#cb8-118" tabindex="-1"></a></span>
+<span id="cb8-119"><a href="#cb8-119" tabindex="-1"></a><span class="co"># Check this for yourself in the confint() output above. The difference between graze</span></span>
+<span id="cb8-120"><a href="#cb8-120" tabindex="-1"></a><span class="co"># levels 2 and 3 is 0.75 birds (95% CI: -5.01 to 6.51) when level 2 is the baseline, and</span></span>
+<span id="cb8-121"><a href="#cb8-121" tabindex="-1"></a><span class="co"># -0.75 birds (95% CI: -6.51 to 5.01) when level 3 is. Same comparison, same width of</span></span>
+<span id="cb8-122"><a href="#cb8-122" tabindex="-1"></a><span class="co"># interval, sign flipped. That is one result, not two.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>9. Staying with the summary table of parameter estimates, how much of
 the variation in bird abundance does the explanatory variable
-<code>FGRAZE</code> explain?</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># The multiple R-squared value is 0.491 and therefore 49.1% of</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># the variation in ABUND is explained by FGRAZE</span></span></code></pre></div>
+<code>FGRAZE</code> explain? As in the previous exercise, decide which
+of the two R<sup>2</sup> values you should quote and why. This model
+estimates more parameters than the last one did, so is the gap between
+them bigger or smaller here?</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># The multiple R-squared value is 0.491 and therefore 49.1% of the variation in ABUND is</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># explained by FGRAZE</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># The adjusted R-squared is 0.459. Recall from the previous exercise that the adjusted</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># value penalises you for the number of parameters estimated, whereas the multiple</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># R-squared can only go up as you add terms.</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># The gap between the two is bigger here: 0.033 against 0.006 in the previous exercise.</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co"># That&apos;s because this model estimates five parameters (an intercept plus four contrasts)</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># rather than two, so there is more to penalise. That is exactly the point of the</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co"># adjustment.</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co"># Since this is still a single explanatory variable model, quoting the multiple</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># R-squared is fine, as long as you say which one it is. The moment you start comparing</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co"># models with different numbers of terms, as you will in exercise 4, switch to the</span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co"># adjusted value.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>10. Now onto a really important part of the model fitting process.
 Let&#x2019;s check the assumptions of your linear model by creating plots of
@@ -820,36 +877,39 @@ these assumptions in your R script.</p>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">plot</span>(birds_lm)</span></code></pre></div>
 <p><img src="linear_model_2_exercise_solutions_files/figure-html/Q10-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># To test the normality of residuals assumption we use the Normal Q-Q plot. Although the majority of the residuals </span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># lie along the reference line there are five residuals which are all below the line resulting in reasonably substantial </span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># negative residuals. This suggest that the model does not fit these observation very well.</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># Looking at the homogeneity of variance assumption (Residuals vs Fitted and Scale-Location plot) you can see the </span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># five columns of residuals corresponding to the fitted values for the five grazing levels. Again, things don&apos;t look </span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># great. The spread for the lower fitted values (left side of the plot) is much narrower when compared to the other groups.</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># This suggests that the homogeneity of variance assumption is not met (i.e. the variances are not the same). The same cluster</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co"># of negative residuals we spotted in the Normal Q-Q plot also appears in the Residuals vs Fitted plot suggesting that it is</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co"># these residuals that are responsible.</span></span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co"># The only real good news is that there doesn&apos;t appear to be any influential or unusual residuals as indicated in the </span></span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co"># Residuals vs Leverage plot.  </span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># To test the normality of residuals assumption we use the Normal Q-Q plot. Although the</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># majority of the residuals lie along the reference line there are five residuals which</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># are all below the line resulting in reasonably substantial negative residuals. This</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># suggest that the model does not fit these observation very well.</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># Looking at the homogeneity of variance assumption (Residuals vs Fitted and</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># Scale-Location plot) you can see the five columns of residuals corresponding to the</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># fitted values for the five grazing levels. Again, things don&apos;t look great. The spread</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co"># for the lower fitted values (left side of the plot) is much narrower when compared to</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co"># the other groups. This suggests that the homogeneity of variance assumption is not met</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co"># (i.e. the variances are not the same). The same cluster of negative residuals we</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co"># spotted in the Normal Q-Q plot also appears in the Residuals vs Fitted plot suggesting</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co"># that it is these residuals that are responsible.</span></span>
 <span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co"># So what to do? You could go back and check the original field notebook data to see if a</span></span>
-<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co"># transcribing mistake has been made (seems unlikely and you dont have this luxury anyway). </span></span>
-<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co"># You could also try applying a transformation (log or square root) on the ABUND variable, refit the model and </span></span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co"># see if this improves things. </span></span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co"># for example </span></span>
-<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>loyn<span class="sc">$</span>ABUND.SQRT <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(loyn<span class="sc">$</span>ABUND)</span>
-<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a>birds_lm_sqrt <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND.SQRT <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn)</span>
-<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="fu">plot</span>(birds_lm_sqrt)</span></code></pre></div>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co"># The only real good news is that there doesn&apos;t appear to be any influential or unusual</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co"># residuals as indicated in the Residuals vs Leverage plot.</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co"># So what to do? You could go back and check the original field notebook data to see if</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co"># a transcribing mistake has been made (seems unlikely and you dont have this luxury</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co"># anyway). You could also try applying a transformation (log or square root) on the</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co"># ABUND variable, refit the model and see if this improves things. For example</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a>loyn<span class="sc">$</span>ABUND.SQRT <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(loyn<span class="sc">$</span>ABUND)</span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a>birds_lm_sqrt <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABUND.SQRT <span class="sc">~</span> FGRAZE, <span class="at">data =</span> loyn)</span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="fu">plot</span>(birds_lm_sqrt)</span></code></pre></div>
 <p><img src="linear_model_2_exercise_solutions_files/figure-html/Q10-2.png" alt width="672"></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># Sadly this doesn&apos;t seemed to have improved things!</span></span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Or finally, you can relax the assumption of equal variance and estimate a separate variance for each group using </span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># generalised least squares. This is not something we will do on this course but will cover in a more advanced statistics course!</span></span></code></pre></div>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Or finally, you can relax the assumption of equal variance and estimate a separate</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># variance for each group using generalised least squares. This is not something we will</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co"># do on this course but will cover in a more advanced statistics course!</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>11. To finish, let&#x2019;s plot the model. Don&#x2019;t panic about the code, I&#x2019;ll
 give you that in the solutions, but do spend some time on the two
@@ -861,11 +921,11 @@ calculate the fitted mean bird abundance for each level of
 fitted values against grazing level and add the 95% confidence intervals
 (you will need either the <code>arrows()</code> or the
 <code>segments()</code> function to add the intervals to the plot).
-There are also a few packages that will do the whole job for you in one
-line, and I&#x2019;ve put those in the solutions as alternatives, so feel free
-to use Google (yep, this is OK!) and have a look at the
-<code>gplots</code> package, the <code>effects</code> package or
-<code>ggplot2</code> if you fancy it.</p>
+There are also packages that will do the whole job for you in a line or
+two, and I&#x2019;ve put a couple of those in the solutions, so feel free to
+use Google (yep, this is OK!) and have a look at the
+<code>effects</code> package or <code>ggplot2</code> if you fancy
+it.</p>
 <p>Once you have your plot:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>The five intervals on your plot are <strong>not</strong> the four
@@ -882,19 +942,19 @@ Think carefully about this one before you look at the solution, because
 reading differences off overlapping error bars by eye is a mistake that
 appears in print constantly.</p></li>
 </ol>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># using old faithful, the predict function, with base R graphics and the</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># arrows function</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># back in Q8 we changed the baseline level a few times with relevel(). Let&apos;s put</span></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># it back to graze level 1 so everything below comes out in the natural order</span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>))</span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_lm, <span class="at">newdata =</span> my_data, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># now plot these values</span></span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="at">length=</span><span class="dv">5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Graze intensity level&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Bird Abundance&quot;</span>)</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># using old faithful, the predict function, with base R graphics and the arrows function</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># back in Q8 we changed the baseline level a few times with relevel(). Let&apos;s put it back</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># to graze level 1 so everything below comes out in the natural order</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>loyn<span class="sc">$</span>FGRAZE <span class="ot">&lt;-</span> <span class="fu">relevel</span>(loyn<span class="sc">$</span>FGRAZE, <span class="at">ref =</span> <span class="st">&quot;1&quot;</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(birds_lm, <span class="at">newdata =</span> my_data, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co"># now plot these values</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="at">length=</span><span class="dv">5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Graze intensity level&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Bird Abundance&quot;</span>)</span>
 <span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit,</span>
 <span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">2</span>, <span class="at">length =</span> <span class="fl">0.05</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit,</span>
@@ -904,115 +964,120 @@ appears in print constantly.</p></li>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># (a) what are these five intervals?</span></span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># They are 95% confidence intervals for the MEAN bird abundance within each of the five</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># grazing levels. There are five of them because there are five groups. The summary()</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># table gave you only four intervals because those are contrasts, i.e. DIFFERENCES from</span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># the baseline, and a set of five groups only has four differences from a baseline.</span></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># Nothing has gone missing.</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co"># here are the five group means and their intervals written out</span></span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>                 <span class="at">mean   =</span> pred_vals<span class="sc">$</span>fit,</span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>                 <span class="at">lower  =</span> pred_vals<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit,</span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>                 <span class="at">upper  =</span> pred_vals<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit), <span class="dv">2</span>)</span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="do">##   FGRAZE  mean lower upper</span></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="do">## 1      1 28.62 24.57 32.67</span></span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="do">## 2      2 19.42 15.02 23.82</span></span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="do">## 3      3 20.16 16.62 23.70</span></span>
-<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="do">## 4      4 18.96 14.91 23.01</span></span>
-<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="do">## 5      5  6.29  2.24 10.34</span></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co"># graze level 2 is 19.42 birds (15.02 to 23.82) on this plot, but the FGRAZE2 interval</span></span>
-<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co"># from confint() was -9.20 (-15.30 to -3.11). In words: &quot;graze level 2 holds somewhere</span></span>
-<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="co"># around 15 to 24 birds&quot; versus &quot;graze level 2 holds somewhere between 3 and 15 FEWER</span></span>
-<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a><span class="co"># birds than graze level 1&quot;. Both are true and both are useful, but they answer different</span></span>
-<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co"># questions and you must never quote one when you mean the other.</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># grazing levels. There are five of them because there are five groups.</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># In Q7 you got only four intervals, from confint(). (Note that summary() never gives</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># you intervals at all, only estimates and standard errors. It is confint() that</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co"># turns those into intervals.) There were four because those are contrasts, i.e.</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co"># DIFFERENCES from the baseline, and a set of five groups has only four differences from</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co"># a baseline. Nothing has gone missing.</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co"># here are the five group means and their intervals written out</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(<span class="at">FGRAZE =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a>                 <span class="at">mean   =</span> pred_vals<span class="sc">$</span>fit,</span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>                 <span class="at">lower  =</span> pred_vals<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit,</span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a>                 <span class="at">upper  =</span> pred_vals<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit), <span class="dv">2</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="do">##   FGRAZE  mean lower upper</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="do">## 1      1 28.62 24.57 32.67</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="do">## 2      2 19.42 15.02 23.82</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="do">## 3      3 20.16 16.62 23.70</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="do">## 4      4 18.96 14.91 23.01</span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="do">## 5      5  6.29  2.24 10.34</span></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a><span class="co"># Take graze level 2. On this plot it is 19.42 birds (15.02 to 23.82). From confint() in</span></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co"># Q7, the FGRAZE2 contrast was -9.20 (-15.30 to -3.11).</span></span>
 <span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a></span>
-<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a><span class="co"># graze level 1 is the one place the two agree: 28.62 birds (24.57 to 32.67) here against</span></span>
-<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a><span class="co"># an intercept of 28.62 (24.49 to 32.75) from confint(), because the intercept IS the mean</span></span>
-<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="co"># of graze level 1. The last-decimal difference is only because confint() uses the t</span></span>
-<span id="cb14-30"><a href="#cb14-30" tabindex="-1"></a><span class="co"># distribution with 62 degrees of freedom, a multiplier of 2.00, while our plotting code</span></span>
-<span id="cb14-31"><a href="#cb14-31" tabindex="-1"></a><span class="co"># above uses 1.96.</span></span>
+<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a><span class="co"># Said carefully, in words:</span></span>
+<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="co">#   plot     : &quot;the MEAN abundance of patches at graze level 2 is estimated at</span></span>
+<span id="cb14-30"><a href="#cb14-30" tabindex="-1"></a><span class="co">#              19.4 birds, and these data are consistent with a mean anywhere</span></span>
+<span id="cb14-31"><a href="#cb14-31" tabindex="-1"></a><span class="co">#              between 15.0 and 23.8 birds&quot;</span></span>
 <span id="cb14-32"><a href="#cb14-32" tabindex="-1"></a></span>
-<span id="cb14-33"><a href="#cb14-33" tabindex="-1"></a></span>
-<span id="cb14-34"><a href="#cb14-34" tabindex="-1"></a><span class="co"># (b) overlap, which is the one that really matters</span></span>
-<span id="cb14-35"><a href="#cb14-35" tabindex="-1"></a></span>
-<span id="cb14-36"><a href="#cb14-36" tabindex="-1"></a><span class="co"># The rule works in one direction only.</span></span>
-<span id="cb14-37"><a href="#cb14-37" tabindex="-1"></a></span>
-<span id="cb14-38"><a href="#cb14-38" tabindex="-1"></a><span class="co"># If two intervals do NOT overlap, those two means are clearly different (the difference</span></span>
-<span id="cb14-39"><a href="#cb14-39" tabindex="-1"></a><span class="co"># between them would have a P value below 0.05). That direction is safe.</span></span>
-<span id="cb14-40"><a href="#cb14-40" tabindex="-1"></a></span>
-<span id="cb14-41"><a href="#cb14-41" tabindex="-1"></a><span class="co"># If two intervals DO overlap, you cannot conclude anything from that. In particular you</span></span>
-<span id="cb14-42"><a href="#cb14-42" tabindex="-1"></a><span class="co"># must not conclude that the two means are the same, or even that the difference isn&apos;t</span></span>
-<span id="cb14-43"><a href="#cb14-43" tabindex="-1"></a><span class="co"># &apos;significant&apos;. Two intervals can overlap quite noticeably while the difference between</span></span>
-<span id="cb14-44"><a href="#cb14-44" tabindex="-1"></a><span class="co"># those two means still has a confidence interval that comfortably excludes zero.</span></span>
-<span id="cb14-45"><a href="#cb14-45" tabindex="-1"></a></span>
-<span id="cb14-46"><a href="#cb14-46" tabindex="-1"></a><span class="co"># The reason is that the uncertainty in a difference is smaller than the two uncertainties</span></span>
-<span id="cb14-47"><a href="#cb14-47" tabindex="-1"></a><span class="co"># added together. So the interval for a difference is narrower than you would guess by eye</span></span>
-<span id="cb14-48"><a href="#cb14-48" tabindex="-1"></a><span class="co"># from looking at the two intervals for the means, and judging by overlap alone makes you</span></span>
-<span id="cb14-49"><a href="#cb14-49" tabindex="-1"></a><span class="co"># too cautious. You end up reporting &apos;no difference&apos; for comparisons that were perfectly</span></span>
-<span id="cb14-50"><a href="#cb14-50" tabindex="-1"></a><span class="co"># well resolved.</span></span>
-<span id="cb14-51"><a href="#cb14-51" tabindex="-1"></a></span>
-<span id="cb14-52"><a href="#cb14-52" tabindex="-1"></a><span class="co"># In these particular data the two views do happen to agree, and every pair of grazing</span></span>
-<span id="cb14-53"><a href="#cb14-53" tabindex="-1"></a><span class="co"># levels whose difference is clearly resolved also has non-overlapping intervals. Don&apos;t</span></span>
-<span id="cb14-54"><a href="#cb14-54" tabindex="-1"></a><span class="co"># take that as reassurance though, it&apos;s a coincidence of this dataset and not a rule.</span></span>
+<span id="cb14-33"><a href="#cb14-33" tabindex="-1"></a><span class="co">#   confint(): &quot;the MEAN abundance at graze level 2 is estimated at 9.2 birds</span></span>
+<span id="cb14-34"><a href="#cb14-34" tabindex="-1"></a><span class="co">#              LOWER than at graze level 1, and these data are consistent with a</span></span>
+<span id="cb14-35"><a href="#cb14-35" tabindex="-1"></a><span class="co">#              difference anywhere between 3.1 and 15.3 birds lower&quot;</span></span>
+<span id="cb14-36"><a href="#cb14-36" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" tabindex="-1"></a><span class="co"># Note that both statements are about the MEAN of a group, not about individual patches.</span></span>
+<span id="cb14-38"><a href="#cb14-38" tabindex="-1"></a><span class="co"># A confidence interval of 15.0 to 23.8 does NOT say that 95% of graze level 2 patches</span></span>
+<span id="cb14-39"><a href="#cb14-39" tabindex="-1"></a><span class="co"># hold between 15 and 24 birds; plenty of individual patches sit well outside that</span></span>
+<span id="cb14-40"><a href="#cb14-40" tabindex="-1"></a><span class="co"># range, as you can see from the raw data. It says that the group AVERAGE is somewhere</span></span>
+<span id="cb14-41"><a href="#cb14-41" tabindex="-1"></a><span class="co"># in there. Getting this wrong is one of the most common errors in reporting, so it&apos;s</span></span>
+<span id="cb14-42"><a href="#cb14-42" tabindex="-1"></a><span class="co"># worth reading that sentence twice.</span></span>
+<span id="cb14-43"><a href="#cb14-43" tabindex="-1"></a></span>
+<span id="cb14-44"><a href="#cb14-44" tabindex="-1"></a><span class="co"># Both statements are true and both are useful, but they answer different questions and</span></span>
+<span id="cb14-45"><a href="#cb14-45" tabindex="-1"></a><span class="co"># you must never quote one when you mean the other.</span></span>
+<span id="cb14-46"><a href="#cb14-46" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" tabindex="-1"></a><span class="co"># graze level 1 is the one place the two agree: 28.62 birds (24.57 to 32.67) here</span></span>
+<span id="cb14-48"><a href="#cb14-48" tabindex="-1"></a><span class="co"># against an intercept of 28.62 (24.49 to 32.75) from confint(), because the intercept</span></span>
+<span id="cb14-49"><a href="#cb14-49" tabindex="-1"></a><span class="co"># IS the mean of graze level 1. The last-decimal difference is only because confint()</span></span>
+<span id="cb14-50"><a href="#cb14-50" tabindex="-1"></a><span class="co"># uses the t distribution with 62 degrees of freedom, a multiplier of 2.00, while our</span></span>
+<span id="cb14-51"><a href="#cb14-51" tabindex="-1"></a><span class="co"># plotting code above uses 1.96.</span></span>
+<span id="cb14-52"><a href="#cb14-52" tabindex="-1"></a></span>
+<span id="cb14-53"><a href="#cb14-53" tabindex="-1"></a></span>
+<span id="cb14-54"><a href="#cb14-54" tabindex="-1"></a><span class="co"># (b) overlap, which is the one that really matters</span></span>
 <span id="cb14-55"><a href="#cb14-55" tabindex="-1"></a></span>
-<span id="cb14-56"><a href="#cb14-56" tabindex="-1"></a><span class="co"># So what should you actually do? Use a plot like this to show a reader the overall</span></span>
-<span id="cb14-57"><a href="#cb14-57" tabindex="-1"></a><span class="co"># pattern, because it does that far better than a table of contrasts ever will. But when</span></span>
-<span id="cb14-58"><a href="#cb14-58" tabindex="-1"></a><span class="co"># you want to make a claim about one specific comparison, quote the confidence interval</span></span>
-<span id="cb14-59"><a href="#cb14-59" tabindex="-1"></a><span class="co"># for that DIFFERENCE, which is what Q7 gave you, and not the two intervals for the means.</span></span></code></pre></div>
+<span id="cb14-56"><a href="#cb14-56" tabindex="-1"></a><span class="co"># The rule works in one direction only.</span></span>
+<span id="cb14-57"><a href="#cb14-57" tabindex="-1"></a></span>
+<span id="cb14-58"><a href="#cb14-58" tabindex="-1"></a><span class="co"># If two intervals do NOT overlap, those two means are clearly different (the difference</span></span>
+<span id="cb14-59"><a href="#cb14-59" tabindex="-1"></a><span class="co"># between them would have a P value below 0.05). That direction is safe.</span></span>
+<span id="cb14-60"><a href="#cb14-60" tabindex="-1"></a></span>
+<span id="cb14-61"><a href="#cb14-61" tabindex="-1"></a><span class="co"># If two intervals DO overlap, you cannot conclude anything from that. In particular you</span></span>
+<span id="cb14-62"><a href="#cb14-62" tabindex="-1"></a><span class="co"># must not conclude that the two means are the same, or even that the difference isn&apos;t</span></span>
+<span id="cb14-63"><a href="#cb14-63" tabindex="-1"></a><span class="co"># &apos;significant&apos;. Two intervals can overlap quite noticeably while the difference between</span></span>
+<span id="cb14-64"><a href="#cb14-64" tabindex="-1"></a><span class="co"># those two means still has a confidence interval that comfortably excludes zero.</span></span>
+<span id="cb14-65"><a href="#cb14-65" tabindex="-1"></a></span>
+<span id="cb14-66"><a href="#cb14-66" tabindex="-1"></a><span class="co"># The reason is that the uncertainty in a difference is smaller than the two</span></span>
+<span id="cb14-67"><a href="#cb14-67" tabindex="-1"></a><span class="co"># uncertainties added together. So the interval for a difference is narrower than you</span></span>
+<span id="cb14-68"><a href="#cb14-68" tabindex="-1"></a><span class="co"># would guess by eye from looking at the two intervals for the means, and judging by</span></span>
+<span id="cb14-69"><a href="#cb14-69" tabindex="-1"></a><span class="co"># overlap alone makes you too cautious. You end up reporting &apos;no difference&apos; for</span></span>
+<span id="cb14-70"><a href="#cb14-70" tabindex="-1"></a><span class="co"># comparisons that were perfectly well resolved.</span></span>
+<span id="cb14-71"><a href="#cb14-71" tabindex="-1"></a></span>
+<span id="cb14-72"><a href="#cb14-72" tabindex="-1"></a><span class="co"># In these particular data the two views do happen to agree, and every pair of grazing</span></span>
+<span id="cb14-73"><a href="#cb14-73" tabindex="-1"></a><span class="co"># levels whose difference is clearly resolved also has non-overlapping intervals. Don&apos;t</span></span>
+<span id="cb14-74"><a href="#cb14-74" tabindex="-1"></a><span class="co"># take that as reassurance though, it&apos;s a coincidence of this dataset and not a rule.</span></span>
+<span id="cb14-75"><a href="#cb14-75" tabindex="-1"></a></span>
+<span id="cb14-76"><a href="#cb14-76" tabindex="-1"></a><span class="co"># So what should you actually do? Use a plot like this to show a reader the overall</span></span>
+<span id="cb14-77"><a href="#cb14-77" tabindex="-1"></a><span class="co"># pattern, because it does that far better than a table of contrasts ever will. But when</span></span>
+<span id="cb14-78"><a href="#cb14-78" tabindex="-1"></a><span class="co"># you want to make a claim about one specific comparison, quote the confidence interval</span></span>
+<span id="cb14-79"><a href="#cb14-79" tabindex="-1"></a><span class="co"># for that DIFFERENCE, which is what Q7 gave you, and not the two intervals for the</span></span>
+<span id="cb14-80"><a href="#cb14-80" tabindex="-1"></a><span class="co"># means.</span></span></code></pre></div>
 <p>&#xA0;</p>
-<p><strong>Alternative ways of producing the same plot.</strong> All
-four of these give you essentially the same figure as the one above, so
-use whichever you find easiest. Don&#x2019;t worry if you can&#x2019;t follow all of
-the code, none of it is examinable.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Alternative 1: the same thing with segments() instead of arrows()</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="at">length=</span><span class="dv">5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Graze intensity&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Bird Abundance&quot;</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit)</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="fu">segments</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="fu">segments</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, pred_vals<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> pred_vals<span class="sc">$</span>se.fit)</span></code></pre></div>
+<p><strong>Two other ways of producing the same plot.</strong> Both give
+you essentially the same figure as the one above. These are here purely
+for information, so that you have some options and some working code if
+you want to make this kind of plot with your own data.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Option 1: using the effects package, you may need to install this first</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># install.packages(&apos;effects&apos;)</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>loyn_effects <span class="ot">&lt;-</span> <span class="fu">allEffects</span>(birds_lm)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="fu">plot</span>(loyn_effects,<span class="st">&quot;FGRAZE&quot;</span>, <span class="at">lty =</span> <span class="dv">0</span>)</span></code></pre></div>
 <p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11c-1.png" alt width="672"></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Alternative 2: using the gplots package, you may need to install this first</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># install.packages(&apos;gplots&apos;)</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Option 2: using the ggplot2 package</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># make the functions in ggplot2 available</span></span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">plotmeans</span>(ABUND <span class="sc">~</span> FGRAZE, <span class="at">xlab =</span> <span class="st">&quot;grazing level&quot;</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;bird abundance&quot;</span>, <span class="at">data =</span> loyn, <span class="at">connect =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co"># this plots the mean for each level of FGRAZE along with its 95% confidence interval</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="fu">ggplot</span>(loyn, <span class="fu">aes</span>(<span class="at">x =</span> FGRAZE, <span class="at">y =</span> ABUND)) <span class="sc">+</span> </span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_normal, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>        <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>))</span></code></pre></div>
 <p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11d-1.png" alt width="672"></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Alternative 3: using the effects package, you may need to install this first</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># install.packages(&apos;effects&apos;)</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>loyn_effects <span class="ot">&lt;-</span> <span class="fu">allEffects</span>(birds_lm)</span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">plot</span>(loyn_effects,<span class="st">&quot;FGRAZE&quot;</span>, <span class="at">lty =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11e-1.png" alt width="672"></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Alternative 4: using the ggplot2 package</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># make the functions in ggplot2 available</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># This plot will plot the means for each level of FGRAZE </span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># and also the 95% confidence intervals</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">ggplot</span>(loyn, <span class="fu">aes</span>(<span class="at">x =</span> FGRAZE, <span class="at">y =</span> ABUND)) <span class="sc">+</span> </span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>,</span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>)) <span class="sc">+</span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_normal, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>        <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>))</span></code></pre></div>
-<p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11f-1.png" alt width="672"></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># and as an added bonus, if you wanted to also plot the </span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># raw data along with the means for FGRAZE</span></span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="fu">ggplot</span>(loyn, <span class="fu">aes</span>(<span class="at">x =</span> FGRAZE, <span class="at">y =</span> ABUND)) <span class="sc">+</span> </span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span> </span>
-<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>)) <span class="sc">+</span></span>
-<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_normal, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
-<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>        <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>))</span></code></pre></div>
-<p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11f-2.png" alt width="672"></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># and as an added bonus, if you wanted to plot the raw data alongside the means</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">ggplot</span>(loyn, <span class="fu">aes</span>(<span class="at">x =</span> FGRAZE, <span class="at">y =</span> ABUND)) <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>)) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_normal, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>        <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>))</span></code></pre></div>
+<p><img src="linear_model_2_exercise_solutions_files/figure-html/Q11d-2.png" alt width="672"></p>
 <p>&#xA0;</p>
-<p>12. Same idea, but this time I&#x2019;m not giving you the sentences, only
-the ingredients. Write a short results paragraph (four or five sentences
-is plenty) describing the effect of grazing intensity on bird abundance.
+<p>12. Now for reporting your results. Same idea as the previous
+exercise, but this time I&#x2019;m not giving you the sentences, only the
+ingredients. Write a short results paragraph (four or five sentences is
+plenty) describing the effect of grazing intensity on bird abundance.
 Make sure it contains:</p>
 <ul>
 <li>the overall test of whether abundance differs among grazing levels,
@@ -1023,32 +1088,28 @@ grazing intensities, with its confidence interval</li>
 <li>the sample size</li>
 </ul>
 <p>One thing to think about while you&#x2019;re writing. Your
-<code>summary()</code> table hands you four contrasts, all against graze
-level 1, and writing all four out in prose is tedious to read and buries
-the pattern. Have another look at your plot from Question 11. What is
-the pattern here, and can you get it across in a single sentence?</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Same health warning as the previous exercise: this is my version, not the version.</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co"># Mean bird abundance differed among the five grazing intensity levels (F 4,62 = 14.98,</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co"># p &lt; 0.001, n = 67 patches). Abundance was highest at the lowest grazing intensity</span></span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co"># (mean 28.6 birds, 95% CI: 24.5 to 32.8) and lowest at the highest intensity (mean 6.3</span></span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co"># birds), a difference of 22.3 birds (95% CI: 16.5 to 28.2). Grazing levels 2, 3 and 4</span></span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co"># were similar to one another (means 19.4, 20.2 and 19.0 birds) and all sat roughly 8 to</span></span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co"># 10 birds below level 1. The effect is therefore not a smooth decline across the grazing</span></span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co"># gradient, it is concentrated at the highest grazing intensity. Grazing intensity</span></span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="co"># accounted for 49.2% of the variation in bird abundance.</span></span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co"># The pattern is a STEP, not a gradient. Levels 2, 3 and 4 are more or less</span></span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co"># interchangeable, level 1 sits above them and level 5 a long way below. Saying that in</span></span>
-<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co"># one sentence is far more use to a reader than four separate contrast statements, and</span></span>
-<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a><span class="co"># it&apos;s the kind of thing that might actually inform a grazing management decision. Watch</span></span>
-<span id="cb20-16"><a href="#cb20-16" tabindex="-1"></a><span class="co"># the wording though: &quot;similar to one another&quot; describes the estimated means. It is not a</span></span>
-<span id="cb20-17"><a href="#cb20-17" tabindex="-1"></a><span class="co"># claim that they are identical, and we haven&apos;t tested them against each other anyway.</span></span>
-<span id="cb20-18"><a href="#cb20-18" tabindex="-1"></a></span>
-<span id="cb20-19"><a href="#cb20-19" tabindex="-1"></a><span class="co"># One thing I left out on purpose: the P value for the intercept (p &lt; 2e-16). That tests</span></span>
-<span id="cb20-20"><a href="#cb20-20" tabindex="-1"></a><span class="co"># the hypothesis &quot;there are no birds at all in the least grazed patches&quot;, which nobody</span></span>
-<span id="cb20-21"><a href="#cb20-21" tabindex="-1"></a><span class="co"># believed and nobody needed testing. A statistically impeccable result can still be</span></span>
-<span id="cb20-22"><a href="#cb20-22" tabindex="-1"></a><span class="co"># biologically pointless, and a fair part of writing up well is deciding what to leave out.</span></span></code></pre></div>
+<code>confint()</code> output hands you four contrasts, all against
+graze level 1, and writing all four out in prose is tedious to read and
+buries the pattern. Have another look at your plot from Question 11.
+What is the pattern here, and can you get it across in a single
+sentence?</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Same health warning as the previous exercise: this is my version, not the only</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co"># version.</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># Mean bird abundance differed among the five grazing intensity levels (F 4,62 = 14.98,</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># p &lt; 0.001, n = 67 patches). Abundance was highest at the lowest grazing intensity</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># (mean 28.6 birds, 95% CI: 24.5 to 32.8) and lowest at the highest intensity (mean 6.3</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># birds), a difference of 22.3 birds (95% CI: 16.5 to 28.2). Grazing levels 2, 3 and 4</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># were similar to one another (means 19.4, 20.2 and 19.0 birds) and all sat roughly 8 to</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># 10 birds below level 1. The effect is therefore not a smooth decline across the</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># grazing gradient, it is concentrated at the highest grazing intensity. Grazing</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># intensity accounted for 49.2% of the variation in bird abundance.</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># One thing I left out on purpose: the P value for the intercept (p &lt; 2e-16). That tests</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co"># the hypothesis &quot;there are no birds at all in the least grazed patches&quot;, which nobody</span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co"># believed and nobody needed testing. A statistically impeccable result can still be</span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co"># biologically pointless, and a fair part of writing up well is deciding what to leave</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co"># out.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>End of the linear model with single categorical explanatory variable
 exercise</p>

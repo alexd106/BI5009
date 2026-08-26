@@ -520,16 +520,15 @@ relationship using the <code>lm()</code> function. Remember to use the
 <code>data =</code> argument. Assign this linear model to an
 appropriately named object (<code>loyn_lm</code> if you imagination
 fails you!).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># let&apos;s first log10 transform the AREA variable due to the couple </span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># of unusually large forest area values (check you data exploration)</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># to remind yourself</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>loyn<span class="sc">$</span>LOGAREA <span class="ot">&lt;-</span> <span class="fu">log10</span>(loyn<span class="sc">$</span>AREA)</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># make a scatterplot of bird abundance and log10 Area</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">plot</span>(loyn<span class="sc">$</span>LOGAREA, loyn<span class="sc">$</span>ABUND, <span class="at">xlab =</span> <span class="st">&quot;log10 forest area&quot;</span>, </span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;bird abundance&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># let&apos;s first log10 transform the AREA variable due to the couple of unusually large</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># forest area values (check you data exploration) to remind yourself</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>loyn<span class="sc">$</span>LOGAREA <span class="ot">&lt;-</span> <span class="fu">log10</span>(loyn<span class="sc">$</span>AREA)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># make a scatterplot of bird abundance and log10 Area</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">plot</span>(loyn<span class="sc">$</span>LOGAREA, loyn<span class="sc">$</span>ABUND, <span class="at">xlab =</span> <span class="st">&quot;log10 forest area&quot;</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;bird abundance&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>))</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q3-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co"># now fit the linear model</span></span>
@@ -553,13 +552,11 @@ take you through it.</p>
 <span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">## ---</span></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">## Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1</span></span>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># The null hypothesis is that the slope of the relationship</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co"># between LOGAREA and ABUND = 0</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co"># i.e. there is no relationship</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co"># The p value is very small (3.81e-14) therefore we </span></span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co"># reject this null hypothesis (i.e. the slope is different</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co"># from 0)</span></span></code></pre></div>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># The null hypothesis is that the slope of the relationship between LOGAREA and ABUND =</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co"># 0 i.e. there is no relationship</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co"># The p value is very small (3.81e-14) therefore we reject this null hypothesis (i.e.</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co"># the slope is different from 0)</span></span></code></pre></div>
 <p>&#xA0;</p>
 <div id="pval_note" class="section level3">
 <h3>A note on P values and confidence intervals</h3>
@@ -650,71 +647,74 @@ Question 13).</p>
 <span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.5882, Adjusted R-squared:  0.5819 </span></span>
 <span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="do">## F-statistic: 92.85 on 1 and 65 DF,  p-value: 3.81e-14</span></span>
 <span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co"># the estimate of the intercept = 10.4</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co"># the estimate of the slope = 9.78</span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co"># word equation</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co"># ABUND = 10.40 + 9.78 * LOGAREA</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co"># the estimates on their own tell you nothing about how precisely they have</span></span>
-<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co"># been measured, so let&apos;s also get their 95% confidence intervals</span></span>
-<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="fu">confint</span>(loyn_lm)</span>
-<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">##                2.5 %   97.5 %</span></span>
-<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="do">## (Intercept) 8.051470 12.76168</span></span>
-<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="do">## LOGAREA     7.755675 11.81096</span></span>
-<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co"># the 95% confidence interval for the slope is 7.76 to 11.81. In words, for</span></span>
-<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co"># every 1 unit increase in LOGAREA these data are consistent with an increase</span></span>
-<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co"># of somewhere between about 7.8 and 11.8 birds (and a 1 unit increase in</span></span>
-<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co"># LOGAREA is a tenfold increase in patch area on the original scale). Our best</span></span>
-<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co"># estimate is 9.78 birds, but it&apos;s the interval that tells us how precisely</span></span>
-<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co"># we&apos;ve measured it.</span></span>
-<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co"># notice that both ends of this interval describe a substantial effect (bird</span></span>
-<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co"># abundance in these data ranges from 1.5 to 39.6 birds), so our ecological</span></span>
-<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co"># conclusion, that forest patch area matters and matters a lot, holds right</span></span>
-<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co"># across the whole interval. This is a well resolved result. You&apos;ll meet a</span></span>
-<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co"># much less well resolved one in the linear model 3 exercise.</span></span>
-<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a></span>
-<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co"># the 95% confidence interval for the intercept is 8.05 to 12.76. The intercept</span></span>
-<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co"># is the predicted bird abundance when LOGAREA = 0, which is a patch of 1</span></span>
-<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co"># hectare (because log10(1) = 0), so these data are consistent with somewhere</span></span>
-<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co"># between about 8 and 13 birds in a one hectare patch.</span></span></code></pre></div>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co"># the estimate of the intercept = 10.4 the estimate of the slope = 9.78</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co"># word equation ABUND = 10.40 + 9.78 * LOGAREA</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co"># the estimates on their own tell you nothing about how precisely they have been</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co"># measured, so let&apos;s also get their 95% confidence intervals</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="fu">confint</span>(loyn_lm)</span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="do">##                2.5 %   97.5 %</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="do">## (Intercept) 8.051470 12.76168</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">## LOGAREA     7.755675 11.81096</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co"># the 95% confidence interval for the slope is 7.76 to 11.81. In words, for every 1 unit</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co"># increase in LOGAREA these data are consistent with an increase of somewhere between</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co"># about 7.8 and 11.8 birds (and a 1 unit increase in LOGAREA is a tenfold increase in</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co"># patch area on the original scale). Our best estimate is 9.78 birds, but it&apos;s the</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co"># interval that tells us how precisely we&apos;ve measured it.</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co"># notice that both ends of this interval describe a substantial effect (bird abundance</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co"># in these data ranges from 1.5 to 39.6 birds), so our ecological conclusion, that</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co"># forest patch area matters and matters a lot, holds right across the whole interval.</span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co"># This is a well resolved result. You&apos;ll meet a much less well resolved one in the</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co"># linear model 3 exercise.</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co"># the 95% confidence interval for the intercept is 8.05 to 12.76. The intercept is the</span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co"># predicted bird abundance when LOGAREA = 0, which is a patch of 1 hectare (because</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="co"># log10(1) = 0), so these data are consistent with somewhere between about 8 and 13</span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co"># birds in a one hectare patch.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>6. What is the null hypothesis associated with the intercept? What is
 the null hypothesis associated with the slope? Do you reject or fail to
-reject these hypotheses? Finally, have a go at stating these same two
-findings again, but this time without using the word &#x2018;significant&#x2019;
-anywhere. Which of your two versions tells a reader more?</p>
+reject these hypotheses? Now write those two findings out a second time,
+but in a completely different style: instead of saying which hypotheses
+you rejected, lead with the estimated values and their confidence
+intervals from Question 5. Put the two versions side by side. Which one
+tells a reader more, and what exactly does the second one tell them that
+the first one doesn&#x2019;t?</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># the null hypothesis for the intercept is that the intercept = 0</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># the p value is very small (certainly less than the (not so magic) 0.05)</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># therefore we reject this null hypothesis and conclude that the intercept</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># is different from zero.</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># the null hypothesis for the slope is that the slope = 0</span></span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># the p value is very small (3.81e-14)</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># therefore we reject this null hypothesis and conclude that the slope</span></span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># is different from zero (i.e. there is a significant relationship between</span></span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># LOGAREA and ABUND).</span></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># and now the same two findings without the word &apos;significant&apos;</span></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># Bird abundance increases with forest patch area. We estimate an increase of</span></span>
-<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co"># 9.78 birds (95% CI: 7.76 to 11.81) for every 1 unit increase in LOGAREA</span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># (i.e. for every tenfold increase in patch area).</span></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># In a one hectare patch we estimate a bird abundance of 10.41 birds</span></span>
-<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># (95% CI: 8.05 to 12.76).</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># the null hypothesis for the intercept is that the intercept = 0 the p value is very</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># small (certainly less than the (not so magic) 0.05) therefore we reject this null</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># hypothesis and conclude that the intercept is different from zero.</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># the null hypothesis for the slope is that the slope = 0 the p value is very small</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># (3.81e-14) therefore we reject this null hypothesis and conclude that the slope is</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># different from zero.</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># VERSION 2, leading with the estimates instead</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># Bird abundance increases with forest patch area. We estimate an increase of 9.78 birds</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># (95% CI: 7.76 to 11.81) for every 1 unit increase in LOGAREA (i.e. for every tenfold</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># increase in patch area). In a one hectare patch we estimate a bird abundance of 10.41</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># birds (95% CI: 8.05 to 12.76).</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># Now compare the two. Version 1 tells a reader one thing only: that we were able to</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># detect these effects at all. Version 2 tells them by how much bird abundance changes,</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># in what units, and how precisely we have measured it.</span></span>
 <span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co"># the second version is a bit longer, but it tells a reader by how much bird</span></span>
-<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co"># abundance changes, in what units, and how precisely we know it. The word</span></span>
-<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co"># &apos;significant&apos; only tells them that we were able to detect the effect at all.</span></span>
-<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co"># It says nothing whatsoever about whether the effect is large or whether it</span></span>
-<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co"># is ecologically important.</span></span></code></pre></div>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co"># That last part is the bit you can&apos;t get from version 1 at any price. A reader of</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co"># version 2 can see that the slope could plausibly be as low as 7.8 or as high as 11.8</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co"># birds, and can decide for themselves whether an effect of that size matters</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co"># ecologically. Version 1 gives them no way to ask that question.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>7. Looking again at the output from the <code>summary()</code>
 function how much variation in bird abundance is explained by your log
 transformed <code>AREA</code> variable?</p>
+<p>You will see two values reported, <code>Multiple R-squared</code> and
+<code>Adjusted R-squared</code>. Which of the two should you quote here,
+and why? (hint: think about what the &#x2018;adjustment&#x2019; is adjusting for, and
+how many explanatory variables this model has).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">summary</span>(loyn_lm)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="do">## Call:</span></span>
@@ -735,15 +735,35 @@ transformed <code>AREA</code> variable?</p>
 <span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.5882, Adjusted R-squared:  0.5819 </span></span>
 <span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="do">## F-statistic: 92.85 on 1 and 65 DF,  p-value: 3.81e-14</span></span>
 <span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co"># The multiple R-squared value is 0.588 and therefore 58.8% of</span></span>
-<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co"># the variation in ABUND is explained by LOGAREA</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co"># The multiple R-squared value is 0.588 and therefore 58.8% of the variation in ABUND is</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co"># explained by LOGAREA</span></span>
 <span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co"># One word of caution about R-squared. It measures how well the model fits</span></span>
-<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co"># these data and nothing more. A high R-squared doesn&apos;t mean that the</span></span>
-<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co"># relationship is important, that LOGAREA causes the change in ABUND, or that</span></span>
-<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># the model would predict well for a new set of forest patches. Equally, a low</span></span>
-<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># R-squared doesn&apos;t mean that an effect is unimportant, as plenty of real and</span></span>
-<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co"># useful effects sit inside very noisy systems.</span></span></code></pre></div>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co"># WHICH ONE SHOULD YOU QUOTE?</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co"># Multiple R-squared is simply the proportion of the variation in the response that this</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># model accounts for. The problem with it is that it can only ever go up when you add</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co"># another explanatory variable, even a completely useless one, because any extra</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co"># variable will mop up a little variation by chance alone.</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co"># Adjusted R-squared applies a penalty for the number of parameters estimated, so it can</span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co"># go down when you add a variable that isn&apos;t earning its place. That makes it the one to</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co"># use whenever you want to compare models with different numbers of explanatory</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="co"># variables.</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="co"># Here the two are 0.588 and 0.582, almost identical, because the penalty is tiny when</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="co"># there is only one explanatory variable and 67 observations. For a simple model like</span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="co"># this one, quote the multiple R-squared and say which one it is. Once you get to the</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="co"># multiple regression in exercise 4, report the adjusted value.</span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co"># Whichever you quote, always say which. &apos;R-squared = 0.59&apos; on its own is ambiguous, and</span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co"># readers cannot check your arithmetic against a number they can&apos;t identify.</span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="co"># One word of caution that applies to both. R-squared measures how well the model fits</span></span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co"># these data and nothing more. A high R-squared doesn&apos;t mean that the relationship is</span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co"># important, that LOGAREA causes the change in ABUND, or that the model would predict</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co"># well for a new set of forest patches. Equally, a low R-squared doesn&apos;t mean that an</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co"># effect is unimportant, as plenty of real and useful effects sit inside very noisy</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co"># systems.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>8. Now onto a really important part of the model fitting process.
 Let&#x2019;s check the assumptions of your linear model by creating plots of
@@ -771,33 +791,32 @@ comment in your R code.</p>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">plot</span>(loyn_lm)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q8-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># The normal Q-Q plot is used to assess normality of the residuals (top right).</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># If perfectly normal then all residuals would lie exactly on the reference line.</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># In reality this is never going to happen so we are looking for obvious large </span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># departures. In this plot they don&apos;t look too bad, although the lower quantiles</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># do seem to deviate. All in all I would be cautiously optimistic.</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># The normal Q-Q plot is used to assess normality of the residuals (top right). If</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># perfectly normal then all residuals would lie exactly on the reference line. In</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># reality this is never going to happen so we are looking for obvious large departures.</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># In this plot they don&apos;t look too bad, although the lower quantiles do seem to deviate.</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># All in all I would be cautiously optimistic.</span></span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># To check homogeneity of variance assumption we look at both the Residuals vs Fitted (top left)</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co"># and the Scale-Location plots (bottom left). </span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># There doesn&apos;t appear to be any obvious patterns of the residuals in these plots, </span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co"># although you can see the two residuals associated with the two large forest patch areas </span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co"># are below the zero line (negative residuals) on the right hand side of these plots</span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co"># despite the log transformation. Perhaps something to bear in mind as we progress. </span></span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># But in short, the homogeneity of variance assumption looks ok.</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># To check homogeneity of variance assumption we look at both the Residuals vs Fitted</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co"># (top left) and the Scale-Location plots (bottom left). There doesn&apos;t appear to be any</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># obvious patterns of the residuals in these plots, although you can see the two</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co"># residuals associated with the two large forest patch areas are below the zero line</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co"># (negative residuals) on the right hand side of these plots despite the log</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co"># transformation. Perhaps something to bear in mind as we progress. But in short, the</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># homogeneity of variance assumption looks ok.</span></span>
 <span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co"># From the Residuals vs Leverage plot (bottom right) you can see that there are no residuals </span></span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co"># with a Cook&apos;s distance greater than 1. In fact they are all well below 0.5. If you want to </span></span>
-<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co"># produce a plot of just Cook&apos;s distance (perhaps this is clearer)</span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co"># From the Residuals vs Leverage plot (bottom right) you can see that there are no</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co"># residuals with a Cook&apos;s distance greater than 1. In fact they are all well below 0.5.</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co"># If you want to produce a plot of just Cook&apos;s distance (perhaps this is clearer)</span></span>
 <span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="fu">plot</span>(loyn_lm, <span class="at">which =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q8-2.png" alt width="672"></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Going back to the Residuals vs Leverage plot (bottom right) you can see </span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># three residuals that are somewhat unusual in terms of their leverage as </span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># they stick out a bit to the right compared to the rest of the residuals. </span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co"># Two of these residuals are our two large forest patch areas again. However,</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co"># leverage still seems to be on the low side, so at least on the scale of the</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># log transformation things look ok.</span></span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Going back to the Residuals vs Leverage plot (bottom right) you can see three</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># residuals that are somewhat unusual in terms of their leverage as they stick out a bit</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># to the right compared to the rest of the residuals. Two of these residuals are our two</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co"># large forest patch areas again. However, leverage still seems to be on the low side,</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co"># so at least on the scale of the log transformation things look ok.</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>9. Using your word equation from Question 5, how many birds do you
 predict if <code>AREA</code> is 100?</p>
@@ -808,8 +827,7 @@ predict if <code>AREA</code> is 100?</p>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>bird_abundance100</span>
 <span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="do">## [1] 29.96</span></span>
 <span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># if you used the natural log (i.e. log()) then you would use log()</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># not log10()</span></span></code></pre></div>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># if you used the natural log (i.e. log()) then you would use log() not log10()</span></span></code></pre></div>
 <p>&#xA0;</p>
 <p>10. Calculate the fitted values from your model using the
 <code>predict()</code> function and store these predicted values in an
@@ -825,8 +843,8 @@ this or ask an instructor to take you through it if you&#x2019;re in any doubt
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>                                  <span class="at">to =</span> <span class="fu">max</span>(loyn<span class="sc">$</span>LOGAREA),</span>
 <span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>                                  <span class="at">length =</span> <span class="dv">50</span>))</span>
 <span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># use predict function to calculate predicted values of abundance based on the </span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co"># new LOGAREA values in the data frame my.data (use the newdata argument)</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># use predict function to calculate predicted values of abundance based on the new</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co"># LOGAREA values in the data frame my.data (use the newdata argument)</span></span>
 <span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(loyn_lm, <span class="at">newdata =</span> my_data)</span></code></pre></div>
 <p>&#xA0;</p>
 <p>11. Now, use the <code>plot()</code> function to plot the
@@ -837,27 +855,26 @@ fitted values calculated in Question 10 as a line on the plot (you will
 need to use the <code>lines()</code> function to do this but only after
 you have created the plot).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># plot the lines on the plot. The x values are the new LOGAREA values from the my.data</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># dataframe, the predicted values are from pred.vals </span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># dataframe, the predicted values are from pred.vals</span></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">plot</span>(loyn<span class="sc">$</span>LOGAREA, loyn<span class="sc">$</span>ABUND, <span class="at">xlab =</span> <span class="st">&quot;Log10 Patch Area&quot;</span>, </span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Bird Abundance&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>))</span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a></span>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="fu">lines</span>(my_data<span class="sc">$</span>LOGAREA, pred_vals, <span class="at">lty =</span> <span class="dv">1</span>,<span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q11-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># for those of you who are into plotting using the ggplot2 package,</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># this is one of those occasions where things are a little simpler!</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Don&apos;t forget, you will need to install the ggplot2 package if</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># you&apos;ve never used it before</span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># install.packages(&apos;ggplot2&apos;)</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> LOGAREA, <span class="at">y =</span> ABUND), <span class="at">data =</span> loyn) <span class="sc">+</span></span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Log10 Patch Area&quot;</span>) <span class="sc">+</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Bird Abundance&quot;</span>) <span class="sc">+</span></span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;firebrick&quot;</span>) <span class="sc">+</span></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># for those of you who are into plotting using the ggplot2 package, this is one of those</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># occasions where things are a little simpler! Don&apos;t forget, you will need to install</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># the ggplot2 package if you&apos;ve never used it before</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># install.packages(&apos;ggplot2&apos;)</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> LOGAREA, <span class="at">y =</span> ABUND), <span class="at">data =</span> loyn) <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Log10 Patch Area&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Bird Abundance&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;firebrick&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q11-2.png" alt width="672"></p>
 <p>&#xA0;</p>
 <p>12. Now let&#x2019;s recreate the plot you made in Question 11, but this
@@ -884,41 +901,43 @@ you need a reminder then take a look at the video on confidence
 intervals on the course MyAberdeen site (in the &#x2018;Introductory statistics
 lectures&#x2019; folder which you can find in the &#x2018;Course Information&#x2019; learning
 module).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>pred_vals_se <span class="ot">&lt;-</span> <span class="fu">predict</span>(loyn_lm, <span class="at">newdata =</span> my_data, <span class="at">se.fit =</span> <span class="cn">TRUE</span>) <span class="co"># note the use of the se.fit argument</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># check out the structure of pred_vals_se</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># you can see we now have 4 vectors in this object</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># $fit = fitted values</span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># $se.fit = standard error of fitted values</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co"># $df = degrees of freedom</span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co"># $residual.scale = residual standard error</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co"># so we will need to access our fitted values and standard errors using </span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co"># pred.val.se$fit and pred.vals.se$se.fit respectively</span></span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="fu">str</span>(pred_vals_se)</span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="do">## List of 4</span></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">##  $ fit           : Named num [1:50] 0.623 1.471 2.32 3.168 4.016 ...</span></span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
-<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="do">##  $ se.fit        : Named num [1:50] 2.04 1.96 1.88 1.8 1.73 ...</span></span>
-<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
-<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="do">##  $ df            : int 65</span></span>
-<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="do">##  $ residual.scale: num 6.55</span></span>
-<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co"># now create the plot</span></span>
-<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> loyn<span class="sc">$</span>LOGAREA, <span class="at">y =</span> loyn<span class="sc">$</span>ABUND,</span>
-<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Log10 Patch Area&quot;</span>,</span>
-<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Bird abundance&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>))</span>
-<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a>    </span>
-<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a></span>
-<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="co"># add the fitted values as before but now we need to use </span></span>
-<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co"># pred.vals.se$fit</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># note the use of the se.fit argument</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>pred_vals_se <span class="ot">&lt;-</span> <span class="fu">predict</span>(loyn_lm, <span class="at">newdata =</span> my_data, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># check out the structure of pred_vals_se</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># you can see we now have 4 vectors in this object</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># $fit = fitted values</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co"># $se.fit = standard error of fitted values</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co"># $df = degrees of freedom</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># $residual.scale = residual standard error</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co"># so we will need to access our fitted values and standard errors using pred.val.se$fit</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co"># and pred.vals.se$se.fit respectively</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="fu">str</span>(pred_vals_se)</span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="do">## List of 4</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="do">##  $ fit           : Named num [1:50] 0.623 1.471 2.32 3.168 4.016 ...</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="do">##  $ se.fit        : Named num [1:50] 2.04 1.96 1.88 1.8 1.73 ...</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="do">##  $ df            : int 65</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="do">##  $ residual.scale: num 6.55</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co"># now create the plot</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> loyn<span class="sc">$</span>LOGAREA, <span class="at">y =</span> loyn<span class="sc">$</span>ABUND,</span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Log10 Patch Area&quot;</span>,</span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Bird abundance&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>))</span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a>    </span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co"># add the fitted values as before but now we need to use pred.vals.se$fit</span></span>
 <span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="fu">lines</span>(my_data<span class="sc">$</span>LOGAREA, pred_vals_se<span class="sc">$</span>fit, <span class="at">lty =</span> <span class="dv">1</span>,<span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span>
 <span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a></span>
 <span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co"># add the upper 95% confidence interval</span></span>
-<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="fu">lines</span>(my_data<span class="sc">$</span>LOGAREA, pred_vals_se<span class="sc">$</span>fit <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span>
-<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="co"># add the lower 95% confidence interval</span></span>
-<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="fu">lines</span>(my_data<span class="sc">$</span>LOGAREA, pred_vals_se<span class="sc">$</span>fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="fu">lines</span>(my_data<span class="sc">$</span>LOGAREA, pred_vals_se<span class="sc">$</span>fit <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit),</span>
+<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span>
+<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="co"># add the lower 95% confidence interval</span></span>
+<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a><span class="fu">lines</span>(my_data<span class="sc">$</span>LOGAREA, pred_vals_se<span class="sc">$</span>fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit),</span>
+<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q12-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># And the ggplot way of doing things</span></span>
@@ -954,26 +973,28 @@ your R script.</p>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Patch Area&quot;</span>,</span>
 <span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Bird abundance&quot;</span>)</span>
 <span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co"># now add the fitted lines and upper and lower 95% confidence intervals</span></span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co"># remember we only log10 transformed the LOGAREA variable so this is the only</span></span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co"># variable that we need to back-transform</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co"># now add the fitted lines and upper and lower 95% confidence intervals remember we only</span></span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co"># log10 transformed the LOGAREA variable so this is the only variable that we need to</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co"># back-transform</span></span>
 <span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a></span>
 <span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">10</span><span class="sc">^</span>(my_data<span class="sc">$</span>LOGAREA), pred_vals_se<span class="sc">$</span>fit, <span class="at">lty =</span> <span class="dv">1</span>,<span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">10</span><span class="sc">^</span>(my_data<span class="sc">$</span>LOGAREA), pred_vals_se<span class="sc">$</span>fit <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">10</span><span class="sc">^</span>(my_data<span class="sc">$</span>LOGAREA), pred_vals_se<span class="sc">$</span>fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">10</span><span class="sc">^</span>(my_data<span class="sc">$</span>LOGAREA), pred_vals_se<span class="sc">$</span>fit <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit),</span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">10</span><span class="sc">^</span>(my_data<span class="sc">$</span>LOGAREA), pred_vals_se<span class="sc">$</span>fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> pred_vals_se<span class="sc">$</span>se.fit),</span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
 <p><img src="linear_model_1_exercise_solutions_files/figure-html/Q13-1.png" alt width="672"></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a></span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co"># the model doesn&apos;t look too great now! The fit is poor at both ends. Those 4 to 8</span></span>
 <span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># hectare patches holding 24 to 28 birds are under-predicted by about 8 birds, and on</span></span>
 <span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># this plot they&apos;re squashed against the left hand axis where they&apos;re easy to miss.</span></span>
 <span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># Notice the gap too. Patches run from 0.1 to 144 hectares and then jump to 973 and 1771,</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># so the right hand half of this plot rests on two points (the same two that had high</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># leverage in Q8) and the line across it is an assumption. You could restrict the analysis</span></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># to the smaller patches, which is defensible if your question is really about small</span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># remnants, but it doesn&apos;t fix the misfit at the low end, the gap is much less severe on</span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># the log10 scale the model is actually fitted on, and dropping data because a plot looks</span></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co"># wrong is a decision you would have to declare.</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># Notice the gap too. Patches run from 0.1 to 144 hectares and then jump to 973 and</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># 1771, so the right hand half of this plot rests on two points (the same two that had</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># high leverage in Q8) and the line across it is an assumption. You could restrict the</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># analysis to the smaller patches, which is defensible if your question is really about</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># small remnants, but it doesn&apos;t fix the misfit at the low end, the gap is much less</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># severe on the log10 scale the model is actually fitted on, and dropping data because a</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co"># plot looks wrong is a decision you would have to declare.</span></span>
 <span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a></span>
 <span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co"># And the thing we promised back in Q5: the fitted line is straight on the log scale and</span></span>
 <span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co"># curved here, so there is no single &apos;birds per hectare&apos; slope to quote. A hectare added</span></span>
@@ -996,8 +1017,8 @@ area (<em>F</em><sub><strong><em>,</em></strong></sub> = ______,
 <em>p</em> ______). The model explained ______% of the variation in bird
 abundance (<em>n</em> = ______ patches).</p>
 </blockquote>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Before you read mine, a health warning. This is how I would write it up, and it&apos;s</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># one reasonable version among many. Reporting conventions vary a good deal between</span></span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Before you read mine, a health warning. This is how I would write it up, and it&apos;s one</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># reasonable version among many. Reporting conventions vary a good deal between</span></span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># journals, between subfields and between supervisors. What matters is that the</span></span>
 <span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># estimate, its uncertainty and the sample size are all in there, that you haven&apos;t</span></span>
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co"># claimed anything the data don&apos;t support, and that somebody could reproduce what you</span></span>
@@ -1006,10 +1027,10 @@ abundance (<em>n</em> = ______ patches).</p>
 <span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co"># honest.</span></span>
 <span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a></span>
 <span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co"># Bird abundance increased with forest patch area. A linear model of bird abundance</span></span>
-<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co"># against log10 transformed patch area estimated an increase of 9.78 birds (95% CI:</span></span>
-<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co"># 7.76 to 11.81) for every 1 unit increase in log10 area, which is a tenfold increase</span></span>
-<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co"># in patch area (F 1,65 = 92.85, p &lt; 0.001). The model explained 58.8% of the variation</span></span>
-<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co"># in bird abundance (n = 67 patches).</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co"># against log10 transformed patch area estimated an increase of 9.78 birds (95% CI: 7.76</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co"># to 11.81) for every 1 unit increase in log10 area, which is a tenfold increase in</span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co"># patch area (F 1,65 = 92.85, p &lt; 0.001). The model explained 58.8% of the variation in</span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co"># bird abundance (n = 67 patches).</span></span>
 <span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a></span>
 <span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co"># Notice that two of those numbers didn&apos;t come from summary(). The confidence interval</span></span>
 <span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="co"># came from confint() and the sample size you had to go and look up. Always give n. Two</span></span>

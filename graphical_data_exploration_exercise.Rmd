@@ -9,8 +9,8 @@ output:
 
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
-# console width used to render the committed output. Leave this alone: at the
-# R default of 80 every summary() and str() block below re-wraps
+# console width used to render the committed output. Leave this alone: at the R default
+# of 80 every summary() and str() block below re-wraps
 options(width = 130)
 SOLUTIONS <- FALSE
 ```
@@ -31,7 +31,7 @@ Now create a new R script inside this Project by selecting File â€“> New File â€
 
 \  
 
-3\. These data are from a study originally conducted by Loyn (1987)^1^ and subsequently re-analysed by Quinn and Keough (2002)^2^ and Zuur et al (2009)^3^. Note, I have had to do some slight 'tweaking' of these data to improve usability for this course. The aim of the study was to relate bird density in 67 forest patches to a number of different environmental variables and management practices. A summary of the variables is: **SITE**: Forest patch identifier, not used in any analysis; **ABUND**: Density of birds, continuous response variable; **AREA**: Size of forest patch in hectares, continuous explanatory variable; **DIST**: Distance to nearest patch, continuous explanatory; **LDIST**: Distance to nearest larger patch, continuous explanatory; **ALT**: Mean altitude of patch, continuous explanatory; **YR.ISOL**: Year of isolation of clearance, continuous explanatory; **GRAZE**: Index of livestock grazing intensity, 5 level categorical explanatory 1= low graze, 5 = high graze. Copy this information to your R script (make sure you comment it out with a `#` - can you remember the keyboard [shortcut](https://intro2r.com/proj_doc.html#proj_doc)?) and clearly highlight which variable is the response variable and which variables are potential explanatory variables.   
+3\. These data are from a study originally conducted by Loyn (1987)^1^ and subsequently re-analysed by Quinn and Keough (2002)^2^ and Zuur et al (2009)^3^. Note, I have had to do some slight 'tweaking' of these data to improve usability for this course. The aim of the study was to relate bird density in 67 forest patches to a number of different environmental variables and management practices. A summary of the variables is: **SITE**: Forest patch identifier, not used in any analysis; **ABUND**: Density of birds, continuous response variable; **AREA**: Size of forest patch in hectares, continuous explanatory variable; **DIST**: Distance to nearest patch in metres, continuous explanatory; **LDIST**: Distance to nearest larger patch in metres, continuous explanatory; **ALT**: Mean altitude of patch in metres, continuous explanatory; **YR.ISOL**: Year of isolation of clearance, continuous explanatory; **GRAZE**: Index of livestock grazing intensity, 5 level categorical explanatory 1= low graze, 5 = high graze. Copy this information to your R script (make sure you comment it out with a `#` - can you remember the keyboard [shortcut](https://intro2r.com/proj_doc.html#proj_doc)?) and clearly highlight which variable is the response variable and which variables are potential explanatory variables.   
 
 \  
 
@@ -52,7 +52,14 @@ str(loyn)
 
 summary(loyn)
 
+# no NAs reported for any variable, so nothing to deal with on that front
+
 # GRAZE is coded as numeric (i.e. 1,2,3,4,5)
+
+# this matters. Left as a number, R would treat grazing as a continuous variable and fit
+# a single slope through it, forcing the effect to change by the same amount from level
+# 1 to 2 as from level 4 to 5. As a factor, each level gets its own mean and the data
+# decide the shape.
 
 # create a new factor variable FGRAZE which is a factor of GRAZE
 loyn$FGRAZE <- factor(loyn$GRAZE)
@@ -67,6 +74,10 @@ table(loyn$FGRAZE)
 
 # or use xtabs function
 xtabs(~ FGRAZE, data = loyn)
+
+# 13, 11, 17, 13 and 13 patches. Reasonably balanced, and every level has enough patches
+# to estimate a mean. Level 2 has the fewest, so its mean will be the least precisely
+# estimated of the five.
 ```
 
 \  
@@ -84,6 +95,15 @@ tapply(loyn$ABUND, loyn$FGRAZE, var, na.rm = TRUE)
 
 # OR use the summary function
 tapply(loyn$ABUND, loyn$FGRAZE, summary, na.rm = TRUE)
+
+# means: 28.6, 19.4, 20.2, 19.0 and 6.3 birds. Note this isn't a steady decline across
+# the grazing gradient. Levels 2, 3 and 4 are much of a muchness and the drop is
+# concentrated at the most heavily grazed level.
+
+# variances: 32.6, 73.1, 89.4, 50.6 and 23.1. The largest is about four times the
+# smallest, which is right at the usual rule of thumb but not alarming. A linear model
+# assumes one common variance, so make a note to look for this again in the residual
+# plots rather than doing anything about it now.
 ```
 
 \  
@@ -93,18 +113,24 @@ tapply(loyn$ABUND, loyn$FGRAZE, summary, na.rm = TRUE)
 If you feel in the mood, output these plots to an external PDF file in an `output` directory within your RStudio project (don't forget to create the directory first if required). If you would like to include all of the plots on a single 'page' (technically a device) then you can split your page into two rows and three columns using  `par(mfrow = c(2,3))` before you run your plot code for each plot. Make a note of which variables contain outliers.
 
 ```{r Q7a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
-# first split the plotting device into 2 rows
-# and 3 columns
+# first split the plotting device into 2 rows and 3 columns
 par(mfrow = c(2,3))
 
-# now produce the plots - the response variable first,
-# then each of the continuous explanatory variables
+# now produce the plots - the response variable first, then each of the continuous
+# explanatory variables
 dotchart(loyn$ABUND, main = "Bird abundance")
 dotchart(loyn$AREA, main = "Area")
 dotchart(loyn$DIST, main = "Distance")
 dotchart(loyn$LDIST, main = "Distance to larger patch")
 dotchart(loyn$YR.ISOL, main = "Year of isolation")
 dotchart(loyn$ALT, main = "Altitude")
+
+# AREA has two patches far larger than everything else (973 and 1771 ha against a median
+# of 7). DIST and LDIST are both strongly right skewed, LDIST especially, running from
+# 26 m out to 4426 m. ABUND, YR.ISOL and ALT all look fine.
+
+# these are unusual values, not wrong ones. A 1771 ha patch is a perfectly real forest
+# patch. Nothing here is a reason to delete an observation.
 ```
 
 \  
@@ -137,11 +163,10 @@ dotplot(as.matrix(Z),
 After you have applied these data transformations make sure you re-plot your dotcharts with any transformed variable to double check whether the transformation is doing something sensible. Hint: a log~10~ transformation might help reduce the magnitude of the outliers for some of the variables.
 
 ```{r Q8, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
-# There appears to be two unusually large forest patches compared to the rest
-# Also one potentially large distance in DIST, and LDIST is skewed in the
-# same way (it ranges from 26 to 4426)
-# One option would be to log10 transform AREA, DIST and LDIST
-# log base 10 transform variables 
+# There appears to be two unusually large forest patches compared to the rest Also one
+# potentially large distance in DIST, and LDIST is skewed in the same way (it ranges
+# from 26 to 4426) One option would be to log10 transform AREA, DIST and LDIST log base
+# 10 transform variables
 
 loyn$LOGAREA <- log10(loyn$AREA)
 loyn$LOGDIST <- log10(loyn$DIST)
@@ -150,14 +175,20 @@ loyn$LOGLDIST <- log10(loyn$LDIST)
 # check the dataframe
 str(loyn)
 
-# first split the plotting device into 1 row
-# and 3 columns
+# first split the plotting device into 1 row and 3 columns
 par(mfrow = c(1,3))
 
 # now plot the transformed variables
 dotchart(loyn$LOGAREA, main = "LOG Area")
 dotchart(loyn$LOGDIST, main = "LOG Distance")
 dotchart(loyn$LOGLDIST, main = "LOG Distance to larger patch")
+
+# all three now look much more even, with the extreme values pulled back towards the
+# rest. That is all the transformation is doing here.
+
+# one consequence to keep in mind: LOGAREA now runs from -1 to 3.25, and a 1 unit change
+# on that scale is a tenfold change in area. Anything we estimate from LOGAREA later
+# will be in those units, not in hectares.
 ```
 
 \  
@@ -174,8 +205,7 @@ Optionally, include the correlation coefficient between variables in the upper p
 pairs(loyn[,c("LOGAREA", "LOGDIST", "LOGLDIST",
                "YR.ISOL", "ALT", "GRAZE")])
 
-# or first create a new dataframe and then use this 
-# data frame with the pairs function
+# or first create a new dataframe and then use this data frame with the pairs function
 
 explan_vars <- loyn[,c("LOGAREA", "LOGDIST", "LOGLDIST",
                "YR.ISOL", "ALT", "GRAZE")]
@@ -200,6 +230,17 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...){
 pairs(loyn[,c("LOGAREA","LOGDIST", "LOGLDIST",
                "YR.ISOL","ALT","GRAZE")],
       upper.panel = panel.cor)
+
+# the largest are LOGDIST with LOGLDIST (0.59), YR.ISOL with GRAZE (-0.56) and LOGAREA
+# with GRAZE (-0.48). Collinearity only really starts to cause trouble above about 0.7,
+# so none of these need anything done about them.
+
+# the pairings make sense: a patch with a near neighbour usually has a near larger
+# neighbour too, and the patches isolated longest ago tend to be the more heavily grazed
+# ones.
+
+# careful reading the upper panel: panel.cor plots the ABSOLUTE correlation, so the
+# number never tells you the sign. Look at the scatterplot below the diagonal for that.
 ```
 
 \  
@@ -214,10 +255,21 @@ Also, don't forget, you can split your plotting device up to allow you to plot m
 pairs(loyn[,c("ABUND","LOGAREA","LOGDIST", "LOGLDIST",
     	"YR.ISOL","ALT","GRAZE")],
       	upper.panel = panel.cor)
+
+# LOGAREA has by far the strongest relationship with ABUND (r = 0.77), then GRAZE (r =
+# -0.63). YR.ISOL (0.44) and ALT (0.32) are weaker and the two distance variables are
+# close to nothing (both 0.13).
+
+# don't read these one at a time as though they were separate effects. GRAZE and YR.ISOL
+# are themselves correlated (-0.56), so some of what looks like an effect of one may
+# belong to the other. Sorting that out is the model's job, not the pairs plot's.
 ```
 
 ```{r Q10b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
 plot(loyn$LOGAREA, loyn$ABUND, xlab = "log area", ylab = "bird abundance")
+
+# abundance rises fairly steadily with log10 area and the scatter looks about even along
+# the x axis. A straight line on this scale is a sensible thing to fit.
 ```
 
 \  
@@ -231,22 +283,38 @@ Again, don't forget, if you have applied a data transformation to your `AREA` va
 Save this plot as a PDF to your `output` directory and add some comments to your R code to describe any patterns you observe.
 
 ```{r Q11a, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
-# Interaction between LOGAREA and FGRAZE? 
-# Do the slopes look similar or different? 
+# Interaction between LOGAREA and FGRAZE? Do the slopes look similar or different?
 coplot(ABUND ~ LOGAREA | FGRAZE, data = loyn)
+
+# each panel is one grazing level, shown by the highlighted block in the strip along the
+# top.
+
+# the slopes are clearly not all the same. Abundance rises with area in every panel, but
+# much more steeply in some than others, which is exactly what an interaction between
+# LOGAREA and FGRAZE looks like.
 ```
 
 \  
 
 ```{r Q11b, eval=SOLUTIONS, echo=SOLUTIONS, collapse=TRUE}
-# Fancier version of the above plot 
-# with a line of best fit included just for fun
+# Fancier version of the above plot with a line of best fit included just for fun
 coplot(ABUND ~ LOGAREA | FGRAZE,
       data = loyn,
         panel = function(x, y, ...) {
          tmp <- lm(y ~ x, na.action = na.omit)
          abline(tmp)
          points(x, y) })
+
+# with the lines drawn in, the fitted slopes are roughly 4.1, 8.4, 13.2, 17.8 and 6.1
+# birds per unit log10 area for grazing levels 1 to 5.
+
+# don't over-read them. Each line rests on 11 to 17 patches, and the levels cover very
+# different ranges of area: level 1 runs from 2 up to 1771 ha, while levels 3, 4 and 5
+# all stop below 50 ha. Some of the difference between panels is the different stretch
+# of x axis each line is drawn over.
+
+# this is exploration, not the analysis. We are deciding what to put in the model, not
+# deciding what the answer is.
 ```
 
 \  

@@ -9,8 +9,8 @@ output:
 
 ```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
-# console width used to render the committed output. Leave this alone: at the
-# R default of 80 every summary() and str() block below re-wraps
+# console width used to render the committed output. Leave this alone: at the R default
+# of 80 every summary() and str() block below re-wraps
 options(width = 130)
 
 SOLUTIONS <- TRUE
@@ -64,26 +64,23 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...){
     text(0.5, 0.5, txt, cex = cex.cor * r)
 }
 
-# subset the variables of interest. Note we use the numeric GRAZE here,
-# not the factor FGRAZE: a correlation coefficient is only meaningful
-# between numeric variables, and GRAZE is an ordered index of grazing
-# intensity so a correlation with it is interpretable. It is still FGRAZE
-# that goes into the model.
+# subset the variables of interest. Note we use the numeric GRAZE here, not the factor
+# FGRAZE: a correlation coefficient is only meaningful between numeric variables, and
+# GRAZE is an ordered index of grazing intensity so a correlation with it is
+# interpretable. It is still FGRAZE that goes into the model.
 VOI<- c("ABUND", "LOGAREA", "LOGDIST", "LOGLDIST", "YR.ISOL", "ALT", "GRAZE")
 pairs(loyn[, VOI], lower.panel = panel.cor)
 
-# There are varying degrees of correlation between explanatory variables which
-# might indicate some collinearity, i.e. LOGAREA and GRAZE (0.48), LOGDIST and 
-# LOGLDIST (0.59) and YR.ISOL and GRAZE (0.56). However, the relationships
-# between these explanatory variables are quite weak so we can probably 
-# include these variables in the same model (but keep an eye on things). 
-# There also seems to be a reasonable spread of observations across these 
-# pairs of explanatory variables which is a good thing.
+# There are varying degrees of correlation between explanatory variables which might
+# indicate some collinearity, i.e. LOGAREA and GRAZE (0.48), LOGDIST and LOGLDIST (0.59)
+# and YR.ISOL and GRAZE (0.56). However, the relationships between these explanatory
+# variables are quite weak so we can probably include these variables in the same model
+# (but keep an eye on things). There also seems to be a reasonable spread of
+# observations across these pairs of explanatory variables which is a good thing.
 
-# The relationship between the response variable ABUND and all the explanatory
-# variables is visible in the top row:
-# Some potential relationships present like with LOGAREA (positive), 
-# maybe ALT (positive) and GRAZE (negative).
+# The relationship between the response variable ABUND and all the explanatory variables
+# is visible in the top row: Some potential relationships present like with LOGAREA
+# (positive), maybe ALT (positive) and GRAZE (negative).
 ```
 
 \  
@@ -104,20 +101,20 @@ Before you go any further though, a word of caution about looking at 14 tests al
 ```{r Q4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 summary(M1)
 
-# No, not all of the P values are less than 0.05, which is what prompts us to
-# simplify the model over the next few questions.
+# No, not all of the P values are less than 0.05, which is what prompts us to simplify
+# the model over the next few questions.
 
-# As for the question about chance: at a 0.05 threshold you expect about 1 test
-# in every 20 to fall below it even when nothing at all is going on. So in a
-# table of 14 tests you would expect roughly one 'significant' result even if
-# none of these variables mattered in the slightest. Bear that in mind whenever
-# somebody hands you a large table of tests. A single starred coefficient in a
-# table this size is weak evidence on its own, and hunting through a big model
-# for whatever happens to sit below 0.05 is a poor way to do science.
+# As for the question about chance: at a 0.05 threshold you expect about 1 test in every
+# 20 to fall below it even when nothing at all is going on. So in a table of 14 tests
+# you would expect roughly one 'significant' result even if none of these variables
+# mattered in the slightest. Bear that in mind whenever somebody hands you a large table
+# of tests. A single starred coefficient in a table this size is weak evidence on its
+# own, and hunting through a big model for whatever happens to sit below 0.05 is a poor
+# way to do science.
 
-# It's also part of the reason why the selection procedure we are about to use
-# follows a stated rule, applied consistently, rather than picking out whatever
-# happens to look interesting.
+# It's also part of the reason why the selection procedure we are about to use follows a
+# stated rule, applied consistently, rather than picking out whatever happens to look
+# interesting.
 ```
 
 \  
@@ -126,33 +123,55 @@ summary(M1)
 
 What hypothesis is being tested when we do this model selection step?
 
+\  
+
+**A note on keeping track of model selection.** Describing what you did during model selection is genuinely difficult to do well in writing, and it is done badly in the published literature more often than almost anything else on this course. Papers routinely say "a minimum adequate model was obtained by backward selection" and leave the reader with no idea what was in the starting model, what came out, in what order, or on what grounds.
+
+A summary table solves this, and it is worth seeing one being built rather than just being shown a finished one. So as we work through the deletions below I'll add a row to a table at each step, and you'll find it updated in the solution to each question. By the time we reach the end we'll have something that could go straight into a results section. You don't need to construct it yourself here, just follow along, but do consider making one like it when you report a model selection of your own.
+
+Here is the structure, with the starting model in it:
+
+**Table 1: Summary of model selection.**
+
+| Model | Terms in the model | Term removed | *df* | *F* | *P* |
+|:-----|:--------------------------------------------------|:------------|:--:|:--:|:--:|
+| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | – | – | – | – |
+
+Two things about that first row. The starting model is in the table because a reader cannot judge a selection procedure without knowing what it started from: dropping four terms from a model of six is a very different exercise from dropping four from a model of twenty. And the *F* and *P* columns hold dashes because nothing was removed in order to arrive at M1. Those columns describe the deletion that got you from the previous model to this one, and for the first row there isn't one.
+
+\  
+
 ```{r Q5, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# Wait: why can't we use information from the 'summary(M1)' or 'anova(M1)' functions
-# to do this?
+# Wait: why can't we use information from the 'summary(M1)' or 'anova(M1)' functions to
+# do this?
 
-# the 'summary' table tests if the coefficient for each explanatory variable 
-# is significantly different from zero.
+# the 'summary' table tests if the coefficient for each explanatory variable is
+# significantly different from zero.
 
-# the 'anova' tests for the significance of the proportion of variation explained
-# by a particular term in the model. 
+# the 'anova' tests for the significance of the proportion of variation explained by a
+# particular term in the model.
 
-# The ANOVA table also allows testing the overall significance of a categorical explanatory
-# variable (like FGRAZE) which involves several parameters together (one for each level), 
-# which is quite handy. But the results of this ANOVA are based on sequential 
-# sums of squares and therefore the order of the variables in the model
+# The ANOVA table also allows testing the overall significance of a categorical
+# explanatory variable (like FGRAZE) which involves several parameters together (one for
+# each level), which is quite handy. But the results of this ANOVA are based on
+# sequential sums of squares and therefore the order of the variables in the model
 # (which is arbitrary here) matters.
 
-# We could change the order but there are too many possible permutations.
-# Summary P values don't suffer from this problem but test different hypotheses.
-# It would be useful to use an ANOVA that doesn't depend on the order
-# of inclusion of the variables, this is effectively what 'drop1' does.
+# We could change the order but there are too many possible permutations. Summary P
+# values don't suffer from this problem but test different hypotheses. It would be
+# useful to use an ANOVA that doesn't depend on the order of inclusion of the variables,
+# this is effectively what 'drop1' does.
 
 drop1(M1, test = "F")
 
-# LOGLDIST is the least significant (p = 0.88), and therefore makes the least 
-# contribution to the variability explained by the model, with respect to 
-# the number of degrees of freedom it uses (1). This variable is a good candidate 
-# to remove from the model 
+# LOGLDIST is the least significant (p = 0.88), and therefore makes the least
+# contribution to the variability explained by the model, with respect to the number of
+# degrees of freedom it uses (1). This variable is a good candidate to remove from the
+# model
+```
+
+```{r Q5tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Adding the first deletion to our table:\n\n**Table 1: Summary of model selection.**\n\n| Model | Terms in the model | Term removed | *df* | *F* | *P* |\n|:-----|:--------------------------------------------------|:------------|:--:|:--:|:--:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | &ndash; | &ndash; | &ndash; | &ndash; |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGLDIST | 1 | 0.02 | 0.883 |\n")
 ```
 
 \  
@@ -170,9 +189,13 @@ M2 <- update(M1, formula = . ~ . - LOGLDIST) # "." means all previous variables
 # now redo drop1() on the new model
 drop1(M2, test = "F")
 
-# YR.ISOL is now the least significant (p = 0.859), hence makes the least 
-# contribution to the variability explained by the model, 
-# with respect to the number of degrees of freedom it uses (1)
+# YR.ISOL is now the least significant (p = 0.859), hence makes the least contribution
+# to the variability explained by the model, with respect to the number of degrees of
+# freedom it uses (1)
+```
+
+```{r Q6tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Table 1 so far:\n\n**Table 1: Summary of model selection.**\n\n| Model | Terms in the model | Term removed | *df* | *F* | *P* |\n|:-----|:--------------------------------------------------|:------------|:--:|:--:|:--:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | &ndash; | &ndash; | &ndash; | &ndash; |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGLDIST | 1 | 0.02 | 0.883 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | YR.ISOL | 1 | 0.03 | 0.859 |\n")
 ```
 
 \ 
@@ -184,8 +207,12 @@ M3 <- update(M2, formula = . ~ . - YR.ISOL)
 
 drop1(M3, test = "F")
 
-# LOGDIST now the least significant (p = 0.714) and should be removed from 
-# the next model.
+# LOGDIST now the least significant (p = 0.714) and should be removed from the next
+# model.
+```
+
+```{r Q7tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Table 1 so far:\n\n**Table 1: Summary of model selection.**\n\n| Model | Terms in the model | Term removed | *df* | *F* | *P* |\n|:-----|:--------------------------------------------------|:------------|:--:|:--:|:--:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | &ndash; | &ndash; | &ndash; | &ndash; |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGLDIST | 1 | 0.02 | 0.883 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | YR.ISOL | 1 | 0.03 | 0.859 |\n| M4 | ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGDIST | 1 | 0.14 | 0.714 |\n")
 ```
 
 \ 
@@ -196,7 +223,11 @@ drop1(M3, test = "F")
 M4 <- update(M3, formula = . ~ . - LOGDIST)
 drop1(M4, test = "F")
 
-# ALT is not significant (p = 0.331)
+# ALT has the largest P value (p = 0.332)
+```
+
+```{r Q8tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Table 1 so far:\n\n**Table 1: Summary of model selection.**\n\n| Model | Terms in the model | Term removed | *df* | *F* | *P* |\n|:-----|:--------------------------------------------------|:------------|:--:|:--:|:--:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | &ndash; | &ndash; | &ndash; | &ndash; |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGLDIST | 1 | 0.02 | 0.883 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | YR.ISOL | 1 | 0.03 | 0.859 |\n| M4 | ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGDIST | 1 | 0.14 | 0.714 |\n| M5 | LOGAREA + FGRAZE + LOGAREA:FGRAZE | ALT | 1 | 0.96 | 0.332 |\n")
 ```
 
 \  
@@ -208,9 +239,12 @@ drop1(M4, test = "F")
 M5 <- update(M4, formula = . ~ . - ALT)
 drop1(M5, test = "F")
 
-# the LOGAREA:FGRAZE term represents the interaction between LOGAREA and
-# FGRAZE. This is significant (p = 0.005) and so our model selection
-# process comes to an end.
+# the LOGAREA:FGRAZE term represents the interaction between LOGAREA and FGRAZE. This is
+# significant (p = 0.006) and so our model selection process comes to an end.
+```
+
+```{r Q9tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("And that completes it. This is the finished table, ready to drop into a results section:\n\n**Table 1: Summary of model selection.**\n\n| Model | Terms in the model | Term removed | *df* | *F* | *P* |\n|:-----|:--------------------------------------------------|:------------|:--:|:--:|:--:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | &ndash; | &ndash; | &ndash; | &ndash; |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGLDIST | 1 | 0.02 | 0.883 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | YR.ISOL | 1 | 0.03 | 0.859 |\n| M4 | ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | LOGDIST | 1 | 0.14 | 0.714 |\n| M5 | LOGAREA + FGRAZE + LOGAREA:FGRAZE | ALT | 1 | 0.96 | 0.332 |\n\nSelection stopped at M5: removing the `LOGAREA:FGRAZE` interaction gave *F*~4,57~ = 4.09, *P* = 0.006, so it was retained.\n")
 ```
 
 \  
@@ -218,16 +252,16 @@ drop1(M5, test = "F")
 10\. If all goes well, your final model should be `lm(ABUND ~ LOGAREA + FGRAZE + LOGAREA:FGRAZE)` which you encountered in the previous exercise. Also, you may have noticed that the output from the `drop1()` function does not include the main effects of `LOGAREA` or `FGRAZE`. Can you think why this might be the case? 
 
 ```{r Q10, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# As the interaction between LOGAREA and FGRAZE was significant at each step of
-# model selection process the main effects should be left in our model,
-# irrespective of significance. This is because it is quite difficult to 
-# interpret an interaction without the main effects. The drop1 
-# function is clever enough that it doesn't let you see the P values for the 
-# main effects, in the presence of their significant interaction.
+# As the interaction between LOGAREA and FGRAZE was significant at each step of model
+# selection process the main effects should be left in our model, irrespective of
+# significance. This is because it is quite difficult to interpret an interaction
+# without the main effects. The drop1 function is clever enough that it doesn't let you
+# see the P values for the main effects, in the presence of their significant
+# interaction.
 
-# Also note, because R always includes interactions *after* their main effects
-# the P value of the interaction term (p = 0.005) from the model selection 
-# is the same as P value if we use the anova() function on our final model
+# Also note, because R always includes interactions *after* their main effects the P
+# value of the interaction term (p = 0.005) from the model selection is the same as P
+# value if we use the anova() function on our final model
 
 # Check this:
 anova(M5)
@@ -242,111 +276,128 @@ Please make sure you understand the biological interpretation of each of the par
 
 There is also one caveat that applies to your final model here but did not apply to the model you fitted in the previous exercise, even though the two models are identical. Have a think about it before you look at the solutions. The P values and confidence intervals for your final model are calculated as though you had specified that model in advance. You didn't: you arrived at it by looking at these same data. Does that make them too optimistic, too conservative, or does it make no difference at all? 
 
+\  
+
+**One last caution, and it applies to everything you have done in this exercise.** These are observational data. Nobody assigned patch areas or grazing intensities to these forests, they were measured as they were found. A linear model will happily estimate an effect of grazing on bird abundance, but it cannot tell you that grazing *causes* that change.
+
+Two things are worth keeping in mind. First, variables you didn't measure may be doing the work. Heavily grazed patches might also be the ones nearest roads, or on more fertile soil, or with a different understorey, and any of those could be the real driver of the difference in bird abundance.
+
+Second, your explanatory variables are correlated with one another, as the pairs plot in Question 2 showed. That has a specific consequence for how you read the output: every estimate in your model is the effect of that variable *holding the other variables in the model constant*. Change which variables are in the model and the estimate changes, as you saw during model selection. So a coefficient is never simply "the effect of grazing"; it is the effect of grazing after accounting for whatever else you happened to include, and it will absorb some of the effect of any correlated variable you left out.
+
+None of this means observational studies aren't worth doing, and most of ecology is observational for perfectly good reasons. It does mean your language should match the evidence you actually have. "Bird abundance was lower in more heavily grazed patches" is supported by these data. "Grazing reduces bird abundance" is a stronger claim than a model like this one can carry on its own, and it needs experimental evidence, or a well understood mechanism, standing behind it. 
+
 ```{r Q11, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
 # the estimates and their confidence intervals for the final model
 summary(M5)
 confint(M5)
 
-# and remember from the previous exercise that everything here except the
-# intercept and LOGAREA is a DIFFERENCE from graze level 1, not a value for that
-# grazing level. If you want the intercept and slope for a particular grazing
-# level you need to add the relevant contrast onto the baseline.
+# and remember from the previous exercise that everything here except the intercept and
+# LOGAREA is a DIFFERENCE from graze level 1, not a value for that grazing level. If you
+# want the intercept and slope for a particular grazing level you need to add the
+# relevant contrast onto the baseline.
 
-# Biologically: confirming what we already found out in the previous exercise:
-# the relationship between bird abundance and patch area depends on the level of
-# grazing (interaction F_4,57 = 4.09, p = 0.006). The fitted slopes range from
-# 4.14 birds per 1 unit increase in LOGAREA at graze level 1 up to 17.78 at
-# graze level 4, so the effect of patch area varies roughly fourfold across the
-# grazing levels. No single number describes 'the effect of area' in these data 
+# Biologically: confirming what we already found out in the previous exercise: the
+# relationship between bird abundance and patch area depends on the level of grazing
+# (interaction F_4,57 = 4.09, p = 0.006). The fitted slopes range from 4.14 birds per 1
+# unit increase in LOGAREA at graze level 1 up to 17.78 at graze level 4, so the effect
+# of patch area varies roughly fourfold across the grazing levels. No single number
+# describes 'the effect of area' in these data
 
-# However, some observations are poorly predicted (fitted) using the set of
-# available explanatory variables (i.e. the two very large forest patches)
+# However, some observations are poorly predicted (fitted) using the set of available
+# explanatory variables (i.e. the two very large forest patches)
 
-# Interpretation: 
-# Bird abundance might increase with patch area due to populations being more
-# viable in large patches (e.g. less prone to extinction), 
-# or perhaps because there is proportionally less edge effect in larger
-# patches, and this in turn provides more high quality habitat for species 
-# associated with these habitat patches
+# Interpretation: Bird abundance might increase with patch area due to populations being
+# more viable in large patches (e.g. less prone to extinction), or perhaps because there
+# is proportionally less edge effect in larger patches, and this in turn provides more
+# high quality habitat for species associated with these habitat patches
 
-# The negative effect of grazing may be due to grazing decreasing resource
-# availability for birds, for example plants or seeds directly, or insects
-# associated with the grazed plants. There may also be more disturbance of birds
-# in highly grazed forest patches resulting in fewer foraging opportunities
-# or chances to mate (this is all speculation mind you!).
+# The negative effect of grazing may be due to grazing decreasing resource availability
+# for birds, for example plants or seeds directly, or insects associated with the grazed
+# plants. There may also be more disturbance of birds in highly grazed forest patches
+# resulting in fewer foraging opportunities or chances to mate (this is all speculation
+# mind you!).
 
-# Methodologically:
-# Doing model selection is difficult without intrinsic / expert knowledge
-# of the system, to guide what variables to include.
-# Even with this data set, many more models could have been formulated.
-# For example, for me, theory would have suggested to test an interaction 
-# between YR.ISOL and LOGDIST (or LOGLDIST?), 
-# because LOGDIST will affect the dispersal of birds between patches 
-# (hence the colonisation rate), and the time since isolation of the patch may 
-# affect how important dispersal has been to maintain or rescue populations 
-# (for recently isolated patches, dispersal, and hence distance to nearest
-# patches may have a less important effect)
+# Methodologically: Model selection is difficult without expert knowledge of the system
+# to guide which variables to include in the first place. Plenty of other models could
+# have been formulated from this dataset. Theory might have suggested an interaction
+# between YR.ISOL and LOGDIST, for instance, since distance affects dispersal between
+# patches and time since isolation affects how much dispersal has mattered.
 
-# And now that caveat, which is the answer to the question at the end of Q11.
+# AND NOW THAT CAVEAT, which is the answer to the question at the end of Q11.
+
 # The P values and confidence intervals printed for M5 are too optimistic.
 
-# They are calculated as if M5 had been specified in advance. It wasn't. We
-# arrived at it by fitting a 14 parameter model to these data and then dropping
-# terms one at a time on the basis of what those same data told us. The
-# selection procedure kept precisely those terms that happened to look
-# strongest in this particular sample, so the surviving estimates are biased
-# away from zero and their intervals are narrower than they ought to be.
+# They are calculated as if we had specified M5 in advance. We didn't. We fitted a 14
+# parameter model and then dropped terms one at a time based on what these same data
+# told us. Selection kept exactly those terms that happened to look strongest in this
+# particular sample, so the surviving estimates are pushed away from zero and their
+# intervals are narrower than they should be.
 
-# This is known as post-selection inference. There are ways of handling it
-# (splitting the sample, bootstrapping the whole selection procedure, or simply
-# fitting a model specified in advance from theory and reporting that instead)
-# and we're not going to cover any of them on this course. What you should take
-# away is that the problem exists and that you should say so plainly whenever
-# you report a model you arrived at by selection. The great majority of
-# published papers that use stepwise selection do not.
+# This is called post-selection inference. There are ways of dealing with it, none of
+# which we'll cover here. What matters for you is that the problem exists, and that you
+# say so plainly whenever you report a model you arrived at by selection. Most published
+# papers using stepwise selection don't.
 
-# Worth noticing though: the model we've arrived at by selection is exactly the
-# model we fitted by hand in the previous exercise, where it was specified in
-# advance from the study's own hypotheses. That's a genuinely reassuring
-# outcome and it's worth saying so in a write up. It also illustrates the point
-# above rather nicely. The version of this model that was specified in advance
-# carries more evidential weight than the version that was selected, even
-# though the numbers printed out are identical.
+# One thing to be clear about before you go on. You will have noticed that the model we
+# ended up with here is the same one we fitted in the previous exercise. That is a
+# consequence of how I set these exercises up, not a finding. In the previous exercise I
+# simply told you to fit LOGAREA + FGRAZE + LOGAREA:FGRAZE, on the assumption that
+# this was the hypothesis the researchers set out to test, because it was the clearest
+# way to teach you what an interaction between a continuous and a categorical variable
+# looks like.
+
+# So don't read anything into the two agreeing, and in your own work you would not fit
+# both and then compare them. You either specify a model in advance from your hypotheses
+# and report that, or you select one from the data and report the selection with the
+# caveat above. Doing both on the same data and picking whichever you prefer is the one
+# thing neither approach allows.
 ```
 
 \  
 
-12\. Last write-up, and the least help of the lot. You arrived at your final model by a selection procedure, which brings a couple of reporting problems that the previous three exercises didn't have.
+12\. Now for reporting your results, and this is the last write-up of the course. You arrived at your final model by a selection procedure, which brings a couple of reporting problems the previous three exercises didn't have.
 
-Write **no more than 200 words** describing this analysis for the methods and results of a paper. Your reader is an ecologist who knows their stuff but isn't a statistician, and who wasn't in the room while you did the analysis. They need to be able to work out from your text exactly what you did and how much to trust it. Questions 4 and 11 have already told you the two things an honest account has to include that a naive one would leave out.
+This is where the table you have been building since Question 5 earns its keep. Present it as a table in your results, exactly as you would in a paper, and then **refer to it** in your text rather than describing every deletion in prose. That is what the table is for: it carries the detail, so your paragraph can carry the argument.
+
+Write **no more than 200 words** of accompanying text for the methods and results of a paper. Your reader is an ecologist who knows their stuff but isn't a statistician, and who wasn't in the room while you did the analysis. They need to be able to work out from your text and your table exactly what you did and how much to trust it. Questions 4 and 11 have already told you the two things an honest account has to include that a naive one would leave out.
 
 ```{r Q12report, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# Same health warning: my version, not the version.
+# Same health warning: my version, not the only version.
 
 # METHODS. Bird abundance was modelled against log10 patch area, log10 distance to the
 # nearest patch, log10 distance to the nearest larger patch, year of isolation, altitude
 # and grazing intensity (a five level factor), plus the area by grazing interaction.
 # Distance and area variables were log10 transformed after graphical exploration showed
-# strong right skew. Terms were removed by backward selection using single term deletions
-# and F tests, with main effects retained wherever they appeared in a retained interaction.
+# strong right skew. Terms were removed by backward selection using single term
+# deletions and F tests, with main effects retained wherever they appeared in a retained
+# interaction.
 
-# RESULTS. Four terms were removed in turn (distance to the nearest larger patch, year of
-# isolation, distance to the nearest patch, altitude), leaving patch area, grazing
-# intensity and their interaction. Bird abundance increased with patch area at every
-# grazing level, but at a rate that varied roughly fourfold with grazing intensity
-# (interaction F 4,57 = 4.09, p = 0.006; R2 = 0.80, n = 67). Because the final model was
-# selected using these same data, the P values and confidence intervals quoted here are
-# optimistic and should be treated as descriptive.
+# RESULTS. Four terms were removed in turn, leaving patch area, grazing intensity and
+# their interaction (Table 1). Bird abundance increased with patch area at every grazing
+# level, but at a rate that varied more than fourfold with grazing intensity
+# (interaction F 4,57 = 4.09, p = 0.006; adjusted R2 = 0.77, n = 67 patches). As this
+# model was arrived at by selection rather than specified in advance, the P values and
+# intervals reported here are likely to be optimistic.
 
-# (that's about 170 words, so there was room to spare)
+# (that's about 150 words, so there was room to spare)
+
+# That last sentence is doing real work, so don't cut it. It is one of the two things
+# Q12 asked you to include, and without it a reader has no way of knowing that the model
+# was searched for rather than proposed. It costs you 20 words. If a supervisor or
+# reviewer tells you to drop it, ask them what the reader is supposed to do instead.
+
+# Notice how much work the table did there. Without it you would have had to spell out
+# every deletion and its P value in prose, which would eat most of your word limit and
+# be tedious to read. With it, one bracketed "(Table 1)" points the reader at the whole
+# selection history, and your text is free to say what the result actually means. This
+# is how model selection should be reported, and it is not how most papers do it.
 
 # The two things a naive account would have left out are the selection history and that
-# last sentence. Without the history a reader can't tell how much searching went on, and a
-# model reported bare looks as though it was specified in advance on theoretical grounds,
-# which carries far more weight than one arrived at by trying things and discarding them.
-# Without the caveat they would take the P values at face value. So report the starting
-# model, the criterion and the order of removal, and say plainly that the model was
-# selected.
+# last sentence. Without the history a reader can't tell how much searching went on, and
+# a model reported bare looks as though it was specified in advance on theoretical
+# grounds, which carries far more weight than one arrived at by trying things and
+# discarding them. Without the caveat they would take the P values at face value.
+
 ```
 
 \  
@@ -357,13 +408,34 @@ Write **no more than 200 words** describing this analysis for the methods and re
 
 A1\. If we weren't aiming to directly test the effect of the `LOGAREA:FGRAZE` interaction statistically (i.e. test this specific hypothesis), we could use AIC to perform model selection. Repeat the model selection you did above, but this time use the `drop1()` function and perform model selection using AIC instead. Don't forget, if we want to perform model selection based on AIC with the `drop1()` function we need to omit the `test = "F"` argument)
 
-```{r QA1, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# This time, we are not doing any specific hypothesis testing, rather we are 
-# attempting to select a model with the 'best' goodness of fit with the minimal
-# number of estimated parameters. 
+\  
 
-# We will start with a reasonably complex but PLAUSABLE model (this is the same 
-# model we started with using F test based model selection above.
+**A table again, and two ways of reading AIC.** As with the *F* test route, I'll build a summary table as we go. Table 2 has the same shape as Table 1, but with AIC in place of the *F* statistic and *P* value, and with two AIC columns rather than one. Those two columns carry the same evidence read in opposite directions, so it is worth being clear about them before you see any numbers.
+
+**AIC change** is what happened to AIC when a term was deleted. This is the number the selection decision is actually based on, and it is what `drop1()` puts in front of you. A negative value means AIC fell when the term came out, so the simpler model was preferred.
+
+**$\Delta$AIC** is the column you will see in published tables: each model's AIC minus the **lowest** AIC in the set. The preferred model therefore has $\Delta$AIC = 0, and every other model has a positive value.
+
+Notice what that implies about *when* you can build the column. You cannot work out $\Delta$AIC until you know which model has the lowest AIC, and you don't know that until selection has finished. In practice, then, you would construct this table at the end and present it once. I am showing it growing row by row purely so you can see how it is assembled, and the $\Delta$AIC values below are all calculated against the final best model, which is why none of the intermediate tables has a zero in that column.
+
+One more thing about presentation. I have put both AIC columns in here so that you can see the two readings side by side, but you would **not** normally do that in a thesis or a paper. Pick one, and it is almost always $\Delta$AIC, because that is what readers expect and it does not depend on the order in which you happened to delete things.
+
+The usual rule of thumb ([Burnham and Anderson 2002](#refs)) applies to both columns, but reads differently in each:
+
+- **AIC change:** a change of less than 2 either way is no real support for preferring either model, so the simpler one wins and the term goes. A deletion that *raises* AIC by roughly 4 to 7 is considerable support for keeping the term, and by more than 10, strong support.
+- **$\Delta$AIC:** a model within 2 of the best has substantial support, one 4 to 7 above the best has considerably less, and one more than 10 above has essentially none.
+
+*k*, in the third column, is simply the number of parameters the model estimates.
+
+\  
+
+```{r QA1, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
+# This time, we are not doing any specific hypothesis testing, rather we are attempting
+# to select a model with the 'best' goodness of fit with the minimal number of estimated
+# parameters.
+
+# We will start with a reasonably complex but PLAUSABLE model (this is the same model we
+# started with using F test based model selection above.
 
 M.start.AIC<- lm(ABUND ~ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE +
                LOGAREA:FGRAZE, data = loyn)
@@ -371,22 +443,29 @@ M.start.AIC<- lm(ABUND ~ LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE +
 drop1(M.start.AIC)
 ```
 
+```{r QA1tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("The first two rows:\n\n**Table 2: Summary of AIC based model selection.**\n\n| Model | Terms in the model | *k* | Term removed | AIC | AIC change | $\\Delta$AIC |\n|:-----|:------------------------------------------|:-:|:----------|:----:|:--------:|:-----:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 14 | &ndash; | 228.20 | &ndash; | 6.63 |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 13 | LOGLDIST | 226.23 | &minus;1.97 | 4.66 |\n")
+```
+
 \ 
 
 A2\. Refit your model with the variable associated with the lowest AIC value removed. Run `drop1()` again on your updated model. Perhaps call this new model `M2.AIC`.
 
 ```{r QA2, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# So, our starting model with no variables removed has an AIC of 228.20. If we 
-# remove the interaction term `LOGAREA:FGRAZE` from the model then this results 
-# in a big increase in AIC (238.02 - 228.20 = 9.82) so this suggests that there 
-# is substantial evidence that the interaction should remain in the model. The 
-# models without `LOGLDIST`, `LOGDIST`, `YR.ISOL` all have pretty much the 
-# same AIC value (around 226) so in practice we could remove any of them. Let's 
-# remove the term that results in the model with the lowest AIC which is the 
-# `LOGLDIST` variable (AIC 226.23).
+# So, our starting model with no variables removed has an AIC of 228.20. If we remove
+# the interaction term `LOGAREA:FGRAZE` from the model then this results in a big
+# increase in AIC (238.02 - 228.20 = 9.82) so this suggests that there is substantial
+# evidence that the interaction should remain in the model. The models without
+# `LOGLDIST`, `LOGDIST`, `YR.ISOL` all have pretty much the same AIC value (around 226)
+# so in practice we could remove any of them. Let's remove the term that results in the
+# model with the lowest AIC which is the `LOGLDIST` variable (AIC 226.23).
 
 M2.AIC <- update(M.start.AIC, formula = . ~ . - LOGLDIST)
 drop1(M2.AIC)
+```
+
+```{r QA2tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Table 2 so far:\n\n**Table 2: Summary of AIC based model selection.**\n\n| Model | Terms in the model | *k* | Term removed | AIC | AIC change | $\\Delta$AIC |\n|:-----|:------------------------------------------|:-:|:----------|:----:|:--------:|:-----:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 14 | &ndash; | 228.20 | &ndash; | 6.63 |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 13 | LOGLDIST | 226.23 | &minus;1.97 | 4.66 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 12 | YR.ISOL | 224.27 | &minus;1.96 | 2.70 |\n")
 ```
 
 \ 
@@ -394,11 +473,15 @@ drop1(M2.AIC)
 A3\. Refit your model with the variable associated with the lowest AIC value removed and run `drop1()` again on your new model (`M3.AIC`).
 
 ```{r QA3, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# Ok, as the model without the variable `YR.ISOL` has the lowest AIC (224.27) 
-# let's update our model and remove this variable.
+# Ok, as the model without the variable `YR.ISOL` has the lowest AIC (224.27) let's
+# update our model and remove this variable.
 
 M3.AIC <- update(M2.AIC, formula = . ~ . - YR.ISOL)
 drop1(M3.AIC)
+```
+
+```{r QA3tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Table 2 so far:\n\n**Table 2: Summary of AIC based model selection.**\n\n| Model | Terms in the model | *k* | Term removed | AIC | AIC change | $\\Delta$AIC |\n|:-----|:------------------------------------------|:-:|:----------|:----:|:--------:|:-----:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 14 | &ndash; | 228.20 | &ndash; | 6.63 |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 13 | LOGLDIST | 226.23 | &minus;1.97 | 4.66 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 12 | YR.ISOL | 224.27 | &minus;1.96 | 2.70 |\n| M4 | ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 11 | LOGDIST | 222.43 | &minus;1.84 | 0.86 |\n")
 ```
 
 \ 
@@ -406,11 +489,15 @@ drop1(M3.AIC)
 A4\. Repeat your model selection by removing the variable indicated by the model with the lowest AIC.
 
 ```{r QA4, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# So, now the model without `LOGDIST` has the lowest AIC (222.43) so we should 
-# refit the model without this variable and run `drop1()` again.
+# So, now the model without `LOGDIST` has the lowest AIC (222.43) so we should refit the
+# model without this variable and run `drop1()` again.
 
 M4.AIC <- update(M3.AIC, formula = . ~ . - LOGDIST)
 drop1(M4.AIC)
+```
+
+```{r QA4tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("Table 2 so far:\n\n**Table 2: Summary of AIC based model selection.**\n\n| Model | Terms in the model | *k* | Term removed | AIC | AIC change | $\\Delta$AIC |\n|:-----|:------------------------------------------|:-:|:----------|:----:|:--------:|:-----:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 14 | &ndash; | 228.20 | &ndash; | 6.63 |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 13 | LOGLDIST | 226.23 | &minus;1.97 | 4.66 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 12 | YR.ISOL | 224.27 | &minus;1.96 | 2.70 |\n| M4 | ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 11 | LOGDIST | 222.43 | &minus;1.84 | 0.86 |\n| M5 | LOGAREA + FGRAZE + LOGAREA:FGRAZE | 10 | ALT | 221.57 | &minus;0.86 | 0.00 |\n")
 ```
 
 \ 
@@ -418,19 +505,23 @@ drop1(M4.AIC)
 A5\. Rinse and repeat as above.
 
 ```{r QA5, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# And the model without the variable `ALT` has an AIC of 221.57 which is about 
-# the same as the model with `ALT` (AIC 222.43), so let's remove this variable 
-# from the model as this suggests that the simpler model fits our data just as 
-# well as the more complicated model.
+# And the model without the variable `ALT` has an AIC of 221.57 which is about the same
+# as the model with `ALT` (AIC 222.43), so let's remove this variable from the model as
+# this suggests that the simpler model fits our data just as well as the more
+# complicated model.
 
 M5.AIC <- update(M4.AIC, formula = . ~ . - ALT)
 drop1(M5.AIC)
 
-# OK, so now we have a model with the main effects of LOGAREA, FGRAZE and the 
-# interaction term LOGAREA:FGRAZE. When we remove the interaction term the 
-# AIC value increases by 8.9 (230.47-221.57) and this suggests that if we 
-# remove the interaction term the model fit is significantly worse. Therefore we 
-# should leave it in and finish our model selection here.
+# OK, so now we have a model with the main effects of LOGAREA, FGRAZE and the
+# interaction term LOGAREA:FGRAZE. When we remove the interaction term the AIC value
+# increases by 8.9 (230.47-221.57) and this suggests that if we remove the interaction
+# term the model fit is significantly worse. Therefore we should leave it in and finish
+# our model selection here.
+```
+
+```{r QA5tab, eval=SOLUTIONS, echo=FALSE, results='asis', purl=FALSE}
+cat("And the finished table:\n\n**Table 2: Summary of AIC based model selection.**\n\n| Model | Terms in the model | *k* | Term removed | AIC | AIC change | $\\Delta$AIC |\n|:-----|:------------------------------------------|:-:|:----------|:----:|:--------:|:-----:|\n| M1 | LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 14 | &ndash; | 228.20 | &ndash; | 6.63 |\n| M2 | LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 13 | LOGLDIST | 226.23 | &minus;1.97 | 4.66 |\n| M3 | LOGDIST + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 12 | YR.ISOL | 224.27 | &minus;1.96 | 2.70 |\n| M4 | ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE | 11 | LOGDIST | 222.43 | &minus;1.84 | 0.86 |\n| M5 | LOGAREA + FGRAZE + LOGAREA:FGRAZE | 10 | ALT | 221.57 | &minus;0.86 | 0.00 |\nAll four deletions changed AIC by less than 2, which is why all four terms went. Selection stopped at M5 because deleting the `LOGAREA:FGRAZE` interaction would have **raised** AIC by 8.90 (from 221.57 to 230.47), which is strong support for keeping it.\n")
 ```
 
 \ 
@@ -439,74 +530,15 @@ If all goes well, your final model should be `lm(ABUND ~ LOGAREA + FGRAZE + LOGA
 
 We don't need to re-validate or re-interpret the model, since we have already done this previously.
 
-I guess the next question is how to present your results from the model selection process (using either *F* tests or AIC) in your paper and/or thesis chapter. One approach which I quite like is to construct a table which includes a description of all of our models and associated summary statistics. Let's do this for the AIC based model selection but the same principles apply when using *F* tests (although you will be presenting *F* statistics and P values rather than AIC values). 
+You have already seen how to present this. Table 2 above is the AIC equivalent of Table 1, and either one can go straight into a results section with the text referring to it, exactly as in Question 12.
 
-Although you can use the output from the `drop1()` (and do a bit more wrangling) let's make it a little simpler by fitting all of our models and then use the `AIC()` function to calculate the AIC values for each model rather than `drop1()`. Details on how to do this are given in the solutions to this exercise.
+A couple of practical notes if you build one of these for your own work. The AIC values reported by `drop1()` are not the same as those from the `AIC()` function, because the two calculate AIC on slightly different scales. Neither is wrong, but never mix values from the two in the same table. And if you want a formatted table in a report rather than console output, `knitr::kable()` will do it (see the ['Installing R Markdown'](https://intro2r.com/install-rm.html) appendix of the Introduction to R book).
 
-```{r QA2a, eval=SOLUTIONS, echo=SOLUTIONS, results=SOLUTIONS, collapse=TRUE}
-# one way of constructing a summary table for reporting the results:
+\  
 
-# create a vector of all the models compared during out model selection
+### References {#refs}
 
-model.formulas<- c(
-  "LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE",
-	"LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE",
-	"ALT + LOGDIST + LOGAREA + FGRAZE + LOGAREA:FGRAZE",
-	"ALT + LOGAREA + FGRAZE + LOGAREA:FGRAZE", 
-	"LOGAREA + FGRAZE + LOGAREA:FGRAZE")
-
-# fit each model. Need to use the noquote() function to remove the 
-# quotations around our model formula otherwise you will get an error when 
-# using the lm() function.
-
-# You will also need to paste the response variable 'ABUND ~ ' 
-# together with out explanatory variables to create a valid model formula
-
-M.start <- lm(noquote(paste('ABUND ~', model.formulas[1])), data = loyn)
-M.step2 <- lm(noquote(paste('ABUND ~', model.formulas[2])), data = loyn)
-M.step3 <- lm(noquote(paste('ABUND ~', model.formulas[3])), data = loyn)
-M.step4 <- lm(noquote(paste('ABUND ~', model.formulas[4])), data = loyn)
-M.step5 <- lm(noquote(paste('ABUND ~', model.formulas[5])), data = loyn)
-
-# obtain the AIC values for each model. Note: these will be different 
-# than those obtained with the drop1() function due to a small difference in
-# how AIC is calculated. This isn;t a problem, just don't mix and match
-# the AIC values form drop1 and AIC functions.
-
-model.AIC<- c(AIC(M.start),
-	AIC(M.step2),
-	AIC(M.step3),
-	AIC(M.step4),
-	AIC(M.step5))
-
-# create a dataframe of models and AIC values
-
-summary.table<- data.frame(Model = model.formulas,
-	AIC= round(model.AIC, 2))
-
-# Sort the models from lowest AIC (preferred) to highest (least preferred)
-
-summary.table<- summary.table[order(summary.table$AIC), ]
-
-# Add the difference in AIC with respect to best model
-
-summary.table$deltaAIC<- summary.table$AIC - summary.table$AIC[1]
-
-# print the dataframe to the console
-
-summary.table
-```
-
-
-```{r Q12c, eval=SOLUTIONS, echo=FALSE}
-# Or if you prefer a prettier version to include directly in 
-# your paper / thesis. You will need to install the knitr 
-# package before you can do this. See the 'Installing R Markdown' 
-# in [Appendix A](https://intro2r.com/install-rm.html) 
-# in the Introduction to R book for more details.
-
-knitr::kable(summary.table, "html", align = "lcr", row.names = FALSE)
-```
+Burnham, K.P. and Anderson, D.R. (2002) *Model Selection and Multimodel Inference: A Practical Information-Theoretic Approach*, 2nd edition. Springer, New York.
 
 \  
 

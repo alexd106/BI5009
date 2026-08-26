@@ -1,0 +1,505 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Exercises},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Exercises}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+~
+
+\subsection{Linear models - Model
+selection}\label{linear-models---model-selection}
+
+~
+
+In the previous exercise you fitted a pre-conceived model which included
+the main effects of the area of the forest patch (\texttt{LOGAREA}), the
+grazing intensity (\texttt{FGRAZE}) and the interaction between these
+two explanatory variables (\texttt{FGRAZE:LOGAREA}). This was useful as
+a training exercise, and might be a viable approach when analysing these
+data if an experiment had been designed to test these effects only.
+However, if other potentially important variables are not included in
+the model this may lead to biased inferences (interpretation).
+Additionally, if the goal of the analysis is to explore what models
+explain the data in a parsimonious way (as opposed to formally testing
+hypotheses), we would also want to include relevant additional
+explanatory variables.
+
+~
+
+Here we revisit the previous loyn data analysis, and ask if a `better'
+model for these data could be achieved by including additional
+explanatory variables and by performing model selection. Because we
+would like to test the significance of the interaction between
+\texttt{LOGAREA}, and \texttt{FGRAZE}, whilst accounting for the
+potential effects of other explanatory variables, we will also include
+\texttt{LOGAREA}, \texttt{FGRAZE} and their interaction
+(\texttt{FGRAZE:LOGAREA}) in the model as before. Including other
+interaction terms between other variables may be reasonable, but we will
+focus only on the \texttt{FGRAZE:LOGAREA} interaction as we have
+relatively little information in this data set (67 observations). This
+will hopefully avoid fitting an overly complex model which will estimate
+many parameters for which we have very little data. This is a balance
+you will all have to maintain with your own data and analyses (or better
+still, perform a power analysis before you even collect your data). No
+4-way interaction terms in your models please!
+
+~
+
+It's also important to note that we will assume that all the explanatory
+variables were collected by the researchers because \emph{they believed}
+them to be biologically relevant for explaining bird abundance
+(i.e.~data were collected for a reason). Of course, this is probably not
+your area of expertise but it is nevertheless a good idea to pause and
+think what might be relevant or not-so relevant and why. This highlights
+the importance of knowing your study organism / study area and
+discussing research designs with colleagues and other experts in the
+field before you collect your data. What you should try to avoid is
+collecting heaps of data across many variables (just because you can)
+and then expecting your statistical models to make sense of it for you.
+As mentioned in the lecture, model selection is a relatively
+controversial topic and should not be treated as a purely mechanical
+process (chuck everything in and see what comes out). Your expertise
+needs to be woven into this process otherwise you may end up with a
+model that is implausible or not very useful (and all models need to be
+useful!).
+
+~
+
+1. Import the `loyn.txt' data file into RStudio and assign it to a
+variable called \texttt{loyn}. Here we will be using all the explanatory
+variables to explain the variation in bird density. If needed, remind
+yourself of your data exploration you conducted previously. Do any of
+the remaining variables need transforming (i.e.~\texttt{AREA},
+\texttt{DIST}, \texttt{LDIST}) or converting to a factor type variable
+(i.e.~\texttt{GRAZE})? Add the transformed variables to the
+\texttt{loyn} dataframe.
+
+~
+
+2. Let's start with a very quick graphical exploration of any potential
+relationships between each explanatory variable (collinearity) and also
+between our response and explanatory variables (what we're interested
+in). Create a pairs plot using the function \texttt{pairs()}of your
+variables of interest. Hint: restrict the plot to the variables you
+actually need. An effective way of doing this is to store the names of
+the variables of interest in a vector
+\texttt{VOI\ \textless{}-\ c("Var1",\ "Var2",\ ...)} and then use the
+naming method for subsetting the data set \texttt{Mydata{[},\ VOI{]}}.
+If you feel like it, you can also add the correlations to the lower
+triangle of the plot as you did previously (don't forget to define the
+function first).
+
+~
+
+3. Now, let's fit our maximal model. Start with a model of
+\texttt{ABUND} and include all explanatory variables as main effects.
+Also include the interaction \texttt{LOGAREA:FGRAZE} but no other
+interaction terms as justified in the preamble above. Don't forget to
+include the transformed versions of the variables where appropriate (but
+not the untransformed variables as well otherwise you will have very
+strong collinearity between these variables!). Perhaps, call this model
+\texttt{M1}.
+
+~
+
+4. Have a look at the summary table of the model using the
+\texttt{summary()} function. You'll probably find this summary is quite
+complicated with lots of parameter estimates (14) and P values testing
+lots of hypotheses. Are all the P values less than our cut-off of 0.05?
+If not, then this suggests that some form of model selection is
+warranted to simplify our model.
+
+Before you go any further though, a word of caution about looking at 14
+tests all at once. If none of these explanatory variables had any real
+effect on bird abundance whatsoever, roughly how many of the 14 P values
+would you still expect to fall below 0.05 purely by chance?
+
+~
+
+5. Let's perform a first step in model selection using the
+\texttt{drop1()} function and use an \emph{F} test based model selection
+approach. This will allow us to decide which explanatory variables may
+be suitable for removal from the model. Remember to use the
+\texttt{test\ =\ "F"} argument to perform \emph{F} tests when using
+\texttt{drop1()}. Which explanatory variable is the best candidate for
+removal and why?
+
+What hypothesis is being tested when we do this model selection step?
+
+~
+
+\textbf{A note on keeping track of model selection.} Describing what you
+did during model selection is genuinely difficult to do well in writing,
+and it is done badly in the published literature more often than almost
+anything else on this course. Papers routinely say ``a minimum adequate
+model was obtained by backward selection'' and leave the reader with no
+idea what was in the starting model, what came out, in what order, or on
+what grounds.
+
+A summary table solves this, and it is worth seeing one being built
+rather than just being shown a finished one. So as we work through the
+deletions below I'll add a row to a table at each step, and you'll find
+it updated in the solution to each question. By the time we reach the
+end we'll have something that could go straight into a results section.
+You don't need to construct it yourself here, just follow along, but do
+consider making one like it when you report a model selection of your
+own.
+
+Here is the structure, with the starting model in it:
+
+\textbf{Table 1: Summary of model selection.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0732}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.6220}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1585}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0488}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0488}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0488}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Terms in the model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Term removed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\emph{df}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\emph{F}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\emph{P}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M1 & LOGLDIST + LOGDIST + YR.ISOL + ALT + LOGAREA + FGRAZE +
+LOGAREA:FGRAZE & -- & -- & -- & -- \\
+\end{longtable}
+}
+
+Two things about that first row. The starting model is in the table
+because a reader cannot judge a selection procedure without knowing what
+it started from: dropping four terms from a model of six is a very
+different exercise from dropping four from a model of twenty. And the
+\emph{F} and \emph{P} columns hold dashes because nothing was removed in
+order to arrive at M1. Those columns describe the deletion that got you
+from the previous model to this one, and for the first row there isn't
+one.
+
+~
+
+~
+
+6. Update and refit your model and remove the least significant
+explanatory variable (from above). Repeat single term deletions with
+\texttt{drop1()} again using this updated model. You can update the
+model by just fitting a new model without the appropriate explanatory
+variable and assign it to a new name (\texttt{M2}). Alternatively you
+can use the \texttt{update()} function instead (I show you how to do
+this in the solutions).
+
+~
+
+7. Again, update the model to remove the least significant explanatory
+variable (from above) and repeat single term deletions with
+\texttt{drop1()}.
+
+~
+
+8. Once again, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+\texttt{drop1()}.
+
+~
+
+9. And finally, update the model to remove the least significant
+explanatory variable (from above) and repeat single term deletions with
+\texttt{drop1()}.
+
+~
+
+10. If all goes well, your final model should be
+\texttt{lm(ABUND\ \textasciitilde{}\ LOGAREA\ +\ FGRAZE\ +\ LOGAREA:FGRAZE)}
+which you encountered in the previous exercise. Also, you may have
+noticed that the output from the \texttt{drop1()} function does not
+include the main effects of \texttt{LOGAREA} or \texttt{FGRAZE}. Can you
+think why this might be the case?
+
+~
+
+11. Now that you have your final model, you should go through your model
+validation and model interpretation as usual. As we have already
+completed this in the previous exercise I'll leave it up to you to
+decide whether you include it here (you should be able to just copy and
+paste the code).
+
+Please make sure you understand the biological interpretation of each of
+the parameter estimates and the interpretation of the hypotheses you are
+testing. As before, lead with the estimate and its confidence interval
+(\texttt{confint()}) and treat the P value as supporting evidence rather
+than as the finding
+(\href{https://alexd106.github.io/EV5020/linear_model_1_exercise.html\#pval_note}{reminder}).
+
+There is also one caveat that applies to your final model here but did
+not apply to the model you fitted in the previous exercise, even though
+the two models are identical. Have a think about it before you look at
+the solutions. The P values and confidence intervals for your final
+model are calculated as though you had specified that model in advance.
+You didn't: you arrived at it by looking at these same data. Does that
+make them too optimistic, too conservative, or does it make no
+difference at all?
+
+~
+
+\textbf{One last caution, and it applies to everything you have done in
+this exercise.} These are observational data. Nobody assigned patch
+areas or grazing intensities to these forests, they were measured as
+they were found. A linear model will happily estimate an effect of
+grazing on bird abundance, but it cannot tell you that grazing
+\emph{causes} that change.
+
+Two things are worth keeping in mind. First, variables you didn't
+measure may be doing the work. Heavily grazed patches might also be the
+ones nearest roads, or on more fertile soil, or with a different
+understorey, and any of those could be the real driver of the difference
+in bird abundance.
+
+Second, your explanatory variables are correlated with one another, as
+the pairs plot in Question 2 showed. That has a specific consequence for
+how you read the output: every estimate in your model is the effect of
+that variable \emph{holding the other variables in the model constant}.
+Change which variables are in the model and the estimate changes, as you
+saw during model selection. So a coefficient is never simply ``the
+effect of grazing''; it is the effect of grazing after accounting for
+whatever else you happened to include, and it will absorb some of the
+effect of any correlated variable you left out.
+
+None of this means observational studies aren't worth doing, and most of
+ecology is observational for perfectly good reasons. It does mean your
+language should match the evidence you actually have. ``Bird abundance
+was lower in more heavily grazed patches'' is supported by these data.
+``Grazing reduces bird abundance'' is a stronger claim than a model like
+this one can carry on its own, and it needs experimental evidence, or a
+well understood mechanism, standing behind it.
+
+~
+
+12. Now for reporting your results, and this is the last write-up of the
+course. You arrived at your final model by a selection procedure, which
+brings a couple of reporting problems the previous three exercises
+didn't have.
+
+This is where the table you have been building since Question 5 earns
+its keep. Present it as a table in your results, exactly as you would in
+a paper, and then \textbf{refer to it} in your text rather than
+describing every deletion in prose. That is what the table is for: it
+carries the detail, so your paragraph can carry the argument.
+
+Write \textbf{no more than 200 words} of accompanying text for the
+methods and results of a paper. Your reader is an ecologist who knows
+their stuff but isn't a statistician, and who wasn't in the room while
+you did the analysis. They need to be able to work out from your text
+and your table exactly what you did and how much to trust it. Questions
+4 and 11 have already told you the two things an honest account has to
+include that a naive one would leave out.
+
+~
+
+\textbf{OPTIONAL questions} if you have time / energy / inclination!
+
+~
+
+A1. If we weren't aiming to directly test the effect of the
+\texttt{LOGAREA:FGRAZE} interaction statistically (i.e.~test this
+specific hypothesis), we could use AIC to perform model selection.
+Repeat the model selection you did above, but this time use the
+\texttt{drop1()} function and perform model selection using AIC instead.
+Don't forget, if we want to perform model selection based on AIC with
+the \texttt{drop1()} function we need to omit the \texttt{test\ =\ "F"}
+argument)
+
+~
+
+\textbf{A table again, and two ways of reading AIC.} As with the
+\emph{F} test route, I'll build a summary table as we go. Table 2 has
+the same shape as Table 1, but with AIC in place of the \emph{F}
+statistic and \emph{P} value, and with two AIC columns rather than one.
+Those two columns carry the same evidence read in opposite directions,
+so it is worth being clear about them before you see any numbers.
+
+\textbf{AIC change} is what happened to AIC when a term was deleted.
+This is the number the selection decision is actually based on, and it
+is what \texttt{drop1()} puts in front of you. A negative value means
+AIC fell when the term came out, so the simpler model was preferred.
+
+\textbf{ΔAIC} is the column you will see in published tables: each
+model's AIC minus the \textbf{lowest} AIC in the set. The preferred
+model therefore has ΔAIC = 0, and every other model has a positive
+value.
+
+The usual rule of thumb (\hyperref[refs]{Burnham and Anderson 2002})
+applies to both columns, but reads differently in each:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{AIC change:} a change of less than 2 either way is no real
+  support for preferring either model, so the simpler one wins and the
+  term goes. A deletion that \emph{raises} AIC by roughly 4 to 7 is
+  considerable support for keeping the term, and by more than 10, strong
+  support.
+\item
+  \textbf{ΔAIC:} a model within 2 of the best has substantial support,
+  one 4 to 7 above the best has considerably less, and one more than 10
+  above has essentially none.
+\end{itemize}
+
+\emph{k}, in the third column, is simply the number of parameters the
+model estimates.
+
+~
+
+~
+
+A2. Refit your model with the variable associated with the lowest AIC
+value removed. Run \texttt{drop1()} again on your updated model. Perhaps
+call this new model \texttt{M2.AIC}.
+
+~
+
+A3. Refit your model with the variable associated with the lowest AIC
+value removed and run \texttt{drop1()} again on your new model
+(\texttt{M3.AIC}).
+
+~
+
+A4. Repeat your model selection by removing the variable indicated by
+the model with the lowest AIC.
+
+~
+
+A5. Rinse and repeat as above.
+
+~
+
+If all goes well, your final model should be
+\texttt{lm(ABUND\ \textasciitilde{}\ LOGAREA\ +\ FGRAZE\ +\ LOGAREA:FGRAZE)}.
+This is the same model you ended up with when using the \emph{F} test
+based model selection. This might not always be the case and generally
+speaking AIC based model selection approaches tend to favour more
+complicated minimum adequate models compared to \emph{F} test based
+approaches.
+
+We don't need to re-validate or re-interpret the model, since we have
+already done this previously.
+
+You have already seen how to present this. Table 2 above is the AIC
+equivalent of Table 1, and either one can go straight into a results
+section with the text referring to it, exactly as in Question 12.
+
+A couple of practical notes if you build one of these for your own work.
+The AIC values reported by \texttt{drop1()} are not the same as those
+from the \texttt{AIC()} function, because the two calculate AIC on
+slightly different scales. Neither is wrong, but never mix values from
+the two in the same table. And if you want a formatted table in a report
+rather than console output, \texttt{knitr::kable()} will do it (see the
+\href{https://intro2r.com/install-rm.html}{`Installing R Markdown'}
+appendix of the Introduction to R book).
+
+~
+
+\subsubsection{References}\label{refs}
+
+Burnham, K.P. and Anderson, D.R. (2002) \emph{Model Selection and
+Multimodel Inference: A Practical Information-Theoretic Approach}, 2nd
+edition. Springer, New York.
+
+~
+
+End of the model selection exercise
+
+\end{document}
